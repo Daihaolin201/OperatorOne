@@ -1,0 +1,32 @@
+{
+  "project": "OperatorOne",
+  "version": "1.0.0",
+  "sharedSkillsDir": "shared/skills",
+  "syncMainAllowAgents": true,
+  "agents": [
+    {
+      "id": "op1_product",
+      "workspace": "workspaces/op1_product",
+      "role": "Product",
+      "owner": "Bennett"
+    },
+    {
+      "id": "op1_marketing",
+      "workspace": "workspaces/op1_marketing",
+      "role": "Marketing",
+      "owner": "Dennis"
+    },
+    {
+      "id": "op1_sales",
+      "workspace": "workspaces/op1_sales",
+      "role": "Sales",
+      "owner": "Dennis"
+    },
+    {
+      "id": "op1_operations",
+      "workspace": "workspaces/op1_operations",
+      "role": "Operations",
+      "owner": "Bennett"
+    }
+  ]
+}

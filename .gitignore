@@ -1,0 +1,30 @@
+# macOS
+.DS_Store
+
+# Editor / IDE
+.vscode/
+.idea/
+
+# Runtime logs
+*.log
+logs/
+
+# Secrets / env
+.env
+.env.*
+*.pem
+*.key
+
+# Python / Node
+.venv/
+venv/
+node_modules/
+__pycache__/
+*.pyc
+
+# OpenClaw runtime state (never commit)
+.openclaw/
+**/.openclaw/
+
+# Generated analytics artifacts
+artifacts/tmp/
