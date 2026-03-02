@@ -23,6 +23,13 @@ This removes `op1_*` agents and OperatorOne shared skill path from the default p
 ## Daily Work
 
 - Work in your owned agent workspace.
+- Agent-specific skills go in:
+  - `workspaces/op1_product/skills/`
+  - `workspaces/op1_marketing/skills/`
+  - `workspaces/op1_sales/skills/`
+  - `workspaces/op1_operations/skills/`
+- Cross-agent reusable skills go in:
+  - `shared/skills/`
 - Commit locally as needed.
 - Push only when ready (milestone/PR time).
 

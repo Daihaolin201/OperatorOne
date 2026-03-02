@@ -19,6 +19,16 @@ OperatorOne is a 4-agent OpenClaw startup builder focused on going from idea -> 
 - `handoffs/` - structured inter-agent transfer files
 - `docs/` - architecture/collaboration/runbook
 
+## Skills Layout
+
+- Agent-specific skills:
+  - `workspaces/op1_product/skills/`
+  - `workspaces/op1_marketing/skills/`
+  - `workspaces/op1_sales/skills/`
+  - `workspaces/op1_operations/skills/`
+- Shared reusable skills:
+  - `shared/skills/`
+
 ## Quick Start (local, Profile-B isolation)
 
 1. Clone into:

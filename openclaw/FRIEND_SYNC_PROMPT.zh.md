@@ -14,6 +14,11 @@
    - `skills.load.extraDirs` **仅**包含：`~/.openclaw/workspace/OperatorOne/shared/skills` 对应绝对路径
    - `gateway.port` 为 `30740`
    - `agents.defaults.model.primary` 为 `openai-codex/gpt-5.3-codex`
+   - 4 个专属 skills 目录存在：
+     - `workspaces/op1_product/skills/`
+     - `workspaces/op1_marketing/skills/`
+     - `workspaces/op1_sales/skills/`
+     - `workspaces/op1_operations/skills/`
    - 若默认 profile 存在 `~/.openclaw/agents/main/agent/auth-profiles.json`，则已将其复制到 `~/.openclaw-operatorone/agents/op1_*/agent/auth-profiles.json`（仅在目标缺失时复制）
 
 严格禁止：

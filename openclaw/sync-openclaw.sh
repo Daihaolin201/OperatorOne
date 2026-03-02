@@ -98,7 +98,8 @@ with open(manifest_path, 'r', encoding='utf-8') as f:
 for a in manifest.get('agents', []):
     ws = os.path.join(repo_root, a['workspace'])
     os.makedirs(ws, exist_ok=True)
-print('[INFO] Workspace directories ensured')
+    os.makedirs(os.path.join(ws, 'skills'), exist_ok=True)
+print('[INFO] Workspace and per-agent skills directories ensured')
 PY
 
 TMP_MERGE_JSON="$(mktemp)"
