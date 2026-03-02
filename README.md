@@ -35,12 +35,20 @@ OperatorOne is a 4-agent OpenClaw startup builder focused on going from idea -> 
    - `~/.openclaw/workspace/OperatorOne`
 2. Run one-time non-destructive sync (dedicated profile `operatorone`):
    - `bash openclaw/sync-openclaw.sh`
-3. Restart isolated gateway:
+3. Ensure the `operatorone` gateway service is active:
+   - `openclaw --profile operatorone gateway install --force`
    - `openclaw --profile operatorone gateway restart`
 4. Verify isolated profile:
    - `openclaw --profile operatorone status`
+   - `openclaw --profile operatorone agents list`
 5. Start a fresh chat session:
    - `/new`
+
+## Web UI / Web Chat Visibility (Important)
+
+- Web side only shows agents from the **currently running gateway profile**.
+- If you are connected to default profile, you will not see `op1_*` agents.
+- Always use `openclaw --profile operatorone ...` when operating OperatorOne.
 
 ## Collaboration
 

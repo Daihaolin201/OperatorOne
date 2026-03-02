@@ -6,11 +6,22 @@
    - `~/.openclaw/workspace/OperatorOne`
 2. Run one-time sync in dedicated profile (`operatorone`):
    - `bash openclaw/sync-openclaw.sh`
-3. Restart operatorone gateway:
+3. Install/repoint gateway service to operatorone profile:
+   - `openclaw --profile operatorone gateway install --force`
+4. Restart operatorone gateway:
    - `openclaw --profile operatorone gateway restart`
-4. Verify operatorone profile:
+5. Verify operatorone profile:
    - `openclaw --profile operatorone status`
-5. Open a fresh chat session (`/new` or `/reset`) before using new agents/skills.
+   - `openclaw --profile operatorone agents list`
+6. Open a fresh chat session (`/new` or `/reset`) before using new agents/skills.
+
+## Web Visibility Rule
+
+- Web UI / Web Chat displays agents from the active gateway profile only.
+- If `op1_*` agents are not visible, check profile context first:
+  - `openclaw config file`
+  - `openclaw --profile operatorone config file`
+  - `openclaw --profile operatorone agents list`
 
 ## If you previously synced OperatorOne into default profile
 

@@ -6,9 +6,11 @@
 2) 目标 profile 固定为：`operatorone`。  
 3) 运行：
    - `bash ~/.openclaw/workspace/OperatorOne/openclaw/sync-openclaw.sh`
-4) 同步后重启该 profile 的 gateway：
+4) 将 gateway 服务明确切换到该 profile：
+   - `openclaw --profile operatorone gateway install --force`
+5) 同步后重启该 profile 的 gateway：
    - `openclaw --profile operatorone gateway restart`
-5) 最后输出核对项：
+6) 最后输出核对项：
    - profile 配置文件路径（`openclaw --profile operatorone config file`）
    - agents 已包含：`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`
    - `skills.load.extraDirs` **仅**包含：`~/.openclaw/workspace/OperatorOne/shared/skills` 对应绝对路径
