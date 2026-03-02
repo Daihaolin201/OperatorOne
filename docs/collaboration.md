@@ -22,6 +22,12 @@
 - Cross-domain PR: use `feat/integration/*` and request both reviewers.
 - Changes to `openclaw/sync-openclaw.sh` or `openclaw/agents.manifest.json` require both reviewers.
 
+## Push Policy
+
+- Default: local commits are allowed; **no push by default**.
+- Only push when both collaborators explicitly agree (or when release/merge window starts).
+- During focused build windows (e.g. next 2 days), keep changes local and batch-push at merge time.
+
 ## Commit Style
 
 - `feat(product): ...`
