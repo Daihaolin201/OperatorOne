@@ -1,20 +1,24 @@
 # 给朋友的一键同步提示词（复制给 OpenClaw 即可）
 
-请执行 **OperatorOne 安全增量同步**，严格遵守以下约束：
+请执行 **OperatorOne Profile-B 安全隔离同步**，严格遵守以下约束：
 
-1) 仅在 `~/.openclaw/workspace/OperatorOne` 下工作，不改动其他项目文件。  
-2) 先检查仓库是否存在：
-   - 若不存在，提示我先 `git clone` 到 `~/.openclaw/workspace/OperatorOne`。
+1) 只在 `~/.openclaw/workspace/OperatorOne` 下工作，不改动其他项目文件。  
+2) 目标 profile 固定为：`operatorone`。  
 3) 运行：
    - `bash ~/.openclaw/workspace/OperatorOne/openclaw/sync-openclaw.sh`
-4) 同步完成后执行：
-   - `openclaw gateway restart`
-5) 最后输出以下核对项：
-   - 新增/存在 agents：`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`
-   - `skills.load.extraDirs` 已包含：`~/.openclaw/workspace/OperatorOne/shared/skills` 对应绝对路径
-6) 严格禁止：
-   - 覆盖 `agents.defaults.workspace`
-   - 改动 `channels.*`, `gateway.*`, `auth.*`
-   - 删除已有 agents
+4) 同步后重启该 profile 的 gateway：
+   - `openclaw --profile operatorone gateway restart`
+5) 最后输出核对项：
+   - profile 配置文件路径（`openclaw --profile operatorone config file`）
+   - agents 已包含：`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`
+   - `skills.load.extraDirs` **仅**包含：`~/.openclaw/workspace/OperatorOne/shared/skills` 对应绝对路径
+   - `gateway.port` 为 `30740`
+   - `agents.defaults.model.primary` 为 `openai-codex/gpt-5.3-codex`
+   - 若默认 profile 存在 `~/.openclaw/agents/main/agent/auth-profiles.json`，则已将其复制到 `~/.openclaw-operatorone/agents/op1_*/agent/auth-profiles.json`（仅在目标缺失时复制）
 
-如果发现冲突（如同名 agent 已指向不同 workspace），请只报告冲突，不做覆盖。
+严格禁止：
+- 覆盖默认 profile（不带 `--profile`）的 `channels.*`, `gateway.*`, `auth.*`
+- 删除朋友已有的默认 profile agents
+- 修改默认 profile 的 `skills.load.extraDirs`
+
+如果发现同名 agent 冲突（在 operatorone profile 内），只报告冲突，不做覆盖。

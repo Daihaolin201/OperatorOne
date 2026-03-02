@@ -19,15 +19,17 @@ OperatorOne is a 4-agent OpenClaw startup builder focused on going from idea -> 
 - `handoffs/` - structured inter-agent transfer files
 - `docs/` - architecture/collaboration/runbook
 
-## Quick Start (local)
+## Quick Start (local, Profile-B isolation)
 
 1. Clone into:
    - `~/.openclaw/workspace/OperatorOne`
-2. Run one-time non-destructive sync:
+2. Run one-time non-destructive sync (dedicated profile `operatorone`):
    - `bash openclaw/sync-openclaw.sh`
-3. Restart gateway:
-   - `openclaw gateway restart`
-4. Start a fresh chat session:
+3. Restart isolated gateway:
+   - `openclaw --profile operatorone gateway restart`
+4. Verify isolated profile:
+   - `openclaw --profile operatorone status`
+5. Start a fresh chat session:
    - `/new`
 
 ## Collaboration

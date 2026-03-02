@@ -22,6 +22,11 @@
 - Cross-domain PR: use `feat/integration/*` and request both reviewers.
 - Changes to `openclaw/sync-openclaw.sh` or `openclaw/agents.manifest.json` require both reviewers.
 
+## Runtime Convention
+
+- OperatorOne commands use dedicated profile: `openclaw --profile operatorone ...`
+- Avoid using default profile for OperatorOne development tasks.
+
 ## Push Policy
 
 - Default: local commits are allowed; **no push by default**.

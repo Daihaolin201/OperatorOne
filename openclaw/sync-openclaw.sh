@@ -2,9 +2,42 @@
 set -euo pipefail
 
 DRY_RUN=0
-if [[ "${1:-}" == "--dry-run" ]]; then
-  DRY_RUN=1
-fi
+PROFILE="operatorone"
+
+usage() {
+  cat <<USAGE
+Usage: $(basename "$0") [--profile <name>] [--dry-run]
+
+Default profile: operatorone
+This script performs non-destructive OperatorOne sync into the selected profile.
+USAGE
+}
+
+while [[ $# -gt 0 ]]; do
+  case "$1" in
+    --dry-run)
+      DRY_RUN=1
+      shift
+      ;;
+    --profile)
+      PROFILE="${2:-}"
+      if [[ -z "$PROFILE" ]]; then
+        echo "[ERROR] --profile requires a value" >&2
+        exit 1
+      fi
+      shift 2
+      ;;
+    -h|--help)
+      usage
+      exit 0
+      ;;
+    *)
+      echo "[ERROR] Unknown argument: $1" >&2
+      usage
+      exit 1
+      ;;
+  esac
+done
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 REPO_ROOT="$(cd "$SCRIPT_DIR/.." && pwd)"
@@ -22,20 +55,38 @@ for cmd in openclaw python3; do
   fi
 done
 
-CONFIG_PATH="$(openclaw config file | tr -d '\r')"
-CONFIG_PATH="${CONFIG_PATH/#\~/$HOME}"
-if [[ ! -f "$CONFIG_PATH" ]]; then
-  echo "[ERROR] OpenClaw config not found: $CONFIG_PATH" >&2
-  exit 1
-fi
+oc() {
+  openclaw --profile "$PROFILE" "$@"
+}
+
+expand_tilde() {
+  local p="$1"
+  echo "${p/#\~/$HOME}"
+}
+
+CONFIG_PATH="$(oc config file | tr -d '\r')"
+CONFIG_PATH="$(expand_tilde "$CONFIG_PATH")"
+STATE_DIR="$(dirname "$CONFIG_PATH")"
+
+echo "[INFO] Profile: $PROFILE"
+echo "[INFO] Config: $CONFIG_PATH"
+echo "[INFO] State dir: $STATE_DIR"
 
 TIMESTAMP="$(date +%Y%m%d-%H%M%S)"
 BACKUP_PATH="$CONFIG_PATH.bak.operatorone.$TIMESTAMP"
 if [[ "$DRY_RUN" == "1" ]]; then
-  echo "[INFO] Dry-run: skip backup write (would create $BACKUP_PATH)"
+  if [[ -f "$CONFIG_PATH" ]]; then
+    echo "[INFO] Dry-run: skip backup write (would create $BACKUP_PATH)"
+  else
+    echo "[INFO] Dry-run: profile config does not exist yet; would create a new config at $CONFIG_PATH"
+  fi
 else
-  cp "$CONFIG_PATH" "$BACKUP_PATH"
-  echo "[INFO] Backup created: $BACKUP_PATH"
+  if [[ -f "$CONFIG_PATH" ]]; then
+    cp "$CONFIG_PATH" "$BACKUP_PATH"
+    echo "[INFO] Backup created: $BACKUP_PATH"
+  else
+    echo "[INFO] Profile config does not exist yet; it will be created by config set commands"
+  fi
 fi
 
 # Ensure workspace directories exist.
@@ -52,20 +103,22 @@ PY
 
 TMP_MERGE_JSON="$(mktemp)"
 
-python3 - "$MANIFEST" "$REPO_ROOT" > "$TMP_MERGE_JSON" <<'PY'
+python3 - "$MANIFEST" "$REPO_ROOT" "$PROFILE" "$STATE_DIR" > "$TMP_MERGE_JSON" <<'PY'
 import json
 import os
 import subprocess
 import sys
 
-manifest_path, repo_root = sys.argv[1], sys.argv[2]
+manifest_path, repo_root, profile, state_dir = sys.argv[1:5]
 
 with open(manifest_path, 'r', encoding='utf-8') as f:
     manifest = json.load(f)
 
-def cfg_get(path, default):
+def oc_get(path, default):
     try:
-        out = subprocess.check_output(["openclaw", "config", "get", path], stderr=subprocess.STDOUT, text=True)
+        out = subprocess.check_output([
+            "openclaw", "--profile", profile, "config", "get", path
+        ], stderr=subprocess.STDOUT, text=True)
     except subprocess.CalledProcessError as e:
         msg = (e.output or "").strip().lower()
         if "config path not found" in msg or "path not found" in msg:
@@ -74,9 +127,12 @@ def cfg_get(path, default):
     out = out.strip()
     if not out:
         return default
-    return json.loads(out)
+    try:
+        return json.loads(out)
+    except Exception:
+        return out
 
-agents_list = cfg_get("agents.list", [])
+agents_list = oc_get("agents.list", [])
 if not isinstance(agents_list, list):
     raise SystemExit("[ERROR] config agents.list is not an array")
 
@@ -84,12 +140,10 @@ by_id = {a.get("id"): a for a in agents_list if isinstance(a, dict) and a.get("i
 changes = []
 warnings = []
 
-home = os.path.expanduser("~")
-
 for item in manifest.get("agents", []):
     aid = item["id"]
     ws_abs = os.path.abspath(os.path.join(repo_root, item["workspace"]))
-    ad_abs = os.path.join(home, ".openclaw", "agents", aid, "agent")
+    ad_abs = os.path.join(state_dir, "agents", aid, "agent")
 
     if aid not in by_id:
         new_agent = {
@@ -127,20 +181,66 @@ if manifest.get("syncMainAllowAgents", False):
         else:
             warnings.append("main.subagents.allowAgents is not an array; skip append")
 
-extra_dirs = cfg_get("skills.load.extraDirs", [])
-if extra_dirs is None:
-    extra_dirs = []
-elif not isinstance(extra_dirs, list):
-    extra_dirs = [str(extra_dirs)]
+# Dedicated-profile skill isolation: replace extraDirs by manifest-defined dirs.
+mode = str(manifest.get("skillsExtraDirsMode", "replace")).lower()
+rel_dirs = manifest.get("skillsExtraDirs")
+if not isinstance(rel_dirs, list) or not rel_dirs:
+    fallback = manifest.get("sharedSkillsDir", "shared/skills")
+    rel_dirs = [fallback]
 
-shared_abs = os.path.abspath(os.path.join(repo_root, manifest.get("sharedSkillsDir", "shared/skills")))
-if shared_abs not in extra_dirs:
-    extra_dirs.append(shared_abs)
-    changes.append("append OperatorOne shared skills dir to skills.load.extraDirs")
+desired_extra_dirs = [os.path.abspath(os.path.join(repo_root, p)) for p in rel_dirs]
+
+current_extra = oc_get("skills.load.extraDirs", [])
+if current_extra is None:
+    current_extra = []
+elif not isinstance(current_extra, list):
+    current_extra = [str(current_extra)]
+
+if mode == "append":
+    merged = list(current_extra)
+    for d in desired_extra_dirs:
+        if d not in merged:
+            merged.append(d)
+    next_extra = merged
+else:
+    next_extra = desired_extra_dirs
+
+if current_extra != next_extra:
+    changes.append(f"set skills.load.extraDirs ({mode})")
+
+# Optional profile defaults
+profile_ws = manifest.get("profileDefaultWorkspace")
+current_default_ws = oc_get("agents.defaults.workspace", None)
+next_default_ws = None
+if profile_ws:
+    next_default_ws = os.path.expanduser(str(profile_ws))
+    if current_default_ws != next_default_ws:
+        changes.append("set agents.defaults.workspace for profile")
+
+gateway_port = manifest.get("gatewayPort")
+current_port = oc_get("gateway.port", None)
+next_port = None
+if isinstance(gateway_port, int):
+    next_port = gateway_port
+    if current_port != next_port:
+        changes.append("set gateway.port for profile")
+
+profile_model = manifest.get("profileDefaultModel")
+current_model = oc_get("agents.defaults.model.primary", None)
+next_model = None
+if isinstance(profile_model, str) and profile_model.strip():
+    next_model = profile_model.strip()
+    if current_model != next_model:
+        changes.append("set agents.defaults.model.primary for profile")
 
 print(json.dumps({
     "agents_list": agents_list,
-    "extra_dirs": extra_dirs,
+    "extra_dirs": next_extra,
+    "profile_workspace": next_default_ws,
+    "gateway_port": next_port,
+    "profile_model": next_model,
+    "seed_auth": bool(manifest.get("seedAuthFromDefaultProfile", False)),
+    "agent_ids": [a.get("id") for a in manifest.get("agents", []) if isinstance(a, dict) and a.get("id")],
     "changes": changes,
     "warnings": warnings,
 }, ensure_ascii=False))
@@ -170,21 +270,79 @@ if [[ "$DRY_RUN" == "1" ]]; then
   exit 0
 fi
 
-python3 - "$TMP_MERGE_JSON" <<'PY'
+python3 - "$TMP_MERGE_JSON" "$PROFILE" <<'PY'
 import json, subprocess, sys
-path = sys.argv[1]
+path, profile = sys.argv[1], sys.argv[2]
 with open(path, 'r', encoding='utf-8') as f:
     merged = json.load(f)
 
 agents_json = json.dumps(merged['agents_list'], ensure_ascii=False)
 extra_json = json.dumps(merged['extra_dirs'], ensure_ascii=False)
 
-subprocess.check_call(["openclaw", "config", "set", "agents.list", agents_json, "--strict-json"])
-subprocess.check_call(["openclaw", "config", "set", "skills.load.extraDirs", extra_json, "--strict-json"])
+subprocess.check_call(["openclaw", "--profile", profile, "config", "set", "agents.list", agents_json, "--strict-json"])
+subprocess.check_call(["openclaw", "--profile", profile, "config", "set", "skills.load.extraDirs", extra_json, "--strict-json"])
+
+if merged.get('profile_workspace'):
+    subprocess.check_call([
+        "openclaw", "--profile", profile, "config", "set", "agents.defaults.workspace",
+        json.dumps(merged['profile_workspace'], ensure_ascii=False), "--strict-json"
+    ])
+
+if isinstance(merged.get('gateway_port'), int):
+    subprocess.check_call([
+        "openclaw", "--profile", profile, "config", "set", "gateway.port",
+        str(merged['gateway_port']), "--strict-json"
+    ])
+
+if isinstance(merged.get('profile_model'), str) and merged['profile_model']:
+    subprocess.check_call([
+        "openclaw", "--profile", profile, "config", "set", "agents.defaults.model.primary",
+        json.dumps(merged['profile_model'], ensure_ascii=False), "--strict-json"
+    ])
 PY
+
+# Seed auth profiles from default profile into operatorone agents (best-effort, non-destructive).
+if [[ "$DRY_RUN" != "1" ]]; then
+  python3 - "$TMP_MERGE_JSON" "$STATE_DIR" <<'PY'
+import json
+import os
+import shutil
+import sys
+
+merge_path, state_dir = sys.argv[1], sys.argv[2]
+with open(merge_path, 'r', encoding='utf-8') as f:
+    merged = json.load(f)
+
+if not merged.get('seed_auth'):
+    print('[INFO] Auth seeding disabled by manifest')
+    raise SystemExit(0)
+
+src = os.path.expanduser('~/.openclaw/agents/main/agent/auth-profiles.json')
+if not os.path.isfile(src):
+    print(f'[WARN] Default-profile auth source not found: {src}')
+    raise SystemExit(0)
+
+seeded = 0
+skipped = 0
+for aid in merged.get('agent_ids', []):
+    if not aid:
+        continue
+    target_dir = os.path.join(state_dir, 'agents', aid, 'agent')
+    os.makedirs(target_dir, exist_ok=True)
+    dst = os.path.join(target_dir, 'auth-profiles.json')
+    if os.path.exists(dst) and os.path.getsize(dst) > 0:
+        skipped += 1
+        continue
+    shutil.copy2(src, dst)
+    seeded += 1
+
+print(f'[INFO] Auth seeding result: seeded={seeded}, skipped_existing={skipped}')
+PY
+fi
 
 rm -f "$TMP_MERGE_JSON"
 
-echo "[DONE] Sync completed."
-echo "[NEXT] Restart gateway: openclaw gateway restart"
+echo "[DONE] Sync completed for profile '$PROFILE'."
+echo "[NEXT] Restart gateway: openclaw --profile $PROFILE gateway restart"
+echo "[NEXT] Verify: openclaw --profile $PROFILE status"
 echo "[NEXT] Start a fresh chat session: /new"

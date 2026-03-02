@@ -19,10 +19,11 @@ OperatorOne uses **4 specialist OpenClaw agents**:
 
 ## Isolation Rules
 
+- OperatorOne runs in dedicated profile: `operatorone` (Profile-B isolation).
 - Each agent has an independent OpenClaw workspace under `workspaces/op1_*`.
-- Each agent has an independent OpenClaw `agentDir` under `~/.openclaw/agents/op1_*/agent`.
-- Shared, reusable capability lives in `shared/` and is loaded via one extra skills path:
-  - `shared/skills`
+- Each agent has an independent OpenClaw `agentDir` under `~/.openclaw-operatorone/agents/op1_*/agent`.
+- `skills.load.extraDirs` for `operatorone` profile is replaced to OperatorOne-only path(s) from manifest (default: `shared/skills`), preventing reuse of unrelated project skills.
+- Default profile (without `--profile`) is not modified by normal OperatorOne sync.
 
 ## Workflow Contract
 

@@ -1,8 +1,16 @@
 {
   "project": "OperatorOne",
-  "version": "1.0.0",
-  "sharedSkillsDir": "shared/skills",
+  "version": "1.1.0",
+  "profile": "operatorone",
+  "profileDefaultWorkspace": "~/.openclaw/workspace-operatorone",
+  "gatewayPort": 30740,
+  "profileDefaultModel": "openai-codex/gpt-5.3-codex",
   "syncMainAllowAgents": true,
+  "seedAuthFromDefaultProfile": true,
+  "skillsExtraDirsMode": "replace",
+  "skillsExtraDirs": [
+    "shared/skills"
+  ],
   "agents": [
     {
       "id": "op1_product",
