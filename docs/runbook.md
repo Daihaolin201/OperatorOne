@@ -4,16 +4,16 @@
 
 1. Clone repo to:
    - `~/.openclaw/workspace/OperatorOne`
-2. Run one-time sync in dedicated profile (`operatorone`):
-   - `bash openclaw/sync-openclaw.sh`
-3. Install/repoint gateway service to operatorone profile:
-   - `openclaw --profile operatorone gateway install --force`
-4. Restart operatorone gateway:
-   - `openclaw --profile operatorone gateway restart`
-5. Verify operatorone profile:
+2. Run safe one-command sync in dedicated profile (`operatorone`):
+   - `bash openclaw/sync-operatorone-safe.sh`
+3. Verify operatorone profile:
    - `openclaw --profile operatorone status`
    - `openclaw --profile operatorone agents list`
-6. Open a fresh chat session (`/new` or `/reset`) before using new agents/skills.
+4. Open a fresh chat session (`/new` or `/reset`) before using new agents/skills.
+
+Advanced:
+- Config-only sync (no service actions): `bash openclaw/sync-openclaw.sh`
+- Allow dual gateways (override default single-active policy): `bash openclaw/sync-operatorone-safe.sh --allow-dual-gateway`
 
 ## Web Visibility Rule
 
@@ -29,7 +29,7 @@ Run cleanup once (optional but recommended):
 
 - `bash openclaw/cleanup-default-profile.sh`
 
-This removes `op1_*` agents and OperatorOne shared skill path from the default profile only.
+This removes OperatorOne manifest agents (`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`) and OperatorOne shared skill path from the default profile only.
 
 ## Daily Work
 
@@ -52,4 +52,16 @@ This removes `op1_*` agents and OperatorOne shared skill path from the default p
   - Replaces `skills.load.extraDirs` inside the **operatorone profile only**
   - Sets operatorone profile defaults (`agents.defaults.workspace`, `gateway.port`, `agents.defaults.model.primary`) from manifest
   - Best-effort auth seeding: copies default profile main auth into `op1_*` agentDirs only when target auth file is missing
+  - Strips inherited `OPENCLAW_*` env vars before all CLI reads/writes to avoid profile drift
   - Never edits default-profile `channels.*`, `gateway.*`, `auth.*`
+
+- `sync-operatorone-safe.sh` adds operational safety:
+  - Runs sync + gateway install/restart in one entrypoint
+  - Default single-active mode stops default-profile gateway to avoid dual-gateway confusion
+  - Verifies config path alignment (CLI path == daemon path == operatorone config)
+
+- `cleanup-default-profile.sh` targets default profile only:
+  - Removes OperatorOne manifest agents from default profile (`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`)
+  - Removes OperatorOne shared skill dir from default `skills.load.extraDirs`
+  - Cleans `main.subagents.allowAgents` entries for those OperatorOne agents
+  - Never touches `channels.*`, `gateway.*`, `auth.*`

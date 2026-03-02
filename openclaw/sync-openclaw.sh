@@ -55,8 +55,33 @@ for cmd in openclaw python3; do
   fi
 done
 
+# Guard against inherited OPENCLAW_* vars from another running profile/session.
+OPENCLAW_ENV_KEYS=()
+OPENCLAW_ENV_UNSET_ARGS=()
+while IFS='=' read -r k _; do
+  if [[ "$k" == OPENCLAW_* ]]; then
+    OPENCLAW_ENV_KEYS+=("$k")
+    OPENCLAW_ENV_UNSET_ARGS+=("-u" "$k")
+  fi
+done < <(env)
+
+if [[ "${#OPENCLAW_ENV_KEYS[@]}" -gt 0 ]]; then
+  echo "[WARN] Detected inherited OPENCLAW_* env vars; they will be ignored to avoid profile drift:"
+  for k in "${OPENCLAW_ENV_KEYS[@]}"; do
+    echo "  - $k"
+  done
+fi
+
+oc_base() {
+  if [[ "${#OPENCLAW_ENV_UNSET_ARGS[@]}" -gt 0 ]]; then
+    env "${OPENCLAW_ENV_UNSET_ARGS[@]}" openclaw "$@"
+  else
+    openclaw "$@"
+  fi
+}
+
 oc() {
-  openclaw --profile "$PROFILE" "$@"
+  oc_base --profile "$PROFILE" "$@"
 }
 
 expand_tilde() {
@@ -111,6 +136,7 @@ import subprocess
 import sys
 
 manifest_path, repo_root, profile, state_dir = sys.argv[1:5]
+clean_env = {k: v for k, v in os.environ.items() if not k.startswith("OPENCLAW_")}
 
 with open(manifest_path, 'r', encoding='utf-8') as f:
     manifest = json.load(f)
@@ -119,7 +145,7 @@ def oc_get(path, default):
     try:
         out = subprocess.check_output([
             "openclaw", "--profile", profile, "config", "get", path
-        ], stderr=subprocess.STDOUT, text=True)
+        ], stderr=subprocess.STDOUT, text=True, env=clean_env)
     except subprocess.CalledProcessError as e:
         msg = (e.output or "").strip().lower()
         if "config path not found" in msg or "path not found" in msg:
@@ -272,34 +298,39 @@ if [[ "$DRY_RUN" == "1" ]]; then
 fi
 
 python3 - "$TMP_MERGE_JSON" "$PROFILE" <<'PY'
-import json, subprocess, sys
+import json, os, subprocess, sys
 path, profile = sys.argv[1], sys.argv[2]
+clean_env = {k: v for k, v in os.environ.items() if not k.startswith("OPENCLAW_")}
 with open(path, 'r', encoding='utf-8') as f:
     merged = json.load(f)
 
 agents_json = json.dumps(merged['agents_list'], ensure_ascii=False)
 extra_json = json.dumps(merged['extra_dirs'], ensure_ascii=False)
 
-subprocess.check_call(["openclaw", "--profile", profile, "config", "set", "agents.list", agents_json, "--strict-json"])
-subprocess.check_call(["openclaw", "--profile", profile, "config", "set", "skills.load.extraDirs", extra_json, "--strict-json"])
+subprocess.check_call([
+    "openclaw", "--profile", profile, "config", "set", "agents.list", agents_json, "--strict-json"
+], env=clean_env)
+subprocess.check_call([
+    "openclaw", "--profile", profile, "config", "set", "skills.load.extraDirs", extra_json, "--strict-json"
+], env=clean_env)
 
 if merged.get('profile_workspace'):
     subprocess.check_call([
         "openclaw", "--profile", profile, "config", "set", "agents.defaults.workspace",
         json.dumps(merged['profile_workspace'], ensure_ascii=False), "--strict-json"
-    ])
+    ], env=clean_env)
 
 if isinstance(merged.get('gateway_port'), int):
     subprocess.check_call([
         "openclaw", "--profile", profile, "config", "set", "gateway.port",
         str(merged['gateway_port']), "--strict-json"
-    ])
+    ], env=clean_env)
 
 if isinstance(merged.get('profile_model'), str) and merged['profile_model']:
     subprocess.check_call([
         "openclaw", "--profile", profile, "config", "set", "agents.defaults.model.primary",
         json.dumps(merged['profile_model'], ensure_ascii=False), "--strict-json"
-    ])
+    ], env=clean_env)
 PY
 
 # Seed auth profiles from default profile into operatorone agents (best-effort, non-destructive).
