@@ -36,3 +36,9 @@ workspaces/*/memory/
 workspaces/*/research/reddit_signals.json
 workspaces/*/research/secondary_signals.json
 workspaces/*/research/signal_summary.json
+
+# Generated idea-analysis artifacts (regenerable)
+workspaces/*/research/idea_longlist.json
+workspaces/*/research/idea_scores.csv
+workspaces/*/research/scorecard.md
+workspaces/*/research/top3_briefs.md
