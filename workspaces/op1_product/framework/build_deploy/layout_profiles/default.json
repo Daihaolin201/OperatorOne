@@ -1,0 +1,20 @@
+{
+  "profile_id": "default",
+  "display_name": "Default Modular Landing",
+  "match_adapters": [],
+  "theme": {
+    "accent": "#2563eb",
+    "surface": "#0f172a",
+    "highlight": "#38bdf8"
+  },
+  "module_order": [
+    "hero_problem",
+    "workflow_interactive",
+    "proof_points",
+    "metric_snapshot",
+    "pricing_cards",
+    "risk_guardrails",
+    "cta_waitlist",
+    "faq_list"
+  ]
+}

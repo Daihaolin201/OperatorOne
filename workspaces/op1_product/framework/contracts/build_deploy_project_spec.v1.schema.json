@@ -1,0 +1,214 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "op1_product/build_deploy_project_spec.v1",
+  "title": "BuildDeployProjectSpecV1",
+  "type": "object",
+  "required": [
+    "spec_version",
+    "project_id",
+    "source",
+    "segment",
+    "problem_statement",
+    "value_proposition",
+    "offer",
+    "workflow",
+    "metrics",
+    "pricing",
+    "adapter"
+  ],
+  "properties": {
+    "spec_version": {
+      "type": "string"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "project_id": {
+      "type": "string",
+      "minLength": 3
+    },
+    "source": {
+      "type": "object",
+      "required": [
+        "opportunity_id",
+        "stage",
+        "selection_reason"
+      ],
+      "properties": {
+        "opportunity_id": { "type": "string" },
+        "stage": { "type": "string" },
+        "selection_reason": { "type": "string" }
+      }
+    },
+    "segment": {
+      "type": "object",
+      "required": [
+        "role",
+        "industry",
+        "company_size"
+      ],
+      "properties": {
+        "role": { "type": "string" },
+        "industry": { "type": "string" },
+        "company_size": { "type": "string" }
+      }
+    },
+    "problem_statement": {
+      "type": "string"
+    },
+    "value_proposition": {
+      "type": "string"
+    },
+    "offer": {
+      "type": "object",
+      "required": [
+        "headline",
+        "cta_label",
+        "cta_type"
+      ],
+      "properties": {
+        "headline": { "type": "string" },
+        "cta_label": { "type": "string" },
+        "cta_type": { "type": "string" }
+      }
+    },
+    "workflow": {
+      "type": "object",
+      "required": [
+        "prompt_label",
+        "prompt_placeholder",
+        "primary_action_label",
+        "rules",
+        "default_response"
+      ],
+      "properties": {
+        "prompt_label": { "type": "string" },
+        "prompt_placeholder": { "type": "string" },
+        "primary_action_label": { "type": "string" },
+        "rules": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": [
+              "id",
+              "keywords",
+              "first_step",
+              "next_steps"
+            ],
+            "properties": {
+              "id": { "type": "string" },
+              "priority": { "type": "number" },
+              "keywords": {
+                "type": "array",
+                "items": { "type": "string" }
+              },
+              "first_step": { "type": "string" },
+              "next_steps": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "default_response": {
+          "type": "object",
+          "required": [
+            "first_step",
+            "next_steps"
+          ],
+          "properties": {
+            "first_step": { "type": "string" },
+            "next_steps": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "required": [
+        "success_metric",
+        "target",
+        "kill_criteria"
+      ],
+      "properties": {
+        "success_metric": { "type": "string" },
+        "target": { "type": "string" },
+        "kill_criteria": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "pricing": {
+      "type": "object",
+      "required": [
+        "plan_a",
+        "plan_b"
+      ],
+      "properties": {
+        "plan_a": { "type": "string" },
+        "plan_b": { "type": "string" }
+      }
+    },
+    "adapter": {
+      "type": "object",
+      "required": [
+        "name",
+        "description",
+        "match_score"
+      ],
+      "properties": {
+        "name": { "type": "string" },
+        "description": { "type": "string" },
+        "match_score": { "type": "number" }
+      }
+    },
+    "business_tests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "name",
+          "input",
+          "expect_first_step_contains"
+        ],
+        "properties": {
+          "name": { "type": "string" },
+          "input": { "type": "string" },
+          "expect_first_step_contains": {
+            "type": "array",
+            "items": { "type": "string" }
+          }
+        }
+      }
+    },
+    "page_profile": {
+      "type": "string"
+    },
+    "cta_support_text": {
+      "type": "string"
+    },
+    "proof_points": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "operational_checklist": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "faq": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["question", "answer"],
+        "properties": {
+          "question": { "type": "string" },
+          "answer": { "type": "string" }
+        }
+      }
+    }
+  }
+}

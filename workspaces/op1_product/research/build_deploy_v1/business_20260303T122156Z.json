@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-03-03T12:22:34Z",
+  "base_url": "https://webproductv1app.vercel.app",
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "adapter": "invoice-followup",
+  "status": "failed",
+  "checks": [
+    {
+      "name": "overdue_invoice_response",
+      "status": "pass",
+      "http_status": 200,
+      "rule_id": "invoice-overdue",
+      "first_step": "Send one structured reminder today with invoice amount, due date, and a clear 48-hour action deadline.",
+      "attempts": 1
+    },
+    {
+      "name": "ghosting_response",
+      "status": "fail",
+      "error": "ghosting_response: first_step missing fragments ['escalation', 'payment']"
+    }
+  ]
+}

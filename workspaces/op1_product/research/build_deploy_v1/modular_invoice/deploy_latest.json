@@ -1,0 +1,8 @@
+{
+  "deployed_at": "2026-03-03T16:29:39Z",
+  "target": "production",
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_invoice",
+  "deployment_url": "https://webproductmodularinvoice-ga70eenp3-superme1.vercel.app",
+  "public_url": "https://webproductmodularinvoice.vercel.app",
+  "log_file": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_invoice/deploy_20260303T162921Z.log"
+}

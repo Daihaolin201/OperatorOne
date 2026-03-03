@@ -1,0 +1,8 @@
+{
+  "deployed_at": "2026-03-03T13:11:35Z",
+  "target": "production",
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_chargeback",
+  "deployment_url": "https://webproductchargeback-k93yr3ggv-superme1.vercel.app",
+  "public_url": "https://webproductchargeback.vercel.app",
+  "log_file": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/chargeback/deploy_20260303T131118Z.log"
+}

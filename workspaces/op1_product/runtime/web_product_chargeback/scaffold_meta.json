@@ -1,0 +1,22 @@
+{
+  "generated_at": "2026-03-03T13:11:17Z",
+  "mode": "project_spec",
+  "project_spec_source": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.chargeback.json",
+  "blueprint_source": null,
+  "blueprint_autofilled": false,
+  "project_id": "proj-opp-001-chargeback-response-v1",
+  "from_opportunity_id": "opp_001",
+  "adapter_name": "chargeback-response",
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_chargeback",
+  "public_files": [
+    "public/index.html",
+    "public/styles.css",
+    "public/app.js"
+  ],
+  "api_files": [
+    "api/health.js",
+    "api/first-step.js",
+    "api/signup.js",
+    "api/spec.js"
+  ]
+}

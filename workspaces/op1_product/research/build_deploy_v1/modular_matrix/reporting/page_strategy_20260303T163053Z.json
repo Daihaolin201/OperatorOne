@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-03-03T16:31:14Z",
+  "base_url": "https://webproductmodularreporting.vercel.app",
+  "project_id": "proj-opp-001-client-reporting-v1",
+  "adapter_name": "client-reporting",
+  "layout_profile": "client-reporting",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "module_presence",
+      "status": "pass",
+      "expected_count": 7,
+      "detected_count": 7,
+      "attempts": 1
+    },
+    {
+      "name": "module_order",
+      "status": "pass",
+      "expected": [
+        "hero_problem",
+        "proof_points",
+        "workflow_interactive",
+        "metric_snapshot",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ],
+      "detected": [
+        "hero_problem",
+        "proof_points",
+        "workflow_interactive",
+        "metric_snapshot",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ]
+    },
+    {
+      "name": "primary_cta_uniqueness",
+      "status": "pass",
+      "primary_cta_count": 1,
+      "max_primary_cta": 1
+    },
+    {
+      "name": "legacy_badge_removed",
+      "status": "pass"
+    }
+  ]
+}

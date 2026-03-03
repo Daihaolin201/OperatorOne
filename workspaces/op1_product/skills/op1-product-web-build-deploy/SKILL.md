@@ -1,0 +1,58 @@
+---
+name: op1-product-web-build-deploy
+description: Build and deploy simple web products with a robust, adapter-driven framework (project spec -> page spec -> scaffold -> deploy -> smoke/page-strategy/business tests). Use when implementing or operating `Build & deploy simple web products` for `op1_product`, especially when the same harness must support multiple business project types.
+---
+
+# Web Build & Deploy (v1.1)
+
+## Core contract
+- Primary contract: `framework/contracts/build_deploy_simple_web_products.v1.1.json`
+- Project spec schema: `framework/contracts/build_deploy_project_spec.v1.schema.json`
+- Page spec schema: `framework/contracts/build_deploy_page_spec.v1.schema.json`
+
+## Default execution
+Run one command:
+
+```bash
+./scripts/run_build_deploy_v1.sh
+```
+
+This will:
+1. Resolve/generate project spec.
+2. Compile modular page spec (layout profile + module order).
+3. Scaffold app from specs.
+4. Deploy to Vercel.
+5. Run smoke tests.
+6. Run page-strategy tests.
+7. Run business-rule tests.
+8. Publish run artifacts.
+
+## Inputs
+- Preferred: `research/build_deploy_v1/project_spec.json`
+- Optional autogen sources:
+  - `research/stage1_opportunity_records.json`
+  - `research/stage2_decision_log.json`
+- Legacy mode: stage3 blueprint via `--legacy-blueprint`
+
+## Key scripts
+- `scripts/init_project_spec.py`
+- `scripts/compile_page_spec.py`
+- `scripts/scaffold_web_product.py`
+- `scripts/deploy_web_product.sh`
+- `scripts/smoke_test_web_product.py`
+- `scripts/page_strategy_test_web_product.py`
+- `scripts/business_test_web_product.py`
+- `scripts/build_generalization_matrix.py`
+- `scripts/run_build_deploy_v1.sh`
+
+## Output artifacts
+- `research/build_deploy_v1_run.json`
+- `research/build_deploy_v1_state.json`
+- `research/build_deploy_v1/page_strategy.latest.json`
+- `research/build_deploy_v1/smoke_test.latest.json`
+- `research/build_deploy_v1/business_test.latest.json`
+
+## References
+- `references/robust-workflow.md`
+- `references/project-spec-and-adapters.md`
+- `references/external-research-notes.md`

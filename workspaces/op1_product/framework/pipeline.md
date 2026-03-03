@@ -21,6 +21,23 @@
   - 14 天实验可执行
   - 成功指标和停止条件明确
 
+## Stage 2.5 / 3.5 — Build & Deploy (v1.1)
+- 输入（优先级）：
+  1) `research/build_deploy_v1/project_spec.json`
+  2) Stage1/Stage2 自动生成 project spec
+  3) `research/stage3_project_blueprint.json`（legacy）
+- 输出：
+  - `research/build_deploy_v1_run.json`
+  - `research/build_deploy_v1_state.json`
+  - `research/build_deploy_v1/page_strategy.latest.json`
+  - `research/build_deploy_v1/smoke_test.latest.json`
+  - `research/build_deploy_v1/business_test.latest.json`
+- 通过条件：
+  - 公开 URL 可访问
+  - smoke test 全通过
+  - page-strategy test 全通过（模块存在、顺序、主 CTA 唯一）
+  - business-rule test 全通过
+
 ## Stage 4 — Functional Handoff
 - 输入：Stage 3 blueprint
 - 输出：

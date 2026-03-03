@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-02T23:45:14.216292Z",
+  "generated_at": "2026-03-03T12:57:01.017566Z",
   "builder": "scripts/build_stage1_opportunities.py",
   "inputs": {
     "primary": "research/reddit_signals.json",
@@ -31,13 +31,13 @@
         },
         {
           "claim": "283 apps listed for this feature category on Shopify App Store",
-          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en&st_source=autocomplete",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en",
           "signal_type": "market_density",
           "source": "shopify_app_store"
         },
         {
           "claim": "283 apps listed for this feature category on Shopify App Store",
-          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en&st_source=autocomplete",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en",
           "signal_type": "market_density",
           "source": "shopify_app_store"
         }
@@ -99,13 +99,13 @@
           "source": "reddit_operator_communities"
         },
         {
-          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1211 reviews)",
+          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1212 reviews)",
           "source_url": "https://apps.shopify.com/blockify",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "Automate everything and get back to business (8109 reviews)",
+          "claim": "Automate everything and get back to business (8122 reviews)",
           "source_url": "https://apps.shopify.com/flow",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -156,25 +156,25 @@
       "current_workaround": "Manual exports and custom spreadsheet/report rewriting.",
       "pain_evidence": [
         {
-          "claim": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
-          "source_url": "https://www.reddit.com/r/agency/comments/1ni951d/030k_a_month_what_i_learnt_running_a_marketing/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
           "claim": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month.  Over the last 6-8 months, I keep seeing the same p...",
           "source_url": "https://www.reddit.com/r/PPC/comments/1oe6b1f/if_youre_spending_10kmonth_on_google_ads_and_your/",
           "signal_type": "money_loss",
           "source": "reddit_operator_communities"
         },
         {
-          "claim": "Add plug-n-play customisable sections to any theme & page (2274 reviews)",
+          "claim": "Have not done posts in a minute, and I am excited and a bit nervous to get back into it! BTW my posts may be long but they are written off the dome not with the help of AI :)  I own Based Agency, we are a digital marketi...",
+          "source_url": "https://www.reddit.com/r/agency/comments/1l2u472/my_marketing_agency_comprehensive_2025_tech_stack/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Add plug-n-play customisable sections to any theme & page (2279 reviews)",
           "source_url": "https://apps.shopify.com/section-factory",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "Build proven CRO-focused pages with pro flexible customization (5773 reviews)",
+          "claim": "Build proven CRO-focused pages with pro flexible customization (5770 reviews)",
           "source_url": "https://apps.shopify.com/pagefly",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -306,13 +306,13 @@
           "source": "reddit_operator_communities"
         },
         {
-          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2302 reviews)",
+          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2301 reviews)",
           "source_url": "https://apps.shopify.com/order-printer-pro",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "An invoice generator to easily custom and print order document (1082 reviews)",
+          "claim": "An invoice generator to easily custom and print order document (1081 reviews)",
           "source_url": "https://apps.shopify.com/vify-order-printer",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -375,13 +375,13 @@
           "source": "reddit_operator_communities"
         },
         {
-          "claim": "Sync your sales channel with QuickBooks Online (2983 reviews)",
+          "claim": "Sync your sales channel with QuickBooks Online (2985 reviews)",
           "source_url": "https://apps.shopify.com/qbconnector",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "Build reports with custom fields and data from other apps (1778 reviews)",
+          "claim": "Build reports with custom fields and data from other apps (1779 reviews)",
           "source_url": "https://apps.shopify.com/report-pundit",
           "signal_type": "intent",
           "source": "shopify_app_store"

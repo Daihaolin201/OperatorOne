@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-03-03T16:31:58Z",
+  "base_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix",
+  "project_count": 3,
+  "all_passed": true,
+  "projects": [
+    {
+      "adapter_key": "chargeback",
+      "project_id": "proj-opp-001-chargeback-response-v1",
+      "adapter_name": "chargeback-response",
+      "layout_profile": "chargeback-response",
+      "deployed_url": "https://webproductmodularchargeback.vercel.app",
+      "status": {
+        "smoke": "passed",
+        "page_strategy": "passed",
+        "business": "passed",
+        "overall": "passed"
+      },
+      "module_order": [
+        "hero_problem",
+        "evidence_checklist",
+        "workflow_interactive",
+        "risk_guardrails",
+        "proof_points",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ],
+      "module_count": 8,
+      "artifacts": {
+        "dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/chargeback",
+        "page_spec": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/chargeback/page_spec_20260303T163025Z.json",
+        "smoke": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/chargeback/smoke_test.latest.json",
+        "page_strategy": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/chargeback/page_strategy.latest.json",
+        "business": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/chargeback/business_test.latest.json"
+      }
+    },
+    {
+      "adapter_key": "invoice",
+      "project_id": "proj-opp-001-invoice-followup-v1",
+      "adapter_name": "invoice-followup",
+      "layout_profile": "invoice-followup",
+      "deployed_url": "https://webproductmodularinvoice.vercel.app",
+      "status": {
+        "smoke": "passed",
+        "page_strategy": "passed",
+        "business": "passed",
+        "overall": "passed"
+      },
+      "module_order": [
+        "hero_problem",
+        "workflow_interactive",
+        "proof_points",
+        "risk_guardrails",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ],
+      "module_count": 7,
+      "artifacts": {
+        "dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/invoice",
+        "page_spec": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/invoice/page_spec_20260303T162959Z.json",
+        "smoke": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/invoice/smoke_test.latest.json",
+        "page_strategy": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/invoice/page_strategy.latest.json",
+        "business": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/invoice/business_test.latest.json"
+      }
+    },
+    {
+      "adapter_key": "reporting",
+      "project_id": "proj-opp-001-client-reporting-v1",
+      "adapter_name": "client-reporting",
+      "layout_profile": "client-reporting",
+      "deployed_url": "https://webproductmodularreporting.vercel.app",
+      "status": {
+        "smoke": "passed",
+        "page_strategy": "passed",
+        "business": "passed",
+        "overall": "passed"
+      },
+      "module_order": [
+        "hero_problem",
+        "proof_points",
+        "workflow_interactive",
+        "metric_snapshot",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ],
+      "module_count": 7,
+      "artifacts": {
+        "dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting",
+        "page_spec": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/page_spec_20260303T163053Z.json",
+        "smoke": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/smoke_test.latest.json",
+        "page_strategy": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/page_strategy.latest.json",
+        "business": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/business_test.latest.json"
+      }
+    }
+  ],
+  "pairwise_structure_comparisons": [
+    {
+      "pair": [
+        "chargeback-response",
+        "invoice-followup"
+      ],
+      "same_order": false,
+      "jaccard_module_overlap": 0.875,
+      "symmetric_difference": [
+        "evidence_checklist"
+      ]
+    },
+    {
+      "pair": [
+        "chargeback-response",
+        "client-reporting"
+      ],
+      "same_order": false,
+      "jaccard_module_overlap": 0.667,
+      "symmetric_difference": [
+        "evidence_checklist",
+        "metric_snapshot",
+        "risk_guardrails"
+      ]
+    },
+    {
+      "pair": [
+        "invoice-followup",
+        "client-reporting"
+      ],
+      "same_order": false,
+      "jaccard_module_overlap": 0.75,
+      "symmetric_difference": [
+        "metric_snapshot",
+        "risk_guardrails"
+      ]
+    }
+  ]
+}

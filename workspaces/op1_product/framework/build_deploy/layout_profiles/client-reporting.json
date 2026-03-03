@@ -1,0 +1,21 @@
+{
+  "profile_id": "client-reporting",
+  "display_name": "Reporting Ops Funnel",
+  "match_adapters": [
+    "client-reporting"
+  ],
+  "theme": {
+    "accent": "#7c3aed",
+    "surface": "#1e1b4b",
+    "highlight": "#a78bfa"
+  },
+  "module_order": [
+    "hero_problem",
+    "proof_points",
+    "workflow_interactive",
+    "metric_snapshot",
+    "pricing_cards",
+    "cta_waitlist",
+    "faq_list"
+  ]
+}

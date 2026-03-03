@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-03-03T16:29:41Z",
+  "base_url": "https://webproductmodularinvoice.vercel.app",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "homepage",
+      "status": "pass",
+      "http_status": 200,
+      "evidence": "Homepage reachable with modular signatures",
+      "attempts": 1
+    },
+    {
+      "name": "api_health",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "status": "ok",
+        "service": "op1-product-web-build-deploy-v1.1",
+        "project_id": "proj-opp-001-invoice-followup-v1",
+        "from_opportunity_id": "opp_001",
+        "adapter": "invoice-followup",
+        "timestamp": "2026-03-03T16:29:40.701Z"
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_first_step",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "first_step": "Send one structured reminder today with invoice amount, due date, and a clear 48-hour action deadline.",
+        "next_steps_count": 3
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_signup",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "accepted": true,
+        "project_id": "proj-opp-001-invoice-followup-v1"
+      },
+      "attempts": 1
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "profile_id": "chargeback-response",
+  "display_name": "Chargeback Defense Funnel",
+  "match_adapters": [
+    "chargeback-response"
+  ],
+  "theme": {
+    "accent": "#b45309",
+    "surface": "#1f2937",
+    "highlight": "#f59e0b"
+  },
+  "module_order": [
+    "hero_problem",
+    "evidence_checklist",
+    "workflow_interactive",
+    "risk_guardrails",
+    "proof_points",
+    "pricing_cards",
+    "cta_waitlist",
+    "faq_list"
+  ]
+}

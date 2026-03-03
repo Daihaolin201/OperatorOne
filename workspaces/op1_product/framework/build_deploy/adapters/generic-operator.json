@@ -1,0 +1,74 @@
+{
+  "adapter_id": "generic-operator",
+  "display_name": "Generic Operator Workflow",
+  "description": "Fallback adapter for opportunities without strong domain keyword match.",
+  "match_keywords": [],
+  "offer_headline": "Turn repetitive operator work into a focused daily action system",
+  "page_profile": "default",
+  "cta_support_text": "Join early access to validate one focused workflow before scaling scope.",
+  "proof_points": [
+    "Ships one measurable workflow instead of bloated feature sets.",
+    "Uses explicit rules to keep execution consistent.",
+    "Captures early customer intent with structured validation metrics."
+  ],
+  "faq": [
+    {
+      "question": "Is this only for one industry?",
+      "answer": "No. The adapter model is designed to support multiple business opportunity types."
+    },
+    {
+      "question": "Can we iterate quickly after launch?",
+      "answer": "Yes. Rules, modules, and tests can be updated independently without full rebuilds."
+    }
+  ],
+  "operational_checklist": [
+    "Define one measurable bottleneck.",
+    "Ship one focused workflow for that bottleneck.",
+    "Review conversion signal weekly and decide go/kill."
+  ],
+  "workflow": {
+    "prompt_label": "Describe your operational bottleneck",
+    "prompt_placeholder": "e.g. We keep repeating manual tasks and missing follow-ups.",
+    "primary_action_label": "Generate action workflow",
+    "rules": [
+      {
+        "id": "generic-prioritize",
+        "priority": 5,
+        "keywords": [
+          "manual",
+          "repeat",
+          "slow",
+          "bottleneck"
+        ],
+        "first_step": "List the workflow in three steps and automate the highest-friction step first.",
+        "next_steps": [
+          "Instrument one conversion metric.",
+          "Run a 14-day validation cycle.",
+          "Apply kill criteria if traction stays below threshold."
+        ]
+      }
+    ],
+    "default_response": {
+      "first_step": "Start with one user path, one measurable outcome, and one weekly review cadence.",
+      "next_steps": [
+        "Avoid adding extra features before signal appears.",
+        "Capture user feedback in structured notes.",
+        "Ship one focused iteration per cycle."
+      ]
+    }
+  },
+  "pricing_defaults": {
+    "plan_a": "$19/month",
+    "plan_b": "$79/month"
+  },
+  "business_tests": [
+    {
+      "name": "generic_bottleneck_response",
+      "input": "We have too many manual repetitive tasks in operations.",
+      "expect_first_step_contains": [
+        "automate",
+        "highest-friction"
+      ]
+    }
+  ]
+}

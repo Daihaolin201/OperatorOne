@@ -2,6 +2,8 @@
 
 这是 OperatorOne 的 Product 专用 agent 文档，供团队快速了解“这个 agent 现在能做什么、怎么用、输出到哪里”。
 
+> 面向客户/协作者的一键复现手册：`REPRODUCE.md`
+
 ## 1) 角色定位
 - 负责：
   - Generate startup ideas（商业机会搜索、分析、筛选）
@@ -44,6 +46,25 @@
 2. 有损失信号（loss signal）
 3. 有预算/意图信号（budget or intent signal）
 
+### D. Build & deploy simple web products（v1.1，已实现）
+- 采用 **Project Spec + Page Spec + Adapter** 框架，支持多个商业项目类型（不是单一 demo）
+- 输入优先级：
+  1) `research/build_deploy_v1/project_spec.json`（推荐）
+  2) Stage1/2 自动生成 spec（可选）
+  3) Stage3 blueprint（legacy 模式）
+- 页面生成策略：按 adapter 选择 layout profile，并按模块顺序组装（Hero/CTA/Proof/Workflow 等）
+- 默认部署到 Vercel 子域名（无需自有域名）
+- 三层自动验证：
+  - smoke test（可用性）
+  - page-strategy test（结构策略正确性）
+  - business-rule test（业务规则正确性）
+- 输出结构化运行报告和检查点：
+  - `research/build_deploy_v1_run.json`
+  - `research/build_deploy_v1_state.json`
+  - `research/build_deploy_v1/page_strategy.latest.json`
+  - `research/build_deploy_v1/smoke_test.latest.json`
+  - `research/build_deploy_v1/business_test.latest.json`
+
 ## 4) Stage-Gate 流程
 1. Stage 1 — Opportunity Capture
    - 输出：`research/stage1_opportunity_records.json`
@@ -52,12 +73,22 @@
    - 输出：`research/stage2_decision_log.json`
 3. Stage 3 — Project Blueprint
    - 输出：`research/stage3_project_blueprint.json`
-4. Stage 4 — Functional Handoff（项目选定后）
+4. Stage 2.5/3.5 — Build & Deploy（v1.1 capability）
+   - 输入：`project_spec`（推荐）或 Stage1/2 自动生成 spec
+   - 输出：`research/build_deploy_v1_run.json` + `page_strategy.latest.json`
+5. Stage 4 — Functional Handoff（项目选定后）
    - 输出：`../../handoffs/product_to_marketing.json`
 
-## 5) 一键运行
+## 5) 一键运行（按能力）
 ```bash
+# Step 1: Generate startup ideas
 ./scripts/run_generate_startup_ideas.sh
+
+# Build & deploy simple web products (v1.1)
+./scripts/run_build_deploy_v1.sh
+
+# Optional: force a specific opportunity/adapter for demo
+./scripts/run_build_deploy_v1.sh --opp-id opp_001 --adapter invoice-followup
 ```
 
 ## 6) 关键文件索引
@@ -65,6 +96,12 @@
 - 筛选框架：`framework/product-selection-framework.md`
 - 来源信任配置：`framework/config/source_trust_rank.json`
 - 权重配置：`framework/config/scoring_weights.default.json`
+- Build/Deploy 能力契约：`framework/contracts/build_deploy_simple_web_products.v1.1.json`
+- Project Spec Schema：`framework/contracts/build_deploy_project_spec.v1.schema.json`
+- Page Spec Schema：`framework/contracts/build_deploy_page_spec.v1.schema.json`
+- Adapter 库：`framework/build_deploy/adapters/`
+- Layout profiles：`framework/build_deploy/layout_profiles/`
+- Module registry：`framework/build_deploy/page_modules/module_registry.v1.json`
 - 快速上手：`framework/quickstart.md`
 - 技能目录：`skills/`
 
@@ -73,6 +110,7 @@
 - `op1-product-idea-screening`
 - `op1-product-mvp-scope`
 - `op1-product-landing-handoff`
+- `op1-product-web-build-deploy`
 
 ## 8) 当前限制（运行环境相关）
 - `web_search` 需要 Brave API key（当前未配置）

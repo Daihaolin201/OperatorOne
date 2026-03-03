@@ -1,0 +1,21 @@
+{
+  "profile_id": "invoice-followup",
+  "display_name": "Invoice Recovery Funnel",
+  "match_adapters": [
+    "invoice-followup"
+  ],
+  "theme": {
+    "accent": "#0f766e",
+    "surface": "#052e2b",
+    "highlight": "#14b8a6"
+  },
+  "module_order": [
+    "hero_problem",
+    "workflow_interactive",
+    "proof_points",
+    "risk_guardrails",
+    "pricing_cards",
+    "cta_waitlist",
+    "faq_list"
+  ]
+}
