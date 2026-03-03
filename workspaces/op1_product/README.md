@@ -56,7 +56,7 @@
 - 默认部署到 Vercel 子域名（无需自有域名）
 - 三层自动验证：
   - smoke test（可用性）
-  - page-strategy test（结构策略正确性）
+  - page-strategy test（结构策略正确性 + 多设备兼容基线）
   - business-rule test（业务规则正确性）
 - 输出结构化运行报告和检查点：
   - `research/build_deploy_v1_run.json`
@@ -64,6 +64,19 @@
   - `research/build_deploy_v1/page_strategy.latest.json`
   - `research/build_deploy_v1/smoke_test.latest.json`
   - `research/build_deploy_v1/business_test.latest.json`
+
+### E. Create landing pages（v1，Mode C only，已实现）
+- 单一路径：**Mode C only**（不暴露 A/B 多模式）
+- 内置 preflight：
+  1) opportunity gate（Stage2 优先，缺失时从 Stage1 自动筛选）
+  2) scope gate（Stage3 优先，缺失时自动合成 in/out scope + kill criteria）
+  3) evidence traceability gate（核心 claim 100% 可回溯）
+- 产出：
+  - `research/landing_v1/landing_package.json`
+  - `research/landing_v1/landing_contract_test.latest.json`
+  - `research/landing_v1/build_inputs/project_spec.json`
+  - `research/landing_v1/build_inputs/page_spec.json`
+  - `../../handoffs/product_to_marketing.json`
 
 ## 4) Stage-Gate 流程
 1. Stage 1 — Opportunity Capture
@@ -73,16 +86,22 @@
    - 输出：`research/stage2_decision_log.json`
 3. Stage 3 — Project Blueprint
    - 输出：`research/stage3_project_blueprint.json`
-4. Stage 2.5/3.5 — Build & Deploy（v1.1 capability）
+4. Stage 2.8/3.2 — Create Landing Pages（v1, Mode C）
+   - 输入：Stage1（必需）+ Stage2/Stage3（可选但优先）
+   - 输出：`research/landing_v1/landing_package.json` + `landing_contract_test.latest.json`
+5. Stage 2.5/3.5 — Build & Deploy（v1.1 capability）
    - 输入：`project_spec`（推荐）或 Stage1/2 自动生成 spec
    - 输出：`research/build_deploy_v1_run.json` + `page_strategy.latest.json`
-5. Stage 4 — Functional Handoff（项目选定后）
+6. Stage 4 — Functional Handoff（项目选定后）
    - 输出：`../../handoffs/product_to_marketing.json`
 
 ## 5) 一键运行（按能力）
 ```bash
 # Step 1: Generate startup ideas
 ./scripts/run_generate_startup_ideas.sh
+
+# Create landing pages (Mode C)
+./scripts/run_create_landing_pages_v1.sh
 
 # Build & deploy simple web products (v1.1)
 ./scripts/run_build_deploy_v1.sh
@@ -96,9 +115,14 @@
 - 筛选框架：`framework/product-selection-framework.md`
 - 来源信任配置：`framework/config/source_trust_rank.json`
 - 权重配置：`framework/config/scoring_weights.default.json`
+- Landing 能力契约：`framework/contracts/create_landing_pages.v1.json`
+- Landing Package Schema：`framework/contracts/create_landing_package.v1.schema.json`
 - Build/Deploy 能力契约：`framework/contracts/build_deploy_simple_web_products.v1.1.json`
 - Project Spec Schema：`framework/contracts/build_deploy_project_spec.v1.schema.json`
 - Page Spec Schema：`framework/contracts/build_deploy_page_spec.v1.schema.json`
+- Landing 主脚本：`scripts/create_landing_package.py`
+- Landing 一键脚本：`scripts/run_create_landing_pages_v1.sh`
+- Landing 契约测试：`scripts/landing_contract_test.py`
 - Adapter 库：`framework/build_deploy/adapters/`
 - Layout profiles：`framework/build_deploy/layout_profiles/`
 - Module registry：`framework/build_deploy/page_modules/module_registry.v1.json`

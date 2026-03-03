@@ -45,8 +45,19 @@ Each adapter includes:
 - If no reliable match: fallback to `generic-operator`.
 - Then resolve page layout profile by explicit `page_profile` or adapter/profile fallback rules.
 
+## Landing package contract integration (Mode C)
+- Upstream contract: `framework/contracts/create_landing_pages.v1.json`
+- Output schema: `framework/contracts/create_landing_package.v1.schema.json`
+- Landing package output includes:
+  - positioning/message hierarchy
+  - section plan + CTA plan
+  - evidence traceability map
+  - risk register + experiment backlog
+  - build inputs (`project_spec` + `page_spec`)
+
 ## Why this model improves robustness
 - Decouples business logic from rendering strategy.
 - Supports deterministic domain behavior via rules.
 - Enables structural variation across project types (not just copy swaps).
+- Forces opportunity/scope/evidence gates before page generation.
 - Makes smoke + page-strategy + business tests portable across project types.

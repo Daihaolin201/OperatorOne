@@ -1,41 +1,37 @@
-# Quickstart — Generate Startup Ideas
+# Quickstart — Product Capability Runbook
 
-## 1) Run full discovery + analysis pipeline
+## 1) Run discovery + screening (Stage1/2)
 ```bash
 ./scripts/run_generate_startup_ideas.sh
 ```
 
-This will produce:
-- `research/reddit_signals.json`
-- `research/signal_summary.json`
-- `research/secondary_signals.json` (HN + Shopify App Store)
+This generates:
 - `research/stage1_opportunity_records.json`
 - `research/stage2_scoring.csv`
 - `research/stage2_decision_log.json`
 
-## 2) Inspect top candidates
-- Open `research/stage2_scoring.csv` and review rows with decision=`advance`.
-- Cross-check reasons/risks in `research/stage2_decision_log.json`.
-
-## 3) Build deploy-ready project spec (recommended)
+## 2) Create landing pages package (Mode C only)
 ```bash
-python3 scripts/init_project_spec.py \
-  --stage1 research/stage1_opportunity_records.json \
-  --stage2 research/stage2_decision_log.json \
-  --out research/build_deploy_v1/project_spec.json \
-  --opp-id opp_001 --force
+./scripts/run_create_landing_pages_v1.sh
 ```
 
-(可选) 也可以继续使用 Stage3 blueprint 作为 legacy 输入。
+Outputs:
+- `research/landing_v1/landing_package.json`
+- `research/landing_v1/landing_contract_test.latest.json`
+- `research/landing_v1/build_inputs/project_spec.json`
+- `research/landing_v1/build_inputs/page_spec.json`
+- `../../handoffs/product_to_marketing.json`
 
-## 4) Build & deploy simple web products (v1.1)
+Optional controls:
 ```bash
-./scripts/run_build_deploy_v1.sh
+./scripts/run_create_landing_pages_v1.sh --opp-id opp_001 --adapter invoice-followup
+./scripts/run_create_landing_pages_v1.sh --page-profile chargeback-response
 ```
 
-(可选) 强制页面策略 profile：
+## 3) Build & deploy from landing build inputs
 ```bash
-./scripts/run_build_deploy_v1.sh --page-profile chargeback-response
+./scripts/run_build_deploy_v1.sh \
+  --project-spec research/landing_v1/build_inputs/project_spec.json
 ```
 
 Outputs:
@@ -45,5 +41,15 @@ Outputs:
 - `research/build_deploy_v1/smoke_test.latest.json`
 - `research/build_deploy_v1/business_test.latest.json`
 
-## 5) Only after project selection
-- Generate `../../handoffs/product_to_marketing.json`.
+## 4) Optional one-command landing + deploy
+```bash
+./scripts/run_create_landing_pages_v1.sh --with-deploy
+```
+
+## 5) Quality expectations
+- one primary CTA
+- message match with selected opportunity intent
+- scope consistency with MVP boundary
+- 100% claim traceability to evidence
+- multi-device compatibility baseline (desktop/tablet/mobile)
+- performance budget hooks present (LCP/INP/CLS)

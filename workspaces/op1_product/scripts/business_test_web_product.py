@@ -172,6 +172,42 @@ def main() -> int:
             }
             checks.append(failed)
 
+    if failed is None:
+        boundary = spec.get("mvp_boundary") if isinstance(spec.get("mvp_boundary"), dict) else {}
+        out_scope = boundary.get("out_of_scope") if isinstance(boundary.get("out_of_scope"), list) else []
+        phrases = [str(x).strip().lower() for x in out_scope if isinstance(x, str) and len(str(x).strip()) >= 6]
+
+        if phrases:
+            def out_of_scope_copy_check():
+                status, body = http_request("GET", f"{base_url}/")
+                if status != 200:
+                    raise RuntimeError(f"scope_copy_check: homepage status={status}")
+                lowered = body.lower()
+                hits = [p for p in phrases if p in lowered]
+                if hits:
+                    raise RuntimeError(f"scope_copy_check: found out-of-scope phrases in page copy: {hits}")
+                return {
+                    "name": "scope_copy_guardrail",
+                    "status": "pass",
+                    "checked_phrases": len(phrases),
+                }
+
+            try:
+                result, attempts = run_with_retry(
+                    out_of_scope_copy_check,
+                    retries=args.retries,
+                    delay=args.retry_delay,
+                )
+                result["attempts"] = attempts
+                checks.append(result)
+            except Exception as exc:
+                failed = {
+                    "name": "scope_copy_guardrail",
+                    "status": "fail",
+                    "error": str(exc),
+                }
+                checks.append(failed)
+
     report = {
         "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "base_url": base_url,

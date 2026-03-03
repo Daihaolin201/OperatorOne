@@ -43,6 +43,7 @@
     "public_url_is_reachable",
     "smoke_tests_pass",
     "page_strategy_tests_pass",
+    "page_strategy_includes_multi_device_baseline",
     "business_rule_tests_pass",
     "run_report_is_structured_and_reproducible"
   ]

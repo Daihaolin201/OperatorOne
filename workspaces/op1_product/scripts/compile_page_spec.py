@@ -310,6 +310,18 @@ def main() -> int:
             "expected_modules": [m.get("module_id") for m in modules],
             "primary_cta_module": "cta_waitlist",
             "max_primary_cta_buttons": 1,
+            "require_viewport_meta": True,
+            "responsive_markers": ["@media", "max-width", "min-width"],
+            "device_profiles": [
+                {"id": "mobile", "width": 390, "height": 844},
+                {"id": "tablet", "width": 768, "height": 1024},
+                {"id": "desktop", "width": 1440, "height": 900}
+            ],
+            "performance_budget": {
+                "lcp_ms": 2500,
+                "inp_ms": 200,
+                "cls_max": 0.1
+            }
         },
         "project_spec_snapshot": spec,
     }

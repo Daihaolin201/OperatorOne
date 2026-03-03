@@ -59,3 +59,26 @@ Implementation mapping:
 - business-rule tests validate domain behavior from adapter rules.
 - on post-deploy pipeline failure, trigger best-effort rollback attempt.
 - run report includes layered checks + safety metadata for auditability.
+
+9. MDN responsive design guidance
+   - URL: https://developer.mozilla.org/en-US/docs/Learn_web_development/Core/CSS_layout/Responsive_Design
+   - Useful points used:
+     - Responsive design should cover known and unknown device sizes.
+     - Media-query breakpoints should be content-driven, not device-name hardcoding.
+
+10. web.dev responsive web design basics
+   - URL: https://web.dev/articles/responsive-web-design-basics
+   - Useful points used:
+     - Require viewport meta for correct mobile/tablet rendering behavior.
+     - Prevent overflow and include responsive CSS markers as baseline checks.
+
+11. web.dev Core Web Vitals
+   - URL: https://web.dev/articles/vitals
+   - Useful points used:
+     - Keep explicit LCP/INP/CLS budget hooks in test metadata.
+
+Implementation mapping (landing capability extension):
+- add Mode-C landing contract with preflight gates (opportunity/scope/evidence).
+- emit evidence traceability map before downstream handoff.
+- include multi-device compatibility baseline checks in page-strategy tests.
+- keep performance budget hooks in `page_spec.testing` for auditability.

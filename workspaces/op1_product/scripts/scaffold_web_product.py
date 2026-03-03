@@ -778,6 +778,42 @@ def render_styles_css(theme: Dict[str, Any] | None = None) -> str:
         details p {{ margin: 8px 0 2px; color: var(--muted); }}
 
         .muted {{ color: var(--muted); }}
+
+        img {{
+          max-width: 100%;
+          height: auto;
+          display: block;
+        }}
+
+        @media (max-width: 768px) {{
+          .site {{
+            padding: 18px 12px 32px;
+            gap: 12px;
+          }}
+
+          .hero .hero-shell {{
+            padding: 18px 16px;
+            border-radius: 14px;
+          }}
+
+          .panel {{
+            padding: 14px;
+          }}
+
+          button {{
+            width: 100%;
+          }}
+        }}
+
+        @media (min-width: 1024px) {{
+          .site {{
+            padding-top: 34px;
+          }}
+
+          .panel {{
+            padding: 18px;
+          }}
+        }}
         """
     ).strip() + "\n"
 
@@ -1232,6 +1268,18 @@ def default_page_spec_from_project_spec(spec: Dict[str, Any]) -> Dict[str, Any]:
             "expected_modules": [m.get("module_id") for m in modules],
             "primary_cta_module": "cta_waitlist",
             "max_primary_cta_buttons": 1,
+            "require_viewport_meta": True,
+            "responsive_markers": ["@media", "max-width", "min-width"],
+            "device_profiles": [
+                {"id": "mobile", "width": 390, "height": 844},
+                {"id": "tablet", "width": 768, "height": 1024},
+                {"id": "desktop", "width": 1440, "height": 900}
+            ],
+            "performance_budget": {
+                "lcp_ms": 2500,
+                "inp_ms": 200,
+                "cls_max": 0.1
+            }
         },
     }
 

@@ -1,0 +1,149 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "op1_product/create_landing_package.v1",
+  "title": "CreateLandingPackageV1",
+  "type": "object",
+  "required": [
+    "capability",
+    "generated_at",
+    "mode",
+    "status",
+    "selected_opportunity",
+    "preflight",
+    "landing_package",
+    "build_inputs",
+    "quality_gates"
+  ],
+  "properties": {
+    "capability": {
+      "type": "string",
+      "const": "create_landing_pages_v1"
+    },
+    "generated_at": {
+      "type": "string"
+    },
+    "mode": {
+      "type": "string",
+      "const": "mode_c_only"
+    },
+    "status": {
+      "type": "string",
+      "enum": [
+        "blocked",
+        "provisional_ready",
+        "ready_for_build"
+      ]
+    },
+    "selected_opportunity": {
+      "type": "object",
+      "required": [
+        "opportunity_id",
+        "selection_reason"
+      ],
+      "properties": {
+        "opportunity_id": { "type": "string" },
+        "selection_reason": { "type": "string" },
+        "confidence": { "type": "string" },
+        "weighted_score": { "type": "number" }
+      }
+    },
+    "preflight": {
+      "type": "object",
+      "required": [
+        "opportunity_gate",
+        "scope_gate",
+        "evidence_traceability_gate"
+      ],
+      "properties": {
+        "opportunity_gate": { "type": "object" },
+        "scope_gate": { "type": "object" },
+        "evidence_traceability_gate": {
+          "type": "object",
+          "required": [
+            "coverage_ratio",
+            "unmapped_claims"
+          ],
+          "properties": {
+            "coverage_ratio": {
+              "type": "number",
+              "minimum": 0,
+              "maximum": 1
+            },
+            "unmapped_claims": {
+              "type": "array",
+              "items": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "landing_package": {
+      "type": "object",
+      "required": [
+        "positioning",
+        "message_hierarchy",
+        "section_plan",
+        "cta_plan",
+        "experiment_backlog",
+        "traceability_map",
+        "risk_register"
+      ],
+      "properties": {
+        "positioning": { "type": "object" },
+        "message_hierarchy": { "type": "object" },
+        "section_plan": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "cta_plan": { "type": "object" },
+        "experiment_backlog": {
+          "type": "array",
+          "items": { "type": "object" }
+        },
+        "traceability_map": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["claim_id", "claim", "evidence_refs"],
+            "properties": {
+              "claim_id": { "type": "string" },
+              "claim": { "type": "string" },
+              "evidence_refs": {
+                "type": "array",
+                "items": { "type": "string" },
+                "minItems": 1
+              }
+            }
+          }
+        },
+        "risk_register": {
+          "type": "array",
+          "items": { "type": "object" }
+        }
+      }
+    },
+    "build_inputs": {
+      "type": "object",
+      "required": [
+        "project_spec_path",
+        "page_spec_path"
+      ],
+      "properties": {
+        "project_spec_path": { "type": "string" },
+        "page_spec_path": { "type": "string" }
+      }
+    },
+    "quality_gates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["name", "status"],
+        "properties": {
+          "name": { "type": "string" },
+          "status": { "type": "string", "enum": ["pass", "fail"] },
+          "detail": { "type": "string" }
+        }
+      }
+    }
+  }
+}

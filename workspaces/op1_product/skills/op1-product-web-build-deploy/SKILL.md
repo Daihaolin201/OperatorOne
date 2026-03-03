@@ -11,10 +11,14 @@ description: Build and deploy simple web products with a robust, adapter-driven 
 - Page spec schema: `framework/contracts/build_deploy_page_spec.v1.schema.json`
 
 ## Default execution
-Run one command:
+Recommended sequence:
 
 ```bash
-./scripts/run_build_deploy_v1.sh
+# 1) lock landing package (mode C preflight gates)
+./scripts/run_create_landing_pages_v1.sh
+
+# 2) build/deploy from landing build input
+./scripts/run_build_deploy_v1.sh --project-spec research/landing_v1/build_inputs/project_spec.json
 ```
 
 This will:
@@ -35,6 +39,9 @@ This will:
 - Legacy mode: stage3 blueprint via `--legacy-blueprint`
 
 ## Key scripts
+- `scripts/create_landing_package.py`
+- `scripts/landing_contract_test.py`
+- `scripts/run_create_landing_pages_v1.sh`
 - `scripts/init_project_spec.py`
 - `scripts/compile_page_spec.py`
 - `scripts/scaffold_web_product.py`
@@ -46,6 +53,9 @@ This will:
 - `scripts/run_build_deploy_v1.sh`
 
 ## Output artifacts
+- `research/landing_v1/landing_package.json`
+- `research/landing_v1/landing_contract_test.latest.json`
+- `research/create_landing_pages_v1_run.json`
 - `research/build_deploy_v1_run.json`
 - `research/build_deploy_v1_state.json`
 - `research/build_deploy_v1/page_strategy.latest.json`

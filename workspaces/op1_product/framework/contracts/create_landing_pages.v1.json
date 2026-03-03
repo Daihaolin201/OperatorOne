@@ -1,0 +1,86 @@
+{
+  "capability": "create_landing_pages_v1",
+  "owner_agent": "op1_product",
+  "purpose": "Generate robust, evidence-traceable landing page packages that adapt across different business opportunities and feed directly into the existing build/deploy framework.",
+  "mode": {
+    "public_execution_path": "mode_c_only",
+    "notes": "Single production path. Stage2/Stage3 logic is internalized as preflight gates."
+  },
+  "input": {
+    "required": [
+      "research/stage1_opportunity_records.json"
+    ],
+    "optional": [
+      "research/stage2_decision_log.json",
+      "research/stage3_project_blueprint.json",
+      "research/build_deploy_v1/project_spec.json"
+    ],
+    "autogen_supported": {
+      "stage2_if_missing": "scripts/score_stage2.py",
+      "project_spec_if_missing_or_mismatch": "scripts/init_project_spec.py",
+      "page_spec": "scripts/compile_page_spec.py"
+    }
+  },
+  "preflight_gates": [
+    {
+      "name": "opportunity_gate",
+      "rule": "Use stage2 decisions when available; otherwise synthesize deterministic stage2 from stage1 and select top qualified opportunity.",
+      "required_outputs": [
+        "selected_opportunity_id",
+        "selection_reason",
+        "confidence",
+        "risk_if_wrong"
+      ]
+    },
+    {
+      "name": "scope_gate",
+      "rule": "Use matching stage3 blueprint scope if available; otherwise synthesize in_scope/out_of_scope/kill_criteria before copy generation.",
+      "hard_fail_on": [
+        "missing in_scope",
+        "missing out_of_scope",
+        "missing kill_criteria"
+      ]
+    },
+    {
+      "name": "evidence_traceability_gate",
+      "rule": "Every major landing claim (problem/value/proof claims) must map to Stage1/Stage2 evidence.",
+      "hard_fail_on": [
+        "traceability_coverage_below_1_0"
+      ]
+    }
+  ],
+  "output": {
+    "landing_package": "research/landing_v1/landing_package.json",
+    "landing_contract_test": "research/landing_v1/landing_contract_test.latest.json",
+    "build_inputs": {
+      "project_spec": "research/landing_v1/build_inputs/project_spec.json",
+      "page_spec": "research/landing_v1/build_inputs/page_spec.json"
+    },
+    "marketing_handoff": "../../handoffs/product_to_marketing.json"
+  },
+  "quality_gates": [
+    "single_primary_cta",
+    "message_match_with_entry_intent",
+    "scope_consistency_with_mvp_boundary",
+    "claim_evidence_traceability_100pct",
+    "scannable_copy_and_clear_hierarchy",
+    "multi_device_compatibility_baseline",
+    "performance_baseline_hooks_present",
+    "smoke_page_strategy_business_test_hooks_present"
+  ],
+  "statuses": [
+    "blocked",
+    "provisional_ready",
+    "ready_for_build"
+  ],
+  "constraints": {
+    "workspace_boundary": "workspaces/op1_product",
+    "single_primary_cta": true,
+    "no_push_default": true,
+    "security": [
+      "no embedded secrets",
+      "no host-level privilege escalation",
+      "no operations outside workspace/handoff target"
+    ]
+  }
+}

@@ -209,6 +209,20 @@
           "answer": { "type": "string" }
         }
       }
+    },
+    "mvp_boundary": {
+      "type": "object",
+      "properties": {
+        "in_scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "out_of_scope": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "source": { "type": "string" }
+      }
     }
   }
 }

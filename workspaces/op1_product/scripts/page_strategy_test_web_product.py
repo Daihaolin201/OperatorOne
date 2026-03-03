@@ -72,6 +72,13 @@ def main() -> int:
         expected_modules = []
 
     max_primary_cta = int(page_spec.get("testing", {}).get("max_primary_cta_buttons", 1))
+    require_viewport_meta = bool(page_spec.get("testing", {}).get("require_viewport_meta", False))
+    responsive_markers = page_spec.get("testing", {}).get("responsive_markers", [])
+    if not isinstance(responsive_markers, list):
+        responsive_markers = []
+    device_profiles = page_spec.get("testing", {}).get("device_profiles", [])
+    if not isinstance(device_profiles, list):
+        device_profiles = []
 
     base_url = args.base_url.rstrip("/")
 
@@ -81,7 +88,14 @@ def main() -> int:
             raise RuntimeError(f"Homepage status {status}")
         return body
 
+    def fetch_stylesheet():
+        status, body = http_get(f"{base_url}/styles.css")
+        if status != 200:
+            raise RuntimeError(f"Stylesheet status {status}")
+        return body
+
     html_body, attempts = run_with_retry(fetch_homepage, retries=args.retries, delay=args.retry_delay)
+    css_body, css_attempts = run_with_retry(fetch_stylesheet, retries=args.retries, delay=args.retry_delay)
 
     checks: List[Dict[str, Any]] = []
     failed = None
@@ -167,6 +181,72 @@ def main() -> int:
                 {
                     "name": "legacy_badge_removed",
                     "status": "pass",
+                }
+            )
+
+    # check 5: viewport meta baseline
+    if failed is None and require_viewport_meta:
+        viewport_ok = (
+            '<meta name="viewport"' in html_body
+            and "width=device-width" in html_body
+        )
+        if not viewport_ok:
+            failed = {
+                "name": "viewport_meta",
+                "status": "fail",
+                "reason": "Missing required responsive viewport meta tag",
+            }
+            checks.append(failed)
+        else:
+            checks.append(
+                {
+                    "name": "viewport_meta",
+                    "status": "pass",
+                }
+            )
+
+    # check 6: responsive css markers
+    if failed is None and responsive_markers:
+        missing_markers = [m for m in responsive_markers if isinstance(m, str) and m not in css_body]
+        if missing_markers:
+            failed = {
+                "name": "responsive_css_markers",
+                "status": "fail",
+                "missing": missing_markers,
+            }
+            checks.append(failed)
+        else:
+            checks.append(
+                {
+                    "name": "responsive_css_markers",
+                    "status": "pass",
+                    "markers": responsive_markers,
+                    "stylesheet_attempts": css_attempts,
+                }
+            )
+
+    # check 7: multi-device profile declarations
+    if failed is None and device_profiles:
+        profile_ids = {
+            p.get("id")
+            for p in device_profiles
+            if isinstance(p, dict) and isinstance(p.get("id"), str)
+        }
+        required_profiles = {"desktop", "tablet", "mobile"}
+        missing_profiles = sorted(required_profiles - profile_ids)
+        if missing_profiles:
+            failed = {
+                "name": "multi_device_profiles",
+                "status": "fail",
+                "missing_profiles": missing_profiles,
+            }
+            checks.append(failed)
+        else:
+            checks.append(
+                {
+                    "name": "multi_device_profiles",
+                    "status": "pass",
+                    "profiles": sorted(profile_ids),
                 }
             )
 

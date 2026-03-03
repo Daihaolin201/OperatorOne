@@ -57,7 +57,32 @@
           "items": { "type": "string" }
         },
         "primary_cta_module": { "type": "string" },
-        "max_primary_cta_buttons": { "type": "integer", "minimum": 1 }
+        "max_primary_cta_buttons": { "type": "integer", "minimum": 1 },
+        "require_viewport_meta": { "type": "boolean" },
+        "responsive_markers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "device_profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "width", "height"],
+            "properties": {
+              "id": { "type": "string" },
+              "width": { "type": "integer", "minimum": 1 },
+              "height": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        "performance_budget": {
+          "type": "object",
+          "properties": {
+            "lcp_ms": { "type": "number", "minimum": 1 },
+            "inp_ms": { "type": "number", "minimum": 1 },
+            "cls_max": { "type": "number", "minimum": 0 }
+          }
+        }
       }
     },
     "project_spec_snapshot": {
