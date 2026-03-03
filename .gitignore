@@ -28,3 +28,11 @@ __pycache__/
 
 # Generated analytics artifacts
 artifacts/tmp/
+
+# Agent runtime memory (session carryover; not needed for capability reproducibility)
+workspaces/*/memory/
+
+# Large generated research dumps (regenerable)
+workspaces/*/research/reddit_signals.json
+workspaces/*/research/secondary_signals.json
+workspaces/*/research/signal_summary.json

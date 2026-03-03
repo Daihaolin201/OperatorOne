@@ -1,0 +1,36 @@
+{
+  "status": "pending_selection",
+  "selection_candidates": [
+    "opp_001",
+    "opp_002",
+    "opp_003",
+    "opp_006"
+  ],
+  "next_action": "Choose one advance candidate from stage2_decision_log.json, then instantiate this file using framework/templates/stage3_project_blueprint.template.json",
+  "project_id": "",
+  "from_opportunity_id": "",
+  "hypothesis": {
+    "for_segment": "",
+    "problem": "",
+    "value_proposition": ""
+  },
+  "mvp_boundary": {
+    "in_scope": [],
+    "out_of_scope": []
+  },
+  "test_design_14d": {
+    "experiment": "",
+    "channel": "",
+    "sample_target": 0,
+    "offer": ""
+  },
+  "pricing_hypothesis": {
+    "plan_a": "",
+    "plan_b": ""
+  },
+  "success_metric": {
+    "metric": "",
+    "target": ""
+  },
+  "kill_criteria": []
+}

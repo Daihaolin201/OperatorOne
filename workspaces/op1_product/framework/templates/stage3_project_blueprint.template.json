@@ -1,0 +1,49 @@
+{
+  "project_id": "proj_001",
+  "from_opportunity_id": "opp_001",
+  "hypothesis": {
+    "for_segment": "",
+    "problem": "",
+    "value_proposition": ""
+  },
+  "mvp_boundary": {
+    "in_scope": [
+      ""
+    ],
+    "out_of_scope": [
+      ""
+    ]
+  },
+  "test_design_14d": {
+    "experiment": "",
+    "channel": "",
+    "sample_target": 0,
+    "offer": ""
+  },
+  "pricing_hypothesis": {
+    "plan_a": "",
+    "plan_b": ""
+  },
+  "success_metric": {
+    "metric": "",
+    "target": ""
+  },
+  "kill_criteria": [
+    ""
+  ],
+  "downstream_inputs": {
+    "marketing": {
+      "headline_seed": "",
+      "problem_story": "",
+      "cta": ""
+    },
+    "operations": {
+      "manual_steps": [
+        ""
+      ],
+      "automation_candidates": [
+        ""
+      ]
+    }
+  }
+}

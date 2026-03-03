@@ -1,0 +1,52 @@
+{
+  "generated_at": "",
+  "opportunities": [
+    {
+      "opportunity_id": "opp_001",
+      "target_segment": {
+        "role": "",
+        "company_size": "",
+        "industry": ""
+      },
+      "core_problem": "",
+      "current_workaround": "",
+      "pain_evidence": [
+        {
+          "claim": "",
+          "source_url": "",
+          "source": "reddit_operator_communities|hackernews|shopify_app_store|other",
+          "signal_type": "pain|time_cost|money_loss|urgency|workflow_break|market_density|intent"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [],
+        "distinct_source_count": 0,
+        "min_required": 2,
+        "min_sources_met": false
+      },
+      "budget_signal": {
+        "exists": false,
+        "evidence": ""
+      },
+      "urgency_signal": {
+        "exists": false,
+        "evidence": ""
+      },
+      "distribution_entry": {
+        "channel": "",
+        "first_20_targets_how": ""
+      },
+      "implementation_constraint": [
+        ""
+      ],
+      "hard_gate_check": {
+        "buyer_clear": false,
+        "problem_evidenced": false,
+        "reachable_users": false,
+        "mvp_in_14_days": false,
+        "min_distinct_sources_met": false,
+        "pass": false
+      }
+    }
+  ]
+}

@@ -1,4 +1,5 @@
 {
+  "status": "pending_project_selection",
   "idea_name": "",
   "icp": "",
   "problem": "",
@@ -11,5 +12,6 @@
   "constraints": {
     "budget": 0,
     "timeline_days": 7
-  }
+  },
+  "notes": "Setup mode: this file is intentionally left as a handoff template until Stage 3 selects a concrete project."
 }

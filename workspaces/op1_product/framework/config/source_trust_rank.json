@@ -1,0 +1,61 @@
+{
+  "version": "v2",
+  "notes": "Trust + accessibility filtered shortlist for current runtime.",
+  "scoring_criteria": {
+    "first_party_operator_signal": 0.3,
+    "commercial_intent_signal": 0.25,
+    "problem_actionability": 0.2,
+    "noise_resistance": 0.15,
+    "collection_stability": 0.1
+  },
+  "sources": [
+    {
+      "id": "reddit_operator_communities",
+      "enabled": true,
+      "status": "active",
+      "trust_score": 4.01,
+      "tier": "A"
+    },
+    {
+      "id": "hackernews_algolia",
+      "enabled": true,
+      "status": "active",
+      "trust_score": 3.85,
+      "tier": "A"
+    },
+    {
+      "id": "shopify_app_store",
+      "enabled": true,
+      "status": "active",
+      "trust_score": 4.04,
+      "tier": "A"
+    },
+    {
+      "id": "g2_capterra",
+      "enabled": false,
+      "status": "blocked_by_antibot",
+      "trust_score": 4.26,
+      "tier": "A"
+    },
+    {
+      "id": "job_posts_linkedin_indeed",
+      "enabled": false,
+      "status": "blocked_by_antibot",
+      "trust_score": 3.9,
+      "tier": "A"
+    },
+    {
+      "id": "indiehackers_hn_web",
+      "enabled": false,
+      "status": "js_heavy_partial_access",
+      "trust_score": 3.73,
+      "tier": "B"
+    }
+  ],
+  "stage2_evidence_gate": {
+    "min_distinct_sources": 2,
+    "min_urls_per_source": 1,
+    "require_loss_signal": true,
+    "require_budget_or_intent_signal": true
+  }
+}
