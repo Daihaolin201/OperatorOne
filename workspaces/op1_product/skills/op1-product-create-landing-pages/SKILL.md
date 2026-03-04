@@ -1,6 +1,6 @@
 ---
 name: op1-product-create-landing-pages
-description: Execute full Stage-3 landing capability for op1_product (Mode C): resolve opportunity/scope/evidence gates, generate landing package + landing-specific page spec, run contract/semantic tests, and (optionally) deploy via build pipeline.
+description: "Execute full Stage-3 landing capability for op1_product (Mode C): resolve opportunity/scope/evidence gates, generate landing package + landing-specific page spec, run contract/semantic tests, and (optionally) deploy via build pipeline."
 ---
 
 # Stage-3 Landing Capability (Mode C, v1.1)
