@@ -321,7 +321,13 @@ def main() -> int:
                 "lcp_ms": 2500,
                 "inp_ms": 200,
                 "cls_max": 0.1
-            }
+            },
+            "security_headers": [
+                {"name": "x-content-type-options", "must_include": "nosniff"},
+                {"name": "x-frame-options", "must_include": "DENY"},
+                {"name": "referrer-policy", "must_include": "strict-origin-when-cross-origin"},
+                {"name": "content-security-policy", "must_include": "default-src 'self'"}
+            ]
         },
         "project_spec_snapshot": spec,
     }

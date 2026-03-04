@@ -976,6 +976,10 @@ def render_first_step_js(spec: Dict[str, Any]) -> str:
             res.status(400).json({{ error: "input is required (min 8 chars)" }});
             return;
           }}
+          if (input.length > 2000) {{
+            res.status(400).json({{ error: "input is too long (max 2000 chars)" }});
+            return;
+          }}
 
           const matched = chooseRule(input);
           const defaultResponse = PRODUCT_SPEC.default_response || {{}};
@@ -1021,7 +1025,7 @@ def render_signup_js(project_id: str, cta_label: str) -> str:
 
           const body = parseBody(req);
           const email = String(body.email || "").trim().toLowerCase();
-          if (!isValidEmail(email)) {{
+          if (!email || email.length > 254 || !isValidEmail(email)) {{
             res.status(400).json({{ error: "Valid email is required" }});
             return;
           }}
@@ -1070,6 +1074,24 @@ def render_vercel_json() -> str:
     payload = {
         "$schema": "https://openapi.vercel.sh/vercel.json",
         "cleanUrls": True,
+        "headers": [
+            {
+                "source": "/(.*)",
+                "headers": [
+                    {"key": "X-Content-Type-Options", "value": "nosniff"},
+                    {"key": "X-Frame-Options", "value": "DENY"},
+                    {"key": "Referrer-Policy", "value": "strict-origin-when-cross-origin"},
+                    {
+                        "key": "Content-Security-Policy",
+                        "value": "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self'",
+                    },
+                    {
+                        "key": "Permissions-Policy",
+                        "value": "camera=(), microphone=(), geolocation=()",
+                    },
+                ],
+            }
+        ],
     }
     return json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
 
@@ -1279,7 +1301,13 @@ def default_page_spec_from_project_spec(spec: Dict[str, Any]) -> Dict[str, Any]:
                 "lcp_ms": 2500,
                 "inp_ms": 200,
                 "cls_max": 0.1
-            }
+            },
+            "security_headers": [
+                {"name": "x-content-type-options", "must_include": "nosniff"},
+                {"name": "x-frame-options", "must_include": "DENY"},
+                {"name": "referrer-policy", "must_include": "strict-origin-when-cross-origin"},
+                {"name": "content-security-policy", "must_include": "default-src 'self'"}
+            ]
         },
     }
 

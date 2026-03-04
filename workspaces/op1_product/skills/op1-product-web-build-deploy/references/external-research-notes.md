@@ -82,3 +82,22 @@ Implementation mapping (landing capability extension):
 - emit evidence traceability map before downstream handoff.
 - include multi-device compatibility baseline checks in page-strategy tests.
 - keep performance budget hooks in `page_spec.testing` for auditability.
+
+12. OWASP HTTP Headers Cheat Sheet
+   - URL: https://cheatsheetseries.owasp.org/cheatsheets/HTTP_Headers_Cheat_Sheet.html
+   - Useful points used:
+     - Add a minimal secure header baseline (nosniff/frame/referrer/CSP) for browser-rendered pages.
+
+13. OWASP Input Validation Cheat Sheet
+   - URL: https://cheatsheetseries.owasp.org/cheatsheets/Input_Validation_Cheat_Sheet.html
+   - Useful points used:
+     - Enforce server-side min/max length and syntactic validation for endpoint inputs.
+
+14. MDN security header references
+   - URLs:
+     - https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Content-Type-Options
+     - https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/X-Frame-Options
+     - https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Referrer-Policy
+     - https://developer.mozilla.org/en-US/docs/Web/HTTP/Reference/Headers/Content-Security-Policy
+   - Useful points used:
+     - Validate exact header intent and include policy fragments in deployment baseline checks.

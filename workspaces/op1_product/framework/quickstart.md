@@ -53,3 +53,4 @@ Outputs:
 - 100% claim traceability to evidence
 - multi-device compatibility baseline (desktop/tablet/mobile)
 - performance budget hooks present (LCP/INP/CLS)
+- security header baseline hooks present and validated in page-strategy test

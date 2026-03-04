@@ -66,6 +66,7 @@
     "scannable_copy_and_clear_hierarchy",
     "multi_device_compatibility_baseline",
     "performance_baseline_hooks_present",
+    "security_headers_baseline_hooks_present",
     "smoke_page_strategy_business_test_hooks_present"
   ],
   "statuses": [

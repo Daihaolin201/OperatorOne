@@ -56,7 +56,7 @@
 - 默认部署到 Vercel 子域名（无需自有域名）
 - 三层自动验证：
   - smoke test（可用性）
-  - page-strategy test（结构策略正确性 + 多设备兼容基线）
+  - page-strategy test（结构策略正确性 + 多设备兼容基线 + 安全响应头基线）
   - business-rule test（业务规则正确性）
 - 输出结构化运行报告和检查点：
   - `research/build_deploy_v1_run.json`

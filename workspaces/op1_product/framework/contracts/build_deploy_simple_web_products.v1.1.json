@@ -44,6 +44,7 @@
     "smoke_tests_pass",
     "page_strategy_tests_pass",
     "page_strategy_includes_multi_device_baseline",
+    "page_strategy_includes_security_headers_baseline",
     "business_rule_tests_pass",
     "run_report_is_structured_and_reproducible"
   ]

@@ -18,13 +18,15 @@ def read_json(path: str) -> Dict[str, Any]:
         return json.load(f)
 
 
-def http_get(url: str, timeout: int = 20) -> Tuple[int, str]:
+def http_get(url: str, timeout: int = 20) -> Tuple[int, str, Dict[str, str]]:
     req = urllib.request.Request(url=url, method="GET")
     try:
         with urllib.request.urlopen(req, timeout=timeout) as resp:
-            return int(resp.status), resp.read().decode("utf-8", errors="replace")
+            headers = {str(k).lower(): str(v) for k, v in resp.headers.items()}
+            return int(resp.status), resp.read().decode("utf-8", errors="replace"), headers
     except urllib.error.HTTPError as e:
-        return int(e.code), e.read().decode("utf-8", errors="replace")
+        headers = {str(k).lower(): str(v) for k, v in e.headers.items()} if e.headers else {}
+        return int(e.code), e.read().decode("utf-8", errors="replace"), headers
 
 
 def run_with_retry(fn, retries: int, delay: float):
@@ -79,22 +81,25 @@ def main() -> int:
     device_profiles = page_spec.get("testing", {}).get("device_profiles", [])
     if not isinstance(device_profiles, list):
         device_profiles = []
+    security_headers = page_spec.get("testing", {}).get("security_headers", [])
+    if not isinstance(security_headers, list):
+        security_headers = []
 
     base_url = args.base_url.rstrip("/")
 
     def fetch_homepage():
-        status, body = http_get(f"{base_url}/")
+        status, body, headers = http_get(f"{base_url}/")
         if status != 200:
             raise RuntimeError(f"Homepage status {status}")
-        return body
+        return body, headers
 
     def fetch_stylesheet():
-        status, body = http_get(f"{base_url}/styles.css")
+        status, body, _headers = http_get(f"{base_url}/styles.css")
         if status != 200:
             raise RuntimeError(f"Stylesheet status {status}")
         return body
 
-    html_body, attempts = run_with_retry(fetch_homepage, retries=args.retries, delay=args.retry_delay)
+    (html_body, homepage_headers), attempts = run_with_retry(fetch_homepage, retries=args.retries, delay=args.retry_delay)
     css_body, css_attempts = run_with_retry(fetch_stylesheet, retries=args.retries, delay=args.retry_delay)
 
     checks: List[Dict[str, Any]] = []
@@ -247,6 +252,46 @@ def main() -> int:
                     "name": "multi_device_profiles",
                     "status": "pass",
                     "profiles": sorted(profile_ids),
+                }
+            )
+
+    # check 8: security headers baseline
+    if failed is None and security_headers:
+        missing_headers: List[Dict[str, str]] = []
+        for item in security_headers:
+            if not isinstance(item, dict):
+                continue
+            name = str(item.get("name", "")).strip().lower()
+            must_include = str(item.get("must_include", "")).strip().lower()
+            if not name:
+                continue
+            current = str(homepage_headers.get(name, "")).lower()
+            if not current or (must_include and must_include not in current):
+                missing_headers.append(
+                    {
+                        "name": name,
+                        "expected_fragment": must_include,
+                        "actual": current,
+                    }
+                )
+
+        if missing_headers:
+            failed = {
+                "name": "security_headers_baseline",
+                "status": "fail",
+                "missing_or_mismatch": missing_headers,
+            }
+            checks.append(failed)
+        else:
+            checks.append(
+                {
+                    "name": "security_headers_baseline",
+                    "status": "pass",
+                    "checked": [
+                        str(item.get("name")).lower()
+                        for item in security_headers
+                        if isinstance(item, dict) and item.get("name")
+                    ],
                 }
             )
 

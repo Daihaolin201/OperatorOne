@@ -53,7 +53,7 @@
 - 通过条件：
   - 公开 URL 可访问
   - smoke test 全通过
-  - page-strategy test 全通过（模块存在、顺序、主 CTA 唯一、viewport/响应式基线）
+  - page-strategy test 全通过（模块存在、顺序、主 CTA 唯一、viewport/响应式基线、安全响应头基线）
   - business-rule test 全通过
 
 ## Stage 4 — Functional Handoff

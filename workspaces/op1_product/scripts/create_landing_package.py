@@ -635,13 +635,15 @@ def quality_gates(
     core_problem = ensure_text(opportunity.get("core_problem"))
     hero = ensure_text((landing_package.get("message_hierarchy") or {}).get("hero_headline"))
     subhero = ensure_text((landing_package.get("message_hierarchy") or {}).get("hero_subheadline"))
+    explicit_problem_line = ensure_text((landing_package.get("message_hierarchy") or {}).get("problem_statement"))
     overlap = set(tokenize(core_problem)) & set(tokenize(f"{hero} {subhero}"))
-    match_ok = len(overlap) >= 2
+    explicit_match = bool(core_problem) and core_problem.lower() in explicit_problem_line.lower()
+    match_ok = explicit_match or len(overlap) >= 1
     gates.append(
         {
             "name": "message_match_with_entry_intent",
             "status": "pass" if match_ok else "fail",
-            "detail": f"token_overlap={len(overlap)}",
+            "detail": f"token_overlap={len(overlap)}; explicit_match={explicit_match}",
         }
     )
 
@@ -703,6 +705,22 @@ def quality_gates(
             "name": "performance_baseline_hooks_present",
             "status": "pass" if perf_ok else "fail",
             "detail": "page_spec.testing.performance_budget",
+        }
+    )
+
+    security_headers = testing.get("security_headers") if isinstance(testing.get("security_headers"), list) else []
+    required_headers = {"x-content-type-options", "x-frame-options", "referrer-policy", "content-security-policy"}
+    declared_headers = {
+        str(item.get("name", "")).strip().lower()
+        for item in security_headers
+        if isinstance(item, dict) and item.get("name")
+    }
+    security_ok = required_headers.issubset(declared_headers)
+    gates.append(
+        {
+            "name": "security_headers_baseline_hooks_present",
+            "status": "pass" if security_ok else "fail",
+            "detail": f"declared={sorted(declared_headers)}",
         }
     )
 

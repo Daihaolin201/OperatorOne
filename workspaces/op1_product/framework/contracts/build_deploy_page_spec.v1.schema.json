@@ -82,6 +82,17 @@
             "inp_ms": { "type": "number", "minimum": 1 },
             "cls_max": { "type": "number", "minimum": 0 }
           }
+        },
+        "security_headers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "must_include"],
+            "properties": {
+              "name": { "type": "string" },
+              "must_include": { "type": "string" }
+            }
+          }
         }
       }
     },

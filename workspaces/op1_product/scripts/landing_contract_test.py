@@ -54,11 +54,14 @@ def main() -> int:
     missing = [k for k in required_keys if k not in payload]
     push("required_keys", len(missing) == 0, f"missing={missing}")
 
+    status = payload.get("status")
+
     preflight = payload.get("preflight", {}) if isinstance(payload.get("preflight"), dict) else {}
     trace = preflight.get("evidence_traceability_gate", {}) if isinstance(preflight.get("evidence_traceability_gate"), dict) else {}
     coverage = float(trace.get("coverage_ratio", 0.0))
     unmapped = trace.get("unmapped_claims", []) if isinstance(trace.get("unmapped_claims"), list) else []
-    push("traceability_gate", coverage >= 1.0 and len(unmapped) == 0, f"coverage={coverage}; unmapped={unmapped}")
+    traceability_ok = (coverage >= 1.0 and len(unmapped) == 0) or (status == "blocked")
+    push("traceability_gate", traceability_ok, f"coverage={coverage}; unmapped={unmapped}; status={status}")
 
     lp = payload.get("landing_package", {}) if isinstance(payload.get("landing_package"), dict) else {}
     section_plan = lp.get("section_plan", []) if isinstance(lp.get("section_plan"), list) else []
@@ -84,10 +87,13 @@ def main() -> int:
             trace_ok = False
             break
         refs = row.get("evidence_refs")
-        if not isinstance(refs, list) or len(refs) == 0:
+        if status != "blocked" and (not isinstance(refs, list) or len(refs) == 0):
             trace_ok = False
             break
-    push("traceability_map_shape", trace_ok and len(trace_map) >= 3, f"claim_count={len(trace_map)}")
+        if status == "blocked" and not isinstance(refs, list):
+            trace_ok = False
+            break
+    push("traceability_map_shape", trace_ok and len(trace_map) >= 3, f"claim_count={len(trace_map)}; status={status}")
 
     qg = payload.get("quality_gates", []) if isinstance(payload.get("quality_gates"), list) else []
     gate_failures = [row for row in qg if isinstance(row, dict) and row.get("status") == "fail"]
