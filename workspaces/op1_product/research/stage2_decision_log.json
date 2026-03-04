@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-03T12:57:01.109420Z",
+  "generated_at": "2026-03-04T00:28:16.078119Z",
   "weights": {
     "pain_intensity": 0.24,
     "willingness_to_pay": 0.24,
@@ -14,6 +14,60 @@
     "low": 0.5
   },
   "trust_config": "framework/config/source_trust_rank.json",
+  "ranking": [
+    {
+      "rank": 1,
+      "opportunity_id": "opp_001",
+      "weighted_score": 4.084,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 2,
+      "opportunity_id": "opp_002",
+      "weighted_score": 4.084,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 3,
+      "opportunity_id": "opp_005",
+      "weighted_score": 4.024,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 4,
+      "opportunity_id": "opp_003",
+      "weighted_score": 3.964,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 5,
+      "opportunity_id": "opp_006",
+      "weighted_score": 3.904,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 6,
+      "opportunity_id": "opp_004",
+      "weighted_score": 3.133,
+      "decision": "reject",
+      "hard_gate_pass": false
+    }
+  ],
+  "selection_summary": {
+    "selected_opportunity_id": "opp_001",
+    "selection_decision": "advance",
+    "top_ranked_opportunity_id": "opp_001",
+    "runner_up_opportunity_id": "opp_002",
+    "score_gap_vs_runner_up": 0.0,
+    "score_gap_flag": "narrow",
+    "manual_review_required": true,
+    "why_top_beats_runner_up": "weighted_score 4.084 vs 4.084; scores are tied; preserve deterministic ranking order and require manual review"
+  },
   "decisions": [
     {
       "opportunity_id": "opp_001",

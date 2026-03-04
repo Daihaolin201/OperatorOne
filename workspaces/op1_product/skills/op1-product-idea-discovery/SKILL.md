@@ -1,28 +1,25 @@
 ---
 name: op1-product-idea-discovery
-description: Discover startup opportunities from market signals and user pain evidence. Use when generating idea longlists, collecting problem evidence, mapping target segments, and building stage-1 opportunity records for product selection.
+description: Discover startup opportunities from market signals and user pain evidence. Use when generating idea longlists, collecting corroborated problem evidence, mapping target segments, and producing Stage-1 opportunity records.
 ---
 
-# Idea Discovery
+# Idea Discovery (Stage 1)
 
 1. Define search scope (industry, role, company size, geography, urgency window).
-2. Run primary signal collection script:
+2. Collect primary signals:
    - `python3 scripts/search_startup_signals.py`
-3. Run secondary-source collection script:
+3. Collect secondary corroboration:
    - `python3 scripts/search_secondary_sources.py`
 4. Build Stage-1 opportunities:
    - `python3 scripts/build_stage1_opportunities.py`
-5. Validate each opportunity against `../../../framework/templates/stage1_opportunity_records.template.json` structure.
-6. Capture only evidence-backed claims; reject speculation.
-7. Fill hard-gate checks:
-   - buyer clear
-   - problem evidenced
-   - reachable users
-   - MVP in 14 days
-7. Write output to `research/stage1_opportunity_records.json`.
+5. Validate structure against:
+   - `../../framework/templates/stage1_opportunity_records.template.json`
+6. Keep only evidence-backed claims; remove speculation.
+7. Ensure each opportunity has hard-gate fields filled (`buyer_clear`, `problem_evidenced`, `reachable_users`, `mvp_in_14_days`).
+8. Write output to `research/stage1_opportunity_records.json`.
 
 ## Quality bar
-- Each opportunity has a specific buyer and workflow context.
-- Each opportunity includes at least one time-loss or money-loss signal.
-- Each opportunity includes cross-source corroboration (min 2 distinct sources when trust config requires it).
-- Each opportunity includes a realistic first-20-users acquisition path.
+- Each opportunity names a concrete buyer and workflow context.
+- Each opportunity includes at least one money-loss or time-cost signal.
+- Cross-source corroboration is present when trust config requires it.
+- First-20-users acquisition path is explicit and realistic.

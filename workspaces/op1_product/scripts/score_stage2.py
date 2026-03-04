@@ -87,6 +87,37 @@ def weighted(scores: dict, weights: dict):
     return round(sum(scores[k] * weights[k] for k in weights), 3)
 
 
+def build_top_vs_runner_reason(top_row: dict, runner_row: dict, top_decision: dict, runner_decision: dict):
+    parts = [
+        f"weighted_score {top_row.get('weighted_score')} vs {runner_row.get('weighted_score')}"
+    ]
+
+    top_gate = bool(top_row.get("hard_gate_pass"))
+    runner_gate = bool(runner_row.get("hard_gate_pass"))
+    if top_gate and not runner_gate:
+        parts.append("top passes hard/evidence gates while runner-up does not")
+
+    top_dec = top_decision.get("decision")
+    runner_dec = runner_decision.get("decision")
+    if top_dec == "advance" and runner_dec != "advance":
+        parts.append(f"top is '{top_dec}' while runner-up is '{runner_dec}'")
+
+    top_conf = top_row.get("confidence_level")
+    runner_conf = runner_row.get("confidence_level")
+    if top_conf != runner_conf:
+        parts.append(f"confidence level {top_conf} vs {runner_conf}")
+
+    if len(parts) == 1:
+        top_ws = float(top_row.get("weighted_score", 0.0))
+        runner_ws = float(runner_row.get("weighted_score", 0.0))
+        if abs(top_ws - runner_ws) < 0.001:
+            parts.append("scores are tied; preserve deterministic ranking order and require manual review")
+        else:
+            parts.append("top retains stronger composite score after confidence adjustment")
+
+    return "; ".join(parts)
+
+
 def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--input", default="research/stage1_opportunity_records.json")
@@ -224,6 +255,52 @@ def main():
 
     rows.sort(key=lambda r: r["weighted_score"], reverse=True)
 
+    decisions_by_id = {str(d.get("opportunity_id")): d for d in decisions}
+    ranking = [
+        {
+            "rank": idx,
+            "opportunity_id": row.get("opportunity_id"),
+            "weighted_score": row.get("weighted_score"),
+            "decision": row.get("decision"),
+            "hard_gate_pass": row.get("hard_gate_pass"),
+        }
+        for idx, row in enumerate(rows, start=1)
+    ]
+
+    top_row = rows[0] if rows else None
+    runner_row = rows[1] if len(rows) > 1 else None
+    selected_row = next((r for r in rows if r.get("decision") == "advance"), top_row)
+
+    if top_row and runner_row:
+        top_ws = float(top_row.get("weighted_score", 0.0))
+        runner_ws = float(runner_row.get("weighted_score", 0.0))
+        score_gap = round(top_ws - runner_ws, 3)
+        gap_flag = "narrow" if score_gap < 0.15 else "clear"
+
+        top_decision = decisions_by_id.get(str(top_row.get("opportunity_id")), {})
+        runner_decision = decisions_by_id.get(str(runner_row.get("opportunity_id")), {})
+        compare_reason = build_top_vs_runner_reason(
+            top_row=top_row,
+            runner_row=runner_row,
+            top_decision=top_decision,
+            runner_decision=runner_decision,
+        )
+    else:
+        score_gap = None
+        gap_flag = "single_candidate"
+        compare_reason = "Only one candidate available in ranking."
+
+    selection_summary = {
+        "selected_opportunity_id": selected_row.get("opportunity_id") if selected_row else None,
+        "selection_decision": selected_row.get("decision") if selected_row else None,
+        "top_ranked_opportunity_id": top_row.get("opportunity_id") if top_row else None,
+        "runner_up_opportunity_id": runner_row.get("opportunity_id") if runner_row else None,
+        "score_gap_vs_runner_up": score_gap,
+        "score_gap_flag": gap_flag,
+        "manual_review_required": gap_flag == "narrow",
+        "why_top_beats_runner_up": compare_reason,
+    }
+
     csv_out = Path(args.csv_out)
     csv_out.parent.mkdir(parents=True, exist_ok=True)
     with csv_out.open("w", newline="", encoding="utf-8") as f:
@@ -257,6 +334,8 @@ def main():
                 "weights": weights,
                 "confidence_multipliers": conf_map,
                 "trust_config": args.trust_config,
+                "ranking": ranking,
+                "selection_summary": selection_summary,
                 "decisions": decisions,
                 "notes": "Scores are heuristic defaults; replace with interview-validated scoring in production.",
             },
