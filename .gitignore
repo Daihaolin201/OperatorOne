@@ -42,3 +42,6 @@ workspaces/*/research/idea_longlist.json
 workspaces/*/research/idea_scores.csv
 workspaces/*/research/scorecard.md
 workspaces/*/research/top3_briefs.md
+
+# Stage1 marketing SEO mirrors/brief outputs (regenerable)
+workspaces/*/research/stage1_marketing_seo/input/mirror.latest/

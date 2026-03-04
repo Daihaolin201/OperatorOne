@@ -1,7 +1,8 @@
 {
-  "status": "planned",
-  "base_snapshot_id": null,
-  "current_snapshot_id": null,
+  "status": "ok",
+  "generated_at": "2026-03-04T12:51:23Z",
+  "base_snapshot_id": "snap_20260304125103_3317e2a46c4a9dc9",
+  "current_snapshot_id": "snap_20260304125123_3317e2a46c4a9dc9",
   "added": [],
   "changed": [],
   "removed": []
