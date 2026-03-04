@@ -21,5 +21,11 @@
   - `research/stage2_content_publish/decision_log.latest.md`
   - `research/stage2_content_publish/review_log.latest.json`
 
-- Stage 3 — Launch campaigns (planned)
+- Stage 3 — Launch campaigns (implemented: shadow/review, no auto launch)
   - `research/stage3_campaign_launch/run.latest.json`
+  - `research/stage3_campaign_launch/state.latest.json`
+  - `research/stage3_campaign_launch/campaigns.backlog.latest.json`
+  - `research/stage3_campaign_launch/campaigns.queue.latest.json`
+  - `research/stage3_campaign_launch/experiments.latest.json`
+  - `research/stage3_campaign_launch/attribution.map.latest.csv`
+  - `research/stage3_campaign_launch/decision_log.latest.md`

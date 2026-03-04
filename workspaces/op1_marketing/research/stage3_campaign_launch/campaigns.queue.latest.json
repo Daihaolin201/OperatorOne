@@ -1,0 +1,1066 @@
+{
+  "generated_at": "2026-03-04T16:30:49Z",
+  "status": "ok",
+  "mode": "shadow",
+  "auto_launch": false,
+  "queue": {
+    "launch_ready": [
+      {
+        "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+        "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_02",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "primary_keyword": "agencies rebuild client tool for agency operator marketing services",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Agencies Rebuild Client Tool For Agency Operator Marketing Services: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-02.md",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+        ],
+        "priority_score": 94.17,
+        "readiness_score": 81.55,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'agencies rebuild client tool for agency operator marketing services', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 151.88,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 68.35,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 68.35,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 91.13,
+              "sessions_est": 83.84,
+              "mql_est": 7.24,
+              "sql_est": 2.54
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 53.16,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 53.16,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 9.17,
+              "sessions_est": 8.43,
+              "mql_est": 0.67,
+              "sql_est": 0.24
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 30.37,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 30.37,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 24.3,
+              "sessions_est": 22.35,
+              "mql_est": 1.72,
+              "sql_est": 0.6
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 124.6,
+          "mql_est": 9.63,
+          "sql_est": 3.38
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+        "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "primary_keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Overdue Invoices Followed Tool For Freelancer Small Service Owner: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-03.md",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+          "../op1_product/research/build_deploy_v1/project_spec.json"
+        ],
+        "priority_score": 93.87,
+        "readiness_score": 81.43,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'overdue invoices followed tool for freelancer small service owner', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 151.66,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 68.25,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 68.25,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 91.0,
+              "sessions_est": 83.72,
+              "mql_est": 7.23,
+              "sql_est": 2.53
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 53.08,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 53.08,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 9.15,
+              "sessions_est": 8.42,
+              "mql_est": 0.67,
+              "sql_est": 0.24
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 30.33,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 30.33,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 24.26,
+              "sessions_est": 22.32,
+              "mql_est": 1.71,
+              "sql_est": 0.6
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 124.41,
+          "mql_est": 9.61,
+          "sql_est": 3.37
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+        "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_03",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "primary_keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+        ],
+        "priority_score": 93.68,
+        "readiness_score": 81.35,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'chargeback disputes handled tool for ecommerce operator ecommerce', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 151.51,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 68.18,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 68.18,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 90.91,
+              "sessions_est": 83.63,
+              "mql_est": 7.23,
+              "sql_est": 2.53
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 53.03,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 53.03,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 9.14,
+              "sessions_est": 8.41,
+              "mql_est": 0.67,
+              "sql_est": 0.24
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 30.3,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 30.3,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 24.24,
+              "sessions_est": 22.3,
+              "mql_est": 1.71,
+              "sql_est": 0.6
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 124.29,
+          "mql_est": 9.61,
+          "sql_est": 3.37
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
+        "name": "Stage3 launch for cnt_exp-opportunity-opp-001-04",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-opportunity-opp-001-04",
+        "experiment_id": "exp_opportunity-opp-001_04",
+        "context_id": "opportunity::opp_001",
+        "primary_keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach out to posters discussing overdue invoices and AR frustration",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-04.md",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "priority_score": 94.05,
+        "readiness_score": 80.0,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'overdue invoices followed vs manual', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 148.99,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 67.05,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 67.05,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 89.4,
+              "sessions_est": 82.25,
+              "mql_est": 7.11,
+              "sql_est": 2.49
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 52.15,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 52.15,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 8.99,
+              "sessions_est": 8.27,
+              "mql_est": 0.66,
+              "sql_est": 0.23
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 29.79,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 29.79,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 23.83,
+              "sessions_est": 21.93,
+              "mql_est": 1.68,
+              "sql_est": 0.59
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 122.22,
+          "mql_est": 9.45,
+          "sql_est": 3.31
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-opportunity-opp-001-04.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+        "name": "Stage3 launch for cnt_exp-opportunity-opp-004-03",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-opportunity-opp-004-03",
+        "experiment_id": "exp_opportunity-opp-004_03",
+        "context_id": "opportunity::opp_004",
+        "primary_keyword": "how to default software output plus custom excel",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "How To Default Software Output Plus Custom Excel: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach operators with 20-150 doors and reporting pain",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-03.md",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "priority_score": 94.05,
+        "readiness_score": 80.0,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'how to default software output plus custom excel', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 148.99,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 67.05,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 67.05,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 89.4,
+              "sessions_est": 82.25,
+              "mql_est": 7.11,
+              "sql_est": 2.49
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 52.15,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 52.15,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 8.99,
+              "sessions_est": 8.27,
+              "mql_est": 0.66,
+              "sql_est": 0.23
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 29.79,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 29.79,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 23.83,
+              "sessions_est": 21.93,
+              "mql_est": 1.68,
+              "sql_est": 0.59
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 122.22,
+          "mql_est": 9.45,
+          "sql_est": 3.31
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-opportunity-opp-004-03.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
+        "name": "Stage3 launch for cnt_exp-opportunity-opp-004-06",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-opportunity-opp-004-06",
+        "experiment_id": "exp_opportunity-opp-004_06",
+        "context_id": "opportunity::opp_004",
+        "primary_keyword": "owner tenant workflows vs manual",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Owner Tenant Workflows Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach operators with 20-150 doors and reporting pain",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-06.md",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "priority_score": 94.05,
+        "readiness_score": 80.0,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'owner tenant workflows vs manual', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 148.99,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 67.05,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 67.05,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 89.4,
+              "sessions_est": 82.25,
+              "mql_est": 7.11,
+              "sql_est": 2.49
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 52.15,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 52.15,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 8.99,
+              "sessions_est": 8.27,
+              "mql_est": 0.66,
+              "sql_est": 0.23
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 29.79,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 29.79,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 23.83,
+              "sessions_est": 21.93,
+              "mql_est": 1.68,
+              "sql_est": 0.59
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 122.22,
+          "mql_est": 9.45,
+          "sql_est": 3.31
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-opportunity-opp-004-06.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+        "name": "Stage3 launch for cnt_exp-opportunity-opp-005-04",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-opportunity-opp-005-04",
+        "experiment_id": "exp_opportunity-opp-005_04",
+        "context_id": "opportunity::opp_005",
+        "primary_keyword": "expense reimbursement remains vs manual",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Expense Reimbursement Remains Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Interview SMBs with recurring reimbursement delays",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-005-04.md",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "priority_score": 94.05,
+        "readiness_score": 80.0,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'expense reimbursement remains vs manual', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 148.99,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 67.05,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 67.05,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 89.4,
+              "sessions_est": 82.25,
+              "mql_est": 7.11,
+              "sql_est": 2.49
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 52.15,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 52.15,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 8.99,
+              "sessions_est": 8.27,
+              "mql_est": 0.66,
+              "sql_est": 0.23
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 29.79,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 29.79,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 23.83,
+              "sessions_est": 21.93,
+              "mql_est": 1.68,
+              "sql_est": 0.59
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 122.22,
+          "mql_est": 9.45,
+          "sql_est": 3.31
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-opportunity-opp-005-04.md"
+      },
+      {
+        "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+        "name": "Stage3 launch for cnt_exp-opportunity-opp-006-04",
+        "generated_at": "2026-03-04T16:30:49Z",
+        "mode": "shadow",
+        "auto_launch": false,
+        "content_id": "cnt_exp-opportunity-opp-006-04",
+        "experiment_id": "exp_opportunity-opp-006_04",
+        "context_id": "opportunity::opp_006",
+        "primary_keyword": "core workflows depend vs manual",
+        "intent": "BOFU",
+        "objective": "qualified_pipeline_capture",
+        "title": "Core Workflows Depend Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-006-04.md",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "priority_score": 94.05,
+        "readiness_score": 80.0,
+        "queue_state": "launch_ready",
+        "risk_flags": [],
+        "primary_channel": "email_nurture",
+        "channel_mix": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2
+          }
+        ],
+        "duration_days": 7,
+        "hypothesis": "For high-intent operators searching 'core workflows depend vs manual', a proof-led email_nurture narrative will lift qualified lead rate.",
+        "experiment": {
+          "primary_metric": "qualified_lead_rate",
+          "guardrail_metrics": [
+            "cost_per_sql",
+            "mql_to_sql_rate",
+            "bounce_rate"
+          ],
+          "variants": [
+            {
+              "variant_id": "control",
+              "label": "evidence_first",
+              "variable": "subject_line",
+              "expected_effect": "baseline"
+            },
+            {
+              "variant_id": "challenger",
+              "label": "outcome_first",
+              "variable": "subject_line",
+              "expected_effect": "+10% qualified_lead_rate"
+            }
+          ]
+        },
+        "budget_total": 148.99,
+        "channels": [
+          {
+            "channel": "email_nurture",
+            "allocation_pct": 0.45,
+            "budget": 67.05,
+            "utm_source": "email_nurture",
+            "utm_medium": "email",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 67.05,
+              "cpc_assumption": 0.75,
+              "ctr_assumption": 0.027,
+              "clicks_est": 89.4,
+              "sessions_est": 82.25,
+              "mql_est": 7.11,
+              "sql_est": 2.49
+            }
+          },
+          {
+            "channel": "linkedin",
+            "allocation_pct": 0.35,
+            "budget": 52.15,
+            "utm_source": "linkedin",
+            "utm_medium": "paid_social",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 52.15,
+              "cpc_assumption": 5.8,
+              "ctr_assumption": 0.012,
+              "clicks_est": 8.99,
+              "sessions_est": 8.27,
+              "mql_est": 0.66,
+              "sql_est": 0.23
+            }
+          },
+          {
+            "channel": "organic_search",
+            "allocation_pct": 0.2,
+            "budget": 29.79,
+            "utm_source": "organic_search",
+            "utm_medium": "organic",
+            "variants": [
+              "control",
+              "challenger"
+            ],
+            "metrics": {
+              "budget": 29.79,
+              "cpc_assumption": 1.25,
+              "ctr_assumption": 0.038,
+              "clicks_est": 23.83,
+              "sessions_est": 21.93,
+              "mql_est": 1.68,
+              "sql_est": 0.59
+            }
+          }
+        ],
+        "forecast": {
+          "clicks_est": 122.22,
+          "mql_est": 9.45,
+          "sql_est": 3.31
+        },
+        "packet_path": "research/stage3_campaign_launch/packets/stage3-cnt-exp-opportunity-opp-006-04.md"
+      }
+    ],
+    "watchlist": [],
+    "hold": []
+  },
+  "counts": {
+    "launch_ready": 8,
+    "watchlist": 0,
+    "hold": 0
+  }
+}

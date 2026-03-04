@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-04T15:37:59Z",
+  "generated_at": "2026-03-04T16:30:49Z",
   "campaigns": [
     {
       "campaign_id": "stage2-shadow-20260304153759",
@@ -10,6 +10,288 @@
       "assets_approved": 11,
       "assets_review_ready": 0,
       "generated_at": "2026-03-04T15:37:59Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 151.88,
+      "forecast_sql": 3.38,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 151.66,
+      "forecast_sql": 3.37,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 151.51,
+      "forecast_sql": 3.37,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
+      "name": "Stage3 launch for cnt_exp-opportunity-opp-001-04",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 148.99,
+      "forecast_sql": 3.31,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+      "name": "Stage3 launch for cnt_exp-opportunity-opp-004-03",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 148.99,
+      "forecast_sql": 3.31,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
+      "name": "Stage3 launch for cnt_exp-opportunity-opp-004-06",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 148.99,
+      "forecast_sql": 3.31,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+      "name": "Stage3 launch for cnt_exp-opportunity-opp-005-04",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 148.99,
+      "forecast_sql": 3.31,
+      "generated_at": "2026-03-04T16:30:49Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+      "name": "Stage3 launch for cnt_exp-opportunity-opp-006-04",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 148.99,
+      "forecast_sql": 3.31,
+      "generated_at": "2026-03-04T16:30:49Z"
+    }
+  ],
+  "campaign_assets": [
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 68.35,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 53.16,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 30.37,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 68.25,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 53.08,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 30.33,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 68.18,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 53.03,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 30.3,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
+      "content_id": "cnt_exp-opportunity-opp-001-04",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 67.05,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
+      "content_id": "cnt_exp-opportunity-opp-001-04",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 52.15,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
+      "content_id": "cnt_exp-opportunity-opp-001-04",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 29.79,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 67.05,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 52.15,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 29.79,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
+      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 67.05,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
+      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 52.15,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
+      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 29.79,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 67.05,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 52.15,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 29.79,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+      "content_id": "cnt_exp-opportunity-opp-006-04",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 67.05,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+      "content_id": "cnt_exp-opportunity-opp-006-04",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 52.15,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+      "content_id": "cnt_exp-opportunity-opp-006-04",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 29.79,
+      "utm_medium": "organic"
     }
   ],
   "content_assets": [
@@ -210,12 +492,27 @@
   ],
   "lead_signals": {
     "top_channels": [
-      "organic_search",
       "linkedin",
-      "email_nurture"
+      "email_nurture",
+      "organic_search"
     ],
-    "estimated_weekly_leads": 22,
-    "note": "Shadow estimate from manually approved assets only; requires live distribution and attribution calibration."
+    "estimated_weekly_leads": 27,
+    "estimated_weekly_mql": 76,
+    "note": "Stage3 shadow launch forecast from approved Stage2 assets; auto-launch disabled."
+  },
+  "campaign_launch": {
+    "stage": "stage3_campaign_launch_shadow",
+    "auto_launch": false,
+    "queue_counts": {
+      "launch_ready": 8,
+      "watchlist": 0,
+      "hold": 0
+    },
+    "next_actions": [
+      "Prioritize launch_ready queue for ops handoff",
+      "Rework watchlist and hold assets",
+      "Track experiment outcomes and feed learnings back to Stage1/2"
+    ]
   },
   "offer_context": {
     "pricing": "",

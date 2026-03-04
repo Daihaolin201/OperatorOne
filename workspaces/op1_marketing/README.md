@@ -44,3 +44,26 @@ Apply manual review decisions:
 Inputs are read from Stage1 outputs.
 Outputs are written to `research/stage2_content_publish/`.
 Sales handoff is updated at `../../handoffs/marketing_to_sales.json`.
+
+## Stage 3 status
+Stage 3 (Launch campaigns) is implemented for shadow/review orchestration.
+Auto launch is intentionally disabled.
+
+Run once:
+```bash
+./scripts/run_marketing_campaign_stage3.sh
+```
+
+Run continuously:
+```bash
+./scripts/run_marketing_campaign_stage3.sh --continuous --interval 300
+```
+
+Verify output contract:
+```bash
+python3 ./scripts/verify_marketing_campaign_stage3.py
+```
+
+Inputs are read from Stage2 outputs and handoffs.
+Outputs are written to `research/stage3_campaign_launch/`.
+Sales handoff is updated at `../../handoffs/marketing_to_sales.json`.

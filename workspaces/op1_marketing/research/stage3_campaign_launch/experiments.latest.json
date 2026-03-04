@@ -1,0 +1,291 @@
+{
+  "generated_at": "2026-03-04T16:30:49Z",
+  "status": "ok",
+  "mode": "shadow",
+  "experiments": [
+    {
+      "experiment_id": "exp-stage3-cnt-exp-opportunity-opp-001-04",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
+      "content_id": "cnt_exp-opportunity-opp-001-04",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-opportunity-opp-004-03",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-opportunity-opp-004-06",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
+      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-opportunity-opp-005-04",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-opportunity-opp-006-04",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+      "content_id": "cnt_exp-opportunity-opp-006-04",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    },
+    {
+      "experiment_id": "exp-stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+      "queue_state": "launch_ready",
+      "primary_metric": "qualified_lead_rate",
+      "guardrail_metrics": [
+        "cost_per_sql",
+        "mql_to_sql_rate",
+        "bounce_rate"
+      ],
+      "variants": [
+        {
+          "variant_id": "control",
+          "label": "evidence_first",
+          "variable": "subject_line",
+          "expected_effect": "baseline"
+        },
+        {
+          "variant_id": "challenger",
+          "label": "outcome_first",
+          "variable": "subject_line",
+          "expected_effect": "+10% qualified_lead_rate"
+        }
+      ],
+      "runbook": {
+        "minimum_runtime_days": 7,
+        "analysis_window_days": 7,
+        "decision_rules": {
+          "promote": "challenger beats control by >=10% on primary metric with stable guardrails",
+          "hold": "results inconclusive or guardrail regression >15%",
+          "pause": "primary metric regression >20% for 3 consecutive days"
+        }
+      }
+    }
+  ],
+  "summary": {
+    "total": 8,
+    "launch_ready": 8
+  }
+}

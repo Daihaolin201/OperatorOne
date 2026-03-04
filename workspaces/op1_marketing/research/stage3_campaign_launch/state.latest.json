@@ -1,0 +1,23 @@
+{
+  "loop_state": "idle_no_change",
+  "mode": "shadow",
+  "auto_launch": false,
+  "last_run_status": "no_change",
+  "input_completeness": {
+    "required": 5,
+    "available": 5,
+    "missing": [],
+    "ratio": 1.0
+  },
+  "snapshot_id": "stage3snap_20260304163056_1a34565a68b0489e",
+  "delta_counts": {
+    "added": 0,
+    "changed": 0,
+    "removed": 0
+  },
+  "last_incremental_run_at": "2026-03-04T16:30:56Z",
+  "campaigns_total": 8,
+  "launch_ready": 8,
+  "watchlist": 0,
+  "hold": 0
+}
