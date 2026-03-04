@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-04T12:51:23Z",
-  "run_id": "20260304T125123Z",
+  "generated_at": "2026-03-04T13:22:43Z",
+  "run_id": "20260304T132243Z",
   "capability": "marketing_seo_stage1_continuous_shadow_v1",
-  "status": "passed",
+  "status": "no_change",
   "mode": "shadow",
   "continuous": true,
   "publish": false,
   "index": false,
   "run_scope": "incremental",
   "input_sync": {
-    "snapshot_id": "snap_20260304125123_3317e2a46c4a9dc9",
+    "snapshot_id": "snap_20260304132243_3317e2a46c4a9dc9",
     "completeness": {
       "required": 13,
       "present": 13,
@@ -170,24 +170,5 @@
       }
     ]
   },
-  "outputs": {
-    "context_index": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/context_index.latest.json",
-    "keyword_graph": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/keyword_graph.latest.csv",
-    "backlog": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/experiments.backlog.latest.json",
-    "queue": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/experiments.queue.latest.json",
-    "scoreboard": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/scoreboard.latest.json",
-    "decision_log": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/decision_log.latest.md",
-    "briefs_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_marketing_seo/briefs"
-  },
-  "stats": {
-    "context_count": 11,
-    "keyword_count": 165,
-    "experiment_count": 66,
-    "brief_count": 12,
-    "queue_counts": {
-      "ready": 49,
-      "hold": 17,
-      "drop": 0
-    }
-  }
+  "note": "Input snapshot unchanged; recompute skipped."
 }
