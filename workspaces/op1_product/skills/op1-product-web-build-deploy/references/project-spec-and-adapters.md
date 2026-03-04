@@ -46,8 +46,8 @@ Each adapter includes:
 - Then resolve page layout profile by explicit `page_profile` or adapter/profile fallback rules.
 
 ## Landing package contract integration (Mode C)
-- Upstream contract: `framework/contracts/create_landing_pages.v1.json`
-- Output schema: `framework/contracts/create_landing_package.v1.schema.json`
+- Upstream contract: `framework/contracts/create_landing_pages.v1.1.json`
+- Output schema: `framework/contracts/create_landing_package.v1.1.schema.json`
 - Landing package output includes:
   - positioning/message hierarchy
   - section plan + CTA plan

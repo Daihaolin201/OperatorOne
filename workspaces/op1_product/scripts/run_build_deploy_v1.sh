@@ -27,6 +27,7 @@ Usage:
 
 Options:
   --project-spec <path>      Path to project spec JSON (preferred)
+  --page-spec <path>         Use an existing compiled page spec (skip compile step)
   --legacy-blueprint <path>  Use stage3 blueprint input (legacy mode)
   --opp-id <opportunity_id>  Opportunity id to build spec from (when autogen)
   --adapter <adapter_id>     Force adapter id when autogenerating spec
@@ -44,6 +45,10 @@ while [[ $# -gt 0 ]]; do
   case "$1" in
     --project-spec)
       PROJECT_SPEC_PATH="$2"
+      shift 2
+      ;;
+    --page-spec)
+      PAGE_SPEC_PATH="$2"
       shift 2
       ;;
     --legacy-blueprint)
@@ -98,7 +103,10 @@ mkdir -p "$ARTIFACT_DIR"
 RUN_ID="$(date -u +"%Y%m%dT%H%M%SZ")"
 SCAFFOLD_SUMMARY="$ARTIFACT_DIR/scaffold_${RUN_ID}.json"
 PAGE_SPEC_COMPILE_REPORT="$ARTIFACT_DIR/page_spec_compile_${RUN_ID}.jsonl"
-PAGE_SPEC_PATH="$ARTIFACT_DIR/page_spec_${RUN_ID}.json"
+DEFAULT_PAGE_SPEC_PATH="$ARTIFACT_DIR/page_spec_${RUN_ID}.json"
+if [[ -z "$PAGE_SPEC_PATH" ]]; then
+  PAGE_SPEC_PATH="$DEFAULT_PAGE_SPEC_PATH"
+fi
 SMOKE_REPORT="$ARTIFACT_DIR/smoke_${RUN_ID}.json"
 PAGE_STRATEGY_REPORT="$ARTIFACT_DIR/page_strategy_${RUN_ID}.json"
 BUSINESS_REPORT="$ARTIFACT_DIR/business_${RUN_ID}.json"
@@ -171,6 +179,13 @@ print(pathlib.Path(sys.argv[1]).resolve())
 PY
 )"
 
+PAGE_SPEC_PATH="$(python3 - "$PAGE_SPEC_PATH" <<'PY'
+import pathlib
+import sys
+print(pathlib.Path(sys.argv[1]).resolve())
+PY
+)"
+
 CURRENT_STEP="project_spec"
 append_event "$CURRENT_STEP" "in_progress" "Resolving project spec"
 
@@ -207,21 +222,31 @@ fi
 
 if [[ -z "$LEGACY_BLUEPRINT_PATH" ]]; then
   CURRENT_STEP="page_spec"
-  append_event "$CURRENT_STEP" "in_progress" "Compiling modular page spec"
 
-  PAGE_SPEC_CMD=(
-    python3 "$ROOT_DIR/scripts/compile_page_spec.py"
-    --project-spec "$PROJECT_SPEC_PATH"
-    --out "$PAGE_SPEC_PATH"
-    --force
-  )
+  if [[ "$PAGE_SPEC_PATH" != "$DEFAULT_PAGE_SPEC_PATH" ]]; then
+    append_event "$CURRENT_STEP" "in_progress" "Using provided page spec"
+    if [[ ! -f "$PAGE_SPEC_PATH" ]]; then
+      echo "Provided page spec not found: $PAGE_SPEC_PATH" >&2
+      exit 5
+    fi
+    append_event "$CURRENT_STEP" "done" "Using provided page spec at $PAGE_SPEC_PATH"
+  else
+    append_event "$CURRENT_STEP" "in_progress" "Compiling modular page spec"
 
-  if [[ -n "$PAGE_PROFILE" ]]; then
-    PAGE_SPEC_CMD+=(--profile "$PAGE_PROFILE")
+    PAGE_SPEC_CMD=(
+      python3 "$ROOT_DIR/scripts/compile_page_spec.py"
+      --project-spec "$PROJECT_SPEC_PATH"
+      --out "$PAGE_SPEC_PATH"
+      --force
+    )
+
+    if [[ -n "$PAGE_PROFILE" ]]; then
+      PAGE_SPEC_CMD+=(--profile "$PAGE_PROFILE")
+    fi
+
+    "${PAGE_SPEC_CMD[@]}" >"$PAGE_SPEC_COMPILE_REPORT"
+    append_event "$CURRENT_STEP" "done" "Page spec compiled at $PAGE_SPEC_PATH"
   fi
-
-  "${PAGE_SPEC_CMD[@]}" >"$PAGE_SPEC_COMPILE_REPORT"
-  append_event "$CURRENT_STEP" "done" "Page spec compiled at $PAGE_SPEC_PATH"
 fi
 
 CURRENT_STEP="scaffold"
@@ -282,7 +307,7 @@ append_event "$CURRENT_STEP" "done" "Deployment health gate passed"
 
 CURRENT_STEP="smoke_test"
 append_event "$CURRENT_STEP" "in_progress" "Running smoke tests"
-python3 "$ROOT_DIR/scripts/smoke_test_web_product.py" --base-url "$DEPLOY_URL" --out "$SMOKE_REPORT"
+python3 "$ROOT_DIR/scripts/smoke_test_web_product.py" --base-url "$DEPLOY_URL" --out "$SMOKE_REPORT" --page-spec "$PAGE_SPEC_PATH"
 cp "$SMOKE_REPORT" "$ARTIFACT_DIR/smoke_test.latest.json"
 append_event "$CURRENT_STEP" "done" "Smoke tests passed"
 

@@ -85,6 +85,20 @@ def main() -> int:
     if not isinstance(security_headers, list):
         security_headers = []
 
+    page_mode = str(page_spec.get("testing", {}).get("page_mode") or page_spec.get("meta", {}).get("page_mode") or "web_product")
+    required_modules = page_spec.get("testing", {}).get("required_modules", [])
+    if not isinstance(required_modules, list):
+        required_modules = []
+    forbidden_modules = page_spec.get("testing", {}).get("forbidden_modules", [])
+    if not isinstance(forbidden_modules, list):
+        forbidden_modules = []
+    lp_section_whitelist = page_spec.get("testing", {}).get("lp_section_whitelist", [])
+    if not isinstance(lp_section_whitelist, list):
+        lp_section_whitelist = []
+    forbidden_terms = page_spec.get("testing", {}).get("forbidden_terms", [])
+    if not isinstance(forbidden_terms, list):
+        forbidden_terms = []
+
     base_url = args.base_url.rstrip("/")
 
     def fetch_homepage():
@@ -151,7 +165,32 @@ def main() -> int:
                 }
             )
 
-    # check 3: primary cta uniqueness
+    # check 3: landing module constraints
+    if failed is None and page_mode == "landing":
+        missing_required = [m for m in required_modules if m not in module_matches]
+        present_forbidden = [m for m in forbidden_modules if m in module_matches]
+        unknown_modules = [m for m in module_matches if lp_section_whitelist and m not in lp_section_whitelist]
+
+        if missing_required or present_forbidden or unknown_modules:
+            failed = {
+                "name": "landing_module_constraints",
+                "status": "fail",
+                "missing_required": missing_required,
+                "present_forbidden": present_forbidden,
+                "outside_whitelist": unknown_modules,
+            }
+            checks.append(failed)
+        else:
+            checks.append(
+                {
+                    "name": "landing_module_constraints",
+                    "status": "pass",
+                    "required_modules": required_modules,
+                    "forbidden_modules": forbidden_modules,
+                }
+            )
+
+    # check 4: primary cta uniqueness
     if failed is None:
         if primary_cta_count <= 0 or primary_cta_count > max_primary_cta:
             failed = {
@@ -171,7 +210,7 @@ def main() -> int:
                 }
             )
 
-    # check 4: legacy badge removed
+    # check 5: legacy badge removed
     if failed is None:
         banned = "Build & Deploy v1.1"
         if banned in html_body:
@@ -189,7 +228,31 @@ def main() -> int:
                 }
             )
 
-    # check 5: viewport meta baseline
+    # check 6: landing semantics
+    if failed is None and page_mode == "landing":
+        mode_marker_ok = 'data-page-mode="landing"' in html_body
+        forbidden_hits = [t for t in forbidden_terms if isinstance(t, str) and t and t.lower() in html_body.lower()]
+        workflow_form_present = 'id="workflow-form"' in html_body
+
+        if (not mode_marker_ok) or forbidden_hits or workflow_form_present:
+            failed = {
+                "name": "landing_semantics",
+                "status": "fail",
+                "mode_marker_ok": mode_marker_ok,
+                "forbidden_terms_found": forbidden_hits,
+                "workflow_form_present": workflow_form_present,
+            }
+            checks.append(failed)
+        else:
+            checks.append(
+                {
+                    "name": "landing_semantics",
+                    "status": "pass",
+                    "mode_marker_ok": mode_marker_ok,
+                }
+            )
+
+    # check 7: viewport meta baseline
     if failed is None and require_viewport_meta:
         viewport_ok = (
             '<meta name="viewport"' in html_body
@@ -210,7 +273,7 @@ def main() -> int:
                 }
             )
 
-    # check 6: responsive css markers
+    # check 8: responsive css markers
     if failed is None and responsive_markers:
         missing_markers = [m for m in responsive_markers if isinstance(m, str) and m not in css_body]
         if missing_markers:
@@ -230,7 +293,7 @@ def main() -> int:
                 }
             )
 
-    # check 7: multi-device profile declarations
+    # check 9: multi-device profile declarations
     if failed is None and device_profiles:
         profile_ids = {
             p.get("id")
@@ -255,7 +318,7 @@ def main() -> int:
                 }
             )
 
-    # check 8: security headers baseline
+    # check 10: security headers baseline
     if failed is None and security_headers:
         missing_headers: List[Dict[str, str]] = []
         for item in security_headers:
@@ -299,8 +362,9 @@ def main() -> int:
         "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "base_url": base_url,
         "project_id": page_spec.get("project_id"),
-        "adapter_name": page_spec.get("adapter_name"),
+        "adapter_name": page_spec.get("adapter_name") or page_spec.get("meta", {}).get("adapter_name"),
         "layout_profile": page_spec.get("layout_profile"),
+        "page_mode": page_mode,
         "status": "passed" if failed is None else "failed",
         "checks": checks,
     }

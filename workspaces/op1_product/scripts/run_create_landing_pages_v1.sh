@@ -29,7 +29,7 @@ Options:
   --handoff-out <path>    Handoff path, relative to workspace (default: ../../handoffs/product_to_marketing.json)
   --opp-id <id>           Force opportunity id
   --adapter <id>          Force adapter when generating project spec
-  --page-profile <id>     Force page profile during page spec compile
+  --page-profile <id>     Force landing profile during page spec compile
   --with-deploy           Run build/deploy pipeline after landing package passes contract test
   --no-force              Keep existing out-dir (do not wipe)
   --help                  Show this help
@@ -98,7 +98,10 @@ RUN_ID="$(date -u +"%Y%m%dT%H%M%SZ")"
 RUN_REPORT="$ROOT_DIR/research/create_landing_pages_v1_run.json"
 CONTRACT_TEST_OUT="$OUT_DIR/landing_contract_test_${RUN_ID}.json"
 CONTRACT_TEST_LATEST="$OUT_DIR/landing_contract_test.latest.json"
+SEMANTIC_TEST_OUT="$OUT_DIR/landing_semantic_test_${RUN_ID}.json"
+SEMANTIC_TEST_LATEST="$OUT_DIR/landing_semantic_test.latest.json"
 LANDING_PACKAGE_PATH="$OUT_DIR/landing_package.json"
+PAGE_SPEC_PATH="$OUT_DIR/build_inputs/page_spec.json"
 
 if [[ "$FORCE" == "yes" ]]; then
   FORCE_FLAG="--force"
@@ -140,6 +143,12 @@ python3 "$ROOT_DIR/scripts/landing_contract_test.py" \
   --out "$CONTRACT_TEST_OUT"
 cp "$CONTRACT_TEST_OUT" "$CONTRACT_TEST_LATEST"
 
+python3 "$ROOT_DIR/scripts/landing_semantic_test.py" \
+  --landing-package "$LANDING_PACKAGE_PATH" \
+  --page-spec "$PAGE_SPEC_PATH" \
+  --out "$SEMANTIC_TEST_OUT"
+cp "$SEMANTIC_TEST_OUT" "$SEMANTIC_TEST_LATEST"
+
 STATUS="$(python3 - "$LANDING_PACKAGE_PATH" <<'PY'
 import json, pathlib, sys
 p = pathlib.Path(sys.argv[1])
@@ -158,6 +167,7 @@ if [[ "$WITH_DEPLOY" == "yes" && "$STATUS" != "blocked" ]]; then
   DEPLOY_CMD=(
     "$ROOT_DIR/scripts/run_build_deploy_v1.sh"
     --project-spec "$PROJECT_SPEC_OUT"
+    --page-spec "$PAGE_SPEC_PATH"
     --artifact-dir "$DEPLOY_ARTIFACT_DIR"
     --app-dir "$ROOT_DIR/runtime/web_product_landing_v1"
   )
@@ -170,7 +180,7 @@ if [[ "$WITH_DEPLOY" == "yes" && "$STATUS" != "blocked" ]]; then
   DEPLOY_STATUS="completed"
 fi
 
-python3 - "$RUN_REPORT" "$RUN_ID" "$LANDING_PACKAGE_PATH" "$CONTRACT_TEST_OUT" "$STATUS" "$WITH_DEPLOY" "$DEPLOY_STATUS" "$DEPLOY_URL" <<'PY'
+python3 - "$RUN_REPORT" "$RUN_ID" "$LANDING_PACKAGE_PATH" "$CONTRACT_TEST_OUT" "$SEMANTIC_TEST_OUT" "$STATUS" "$WITH_DEPLOY" "$DEPLOY_STATUS" "$DEPLOY_URL" <<'PY'
 import datetime as dt
 import json
 import pathlib
@@ -180,30 +190,36 @@ run_report = pathlib.Path(sys.argv[1])
 run_id = sys.argv[2]
 landing_path = pathlib.Path(sys.argv[3]).resolve()
 contract_path = pathlib.Path(sys.argv[4]).resolve()
-status = sys.argv[5]
-with_deploy = sys.argv[6]
-deploy_status = sys.argv[7]
-deploy_url = sys.argv[8]
+semantic_path = pathlib.Path(sys.argv[5]).resolve()
+status = sys.argv[6]
+with_deploy = sys.argv[7]
+deploy_status = sys.argv[8]
+deploy_url = sys.argv[9]
 
 landing = json.loads(landing_path.read_text(encoding='utf-8'))
 contract = json.loads(contract_path.read_text(encoding='utf-8'))
+semantic = json.loads(semantic_path.read_text(encoding='utf-8'))
 
 payload = {
     "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
     "run_id": run_id,
     "capability": "create_landing_pages_v1",
+    "contract_version": "1.1",
     "mode": "mode_c_only",
+    "page_mode": "landing",
     "status": status,
     "selected_opportunity": landing.get("selected_opportunity", {}).get("opportunity_id"),
     "artifacts": {
         "landing_package": str(landing_path),
         "landing_contract_test": str(contract_path),
+        "landing_semantic_test": str(semantic_path),
         "project_spec": landing.get("build_inputs", {}).get("project_spec_path"),
         "page_spec": landing.get("build_inputs", {}).get("page_spec_path"),
         "marketing_handoff": landing.get("marketing_handoff_path"),
     },
     "checks": {
         "contract_test_status": contract.get("status"),
+        "semantic_test_status": semantic.get("status"),
         "quality_gate_failures": [
             g for g in landing.get("quality_gates", [])
             if isinstance(g, dict) and g.get("status") == "fail"

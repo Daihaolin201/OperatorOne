@@ -52,6 +52,22 @@ STOPWORDS = {
     "just",
 }
 
+LP_MODULE_WHITELIST = {
+    "hero_problem",
+    "problem_agitation",
+    "benefit_bullets",
+    "proof_points",
+    "social_proof_strip",
+    "faq_list",
+    "cta_waitlist",
+}
+
+LP_FORBIDDEN_MODULES = {
+    "workflow_interactive",
+    "metric_snapshot",
+    "evidence_checklist",
+}
+
 
 def read_json(path: pathlib.Path) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
@@ -245,8 +261,8 @@ def resolve_scope(
         "source": "synthesized",
         "in_scope": [
             "Single conversion-focused landing page with one primary CTA",
-            "One focused workflow preview tied to the selected opportunity problem",
-            "Evidence-backed hero/proof/FAQ messaging",
+            "Problem/benefit/proof/FAQ sections aligned to selected opportunity",
+            "Evidence-backed messaging with explicit claim traceability",
             "Pilot lead capture for early access validation",
         ],
         "out_of_scope": list(dict.fromkeys(out_scope)),
@@ -321,7 +337,7 @@ def run_compile_page_spec(
 ) -> Dict[str, Any]:
     cmd = [
         "python3",
-        str(root / "scripts/compile_page_spec.py"),
+        str(root / "scripts/compile_landing_page_spec.py"),
         "--project-spec",
         str(project_spec_path),
         "--out",
@@ -481,9 +497,18 @@ def build_section_plan(page_spec: Dict[str, Any], traceability_map: List[Dict[st
         if module_id == "hero_problem":
             refs = claim_refs.get("claim_headline", []) + claim_refs.get("claim_problem", [])
             goal = "Explain who this is for, the problem, and why act now."
+        elif module_id == "problem_agitation":
+            refs = claim_refs.get("claim_problem", [])
+            goal = "Frame pain severity and cost of inaction."
+        elif module_id == "benefit_bullets":
+            refs = claim_refs.get("claim_value", []) + claim_refs.get("claim_proof_01", [])
+            goal = "Translate value proposition into concrete outcomes."
         elif module_id == "proof_points":
             refs = claim_refs.get("claim_proof_01", []) + claim_refs.get("claim_proof_02", [])
             goal = "Increase credibility with evidence-backed proof points."
+        elif module_id == "social_proof_strip":
+            refs = claim_refs.get("claim_proof_01", [])
+            goal = "Add short trust signals before conversion ask."
         elif module_id == "cta_waitlist":
             refs = claim_refs.get("claim_value", [])
             goal = "Capture qualified intent with a single primary CTA."
@@ -620,6 +645,15 @@ def quality_gates(
     modules = page_spec.get("modules") if isinstance(page_spec.get("modules"), list) else []
     module_ids = [ensure_text((m or {}).get("module_id")) for m in modules if isinstance(m, dict)]
 
+    mode = ensure_text(testing.get("page_mode"), ensure_text((page_spec.get("meta") or {}).get("page_mode"), "web_product"))
+    gates.append(
+        {
+            "name": "landing_mode_enabled",
+            "status": "pass" if mode == "landing" else "fail",
+            "detail": f"page_mode={mode}",
+        }
+    )
+
     cta_ok = (
         int(testing.get("max_primary_cta_buttons", 0)) == 1
         and ensure_text(testing.get("primary_cta_module")) in module_ids
@@ -629,6 +663,19 @@ def quality_gates(
             "name": "single_primary_cta",
             "status": "pass" if cta_ok else "fail",
             "detail": "Primary CTA constraints from page_spec.testing",
+        }
+    )
+
+    whitelist_ok = all(mid in LP_MODULE_WHITELIST for mid in module_ids if mid)
+    forbidden_hits = [mid for mid in module_ids if mid in LP_FORBIDDEN_MODULES]
+    required_min = {"hero_problem", "proof_points", "faq_list", "cta_waitlist"}
+    required_missing = sorted(required_min - set(module_ids))
+    structure_ok = whitelist_ok and not forbidden_hits and not required_missing
+    gates.append(
+        {
+            "name": "landing_module_whitelist_and_structure",
+            "status": "pass" if structure_ok else "fail",
+            "detail": f"missing_required={required_missing}; forbidden={forbidden_hits}",
         }
     )
 
@@ -679,6 +726,17 @@ def quality_gates(
             "name": "scannable_copy_and_clear_hierarchy",
             "status": "pass" if scan_ok else "fail",
             "detail": f"headline_words={headline_words}; section_count={section_count}",
+        }
+    )
+
+    forbidden_terms = ["reusable web-product builder", "try the workflow assistant"]
+    text_blob_landing = flatten_landing_text(landing_package)
+    bad_terms = [t for t in forbidden_terms if t in text_blob_landing]
+    gates.append(
+        {
+            "name": "no_demo_first_positioning",
+            "status": "pass" if not bad_terms else "fail",
+            "detail": "ok" if not bad_terms else f"found={bad_terms}",
         }
     )
 
@@ -771,8 +829,8 @@ def update_marketing_handoff(
             "out_of_scope": ensure_list_of_text(scope.get("out_of_scope")),
         },
         "notes": (
-            "Generated by create_landing_pages_v1 (Mode C only). "
-            "Claims are evidence-traceable and scope-gated before handoff."
+            "Generated by create_landing_pages_v1 (Mode C only, landing page mode). "
+            "Claims are evidence-traceable, scope-gated, and filtered to non-demo landing semantics before handoff."
         ),
     }
 
@@ -809,7 +867,7 @@ def parse_args() -> argparse.Namespace:
     )
     parser.add_argument("--opp-id", required=False, help="Force opportunity id")
     parser.add_argument("--adapter", required=False, help="Force adapter id when generating project spec")
-    parser.add_argument("--page-profile", required=False, help="Force page profile during page-spec compile")
+    parser.add_argument("--page-profile", required=False, help="Force landing profile id during page-spec compile")
     parser.add_argument(
         "--handoff-out",
         default="../../handoffs/product_to_marketing.json",
@@ -923,7 +981,7 @@ def main() -> int:
             "headline_variants": [
                 hierarchy.get("hero_headline"),
                 f"{ensure_text(segment.get('role'), 'Operators')}: {ensure_text(project_spec.get('problem_statement'))[:90]}",
-                f"Ship one focused workflow for {ensure_text(segment.get('industry'), 'your team')} in 14 days",
+                f"Launch one focused conversion narrative for {ensure_text(segment.get('industry'), 'your team')} in 14 days",
             ],
             "cta_variants": [
                 ensure_text(offer.get("cta_label"), "Join pilot"),
@@ -950,8 +1008,10 @@ def main() -> int:
 
     report = {
         "capability": "create_landing_pages_v1",
+        "contract_version": "1.1",
         "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "mode": "mode_c_only",
+        "page_mode": "landing",
         "status": status,
         "selected_opportunity": selected,
         "preflight": {
@@ -975,6 +1035,7 @@ def main() -> int:
             "project_spec_path": str(project_spec_path),
             "project_spec_mode": project_spec_mode,
             "page_spec_path": str(page_spec_path),
+            "page_spec_mode": "landing",
         },
         "quality_gates": gates,
         "marketing_handoff_path": str(handoff_path),

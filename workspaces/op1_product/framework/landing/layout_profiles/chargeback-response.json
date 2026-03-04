@@ -1,0 +1,16 @@
+{
+  "profile_id": "landing-chargeback-response",
+  "display_name": "Chargeback Conversion Landing",
+  "match_adapters": [
+    "chargeback-response"
+  ],
+  "module_order": [
+    "hero_problem",
+    "problem_agitation",
+    "benefit_bullets",
+    "proof_points",
+    "social_proof_strip",
+    "faq_list",
+    "cta_waitlist"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "profile_id": "landing-default",
+  "display_name": "Landing Conversion Core",
+  "match_adapters": [],
+  "module_order": [
+    "hero_problem",
+    "problem_agitation",
+    "benefit_bullets",
+    "proof_points",
+    "faq_list",
+    "cta_waitlist"
+  ]
+}

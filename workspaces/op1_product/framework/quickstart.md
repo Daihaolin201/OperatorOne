@@ -18,6 +18,7 @@ This generates:
 Outputs:
 - `research/landing_v1/landing_package.json`
 - `research/landing_v1/landing_contract_test.latest.json`
+- `research/landing_v1/landing_semantic_test.latest.json`
 - `research/landing_v1/build_inputs/project_spec.json`
 - `research/landing_v1/build_inputs/page_spec.json`
 - `../../handoffs/product_to_marketing.json`
@@ -25,13 +26,14 @@ Outputs:
 Optional controls:
 ```bash
 ./scripts/run_create_landing_pages_v1.sh --opp-id opp_001 --adapter invoice-followup
-./scripts/run_create_landing_pages_v1.sh --page-profile chargeback-response
+./scripts/run_create_landing_pages_v1.sh --page-profile landing-chargeback-response
 ```
 
 ## 3) Build & deploy from landing build inputs
 ```bash
 ./scripts/run_build_deploy_v1.sh \
-  --project-spec research/landing_v1/build_inputs/project_spec.json
+  --project-spec research/landing_v1/build_inputs/project_spec.json \
+  --page-spec research/landing_v1/build_inputs/page_spec.json
 ```
 
 Outputs:
@@ -47,7 +49,9 @@ Outputs:
 ```
 
 ## 5) Quality expectations
+- page_mode is landing (not web-product mode)
 - one primary CTA
+- LP module whitelist/required sections enforced
 - message match with selected opportunity intent
 - scope consistency with MVP boundary
 - 100% claim traceability to evidence

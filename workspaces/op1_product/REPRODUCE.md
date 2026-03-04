@@ -3,11 +3,11 @@
 > 目的：给客户/协作者一份可执行、可更新、可验收的文档，说明当前 Product Agent 能力边界与复现方式。
 
 ## 文档元信息（每次验收后更新）
-- doc_version: `1.1`
+- doc_version: `1.2`
 - owner_agent: `op1_product`
 - workspace: `workspaces/op1_product`
-- last_validated_at_utc: `2026-03-03T23:43:11Z`
-- validation_scope: `Stage1+Stage2 + CreateLandingPages v1(mode-c) + Build&Deploy v1.1(modular, multi-device baseline) + 3-adapter generalization`
+- last_validated_at_utc: `2026-03-04T00:51:04Z`
+- validation_scope: `Stage1+Stage2 + CreateLandingPages v1.1(mode-c, landing-only semantics) + Build&Deploy v1.1(optional external page_spec) + 3-opportunity deployment validation`
 - push_status: `no-push (default)`
 
 ---
@@ -24,22 +24,27 @@
   - `research/stage2_scoring.csv`
   - `research/stage2_decision_log.json`
 
-### C. Create landing pages（v1, Mode C only，已可复现）
-- 核心链路：`Stage1/2/3 -> Preflight Gates -> LandingPackage -> Contract Test -> Marketing Handoff`
-- 三个内置 preflight gate：
+### C. Create landing pages（v1.1, Mode C only，已可复现）
+- 核心链路：`Stage1/2/3 -> Preflight Gates -> LandingPackage -> Contract Test -> Semantic Test -> Marketing Handoff`
+- 四个内置 preflight gate：
   - opportunity gate（Stage2 优先，缺失时自动合成）
   - scope gate（Stage3 优先，缺失时自动合成）
   - evidence traceability gate（核心 claim 100% 回溯）
+  - landing structure gate（LP 白名单 + 禁止 demo-first 模块）
 - 输出可直接喂给 Build/Deploy：
   - `research/landing_v1/build_inputs/project_spec.json`
   - `research/landing_v1/build_inputs/page_spec.json`
+  - `research/landing_v1/landing_semantic_test.latest.json`
 
 ### D. Build & deploy simple web products（v1.1，已可复现）
-- 核心链路：`ProjectSpec -> PageSpec -> Scaffold -> Deploy -> Smoke -> PageStrategy -> Business`
+- 核心链路：`ProjectSpec -> (optional external PageSpec) -> Scaffold -> Deploy -> Smoke -> PageStrategy -> Business`
 - 具备模块化页面策略（不是同壳换文案）：
-  - 按 adapter 切换 layout profile 与 module order
-  - 支持 Hero/Workflow/Proof/Checklist/Pricing/CTA/FAQ 等模块组合
-- Page-strategy 包含多设备兼容基线检查（viewport + responsive markers + device profiles）
+  - 按 adapter/layout profile 与 module order 组合
+  - 支持 web-product 模式与 landing 模式 page spec 输入
+- Page-strategy 包含：
+  - 多设备兼容基线检查（viewport + responsive markers + device profiles）
+  - 安全响应头基线检查
+  - landing 语义检查（mode marker、forbidden modules/terms）
 - 默认部署到 Vercel 子域名
 - 结构化产物可审计、可复跑
 
@@ -70,7 +75,7 @@
 ./scripts/run_generate_startup_ideas.sh
 ```
 
-### Step 2：生成 Landing Package（Mode C）
+### Step 2：生成 Landing Package（Mode C, v1.1）
 ```bash
 ./scripts/run_create_landing_pages_v1.sh --adapter invoice-followup
 ```
@@ -78,11 +83,15 @@
 关键产物：
 - `research/landing_v1/landing_package.json`
 - `research/landing_v1/landing_contract_test.latest.json`
+- `research/landing_v1/landing_semantic_test.latest.json`
 - `research/landing_v1/build_inputs/project_spec.json`
+- `research/landing_v1/build_inputs/page_spec.json`
 
 ### Step 3：一键构建部署 + 三层测试
 ```bash
-./scripts/run_build_deploy_v1.sh --project-spec research/landing_v1/build_inputs/project_spec.json
+./scripts/run_build_deploy_v1.sh \
+  --project-spec research/landing_v1/build_inputs/project_spec.json \
+  --page-spec research/landing_v1/build_inputs/page_spec.json
 ```
 
 ### Step 4：验收主报告
@@ -92,6 +101,7 @@
 - 关键字段应为：
   - `create_landing_pages_v1.status != blocked`
   - `contract_test_status = passed`
+  - `semantic_test_status = passed`
   - `checks.smoke_status = passed`
   - `checks.page_strategy_status = passed`
   - `checks.business_status = passed`
@@ -128,12 +138,16 @@ python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_record
 ---
 
 ## 5) 产物地图（客户常看）
-- 主运行报告：`research/build_deploy_v1_run.json`
+- Landing 主报告：`research/create_landing_pages_v1_run.json`
+- Landing 契约测试：`research/landing_v1/landing_contract_test.latest.json`
+- Landing 语义测试：`research/landing_v1/landing_semantic_test.latest.json`
+- Stage3 验证总报告：`research/landing_v1_regression/stage3_capability_validation.latest.json`
+- Landing 回归矩阵：`research/landing_v1_regression/regression_matrix.latest.json`
+- Build/Deploy 主运行报告：`research/build_deploy_v1_run.json`
 - 运行状态时间线：`research/build_deploy_v1_state.json`
 - Smoke 报告：`research/build_deploy_v1/**/smoke_test.latest.json`
 - Page Strategy 报告：`research/build_deploy_v1/**/page_strategy.latest.json`
 - Business 报告：`research/build_deploy_v1/**/business_test.latest.json`
-- 泛化矩阵：`research/build_deploy_v1/modular_matrix/generalization_matrix.json`
 
 ---
 
@@ -151,9 +165,10 @@ python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_record
 2. `README.md`
 3. `framework/pipeline.md`
 4. `framework/quickstart.md`
-5. `skills/op1-product-landing-handoff/SKILL.md`
-6. `skills/op1-product-web-build-deploy/SKILL.md`
-7. 对应 contract/schema（如有字段变化）
+5. `skills/op1-product-create-landing-pages/SKILL.md`
+6. `skills/op1-product-landing-handoff/SKILL.md`
+7. `skills/op1-product-web-build-deploy/SKILL.md`
+8. 对应 contract/schema（如有字段变化）
 
 建议在本文件追加一条更新日志：
 - 时间

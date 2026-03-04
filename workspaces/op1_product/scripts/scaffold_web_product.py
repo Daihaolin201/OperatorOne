@@ -323,7 +323,7 @@ def render_list_items(values: List[str]) -> str:
     return "\n".join(f"<li>{html.escape(item)}</li>" for item in values)
 
 
-def module_html(module: Dict[str, Any]) -> str:
+def module_html(module: Dict[str, Any], page_mode: str = "web_product") -> str:
     module_id = str(module.get("module_id", "unknown"))
     props = module.get("props", {}) if isinstance(module.get("props"), dict) else {}
 
@@ -334,15 +334,21 @@ def module_html(module: Dict[str, Any]) -> str:
         problem = html.escape(str(props.get("problem_statement", "Problem statement missing.")))
         adapter_name = html.escape(str(props.get("adapter_name", "Unknown adapter")))
         profile = html.escape(str(props.get("profile_name", "Default profile")))
+        eyebrow = html.escape(str(props.get("eyebrow", "Landing page" if page_mode == "landing" else "Reusable web-product builder")))
+
+        meta_line = ""
+        if page_mode != "landing":
+            meta_line = f'<p class=\"meta\"><strong>Adapter:</strong> {adapter_name} · <strong>Layout:</strong> {profile}</p>'
+
         return f"""
         <section class=\"module hero\" data-module=\"{module_id}\">
           <div class=\"hero-shell\">
-            <p class=\"eyebrow\">Reusable web-product builder</p>
+            <p class=\"eyebrow\">{eyebrow}</p>
             <h1>{headline}</h1>
             <p class=\"lede\">{subheadline}</p>
             <p class=\"meta\"><strong>For:</strong> {segment}</p>
             <p class=\"problem\">{problem}</p>
-            <p class=\"meta\"><strong>Adapter:</strong> {adapter_name} · <strong>Layout:</strong> {profile}</p>
+            {meta_line}
           </div>
         </section>
         """
@@ -362,6 +368,51 @@ def module_html(module: Dict[str, Any]) -> str:
               <button type=\"submit\">{action_label}</button>
             </form>
             <pre id=\"workflow-result\" aria-live=\"polite\"></pre>
+          </article>
+        </section>
+        """
+
+    if module_id == "problem_agitation":
+        title = html.escape(str(props.get("title", "Why this problem matters")))
+        core_pain = html.escape(str(props.get("core_pain", "")))
+        pain_points = ensure_list_of_text(props.get("pain_points"), ["No pain points provided."])
+        cost_of_inaction = html.escape(str(props.get("cost_of_inaction", "")))
+        return f"""
+        <section class=\"module\" data-module=\"{module_id}\">
+          <article class=\"panel panel-check\">
+            <h2>{title}</h2>
+            <p class=\"problem\">{core_pain}</p>
+            <ul>
+              {render_list_items(pain_points)}
+            </ul>
+            <p class=\"muted\">{cost_of_inaction}</p>
+          </article>
+        </section>
+        """
+
+    if module_id == "benefit_bullets":
+        title = html.escape(str(props.get("title", "What improves")))
+        items = ensure_list_of_text(props.get("items"), ["No benefit bullets provided."])
+        return f"""
+        <section class=\"module\" data-module=\"{module_id}\">
+          <article class=\"panel panel-proof\">
+            <h2>{title}</h2>
+            <ul>
+              {render_list_items(items)}
+            </ul>
+          </article>
+        </section>
+        """
+
+    if module_id == "social_proof_strip":
+        title = html.escape(str(props.get("title", "Trust signals")))
+        items = ensure_list_of_text(props.get("items"), ["No trust signals provided."])
+        chips = "".join([f"<li>{html.escape(item)}</li>" for item in items])
+        return f"""
+        <section class=\"module\" data-module=\"{module_id}\">
+          <article class=\"panel\">
+            <h2>{title}</h2>
+            <ul class=\"proof-strip\">{chips}</ul>
           </article>
         </section>
         """
@@ -468,8 +519,9 @@ def render_index_html_from_page_spec(page_spec: Dict[str, Any]) -> str:
     meta = page_spec.get("meta", {}) if isinstance(page_spec.get("meta"), dict) else {}
     title = html.escape(str(meta.get("title", "Simple web product")))
     desc = html.escape(str(meta.get("description", "")))
+    page_mode = html.escape(str(meta.get("page_mode", "web_product")))
     modules = page_spec.get("modules", []) if isinstance(page_spec.get("modules"), list) else []
-    module_html_blocks = "\n".join(module_html(m) for m in modules if isinstance(m, dict))
+    module_html_blocks = "\n".join(module_html(m, page_mode=page_mode) for m in modules if isinstance(m, dict))
 
     return f"""<!doctype html>
 <html lang=\"en\">
@@ -481,7 +533,7 @@ def render_index_html_from_page_spec(page_spec: Dict[str, Any]) -> str:
     <link rel=\"stylesheet\" href=\"/styles.css\" />
   </head>
   <body>
-    <main class=\"site\">
+    <main class=\"site\" data-page-mode=\"{page_mode}\">
       {module_html_blocks}
     </main>
 
@@ -692,6 +744,22 @@ def render_styles_css(theme: Dict[str, Any] | None = None) -> str:
         .panel-proof {{ border-left: 4px solid color-mix(in srgb, var(--accent) 60%, #94a3b8 40%); }}
         .panel-check {{ border-left: 4px solid color-mix(in srgb, var(--highlight) 55%, #94a3b8 45%); }}
         .panel-cta {{ border-left: 4px solid color-mix(in srgb, var(--accent) 75%, #64748b 25%); }}
+
+        .proof-strip {{
+          list-style: none;
+          margin: 0;
+          padding: 0;
+          display: grid;
+          gap: 8px;
+        }}
+
+        .proof-strip li {{
+          border: 1px solid var(--line);
+          border-radius: 999px;
+          padding: 6px 10px;
+          font-size: 0.9rem;
+          background: linear-gradient(180deg, #ffffff, #f8fbff);
+        }}
 
         .metric {{
           font-weight: 700;

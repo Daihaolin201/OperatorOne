@@ -175,7 +175,28 @@ def run_case(root: pathlib.Path, name: str, args: List[str], expected_status: st
     )
     contract = read_json(contract_out) if contract_out.exists() else {"status": "missing"}
 
-    passed = (status == expected_status) and (contract.get("status") == "passed")
+    page_spec_path = out_dir / "build_inputs" / "page_spec.json"
+    semantic_out = out_dir / "landing_semantic_test.json"
+    semantic_res = run(
+        [
+            "python3",
+            str(root / "scripts/landing_semantic_test.py"),
+            "--landing-package",
+            str(landing_path),
+            "--page-spec",
+            str(page_spec_path),
+            "--out",
+            str(semantic_out),
+        ],
+        cwd=root,
+    )
+    semantic = read_json(semantic_out) if semantic_out.exists() else {"status": "missing"}
+
+    passed = (
+        (status == expected_status)
+        and (contract.get("status") == "passed")
+        and (semantic.get("status") == "passed")
+    )
 
     details = {
         "status": status,
@@ -189,8 +210,10 @@ def run_case(root: pathlib.Path, name: str, args: List[str], expected_status: st
         "scope_source": ((landing.get("preflight") or {}).get("scope_gate") or {}).get("source"),
         "traceability_coverage": ((landing.get("preflight") or {}).get("evidence_traceability_gate") or {}).get("coverage_ratio"),
         "contract_status": contract.get("status"),
+        "semantic_status": semantic.get("status"),
         "create_returncode": run_res.returncode,
         "contract_returncode": contract_res.returncode,
+        "semantic_returncode": semantic_res.returncode,
     }
 
     return CaseResult(name=name, status=status, expected=expected_status, passed=passed, details=details)

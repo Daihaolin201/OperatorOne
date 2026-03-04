@@ -60,6 +60,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Smoke test deployed web product")
     parser.add_argument("--base-url", required=True, help="Deployed base URL")
     parser.add_argument("--out", required=True, help="Output JSON report path")
+    parser.add_argument("--page-spec", required=False, help="Optional page spec path for mode-aware checks")
     parser.add_argument("--retries", type=int, default=6)
     parser.add_argument("--retry-delay", type=float, default=3.0)
     return parser.parse_args()
@@ -68,6 +69,15 @@ def parse_args() -> argparse.Namespace:
 def main() -> int:
     args = parse_args()
     base = args.base_url.rstrip("/")
+
+    page_mode = "web_product"
+    if args.page_spec:
+        try:
+            with open(args.page_spec, "r", encoding="utf-8") as f:
+                spec = json.load(f)
+            page_mode = str((spec.get("meta") or {}).get("page_mode") or (spec.get("testing") or {}).get("page_mode") or "web_product")
+        except Exception:
+            page_mode = "web_product"
 
     checks = []
 
@@ -78,9 +88,10 @@ def main() -> int:
 
         signatures = [
             'data-module="hero_problem"',
-            'id="workflow-form"',
             'id="signup-form"',
         ]
+        if page_mode != "landing":
+            signatures.append('id="workflow-form"')
         missing = [s for s in signatures if s not in body]
         if missing:
             raise RuntimeError(f"Homepage content signature missing: {missing}")
@@ -144,7 +155,10 @@ def main() -> int:
             },
         }
 
-    check_functions = [check_homepage, check_health, check_first_step, check_signup]
+    check_functions = [check_homepage, check_health]
+    if page_mode != "landing":
+        check_functions.append(check_first_step)
+    check_functions.append(check_signup)
 
     failed = None
     for fn in check_functions:
@@ -165,6 +179,7 @@ def main() -> int:
     report = {
         "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
         "base_url": base,
+        "page_mode": page_mode,
         "status": "passed" if passed else "failed",
         "checks": checks,
     }

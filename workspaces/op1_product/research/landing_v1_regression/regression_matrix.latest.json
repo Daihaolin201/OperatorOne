@@ -1,0 +1,93 @@
+{
+  "generated_at": "2026-03-04T01:03:59Z",
+  "capability": "create_landing_pages_v1",
+  "status": "passed",
+  "cases": [
+    {
+      "name": "case_01_provisional_existing",
+      "status": "provisional_ready",
+      "expected": "provisional_ready",
+      "passed": true,
+      "details": {
+        "status": "provisional_ready",
+        "expected_status": "provisional_ready",
+        "selected_opportunity": "opp_001",
+        "quality_gate_failures": [],
+        "stage2_mode": "existing",
+        "scope_source": "synthesized",
+        "traceability_coverage": 1.0,
+        "contract_status": "passed",
+        "semantic_status": "passed",
+        "create_returncode": 0,
+        "contract_returncode": 0,
+        "semantic_returncode": 0
+      }
+    },
+    {
+      "name": "case_02_ready_stage3_fixture",
+      "status": "ready_for_build",
+      "expected": "ready_for_build",
+      "passed": true,
+      "details": {
+        "status": "ready_for_build",
+        "expected_status": "ready_for_build",
+        "selected_opportunity": "opp_001",
+        "quality_gate_failures": [],
+        "stage2_mode": "existing",
+        "scope_source": "stage3",
+        "traceability_coverage": 1.0,
+        "contract_status": "passed",
+        "semantic_status": "passed",
+        "create_returncode": 0,
+        "contract_returncode": 0,
+        "semantic_returncode": 0
+      }
+    },
+    {
+      "name": "case_03_stage2_synthesized",
+      "status": "provisional_ready",
+      "expected": "provisional_ready",
+      "passed": true,
+      "details": {
+        "status": "provisional_ready",
+        "expected_status": "provisional_ready",
+        "selected_opportunity": "opp_001",
+        "quality_gate_failures": [],
+        "stage2_mode": "synthesized_from_stage1",
+        "scope_source": "synthesized",
+        "traceability_coverage": 1.0,
+        "contract_status": "passed",
+        "semantic_status": "passed",
+        "create_returncode": 0,
+        "contract_returncode": 0,
+        "semantic_returncode": 0
+      }
+    },
+    {
+      "name": "case_04_blocked_no_evidence",
+      "status": "blocked",
+      "expected": "blocked",
+      "passed": true,
+      "details": {
+        "status": "blocked",
+        "expected_status": "blocked",
+        "selected_opportunity": "opp_no_evidence",
+        "quality_gate_failures": [
+          {
+            "name": "claim_evidence_traceability_100pct",
+            "status": "fail",
+            "detail": "coverage=0.0; unmapped=['claim_problem', 'claim_value', 'claim_headline', 'claim_proof_01', 'claim_proof_02', 'claim_proof_03']"
+          }
+        ],
+        "stage2_mode": "existing",
+        "scope_source": "stage3",
+        "traceability_coverage": 0.0,
+        "contract_status": "passed",
+        "semantic_status": "passed",
+        "create_returncode": 2,
+        "contract_returncode": 0,
+        "semantic_returncode": 0
+      }
+    }
+  ]
+}

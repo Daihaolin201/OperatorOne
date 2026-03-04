@@ -23,23 +23,26 @@ This will:
 1. Resolve/select opportunity (use stage2 if available, synthesize if missing).
 2. Resolve MVP scope boundary (use stage3 if available, synthesize if missing).
 3. Generate landing package + build inputs (`project_spec` + `page_spec`).
-4. Run landing contract test.
+4. Run landing contract test + landing semantic test.
 5. Write marketing handoff to `../../handoffs/product_to_marketing.json`.
 
 ## Core artifacts
 - `research/landing_v1/landing_package.json`
 - `research/landing_v1/landing_contract_test.latest.json`
+- `research/landing_v1/landing_semantic_test.latest.json`
 - `research/landing_v1/build_inputs/project_spec.json`
 - `research/landing_v1/build_inputs/page_spec.json`
 - `../../handoffs/product_to_marketing.json`
 
 ## Quality bar (must pass)
+- `page_mode=landing`.
 - Single primary CTA.
+- LP module whitelist (no demo-first modules).
 - Message-match with entry intent.
 - Scope consistency with MVP boundary.
 - Claim-evidence traceability coverage = 100%.
 - Scannable message hierarchy.
-- Multi-device compatibility baseline + performance budget hooks.
+- Multi-device compatibility baseline + performance budget hooks + security header hooks.
 
 ## Guardrails
 - Do not invent claims that cannot be traced to Stage1/2 evidence.

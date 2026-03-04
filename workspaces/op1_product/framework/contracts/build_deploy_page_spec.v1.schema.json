@@ -93,6 +93,23 @@
               "must_include": { "type": "string" }
             }
           }
+        },
+        "page_mode": { "type": "string" },
+        "required_modules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_modules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "lp_section_whitelist": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_terms": {
+          "type": "array",
+          "items": { "type": "string" }
         }
       }
     },

@@ -6,12 +6,14 @@ Build a **generalizable** build/deploy loop that works across multiple opportuni
 ## Pipeline
 0. (Recommended) Run `create_landing_pages_v1` to lock opportunity, scope, and evidence-traceable landing package.
 1. Resolve `project_spec.json` (or autogenerate from Stage1/Stage2).
-2. Compile modular `page_spec` (layout profile + module order + multi-device/performance test hooks).
+2. Resolve `page_spec`:
+   - default: `compile_page_spec.py` (web-product mode)
+   - landing path: external `page_spec` from `compile_landing_page_spec.py` (landing mode)
 3. Scaffold app from project spec + page spec.
 4. Deploy to Vercel.
 5. Run deployment health gate.
 6. Run smoke tests (reachability + core endpoints).
-7. Run page-strategy tests (module presence/order + CTA uniqueness + viewport/responsive baseline + legacy label guardrail).
+7. Run page-strategy tests (module presence/order + CTA uniqueness + viewport/responsive baseline + security header baseline + landing semantics when page_mode=landing).
 8. Run business-rule tests (domain behavior assertions).
 9. Emit run report and checkpoint state.
 
@@ -25,6 +27,7 @@ Build a **generalizable** build/deploy loop that works across multiple opportuni
 ## Core files
 - `scripts/init_project_spec.py`
 - `scripts/compile_page_spec.py`
+- `scripts/compile_landing_page_spec.py`
 - `scripts/scaffold_web_product.py`
 - `scripts/deploy_web_product.sh`
 - `scripts/smoke_test_web_product.py`

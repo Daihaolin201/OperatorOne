@@ -1,0 +1,16 @@
+{
+  "profile_id": "landing-client-reporting",
+  "display_name": "Reporting Conversion Landing",
+  "match_adapters": [
+    "client-reporting"
+  ],
+  "module_order": [
+    "hero_problem",
+    "problem_agitation",
+    "benefit_bullets",
+    "proof_points",
+    "social_proof_strip",
+    "faq_list",
+    "cta_waitlist"
+  ]
+}

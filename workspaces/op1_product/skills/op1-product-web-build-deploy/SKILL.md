@@ -18,7 +18,7 @@ Recommended sequence:
 ./scripts/run_create_landing_pages_v1.sh
 
 # 2) build/deploy from landing build input
-./scripts/run_build_deploy_v1.sh --project-spec research/landing_v1/build_inputs/project_spec.json
+./scripts/run_build_deploy_v1.sh --project-spec research/landing_v1/build_inputs/project_spec.json --page-spec research/landing_v1/build_inputs/page_spec.json
 ```
 
 This will:
@@ -40,7 +40,9 @@ This will:
 
 ## Key scripts
 - `scripts/create_landing_package.py`
+- `scripts/compile_landing_page_spec.py`
 - `scripts/landing_contract_test.py`
+- `scripts/landing_semantic_test.py`
 - `scripts/run_create_landing_pages_v1.sh`
 - `scripts/init_project_spec.py`
 - `scripts/compile_page_spec.py`
@@ -55,6 +57,7 @@ This will:
 ## Output artifacts
 - `research/landing_v1/landing_package.json`
 - `research/landing_v1/landing_contract_test.latest.json`
+- `research/landing_v1/landing_semantic_test.latest.json`
 - `research/create_landing_pages_v1_run.json`
 - `research/build_deploy_v1_run.json`
 - `research/build_deploy_v1_state.json`

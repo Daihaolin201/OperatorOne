@@ -39,8 +39,11 @@ def main() -> int:
 
     push(
         "contract_identity",
-        payload.get("capability") == "create_landing_pages_v1" and payload.get("mode") == "mode_c_only",
-        "capability/mode must match contract",
+        payload.get("capability") == "create_landing_pages_v1"
+        and payload.get("mode") == "mode_c_only"
+        and payload.get("contract_version") == "1.1"
+        and payload.get("page_mode") == "landing",
+        "capability/mode/version/page_mode must match contract",
     )
 
     required_keys = [
@@ -66,10 +69,18 @@ def main() -> int:
     lp = payload.get("landing_package", {}) if isinstance(payload.get("landing_package"), dict) else {}
     section_plan = lp.get("section_plan", []) if isinstance(lp.get("section_plan"), list) else []
     section_ids = [str(row.get("section_id")) for row in section_plan if isinstance(row, dict)]
+    required_sections = {"hero_problem", "proof_points", "faq_list", "cta_waitlist"}
     push(
         "section_baseline",
-        "hero_problem" in section_ids and "cta_waitlist" in section_ids and len(section_ids) >= 5,
+        required_sections.issubset(set(section_ids)) and len(section_ids) >= 5,
         f"section_ids={section_ids}",
+    )
+
+    forbidden_sections = {"workflow_interactive", "metric_snapshot", "evidence_checklist"}
+    push(
+        "no_demo_modules_in_section_plan",
+        len(forbidden_sections.intersection(set(section_ids))) == 0,
+        f"forbidden_present={sorted(forbidden_sections.intersection(set(section_ids)))}",
     )
 
     cta_plan = lp.get("cta_plan", {}) if isinstance(lp.get("cta_plan"), dict) else {}
@@ -96,6 +107,23 @@ def main() -> int:
     push("traceability_map_shape", trace_ok and len(trace_map) >= 3, f"claim_count={len(trace_map)}; status={status}")
 
     qg = payload.get("quality_gates", []) if isinstance(payload.get("quality_gates"), list) else []
+    qg_names = {
+        str(row.get("name"))
+        for row in qg
+        if isinstance(row, dict) and row.get("name")
+    }
+    expected_qg = {
+        "landing_mode_enabled",
+        "single_primary_cta",
+        "landing_module_whitelist_and_structure",
+        "message_match_with_entry_intent",
+        "scope_consistency_with_mvp_boundary",
+        "claim_evidence_traceability_100pct",
+        "scannable_copy_and_clear_hierarchy",
+        "no_demo_first_positioning",
+    }
+    push("quality_gate_presence", expected_qg.issubset(qg_names), f"missing={sorted(expected_qg - qg_names)}")
+
     gate_failures = [row for row in qg if isinstance(row, dict) and row.get("status") == "fail"]
     status = payload.get("status")
     consistency_ok = (status == "blocked" and gate_failures) or (status != "blocked" and not gate_failures)
