@@ -22,11 +22,6 @@
       "description": "Evidence-backed credibility section."
     },
     {
-      "module_id": "social_proof_strip",
-      "kind": "proof",
-      "description": "Short trust signals, pilot outcomes, or process proof snippets."
-    },
-    {
       "module_id": "faq_list",
       "kind": "faq",
       "description": "Objection handling FAQ blocks."
@@ -40,6 +35,7 @@
   "forbidden_default_modules": [
     "workflow_interactive",
     "metric_snapshot",
-    "evidence_checklist"
+    "evidence_checklist",
+    "social_proof_strip"
   ]
 }

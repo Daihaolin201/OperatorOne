@@ -57,7 +57,6 @@ LP_MODULE_WHITELIST = {
     "problem_agitation",
     "benefit_bullets",
     "proof_points",
-    "social_proof_strip",
     "faq_list",
     "cta_waitlist",
 }
@@ -66,6 +65,7 @@ LP_FORBIDDEN_MODULES = {
     "workflow_interactive",
     "metric_snapshot",
     "evidence_checklist",
+    "social_proof_strip",
 }
 
 

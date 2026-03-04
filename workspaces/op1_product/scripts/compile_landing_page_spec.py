@@ -117,12 +117,11 @@ def module_props(module_id: str, spec: Dict[str, Any]) -> Dict[str, Any]:
             "subheadline": value,
             "problem_statement": problem,
             "segment_label": segment_label,
-            "eyebrow": "Focused landing validation",
         }
 
     if module_id == "problem_agitation":
         return {
-            "title": "Why this problem matters now",
+            "title": f"Why {role.lower()} teams cannot ignore this now",
             "core_pain": problem,
             "pain_points": proof_points[:3],
             "cost_of_inaction": ensure_text(

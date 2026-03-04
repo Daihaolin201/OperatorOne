@@ -72,14 +72,14 @@
       "problem_agitation",
       "benefit_bullets",
       "proof_points",
-      "social_proof_strip",
       "faq_list",
       "cta_waitlist"
     ],
     "forbidden_modules": [
       "workflow_interactive",
       "metric_snapshot",
-      "evidence_checklist"
+      "evidence_checklist",
+      "social_proof_strip"
     ],
     "forbidden_terms": [
       "reusable web-product builder",

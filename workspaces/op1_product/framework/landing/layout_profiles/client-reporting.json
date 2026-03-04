@@ -6,10 +6,9 @@
   ],
   "module_order": [
     "hero_problem",
-    "problem_agitation",
     "benefit_bullets",
+    "problem_agitation",
     "proof_points",
-    "social_proof_strip",
     "faq_list",
     "cta_waitlist"
   ]

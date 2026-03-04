@@ -334,7 +334,11 @@ def module_html(module: Dict[str, Any], page_mode: str = "web_product") -> str:
         problem = html.escape(str(props.get("problem_statement", "Problem statement missing.")))
         adapter_name = html.escape(str(props.get("adapter_name", "Unknown adapter")))
         profile = html.escape(str(props.get("profile_name", "Default profile")))
-        eyebrow = html.escape(str(props.get("eyebrow", "Landing page" if page_mode == "landing" else "Reusable web-product builder")))
+        eyebrow = html.escape(str(props.get("eyebrow", "" if page_mode == "landing" else "Reusable web-product builder")))
+
+        eyebrow_line = ""
+        if eyebrow:
+            eyebrow_line = f'<p class=\"eyebrow\">{eyebrow}</p>'
 
         meta_line = ""
         if page_mode != "landing":
@@ -343,7 +347,7 @@ def module_html(module: Dict[str, Any], page_mode: str = "web_product") -> str:
         return f"""
         <section class=\"module hero\" data-module=\"{module_id}\">
           <div class=\"hero-shell\">
-            <p class=\"eyebrow\">{eyebrow}</p>
+            {eyebrow_line}
             <h1>{headline}</h1>
             <p class=\"lede\">{subheadline}</p>
             <p class=\"meta\"><strong>For:</strong> {segment}</p>
@@ -712,6 +716,11 @@ def render_styles_css(theme: Dict[str, Any] | None = None) -> str:
           margin: 0 0 8px;
           color: #e2e8f0;
           font-weight: 520;
+        }}
+
+        .panel .problem {{
+          color: #0f172a;
+          font-weight: 600;
         }}
 
         .meta {{
