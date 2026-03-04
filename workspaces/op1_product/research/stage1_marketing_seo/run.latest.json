@@ -1,0 +1,9 @@
+{
+  "status": "planned",
+  "mode": "shadow",
+  "continuous": true,
+  "publish": false,
+  "index": false,
+  "generated_at": "2026-03-04T12:17:00Z",
+  "note": "Stage1 capability plan defined; execution pipeline pending implementation."
+}

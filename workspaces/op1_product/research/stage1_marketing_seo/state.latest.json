@@ -1,0 +1,12 @@
+{
+  "loop_state": "idle",
+  "active_contexts": 0,
+  "backlog_size": 0,
+  "queue_size": 0,
+  "last_full_rebuild_at": null,
+  "last_incremental_run_at": null,
+  "mode": "shadow",
+  "publish": false,
+  "index": false,
+  "continuous": true
+}
