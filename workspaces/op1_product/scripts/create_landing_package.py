@@ -329,6 +329,28 @@ def resolve_project_spec(
     return spec, "generated_project_spec"
 
 
+def _has_business_signal(text: str) -> bool:
+    t = text.lower()
+    signals = [
+        "invoice",
+        "payment",
+        "chargeback",
+        "deadline",
+        "cashflow",
+        "revenue",
+        "report",
+        "client",
+        "hours",
+        "days",
+        "loss",
+        "response",
+        "dispute",
+        "$",
+        "%",
+    ]
+    return any(s in t for s in signals)
+
+
 def run_compile_page_spec(
     root: pathlib.Path,
     project_spec_path: pathlib.Path,
@@ -370,6 +392,133 @@ def make_evidence_index(opportunity: Dict[str, Any]) -> List[Dict[str, Any]]:
             }
         )
     return out
+
+
+def compact_text(text: str, max_chars: int = 120) -> str:
+    normalized = " ".join(text.split())
+    if len(normalized) <= max_chars:
+        return normalized
+    return normalized[: max_chars - 1].rstrip() + "…"
+
+
+def is_publishable_evidence_claim(claim: str) -> bool:
+    lowered = claim.lower()
+    banned_markers = [
+        "not even joking",
+        "wtf",
+        "lol",
+        " rn ",
+        "i'm sitting here",
+        "😭",
+        "😅",
+        "fml",
+    ]
+    if any(marker in lowered for marker in banned_markers):
+        return False
+
+    if lowered.startswith("when i") or " when i " in lowered:
+        return False
+
+    words = [w for w in re.findall(r"[a-z0-9]+", lowered) if w]
+    if len(words) < 6:
+        return False
+
+    if lowered.count("!") > 2 or lowered.count("?") > 2:
+        return False
+
+    business_keywords = [
+        "invoice",
+        "chargeback",
+        "dispute",
+        "deadline",
+        "report",
+        "client",
+        "payment",
+        "cashflow",
+        "workflow",
+        "revenue",
+        "refund",
+    ]
+    if not any(k in lowered for k in business_keywords):
+        return False
+
+    if re.search(r"\b(i|my|me)\b", lowered) and not any(k in lowered for k in ["team", "company", "business"]):
+        return False
+
+    return True
+
+
+def enrich_project_spec_for_landing(project_spec: Dict[str, Any], opportunity: Dict[str, Any]) -> Dict[str, Any]:
+    enriched = dict(project_spec)
+
+    adapter = enriched.get("adapter") if isinstance(enriched.get("adapter"), dict) else {}
+    adapter_name = ensure_text(adapter.get("name"), "generic-operator")
+
+    value = ensure_text(enriched.get("value_proposition"))
+    if ". Designed for " in value:
+        value = value.split(". Designed for ")[0].strip()
+    if not value:
+        value = {
+            "invoice-followup": "Recover overdue invoices with one focused follow-up workflow.",
+            "chargeback-response": "Respond to chargebacks faster with an evidence-first workflow.",
+            "client-reporting": "Deliver consistent client reporting without weekly scramble.",
+        }.get(adapter_name, ensure_text((enriched.get("offer") or {}).get("headline"), "Focused landing proposition"))
+
+    problem = ensure_text(enriched.get("problem_statement"), ensure_text(opportunity.get("core_problem")))
+
+    evidence_claims = []
+    for row in opportunity.get("pain_evidence", []) if isinstance(opportunity.get("pain_evidence"), list) else []:
+        if not isinstance(row, dict):
+            continue
+        claim = ensure_text(row.get("claim"))
+        if claim and is_publishable_evidence_claim(claim) and _has_business_signal(claim):
+            evidence_claims.append(compact_text(claim, max_chars=130))
+
+    existing = [
+        compact_text(item, max_chars=130)
+        for item in ensure_list_of_text(enriched.get("proof_points"))
+        if is_publishable_evidence_claim(item)
+    ]
+
+    merged = []
+    for item in evidence_claims + existing:
+        cleaned = compact_text(item, max_chars=130)
+        if cleaned and cleaned not in merged:
+            merged.append(cleaned)
+
+    if not merged:
+        merged = [
+            compact_text(problem or "Reduce recurring operational friction"),
+            "One clear CTA for higher-intent conversion.",
+            "Scope guardrails prevent over-promising during validation.",
+        ]
+
+    enriched["value_proposition"] = value
+    enriched["proof_points"] = merged[:3]
+
+    cta_support_defaults = {
+        "invoice-followup": "Join pilot access to run one structured invoice follow-up flow this week.",
+        "chargeback-response": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+        "client-reporting": "Join pilot to test one repeatable reporting rhythm with clearer client confidence.",
+    }
+    cta_support = ensure_text(enriched.get("cta_support_text"))
+    if (not cta_support) or ("validate demand" in cta_support.lower()):
+        enriched["cta_support_text"] = cta_support_defaults.get(
+            adapter_name,
+            f"Join pilot to tackle {compact_text(problem.lower(), max_chars=90)} in a focused 14-day test.",
+        )
+
+    offer = enriched.get("offer") if isinstance(enriched.get("offer"), dict) else {}
+    cta_label = ensure_text(offer.get("cta_label"), "Join pilot")
+    if cta_label.lower() in {"join pilot", "get early access", "start pilot validation"}:
+        offer["cta_label"] = {
+            "invoice-followup": "Join invoice pilot",
+            "chargeback-response": "Join dispute pilot",
+            "client-reporting": "Join reporting pilot",
+        }.get(adapter_name, "Join pilot")
+    enriched["offer"] = offer
+
+    return enriched
 
 
 def claim_tokens(text: str) -> set[str]:
@@ -729,7 +878,12 @@ def quality_gates(
         }
     )
 
-    forbidden_terms = ["reusable web-product builder", "try the workflow assistant"]
+    forbidden_terms = [
+        "reusable web-product builder",
+        "try the workflow assistant",
+        "focused landing validation",
+        "pilot trust signals",
+    ]
     text_blob_landing = flatten_landing_text(landing_package)
     bad_terms = [t for t in forbidden_terms if t in text_blob_landing]
     gates.append(
@@ -925,6 +1079,8 @@ def main() -> int:
         adapter_id=args.adapter,
     )
 
+    project_spec = enrich_project_spec_for_landing(project_spec=project_spec, opportunity=opportunity)
+
     # Persist scope boundary into project spec so downstream build/deploy and business tests
     # can consume consistent in-scope / out-of-scope context.
     project_spec["mvp_boundary"] = {
@@ -932,6 +1088,7 @@ def main() -> int:
         "out_of_scope": ensure_list_of_text(scope.get("out_of_scope")),
         "source": ensure_text(scope.get("source"), "synthesized"),
     }
+    project_spec = enrich_project_spec_for_landing(project_spec=project_spec, opportunity=opportunity)
     write_json(project_spec_path, project_spec)
 
     page_spec = run_compile_page_spec(
@@ -973,6 +1130,24 @@ def main() -> int:
         "secondary": None,
     }
 
+    adapter_meta = project_spec.get("adapter") if isinstance(project_spec.get("adapter"), dict) else {}
+    adapter_name = ensure_text(adapter_meta.get("name"), "generic-operator")
+    role_label = ensure_text(segment.get("role"), "operators")
+    industry_label = ensure_text(segment.get("industry"), "operations")
+    problem_line = compact_text(ensure_text(project_spec.get("problem_statement")), max_chars=92)
+
+    headline_variant_3 = {
+        "invoice-followup": "Recover overdue invoices with one repeatable reminder system",
+        "chargeback-response": "Hit dispute deadlines with an evidence-first response playbook",
+        "client-reporting": "Ship client reports on time without last-minute spreadsheet chaos",
+    }.get(adapter_name, f"{role_label} teams: fix one recurring {industry_label.lower()} bottleneck fast")
+
+    cta_variant_2 = {
+        "invoice-followup": "Reserve invoice pilot slot",
+        "chargeback-response": "Reserve dispute pilot slot",
+        "client-reporting": "Reserve reporting pilot slot",
+    }.get(adapter_name, "Reserve pilot slot")
+
     landing_package = {
         "positioning": positioning,
         "message_hierarchy": hierarchy,
@@ -980,12 +1155,12 @@ def main() -> int:
         "copy_variants": {
             "headline_variants": [
                 hierarchy.get("hero_headline"),
-                f"{ensure_text(segment.get('role'), 'Operators')}: {ensure_text(project_spec.get('problem_statement'))[:90]}",
-                f"Launch one focused conversion narrative for {ensure_text(segment.get('industry'), 'your team')} in 14 days",
+                f"{problem_line} — without adding extra headcount",
+                headline_variant_3,
             ],
             "cta_variants": [
                 ensure_text(offer.get("cta_label"), "Join pilot"),
-                "Start pilot validation",
+                cta_variant_2,
                 "Get early access",
             ],
         },

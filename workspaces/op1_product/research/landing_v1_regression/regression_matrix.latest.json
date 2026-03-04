@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-04T01:13:27Z",
+  "generated_at": "2026-03-04T01:32:59Z",
   "capability": "create_landing_pages_v1",
   "status": "passed",
   "cases": [
@@ -76,7 +76,7 @@
           {
             "name": "claim_evidence_traceability_100pct",
             "status": "fail",
-            "detail": "coverage=0.0; unmapped=['claim_problem', 'claim_value', 'claim_headline', 'claim_proof_01', 'claim_proof_02', 'claim_proof_03']"
+            "detail": "coverage=0.0; unmapped=['claim_problem', 'claim_value', 'claim_headline', 'claim_proof_01']"
           }
         ],
         "stage2_mode": "existing",

@@ -10,6 +10,58 @@ import pathlib
 from typing import Any, Dict, List
 
 
+ADAPTER_COPY_PROFILE: Dict[str, Dict[str, str]] = {
+    "invoice-followup": {
+        "problem_title": "Late invoices quietly damage weekly cashflow",
+        "benefit_title": "What improves in the first 14 days",
+        "benefit_lead": "Move from ad-hoc chasing to a repeatable receivables queue.",
+        "proof_title": "What this approach is grounded in",
+        "faq_title": "Before you start",
+        "cta_title": "Start the overdue-invoice pilot",
+        "cta_description": "Join pilot access to run one structured follow-up flow this week.",
+        "cta_label": "Join invoice pilot",
+    },
+    "chargeback-response": {
+        "problem_title": "Dispute delays create preventable revenue leakage",
+        "benefit_title": "What changes after one sprint",
+        "benefit_lead": "Run one deadline-safe dispute response loop with clearer evidence prep.",
+        "proof_title": "Operational proof behind this page",
+        "faq_title": "What teams ask before rollout",
+        "cta_title": "Start the chargeback response pilot",
+        "cta_description": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+        "cta_label": "Join dispute pilot",
+    },
+    "client-reporting": {
+        "problem_title": "Reporting delays weaken client trust and renewals",
+        "benefit_title": "What your team gets quickly",
+        "benefit_lead": "Ship consistent weekly reports without the last-minute scramble.",
+        "proof_title": "Why this flow is credible",
+        "faq_title": "Common rollout questions",
+        "cta_title": "Start the reporting pilot",
+        "cta_description": "Join pilot to test one repeatable client-reporting rhythm.",
+        "cta_label": "Join reporting pilot",
+    },
+    "generic-operator": {
+        "problem_title": "Why this bottleneck deserves immediate action",
+        "benefit_title": "What improves after focused adoption",
+        "benefit_lead": "Replace fragmented manual steps with one repeatable workflow.",
+        "proof_title": "Evidence behind this recommendation",
+        "faq_title": "FAQ",
+        "cta_title": "Start the focused pilot",
+        "cta_description": "Join early access and validate demand before expanding scope.",
+        "cta_label": "Join pilot",
+    },
+}
+
+
+ADAPTER_THEME_PROFILE: Dict[str, Dict[str, str]] = {
+    "invoice-followup": {"accent": "#2563eb", "surface": "#0f172a", "highlight": "#60a5fa"},
+    "chargeback-response": {"accent": "#7c3aed", "surface": "#1f1147", "highlight": "#c4b5fd"},
+    "client-reporting": {"accent": "#0ea5e9", "surface": "#082f49", "highlight": "#67e8f9"},
+    "generic-operator": {"accent": "#2563eb", "surface": "#0f172a", "highlight": "#60a5fa"},
+}
+
+
 def read_json(path: pathlib.Path) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -78,7 +130,30 @@ def choose_profile(profiles: List[Dict[str, Any]], adapter_id: str, forced_profi
     return profiles[0]
 
 
-def module_props(module_id: str, spec: Dict[str, Any]) -> Dict[str, Any]:
+def copy_profile(adapter_id: str) -> Dict[str, str]:
+    return ADAPTER_COPY_PROFILE.get(adapter_id, ADAPTER_COPY_PROFILE["generic-operator"])
+
+
+def theme_profile(adapter_id: str) -> Dict[str, str]:
+    return ADAPTER_THEME_PROFILE.get(adapter_id, ADAPTER_THEME_PROFILE["generic-operator"])
+
+
+def normalize_value_proposition(value: str, problem: str, adapter_id: str) -> str:
+    if ". Designed for " in value:
+        value = value.split(". Designed for ")[0].strip()
+
+    if value:
+        return value
+
+    fallback = {
+        "invoice-followup": "Recover overdue invoices with a focused daily follow-up workflow.",
+        "chargeback-response": "Respond to chargebacks before deadlines with one evidence-first dispute flow.",
+        "client-reporting": "Deliver on-time client reporting with a repeatable weekly workflow.",
+    }
+    return fallback.get(adapter_id, problem or "Improve one operational bottleneck with a focused pilot.")
+
+
+def module_props(module_id: str, spec: Dict[str, Any], adapter_id: str) -> Dict[str, Any]:
     segment = spec.get("segment") if isinstance(spec.get("segment"), dict) else {}
     offer = spec.get("offer") if isinstance(spec.get("offer"), dict) else {}
     metrics = spec.get("metrics") if isinstance(spec.get("metrics"), dict) else {}
@@ -88,40 +163,52 @@ def module_props(module_id: str, spec: Dict[str, Any]) -> Dict[str, Any]:
     company_size = ensure_text(segment.get("company_size"), "1-20")
     segment_label = f"{role} · {industry} · {company_size}"
 
+    profile = copy_profile(adapter_id)
+
     problem = ensure_text(spec.get("problem_statement"), "Core operational problem")
-    value = ensure_text(spec.get("value_proposition"), "Clear value proposition")
+    raw_value = ensure_text(spec.get("value_proposition"), "")
+    value = normalize_value_proposition(raw_value, problem=problem, adapter_id=adapter_id)
+
     proof_points = ensure_list(spec.get("proof_points"))
     if not proof_points:
         proof_points = [
-            "Focused scope to validate one bottleneck first.",
-            "Evidence-backed messaging tied to observed pain signals.",
-            "Clear conversion path with one primary CTA.",
+            profile.get("benefit_lead", "Replace fragmented manual work with one repeatable workflow."),
+            f"Keep the scope narrow for {role.lower()} teams while validating demand.",
+            "Use one clear CTA and evidence-backed messaging to improve conversion quality.",
         ]
 
     faq = ensure_faq(spec.get("faq"))
     if not faq:
         faq = [
             {
-                "question": "Is this a full platform?",
+                "question": "Is this a full platform rollout?",
                 "answer": "No. This landing page validates one narrow outcome before broader scope expansion.",
             },
             {
-                "question": "How fast can we validate?",
+                "question": "How quickly can we decide go/no-go?",
                 "answer": "Run a focused 14-day test and decide with explicit success + kill criteria.",
             },
         ]
 
+    headline = ensure_text(offer.get("headline"), value)
+    subheadline = value
+    if headline.lower() == subheadline.lower():
+        subheadline = ensure_text(
+            profile.get("benefit_lead"),
+            f"Built for {role.lower()} teams that need a faster, repeatable operational workflow.",
+        )
+
     if module_id == "hero_problem":
         return {
-            "headline": ensure_text(offer.get("headline"), value),
-            "subheadline": value,
+            "headline": headline,
+            "subheadline": subheadline,
             "problem_statement": problem,
             "segment_label": segment_label,
         }
 
     if module_id == "problem_agitation":
         return {
-            "title": f"Why {role.lower()} teams cannot ignore this now",
+            "title": ensure_text(profile.get("problem_title"), f"Why {role.lower()} teams cannot ignore this now"),
             "core_pain": problem,
             "pain_points": proof_points[:3],
             "cost_of_inaction": ensure_text(
@@ -131,44 +218,36 @@ def module_props(module_id: str, spec: Dict[str, Any]) -> Dict[str, Any]:
         }
 
     if module_id == "benefit_bullets":
+        benefit_items = [
+            ensure_text(profile.get("benefit_lead"), value),
+            *proof_points[:2],
+        ]
+        benefit_items = list(dict.fromkeys([x for x in benefit_items if isinstance(x, str) and x.strip()]))
         return {
-            "title": "What changes after adoption",
-            "items": [
-                ensure_text(value, "Clear workflow outcome"),
-                *proof_points[:2],
-            ],
+            "title": ensure_text(profile.get("benefit_title"), "What changes after adoption"),
+            "items": benefit_items,
         }
 
     if module_id == "proof_points":
         return {
-            "title": "Proof and credibility",
+            "title": ensure_text(profile.get("proof_title"), "Proof and credibility"),
             "items": proof_points,
-        }
-
-    if module_id == "social_proof_strip":
-        return {
-            "title": "Pilot trust signals",
-            "items": [
-                "Built from repeated operator pain evidence",
-                "Single-goal conversion path with clear CTA",
-                "Scope guardrails to prevent over-promising",
-            ],
         }
 
     if module_id == "faq_list":
         return {
-            "title": "FAQ",
+            "title": ensure_text(profile.get("faq_title"), "FAQ"),
             "items": faq,
         }
 
     if module_id == "cta_waitlist":
         return {
-            "title": "Start validation with one focused pilot",
+            "title": ensure_text(profile.get("cta_title"), "Start validation with one focused pilot"),
             "description": ensure_text(
                 spec.get("cta_support_text"),
-                "Join early access and validate demand before expanding product scope.",
+                ensure_text(profile.get("cta_description"), "Join early access and validate demand before expanding product scope."),
             ),
-            "cta_label": ensure_text(offer.get("cta_label"), "Join pilot"),
+            "cta_label": ensure_text(offer.get("cta_label"), ensure_text(profile.get("cta_label"), "Join pilot")),
             "email_label": "Work email",
             "email_placeholder": "you@company.com",
         }
@@ -247,13 +326,20 @@ def main() -> int:
             {
                 "module_id": module_id,
                 "kind": "landing",
-                "props": module_props(module_id=module_id, spec=spec),
+                "props": module_props(module_id=module_id, spec=spec, adapter_id=adapter_id),
             }
         )
 
     offer = spec.get("offer") if isinstance(spec.get("offer"), dict) else {}
-    meta_title = ensure_text(offer.get("headline"), ensure_text(spec.get("value_proposition"), "Landing page"))
-    meta_desc = ensure_text(spec.get("value_proposition"), ensure_text(spec.get("problem_statement"), "Landing page"))
+    normalized_value = normalize_value_proposition(
+        ensure_text(spec.get("value_proposition"), ""),
+        ensure_text(spec.get("problem_statement"), ""),
+        adapter_id,
+    )
+    meta_title = ensure_text(offer.get("headline"), ensure_text(normalized_value, "Landing page"))
+    meta_desc = ensure_text(normalized_value, ensure_text(spec.get("problem_statement"), "Landing page"))
+
+    theme_tokens = theme_profile(adapter_id)
 
     page_spec = {
         "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
@@ -270,11 +356,7 @@ def main() -> int:
             "profile_display_name": profile.get("display_name"),
         },
         "layout_profile": profile.get("profile_id"),
-        "theme": {
-            "accent": "#2563eb",
-            "surface": "#0f172a",
-            "highlight": "#60a5fa",
-        },
+        "theme": theme_profile(adapter_id),
         "modules": modules,
         "testing": {
             "expected_modules": [m.get("module_id") for m in modules],
@@ -304,7 +386,9 @@ def main() -> int:
             "lp_section_whitelist": sorted(allowed_modules),
             "forbidden_terms": [
                 "reusable web-product builder",
-                "try the workflow assistant"
+                "try the workflow assistant",
+                "focused landing validation",
+                "pilot trust signals"
             ]
         },
         "project_spec_snapshot": {

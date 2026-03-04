@@ -83,7 +83,9 @@
     ],
     "forbidden_terms": [
       "reusable web-product builder",
-      "try the workflow assistant"
+      "try the workflow assistant",
+      "focused landing validation",
+      "pilot trust signals"
     ]
   },
   "output": {
