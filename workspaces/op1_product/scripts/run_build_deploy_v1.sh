@@ -2,14 +2,14 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STAGE1_PATH="$ROOT_DIR/research/stage1_opportunity_records.json"
-STAGE2_PATH="$ROOT_DIR/research/stage2_decision_log.json"
+STAGE1_PATH="$ROOT_DIR/research/stage1_idea_discovery/opportunity_records.json"
+STAGE2_PATH="$ROOT_DIR/research/stage2_idea_screening/decision_log.json"
 PROJECT_SPEC_PATH="$ROOT_DIR/research/build_deploy_v1/project_spec.json"
 LEGACY_BLUEPRINT_PATH=""
 APP_DIR="$ROOT_DIR/runtime/web_product_v1_app"
 ARTIFACT_DIR="$ROOT_DIR/research/build_deploy_v1"
-STATE_FILE="$ROOT_DIR/research/build_deploy_v1_state.json"
-RUN_REPORT="$ROOT_DIR/research/build_deploy_v1_run.json"
+STATE_FILE="$ROOT_DIR/research/stage2_web_product/state.latest.json"
+RUN_REPORT="$ROOT_DIR/research/stage2_web_product/run.latest.json"
 
 ALLOW_SPEC_AUTOGEN="no"
 ROLLBACK_ON_FAIL="yes"
@@ -100,6 +100,8 @@ while [[ $# -gt 0 ]]; do
 done
 
 mkdir -p "$ARTIFACT_DIR"
+mkdir -p "$(dirname "$STATE_FILE")"
+mkdir -p "$(dirname "$RUN_REPORT")"
 RUN_ID="$(date -u +"%Y%m%dT%H%M%SZ")"
 SCAFFOLD_SUMMARY="$ARTIFACT_DIR/scaffold_${RUN_ID}.json"
 PAGE_SPEC_COMPILE_REPORT="$ARTIFACT_DIR/page_spec_compile_${RUN_ID}.jsonl"

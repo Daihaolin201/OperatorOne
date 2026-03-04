@@ -5,7 +5,7 @@ description: Convert a selected Stage-2 opportunity into a testable MVP blueprin
 
 # MVP Scope Builder (Stage 3)
 
-1. Select one `advance` opportunity from `research/stage2_decision_log.json` (prefer `selection_summary.selected_opportunity_id`).
+1. Select one `advance` opportunity from `research/stage2_idea_screening/decision_log.json` (prefer `selection_summary.selected_opportunity_id`).
 2. Build blueprint from template:
    - `../../framework/templates/stage3_project_blueprint.template.json`
 3. Fill mandatory hypothesis block:
@@ -27,7 +27,7 @@ description: Convert a selected Stage-2 opportunity into a testable MVP blueprin
 7. Add downstream handoff-ready inputs:
    - `downstream_inputs.marketing`
    - `downstream_inputs.operations`
-8. Write output to `research/stage3_project_blueprint.json`.
+8. Write output to `research/stage3_mvp_scope/project_blueprint.json`.
 
 ## Quality bar
 - Scope is buildable by a small team in <=14 days.

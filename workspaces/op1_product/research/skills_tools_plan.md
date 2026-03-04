@@ -19,7 +19,7 @@
 - `read` / `write` / `edit`: 结构化产物管理
 
 ## Output contract (stage-first)
-- Stage 1: `research/stage1_opportunity_records.json`
-- Stage 2: `research/stage2_scoring.csv`, `research/stage2_decision_log.json`
-- Stage 3: `research/stage3_project_blueprint.json`
-- Stage 4 (only after project selection): `../../handoffs/product_to_marketing.json`
+- Stage 1: `research/stage1_idea_discovery/opportunity_records.json`
+- Stage 2: `research/stage2_idea_screening/scoring.csv`, `research/stage2_idea_screening/decision_log.json`
+- Stage 3: `research/stage3_mvp_scope/project_blueprint.json`
+- Stage 4 (paused by default; only when explicitly requested): `../../handoffs/product_to_marketing.json`

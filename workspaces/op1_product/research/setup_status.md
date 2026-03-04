@@ -16,10 +16,10 @@
 - `skills/op1-product-landing-handoff/SKILL.md`
 
 ## Stage outputs initialized
-- `research/stage1_opportunity_records.json` (filled with 6 structured opportunities)
-- `research/stage2_scoring.csv` (scored)
-- `research/stage2_decision_log.json` (reasoned decisions)
-- `research/stage3_project_blueprint.json` (instantiated for `opp_001`, ready for Stage 4 handoff input)
+- `research/stage1_idea_discovery/opportunity_records.json` (filled with 6 structured opportunities)
+- `research/stage2_idea_screening/scoring.csv` (scored)
+- `research/stage2_idea_screening/decision_log.json` (reasoned decisions)
+- `research/stage3_mvp_scope/project_blueprint.json` (instantiated for `opp_001`, ready as Stage 3 scope input)
 
 ## Handoff
 - `../../handoffs/product_to_marketing.json` reset to template mode until project selection.

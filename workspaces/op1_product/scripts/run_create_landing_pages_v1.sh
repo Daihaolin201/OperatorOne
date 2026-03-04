@@ -2,9 +2,9 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-STAGE1_PATH="$ROOT_DIR/research/stage1_opportunity_records.json"
-STAGE2_PATH="$ROOT_DIR/research/stage2_decision_log.json"
-STAGE3_PATH="$ROOT_DIR/research/stage3_project_blueprint.json"
+STAGE1_PATH="$ROOT_DIR/research/stage1_idea_discovery/opportunity_records.json"
+STAGE2_PATH="$ROOT_DIR/research/stage2_idea_screening/decision_log.json"
+STAGE3_PATH="$ROOT_DIR/research/stage3_mvp_scope/project_blueprint.json"
 PROJECT_SPEC_PATH=""
 OUT_DIR="$ROOT_DIR/research/landing_v1"
 HANDOFF_OUT="../../handoffs/product_to_marketing.json"
@@ -95,7 +95,7 @@ while [[ $# -gt 0 ]]; do
 done
 
 RUN_ID="$(date -u +"%Y%m%dT%H%M%SZ")"
-RUN_REPORT="$ROOT_DIR/research/create_landing_pages_v1_run.json"
+RUN_REPORT="$ROOT_DIR/research/stage3_landing_launch/run.latest.json"
 CONTRACT_TEST_OUT="$OUT_DIR/landing_contract_test_${RUN_ID}.json"
 CONTRACT_TEST_LATEST="$OUT_DIR/landing_contract_test.latest.json"
 SEMANTIC_TEST_OUT="$OUT_DIR/landing_semantic_test_${RUN_ID}.json"
@@ -110,6 +110,7 @@ else
 fi
 
 mkdir -p "$OUT_DIR"
+mkdir -p "$(dirname "$RUN_REPORT")"
 
 CMD=(
   python3 "$ROOT_DIR/scripts/create_landing_package.py"

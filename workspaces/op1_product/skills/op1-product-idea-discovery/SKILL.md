@@ -16,7 +16,7 @@ description: Discover startup opportunities from market signals and user pain ev
    - `../../framework/templates/stage1_opportunity_records.template.json`
 6. Keep only evidence-backed claims; remove speculation.
 7. Ensure each opportunity has hard-gate fields filled (`buyer_clear`, `problem_evidenced`, `reachable_users`, `mvp_in_14_days`).
-8. Write output to `research/stage1_opportunity_records.json`.
+8. Write output to `research/stage1_idea_discovery/opportunity_records.json`.
 
 ## Quality bar
 - Each opportunity names a concrete buyer and workflow context.

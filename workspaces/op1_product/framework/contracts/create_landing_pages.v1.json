@@ -10,11 +10,11 @@
   },
   "input": {
     "required": [
-      "research/stage1_opportunity_records.json"
+      "research/stage1_idea_discovery/opportunity_records.json"
     ],
     "optional": [
-      "research/stage2_decision_log.json",
-      "research/stage3_project_blueprint.json",
+      "research/stage2_idea_screening/decision_log.json",
+      "research/stage3_mvp_scope/project_blueprint.json",
       "research/build_deploy_v1/project_spec.json"
     ],
     "autogen_supported": {
@@ -92,6 +92,7 @@
     "landing_package": "research/landing_v1/landing_package.json",
     "landing_contract_test": "research/landing_v1/landing_contract_test.latest.json",
     "landing_semantic_test": "research/landing_v1/landing_semantic_test.latest.json",
+    "run_report": "research/stage3_landing_launch/run.latest.json",
     "build_inputs": {
       "project_spec": "research/landing_v1/build_inputs/project_spec.json",
       "page_spec": "research/landing_v1/build_inputs/page_spec.json"

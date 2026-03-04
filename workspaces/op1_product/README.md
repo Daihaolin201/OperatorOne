@@ -5,10 +5,12 @@
 > 面向客户/协作者的一键复现手册：`REPRODUCE.md`
 
 ## 1) 角色定位
-- 负责：
+- 负责（当前三项主能力）：
   - Generate startup ideas（商业机会搜索、分析、筛选）
-  - MVP 边界定义与验证路径设计
-  - 向 Marketing 交接产品输入
+  - Build & deploy simple web products（可复用构建部署流水线）
+  - Create landing pages（Mode C，转化页语义与门禁）
+- 补充能力：
+  - MVP 边界定义与验证路径设计（用于支撑 landing/build 决策）
 - 不负责：
   - 直接执行外联营销
   - 销售 pipeline 决策
@@ -59,8 +61,8 @@
   - page-strategy test（结构策略正确性 + 多设备兼容基线 + 安全响应头基线）
   - business-rule test（业务规则正确性）
 - 输出结构化运行报告和检查点：
-  - `research/build_deploy_v1_run.json`
-  - `research/build_deploy_v1_state.json`
+  - `research/stage2_web_product/run.latest.json`
+  - `research/stage2_web_product/state.latest.json`
   - `research/build_deploy_v1/page_strategy.latest.json`
   - `research/build_deploy_v1/smoke_test.latest.json`
   - `research/build_deploy_v1/business_test.latest.json`
@@ -81,23 +83,28 @@
   - `research/landing_v1/build_inputs/page_spec.json`
   - `../../handoffs/product_to_marketing.json`
 
-## 4) Stage-Gate 流程
-1. Stage 1 — Opportunity Capture
-   - 输出：`research/stage1_opportunity_records.json`
-2. Stage 2 — Screening & Decision
-   - 输出：`research/stage2_scoring.csv`
-   - 输出：`research/stage2_decision_log.json`
-3. Stage 3 — Project Blueprint
-   - 输出：`research/stage3_project_blueprint.json`
-4. Stage 2.8/3.2 — Create Landing Pages（v1.1, Mode C）
-   - 输入：Stage1（必需）+ Stage2/Stage3（可选但优先）
-   - 输出：`research/landing_v1/landing_package.json` + `landing_contract_test.latest.json` + `landing_semantic_test.latest.json`
-5. Stage 2.5/3.5 — Build & Deploy（v1.1 capability）
-   - 输入：`project_spec`（推荐）或 Stage1/2 自动生成 spec
-   - 输出：`research/build_deploy_v1_run.json` + `page_strategy.latest.json`
-6. Stage 4 — Functional Handoff（项目选定后）
-   - 输出：`../../handoffs/product_to_marketing.json`
+## 4) 当前执行流程（按三项主任务）
+1. Stage 1 — Generate startup ideas
+   - 核心输出：
+     - `research/stage1_idea_discovery/opportunity_records.json`
+     - `research/stage2_idea_screening/scoring.csv`
+     - `research/stage2_idea_screening/decision_log.json`
 
+2. Stage 2 — Build & deploy simple web products
+   - 核心输出：
+     - `research/stage2_web_product/run.latest.json`
+     - `research/stage2_web_product/state.latest.json`
+     - `research/stage2_web_product/artifacts/`（build/deploy 详细产物）
+
+3. Stage 3 — Create landing pages
+   - 核心输出：
+     - `research/landing_v1/landing_package.json`
+     - `research/landing_v1/landing_contract_test.latest.json`
+     - `research/landing_v1/landing_semantic_test.latest.json`
+     - `research/stage3_landing_launch/run.latest.json`
+     - `research/stage3_landing_launch/regression/stage3_capability_validation.latest.json`
+
+> 注：Stage4 handoff 不是当前默认目标；当前版本优先保证以上三项能力可重复、可审计。
 ## 5) 一键运行（按能力）
 ```bash
 # Step 1: Generate startup ideas
@@ -114,6 +121,7 @@
 ```
 
 ## 6) 关键文件索引
+- 产物目录索引（新）：`research/STAGE_INDEX.md`
 - 流程总览：`framework/pipeline.md`
 - 筛选框架：`framework/product-selection-framework.md`
 - 来源信任配置：`framework/config/source_trust_rank.json`
@@ -150,6 +158,6 @@
 - 因此目前“稳定可跑”主源为：Reddit + HN + Shopify
 
 ## 9) 使用建议
-- 如果是“能力建设期”：先跑 Stage1/2，确认筛选逻辑和证据质量
-- 如果是“项目执行期”：从 Stage2 的 `advance` 候选中选 1 个进入 Stage3
-- 只有项目选定后再生成 marketing handoff，避免过早绑定单一商业项目
+- 如果是“能力建设期”：先跑 Stage1，确认筛选逻辑和证据质量
+- 如果是“执行验证期”：先跑 Stage3（landing），再跑 Stage2（build/deploy）做闭环验证
+- 优先使用 `research/STAGE_INDEX.md` 给出的 canonical 路径，legacy 路径仅用于兼容历史脚本

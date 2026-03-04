@@ -1,0 +1,425 @@
+{
+  "generated_at": "2026-03-03T12:57:01.017566Z",
+  "builder": "scripts/build_stage1_opportunities.py",
+  "inputs": {
+    "primary": "research/reddit_signals.json",
+    "secondary": "research/secondary_signals.json",
+    "trust_config": "framework/config/source_trust_rank.json"
+  },
+  "opportunities": [
+    {
+      "opportunity_id": "opp_001",
+      "target_segment": {
+        "role": "Freelancer / small service owner",
+        "company_size": "1-20",
+        "industry": "Professional services"
+      },
+      "core_problem": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "current_workaround": "Manual reminders via personal email and inconsistent escalation.",
+      "pain_evidence": [
+        {
+          "claim": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1qzkjmj/commercial_client_not_paying/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "I was chatting with a freelancer friend last week who was fuming about a client ghosting on a $2k invoice. It got me curious: how do you all deal with overdue payments? I’m not selling anything, just doing some research ...",
+          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1mh9sdj/how_do_you_actually_follow_up_on_unpaid_invoices/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "283 apps listed for this feature category on Shopify App Store",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en",
+          "signal_type": "market_density",
+          "source": "shopify_app_store"
+        },
+        {
+          "claim": "283 apps listed for this feature category on Shopify App Store",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en",
+          "signal_type": "market_density",
+          "source": "shopify_app_store"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [
+          "reddit_operator_communities",
+          "shopify_app_store"
+        ],
+        "distinct_source_count": 2,
+        "min_required": 2,
+        "min_sources_met": true
+      },
+      "budget_signal": {
+        "exists": true,
+        "evidence": "Inferred from discussion around tooling cost/automation demand."
+      },
+      "urgency_signal": {
+        "exists": true,
+        "evidence": "Inferred from loss/time-pressure language in evidence."
+      },
+      "distribution_entry": {
+        "channel": "Freelancer and small-business communities",
+        "first_20_targets_how": "Reach out to posters discussing overdue invoices and AR frustration"
+      },
+      "implementation_constraint": [
+        "Email deliverability",
+        "Accounting data import quality"
+      ],
+      "hard_gate_check": {
+        "buyer_clear": true,
+        "problem_evidenced": true,
+        "reachable_users": true,
+        "mvp_in_14_days": true,
+        "min_distinct_sources_met": true,
+        "pass": true
+      }
+    },
+    {
+      "opportunity_id": "opp_002",
+      "target_segment": {
+        "role": "Ecommerce owner / operations manager",
+        "company_size": "3-50",
+        "industry": "DTC ecommerce"
+      },
+      "core_problem": "Chargeback handling is manual, time-consuming, and causes immediate cash-flow shocks.",
+      "current_workaround": "Manual evidence gathering from order systems and customer support logs.",
+      "pain_evidence": [
+        {
+          "claim": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear.  Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+          "source_url": "https://www.reddit.com/r/ecommerce/comments/1qci3a4/just_got_charged_back_3400_in_one_day_and_i/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "When I launched my shopify store I was doing maybe 10 orders a week and it was totally manageable, just pack everything up after dinner and drop it at the post office the next morning. Now I'm at like 150 orders a week a...",
+          "source_url": "https://www.reddit.com/r/ecommerce/comments/1pt6jzb/getting_buried_under_order_fulfillment_and_i_dont/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1212 reviews)",
+          "source_url": "https://apps.shopify.com/blockify",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        },
+        {
+          "claim": "Automate everything and get back to business (8122 reviews)",
+          "source_url": "https://apps.shopify.com/flow",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [
+          "reddit_operator_communities",
+          "shopify_app_store"
+        ],
+        "distinct_source_count": 2,
+        "min_required": 2,
+        "min_sources_met": true
+      },
+      "budget_signal": {
+        "exists": true,
+        "evidence": "Inferred from discussion around tooling cost/automation demand."
+      },
+      "urgency_signal": {
+        "exists": true,
+        "evidence": "Inferred from loss/time-pressure language in evidence."
+      },
+      "distribution_entry": {
+        "channel": "Ecommerce communities",
+        "first_20_targets_how": "Shortlist stores actively discussing dispute losses"
+      },
+      "implementation_constraint": [
+        "Store API access",
+        "Dispute data normalization"
+      ],
+      "hard_gate_check": {
+        "buyer_clear": true,
+        "problem_evidenced": true,
+        "reachable_users": true,
+        "mvp_in_14_days": true,
+        "min_distinct_sources_met": true,
+        "pass": true
+      }
+    },
+    {
+      "opportunity_id": "opp_003",
+      "target_segment": {
+        "role": "Agency owner / account manager",
+        "company_size": "5-50",
+        "industry": "Marketing agencies"
+      },
+      "core_problem": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
+      "current_workaround": "Manual exports and custom spreadsheet/report rewriting.",
+      "pain_evidence": [
+        {
+          "claim": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month.  Over the last 6-8 months, I keep seeing the same p...",
+          "source_url": "https://www.reddit.com/r/PPC/comments/1oe6b1f/if_youre_spending_10kmonth_on_google_ads_and_your/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Have not done posts in a minute, and I am excited and a bit nervous to get back into it! BTW my posts may be long but they are written off the dome not with the help of AI :)  I own Based Agency, we are a digital marketi...",
+          "source_url": "https://www.reddit.com/r/agency/comments/1l2u472/my_marketing_agency_comprehensive_2025_tech_stack/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Add plug-n-play customisable sections to any theme & page (2279 reviews)",
+          "source_url": "https://apps.shopify.com/section-factory",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        },
+        {
+          "claim": "Build proven CRO-focused pages with pro flexible customization (5770 reviews)",
+          "source_url": "https://apps.shopify.com/pagefly",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [
+          "reddit_operator_communities",
+          "shopify_app_store"
+        ],
+        "distinct_source_count": 2,
+        "min_required": 2,
+        "min_sources_met": true
+      },
+      "budget_signal": {
+        "exists": true,
+        "evidence": "Inferred from discussion around tooling cost/automation demand."
+      },
+      "urgency_signal": {
+        "exists": false,
+        "evidence": "No immediate urgency signal in selected evidence."
+      },
+      "distribution_entry": {
+        "channel": "Agency founder communities",
+        "first_20_targets_how": "Target agencies publicly discussing reporting bottlenecks"
+      },
+      "implementation_constraint": [
+        "Cross-channel metric mapping",
+        "Integration breadth expectations"
+      ],
+      "hard_gate_check": {
+        "buyer_clear": true,
+        "problem_evidenced": true,
+        "reachable_users": true,
+        "mvp_in_14_days": true,
+        "min_distinct_sources_met": true,
+        "pass": true
+      }
+    },
+    {
+      "opportunity_id": "opp_004",
+      "target_segment": {
+        "role": "Property manager",
+        "company_size": "2-30",
+        "industry": "Property management"
+      },
+      "core_problem": "Owner and tenant workflows are fragmented, driving monthly manual spreadsheet work.",
+      "current_workaround": "Default PM software output plus custom Excel edits.",
+      "pain_evidence": [
+        {
+          "claim": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+          "source_url": "https://www.reddit.com/r/PropertyManagement/comments/1nvfpy9/how_do_you_handle_these_types_of_people/",
+          "signal_type": "pain",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "It does not help. If anything, it makes people automatically annoyed. Call and talk. We are human beings and we will work with you if you communicate. Asking AI to quote a bunch of nonsense (which usually doesn’t apply) ...",
+          "source_url": "https://www.reddit.com/r/PropertyManagement/comments/1qq22v1/i_beg_all_tenants_please_stop_using_chat_gpt_for/",
+          "signal_type": "pain",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Impossible food sues to cancel earlier trademark owners",
+          "source_url": "https://impossiblehq.com/impossible-foods-lawsuit-statement/",
+          "signal_type": "pain",
+          "source": "hackernews"
+        },
+        {
+          "claim": "Launch HN: Recall.ai (YC W20) – API for meeting recordings and transcripts Hey HN, we&#x27;re David and Amanda from Recall.ai (<a href=\"https:&#x2F;&#x2F;www.recall.ai\">https:&#x2F;&#x2F;www.recall.ai</a>). Today we’re l...",
+          "source_url": "https://news.ycombinator.com/item?id=45199648",
+          "signal_type": "pain",
+          "source": "hackernews"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [
+          "hackernews",
+          "reddit_operator_communities"
+        ],
+        "distinct_source_count": 2,
+        "min_required": 2,
+        "min_sources_met": true
+      },
+      "budget_signal": {
+        "exists": true,
+        "evidence": "Inferred from discussion around tooling cost/automation demand."
+      },
+      "urgency_signal": {
+        "exists": false,
+        "evidence": "No immediate urgency signal in selected evidence."
+      },
+      "distribution_entry": {
+        "channel": "Property management forums",
+        "first_20_targets_how": "Reach operators with 20-150 doors and reporting pain"
+      },
+      "implementation_constraint": [
+        "PM tool integrations",
+        "Data privacy in owner/tenant records"
+      ],
+      "hard_gate_check": {
+        "buyer_clear": true,
+        "problem_evidenced": true,
+        "reachable_users": true,
+        "mvp_in_14_days": true,
+        "min_distinct_sources_met": true,
+        "pass": true
+      }
+    },
+    {
+      "opportunity_id": "opp_005",
+      "target_segment": {
+        "role": "SMB owner / finance admin",
+        "company_size": "10-100",
+        "industry": "General SMB"
+      },
+      "core_problem": "Expense reimbursement remains chaotic and fraud-prone with manual checks.",
+      "current_workaround": "Shared sheet + end-of-month manual reconciliation.",
+      "pain_evidence": [
+        {
+          "claim": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1pdax88/i_caught_an_employee_submitting_fake_expense/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Every end of the month turns into this massive chore chasing down missing receipts, checking if that Starbucks charge was a client meeting or just coffee, sorting random Venmo reimbursements, etc. I thought I could handl...",
+          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1o6dmvd/how_do_you_all_handle_employee_expenses_without/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2301 reviews)",
+          "source_url": "https://apps.shopify.com/order-printer-pro",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        },
+        {
+          "claim": "An invoice generator to easily custom and print order document (1081 reviews)",
+          "source_url": "https://apps.shopify.com/vify-order-printer",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [
+          "reddit_operator_communities",
+          "shopify_app_store"
+        ],
+        "distinct_source_count": 2,
+        "min_required": 2,
+        "min_sources_met": true
+      },
+      "budget_signal": {
+        "exists": true,
+        "evidence": "Inferred from discussion around tooling cost/automation demand."
+      },
+      "urgency_signal": {
+        "exists": true,
+        "evidence": "Inferred from loss/time-pressure language in evidence."
+      },
+      "distribution_entry": {
+        "channel": "SMB operations communities",
+        "first_20_targets_how": "Interview SMBs with recurring reimbursement delays"
+      },
+      "implementation_constraint": [
+        "OCR quality",
+        "Policy customization across teams"
+      ],
+      "hard_gate_check": {
+        "buyer_clear": true,
+        "problem_evidenced": true,
+        "reachable_users": true,
+        "mvp_in_14_days": true,
+        "min_distinct_sources_met": true,
+        "pass": true
+      }
+    },
+    {
+      "opportunity_id": "opp_006",
+      "target_segment": {
+        "role": "Operations admin",
+        "company_size": "5-80",
+        "industry": "SMB operations/logistics"
+      },
+      "core_problem": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
+      "current_workaround": "Manual copy-paste from PDFs into spreadsheets and brittle formulas/macros.",
+      "pain_evidence": [
+        {
+          "claim": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape.  I'm not talking about just \"old\" tech but things like:  1. A shared network drive folder structur...",
+          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1k6282k/whats_the_most_terrifyingly_outdated_piece_of/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Hi everyone as the title states…long story short my kindness got the best of me and I’m getting emotionally curb stomped.  About 2 months ago I had a lead reach out to me saying they needed immediate help with their mark...",
+          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1ni460m/i_messed_up_hard_and_im_hoping_others_can_learn/",
+          "signal_type": "money_loss",
+          "source": "reddit_operator_communities"
+        },
+        {
+          "claim": "Sync your sales channel with QuickBooks Online (2985 reviews)",
+          "source_url": "https://apps.shopify.com/qbconnector",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        },
+        {
+          "claim": "Build reports with custom fields and data from other apps (1779 reviews)",
+          "source_url": "https://apps.shopify.com/report-pundit",
+          "signal_type": "intent",
+          "source": "shopify_app_store"
+        }
+      ],
+      "source_coverage": {
+        "distinct_sources": [
+          "reddit_operator_communities",
+          "shopify_app_store"
+        ],
+        "distinct_source_count": 2,
+        "min_required": 2,
+        "min_sources_met": true
+      },
+      "budget_signal": {
+        "exists": true,
+        "evidence": "Inferred from discussion around tooling cost/automation demand."
+      },
+      "urgency_signal": {
+        "exists": false,
+        "evidence": "No immediate urgency signal in selected evidence."
+      },
+      "distribution_entry": {
+        "channel": "SMB ops communities",
+        "first_20_targets_how": "Reach teams reporting PDF-to-Excel pain and formula breakage"
+      },
+      "implementation_constraint": [
+        "Supplier template variance",
+        "Extraction confidence thresholds"
+      ],
+      "hard_gate_check": {
+        "buyer_clear": true,
+        "problem_evidenced": true,
+        "reachable_users": true,
+        "mvp_in_14_days": true,
+        "min_distinct_sources_met": true,
+        "pass": true
+      }
+    }
+  ]
+}

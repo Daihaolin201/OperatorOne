@@ -34,8 +34,8 @@ This will:
 ## Inputs
 - Preferred: `research/build_deploy_v1/project_spec.json`
 - Optional autogen sources:
-  - `research/stage1_opportunity_records.json`
-  - `research/stage2_decision_log.json`
+  - `research/stage1_idea_discovery/opportunity_records.json`
+  - `research/stage2_idea_screening/decision_log.json`
 - Legacy mode: stage3 blueprint via `--legacy-blueprint`
 
 ## Key scripts
@@ -58,9 +58,9 @@ This will:
 - `research/landing_v1/landing_package.json`
 - `research/landing_v1/landing_contract_test.latest.json`
 - `research/landing_v1/landing_semantic_test.latest.json`
-- `research/create_landing_pages_v1_run.json`
-- `research/build_deploy_v1_run.json`
-- `research/build_deploy_v1_state.json`
+- `research/stage3_landing_launch/run.latest.json`
+- `research/stage2_web_product/run.latest.json`
+- `research/stage2_web_product/state.latest.json`
 - `research/build_deploy_v1/page_strategy.latest.json`
 - `research/build_deploy_v1/smoke_test.latest.json`
 - `research/build_deploy_v1/business_test.latest.json`

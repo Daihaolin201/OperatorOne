@@ -14,15 +14,18 @@
 - 每个评分维度必须有“打分依据”与“反证风险”。
 - 结果需可追溯：机会 -> 筛选 -> 立项 -> MVP -> 落地页/营销输入。
 
-## Stage-Gate Workflow
-1. **Stage 1 — Opportunity Capture**
-   - 产出：`research/stage1_opportunity_records.json`
-2. **Stage 2 — Screening & Prioritization**
-   - 产出：`research/stage2_scoring.csv`, `research/stage2_decision_log.json`
-3. **Stage 3 — Project Blueprint**
-   - 产出：`research/stage3_project_blueprint.json`
-4. **Stage 4 — Functional Handoffs**
-   - 产出：`../../handoffs/product_to_marketing.json`（仅当项目被正式选定后）
+## Stage-Gate Workflow（当前三项主任务）
+1. **Stage 1 — Generate startup ideas**
+   - 产出：`research/stage1_idea_discovery/opportunity_records.json`
+   - 产出：`research/stage2_idea_screening/scoring.csv`, `research/stage2_idea_screening/decision_log.json`
+2. **Stage 2 — Build & deploy simple web products**
+   - 产出：`research/stage2_web_product/run.latest.json`, `research/stage2_web_product/state.latest.json`
+3. **Stage 3 — Create landing pages**
+   - 产出：`research/landing_v1/landing_package.json`
+   - 产出：`research/stage3_landing_launch/run.latest.json`
+
+> `research/stage3_mvp_scope/project_blueprint.json` 作为 Stage3 输入支撑产物保留。
+> Stage4 handoff 当前不作为默认目标，仅在你明确要求时执行。
 
 ## Guardrails
 - 在“setup mode”下，不默认推进某个单一 idea 为最终项目。

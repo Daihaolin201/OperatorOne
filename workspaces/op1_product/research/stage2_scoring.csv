@@ -1,7 +1,1 @@
-opportunity_id,hard_gate_pass,pain_intensity,willingness_to_pay,mvp_speed,acquisition_reachability,competitive_whitespace,recurring_usage,base_weighted_score,confidence_level,confidence_multiplier,weighted_score,decision
-opp_001,True,4.9,4.0,3.9,3.8,3.1,3.9,4.084,high,1.0,4.084,advance
-opp_002,True,4.9,4.0,3.9,3.8,3.1,3.9,4.084,high,1.0,4.084,advance
-opp_005,True,4.9,4.0,3.9,3.8,3.1,3.3,4.024,high,1.0,4.024,advance
-opp_003,True,4.4,4.0,3.9,3.8,3.1,3.9,3.964,high,1.0,3.964,advance
-opp_006,True,4.4,4.0,3.9,3.8,3.1,3.3,3.904,high,1.0,3.904,advance
-opp_004,False,4.2,4.0,3.9,3.8,3.1,3.9,3.916,medium,0.8,3.133,reject
+stage2_idea_screening/scoring.csv

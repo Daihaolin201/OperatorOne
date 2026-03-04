@@ -1,0 +1,374 @@
+{
+  "generated_at": "2026-03-04T02:25:15.311951Z",
+  "weights": {
+    "pain_intensity": 0.24,
+    "willingness_to_pay": 0.24,
+    "mvp_speed": 0.18,
+    "acquisition_reachability": 0.16,
+    "competitive_whitespace": 0.08,
+    "recurring_usage": 0.1
+  },
+  "confidence_multipliers": {
+    "high": 1.0,
+    "medium": 0.8,
+    "low": 0.5
+  },
+  "trust_config": "framework/config/source_trust_rank.json",
+  "ranking": [
+    {
+      "rank": 1,
+      "opportunity_id": "opp_001",
+      "weighted_score": 4.084,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 2,
+      "opportunity_id": "opp_002",
+      "weighted_score": 4.084,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 3,
+      "opportunity_id": "opp_005",
+      "weighted_score": 4.024,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 4,
+      "opportunity_id": "opp_003",
+      "weighted_score": 3.964,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 5,
+      "opportunity_id": "opp_006",
+      "weighted_score": 3.904,
+      "decision": "advance",
+      "hard_gate_pass": true
+    },
+    {
+      "rank": 6,
+      "opportunity_id": "opp_004",
+      "weighted_score": 3.133,
+      "decision": "reject",
+      "hard_gate_pass": false
+    }
+  ],
+  "selection_summary": {
+    "selected_opportunity_id": "opp_001",
+    "selection_decision": "advance",
+    "top_ranked_opportunity_id": "opp_001",
+    "runner_up_opportunity_id": "opp_002",
+    "score_gap_vs_runner_up": 0.0,
+    "score_gap_flag": "narrow",
+    "manual_review_required": true,
+    "why_top_beats_runner_up": "weighted_score 4.084 vs 4.084; scores are tied; preserve deterministic ranking order and require manual review"
+  },
+  "decisions": [
+    {
+      "opportunity_id": "opp_001",
+      "hard_gate_pass": true,
+      "evidence_gate": {
+        "stage1_pass": true,
+        "loss_signal_ok": true,
+        "budget_or_intent_ok": true
+      },
+      "confidence": {
+        "level": "high",
+        "multiplier": 1.0,
+        "reason": "Cross-source corroboration + loss + intent signals present."
+      },
+      "scores": {
+        "pain_intensity": {
+          "score": 4.9,
+          "reason": "Urgency + evidence depth + loss signal heuristic.",
+          "risk_if_wrong": "Online signal may overstate real purchasing urgency."
+        },
+        "willingness_to_pay": {
+          "score": 4.0,
+          "reason": "Budget signal + intent signal heuristic.",
+          "risk_if_wrong": "Tool interest may not convert into paid behavior."
+        },
+        "mvp_speed": {
+          "score": 3.9,
+          "reason": "Based on Stage-1 MVP-in-14-days gate.",
+          "risk_if_wrong": "Integration requirements may expand scope."
+        },
+        "acquisition_reachability": {
+          "score": 3.8,
+          "reason": "Based on reachable-first-20-users gate.",
+          "risk_if_wrong": "Public communities may not convert to interviews."
+        },
+        "competitive_whitespace": {
+          "score": 3.1,
+          "reason": "Cross-source corroboration proxy + neutral baseline.",
+          "risk_if_wrong": "Incumbent strength may be underestimated."
+        },
+        "recurring_usage": {
+          "score": 3.9,
+          "reason": "Recurring-workflow keyword heuristic.",
+          "risk_if_wrong": "Real usage frequency may be lower than inferred."
+        }
+      },
+      "base_weighted_score": 4.084,
+      "weighted_score": 4.084,
+      "decision": "advance",
+      "decision_reason": "Meets score threshold and evidence gates after confidence adjustment."
+    },
+    {
+      "opportunity_id": "opp_002",
+      "hard_gate_pass": true,
+      "evidence_gate": {
+        "stage1_pass": true,
+        "loss_signal_ok": true,
+        "budget_or_intent_ok": true
+      },
+      "confidence": {
+        "level": "high",
+        "multiplier": 1.0,
+        "reason": "Cross-source corroboration + loss + intent signals present."
+      },
+      "scores": {
+        "pain_intensity": {
+          "score": 4.9,
+          "reason": "Urgency + evidence depth + loss signal heuristic.",
+          "risk_if_wrong": "Online signal may overstate real purchasing urgency."
+        },
+        "willingness_to_pay": {
+          "score": 4.0,
+          "reason": "Budget signal + intent signal heuristic.",
+          "risk_if_wrong": "Tool interest may not convert into paid behavior."
+        },
+        "mvp_speed": {
+          "score": 3.9,
+          "reason": "Based on Stage-1 MVP-in-14-days gate.",
+          "risk_if_wrong": "Integration requirements may expand scope."
+        },
+        "acquisition_reachability": {
+          "score": 3.8,
+          "reason": "Based on reachable-first-20-users gate.",
+          "risk_if_wrong": "Public communities may not convert to interviews."
+        },
+        "competitive_whitespace": {
+          "score": 3.1,
+          "reason": "Cross-source corroboration proxy + neutral baseline.",
+          "risk_if_wrong": "Incumbent strength may be underestimated."
+        },
+        "recurring_usage": {
+          "score": 3.9,
+          "reason": "Recurring-workflow keyword heuristic.",
+          "risk_if_wrong": "Real usage frequency may be lower than inferred."
+        }
+      },
+      "base_weighted_score": 4.084,
+      "weighted_score": 4.084,
+      "decision": "advance",
+      "decision_reason": "Meets score threshold and evidence gates after confidence adjustment."
+    },
+    {
+      "opportunity_id": "opp_003",
+      "hard_gate_pass": true,
+      "evidence_gate": {
+        "stage1_pass": true,
+        "loss_signal_ok": true,
+        "budget_or_intent_ok": true
+      },
+      "confidence": {
+        "level": "high",
+        "multiplier": 1.0,
+        "reason": "Cross-source corroboration + loss + intent signals present."
+      },
+      "scores": {
+        "pain_intensity": {
+          "score": 4.4,
+          "reason": "Urgency + evidence depth + loss signal heuristic.",
+          "risk_if_wrong": "Online signal may overstate real purchasing urgency."
+        },
+        "willingness_to_pay": {
+          "score": 4.0,
+          "reason": "Budget signal + intent signal heuristic.",
+          "risk_if_wrong": "Tool interest may not convert into paid behavior."
+        },
+        "mvp_speed": {
+          "score": 3.9,
+          "reason": "Based on Stage-1 MVP-in-14-days gate.",
+          "risk_if_wrong": "Integration requirements may expand scope."
+        },
+        "acquisition_reachability": {
+          "score": 3.8,
+          "reason": "Based on reachable-first-20-users gate.",
+          "risk_if_wrong": "Public communities may not convert to interviews."
+        },
+        "competitive_whitespace": {
+          "score": 3.1,
+          "reason": "Cross-source corroboration proxy + neutral baseline.",
+          "risk_if_wrong": "Incumbent strength may be underestimated."
+        },
+        "recurring_usage": {
+          "score": 3.9,
+          "reason": "Recurring-workflow keyword heuristic.",
+          "risk_if_wrong": "Real usage frequency may be lower than inferred."
+        }
+      },
+      "base_weighted_score": 3.964,
+      "weighted_score": 3.964,
+      "decision": "advance",
+      "decision_reason": "Meets score threshold and evidence gates after confidence adjustment."
+    },
+    {
+      "opportunity_id": "opp_004",
+      "hard_gate_pass": false,
+      "evidence_gate": {
+        "stage1_pass": true,
+        "loss_signal_ok": false,
+        "budget_or_intent_ok": true
+      },
+      "confidence": {
+        "level": "medium",
+        "multiplier": 0.8,
+        "reason": "Cross-source corroboration present but evidence quality is not fully complete."
+      },
+      "scores": {
+        "pain_intensity": {
+          "score": 4.2,
+          "reason": "Urgency + evidence depth + loss signal heuristic.",
+          "risk_if_wrong": "Online signal may overstate real purchasing urgency."
+        },
+        "willingness_to_pay": {
+          "score": 4.0,
+          "reason": "Budget signal + intent signal heuristic.",
+          "risk_if_wrong": "Tool interest may not convert into paid behavior."
+        },
+        "mvp_speed": {
+          "score": 3.9,
+          "reason": "Based on Stage-1 MVP-in-14-days gate.",
+          "risk_if_wrong": "Integration requirements may expand scope."
+        },
+        "acquisition_reachability": {
+          "score": 3.8,
+          "reason": "Based on reachable-first-20-users gate.",
+          "risk_if_wrong": "Public communities may not convert to interviews."
+        },
+        "competitive_whitespace": {
+          "score": 3.1,
+          "reason": "Cross-source corroboration proxy + neutral baseline.",
+          "risk_if_wrong": "Incumbent strength may be underestimated."
+        },
+        "recurring_usage": {
+          "score": 3.9,
+          "reason": "Recurring-workflow keyword heuristic.",
+          "risk_if_wrong": "Real usage frequency may be lower than inferred."
+        }
+      },
+      "base_weighted_score": 3.916,
+      "weighted_score": 3.133,
+      "decision": "reject",
+      "decision_reason": "Rejected by evidence gate: no loss signal."
+    },
+    {
+      "opportunity_id": "opp_005",
+      "hard_gate_pass": true,
+      "evidence_gate": {
+        "stage1_pass": true,
+        "loss_signal_ok": true,
+        "budget_or_intent_ok": true
+      },
+      "confidence": {
+        "level": "high",
+        "multiplier": 1.0,
+        "reason": "Cross-source corroboration + loss + intent signals present."
+      },
+      "scores": {
+        "pain_intensity": {
+          "score": 4.9,
+          "reason": "Urgency + evidence depth + loss signal heuristic.",
+          "risk_if_wrong": "Online signal may overstate real purchasing urgency."
+        },
+        "willingness_to_pay": {
+          "score": 4.0,
+          "reason": "Budget signal + intent signal heuristic.",
+          "risk_if_wrong": "Tool interest may not convert into paid behavior."
+        },
+        "mvp_speed": {
+          "score": 3.9,
+          "reason": "Based on Stage-1 MVP-in-14-days gate.",
+          "risk_if_wrong": "Integration requirements may expand scope."
+        },
+        "acquisition_reachability": {
+          "score": 3.8,
+          "reason": "Based on reachable-first-20-users gate.",
+          "risk_if_wrong": "Public communities may not convert to interviews."
+        },
+        "competitive_whitespace": {
+          "score": 3.1,
+          "reason": "Cross-source corroboration proxy + neutral baseline.",
+          "risk_if_wrong": "Incumbent strength may be underestimated."
+        },
+        "recurring_usage": {
+          "score": 3.3,
+          "reason": "Recurring-workflow keyword heuristic.",
+          "risk_if_wrong": "Real usage frequency may be lower than inferred."
+        }
+      },
+      "base_weighted_score": 4.024,
+      "weighted_score": 4.024,
+      "decision": "advance",
+      "decision_reason": "Meets score threshold and evidence gates after confidence adjustment."
+    },
+    {
+      "opportunity_id": "opp_006",
+      "hard_gate_pass": true,
+      "evidence_gate": {
+        "stage1_pass": true,
+        "loss_signal_ok": true,
+        "budget_or_intent_ok": true
+      },
+      "confidence": {
+        "level": "high",
+        "multiplier": 1.0,
+        "reason": "Cross-source corroboration + loss + intent signals present."
+      },
+      "scores": {
+        "pain_intensity": {
+          "score": 4.4,
+          "reason": "Urgency + evidence depth + loss signal heuristic.",
+          "risk_if_wrong": "Online signal may overstate real purchasing urgency."
+        },
+        "willingness_to_pay": {
+          "score": 4.0,
+          "reason": "Budget signal + intent signal heuristic.",
+          "risk_if_wrong": "Tool interest may not convert into paid behavior."
+        },
+        "mvp_speed": {
+          "score": 3.9,
+          "reason": "Based on Stage-1 MVP-in-14-days gate.",
+          "risk_if_wrong": "Integration requirements may expand scope."
+        },
+        "acquisition_reachability": {
+          "score": 3.8,
+          "reason": "Based on reachable-first-20-users gate.",
+          "risk_if_wrong": "Public communities may not convert to interviews."
+        },
+        "competitive_whitespace": {
+          "score": 3.1,
+          "reason": "Cross-source corroboration proxy + neutral baseline.",
+          "risk_if_wrong": "Incumbent strength may be underestimated."
+        },
+        "recurring_usage": {
+          "score": 3.3,
+          "reason": "Recurring-workflow keyword heuristic.",
+          "risk_if_wrong": "Real usage frequency may be lower than inferred."
+        }
+      },
+      "base_weighted_score": 3.904,
+      "weighted_score": 3.904,
+      "decision": "advance",
+      "decision_reason": "Meets score threshold and evidence gates after confidence adjustment."
+    }
+  ],
+  "notes": "Scores are heuristic defaults; replace with interview-validated scoring in production."
+}

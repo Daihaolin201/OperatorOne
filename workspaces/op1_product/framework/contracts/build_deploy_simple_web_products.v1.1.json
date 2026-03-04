@@ -7,14 +7,14 @@
     "optional_page_spec": "research/landing_v1/build_inputs/page_spec.json",
     "autogen_supported": true,
     "autogen_sources": [
-      "research/stage1_opportunity_records.json",
-      "research/stage2_decision_log.json"
+      "research/stage1_idea_discovery/opportunity_records.json",
+      "research/stage2_idea_screening/decision_log.json"
     ],
-    "legacy_supported": "research/stage3_project_blueprint.json"
+    "legacy_supported": "research/stage3_mvp_scope/project_blueprint.json"
   },
   "output": {
-    "primary_artifact": "research/build_deploy_v1_run.json",
-    "checkpoint_artifact": "research/build_deploy_v1_state.json",
+    "primary_artifact": "research/stage2_web_product/run.latest.json",
+    "checkpoint_artifact": "research/stage2_web_product/state.latest.json",
     "page_spec_artifact": "research/build_deploy_v1/page_spec_<run>.json",
     "smoke_test_artifact": "research/build_deploy_v1/smoke_test.latest.json",
     "page_strategy_test_artifact": "research/build_deploy_v1/page_strategy.latest.json",

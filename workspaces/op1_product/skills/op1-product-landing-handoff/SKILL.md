@@ -8,8 +8,8 @@ description: Create landing-page-ready product handoff using Mode-C contract gat
 Use this skill when the request is to produce a **landing-ready handoff** from Stage1/2/3 artifacts with explicit quality gates.
 
 ## Inputs
-- Required: `research/stage1_opportunity_records.json`
-- Optional: `research/stage2_decision_log.json`, `research/stage3_project_blueprint.json`
+- Required: `research/stage1_idea_discovery/opportunity_records.json`
+- Optional: `research/stage2_idea_screening/decision_log.json`, `research/stage3_mvp_scope/project_blueprint.json`
 - Optional existing spec: `research/build_deploy_v1/project_spec.json`
 
 ## Execution

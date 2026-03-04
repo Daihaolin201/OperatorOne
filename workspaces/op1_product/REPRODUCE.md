@@ -16,13 +16,13 @@
 
 ### A. Stage 1 — 机会发现（已可复现）
 - 多源信号抓取（当前稳定：Reddit + HN + Shopify）
-- 机会结构化输出到 `research/stage1_opportunity_records.json`
+- 机会结构化输出到 `research/stage1_idea_discovery/opportunity_records.json`
 
 ### B. Stage 2 — 机会筛选与决策（已可复现）
 - 评分与闸门判定
 - 输出：
-  - `research/stage2_scoring.csv`
-  - `research/stage2_decision_log.json`
+  - `research/stage2_idea_screening/scoring.csv`
+  - `research/stage2_idea_screening/decision_log.json`
 
 ### C. Create landing pages（v1.1, Mode C only，已可复现）
 - 核心链路：`Stage1/2/3 -> Preflight Gates -> LandingPackage -> Contract Test -> Semantic Test -> Marketing Handoff`
@@ -54,7 +54,7 @@
 - chargeback-response
 - client-reporting
 
-矩阵产物：`research/build_deploy_v1/modular_matrix/generalization_matrix.json`
+矩阵产物：`research/stage2_web_product/artifacts/modular_matrix/generalization_matrix.json`
 
 ---
 
@@ -96,8 +96,8 @@
 
 ### Step 4：验收主报告
 查看：
-- `research/create_landing_pages_v1_run.json`
-- `research/build_deploy_v1_run.json`
+- `research/stage3_landing_launch/run.latest.json`
+- `research/stage2_web_product/run.latest.json`
 - 关键字段应为：
   - `create_landing_pages_v1.status != blocked`
   - `contract_test_status = passed`
@@ -112,9 +112,9 @@
 
 ### 4.1 生成三份 spec
 ```bash
-python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_records.json --stage2 research/stage2_decision_log.json --out research/build_deploy_v1/project_spec.invoice.json --adapter invoice-followup --force
-python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_records.json --stage2 research/stage2_decision_log.json --out research/build_deploy_v1/project_spec.chargeback.json --adapter chargeback-response --force
-python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_records.json --stage2 research/stage2_decision_log.json --out research/build_deploy_v1/project_spec.reporting.json --adapter client-reporting --force
+python3 scripts/init_project_spec.py --stage1 research/stage1_idea_discovery/opportunity_records.json --stage2 research/stage2_idea_screening/decision_log.json --out research/build_deploy_v1/project_spec.invoice.json --adapter invoice-followup --force
+python3 scripts/init_project_spec.py --stage1 research/stage1_idea_discovery/opportunity_records.json --stage2 research/stage2_idea_screening/decision_log.json --out research/build_deploy_v1/project_spec.chargeback.json --adapter chargeback-response --force
+python3 scripts/init_project_spec.py --stage1 research/stage1_idea_discovery/opportunity_records.json --stage2 research/stage2_idea_screening/decision_log.json --out research/build_deploy_v1/project_spec.reporting.json --adapter client-reporting --force
 ```
 
 ### 4.2 分别运行流水线
@@ -128,7 +128,7 @@ python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_record
 ```bash
 ./scripts/build_generalization_matrix.py \
   --base-dir research/build_deploy_v1/modular_matrix \
-  --out research/build_deploy_v1/modular_matrix/generalization_matrix.json
+  --out research/stage2_web_product/artifacts/modular_matrix/generalization_matrix.json
 ```
 
 通过标准：
@@ -138,13 +138,13 @@ python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_record
 ---
 
 ## 5) 产物地图（客户常看）
-- Landing 主报告：`research/create_landing_pages_v1_run.json`
+- Landing 主报告：`research/stage3_landing_launch/run.latest.json`
 - Landing 契约测试：`research/landing_v1/landing_contract_test.latest.json`
 - Landing 语义测试：`research/landing_v1/landing_semantic_test.latest.json`
-- Stage3 验证总报告：`research/landing_v1_regression/stage3_capability_validation.latest.json`
+- Stage3 验证总报告：`research/stage3_landing_launch/regression/stage3_capability_validation.latest.json`
 - Landing 回归矩阵：`research/landing_v1_regression/regression_matrix.latest.json`
-- Build/Deploy 主运行报告：`research/build_deploy_v1_run.json`
-- 运行状态时间线：`research/build_deploy_v1_state.json`
+- Build/Deploy 主运行报告：`research/stage2_web_product/run.latest.json`
+- 运行状态时间线：`research/stage2_web_product/state.latest.json`
 - Smoke 报告：`research/build_deploy_v1/**/smoke_test.latest.json`
 - Page Strategy 报告：`research/build_deploy_v1/**/page_strategy.latest.json`
 - Business 报告：`research/build_deploy_v1/**/business_test.latest.json`
@@ -180,9 +180,9 @@ python3 scripts/init_project_spec.py --stage1 research/stage1_opportunity_record
 
 ## 8) Stage 3 启动建议（你下一步要做）
 当你准备进入 Stage 3（Project Blueprint）时，建议流程：
-1. 从 `stage2_decision_log.json` 选定一个 `advance` 候选
+1. 从 `research/stage2_idea_screening/decision_log.json` 选定一个 `advance` 候选
 2. 明确 14 天实验：渠道、样本、成功阈值、kill criteria
-3. 固化到 `research/stage3_project_blueprint.json`
+3. 固化到 `research/stage3_mvp_scope/project_blueprint.json`
 4. 再用 Build&Deploy 能力做验证站点与业务测试
 
 > 这样可以把“选题正确性”与“执行可复现性”串成一条闭环。

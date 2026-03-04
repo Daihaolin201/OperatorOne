@@ -5,7 +5,7 @@ Build Stage-1 opportunity records from:
 - research/secondary_signals.json (secondary corroboration sources)
 
 Output:
-- research/stage1_opportunity_records.json
+- research/stage1_idea_discovery/opportunity_records.json
 """
 
 import argparse
@@ -282,7 +282,7 @@ def main():
     ap.add_argument("--input", default="research/reddit_signals.json")
     ap.add_argument("--secondary", default="research/secondary_signals.json")
     ap.add_argument("--trust-config", default="framework/config/source_trust_rank.json")
-    ap.add_argument("--output", default="research/stage1_opportunity_records.json")
+    ap.add_argument("--output", default="research/stage1_idea_discovery/opportunity_records.json")
     args = ap.parse_args()
 
     primary = load_json(args.input)

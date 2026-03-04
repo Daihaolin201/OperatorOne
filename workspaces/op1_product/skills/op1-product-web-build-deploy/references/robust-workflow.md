@@ -37,9 +37,9 @@ Build a **generalizable** build/deploy loop that works across multiple opportuni
 - `scripts/build_generalization_matrix.py`
 
 ## Output artifacts
-- `research/build_deploy_v1_run.json`
-- `research/build_deploy_v1_state.json`
+- `research/stage2_web_product/run.latest.json`
+- `research/stage2_web_product/state.latest.json`
 - `research/build_deploy_v1/page_strategy.latest.json`
 - `research/build_deploy_v1/smoke_test.latest.json`
 - `research/build_deploy_v1/business_test.latest.json`
-- `research/build_deploy_v1/modular_matrix/generalization_matrix.json`
+- `research/stage2_web_product/artifacts/modular_matrix/generalization_matrix.json`

@@ -33,10 +33,10 @@
 
 | 项目 | 验收标准 | 结果 | 证据 |
 |---|---|---|---|
-| C1 Stage1 结构化记录 | 每个机会字段完整且可机读 | ✅ 通过 | `research/stage1_opportunity_records.json`（6 opportunities） |
+| C1 Stage1 结构化记录 | 每个机会字段完整且可机读 | ✅ 通过 | `research/stage1_idea_discovery/opportunity_records.json`（6 opportunities） |
 | C2 Stage1 证据数量 | 每个机会 >=3 条证据 | ✅ 通过 | 本轮检查：6/6 均为 3 条 |
-| C3 Stage2 可解释评分 | 每维度有 score + reason + risk_if_wrong | ✅ 通过 | `research/stage2_decision_log.json` |
-| C4 自动排序与决策 | 输出 advance/hold/reject | ✅ 通过 | `research/stage2_scoring.csv` |
+| C3 Stage2 可解释评分 | 每维度有 score + reason + risk_if_wrong | ✅ 通过 | `research/stage2_idea_screening/decision_log.json` |
+| C4 自动排序与决策 | 输出 advance/hold/reject | ✅ 通过 | `research/stage2_idea_screening/scoring.csv` |
 | C5 追溯性 | 决策可追溯到 source_url | ✅ 通过 | Stage1 `pain_evidence.source_url` |
 | C6 语义精度 | 证据与主题高度匹配 | ⚠️ 部分通过 | 已加关键词过滤，但仍需人工抽检提升准确度 |
 
@@ -47,7 +47,7 @@
 | 项目 | 验收标准 | 结果 | 证据 |
 |---|---|---|---|
 | D1 Stage-Gate 连贯 | Stage1 -> Stage2 -> Stage3 模板齐备 | ✅ 通过 | `framework/templates/*`, `framework/pipeline.md` |
-| D2 项目蓝图承接 | 可从 `advance` 候选进入 Stage3 立项 | ✅ 通过 | `research/stage3_project_blueprint.json`（待选项目） |
+| D2 项目蓝图承接 | 可从 `advance` 候选进入 Stage3 立项 | ✅ 通过 | `research/stage3_mvp_scope/project_blueprint.json`（待选项目） |
 | D3 营销交接控制 | 未选项目前不强行输出商业交付 | ✅ 通过 | `../../handoffs/product_to_marketing.json` 为 pending 模板 |
 
 ---

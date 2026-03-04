@@ -6,12 +6,12 @@ description: Score and prioritize startup opportunities with an explicit weighte
 # Idea Screening (Stage 2)
 
 1. Read Stage-1 input:
-   - `research/stage1_opportunity_records.json`
+   - `research/stage1_idea_discovery/opportunity_records.json`
 2. Run scoring with explicit config:
-   - `python3 scripts/score_stage2.py --input research/stage1_opportunity_records.json --weights framework/config/scoring_weights.default.json --trust-config framework/config/source_trust_rank.json --csv-out research/stage2_scoring.csv --json-out research/stage2_decision_log.json`
+   - `python3 scripts/score_stage2.py --input research/stage1_idea_discovery/opportunity_records.json --weights framework/config/scoring_weights.default.json --trust-config framework/config/source_trust_rank.json --csv-out research/stage2_idea_screening/scoring.csv --json-out research/stage2_idea_screening/decision_log.json`
 3. Review outputs:
-   - `research/stage2_scoring.csv`
-   - `research/stage2_decision_log.json`
+   - `research/stage2_idea_screening/scoring.csv`
+   - `research/stage2_idea_screening/decision_log.json`
 4. Verify per-opportunity decision packet includes:
    - `hard_gate_pass`
    - `evidence_gate` (`stage1_pass`, `loss_signal_ok`, `budget_or_intent_ok`)

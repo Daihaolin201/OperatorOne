@@ -37,8 +37,8 @@ def run(cmd: List[str], cwd: pathlib.Path) -> subprocess.CompletedProcess[str]:
 def create_stage3_fixture(path: pathlib.Path, opportunity_id: str) -> None:
     payload = {
         "generated_at": dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z",
-        "source_stage1": "research/stage1_opportunity_records.json",
-        "source_stage2": "research/stage2_decision_log.json",
+        "source_stage1": "research/stage1_idea_discovery/opportunity_records.json",
+        "source_stage2": "research/stage2_idea_screening/decision_log.json",
         "from_opportunity_id": opportunity_id,
         "project_name": f"Landing validation for {opportunity_id}",
         "target_segment": "Service operators (1-20)",
@@ -224,9 +224,9 @@ def main() -> int:
     base = root / "research" / "landing_v1_regression"
     base.mkdir(parents=True, exist_ok=True)
 
-    stage1 = root / "research/stage1_opportunity_records.json"
-    stage2 = root / "research/stage2_decision_log.json"
-    stage3 = root / "research/stage3_project_blueprint.json"
+    stage1 = root / "research/stage1_idea_discovery/opportunity_records.json"
+    stage2 = root / "research/stage2_idea_screening/decision_log.json"
+    stage3 = root / "research/stage3_mvp_scope/project_blueprint.json"
 
     results: List[CaseResult] = []
 

@@ -3,8 +3,8 @@
 Generate Stage-2 scoring artifacts from Stage-1 opportunities.
 
 Outputs:
-- research/stage2_scoring.csv
-- research/stage2_decision_log.json
+- research/stage2_idea_screening/scoring.csv
+- research/stage2_idea_screening/decision_log.json
 """
 
 import argparse
@@ -120,11 +120,11 @@ def build_top_vs_runner_reason(top_row: dict, runner_row: dict, top_decision: di
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument("--input", default="research/stage1_opportunity_records.json")
+    ap.add_argument("--input", default="research/stage1_idea_discovery/opportunity_records.json")
     ap.add_argument("--weights", default="framework/config/scoring_weights.default.json")
     ap.add_argument("--trust-config", default="framework/config/source_trust_rank.json")
-    ap.add_argument("--csv-out", default="research/stage2_scoring.csv")
-    ap.add_argument("--json-out", default="research/stage2_decision_log.json")
+    ap.add_argument("--csv-out", default="research/stage2_idea_screening/scoring.csv")
+    ap.add_argument("--json-out", default="research/stage2_idea_screening/decision_log.json")
     ap.add_argument("--advance-threshold", type=float, default=3.8)
     ap.add_argument("--conf-high", type=float, default=1.0)
     ap.add_argument("--conf-medium", type=float, default=0.8)

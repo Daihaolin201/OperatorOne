@@ -6,9 +6,9 @@
 ```
 
 This generates:
-- `research/stage1_opportunity_records.json`
-- `research/stage2_scoring.csv`
-- `research/stage2_decision_log.json`
+- `research/stage1_idea_discovery/opportunity_records.json`
+- `research/stage2_idea_screening/scoring.csv`
+- `research/stage2_idea_screening/decision_log.json`
 
 ## 2) Create landing pages package (Mode C only)
 ```bash
@@ -19,6 +19,7 @@ Outputs:
 - `research/landing_v1/landing_package.json`
 - `research/landing_v1/landing_contract_test.latest.json`
 - `research/landing_v1/landing_semantic_test.latest.json`
+- `research/stage3_landing_launch/run.latest.json`
 - `research/landing_v1/build_inputs/project_spec.json`
 - `research/landing_v1/build_inputs/page_spec.json`
 - `../../handoffs/product_to_marketing.json`
@@ -37,8 +38,8 @@ Optional controls:
 ```
 
 Outputs:
-- `research/build_deploy_v1_run.json`
-- `research/build_deploy_v1_state.json`
+- `research/stage2_web_product/run.latest.json`
+- `research/stage2_web_product/state.latest.json`
 - `research/build_deploy_v1/page_strategy.latest.json`
 - `research/build_deploy_v1/smoke_test.latest.json`
 - `research/build_deploy_v1/business_test.latest.json`

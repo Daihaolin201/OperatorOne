@@ -18,10 +18,10 @@ Use this skill when the goal is to produce a **true conversion landing page pack
 
 ## Inputs
 - Required:
-  - `research/stage1_opportunity_records.json`
+  - `research/stage1_idea_discovery/opportunity_records.json`
 - Optional but preferred:
-  - `research/stage2_decision_log.json`
-  - `research/stage3_project_blueprint.json`
+  - `research/stage2_idea_screening/decision_log.json`
+  - `research/stage3_mvp_scope/project_blueprint.json`
 
 ## Core command (recommended)
 ```bash

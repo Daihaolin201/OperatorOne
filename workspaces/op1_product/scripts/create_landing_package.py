@@ -996,17 +996,17 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser(description="Create landing package (mode C only)")
     parser.add_argument(
         "--stage1",
-        default=str(root / "research/stage1_opportunity_records.json"),
+        default=str(root / "research/stage1_idea_discovery/opportunity_records.json"),
         help="Stage1 opportunity records path",
     )
     parser.add_argument(
         "--stage2",
-        default=str(root / "research/stage2_decision_log.json"),
+        default=str(root / "research/stage2_idea_screening/decision_log.json"),
         help="Stage2 decision log path (optional; synthesized if missing)",
     )
     parser.add_argument(
         "--stage3",
-        default=str(root / "research/stage3_project_blueprint.json"),
+        default=str(root / "research/stage3_mvp_scope/project_blueprint.json"),
         help="Stage3 project blueprint path (optional)",
     )
     parser.add_argument(
