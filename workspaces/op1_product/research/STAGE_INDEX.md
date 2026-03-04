@@ -23,6 +23,10 @@
   - `research/stage3_landing_launch/run.latest.json`
   - `research/stage3_landing_launch/regression/` (alias -> `research/landing_v1_regression/`)
 
+- Live examples index
+  - Human index: `research/LIVE_EXAMPLES.md`
+  - Machine index: `research/live_examples.latest.json`
+
 ## Legacy compatibility
 
 以下旧路径仍可读写（符号链接），不会影响既有脚本：

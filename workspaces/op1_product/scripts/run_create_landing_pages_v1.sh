@@ -236,3 +236,5 @@ payload = {
 run_report.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 print(json.dumps({"run_report": str(run_report), "status": status, "deploy_url": deploy_url or None}, ensure_ascii=False))
 PY
+
+python3 "$ROOT_DIR/scripts/update_live_examples_index.py" >/dev/null 2>&1 || true

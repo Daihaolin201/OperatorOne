@@ -138,6 +138,8 @@ python3 scripts/init_project_spec.py --stage1 research/stage1_idea_discovery/opp
 ---
 
 ## 5) 产物地图（客户常看）
+- 在线示例总览（人看）：`research/LIVE_EXAMPLES.md`
+- 在线示例总览（机读）：`research/live_examples.latest.json`
 - Landing 主报告：`research/stage3_landing_launch/run.latest.json`
 - Landing 契约测试：`research/landing_v1/landing_contract_test.latest.json`
 - Landing 语义测试：`research/landing_v1/landing_semantic_test.latest.json`

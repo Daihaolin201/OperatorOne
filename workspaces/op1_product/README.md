@@ -4,6 +4,23 @@
 
 > 面向客户/协作者的一键复现手册：`REPRODUCE.md`
 
+## 0) Live Examples（在线示例入口）
+- **人看入口（统一索引）**：`research/LIVE_EXAMPLES.md`
+- 索引自动刷新脚本：`scripts/update_live_examples_index.py`（已接入 `run_create_landing_pages_v1.sh` / `run_build_deploy_v1.sh`）
+- **机器真源（Stage2）**：
+  - `research/stage2_web_product/run.latest.json`
+  - `research/stage2_web_product/artifacts/modular_matrix/generalization_matrix.json`
+- **机器真源（Stage3）**：
+  - `research/stage3_landing_launch/run.latest.json`
+  - `research/stage3_landing_launch/regression/stage3_capability_validation.latest.json`
+- 当前常用在线示例：
+  - Stage2: https://webproductmodularinvoice.vercel.app
+  - Stage2: https://webproductmodularchargeback.vercel.app
+  - Stage2: https://webproductmodularreporting.vercel.app
+  - Stage3: https://webproductlandingstage3validation.vercel.app
+  - Stage3: https://webproductlandingstage3opp002.vercel.app
+  - Stage3: https://webproductlandingstage3opp003.vercel.app
+
 ## 1) 角色定位
 - 负责（当前三项主能力）：
   - Generate startup ideas（商业机会搜索、分析、筛选）

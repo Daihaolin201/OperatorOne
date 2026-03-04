@@ -436,4 +436,6 @@ append_event "$CURRENT_STEP" "done" "Run report written"
 CURRENT_STEP="complete"
 append_event "$CURRENT_STEP" "passed" "Pipeline completed successfully"
 
+python3 "$ROOT_DIR/scripts/update_live_examples_index.py" >/dev/null 2>&1 || true
+
 echo "$DEPLOY_URL"
