@@ -10,6 +10,11 @@ Canonical outputs:
 - `scoreboard.latest.json`
 - `decision_log.latest.md`
 
+Canonical input artifacts:
+- `input/product_snapshot.latest.json`
+- `input/delta.latest.json`
+- `input/mirror.latest/`
+
 Mode:
 - `shadow` (default)
 - `publish=false`
@@ -17,6 +22,7 @@ Mode:
 - `continuous=true`
 
 Capability contract:
-- Project-agnostic ingestion from upstream `op1_product` artifacts.
+- Full-product ingestion first (lossless mirror), then SEO experiment computation.
+- No pre-filtering of product artifacts before sync.
 - Continuous queue lifecycle: `candidate -> drafted -> scored -> ready -> shadow_validated -> promoted|dropped`.
 - No hard binding to a single business project.

@@ -1,5 +1,5 @@
 {
-  "loop_state": "idle",
+  "loop_state": "blocked_input_incomplete",
   "active_contexts": 0,
   "backlog_size": 0,
   "queue_size": 0,
@@ -8,5 +8,10 @@
   "mode": "shadow",
   "publish": false,
   "index": false,
-  "continuous": true
+  "continuous": true,
+  "input_completeness": {
+    "required": 13,
+    "present": 0,
+    "ratio": 0.0
+  }
 }
