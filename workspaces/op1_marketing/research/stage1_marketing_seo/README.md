@@ -17,18 +17,18 @@
 - `input/mirror.latest/`
 
 ## Required upstream inputs (full ingest, no pre-filter)
-- `research/stage1_idea_discovery/opportunity_records.json`
-- `research/stage2_idea_screening/scoring.csv`
-- `research/stage2_idea_screening/decision_log.json`
-- `research/stage3_mvp_scope/project_blueprint.json`
-- `research/stage2_web_product/run.latest.json`
-- `research/stage2_web_product/state.latest.json`
-- `research/stage3_landing_launch/run.latest.json`
-- `research/live_examples.latest.json`
-- `research/build_deploy_v1/project_spec*.json`
-- `research/landing_v1/landing_package.json`
-- `research/landing_v1/landing_contract_test.latest.json`
-- `research/landing_v1/landing_semantic_test.latest.json`
+- `../op1_product/research/stage1_idea_discovery/opportunity_records.json`
+- `../op1_product/research/stage2_idea_screening/scoring.csv`
+- `../op1_product/research/stage2_idea_screening/decision_log.json`
+- `../op1_product/research/stage3_mvp_scope/project_blueprint.json`
+- `../op1_product/research/stage2_web_product/run.latest.json`
+- `../op1_product/research/stage2_web_product/state.latest.json`
+- `../op1_product/research/stage3_landing_launch/run.latest.json`
+- `../op1_product/research/live_examples.latest.json`
+- `../op1_product/research/build_deploy_v1/project_spec*.json`
+- `../op1_product/research/landing_v1/landing_package.json`
+- `../op1_product/research/landing_v1/landing_contract_test.latest.json`
+- `../op1_product/research/landing_v1/landing_semantic_test.latest.json`
 - `../../handoffs/product_to_marketing.json`
 
 ## Mode defaults

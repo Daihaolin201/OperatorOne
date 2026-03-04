@@ -7,15 +7,6 @@
 - Stage 1 — Idea Discovery
   - `research/stage1_idea_discovery/opportunity_records.json`
 
-- Stage 1 — Marketing SEO Experiments (continuous shadow)
-  - `research/stage1_marketing_seo/run.latest.json`
-  - `research/stage1_marketing_seo/state.latest.json`
-  - `research/stage1_marketing_seo/context_index.latest.json`
-  - `research/stage1_marketing_seo/keyword_graph.latest.csv`
-  - `research/stage1_marketing_seo/experiments.backlog.latest.json`
-  - `research/stage1_marketing_seo/experiments.queue.latest.json`
-  - `research/stage1_marketing_seo/scoreboard.latest.json`
-
 - Stage 2 — Idea Screening
   - `research/stage2_idea_screening/scoring.csv`
   - `research/stage2_idea_screening/decision_log.json`

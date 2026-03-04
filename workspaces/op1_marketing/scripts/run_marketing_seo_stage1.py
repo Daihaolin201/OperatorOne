@@ -29,18 +29,18 @@ from typing import Any, Dict, Iterable, List, Tuple
 
 
 REQUIRED_INPUTS: List[Dict[str, Any]] = [
-    {"id": "stage1_opportunity_records", "path": "research/stage1_idea_discovery/opportunity_records.json", "glob": False, "min_matches": 1},
-    {"id": "stage2_scoring", "path": "research/stage2_idea_screening/scoring.csv", "glob": False, "min_matches": 1},
-    {"id": "stage2_decision_log", "path": "research/stage2_idea_screening/decision_log.json", "glob": False, "min_matches": 1},
-    {"id": "stage3_project_blueprint", "path": "research/stage3_mvp_scope/project_blueprint.json", "glob": False, "min_matches": 1},
-    {"id": "stage2_web_run", "path": "research/stage2_web_product/run.latest.json", "glob": False, "min_matches": 1},
-    {"id": "stage2_web_state", "path": "research/stage2_web_product/state.latest.json", "glob": False, "min_matches": 1},
-    {"id": "stage3_landing_run", "path": "research/stage3_landing_launch/run.latest.json", "glob": False, "min_matches": 1},
-    {"id": "live_examples", "path": "research/live_examples.latest.json", "glob": False, "min_matches": 1},
-    {"id": "project_specs", "path": "research/build_deploy_v1/project_spec*.json", "glob": True, "min_matches": 1},
-    {"id": "landing_package", "path": "research/landing_v1/landing_package.json", "glob": False, "min_matches": 1},
-    {"id": "landing_contract_test", "path": "research/landing_v1/landing_contract_test.latest.json", "glob": False, "min_matches": 1},
-    {"id": "landing_semantic_test", "path": "research/landing_v1/landing_semantic_test.latest.json", "glob": False, "min_matches": 1},
+    {"id": "stage1_opportunity_records", "path": "../op1_product/research/stage1_idea_discovery/opportunity_records.json", "glob": False, "min_matches": 1},
+    {"id": "stage2_scoring", "path": "../op1_product/research/stage2_idea_screening/scoring.csv", "glob": False, "min_matches": 1},
+    {"id": "stage2_decision_log", "path": "../op1_product/research/stage2_idea_screening/decision_log.json", "glob": False, "min_matches": 1},
+    {"id": "stage3_project_blueprint", "path": "../op1_product/research/stage3_mvp_scope/project_blueprint.json", "glob": False, "min_matches": 1},
+    {"id": "stage2_web_run", "path": "../op1_product/research/stage2_web_product/run.latest.json", "glob": False, "min_matches": 1},
+    {"id": "stage2_web_state", "path": "../op1_product/research/stage2_web_product/state.latest.json", "glob": False, "min_matches": 1},
+    {"id": "stage3_landing_run", "path": "../op1_product/research/stage3_landing_launch/run.latest.json", "glob": False, "min_matches": 1},
+    {"id": "live_examples", "path": "../op1_product/research/live_examples.latest.json", "glob": False, "min_matches": 1},
+    {"id": "project_specs", "path": "../op1_product/research/build_deploy_v1/project_spec*.json", "glob": True, "min_matches": 1},
+    {"id": "landing_package", "path": "../op1_product/research/landing_v1/landing_package.json", "glob": False, "min_matches": 1},
+    {"id": "landing_contract_test", "path": "../op1_product/research/landing_v1/landing_contract_test.latest.json", "glob": False, "min_matches": 1},
+    {"id": "landing_semantic_test", "path": "../op1_product/research/landing_v1/landing_semantic_test.latest.json", "glob": False, "min_matches": 1},
     {"id": "product_to_marketing_handoff", "path": "../../handoffs/product_to_marketing.json", "glob": False, "min_matches": 1},
 ]
 

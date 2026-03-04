@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-001_04
 
-- Generated at: 2026-03-04T12:51:23Z
+- Generated at: 2026-03-04T14:00:23Z
 - Context: `opportunity::opp_001`
 - Keyword: **overdue invoices followed vs manual** (BOFU)
 - Current shadow score: **86.05**
@@ -25,4 +25,4 @@ If we position around 'overdue invoices followed vs manual' with explicit proof 
 - Stop rule: overall_score < 55 for two consecutive runs
 
 ## Source pointers
-- `research/stage1_idea_discovery/opportunity_records.json`
+- `../op1_product/research/stage1_idea_discovery/opportunity_records.json`

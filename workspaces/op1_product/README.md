@@ -26,8 +26,6 @@
   - Generate startup ideas（商业机会搜索、分析、筛选）
   - Build & deploy simple web products（可复用构建部署流水线）
   - Create landing pages（Mode C，转化页语义与门禁）
-- 补充能力：
-  - MVP 边界定义与验证路径设计（用于支撑 landing/build 决策）
 - 不负责：
   - 直接执行外联营销
   - 销售 pipeline 决策
@@ -164,7 +162,6 @@
 ## 7) 已安装 skills
 - `op1-product-idea-discovery`
 - `op1-product-idea-screening`
-- `op1-product-mvp-scope`
 - `op1-product-create-landing-pages`
 - `op1-product-landing-handoff`
 - `op1-product-web-build-deploy`

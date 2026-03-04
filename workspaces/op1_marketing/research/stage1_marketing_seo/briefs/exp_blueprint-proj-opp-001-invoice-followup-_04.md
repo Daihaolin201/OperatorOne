@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_blueprint-proj-opp-001-invoice-followup-_04
 
-- Generated at: 2026-03-04T12:51:23Z
+- Generated at: 2026-03-04T14:00:23Z
 - Context: `blueprint::proj-opp-001-invoice-followup-pilot-v1`
 - Keyword: **overdue invoices followed vs manual** (BOFU)
 - Current shadow score: **84.75**
@@ -25,4 +25,4 @@ If we position around 'overdue invoices followed vs manual' with explicit proof 
 - Stop rule: overall_score < 55 for two consecutive runs
 
 ## Source pointers
-- `research/stage3_mvp_scope/project_blueprint.json`
+- `../op1_product/research/stage3_mvp_scope/project_blueprint.json`

@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-04T12:51:23Z",
+  "generated_at": "2026-03-04T14:00:23Z",
   "status": "ok",
-  "snapshot_id": "snap_20260304125123_3317e2a46c4a9dc9",
+  "snapshot_id": "snap_20260304140023_e796c1ab2d1a5613",
   "experiment_count": 66,
   "experiments": [
     {
@@ -27,9 +27,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 74.25,
       "confidence": "medium"
@@ -57,9 +57,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 78.19,
       "confidence": "medium"
@@ -87,9 +87,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 68.34,
       "confidence": "medium"
@@ -117,9 +117,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 84.75,
       "confidence": "medium"
@@ -147,9 +147,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "medium"
@@ -177,9 +177,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.75,
       "confidence": "medium"
@@ -207,9 +207,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "high"
@@ -237,9 +237,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 76.69,
       "confidence": "high"
@@ -267,9 +267,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 66.84,
       "confidence": "high"
@@ -297,9 +297,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 76.69,
       "confidence": "high"
@@ -327,9 +327,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 65.75,
       "confidence": "high"
@@ -357,9 +357,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 78.25,
       "confidence": "high"
@@ -387,9 +387,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -417,9 +417,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -447,9 +447,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 71.21,
       "confidence": "medium"
@@ -477,9 +477,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -507,9 +507,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 68.55,
       "confidence": "medium"
@@ -537,9 +537,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -567,9 +567,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -597,9 +597,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -627,9 +627,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 69.64,
       "confidence": "medium"
@@ -657,9 +657,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -687,9 +687,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -717,9 +717,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -747,9 +747,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -777,9 +777,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -807,9 +807,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 71.21,
       "confidence": "medium"
@@ -837,9 +837,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -867,9 +867,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 68.55,
       "confidence": "medium"
@@ -897,9 +897,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -927,9 +927,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 80.8,
       "confidence": "medium"
@@ -957,9 +957,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 82.3,
       "confidence": "medium"
@@ -987,9 +987,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1017,9 +1017,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -1047,9 +1047,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 71.05,
       "confidence": "medium"
@@ -1077,9 +1077,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1107,9 +1107,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -1137,9 +1137,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -1167,9 +1167,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 69.64,
       "confidence": "medium"
@@ -1197,9 +1197,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1227,9 +1227,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -1257,9 +1257,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -1287,9 +1287,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 78.05,
       "confidence": "medium"
@@ -1317,9 +1317,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -1347,9 +1347,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "hold",
       "overall_score": 72.84,
       "confidence": "medium"
@@ -1377,9 +1377,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1407,9 +1407,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -1437,9 +1437,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -1467,9 +1467,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 77.55,
       "confidence": "high"
@@ -1497,9 +1497,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1527,9 +1527,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 83.68,
       "confidence": "high"
@@ -1557,9 +1557,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1587,9 +1587,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1617,9 +1617,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1647,9 +1647,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1677,9 +1677,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 84.17,
       "confidence": "high"
@@ -1707,9 +1707,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1737,9 +1737,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "high"
@@ -1767,9 +1767,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1797,9 +1797,9 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1827,10 +1827,10 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 76.65,
       "confidence": "high"
@@ -1858,10 +1858,10 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -1889,10 +1889,10 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 83.87,
       "confidence": "high"
@@ -1920,10 +1920,10 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -1951,10 +1951,10 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"
@@ -1982,10 +1982,10 @@
       "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
       "stop_rule": "overall_score < 55 for two consecutive runs",
       "source_pointers": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T12:51:23Z",
+      "generated_at": "2026-03-04T14:00:23Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"

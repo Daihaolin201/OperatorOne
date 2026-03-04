@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-04T12:51:23Z",
+  "generated_at": "2026-03-04T14:00:23Z",
   "context_count": 11,
   "contexts": [
     {
       "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
       "source_type": "project_blueprint",
       "source_files": [
-        "research/stage3_mvp_scope/project_blueprint.json"
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
       "source_opportunity_id": "opp_001",
       "icp": "Freelancer / small service owner in professional services (1-20 employees)",
@@ -45,7 +45,7 @@
       "context_id": "landing::opp_001",
       "source_type": "landing_package",
       "source_files": [
-        "research/landing_v1/landing_package.json"
+        "../op1_product/research/landing_v1/landing_package.json"
       ],
       "source_opportunity_id": "opp_001",
       "icp": "Freelancer / small service owner / Professional services / 1-20",
@@ -95,7 +95,7 @@
       "context_id": "opportunity::opp_001",
       "source_type": "opportunity_record",
       "source_files": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
       "source_opportunity_id": "opp_001",
       "icp": "Freelancer / small service owner / Professional services / 1-20",
@@ -128,7 +128,7 @@
       "context_id": "opportunity::opp_002",
       "source_type": "opportunity_record",
       "source_files": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
       "source_opportunity_id": "opp_002",
       "icp": "Ecommerce owner / operations manager / DTC ecommerce / 3-50",
@@ -162,7 +162,7 @@
       "context_id": "opportunity::opp_003",
       "source_type": "opportunity_record",
       "source_files": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
       "source_opportunity_id": "opp_003",
       "icp": "Agency owner / account manager / Marketing agencies / 5-50",
@@ -196,7 +196,7 @@
       "context_id": "opportunity::opp_004",
       "source_type": "opportunity_record",
       "source_files": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
       "source_opportunity_id": "opp_004",
       "icp": "Property manager / Property management / 2-30",
@@ -230,7 +230,7 @@
       "context_id": "opportunity::opp_005",
       "source_type": "opportunity_record",
       "source_files": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
       "source_opportunity_id": "opp_005",
       "icp": "SMB owner / finance admin / General SMB / 10-100",
@@ -264,7 +264,7 @@
       "context_id": "opportunity::opp_006",
       "source_type": "opportunity_record",
       "source_files": [
-        "research/stage1_idea_discovery/opportunity_records.json"
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
       "source_opportunity_id": "opp_006",
       "icp": "Operations admin / SMB operations/logistics / 5-80",
@@ -298,7 +298,7 @@
       "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
       "source_type": "project_spec",
       "source_files": [
-        "research/build_deploy_v1/project_spec.chargeback.json"
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
       "source_opportunity_id": "opp_001",
       "icp": "Ecommerce operator / Ecommerce / 1-50",
@@ -344,7 +344,7 @@
       "context_id": "project_spec::proj-opp-001-client-reporting-v1",
       "source_type": "project_spec",
       "source_files": [
-        "research/build_deploy_v1/project_spec.reporting.json"
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
       "source_opportunity_id": "opp_001",
       "icp": "Agency operator / Marketing services / 2-30",
@@ -390,8 +390,8 @@
       "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
       "source_type": "project_spec",
       "source_files": [
-        "research/build_deploy_v1/project_spec.invoice.json",
-        "research/build_deploy_v1/project_spec.json"
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
       "source_opportunity_id": "opp_001",
       "icp": "Freelancer / small service owner / Professional services / 1-20",
@@ -434,9 +434,9 @@
       }
     }
   ],
-  "snapshot_id": "snap_20260304125123_3317e2a46c4a9dc9",
+  "snapshot_id": "snap_20260304140023_e796c1ab2d1a5613",
   "delta_counts": {
-    "added": 0,
+    "added": 16,
     "changed": 0,
     "removed": 0
   }
