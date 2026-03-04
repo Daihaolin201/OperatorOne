@@ -1,0 +1,37 @@
+{
+  "generated_at": "2026-03-04T15:37:55Z",
+  "status": "ok",
+  "entries": [
+    {
+      "at": "2026-03-04T15:35:44Z",
+      "approved": [
+        "cnt_exp-opportunity-opp-001-04",
+        "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
+      ],
+      "needs_revision": [
+        "cnt_exp-opportunity-opp-003-04"
+      ],
+      "reason": "tighten evidence details",
+      "note": "editor pass 1",
+      "snapshot_id": "stage2snap_20260304153529_25c465997d1b6bbb"
+    },
+    {
+      "at": "2026-03-04T15:37:55Z",
+      "approved": [
+        "cnt_exp-opportunity-opp-004-02",
+        "cnt_exp-opportunity-opp-004-03",
+        "cnt_exp-opportunity-opp-004-06",
+        "cnt_exp-opportunity-opp-005-04",
+        "cnt_exp-opportunity-opp-006-04",
+        "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+        "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
+        "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
+        "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "bulk approve",
+      "snapshot_id": "stage2snap_20260304153747_25c465997d1b6bbb"
+    }
+  ]
+}

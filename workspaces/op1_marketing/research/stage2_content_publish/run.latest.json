@@ -1,0 +1,94 @@
+{
+  "generated_at": "2026-03-04T15:37:59Z",
+  "run_id": "20260304T153759Z",
+  "capability": "marketing_publish_content_stage2_shadow_v1",
+  "mode": "shadow",
+  "auto_publish": false,
+  "publish_mode": "disabled",
+  "input_sync": {
+    "snapshot_id": "stage2snap_20260304153759_25c465997d1b6bbb",
+    "completeness": {
+      "required": 6,
+      "available": 6,
+      "missing": [],
+      "ratio": 1.0
+    },
+    "delta_counts": {
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "requirements": [
+      {
+        "id": "stage1_run",
+        "path": "research/stage1_marketing_seo/run.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/run.latest.json",
+        "exists": true,
+        "sha256": "eca3656bb12cef8adc034cc26b28b92f5c2e0a7df8da4fc93218e2a3c8605c5d",
+        "size": 6584,
+        "mtime": 1772635210
+      },
+      {
+        "id": "stage1_context_index",
+        "path": "research/stage1_marketing_seo/context_index.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/context_index.latest.json",
+        "exists": true,
+        "sha256": "27e8c66d3ad19bd8bec2e708c701c4944deec79a168716d32795a3cb0cbf8559",
+        "size": 21497,
+        "mtime": 1772635210
+      },
+      {
+        "id": "stage1_backlog",
+        "path": "research/stage1_marketing_seo/experiments.backlog.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.backlog.latest.json",
+        "exists": true,
+        "sha256": "2c997e1e83767da527524ffda6d3b0708179f4ea92e1d8a71844a2109b251d34",
+        "size": 100381,
+        "mtime": 1772635210
+      },
+      {
+        "id": "stage1_queue",
+        "path": "research/stage1_marketing_seo/experiments.queue.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.queue.latest.json",
+        "exists": true,
+        "sha256": "f355735ade309a207489b7347b60ad65f37df9aa49565f0870297cbaeb80b2af",
+        "size": 25279,
+        "mtime": 1772635210
+      },
+      {
+        "id": "stage1_scoreboard",
+        "path": "research/stage1_marketing_seo/scoreboard.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/scoreboard.latest.json",
+        "exists": true,
+        "sha256": "73368d8d788ed1d0ad456c92fe6c5caa74ad4862a181c774862c442d16595130",
+        "size": 38960,
+        "mtime": 1772635210
+      },
+      {
+        "id": "product_to_marketing_handoff",
+        "path": "../../handoffs/product_to_marketing.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
+        "exists": true,
+        "sha256": "723cf998f634ca1deb16ac96911bf07ef8d37986d76bbf4641255eae6ae4c371",
+        "size": 404,
+        "mtime": 1772635210
+      }
+    ]
+  },
+  "status": "passed",
+  "outputs": {
+    "content_backlog": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
+    "publish_queue": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
+    "qa": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
+    "decision_log": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/decision_log.latest.md",
+    "drafts_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/drafts",
+    "marketing_to_sales_handoff": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/marketing_to_sales.json"
+  },
+  "stats": {
+    "selected": 12,
+    "approved": 11,
+    "review_ready": 0,
+    "needs_revision": 1,
+    "avg_quality_score": 100.0
+  }
+}
