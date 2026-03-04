@@ -19,7 +19,7 @@
 - `research/stage1_opportunity_records.json` (filled with 6 structured opportunities)
 - `research/stage2_scoring.csv` (scored)
 - `research/stage2_decision_log.json` (reasoned decisions)
-- `research/stage3_project_blueprint.json` (pending selection)
+- `research/stage3_project_blueprint.json` (instantiated for `opp_001`, ready for Stage 4 handoff input)
 
 ## Handoff
 - `../../handoffs/product_to_marketing.json` reset to template mode until project selection.
