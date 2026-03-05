@@ -1,0 +1,548 @@
+{
+  "generated_at": "2026-03-05T00:00:00+00:00",
+  "builder": "workspaces/op1_sales/scripts/build_close_motion_stage3.py",
+  "inputs": {
+    "conversion_pipeline": "workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json",
+    "pricing_sources": "workspaces/op1_product/research/build_deploy_v1/project_spec*.json + stage3_mvp_scope/project_blueprint.json"
+  },
+  "summary": {
+    "in_motion": 19,
+    "needs_review": 7,
+    "commitment_asks": 0,
+    "payment_asks": 0
+  },
+  "close_motions": [
+    {
+      "lead_id": "opp_005-lead-019",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "paid_started",
+      "conversion_readiness_score": 100.0,
+      "champion_confidence": 0.99,
+      "single_ask": "推进首月复盘与扩展机会（非首单成交动作）",
+      "ask_code": "post_conversion_expand",
+      "ask_due_at": "2026-03-08T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：The real ROI of expense management isn't the software cost - it's the hours your team gets back。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/",
+      "next_best_action": "转运营交接并确认首月扩展目标",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-001",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "discovery_scheduled",
+      "conversion_readiness_score": 66.0,
+      "champion_confidence": 0.72,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：I caught an employee submitting fake expense reports。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1pdax88/i_caught_an_employee_submitting_fake_expense/",
+      "next_best_action": "完成discovery并确定pilot成功标准",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-005",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 51.0,
+      "champion_confidence": 0.5,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：I’m tired of bookkeeping for my husband’s business。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1pl2ptz/im_tired_of_bookkeeping_for_my_husbands_business/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-006",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 51.0,
+      "champion_confidence": 0.5,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：small business bookkeeping feels like another job。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1p2q0k4/small_business_bookkeeping_feels_like_another_job/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-007",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 51.0,
+      "champion_confidence": 0.5,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni...。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1pdxx9w/growing_team_14_ppl_looking_for_the_best_virtual/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-015",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "discovery_scheduled",
+      "conversion_readiness_score": 48.0,
+      "champion_confidence": 0.52,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：I need a simple way to share a folder with my accountant once a year。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qpcp5g/i_need_a_simple_way_to_share_a_folder_with_my/",
+      "next_best_action": "完成discovery并确定pilot成功标准",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-002",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 46.0,
+      "champion_confidence": 0.48,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-12T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：How do you all handle employee expenses without losing your mind?。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1o6dmvd/how_do_you_all_handle_employee_expenses_without/",
+      "next_best_action": "按客户时机窗口回访并重提14天pilot（保留低摩擦入口）",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-008",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 45.0,
+      "champion_confidence": 0.46,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：How do you grow a remote bookkeeping business when you're starting from zero?。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r6orwz/how_do_you_grow_a_remote_bookkeeping_business/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-009",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 45.0,
+      "champion_confidence": 0.46,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：Business bank account for contractors that separates job income automatically or am I asking ...。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qnn43q/business_bank_account_for_contractors_that/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-010",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 45.0,
+      "champion_confidence": 0.46,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：Partner not taking Accounting Seriously。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r4zzj5/partner_not_taking_accounting_seriously/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-014",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 45.0,
+      "champion_confidence": 0.46,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：Software Guidance Request for Simple Income/Expense Reporting。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qghh7b/software_guidance_request_for_simple/",
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-004",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 43.0,
+      "champion_confidence": 0.44,
+      "single_ask": "请求确认15分钟Discovery + 是否进入14天Pilot",
+      "ask_code": "book_discovery_and_pilot_fit",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：The tools actually running my 3-person landscaping business。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "budget",
+        "response": "先用14天最小范围试点验证‘节省工时/减少损失’，再决定是否扩量，避免一次性重投入。",
+        "proof_request": "请给出当前每周手工处理时长或损失区间，用于ROI对比。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1rairx5/the_tools_actually_running_my_3person_landscaping/",
+      "next_best_action": "优先处理异议：budget，处理后发起明确成交请求",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-011",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 18.0,
+      "champion_confidence": 0.46,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：I was hired to save a company from collapse. They gave me zero authority and now blame me for...。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1mbaofb/i_was_hired_to_save_a_company_from_collapse_they/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-012",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 18.0,
+      "champion_confidence": 0.46,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：Need advice: Wholesale account owes me $25K and keeps ghosting me。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1p0zi4o/need_advice_wholesale_account_owes_me_25k_and/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-013",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 18.0,
+      "champion_confidence": 0.46,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：CPA raised fees 35% on me this for next year。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1m6gbb7/cpa_raised_fees_35_on_me_this_for_next_year/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-016",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 13.0,
+      "champion_confidence": 0.4,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "电商老板/运营负责人在“Expense reimbursement control”场景中暴露了明确痛点：E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-017",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 13.0,
+      "champion_confidence": 0.4,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：I got my first client 7 months ago and I'm stuck。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1ocn9pq/i_got_my_first_client_7_months_ago_and_im_stuck/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-018",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 13.0,
+      "champion_confidence": 0.4,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：A letter to myself: Everything I wish I'd known before starting my business。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1jvolu4/a_letter_to_myself_everything_i_wish_id_known/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    },
+    {
+      "lead_id": "opp_005-lead-020",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "current_stage": "qualified_interest",
+      "conversion_readiness_score": 13.0,
+      "champion_confidence": 0.4,
+      "single_ask": "先完成人工复核并确认目标角色后再发起成交动作",
+      "ask_code": "review_required",
+      "ask_due_at": "2026-03-06T00:00:00+00:00",
+      "value_recap": "SMB老板/财务负责人在“Expense reimbursement control”场景中暴露了明确痛点：Need help choosing POS, Inventory and book keeping software。目标是先在14天内验证可见价值（效率/损失控制）。",
+      "objection_play": {
+        "reason": "none",
+        "response": "当前无显性异议，保持单一成交请求并设定明确截止时间。",
+        "proof_request": "确认试点起始日期与负责人。"
+      },
+      "price_anchor": {
+        "plan_a": "TBD（需确认）",
+        "plan_b": "TBD（需确认）",
+        "source": "not_available"
+      },
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/",
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "assumptions": [
+        "成交动作基于当前状态与事件信号，需人工确认真实权限链。",
+        "价格锚点为假设，最终报价以商业条款为准。"
+      ]
+    }
+  ]
+}

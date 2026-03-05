@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-03-05T01:13:18+00:00",
+  "builder": "workspaces/op1_sales/skills/convert-early-customers-stage3/scripts/verify_reproducibility_stage3.py",
+  "as_of": "2026-03-05T00:00:00+00:00",
+  "reproducible": true,
+  "hashes": {
+    "run1": {
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_signal_processing.latest.json": "37fd623fa7d92c2c4b4324f8dcf5ddf25f8669bfcf3bfe372f54142d871ad88a",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json": "10d95ae0028dad6ff2f4d3bc74737ced1f14ec964fec7c6ee935da3413c4d4c3",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/close_motion.latest.json": "c113f1513073a1ed926dbb6509c5f5887199544c4b1d81c140ef87ac2c7ea659",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/pilot_onboarding.latest.json": "ba49d9182aabd8f54f6aa22938c449e1545fb0c06908664e7abd57a75b97824e",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_scoreboard.latest.json": "8ecdc4b1214a8d2688c24b9f5b452d58cc1135f2deeb05f59fbadc50476845b4",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/objection_playbook.latest.md": "a2728750bdfd5a6ade4aa652c102cdbeb573111ab48c135ff4a755062222ee2b"
+    },
+    "run2": {
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_signal_processing.latest.json": "37fd623fa7d92c2c4b4324f8dcf5ddf25f8669bfcf3bfe372f54142d871ad88a",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json": "10d95ae0028dad6ff2f4d3bc74737ced1f14ec964fec7c6ee935da3413c4d4c3",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/close_motion.latest.json": "c113f1513073a1ed926dbb6509c5f5887199544c4b1d81c140ef87ac2c7ea659",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/pilot_onboarding.latest.json": "ba49d9182aabd8f54f6aa22938c449e1545fb0c06908664e7abd57a75b97824e",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_scoreboard.latest.json": "8ecdc4b1214a8d2688c24b9f5b452d58cc1135f2deeb05f59fbadc50476845b4",
+      "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/objection_playbook.latest.md": "a2728750bdfd5a6ade4aa652c102cdbeb573111ab48c135ff4a755062222ee2b"
+    }
+  },
+  "checks": {
+    "required_outputs_exist": true,
+    "missing_outputs": [],
+    "events_count": 19,
+    "stage_history_traceability_ok": true,
+    "active_leads_have_next_action_ok": true,
+    "onboarding_fields_ok": true,
+    "supports_commitment_signal_type": true,
+    "paid_and_lost_event_observed": true,
+    "objection_playbook_exists_and_nonempty": true,
+    "scoreboard_metrics_complete": true,
+    "stage_history_missing": [],
+    "active_missing_next_action": [],
+    "pilot_missing_fields": [],
+    "scoreboard_missing_keys": []
+  }
+}

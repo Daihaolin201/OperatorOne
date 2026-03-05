@@ -1,9 +1,14 @@
 {
-  "prospects_contacted": 0,
-  "replies": 0,
-  "calls_booked": 0,
-  "customers_converted": 0,
-  "mrr": 0,
-  "objections_summary": [],
-  "handoff_notes": ""
+  "prospects_contacted": 13,
+  "replies": 6,
+  "calls_booked": 1,
+  "customers_converted": 1,
+  "mrr": 49.0,
+  "objections_summary": [
+    {
+      "reason": "budget",
+      "count": 2
+    }
+  ],
+  "handoff_notes": "Identify prospects capability initialized (v1). Ranked queue generated at workspaces/op1_sales/research/prospecting/prospect_queue.latest.json. Top segments by priority: opp_005 Expense reimbursement control (97.32), opp_001 Invoice follow-up automation (97.28), opp_002 Chargeback response operations (96.07). Stage1 skill installed: workspaces/op1_sales/skills/identify-prospects-stage1 (packaged artifact: workspaces/op1_sales/skills/dist/identify-prospects-stage1.skill). Default output template solidified to Top1→20条候选→外联草稿 (artifact: workspaces/op1_sales/research/prospecting/top1_20_outreach.latest.md). Stage2 send-outreach capability fully implemented as pipeline scripts and now packaged as skill `send-outreach-stage2` (skill path: workspaces/op1_sales/skills/send-outreach-stage2; package: workspaces/op1_sales/skills/dist/send-outreach-stage2.skill). Reply processor updated at 2026-03-04T20:03:26+00:00 (processed=6, unsub=1, booked=1). Stage3 conversion scoreboard updated at 2026-03-04T21:02:40+00:00 (paid=1, mrr_proxy=49.0, q_to_pilot=0.0526, commit_to_paid=1.0). Stage3 capability packaged as skill `convert-early-customers-stage3` with reproducibility controls (`--as-of`/`STAGE3_AS_OF`) and verification script `verify_reproducibility_stage3.py` (package: workspaces/op1_sales/skills/dist/convert-early-customers-stage3.skill). Stage2 optimization applied: reply classifier upgraded to stage2-reply-v2, fixed `not interested` false-positive, and added deterministic validator `validate_stage2_reply_classifier.py` (PASS)."
 }

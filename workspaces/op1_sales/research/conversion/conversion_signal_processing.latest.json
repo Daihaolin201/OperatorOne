@@ -1,0 +1,15 @@
+{
+  "generated_at": "2026-03-05T00:00:00+00:00",
+  "builder": "workspaces/op1_sales/scripts/process_conversion_events_stage3.py",
+  "mode": "simulate",
+  "summary": {
+    "stage2_events_scanned": 19,
+    "manual_signals_scanned": 1,
+    "candidate_events": 19,
+    "duplicates_skipped": 19,
+    "new_events_appended": 0,
+    "new_events_simulated": 0,
+    "event_type_mix": {}
+  },
+  "new_events": []
+}
