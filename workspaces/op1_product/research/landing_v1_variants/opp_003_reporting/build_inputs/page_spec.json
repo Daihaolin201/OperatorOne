@@ -1,0 +1,296 @@
+{
+  "page_spec_version": "1.0",
+  "generated_at": "2026-03-03T23:57:28Z",
+  "project_id": "proj-opp-003-client-reporting-v1",
+  "adapter_name": "client-reporting",
+  "layout_profile": "client-reporting",
+  "theme": {
+    "accent": "#7c3aed",
+    "surface": "#1e1b4b",
+    "highlight": "#a78bfa"
+  },
+  "meta": {
+    "title": "Ship client-ready monthly reporting with one repeatable workflow",
+    "description": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence."
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "props": {
+        "headline": "Ship client-ready monthly reporting with one repeatable workflow",
+        "subheadline": "Ship client-ready monthly reporting with one repeatable workflow. Designed for Agency operator teams in Marketing services to validate demand quickly.",
+        "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+        "segment_label": "Agency operator · Marketing services · 2-30",
+        "adapter_name": "Client Reporting Assistant",
+        "profile_name": "Reporting Ops Funnel"
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "props": {
+        "title": "Why this approach",
+        "items": [
+          "Single reporting template reused across clients with controlled customization.",
+          "Business-outcome-first narrative to reduce stakeholder confusion.",
+          "Weekly QA loop to improve clarity and trust with each reporting cycle."
+        ]
+      }
+    },
+    {
+      "module_id": "workflow_interactive",
+      "kind": "workflow",
+      "props": {
+        "title": "Try the workflow assistant",
+        "prompt_label": "Describe your reporting bottleneck",
+        "prompt_placeholder": "e.g. We spend too long rebuilding monthly reports for non-technical clients.",
+        "action_label": "Generate reporting workflow"
+      }
+    },
+    {
+      "module_id": "metric_snapshot",
+      "kind": "metric",
+      "props": {
+        "title": "Validation target",
+        "metric": "Qualified intent captures",
+        "target": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "pricing_cards",
+      "kind": "pricing",
+      "props": {
+        "title": "Pricing hypothesis",
+        "plan_a": "$49/month agency starter",
+        "plan_b": "$149/month multi-client"
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "props": {
+        "title": "Start with one pilot workflow",
+        "description": "Join pilot to standardize KPI narratives and cut report prep time.",
+        "cta_label": "Join pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "props": {
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Will this remove analyst judgment?",
+            "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+          },
+          {
+            "question": "Can we keep client-specific KPI sets?",
+            "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+          }
+        ]
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "proof_points",
+      "workflow_interactive",
+      "metric_snapshot",
+      "pricing_cards",
+      "cta_waitlist",
+      "faq_list"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ]
+  },
+  "project_spec_snapshot": {
+    "spec_version": "1.0",
+    "generated_at": "2026-03-03T23:57:28Z",
+    "project_id": "proj-opp-003-client-reporting-v1",
+    "source": {
+      "opportunity_id": "opp_003",
+      "stage": "stage2",
+      "selection_reason": "explicit_opportunity",
+      "decision_confidence": "high",
+      "decision_weighted_score": 3.964
+    },
+    "segment": {
+      "role": "Agency operator",
+      "industry": "Marketing services",
+      "company_size": "2-30"
+    },
+    "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+    "value_proposition": "Ship client-ready monthly reporting with one repeatable workflow. Designed for Agency operator teams in Marketing services to validate demand quickly.",
+    "offer": {
+      "headline": "Ship client-ready monthly reporting with one repeatable workflow",
+      "cta_label": "Join pilot",
+      "cta_type": "email_waitlist",
+      "channel_hint": "Agency founder communities"
+    },
+    "workflow": {
+      "prompt_label": "Describe your reporting bottleneck",
+      "prompt_placeholder": "e.g. We spend too long rebuilding monthly reports for non-technical clients.",
+      "primary_action_label": "Generate reporting workflow",
+      "rules": [
+        {
+          "id": "monthly-reporting",
+          "priority": 10,
+          "keywords": [
+            "monthly",
+            "report",
+            "client",
+            "manual"
+          ],
+          "first_step": "Define a one-page KPI summary template before adding channel-specific detail.",
+          "next_steps": [
+            "Standardize metric definitions across clients.",
+            "Auto-fill narrative sections from KPI deltas.",
+            "Collect client questions to improve the next template iteration."
+          ]
+        },
+        {
+          "id": "unclear-performance",
+          "priority": 8,
+          "keywords": [
+            "confusing",
+            "unclear",
+            "explaining",
+            "results"
+          ],
+          "first_step": "Rewrite report output into business outcomes first, then append technical metrics.",
+          "next_steps": [
+            "Map each KPI to an explicit business decision.",
+            "Highlight one win and one risk every cycle.",
+            "Use consistent visuals for comparability."
+          ]
+        }
+      ],
+      "default_response": {
+        "first_step": "Start with one reusable reporting structure and avoid custom format changes per client.",
+        "next_steps": [
+          "Lock metric glossary.",
+          "Automate export collection.",
+          "Review report quality with a short QA checklist."
+        ]
+      }
+    },
+    "metrics": {
+      "success_metric": "Qualified intent captures",
+      "target": "At least 5 qualified leads from first 20 targeted users in 14 days",
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after 20 targeted visitors",
+        "Core workflow completion rate below 20% in first-session usage"
+      ]
+    },
+    "pricing": {
+      "plan_a": "$49/month agency starter",
+      "plan_b": "$149/month multi-client"
+    },
+    "adapter": {
+      "name": "client-reporting",
+      "display_name": "Client Reporting Assistant",
+      "description": "For agencies producing recurring client reports and KPI summaries.",
+      "match_score": 1.0,
+      "match_reason": "forced"
+    },
+    "business_tests": [
+      {
+        "name": "monthly_reporting_response",
+        "input": "Our agency monthly reports are too manual and hard for clients to read.",
+        "expect_first_step_contains": [
+          "KPI",
+          "template"
+        ]
+      }
+    ],
+    "proof_points": [
+      "Single reporting template reused across clients with controlled customization.",
+      "Business-outcome-first narrative to reduce stakeholder confusion.",
+      "Weekly QA loop to improve clarity and trust with each reporting cycle."
+    ],
+    "faq": [
+      {
+        "question": "Will this remove analyst judgment?",
+        "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+      },
+      {
+        "question": "Can we keep client-specific KPI sets?",
+        "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+      }
+    ],
+    "operational_checklist": [
+      "Lock one KPI glossary used across all reports.",
+      "Create an executive summary before channel detail.",
+      "Run a QA checklist before every client send."
+    ],
+    "page_profile": "client-reporting",
+    "cta_support_text": "Join pilot to standardize KPI narratives and cut report prep time.",
+    "mvp_boundary": {
+      "in_scope": [
+        "Single conversion-focused landing page with one primary CTA",
+        "One focused workflow preview tied to the selected opportunity problem",
+        "Evidence-backed hero/proof/FAQ messaging",
+        "Pilot lead capture for early access validation"
+      ],
+      "out_of_scope": [
+        "Cross-channel metric mapping",
+        "Integration breadth expectations",
+        "Custom enterprise integrations",
+        "Advanced billing/auth stack",
+        "Multi-product expansion"
+      ],
+      "source": "synthesized"
+    }
+  }
+}

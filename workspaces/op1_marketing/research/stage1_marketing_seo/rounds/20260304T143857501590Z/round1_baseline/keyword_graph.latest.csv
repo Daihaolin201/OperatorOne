@@ -1,0 +1,166 @@
+keyword,intent,context_id,source_opportunity_id,priority_hint
+best overdue invoices followed software,BOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed pricing,BOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed tool for freelancer small service owner,BOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed vs manual,BOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+manual csv overdue invoice checklist,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed manually late because checklist,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed manually late because template,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed manually late because workflow,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed playbook,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed process,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+turn overdue invoices daily action queue template,MOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+how to overdue invoices followed manually late because,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+how to turn overdue invoices daily action queue,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed automation,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+overdue invoices followed examples,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+best overdue invoices followed software,BOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed pricing,BOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed tool for freelancer small service owner,BOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed vs manual,BOFU,landing::opp_001,opp_001,0.0
+construction business started last checklist,MOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed manually late because checklist,MOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed manually late because template,MOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed manually late because workflow,MOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed playbook,MOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed process,MOFU,landing::opp_001,opp_001,0.0
+turn overdue invoices daily follow action template,MOFU,landing::opp_001,opp_001,0.0
+how to overdue invoices followed manually late because,TOFU,landing::opp_001,opp_001,0.0
+how to turn overdue invoices daily follow action,TOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed automation,TOFU,landing::opp_001,opp_001,0.0
+overdue invoices followed examples,TOFU,landing::opp_001,opp_001,0.0
+best overdue invoices followed software,BOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed pricing,BOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed tool for freelancer small service owner,BOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed vs manual,BOFU,opportunity::opp_001,opp_001,4.084
+construction business started last checklist,MOFU,opportunity::opp_001,opp_001,4.084
+manual reminders via personal email inconsistent template,MOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed manually late because checklist,MOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed manually late because template,MOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed manually late because workflow,MOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed playbook,MOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed process,MOFU,opportunity::opp_001,opp_001,4.084
+how to manual reminders via personal email inconsistent,TOFU,opportunity::opp_001,opp_001,4.084
+how to overdue invoices followed manually late because,TOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed automation,TOFU,opportunity::opp_001,opp_001,4.084
+overdue invoices followed examples,TOFU,opportunity::opp_001,opp_001,4.084
+best chargeback handling manual software,BOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual pricing,BOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual tool for ecommerce owner operations manager,BOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual vs automated workflow,BOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual playbook,MOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual process,MOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual time consuming causes checklist,MOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual time consuming causes template,MOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual time consuming causes workflow,MOFU,opportunity::opp_002,opp_002,4.084
+manual evidence gathering order systems customer template,MOFU,opportunity::opp_002,opp_002,4.084
+not even joking sitting checklist,MOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual automation,TOFU,opportunity::opp_002,opp_002,4.084
+chargeback handling manual examples,TOFU,opportunity::opp_002,opp_002,4.084
+how to chargeback handling manual time consuming causes,TOFU,opportunity::opp_002,opp_002,4.084
+how to manual evidence gathering order systems customer,TOFU,opportunity::opp_002,opp_002,4.084
+best monthly reporting labor software,BOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor pricing,BOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor tool for agency owner account manager,BOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor vs manual,BOFU,opportunity::opp_003,opp_003,3.964
+manage google ads home checklist,MOFU,opportunity::opp_003,opp_003,3.964
+manual exports custom spreadsheet report rewriting template,MOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor heavy often unclear checklist,MOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor heavy often unclear template,MOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor heavy often unclear workflow,MOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor playbook,MOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor process,MOFU,opportunity::opp_003,opp_003,3.964
+how to manual exports custom spreadsheet report rewriting,TOFU,opportunity::opp_003,opp_003,3.964
+how to monthly reporting labor heavy often unclear,TOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor automation,TOFU,opportunity::opp_003,opp_003,3.964
+monthly reporting labor examples,TOFU,opportunity::opp_003,opp_003,3.964
+best owner tenant workflows software,BOFU,opportunity::opp_004,opp_004,3.133
+default software output plus custom excel template,BOFU,opportunity::opp_004,opp_004,3.133
+how to default software output plus custom excel,BOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows pricing,BOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows tool for property manager property management,BOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows vs manual,BOFU,opportunity::opp_004,opp_004,3.133
+how to owner tenant workflows fragmented driving monthly,MOFU,opportunity::opp_004,opp_004,3.133
+just started side job checklist,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows automation,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows examples,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows fragmented driving monthly checklist,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows fragmented driving monthly template,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows fragmented driving monthly workflow,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows playbook,MOFU,opportunity::opp_004,opp_004,3.133
+owner tenant workflows process,MOFU,opportunity::opp_004,opp_004,3.133
+best expense reimbursement remains software,BOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains pricing,BOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains tool for smb owner finance admin,BOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains vs manual,BOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains chaotic fraud prone checklist,MOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains chaotic fraud prone template,MOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains chaotic fraud prone workflow,MOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains playbook,MOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains process,MOFU,opportunity::opp_005,opp_005,4.024
+last week covering our checklist,MOFU,opportunity::opp_005,opp_005,4.024
+shared sheet end month manual reconciliation template,MOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains automation,TOFU,opportunity::opp_005,opp_005,4.024
+expense reimbursement remains examples,TOFU,opportunity::opp_005,opp_005,4.024
+how to expense reimbursement remains chaotic fraud prone,TOFU,opportunity::opp_005,opp_005,4.024
+how to shared sheet end month manual reconciliation,TOFU,opportunity::opp_005,opp_005,4.024
+best core workflows depend software,BOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend pricing,BOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend tool for operations admin smb operations,BOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend vs manual,BOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend automation,MOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend examples,MOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend fragile spreadsheets repetitive checklist,MOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend fragile spreadsheets repetitive template,MOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend fragile spreadsheets repetitive workflow,MOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend playbook,MOFU,opportunity::opp_006,opp_006,3.904
+core workflows depend process,MOFU,opportunity::opp_006,opp_006,3.904
+how to core workflows depend fragile spreadsheets repetitive,MOFU,opportunity::opp_006,opp_006,3.904
+manual copy paste pdfs spreadsheets brittle template,MOFU,opportunity::opp_006,opp_006,3.904
+sheer amount critical business checklist,MOFU,opportunity::opp_006,opp_006,3.904
+how to manual copy paste pdfs spreadsheets brittle,TOFU,opportunity::opp_006,opp_006,3.904
+best chargeback disputes handled software,BOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled pricing,BOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled tool for ecommerce operator ecommerce,BOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled vs manual,BOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled hoc causing avoidable checklist,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled hoc causing avoidable template,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled hoc causing avoidable workflow,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled playbook,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled process,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+how to respond chargebacks faster evidence first workflow,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+respond chargebacks faster evidence first workflow template,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+standardize dispute packets each checklist,MOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled automation,TOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+chargeback disputes handled examples,TOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+how to chargeback disputes handled hoc causing avoidable,TOFU,project_spec::proj-opp-001-chargeback-response-v1,opp_001,4.084
+agencies rebuild client pricing,BOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client tool for agency operator marketing services,BOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client vs manual,BOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+best agencies rebuild client software,BOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client playbook,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client process,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client reports manually each checklist,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client reports manually each template,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client reports manually each workflow,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+ship client ready monthly reporting one template,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+single reporting template reused checklist,MOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client automation,TOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+agencies rebuild client examples,TOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+how to agencies rebuild client reports manually each,TOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+how to ship client ready monthly reporting one,TOFU,project_spec::proj-opp-001-client-reporting-v1,opp_001,4.084
+best overdue invoices followed software,BOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed pricing,BOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed tool for freelancer small service owner,BOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed vs manual,BOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed manually late because checklist,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed manually late because template,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed manually late because workflow,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed playbook,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed process,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+prioritize overdue invoices value checklist,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+turn overdue invoices daily follow action template,MOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+how to overdue invoices followed manually late because,TOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+how to turn overdue invoices daily follow action,TOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed automation,TOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084
+overdue invoices followed examples,TOFU,project_spec::proj-opp-001-invoice-followup-v1,opp_001,4.084

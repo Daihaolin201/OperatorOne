@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "config_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/config/feedback_source_adapters.v1.json",
+  "event_count": 31,
+  "duplicates_skipped": 0,
+  "feedback_type_mix": {
+    "churn_risk": 2,
+    "confusion": 17,
+    "objection": 1,
+    "other": 1,
+    "praise": 5,
+    "pricing": 5
+  },
+  "topic_mix": {
+    "billing": 1,
+    "general": 4,
+    "integration": 2,
+    "onboarding": 13,
+    "pricing": 5,
+    "retention": 2,
+    "trust": 4
+  },
+  "events_by_adapter": {
+    "conversion_pipeline_pains": 20,
+    "sales_conversion_events": 5,
+    "sales_outreach_replies": 6
+  },
+  "source_status": [
+    {
+      "adapter_id": "sales_outreach_replies",
+      "enabled": true,
+      "optional": false,
+      "path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/outreach/outreach_events.latest.jsonl",
+      "exists": true,
+      "events_added": 6
+    },
+    {
+      "adapter_id": "sales_conversion_events",
+      "enabled": true,
+      "optional": false,
+      "path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_events.latest.jsonl",
+      "exists": true,
+      "events_added": 5
+    },
+    {
+      "adapter_id": "conversion_pipeline_pains",
+      "enabled": true,
+      "optional": false,
+      "path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json",
+      "exists": true,
+      "events_added": 20
+    },
+    {
+      "adapter_id": "manual_feedback_notes",
+      "enabled": true,
+      "optional": true,
+      "path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/manual_feedback_notes.latest.jsonl",
+      "exists": true,
+      "events_added": 0
+    },
+    {
+      "adapter_id": "product_runtime_feedback",
+      "enabled": false,
+      "optional": true,
+      "path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_feedback/product_feedback_events.latest.jsonl",
+      "exists": false,
+      "events_added": 0
+    }
+  ],
+  "warnings": [],
+  "mode": "simulated_signals",
+  "notes": [
+    "Input includes sales-side simulated signals and pipeline pain statements.",
+    "Adapters are externalized for future live-source migration."
+  ]
+}

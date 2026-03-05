@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "hashes": {
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/raw_feedback_events.latest.jsonl": "ef1fcedbc8ec5cbbaab34c2eed11693b08b973edfd0eaaac7f76b46e7694976c",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_ingest_report.latest.json": "93d7acb36c8cd1f70b4e0da553bd76d0e2c2e98130ee53ed66bfce9d00bd68b6",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_normalized.latest.jsonl": "abead7a5b95ef9edbe29410ee83dda72df4fff6afee9872e0f69fe173e5fbd43",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_dedup.latest.json": "f3a778479b3d162aebf5418fdbe70a06b9441dc3098a07a93ddc3245a9397f1c",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_normalize_report.latest.json": "6b192c62f893fb2a46e755dabe12cb1ffe1c8429ffc4e1809cf231a83452a9ed",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/theme_clusters.latest.json": "70b2de85866f8ef166ca9475a4bebda77eb651db0b17d932c406886a8b37c134",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_scored.latest.jsonl": "92cc7b744d5f153d491c4b427187d6d527058dab996924d699c8b96dd287305b",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_scoring_report.latest.json": "fb6085490dfa96ef741e435bc00d0166eb4f2f1dec70a1e3c709e9ee05a3decc",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_priority_queue.latest.json": "a93af72de229af4de17af052b00ef08b8ed1dfb99256df0faf9b1dec38f08d21",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_loop_status.latest.json": "c166ca29953706bcfa2b3c108c9cee58252cc2fcd86eb58b09d7f5c1cdc063d2",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/impact_model.latest.json": "4fbea68d914d13aaf90dd13bf5fbb9c9d70e240152c85d00d20ac9573a4e3a2c",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/insight_briefs.latest.md": "160e71152df0d16dfa0470ad7bfcac50d6736d6467f349bfe6bb484f6c47016f",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_data_quality.latest.json": "fe27fe3675c72dfc970cf2263bc0f5bfe601352a51c61c9670e42f2651184e7f",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/feedback_alerts.latest.json": "bac6fc4ae9f477aa3e5693a2b9f6d685ac6f2db0694d0e19427660356a2d4237",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/stage2_feedback_scoreboard.latest.json": "51333bf198d0a682f7196537f10210411b23f241e3a7beea04809c4183fa1e5d",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/stage2_feedback_scoreboard.latest.md": "72df590c9fae263d43906605d9036a4469793eff91afef69c319db22b98d1c16",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/weekly_feedback_snapshot.latest.md": "9d013c80147eb66fe9e7a41584a33b803989c5bfe177ff1d043c483234050ba6",
+    "/Users/user/.openclaw/workspace/OperatorOne/handoffs/operations_to_product.json": "a5304be10ad40c685f90fcb07d1d259e769fc405cf2eba931ccaf8845b101101",
+    "/Users/user/.openclaw/workspace/OperatorOne/handoffs/operations_to_marketing.json": "e3a391fd25b18cbc9f1d79a85f1a1df62b86bea389404694668d1a58443caa77",
+    "/Users/user/.openclaw/workspace/OperatorOne/handoffs/operations_to_sales.json": "15f9075246ec42b564ca1e50992fdffb785ef8335a9770c58446abe708575334"
+  },
+  "note": "Baseline for Stage2 reproducibility checks"
+}

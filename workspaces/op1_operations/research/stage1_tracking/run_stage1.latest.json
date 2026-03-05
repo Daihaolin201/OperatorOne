@@ -1,0 +1,17 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "status": "passed",
+  "pipeline": "stage1_tracking",
+  "outputs": {
+    "scoreboard_json": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.json",
+    "scoreboard_md": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.md",
+    "weekly_snapshot_md": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/weekly_kpi_snapshot.latest.md",
+    "reproducibility_json": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/reproducibility_report.latest.json"
+  },
+  "headline": {
+    "sessions": 905.67,
+    "qualified_signups": 13,
+    "paid_customers": 1,
+    "net_new_mrr": 49.0
+  }
+}

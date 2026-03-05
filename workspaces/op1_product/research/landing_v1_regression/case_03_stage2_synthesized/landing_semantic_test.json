@@ -1,0 +1,43 @@
+{
+  "generated_at": "2026-03-04T01:32:59Z",
+  "landing_package": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_03_stage2_synthesized/landing_package.json",
+  "page_spec": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_03_stage2_synthesized/build_inputs/page_spec.json",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "page_mode_landing",
+      "status": "pass",
+      "detail": "page_mode=landing"
+    },
+    {
+      "name": "required_modules_present",
+      "status": "pass",
+      "detail": "missing=[]"
+    },
+    {
+      "name": "forbidden_modules_absent",
+      "status": "pass",
+      "detail": "present=[]"
+    },
+    {
+      "name": "section_plan_alignment",
+      "status": "pass",
+      "detail": "modules=['hero_problem', 'problem_agitation', 'proof_points', 'benefit_bullets', 'faq_list', 'cta_waitlist']; sections=['hero_problem', 'problem_agitation', 'proof_points', 'benefit_bullets', 'faq_list', 'cta_waitlist']"
+    },
+    {
+      "name": "hero_problem_message_present",
+      "status": "pass",
+      "detail": "hero=True; subhero=True; problem=True"
+    },
+    {
+      "name": "no_demo_terms_in_landing_package",
+      "status": "pass",
+      "detail": "hits=[]"
+    },
+    {
+      "name": "traceability_coverage",
+      "status": "pass",
+      "detail": "coverage=1.0"
+    }
+  ]
+}

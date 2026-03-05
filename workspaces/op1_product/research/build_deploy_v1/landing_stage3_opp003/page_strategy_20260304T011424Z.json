@@ -1,0 +1,102 @@
+{
+  "generated_at": "2026-03-04T01:14:44Z",
+  "base_url": "https://webproductlandingstage3opp003.vercel.app",
+  "project_id": "proj-opp-003-client-reporting-v1",
+  "adapter_name": "client-reporting",
+  "layout_profile": "landing-client-reporting",
+  "page_mode": "landing",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "module_presence",
+      "status": "pass",
+      "expected_count": 6,
+      "detected_count": 6,
+      "attempts": 1
+    },
+    {
+      "name": "module_order",
+      "status": "pass",
+      "expected": [
+        "hero_problem",
+        "benefit_bullets",
+        "problem_agitation",
+        "proof_points",
+        "faq_list",
+        "cta_waitlist"
+      ],
+      "detected": [
+        "hero_problem",
+        "benefit_bullets",
+        "problem_agitation",
+        "proof_points",
+        "faq_list",
+        "cta_waitlist"
+      ]
+    },
+    {
+      "name": "landing_module_constraints",
+      "status": "pass",
+      "required_modules": [
+        "hero_problem",
+        "proof_points",
+        "faq_list",
+        "cta_waitlist"
+      ],
+      "forbidden_modules": [
+        "workflow_interactive",
+        "metric_snapshot",
+        "evidence_checklist",
+        "social_proof_strip"
+      ]
+    },
+    {
+      "name": "primary_cta_uniqueness",
+      "status": "pass",
+      "primary_cta_count": 1,
+      "max_primary_cta": 1
+    },
+    {
+      "name": "legacy_badge_removed",
+      "status": "pass"
+    },
+    {
+      "name": "landing_semantics",
+      "status": "pass",
+      "mode_marker_ok": true
+    },
+    {
+      "name": "viewport_meta",
+      "status": "pass"
+    },
+    {
+      "name": "responsive_css_markers",
+      "status": "pass",
+      "markers": [
+        "@media",
+        "max-width",
+        "min-width"
+      ],
+      "stylesheet_attempts": 1
+    },
+    {
+      "name": "multi_device_profiles",
+      "status": "pass",
+      "profiles": [
+        "desktop",
+        "mobile",
+        "tablet"
+      ]
+    },
+    {
+      "name": "security_headers_baseline",
+      "status": "pass",
+      "checked": [
+        "x-content-type-options",
+        "x-frame-options",
+        "referrer-policy",
+        "content-security-policy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,150 @@
+{
+  "spec_version": "1.0",
+  "generated_at": "2026-03-03T23:45:40Z",
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "source": {
+    "opportunity_id": "opp_001",
+    "stage": "stage2",
+    "selection_reason": "explicit_opportunity",
+    "decision_confidence": "high",
+    "decision_weighted_score": 4.084
+  },
+  "segment": {
+    "role": "Freelancer / small service owner",
+    "industry": "Professional services",
+    "company_size": "1-20"
+  },
+  "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+  "value_proposition": "Turn overdue invoices into a daily follow-up action queue. Designed for Freelancer / small service owner teams in Professional services to validate demand quickly.",
+  "offer": {
+    "headline": "Turn overdue invoices into a daily follow-up action queue",
+    "cta_label": "Join pilot",
+    "cta_type": "email_waitlist",
+    "channel_hint": "Freelancer and small-business communities"
+  },
+  "workflow": {
+    "prompt_label": "Describe your receivables issue",
+    "prompt_placeholder": "e.g. Client invoice #204 is 21 days overdue and keeps delaying payment.",
+    "primary_action_label": "Generate follow-up plan",
+    "rules": [
+      {
+        "id": "invoice-overdue",
+        "priority": 10,
+        "keywords": [
+          "overdue",
+          "invoice",
+          "payment",
+          "late"
+        ],
+        "first_step": "Send one structured reminder today with invoice amount, due date, and a clear 48-hour action deadline.",
+        "next_steps": [
+          "Schedule auto-follow-up in 48 hours if unpaid.",
+          "Escalate tone after second miss while preserving professionalism.",
+          "Log response status to avoid duplicate chasing."
+        ]
+      },
+      {
+        "id": "invoice-ghosting",
+        "priority": 30,
+        "keywords": [
+          "ghost",
+          "ghosting",
+          "ignoring",
+          "no reply",
+          "silent",
+          "invoice",
+          "payment"
+        ],
+        "first_step": "Switch to a final polite escalation template with a concrete payment link and escalation date.",
+        "next_steps": [
+          "Use one channel change (email -> phone or SMS).",
+          "Offer one short payment plan option to remove friction.",
+          "Mark account for pause-of-service trigger if no response by deadline."
+        ]
+      }
+    ],
+    "default_response": {
+      "first_step": "Map unpaid invoices by age bucket (0-7, 8-30, 31+) and start with the highest-value overdue account.",
+      "next_steps": [
+        "Use one template per age bucket.",
+        "Track responses and paid/unpaid status daily.",
+        "Escalate only after predefined no-response window."
+      ]
+    }
+  },
+  "metrics": {
+    "success_metric": "Qualified intent captures",
+    "target": "At least 5 qualified leads from first 20 targeted users in 14 days",
+    "kill_criteria": [
+      "Fewer than 2 qualified intent captures after 20 targeted visitors",
+      "Core workflow completion rate below 20% in first-session usage"
+    ]
+  },
+  "pricing": {
+    "plan_a": "$19/month solo",
+    "plan_b": "$79/month team"
+  },
+  "adapter": {
+    "name": "invoice-followup",
+    "display_name": "Invoice Follow-up Assistant",
+    "description": "For service businesses handling overdue invoices and manual collection follow-up.",
+    "match_score": 0.571,
+    "match_reason": "keyword_match"
+  },
+  "business_tests": [
+    {
+      "name": "overdue_invoice_response",
+      "input": "Client has an overdue invoice and keeps delaying payment.",
+      "expect_first_step_contains": [
+        "48-hour",
+        "invoice"
+      ]
+    },
+    {
+      "name": "ghosting_response",
+      "input": "Customer is ghosting us after we sent the invoice twice.",
+      "expect_first_step_contains": [
+        "escalation",
+        "payment"
+      ]
+    }
+  ],
+  "proof_points": [
+    "Prioritize overdue invoices by value and aging bucket.",
+    "Route ghosting vs. late-payment scenarios with explicit rules.",
+    "Track follow-up outcomes to improve recovery playbooks weekly."
+  ],
+  "faq": [
+    {
+      "question": "Will this replace our accounting tool?",
+      "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+    },
+    {
+      "question": "Can we customize escalation tone?",
+      "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+    }
+  ],
+  "operational_checklist": [
+    "Rank overdue invoices by amount and days late.",
+    "Send one structured follow-up with explicit payment deadline.",
+    "Escalate channel only after defined no-response window."
+  ],
+  "page_profile": "invoice-followup",
+  "cta_support_text": "Join a pilot that helps you recover receivables with less manual chasing.",
+  "mvp_boundary": {
+    "in_scope": [
+      "Single conversion-focused landing page with one primary CTA",
+      "One focused workflow preview tied to the selected opportunity problem",
+      "Evidence-backed hero/proof/FAQ messaging",
+      "Pilot lead capture for early access validation"
+    ],
+    "out_of_scope": [
+      "Email deliverability",
+      "Accounting data import quality",
+      "Custom enterprise integrations",
+      "Advanced billing/auth stack",
+      "Multi-product expansion"
+    ],
+    "source": "synthesized"
+  }
+}

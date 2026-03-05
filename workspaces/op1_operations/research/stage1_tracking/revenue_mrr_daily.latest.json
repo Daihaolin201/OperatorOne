@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "rows": [
+    {
+      "date": "2026-03-04",
+      "new_business": 49.0,
+      "expansion": 0.0,
+      "contraction": 0.0,
+      "churn": 0.0,
+      "reactivation": 0.0,
+      "net_new_mrr": 49.0
+    }
+  ]
+}

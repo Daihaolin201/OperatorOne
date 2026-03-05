@@ -1,0 +1,468 @@
+{
+  "generated_at": "2026-03-04T14:24:52Z",
+  "context_count": 12,
+  "contexts": [
+    {
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_type": "project_blueprint",
+      "source_files": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "source_opportunity_id": "opp_001",
+      "icp": "Freelancer / small service owner in professional services (1-20 employees)",
+      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "value_proposition": "Turn overdue invoices into a daily action queue with clear follow-up playbooks so owners recover cash faster without awkward manual chasing.",
+      "proof_points": [
+        "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "Daily prioritized follow-up queue by aging bucket and invoice value",
+        "Rule-based playbooks for two paths: late-but-responsive vs. ghosting",
+        "Copy-ready reminder templates with manual send workflow",
+        "Pilot landing/waitlist flow for intent capture",
+        "Lightweight outcomes log (replies, promised payment date, recovered amount)"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Join the 14-day overdue-invoice pilot",
+        "type": "pilot_signup",
+        "support_text": "Recover overdue invoices without awkward chasing"
+      },
+      "risk_if_wrong": [
+        "Automated email/SMS sending infrastructure and deliverability optimization",
+        "Native accounting integrations (QuickBooks/Xero) and two-way sync",
+        "Payment processing, collections/legal workflow, and dispute handling",
+        "Multi-team role/permission system and enterprise admin features",
+        "Mobile apps and multilingual product surface"
+      ],
+      "kill_criteria": [
+        "By day 7, fewer than 4 qualified conversations from first 20 outreach attempts.",
+        "By day 14, fewer than 3 pilot signups or <10% visitor-to-qualified-intent rate.",
+        "Zero paid starts (or paid-start commitments) after pilot walkthroughs.",
+        "Median manual onboarding effort >45 minutes/account across first 5 pilot users."
+      ],
+      "priority_signals": {}
+    },
+    {
+      "context_id": "handoff::invoice-followup-automation",
+      "source_type": "marketing_handoff",
+      "source_files": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "source_opportunity_id": null,
+      "icp": "SMB agencies and bookkeeping teams sending recurring invoices",
+      "problem_statement": "Invoice follow-up is manual, late, and inconsistent, causing delayed cash collection.",
+      "value_proposition": "Automate invoice follow-ups with smart timing and clear payment nudges.",
+      "proof_points": [
+        "Automated reminder schedule",
+        "Escalation rules by due date",
+        "Simple payment-link follow-up templates"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Review handoff",
+        "type": "internal",
+        "support_text": "/landing/invoice-followup-automation"
+      },
+      "risk_if_wrong": [],
+      "kill_criteria": [],
+      "priority_signals": {}
+    },
+    {
+      "context_id": "landing::opp_001",
+      "source_type": "landing_package",
+      "source_files": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "source_opportunity_id": "opp_001",
+      "icp": "Freelancer / small service owner / Professional services / 1-20",
+      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "value_proposition": "Turn overdue invoices into a daily follow-up action queue",
+      "proof_points": [
+        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "Prioritize overdue invoices by value and aging bucket.",
+        "Route ghosting vs. late-payment scenarios with explicit rules."
+      ],
+      "faq": [
+        {
+          "question": "Will this replace our accounting tool?",
+          "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+        },
+        {
+          "question": "Can we customize escalation tone?",
+          "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+        }
+      ],
+      "cta": {
+        "label": "Join invoice pilot",
+        "type": "email_waitlist",
+        "support_text": "Join a pilot that helps you recover receivables with less manual chasing."
+      },
+      "risk_if_wrong": [
+        "Email deliverability",
+        "Accounting data import quality",
+        "Online signal may overstate real purchasing urgency.",
+        "Tool interest may not convert into paid behavior.",
+        "Integration requirements may expand scope.",
+        "Public communities may not convert to interviews.",
+        "Incumbent strength may be underestimated.",
+        "Real usage frequency may be lower than inferred.",
+        "By day 7, fewer than 4 qualified conversations from first 20 outreach attempts.",
+        "By day 14, fewer than 3 pilot signups or <10% visitor-to-qualified-intent rate."
+      ],
+      "kill_criteria": [
+        "By day 7, fewer than 4 qualified conversations from first 20 outreach attempts.",
+        "By day 14, fewer than 3 pilot signups or <10% visitor-to-qualified-intent rate.",
+        "Zero paid starts (or paid-start commitments) after pilot walkthroughs.",
+        "Median manual onboarding effort >45 minutes/account across first 5 pilot users."
+      ],
+      "priority_signals": {}
+    },
+    {
+      "context_id": "opportunity::opp_001",
+      "source_type": "opportunity_record",
+      "source_files": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "source_opportunity_id": "opp_001",
+      "icp": "Freelancer / small service owner / Professional services / 1-20",
+      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "value_proposition": "Manual reminders via personal email and inconsistent escalation.",
+      "proof_points": [
+        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "I was chatting with a freelancer friend last week who was fuming about a client ghosting on a $2k invoice. It got me curious: how do you all deal with overdue payments? I’m not selling anything, just doing some research ...",
+        "283 apps listed for this feature category on Shopify App Store"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Reach out to posters discussing overdue invoices and AR frustration",
+        "type": "research_outreach",
+        "support_text": "Freelancer and small-business communities"
+      },
+      "risk_if_wrong": [
+        "Email deliverability",
+        "Accounting data import quality"
+      ],
+      "kill_criteria": [],
+      "priority_signals": {
+        "rank": 1,
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "opportunity::opp_002",
+      "source_type": "opportunity_record",
+      "source_files": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "source_opportunity_id": "opp_002",
+      "icp": "Ecommerce owner / operations manager / DTC ecommerce / 3-50",
+      "problem_statement": "Chargeback handling is manual, time-consuming, and causes immediate cash-flow shocks.",
+      "value_proposition": "Manual evidence gathering from order systems and customer support logs.",
+      "proof_points": [
+        "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "When I launched my shopify store I was doing maybe 10 orders a week and it was totally manageable, just pack everything up after dinner and drop it at the post office the next morning. Now I'm at like 150 orders a week a...",
+        "IP blocker and bot blocker for fraud prevention & block ip (1212 reviews)",
+        "Automate everything and get back to business (8122 reviews)"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Shortlist stores actively discussing dispute losses",
+        "type": "research_outreach",
+        "support_text": "Ecommerce communities"
+      },
+      "risk_if_wrong": [
+        "Store API access",
+        "Dispute data normalization"
+      ],
+      "kill_criteria": [],
+      "priority_signals": {
+        "rank": 2,
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "opportunity::opp_003",
+      "source_type": "opportunity_record",
+      "source_files": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "source_opportunity_id": "opp_003",
+      "icp": "Agency owner / account manager / Marketing agencies / 5-50",
+      "problem_statement": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
+      "value_proposition": "Manual exports and custom spreadsheet/report rewriting.",
+      "proof_points": [
+        "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "Have not done posts in a minute, and I am excited and a bit nervous to get back into it! BTW my posts may be long but they are written off the dome not with the help of AI :) I own Based Agency, we are a digital marketi...",
+        "Add plug-n-play customisable sections to any theme & page (2279 reviews)",
+        "Build proven CRO-focused pages with pro flexible customization (5770 reviews)"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Target agencies publicly discussing reporting bottlenecks",
+        "type": "research_outreach",
+        "support_text": "Agency founder communities"
+      },
+      "risk_if_wrong": [
+        "Cross-channel metric mapping",
+        "Integration breadth expectations"
+      ],
+      "kill_criteria": [],
+      "priority_signals": {
+        "rank": 4,
+        "weighted_score": 3.964,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "opportunity::opp_004",
+      "source_type": "opportunity_record",
+      "source_files": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "source_opportunity_id": "opp_004",
+      "icp": "Property manager / Property management / 2-30",
+      "problem_statement": "Owner and tenant workflows are fragmented, driving monthly manual spreadsheet work.",
+      "value_proposition": "Default PM software output plus custom Excel edits.",
+      "proof_points": [
+        "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "It does not help. If anything, it makes people automatically annoyed. Call and talk. We are human beings and we will work with you if you communicate. Asking AI to quote a bunch of nonsense (which usually doesn’t apply) ...",
+        "Impossible food sues to cancel earlier trademark owners",
+        "Launch HN: Recall.ai (YC W20) – API for meeting recordings and transcripts Hey HN, we&#x27;re David and Amanda from Recall.ai (<a href=\"https:&#x2F;&#x2F;www.recall.ai\">https:&#x2F;&#x2F;www.recall.ai</a>). Today we’re l..."
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Reach operators with 20-150 doors and reporting pain",
+        "type": "research_outreach",
+        "support_text": "Property management forums"
+      },
+      "risk_if_wrong": [
+        "PM tool integrations",
+        "Data privacy in owner/tenant records"
+      ],
+      "kill_criteria": [],
+      "priority_signals": {
+        "rank": 6,
+        "weighted_score": 3.133,
+        "decision": "reject",
+        "confidence_level": "medium"
+      }
+    },
+    {
+      "context_id": "opportunity::opp_005",
+      "source_type": "opportunity_record",
+      "source_files": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "source_opportunity_id": "opp_005",
+      "icp": "SMB owner / finance admin / General SMB / 10-100",
+      "problem_statement": "Expense reimbursement remains chaotic and fraud-prone with manual checks.",
+      "value_proposition": "Shared sheet + end-of-month manual reconciliation.",
+      "proof_points": [
+        "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "Every end of the month turns into this massive chore chasing down missing receipts, checking if that Starbucks charge was a client meeting or just coffee, sorting random Venmo reimbursements, etc. I thought I could handl...",
+        "Invoice generator for PDF invoices, quotes & packing slips. (2301 reviews)",
+        "An invoice generator to easily custom and print order document (1081 reviews)"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Interview SMBs with recurring reimbursement delays",
+        "type": "research_outreach",
+        "support_text": "SMB operations communities"
+      },
+      "risk_if_wrong": [
+        "OCR quality",
+        "Policy customization across teams"
+      ],
+      "kill_criteria": [],
+      "priority_signals": {
+        "rank": 3,
+        "weighted_score": 4.024,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "opportunity::opp_006",
+      "source_type": "opportunity_record",
+      "source_files": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "source_opportunity_id": "opp_006",
+      "icp": "Operations admin / SMB operations/logistics / 5-80",
+      "problem_statement": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
+      "value_proposition": "Manual copy-paste from PDFs into spreadsheets and brittle formulas/macros.",
+      "proof_points": [
+        "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "Hi everyone as the title states…long story short my kindness got the best of me and I’m getting emotionally curb stomped. About 2 months ago I had a lead reach out to me saying they needed immediate help with their mark...",
+        "Sync your sales channel with QuickBooks Online (2985 reviews)",
+        "Build reports with custom fields and data from other apps (1779 reviews)"
+      ],
+      "faq": [],
+      "cta": {
+        "label": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "type": "research_outreach",
+        "support_text": "SMB ops communities"
+      },
+      "risk_if_wrong": [
+        "Supplier template variance",
+        "Extraction confidence thresholds"
+      ],
+      "kill_criteria": [],
+      "priority_signals": {
+        "rank": 5,
+        "weighted_score": 3.904,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_type": "project_spec",
+      "source_files": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "source_opportunity_id": "opp_001",
+      "icp": "Ecommerce operator / Ecommerce / 1-50",
+      "problem_statement": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+      "value_proposition": "Respond to chargebacks faster with an evidence-first workflow. Designed for Ecommerce operator teams in Ecommerce to validate demand quickly.",
+      "proof_points": [
+        "Standardize dispute packets so each case is complete on first submission.",
+        "Prioritize by value and deadline to protect near-term cashflow.",
+        "Track win/loss reasons to continuously improve fraud controls."
+      ],
+      "faq": [
+        {
+          "question": "Does this connect directly to Stripe/Shopify?",
+          "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+        },
+        {
+          "question": "Can this support multiple dispute reasons?",
+          "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+        }
+      ],
+      "cta": {
+        "label": "Join pilot",
+        "type": "email_waitlist",
+        "support_text": "Join pilot to standardize dispute evidence and reduce preventable losses."
+      },
+      "risk_if_wrong": [
+        "Sort disputes by amount and response deadline.",
+        "Attach delivery, communication, and policy evidence in one bundle.",
+        "Review dispute outcomes weekly and update fraud prevention rules."
+      ],
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after 20 targeted visitors",
+        "Core workflow completion rate below 20% in first-session usage"
+      ],
+      "priority_signals": {
+        "rank": 1,
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_type": "project_spec",
+      "source_files": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "source_opportunity_id": "opp_001",
+      "icp": "Agency operator / Marketing services / 2-30",
+      "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+      "value_proposition": "Ship client-ready monthly reporting with one repeatable workflow. Designed for Agency operator teams in Marketing services to validate demand quickly.",
+      "proof_points": [
+        "Single reporting template reused across clients with controlled customization.",
+        "Business-outcome-first narrative to reduce stakeholder confusion.",
+        "Weekly QA loop to improve clarity and trust with each reporting cycle."
+      ],
+      "faq": [
+        {
+          "question": "Will this remove analyst judgment?",
+          "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+        },
+        {
+          "question": "Can we keep client-specific KPI sets?",
+          "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+        }
+      ],
+      "cta": {
+        "label": "Join pilot",
+        "type": "email_waitlist",
+        "support_text": "Join pilot to standardize KPI narratives and cut report prep time."
+      },
+      "risk_if_wrong": [
+        "Lock one KPI glossary used across all reports.",
+        "Create an executive summary before channel detail.",
+        "Run a QA checklist before every client send."
+      ],
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after 20 targeted visitors",
+        "Core workflow completion rate below 20% in first-session usage"
+      ],
+      "priority_signals": {
+        "rank": 1,
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    },
+    {
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_type": "project_spec",
+      "source_files": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "source_opportunity_id": "opp_001",
+      "icp": "Freelancer / small service owner / Professional services / 1-20",
+      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "value_proposition": "Turn overdue invoices into a daily follow-up action queue. Designed for Freelancer / small service owner teams in Professional services to validate demand quickly.",
+      "proof_points": [
+        "Prioritize overdue invoices by value and aging bucket.",
+        "Route ghosting vs. late-payment scenarios with explicit rules.",
+        "Track follow-up outcomes to improve recovery playbooks weekly."
+      ],
+      "faq": [
+        {
+          "question": "Will this replace our accounting tool?",
+          "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+        },
+        {
+          "question": "Can we customize escalation tone?",
+          "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+        }
+      ],
+      "cta": {
+        "label": "Join pilot",
+        "type": "email_waitlist",
+        "support_text": "Join a pilot that helps you recover receivables with less manual chasing."
+      },
+      "risk_if_wrong": [
+        "Rank overdue invoices by amount and days late.",
+        "Send one structured follow-up with explicit payment deadline.",
+        "Escalate channel only after defined no-response window."
+      ],
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after 20 targeted visitors",
+        "Core workflow completion rate below 20% in first-session usage"
+      ],
+      "priority_signals": {
+        "rank": 1,
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
+      }
+    }
+  ],
+  "snapshot_id": "snap_20260304142452_c11125338d2c7579",
+  "delta_counts": {
+    "added": 0,
+    "changed": 1,
+    "removed": 0
+  }
+}

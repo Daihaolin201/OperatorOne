@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-03-04T01:32:59Z",
+  "opportunities": [
+    {
+      "opportunity_id": "opp_no_evidence",
+      "target_segment": {
+        "who": "Solo service operator",
+        "trigger_context": "ad-hoc follow-up chaos"
+      },
+      "core_problem": "Manual chasing creates delays and inconsistency.",
+      "current_workaround": "Spreadsheet plus reminders",
+      "pain_evidence": [],
+      "urgency_signal": {
+        "evidence": "Users ask for quick operational relief"
+      },
+      "implementation_constraint": [
+        "No complex integrations in first release"
+      ],
+      "hard_gate_check": {
+        "kill_criteria": [
+          "No qualified intent in initial pilot"
+        ]
+      }
+    }
+  ]
+}

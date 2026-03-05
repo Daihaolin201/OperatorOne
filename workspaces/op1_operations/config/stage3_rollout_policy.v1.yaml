@@ -1,0 +1,19 @@
+{
+  "version": "1.0",
+  "default_rollout_steps_percent": [1, 5, 20, 50, 100],
+  "step_min_observation_hours": 12,
+  "hold_conditions": {
+    "guardrail_breach": true,
+    "srm_alert": true,
+    "error_rate_delta_pp": 0.03
+  },
+  "kill_switch": {
+    "enabled": true,
+    "max_rollback_time_minutes": 30
+  },
+  "targeting_defaults": {
+    "country": "ALL",
+    "device": "all",
+    "audience": "eligible_new_and_returning"
+  }
+}

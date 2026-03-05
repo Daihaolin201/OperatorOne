@@ -1,0 +1,148 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "from": "op1_operations.stage2_feedback",
+  "objective": "prioritized_feedback_backlog",
+  "items": [
+    {
+      "feedback_item_id": "fi_4516a28f68345620",
+      "theme_id": "theme_e2fef3d9d6",
+      "topic": "trust",
+      "subtopic": "unsubscribe",
+      "priority_tier": "P2",
+      "priority_score": 0.819397,
+      "owner_team": "product_sales",
+      "recommended_action": "Audit outreach relevance and tighten targeting + permission controls.",
+      "expected_mrr_delta_30d": 6.7944,
+      "evidence_examples": [
+        "unsubscribe"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_cbdeef528f65f492",
+      "theme_id": "theme_6807b009f8",
+      "topic": "pricing",
+      "subtopic": "budget",
+      "priority_tier": "P2",
+      "priority_score": 0.815099,
+      "owner_team": "product_sales",
+      "recommended_action": "Design low-risk pilot offer with ROI proof and objection-handling script.",
+      "expected_mrr_delta_30d": 6.7742,
+      "evidence_examples": [
+        "budget"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_145b80d81931e921",
+      "theme_id": "theme_e2fef3d9d6",
+      "topic": "trust",
+      "subtopic": "unsubscribe",
+      "priority_tier": "P2",
+      "priority_score": 0.796848,
+      "owner_team": "product_sales",
+      "recommended_action": "Audit outreach relevance and tighten targeting + permission controls.",
+      "expected_mrr_delta_30d": 6.6884,
+      "evidence_examples": [
+        "Please unsubscribe me from future emails."
+      ]
+    },
+    {
+      "feedback_item_id": "fi_c2f297b35bf000f8",
+      "theme_id": "theme_6807b009f8",
+      "topic": "pricing",
+      "subtopic": "budget",
+      "priority_tier": "P2",
+      "priority_score": 0.791245,
+      "owner_team": "product_sales",
+      "recommended_action": "Design low-risk pilot offer with ROI proof and objection-handling script.",
+      "expected_mrr_delta_30d": 6.662,
+      "evidence_examples": [
+        "This looks expensive and beyond our current budget."
+      ]
+    },
+    {
+      "feedback_item_id": "fi_63872398f74f64a7",
+      "theme_id": "theme_49b6d4e231",
+      "topic": "retention",
+      "subtopic": "competitor_lockin",
+      "priority_tier": "P2",
+      "priority_score": 0.768844,
+      "owner_team": "product_sales",
+      "recommended_action": "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+      "expected_mrr_delta_30d": 5.2453,
+      "evidence_examples": [
+        "No thanks, we already use another system and are not interested."
+      ]
+    },
+    {
+      "feedback_item_id": "fi_0ef866c13de81729",
+      "theme_id": "theme_160088b470",
+      "topic": "retention",
+      "subtopic": "timing_hold",
+      "priority_tier": "P2",
+      "priority_score": 0.735945,
+      "owner_team": "product_sales",
+      "recommended_action": "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+      "expected_mrr_delta_30d": 5.3349,
+      "evidence_examples": [
+        "Not now. Please circle back next quarter."
+      ]
+    },
+    {
+      "feedback_item_id": "fi_c0c51a7ced1c2fe7",
+      "theme_id": "theme_befae57db1",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "owner_team": "product",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_mrr_delta_30d": 0.7536,
+      "evidence_examples": [
+        "I’m tired of bookkeeping for my husband’s business"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_d56174f308ac5028",
+      "theme_id": "theme_befae57db1",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "owner_team": "product",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_mrr_delta_30d": 0.7536,
+      "evidence_examples": [
+        "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_df1923c65baa3f9a",
+      "theme_id": "theme_befae57db1",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "owner_team": "product",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_mrr_delta_30d": 0.7536,
+      "evidence_examples": [
+        "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni..."
+      ]
+    },
+    {
+      "feedback_item_id": "fi_20cd1163dd14c475",
+      "theme_id": "theme_befae57db1",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "owner_team": "product",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_mrr_delta_30d": 0.7536,
+      "evidence_examples": [
+        "How do you all handle employee expenses without losing your mind?"
+      ]
+    }
+  ],
+  "notes": "Items are sorted by Stage2 priority score and expected 30d MRR leverage."
+}

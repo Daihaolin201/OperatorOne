@@ -1,0 +1,11 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "run_count": 13,
+  "passed_runs": 10,
+  "failed_runs": 3,
+  "deployment_frequency_30d": 10,
+  "lead_time_hours_avg": 0.0063,
+  "change_failure_rate": 0.2308,
+  "restore_time_hours_avg": 3.366,
+  "notes": "DORA-style proxies from product state event stream."
+}

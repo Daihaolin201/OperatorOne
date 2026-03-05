@@ -1,74 +1,16 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-04T14:00:23Z",
-  "base_snapshot_id": null,
-  "current_snapshot_id": "snap_20260304140023_e796c1ab2d1a5613",
-  "added": [
+  "generated_at": "2026-03-04T14:40:10Z",
+  "base_snapshot_id": "snap_20260304144009_066e5809273ad072",
+  "current_snapshot_id": "snap_20260304144010_e796c1ab2d1a5613",
+  "added": [],
+  "changed": [
     {
       "source_path": "../../handoffs/product_to_marketing.json",
-      "requirement_id": "product_to_marketing_handoff"
-    },
-    {
-      "source_path": "../op1_product/research/build_deploy_v1/project_spec.chargeback.json",
-      "requirement_id": "project_specs"
-    },
-    {
-      "source_path": "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
-      "requirement_id": "project_specs"
-    },
-    {
-      "source_path": "../op1_product/research/build_deploy_v1/project_spec.json",
-      "requirement_id": "project_specs"
-    },
-    {
-      "source_path": "../op1_product/research/build_deploy_v1/project_spec.reporting.json",
-      "requirement_id": "project_specs"
-    },
-    {
-      "source_path": "../op1_product/research/landing_v1/landing_contract_test.latest.json",
-      "requirement_id": "landing_contract_test"
-    },
-    {
-      "source_path": "../op1_product/research/landing_v1/landing_package.json",
-      "requirement_id": "landing_package"
-    },
-    {
-      "source_path": "../op1_product/research/landing_v1/landing_semantic_test.latest.json",
-      "requirement_id": "landing_semantic_test"
-    },
-    {
-      "source_path": "../op1_product/research/live_examples.latest.json",
-      "requirement_id": "live_examples"
-    },
-    {
-      "source_path": "../op1_product/research/stage1_idea_discovery/opportunity_records.json",
-      "requirement_id": "stage1_opportunity_records"
-    },
-    {
-      "source_path": "../op1_product/research/stage2_idea_screening/decision_log.json",
-      "requirement_id": "stage2_decision_log"
-    },
-    {
-      "source_path": "../op1_product/research/stage2_idea_screening/scoring.csv",
-      "requirement_id": "stage2_scoring"
-    },
-    {
-      "source_path": "../op1_product/research/stage2_web_product/run.latest.json",
-      "requirement_id": "stage2_web_run"
-    },
-    {
-      "source_path": "../op1_product/research/stage2_web_product/state.latest.json",
-      "requirement_id": "stage2_web_state"
-    },
-    {
-      "source_path": "../op1_product/research/stage3_landing_launch/run.latest.json",
-      "requirement_id": "stage3_landing_run"
-    },
-    {
-      "source_path": "../op1_product/research/stage3_mvp_scope/project_blueprint.json",
-      "requirement_id": "stage3_project_blueprint"
+      "requirement_id": "product_to_marketing_handoff",
+      "prev_sha256": "e798eb9b7a4f0e781d8dcfd25b4f58406e65c75d593c47d14e0975613e25b477",
+      "sha256": "723cf998f634ca1deb16ac96911bf07ef8d37986d76bbf4641255eae6ae4c371"
     }
   ],
-  "changed": [],
   "removed": []
 }

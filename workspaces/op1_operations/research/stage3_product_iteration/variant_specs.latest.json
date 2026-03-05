@@ -1,0 +1,760 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "variant_set_count": 15,
+  "variants": [
+    {
+      "variant_set_id": "varset_58362bf735",
+      "experiment_id": "exp3_c3a320476dbf99",
+      "flag_key": "flag_exp3_c3a320476dbf99",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_c3a320476dbf99_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_c3a320476dbf99_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_c6b0d4fbcf",
+      "experiment_id": "exp3_59cab733ebc263",
+      "flag_key": "flag_exp3_59cab733ebc263",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_59cab733ebc263_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_59cab733ebc263_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_e2bf169e58",
+      "experiment_id": "exp3_cc6418573e5369",
+      "flag_key": "flag_exp3_cc6418573e5369",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_cc6418573e5369_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_cc6418573e5369_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_b7ea8164f6",
+      "experiment_id": "exp3_05035039912c10",
+      "flag_key": "flag_exp3_05035039912c10",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_05035039912c10_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_05035039912c10_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_1d6f2968b2",
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "flag_key": "flag_exp3_c6b83944f78cc7",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_c6b83944f78cc7_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_c6b83944f78cc7_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_df3dae83fc",
+      "experiment_id": "exp3_aff51f279f27df",
+      "flag_key": "flag_exp3_aff51f279f27df",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_aff51f279f27df_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_aff51f279f27df_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_9360ed1511",
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "flag_key": "flag_exp3_72c353fd9fdd32",
+      "variant_plan": "ab",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_72c353fd9fdd32_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_72c353fd9fdd32_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_29a170045e",
+      "experiment_id": "exp3_6560f49deb814a",
+      "flag_key": "flag_exp3_6560f49deb814a",
+      "variant_plan": "ab",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "operations",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_6560f49deb814a_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_6560f49deb814a_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_98099f6992",
+      "experiment_id": "exp3_299c70c714d04e",
+      "flag_key": "flag_exp3_299c70c714d04e",
+      "variant_plan": "ab",
+      "primary_metric": "signup_to_paid_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product_sales",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_299c70c714d04e_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_299c70c714d04e_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_6662093d02",
+      "experiment_id": "exp3_bd55e0ff614989",
+      "flag_key": "flag_exp3_bd55e0ff614989",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "visit_to_signup_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_bd55e0ff614989_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_bd55e0ff614989_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_188c8fdf66",
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "flag_key": "flag_exp3_368bdcc2cc5f04",
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "visit_to_signup_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_368bdcc2cc5f04_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_368bdcc2cc5f04_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_00081135b1",
+      "experiment_id": "exp3_4d927033157cf9",
+      "flag_key": "flag_exp3_4d927033157cf9",
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_4d927033157cf9_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_4d927033157cf9_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_2d950b7e12",
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "flag_key": "flag_exp3_0ea2c8672f4892",
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_0ea2c8672f4892_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_0ea2c8672f4892_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_cf7ae3d8c7",
+      "experiment_id": "exp3_25b8181f08a498",
+      "flag_key": "flag_exp3_25b8181f08a498",
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_25b8181f08a498_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_25b8181f08a498_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    },
+    {
+      "variant_set_id": "varset_9c73d020b9",
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "flag_key": "flag_exp3_b40d4807f0bce0",
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "owner": "product",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "runtime_target": {
+        "deployed_url": "https://webproductmodularreporting.vercel.app",
+        "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting"
+      },
+      "variants": [
+        {
+          "variant_id": "exp3_b40d4807f0bce0_control",
+          "name": "control",
+          "traffic_percent": 50,
+          "feature_flag_value": false,
+          "changes": [
+            "No changes. Baseline experience."
+          ]
+        },
+        {
+          "variant_id": "exp3_b40d4807f0bce0_treatment",
+          "name": "treatment",
+          "traffic_percent": 50,
+          "feature_flag_value": true,
+          "changes": [
+            "Improve UX/message alignment for general/uncategorized",
+            "Reduce friction in primary conversion flow",
+            "Clarify next best action"
+          ]
+        }
+      ],
+      "implementation_notes": [
+        "Apply treatment behind feature flag and keep a clean control path.",
+        "Do not merge variant behavior into baseline until decision policy returns ship."
+      ]
+    }
+  ],
+  "references": {
+    "experiment_backlog": "workspaces/op1_operations/research/stage3_product_iteration/experiment_backlog.latest.json",
+    "product_run": "workspaces/op1_product/research/stage2_web_product/run.latest.json"
+  }
+}

@@ -1,0 +1,376 @@
+{
+  "capability": "create_landing_pages_v1",
+  "generated_at": "2026-03-03T23:57:28Z",
+  "mode": "mode_c_only",
+  "status": "provisional_ready",
+  "selected_opportunity": {
+    "opportunity_id": "opp_003",
+    "selection_reason": "explicit_opportunity",
+    "confidence": "high",
+    "weighted_score": 3.964,
+    "risk_if_wrong": [
+      "Online signal may overstate real purchasing urgency.",
+      "Tool interest may not convert into paid behavior.",
+      "Integration requirements may expand scope.",
+      "Public communities may not convert to interviews."
+    ]
+  },
+  "preflight": {
+    "opportunity_gate": {
+      "stage2_mode": "existing",
+      "stage2_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_decision_log.json",
+      "selected_opportunity_id": "opp_003",
+      "selection_reason": "explicit_opportunity",
+      "confidence": "high",
+      "weighted_score": 3.964,
+      "risk_if_wrong": [
+        "Online signal may overstate real purchasing urgency.",
+        "Tool interest may not convert into paid behavior.",
+        "Integration requirements may expand scope.",
+        "Public communities may not convert to interviews."
+      ]
+    },
+    "scope_gate": {
+      "source": "synthesized",
+      "in_scope": [
+        "Single conversion-focused landing page with one primary CTA",
+        "One focused workflow preview tied to the selected opportunity problem",
+        "Evidence-backed hero/proof/FAQ messaging",
+        "Pilot lead capture for early access validation"
+      ],
+      "out_of_scope": [
+        "Cross-channel metric mapping",
+        "Integration breadth expectations",
+        "Custom enterprise integrations",
+        "Advanced billing/auth stack",
+        "Multi-product expansion"
+      ],
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after first 20 targeted visitors",
+        "Core workflow completion below 20% for pilot traffic",
+        "No repeat qualified inbound intent within 14-day validation window",
+        "Signal quality warning: Online signal may overstate real purchasing urgency."
+      ],
+      "status": "pass"
+    },
+    "evidence_traceability_gate": {
+      "coverage_ratio": 1.0,
+      "unmapped_claims": []
+    }
+  },
+  "landing_package": {
+    "positioning": {
+      "icp": "Agency operator / Marketing services / 2-30",
+      "problem": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
+      "value_proposition": "Ship client-ready monthly reporting with one repeatable workflow. Designed for Agency operator teams in Marketing services to validate demand quickly.",
+      "why_now": "No immediate urgency signal in selected evidence.",
+      "differentiators": [
+        "Single reporting template reused across clients with controlled customization.",
+        "Business-outcome-first narrative to reduce stakeholder confusion.",
+        "Weekly QA loop to improve clarity and trust with each reporting cycle."
+      ]
+    },
+    "message_hierarchy": {
+      "hero_headline": "Ship client-ready monthly reporting with one repeatable workflow",
+      "hero_subheadline": "Ship client-ready monthly reporting with one repeatable workflow. Designed for Agency operator teams in Marketing services to validate demand quickly.",
+      "problem_statement": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
+      "primary_supporting_claims": [
+        "Single reporting template reused across clients with controlled customization.",
+        "Business-outcome-first narrative to reduce stakeholder confusion.",
+        "Weekly QA loop to improve clarity and trust with each reporting cycle."
+      ],
+      "objection_handlers": [
+        {
+          "objection": "Will this remove analyst judgment?",
+          "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+        },
+        {
+          "objection": "Can we keep client-specific KPI sets?",
+          "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+        }
+      ]
+    },
+    "section_plan": [
+      {
+        "order": 1,
+        "section_id": "hero_problem",
+        "headline": "Ship client-ready monthly reporting with one repeatable workflow",
+        "goal": "Explain who this is for, the problem, and why act now.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 2,
+        "section_id": "proof_points",
+        "headline": "Why this approach",
+        "goal": "Increase credibility with evidence-backed proof points.",
+        "evidence_refs": [
+          "ev_04",
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 3,
+        "section_id": "workflow_interactive",
+        "headline": "Try the workflow assistant",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 4,
+        "section_id": "metric_snapshot",
+        "headline": "Validation target",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 5,
+        "section_id": "pricing_cards",
+        "headline": "Pricing hypothesis",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 6,
+        "section_id": "cta_waitlist",
+        "headline": "Start with one pilot workflow",
+        "goal": "Capture qualified intent with a single primary CTA.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 7,
+        "section_id": "faq_list",
+        "headline": "FAQ",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      }
+    ],
+    "copy_variants": {
+      "headline_variants": [
+        "Ship client-ready monthly reporting with one repeatable workflow",
+        "Agency operator: Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and l",
+        "Ship one focused workflow for Marketing services in 14 days"
+      ],
+      "cta_variants": [
+        "Join pilot",
+        "Start pilot validation",
+        "Get early access"
+      ]
+    },
+    "cta_plan": {
+      "primary": {
+        "label": "Join pilot",
+        "type": "email_waitlist",
+        "module_id": "cta_waitlist",
+        "support_text": "Join pilot to standardize KPI narratives and cut report prep time."
+      },
+      "secondary": null
+    },
+    "experiment_backlog": [
+      {
+        "experiment_id": "exp_headline_01",
+        "hypothesis": "Problem-led headline outperforms generic value wording for qualified intent.",
+        "change": "A/B test two hero headlines mapped to the same core pain evidence.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep variant with >=15% higher qualified CTA submit rate."
+      },
+      {
+        "experiment_id": "exp_proof_01",
+        "hypothesis": "Adding one concrete loss-evidence proof line increases trust and CTA completion.",
+        "change": "Insert one quantified proof point above the fold.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if CTA completion and form quality both improve."
+      },
+      {
+        "experiment_id": "exp_cta_01",
+        "hypothesis": "Outcome-specific CTA wording improves intent quality versus generic CTA label.",
+        "change": "Test 'Join pilot' vs. outcome-specific CTA variant.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if qualified submissions per 100 sessions improve by >=10%."
+      }
+    ],
+    "traceability_map": [
+      {
+        "claim_id": "claim_problem",
+        "claim": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_value",
+        "claim": "Ship client-ready monthly reporting with one repeatable workflow. Designed for Agency operator teams in Marketing services to validate demand quickly.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_headline",
+        "claim": "Ship client-ready monthly reporting with one repeatable workflow",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_01",
+        "claim": "Single reporting template reused across clients with controlled customization.",
+        "evidence_refs": [
+          "ev_04",
+          "ev_02"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_02",
+        "claim": "Business-outcome-first narrative to reduce stakeholder confusion.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_03",
+        "claim": "Weekly QA loop to improve clarity and trust with each reporting cycle.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      }
+    ],
+    "risk_register": [
+      {
+        "risk": "Cross-channel metric mapping",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Integration breadth expectations",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Online signal may overstate real purchasing urgency.",
+        "type": "assumption:pain_intensity",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Tool interest may not convert into paid behavior.",
+        "type": "assumption:willingness_to_pay",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Integration requirements may expand scope.",
+        "type": "assumption:mvp_speed",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Public communities may not convert to interviews.",
+        "type": "assumption:acquisition_reachability",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Incumbent strength may be underestimated.",
+        "type": "assumption:competitive_whitespace",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Real usage frequency may be lower than inferred.",
+        "type": "assumption:recurring_usage",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Fewer than 2 qualified intent captures after first 20 targeted visitors",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      },
+      {
+        "risk": "Core workflow completion below 20% for pilot traffic",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      },
+      {
+        "risk": "No repeat qualified inbound intent within 14-day validation window",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      },
+      {
+        "risk": "Signal quality warning: Online signal may overstate real purchasing urgency.",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      }
+    ]
+  },
+  "build_inputs": {
+    "project_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_variants/opp_003_reporting/build_inputs/project_spec.json",
+    "project_spec_mode": "generated_project_spec",
+    "page_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_variants/opp_003_reporting/build_inputs/page_spec.json"
+  },
+  "quality_gates": [
+    {
+      "name": "single_primary_cta",
+      "status": "pass",
+      "detail": "Primary CTA constraints from page_spec.testing"
+    },
+    {
+      "name": "message_match_with_entry_intent",
+      "status": "pass",
+      "detail": "token_overlap=2; explicit_match=True"
+    },
+    {
+      "name": "scope_consistency_with_mvp_boundary",
+      "status": "pass",
+      "detail": "no_out_of_scope_copy"
+    },
+    {
+      "name": "claim_evidence_traceability_100pct",
+      "status": "pass",
+      "detail": "coverage=1.0; unmapped=[]"
+    },
+    {
+      "name": "scannable_copy_and_clear_hierarchy",
+      "status": "pass",
+      "detail": "headline_words=8; section_count=7"
+    },
+    {
+      "name": "multi_device_compatibility_baseline",
+      "status": "pass",
+      "detail": "viewport+profiles+responsive_markers"
+    },
+    {
+      "name": "performance_baseline_hooks_present",
+      "status": "pass",
+      "detail": "page_spec.testing.performance_budget"
+    },
+    {
+      "name": "security_headers_baseline_hooks_present",
+      "status": "pass",
+      "detail": "declared=['content-security-policy', 'referrer-policy', 'x-content-type-options', 'x-frame-options']"
+    },
+    {
+      "name": "smoke_page_strategy_business_test_hooks_present",
+      "status": "pass",
+      "detail": "page_spec module/testing hooks available"
+    }
+  ],
+  "marketing_handoff_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_variants/opp_003_reporting/handoff.json"
+}

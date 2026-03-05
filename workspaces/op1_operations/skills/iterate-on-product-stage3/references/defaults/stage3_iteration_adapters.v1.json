@@ -1,0 +1,41 @@
+{
+  "version": "1.0",
+  "mode": "simulated_signals_with_live_slots",
+  "adapters": [
+    {
+      "id": "stage1_metrics",
+      "enabled": true,
+      "path": "workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.json",
+      "type": "json",
+      "source_system": "stage1_tracking"
+    },
+    {
+      "id": "stage2_feedback",
+      "enabled": true,
+      "path": "workspaces/op1_operations/research/stage2_feedback/stage2_feedback_scoreboard.latest.json",
+      "type": "json",
+      "source_system": "stage2_feedback"
+    },
+    {
+      "id": "stage2_priority_queue",
+      "enabled": true,
+      "path": "workspaces/op1_operations/research/stage2_feedback/feedback_priority_queue.latest.json",
+      "type": "json",
+      "source_system": "stage2_feedback"
+    },
+    {
+      "id": "product_delivery_state",
+      "enabled": true,
+      "path": "workspaces/op1_product/research/stage2_web_product/state.latest.json",
+      "type": "json",
+      "source_system": "op1_product"
+    },
+    {
+      "id": "live_experiment_platform",
+      "enabled": false,
+      "path": "workspaces/op1_operations/research/stage3_product_iteration/live_experiment_events.latest.jsonl",
+      "type": "jsonl",
+      "source_system": "feature_flag_experiment_platform"
+    }
+  ]
+}

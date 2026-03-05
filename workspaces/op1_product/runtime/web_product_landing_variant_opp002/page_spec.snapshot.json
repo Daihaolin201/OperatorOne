@@ -1,0 +1,312 @@
+{
+  "page_spec_version": "1.0",
+  "generated_at": "2026-03-03T23:57:43Z",
+  "project_id": "proj-opp-002-chargeback-response-v1",
+  "adapter_name": "chargeback-response",
+  "layout_profile": "chargeback-response",
+  "theme": {
+    "accent": "#b45309",
+    "surface": "#1f2937",
+    "highlight": "#f59e0b"
+  },
+  "meta": {
+    "title": "Respond to chargebacks faster with an evidence-first workflow",
+    "description": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines."
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "props": {
+        "headline": "Respond to chargebacks faster with an evidence-first workflow",
+        "subheadline": "Respond to chargebacks faster with an evidence-first workflow. Designed for Ecommerce operator teams in Ecommerce to validate demand quickly.",
+        "problem_statement": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+        "segment_label": "Ecommerce operator · Ecommerce · 1-50",
+        "adapter_name": "Chargeback Response Assistant",
+        "profile_name": "Chargeback Defense Funnel"
+      }
+    },
+    {
+      "module_id": "evidence_checklist",
+      "kind": "checklist",
+      "props": {
+        "title": "Execution checklist",
+        "items": [
+          "Sort disputes by amount and response deadline.",
+          "Attach delivery, communication, and policy evidence in one bundle.",
+          "Review dispute outcomes weekly and update fraud prevention rules."
+        ]
+      }
+    },
+    {
+      "module_id": "workflow_interactive",
+      "kind": "workflow",
+      "props": {
+        "title": "Try the workflow assistant",
+        "prompt_label": "Describe your dispute situation",
+        "prompt_placeholder": "e.g. We received 7 chargebacks this morning for delivered orders.",
+        "action_label": "Generate dispute response"
+      }
+    },
+    {
+      "module_id": "risk_guardrails",
+      "kind": "risk",
+      "props": {
+        "title": "Guardrails",
+        "items": [
+          "Fewer than 2 qualified intent captures after 20 targeted visitors",
+          "Core workflow completion rate below 20% in first-session usage"
+        ]
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "props": {
+        "title": "Why this approach",
+        "items": [
+          "Standardize dispute packets so each case is complete on first submission.",
+          "Prioritize by value and deadline to protect near-term cashflow.",
+          "Track win/loss reasons to continuously improve fraud controls."
+        ]
+      }
+    },
+    {
+      "module_id": "pricing_cards",
+      "kind": "pricing",
+      "props": {
+        "title": "Pricing hypothesis",
+        "plan_a": "$39/month starter",
+        "plan_b": "$129/month growth"
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "props": {
+        "title": "Start with one pilot workflow",
+        "description": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+        "cta_label": "Join pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "props": {
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Does this connect directly to Stripe/Shopify?",
+            "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+          },
+          {
+            "question": "Can this support multiple dispute reasons?",
+            "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+          }
+        ]
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "evidence_checklist",
+      "workflow_interactive",
+      "risk_guardrails",
+      "proof_points",
+      "pricing_cards",
+      "cta_waitlist",
+      "faq_list"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ]
+  },
+  "project_spec_snapshot": {
+    "spec_version": "1.0",
+    "generated_at": "2026-03-03T23:57:15Z",
+    "project_id": "proj-opp-002-chargeback-response-v1",
+    "source": {
+      "opportunity_id": "opp_002",
+      "stage": "stage2",
+      "selection_reason": "explicit_opportunity",
+      "decision_confidence": "high",
+      "decision_weighted_score": 4.084
+    },
+    "segment": {
+      "role": "Ecommerce operator",
+      "industry": "Ecommerce",
+      "company_size": "1-50"
+    },
+    "problem_statement": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+    "value_proposition": "Respond to chargebacks faster with an evidence-first workflow. Designed for Ecommerce operator teams in Ecommerce to validate demand quickly.",
+    "offer": {
+      "headline": "Respond to chargebacks faster with an evidence-first workflow",
+      "cta_label": "Join pilot",
+      "cta_type": "email_waitlist",
+      "channel_hint": "Ecommerce communities"
+    },
+    "workflow": {
+      "prompt_label": "Describe your dispute situation",
+      "prompt_placeholder": "e.g. We received 7 chargebacks this morning for delivered orders.",
+      "primary_action_label": "Generate dispute response",
+      "rules": [
+        {
+          "id": "chargeback-burst",
+          "priority": 10,
+          "keywords": [
+            "chargeback",
+            "dispute",
+            "seven",
+            "many",
+            "burst"
+          ],
+          "first_step": "Prioritize disputes by amount and deadline, then submit one complete proof bundle for the highest-value case today.",
+          "next_steps": [
+            "Attach delivery confirmation, customer communication, and order metadata.",
+            "Use a consistent evidence template across all cases.",
+            "Track won/lost outcomes to refine fraud prevention rules."
+          ]
+        },
+        {
+          "id": "friendly-fraud",
+          "priority": 8,
+          "keywords": [
+            "delivered",
+            "friendly fraud",
+            "not received",
+            "unauthorized"
+          ],
+          "first_step": "Generate a customer-communication timeline and pair it with proof-of-delivery before submitting the dispute.",
+          "next_steps": [
+            "Highlight transaction authorization evidence.",
+            "Bundle policy acceptance and tracking milestones.",
+            "Flag repeat offenders for future order review."
+          ]
+        }
+      ],
+      "default_response": {
+        "first_step": "Create one evidence checklist and apply it to every open dispute this week.",
+        "next_steps": [
+          "Sort cases by financial impact.",
+          "Automate evidence collection where possible.",
+          "Review dispute reason trends weekly."
+        ]
+      }
+    },
+    "metrics": {
+      "success_metric": "Qualified intent captures",
+      "target": "At least 5 qualified leads from first 20 targeted users in 14 days",
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after 20 targeted visitors",
+        "Core workflow completion rate below 20% in first-session usage"
+      ]
+    },
+    "pricing": {
+      "plan_a": "$39/month starter",
+      "plan_b": "$129/month growth"
+    },
+    "adapter": {
+      "name": "chargeback-response",
+      "display_name": "Chargeback Response Assistant",
+      "description": "For ecommerce operators responding to payment disputes and fraud losses.",
+      "match_score": 1.0,
+      "match_reason": "forced"
+    },
+    "business_tests": [
+      {
+        "name": "chargeback_burst_response",
+        "input": "We just got multiple chargebacks today and need a response process.",
+        "expect_first_step_contains": [
+          "highest-value",
+          "proof bundle"
+        ]
+      }
+    ],
+    "proof_points": [
+      "Standardize dispute packets so each case is complete on first submission.",
+      "Prioritize by value and deadline to protect near-term cashflow.",
+      "Track win/loss reasons to continuously improve fraud controls."
+    ],
+    "faq": [
+      {
+        "question": "Does this connect directly to Stripe/Shopify?",
+        "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+      },
+      {
+        "question": "Can this support multiple dispute reasons?",
+        "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+      }
+    ],
+    "operational_checklist": [
+      "Sort disputes by amount and response deadline.",
+      "Attach delivery, communication, and policy evidence in one bundle.",
+      "Review dispute outcomes weekly and update fraud prevention rules."
+    ],
+    "page_profile": "chargeback-response",
+    "cta_support_text": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+    "mvp_boundary": {
+      "in_scope": [
+        "Single conversion-focused landing page with one primary CTA",
+        "One focused workflow preview tied to the selected opportunity problem",
+        "Evidence-backed hero/proof/FAQ messaging",
+        "Pilot lead capture for early access validation"
+      ],
+      "out_of_scope": [
+        "Store API access",
+        "Dispute data normalization",
+        "Custom enterprise integrations",
+        "Advanced billing/auth stack",
+        "Multi-product expansion"
+      ],
+      "source": "synthesized"
+    }
+  }
+}

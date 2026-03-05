@@ -1,0 +1,44 @@
+version: 1.0
+owner: op1_operations
+status: active
+
+mrr_rules:
+  include_recurring_discounts: true
+  include_one_time_discounts: false
+  active_subscriber_definition: when_first_payment_received
+  movement_types:
+    - new_business
+    - expansion
+    - contraction
+    - churn
+    - reactivation
+
+movement_mapping:
+  paid_started:
+    movement_type: new_business
+    sign: positive
+
+  plan_upgrade:
+    movement_type: expansion
+    sign: positive
+
+  plan_downgrade:
+    movement_type: contraction
+    sign: negative
+
+  closed_lost_after_paid:
+    movement_type: churn
+    sign: negative
+
+  reactivated_paid:
+    movement_type: reactivation
+    sign: positive
+
+fallback_rules:
+  default_paid_start_mrr: 49.0
+  currency: USD
+  apply_fx_adjustment: false
+
+audit:
+  require_trace_to_event_id: true
+  require_trace_to_source_adapter: true

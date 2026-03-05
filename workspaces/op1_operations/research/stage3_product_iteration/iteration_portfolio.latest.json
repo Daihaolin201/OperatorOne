@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "running_experiments_max": 3,
+  "active_bets_max": 5,
+  "planned_experiments": 15,
+  "running_experiment_candidates": [
+    "exp3_c3a320476dbf99",
+    "exp3_59cab733ebc263",
+    "exp3_cc6418573e5369"
+  ],
+  "wip_within_limit": true,
+  "notes": [
+    "Top-ranked experiments are suggested as running candidates under current WIP limits.",
+    "Lower-ranked experiments remain in planned state pending capacity."
+  ]
+}

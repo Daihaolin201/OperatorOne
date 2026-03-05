@@ -1,0 +1,120 @@
+{
+  "tracking_plan_version": "1.0",
+  "owner": "op1_operations",
+  "status": "active",
+  "description": "Canonical Stage1 tracking plan for traffic, signups, and revenue.",
+  "naming_convention": {
+    "event_name": "snake_case",
+    "property_name": "snake_case",
+    "identity": "distinct_id / anonymous_id / lead_id / user_id"
+  },
+  "required_fields": [
+    "event_id",
+    "event_name",
+    "event_time",
+    "event_count",
+    "source_adapter",
+    "distinct_id"
+  ],
+  "attribution_fields": [
+    "first_user_source",
+    "first_user_medium",
+    "session_source",
+    "session_medium",
+    "event_source",
+    "event_medium",
+    "campaign_id"
+  ],
+  "events": [
+    {
+      "event_name": "session_observed",
+      "category": "traffic",
+      "description": "Observed session volume (forecast or live)",
+      "required_properties": [
+        "event_source",
+        "event_medium",
+        "campaign_id"
+      ],
+      "metrics_impacted": [
+        "sessions",
+        "traffic_by_source"
+      ]
+    },
+    {
+      "event_name": "signup_started",
+      "category": "signup",
+      "description": "A signup flow starts",
+      "required_properties": [
+        "lead_id"
+      ],
+      "metrics_impacted": [
+        "signup_start"
+      ]
+    },
+    {
+      "event_name": "signup_captured",
+      "category": "signup",
+      "description": "A lead expresses interest / captured",
+      "required_properties": [
+        "lead_id"
+      ],
+      "metrics_impacted": [
+        "signups_total"
+      ]
+    },
+    {
+      "event_name": "signup_qualified",
+      "category": "signup",
+      "description": "Lead meets qualified signup criteria",
+      "required_properties": [
+        "lead_id",
+        "opportunity_id"
+      ],
+      "metrics_impacted": [
+        "qualified_signups",
+        "visit_to_signup_rate"
+      ]
+    },
+    {
+      "event_name": "paid_started",
+      "category": "revenue",
+      "description": "Customer started paid plan",
+      "required_properties": [
+        "lead_id",
+        "revenue_delta_mrr"
+      ],
+      "metrics_impacted": [
+        "paid_customers",
+        "new_mrr"
+      ]
+    },
+    {
+      "event_name": "mrr_movement",
+      "category": "revenue",
+      "description": "MRR movement event",
+      "required_properties": [
+        "mrr_movement_type",
+        "revenue_delta_mrr"
+      ],
+      "metrics_impacted": [
+        "new_mrr",
+        "expansion_mrr",
+        "contraction_mrr",
+        "churn_mrr",
+        "reactivation_mrr",
+        "net_new_mrr"
+      ]
+    },
+    {
+      "event_name": "lead_unsubscribed",
+      "category": "quality",
+      "description": "Lead unsubscribed",
+      "required_properties": [
+        "lead_id"
+      ],
+      "metrics_impacted": [
+        "opt_out_rate"
+      ]
+    }
+  ]
+}

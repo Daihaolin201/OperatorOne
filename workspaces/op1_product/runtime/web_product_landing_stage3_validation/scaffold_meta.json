@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-03-04T01:31:59Z",
+  "mode": "project_spec",
+  "project_spec_source": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_stage3/build_inputs/project_spec.json",
+  "page_spec_source": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_stage3/build_inputs/page_spec.json",
+  "page_spec_mode": "compiled",
+  "blueprint_source": null,
+  "blueprint_autofilled": false,
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "from_opportunity_id": "opp_001",
+  "adapter_name": "invoice-followup",
+  "layout_profile": "landing-invoice-followup",
+  "module_order": [
+    "hero_problem",
+    "problem_agitation",
+    "proof_points",
+    "benefit_bullets",
+    "faq_list",
+    "cta_waitlist"
+  ],
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_landing_stage3_validation",
+  "public_files": [
+    "public/index.html",
+    "public/styles.css",
+    "public/app.js"
+  ],
+  "api_files": [
+    "api/health.js",
+    "api/first-step.js",
+    "api/signup.js",
+    "api/spec.js"
+  ]
+}

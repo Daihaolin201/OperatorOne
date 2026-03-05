@@ -1,0 +1,25 @@
+{
+  "version": "1.0",
+  "weights": {
+    "impact_mrr": 0.3,
+    "impact_conversion": 0.25,
+    "confidence": 0.15,
+    "effort_inverse": 0.15,
+    "urgency": 0.1,
+    "risk_inverse": 0.05
+  },
+  "effort_points": {
+    "low": 1.0,
+    "medium": 2.0,
+    "high": 3.0
+  },
+  "risk_levels": {
+    "low": 1.0,
+    "medium": 2.0,
+    "high": 3.0
+  },
+  "wip_limits": {
+    "running_experiments_max": 3,
+    "active_bets_max": 5
+  }
+}

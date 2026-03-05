@@ -1,0 +1,1089 @@
+{
+  "generated_at": "2026-03-04T19:55:27+00:00",
+  "builder": "workspaces/op1_sales/scripts/build_outreach_stage2.py",
+  "mode": "approval_required",
+  "inputs": {
+    "prospect_queue": "workspaces/op1_sales/research/prospecting/prospect_queue.latest.json",
+    "marketing_to_sales": "handoffs/marketing_to_sales.json"
+  },
+  "segment": {
+    "rank_index": 5,
+    "opportunity_id": "opp_004",
+    "segment_name": "Property manager owner/tenant workflow",
+    "priority_score": 88.76
+  },
+  "summary": {
+    "leads_total": 20,
+    "qualified_leads": 18,
+    "low_fit_leads": 2,
+    "send_ready_leads": 18,
+    "review_required_leads": 2,
+    "band_counts": {
+      "A1": 7,
+      "A2": 7,
+      "B1": 6
+    },
+    "preferred_channels": [
+      "email_nurture",
+      "linkedin",
+      "organic_search"
+    ],
+    "dispatch_ready": false,
+    "dispatch_blockers": [
+      "manual_approval_required",
+      "channel_config_not_verified"
+    ]
+  },
+  "leads": [
+    {
+      "lead_id": "opp_004-lead-001",
+      "rank": 1,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "How do you handle these types of people?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1nvfpy9/how_do_you_handle_these_types_of_people/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 4.9453,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：How do you handle these types of people?",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1nvfpy9/how_do_you_handle_these_types_of_people/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-002",
+      "rank": 2,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "The 5 commandments of property management. What's missing",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1p1ui2q/the_5_commandments_of_property_management_whats/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 3.3146,
+        "queries_matched": [
+          "tenant communication tracking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：The 5 commandments of property management. What's m...",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1p1ui2q/the_5_commandments_of_property_management_whats/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-003",
+      "rank": 3,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Sick of people 🤣",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1q028u2/sick_of_people/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 3.1603,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Sick of people 🤣",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1q028u2/sick_of_people/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-004",
+      "rank": 4,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Things I wish I knew when I first started in PM",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1phfyo6/things_i_wish_i_knew_when_i_first_started_in_pm/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.5086,
+        "queries_matched": [
+          "tenant communication tracking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Things I wish I knew when I first started in PM",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1phfyo6/things_i_wish_i_knew_when_i_first_started_in_pm/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-005",
+      "rank": 5,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "End of month owner reports eating my life. How are you guys handling this?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1r82cwl/end_of_month_owner_reports_eating_my_life_how_are/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.472,
+        "queries_matched": [
+          "maintenance tracking software"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：End of month owner reports eating my life. How are ...",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1r82cwl/end_of_month_owner_reports_eating_my_life_how_are/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-006",
+      "rank": 6,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Advice on handling a pushy and dramatic tenant?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1ni4vqc/advice_on_handling_a_pushy_and_dramatic_tenant/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.4557,
+        "queries_matched": [
+          "tenant communication tracking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Advice on handling a pushy and dramatic tenant?",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1ni4vqc/advice_on_handling_a_pushy_and_dramatic_tenant/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-007",
+      "rank": 7,
+      "priority_band": "A1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Would You Rent to an Applicant With a Cancelled $11k Collection on Their Credit Report?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1n43axp/would_you_rent_to_an_applicant_with_a_cancelled/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.2682,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Would You Rent to an Applicant With a Cancelled $11...",
+          "subject_challenger": "Property manager owner/tenant workflow能否一周内先降手工负担？",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1n43axp/would_you_rent_to_an_applicant_with_a_cancelled/）。\n我们最近在帮物业管理负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先打通业主报告与租客沟通记录，减少月末混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先打通业主报告与租客沟通记录，减少月末混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-008",
+      "rank": 8,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "What software do property managers use?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1peesiq/what_software_do_property_managers_use/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.1873,
+        "queries_matched": [
+          "google sheets operations"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：What software do property managers use?",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1peesiq/what_software_do_property_managers_use/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-009",
+      "rank": 9,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Guys... fellas... please stop using WhatsApp and ChatGPT to manage your rentals",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1q4yply/guys_fellas_please_stop_using_whatsapp_and/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.086,
+        "queries_matched": [
+          "tenant communication tracking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Guys... fellas... please stop using WhatsApp and Ch...",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1q4yply/guys_fellas_please_stop_using_whatsapp_and/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-010",
+      "rank": 10,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "First time a tenant skipped out",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1qojgsz/first_time_a_tenant_skipped_out/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.0349,
+        "queries_matched": [
+          "tenant communication tracking",
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：First time a tenant skipped out",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1qojgsz/first_time_a_tenant_skipped_out/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-011",
+      "rank": 11,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Small property maintenance hacks that actually saved me time (nothing fancy)",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1q1rj0g/small_property_maintenance_hacks_that_actually/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 2.0272,
+        "queries_matched": [
+          "maintenance tracking software",
+          "tenant communication tracking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Small property maintenance hacks that actually save...",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1q1rj0g/small_property_maintenance_hacks_that_actually/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-012",
+      "rank": 12,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "What software did you use to manage your Tenant?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1o5bdce/what_software_did_you_use_to_manage_your_tenant/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.8868,
+        "queries_matched": [
+          "maintenance tracking software"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：What software did you use to manage your Tenant?",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1o5bdce/what_software_did_you_use_to_manage_your_tenant/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-013",
+      "rank": 13,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Best Property Management Software?",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1oiluf6/best_property_management_software/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.8792,
+        "queries_matched": [
+          "tenant communication tracking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Best Property Management Software?",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1oiluf6/best_property_management_software/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-014",
+      "rank": 14,
+      "priority_band": "A2",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Can you still get approved for an apartment with a large car loan in collections",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1nmiy2o/can_you_still_get_approved_for_an_apartment_with/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.876,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Can you still get approved for an apartment with a ...",
+          "subject_challenger": "Property manager owner/tenant workflow：先做小改造，少走弯路",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1nmiy2o/can_you_still_get_approved_for_an_apartment_with/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先做流程模板化，不替换现有系统。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先做流程模板化，不替换现有系统。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-015",
+      "rank": 15,
+      "priority_band": "B1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Buildium - Terrible Customer Service",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1r24cwk/buildium_terrible_customer_service/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.869,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Buildium - Terrible Customer Service",
+          "subject_challenger": "Property manager owner/tenant workflow的低成本试点建议",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1r24cwk/buildium_terrible_customer_service/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从单项目试点，验证节省工时。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从单项目试点，验证节省工时。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-016",
+      "rank": 16,
+      "priority_band": "B1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Nightmare tenant problem",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1ofnirl/nightmare_tenant_problem/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.8596,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Nightmare tenant problem",
+          "subject_challenger": "Property manager owner/tenant workflow的低成本试点建议",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1ofnirl/nightmare_tenant_problem/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从单项目试点，验证节省工时。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从单项目试点，验证节省工时。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-017",
+      "rank": 17,
+      "priority_band": "B1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Salary Evaluation",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1pia14g/salary_evaluation/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.824,
+        "queries_matched": [
+          "maintenance tracking software"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Salary Evaluation",
+          "subject_challenger": "Property manager owner/tenant workflow的低成本试点建议",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1pia14g/salary_evaluation/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从单项目试点，验证节省工时。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从单项目试点，验证节省工时。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_004-lead-018",
+      "rank": 18,
+      "priority_band": "B1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Property damage by tenant",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1o8347l/property_damage_by_tenant/",
+      "fit_hits": 3,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.7725,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Property damage by tenant",
+          "subject_challenger": "Property manager owner/tenant workflow的低成本试点建议",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1o8347l/property_damage_by_tenant/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从单项目试点，验证节省工时。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从单项目试点，验证节省工时。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-019",
+      "rank": 19,
+      "priority_band": "B1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Management company scammed us!! URGENT PLS HELP!",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1mrlgw0/management_company_scammed_us_urgent_pls_help/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.7706,
+        "queries_matched": [
+          "rent collection reminders"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Management company scammed us!! URGENT PLS HELP!",
+          "subject_challenger": "Property manager owner/tenant workflow的低成本试点建议",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1mrlgw0/management_company_scammed_us_urgent_pls_help/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从单项目试点，验证节省工时。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从单项目试点，验证节省工时。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_004-lead-020",
+      "rank": 20,
+      "priority_band": "B1",
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "2-30",
+      "target_industry": "Property management",
+      "pain_signal": "Can't find a PM job anywhere",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1qmdz9c/cant_find_a_pm_job_anywhere/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.7701,
+        "queries_matched": [
+          "maintenance tracking software"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Property manager owner/tenant workflow：Can't find a PM job anywhere",
+          "subject_challenger": "Property manager owner/tenant workflow的低成本试点建议",
+          "body": "你好，看到你在Property manager owner/tenant workflow相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1qmdz9c/cant_find_a_pm_job_anywhere/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从单项目试点，验证节省工时。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Property manager owner/tenant workflow上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从单项目试点，验证节省工时。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    }
+  ]
+}

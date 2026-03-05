@@ -1,0 +1,38 @@
+{
+  "generated_at": "2026-03-04T01:32:59Z",
+  "source_stage1": "research/stage1_idea_discovery/opportunity_records.json",
+  "source_stage2": "research/stage2_idea_screening/decision_log.json",
+  "from_opportunity_id": "opp_no_evidence",
+  "project_name": "Landing validation for opp_no_evidence",
+  "target_segment": "Service operators (1-20)",
+  "problem_statement": "Unstructured outbound workflows cause cashflow delays.",
+  "value_proposition": "Structured follow-up workflows increase payment predictability.",
+  "mvp_boundary": {
+    "in_scope": [
+      "Single conversion-focused landing page",
+      "Email waitlist CTA",
+      "Evidence-backed proof section"
+    ],
+    "out_of_scope": [
+      "ERP integrations",
+      "Advanced billing suite",
+      "Enterprise SSO"
+    ]
+  },
+  "pricing_hypothesis": {
+    "type": "flat_monthly",
+    "price_points": [
+      49,
+      99
+    ]
+  },
+  "success_metrics": [
+    "Qualified waitlist submits per 100 sessions"
+  ],
+  "kill_criteria": [
+    "Qualified submits below 2 per 100 sessions after initial test window"
+  ],
+  "delivery_notes": [
+    "Use one primary CTA and preserve scope boundary in copy"
+  ]
+}

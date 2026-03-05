@@ -1,0 +1,130 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "stage": "stage1_tracking",
+  "mode": "simulated_signals",
+  "inputs": {
+    "events_path": "workspaces/op1_operations/research/stage1_tracking/raw_events.latest.jsonl",
+    "ingest_report_path": "workspaces/op1_operations/research/stage1_tracking/ingest_report.latest.json",
+    "adapter_config_path": "workspaces/op1_operations/config/source_adapters.v1.json"
+  },
+  "summary": {
+    "traffic": {
+      "sessions": 905.67,
+      "unique_visitors_est": 742.65,
+      "unattributed_traffic_rate": 0.0,
+      "forecast_share": 1.0
+    },
+    "signups": {
+      "signups_total": 13,
+      "qualified_signups": 13,
+      "paid_customers": 1,
+      "opt_out_count": 1
+    },
+    "revenue": {
+      "new_mrr": 49.0,
+      "expansion_mrr": 0.0,
+      "contraction_mrr": 0.0,
+      "churn_mrr": 0.0,
+      "reactivation_mrr": 0.0,
+      "net_new_mrr": 49.0
+    },
+    "conversion": {
+      "visit_to_signup_rate": 0.0144,
+      "signup_to_paid_rate": 0.0769,
+      "visit_to_paid_rate": 0.0011
+    },
+    "milestone": {
+      "target_mrr": 100.0,
+      "achieved_mrr": 49.0,
+      "remaining_mrr": 51.0,
+      "progress_ratio": 0.49
+    }
+  },
+  "quality_refs": {
+    "traffic_quality": "workspaces/op1_operations/research/stage1_tracking/traffic_quality_report.latest.json",
+    "signup_quality": "workspaces/op1_operations/research/stage1_tracking/signup_quality_daily.latest.json",
+    "data_quality": "workspaces/op1_operations/research/stage1_tracking/data_quality_report.latest.json"
+  },
+  "alerts_count": 0,
+  "capability_status": [
+    {
+      "capability": "metric_governance",
+      "status": "implemented",
+      "evidence": "contracts/metric_dictionary.v1.yaml"
+    },
+    {
+      "capability": "tracking_plan",
+      "status": "implemented",
+      "evidence": "contracts/tracking_plan.v1.json"
+    },
+    {
+      "capability": "event_collection",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/raw_events.latest.jsonl"
+    },
+    {
+      "capability": "identity_stitching",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/identity_map.latest.json"
+    },
+    {
+      "capability": "attribution",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/attribution_facts.latest.json"
+    },
+    {
+      "capability": "traffic_quality",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/traffic_quality_report.latest.json"
+    },
+    {
+      "capability": "funnel_engine",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/funnel_daily.latest.json"
+    },
+    {
+      "capability": "signup_quality",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/signup_quality_daily.latest.json"
+    },
+    {
+      "capability": "revenue_engine",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/revenue_mrr_daily.latest.json"
+    },
+    {
+      "capability": "channel_economics",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/channel_scoreboard.latest.json"
+    },
+    {
+      "capability": "ops_scoreboard",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/stage1_scoreboard.latest.md"
+    },
+    {
+      "capability": "alerting",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/alerts.latest.json"
+    },
+    {
+      "capability": "data_quality",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/data_quality_report.latest.json"
+    },
+    {
+      "capability": "reproducibility",
+      "status": "implemented",
+      "evidence": "research/stage1_tracking/reproducibility_report.latest.json"
+    },
+    {
+      "capability": "prod_migration_adapter",
+      "status": "implemented",
+      "evidence": "config/source_adapters.v1.json"
+    }
+  ],
+  "notes": [
+    "Sales-side signals are simulated. Pipeline is built for adapter-based migration to live sources.",
+    "Traffic currently includes forecast-based sessions from marketing shadow launch packets."
+  ]
+}

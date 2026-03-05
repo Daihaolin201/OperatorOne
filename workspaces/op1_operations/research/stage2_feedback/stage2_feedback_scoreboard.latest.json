@@ -1,0 +1,154 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "stage": "stage2_process_feedback",
+  "mode": "simulated_signals",
+  "inputs": {
+    "raw_feedback": "workspaces/op1_operations/research/stage2_feedback/raw_feedback_events.latest.jsonl",
+    "priority_queue": "workspaces/op1_operations/research/stage2_feedback/feedback_priority_queue.latest.json",
+    "loop_status": "workspaces/op1_operations/research/stage2_feedback/feedback_loop_status.latest.json",
+    "impact_model": "workspaces/op1_operations/research/stage2_feedback/impact_model.latest.json"
+  },
+  "summary": {
+    "feedback": {
+      "feedback_events_total": 31,
+      "feedback_items_total": 31,
+      "themes_total": 16,
+      "unknown_topic_rate": 0.129,
+      "duplicate_rate": 0.0
+    },
+    "priority": {
+      "p0_count": 0,
+      "p1_count": 0,
+      "p2_count": 6,
+      "p3_count": 25
+    },
+    "loop": {
+      "triaged_rate": 0.6774,
+      "closure_rate": 0.0,
+      "p0_untriaged": 0,
+      "p0_unowned": 0
+    },
+    "impact": {
+      "expected_signup_delta_30d": 18.7523,
+      "expected_paid_delta_30d": 1.4425,
+      "expected_mrr_delta_30d": 77.101
+    },
+    "stage1_context": {
+      "visit_to_signup_rate": 0.0144,
+      "signup_to_paid_rate": 0.0769,
+      "net_new_mrr": 49.0
+    },
+    "top_topics": [
+      {
+        "topic": "onboarding",
+        "weighted_priority": 7.717
+      },
+      {
+        "topic": "pricing",
+        "weighted_priority": 3.415
+      },
+      {
+        "topic": "trust",
+        "weighted_priority": 2.7303
+      },
+      {
+        "topic": "general",
+        "weighted_priority": 2.216
+      },
+      {
+        "topic": "retention",
+        "weighted_priority": 1.5048
+      },
+      {
+        "topic": "integration",
+        "weighted_priority": 0.983
+      },
+      {
+        "topic": "billing",
+        "weighted_priority": 0.528
+      }
+    ]
+  },
+  "alerts_count": 0,
+  "capability_status": [
+    {
+      "capability": "feedback_source_adapters",
+      "status": "implemented",
+      "evidence": "config/feedback_source_adapters.v1.json"
+    },
+    {
+      "capability": "canonical_feedback_contract",
+      "status": "implemented",
+      "evidence": "contracts/feedback_contract.v1.json"
+    },
+    {
+      "capability": "taxonomy_governance",
+      "status": "implemented",
+      "evidence": "contracts/feedback_taxonomy.v1.yaml"
+    },
+    {
+      "capability": "normalization_dedup",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/feedback_dedup.latest.json"
+    },
+    {
+      "capability": "theme_detection",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/theme_clusters.latest.json"
+    },
+    {
+      "capability": "scoring",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/feedback_scored.latest.jsonl"
+    },
+    {
+      "capability": "prioritization_queue",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/feedback_priority_queue.latest.json"
+    },
+    {
+      "capability": "insight_briefs",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/insight_briefs.latest.md"
+    },
+    {
+      "capability": "closed_loop_tracker",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/feedback_loop_status.latest.json"
+    },
+    {
+      "capability": "feedback_to_kpi_impact",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/impact_model.latest.json"
+    },
+    {
+      "capability": "alerts",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/feedback_alerts.latest.json"
+    },
+    {
+      "capability": "data_quality",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/feedback_data_quality.latest.json"
+    },
+    {
+      "capability": "scoreboard",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/stage2_feedback_scoreboard.latest.md"
+    },
+    {
+      "capability": "weekly_snapshot",
+      "status": "implemented",
+      "evidence": "research/stage2_feedback/weekly_feedback_snapshot.latest.md"
+    },
+    {
+      "capability": "handoff_outputs",
+      "status": "implemented",
+      "evidence": "handoffs/operations_to_product.json"
+    }
+  ],
+  "notes": [
+    "Stage2 feedback processing currently runs on simulated sales/pipeline signals with live adapter slots ready.",
+    "Priority scores are explainable and tied to impact model assumptions documented in queue outputs."
+  ]
+}

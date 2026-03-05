@@ -1,0 +1,189 @@
+{
+  "generated_at": "2026-03-04T01:32:58Z",
+  "page_spec_version": "1.1",
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "adapter_name": "invoice-followup",
+  "version": "1.1",
+  "meta": {
+    "title": "Turn overdue invoices into a daily follow-up action queue",
+    "description": "Turn overdue invoices into a daily follow-up action queue",
+    "page_mode": "landing",
+    "adapter_name": "invoice-followup",
+    "profile": "landing-invoice-followup",
+    "profile_display_name": "Invoice Conversion Landing"
+  },
+  "layout_profile": "landing-invoice-followup",
+  "theme": {
+    "accent": "#2563eb",
+    "surface": "#0f172a",
+    "highlight": "#60a5fa"
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "landing",
+      "props": {
+        "headline": "Turn overdue invoices into a daily follow-up action queue",
+        "subheadline": "Move from ad-hoc chasing to a repeatable receivables queue.",
+        "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+        "segment_label": "Freelancer / small service owner · Professional services · 1-20"
+      }
+    },
+    {
+      "module_id": "problem_agitation",
+      "kind": "landing",
+      "props": {
+        "title": "Late invoices quietly damage weekly cashflow",
+        "core_pain": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+        "pain_points": [
+          "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+          "Prioritize overdue invoices by value and aging bucket.",
+          "Route ghosting vs. late-payment scenarios with explicit rules."
+        ],
+        "cost_of_inaction": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "landing",
+      "props": {
+        "title": "What this approach is grounded in",
+        "items": [
+          "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+          "Prioritize overdue invoices by value and aging bucket.",
+          "Route ghosting vs. late-payment scenarios with explicit rules."
+        ]
+      }
+    },
+    {
+      "module_id": "benefit_bullets",
+      "kind": "landing",
+      "props": {
+        "title": "What improves in the first 14 days",
+        "items": [
+          "Move from ad-hoc chasing to a repeatable receivables queue.",
+          "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+          "Prioritize overdue invoices by value and aging bucket."
+        ]
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "landing",
+      "props": {
+        "title": "Before you start",
+        "items": [
+          {
+            "question": "Will this replace our accounting tool?",
+            "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+          },
+          {
+            "question": "Can we customize escalation tone?",
+            "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+          }
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "landing",
+      "props": {
+        "title": "Start the overdue-invoice pilot",
+        "description": "Join a pilot that helps you recover receivables with less manual chasing.",
+        "cta_label": "Join invoice pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "problem_agitation",
+      "proof_points",
+      "benefit_bullets",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ],
+    "page_mode": "landing",
+    "required_modules": [
+      "hero_problem",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "forbidden_modules": [
+      "workflow_interactive",
+      "metric_snapshot",
+      "evidence_checklist",
+      "social_proof_strip"
+    ],
+    "lp_section_whitelist": [
+      "benefit_bullets",
+      "cta_waitlist",
+      "faq_list",
+      "hero_problem",
+      "problem_agitation",
+      "proof_points"
+    ],
+    "forbidden_terms": [
+      "reusable web-product builder",
+      "try the workflow assistant",
+      "focused landing validation",
+      "pilot trust signals"
+    ]
+  },
+  "project_spec_snapshot": {
+    "project_id": "proj-opp-001-invoice-followup-v1",
+    "from_opportunity_id": "opp_001",
+    "adapter_name": "invoice-followup"
+  }
+}

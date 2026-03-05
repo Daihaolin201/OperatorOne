@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+  "decision_counts": {
+    "iterate": 10,
+    "ship": 2,
+    "park": 3
+  },
+  "decisions": [
+    {
+      "experiment_id": "exp3_c3a320476dbf99",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.6775,
+      "primary_metric_lift_pp": 0.006327,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_59cab733ebc263",
+      "decision": "ship",
+      "decision_reason": "Primary metric improved with acceptable confidence and healthy guardrails.",
+      "guardrail_breach": false,
+      "confidence_score": 0.74,
+      "primary_metric_lift_pp": 0.004916,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_cc6418573e5369",
+      "decision": "ship",
+      "decision_reason": "Primary metric improved with acceptable confidence and healthy guardrails.",
+      "guardrail_breach": false,
+      "confidence_score": 0.7046,
+      "primary_metric_lift_pp": 0.015696,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_05035039912c10",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.8437,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.455,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_aff51f279f27df",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.7107,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.6905,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_6560f49deb814a",
+      "decision": "park",
+      "decision_reason": "Weak or negative signal without sufficient confidence.",
+      "guardrail_breach": false,
+      "confidence_score": 0.3685,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_299c70c714d04e",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.8458,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_bd55e0ff614989",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.4008,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.7291,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_4d927033157cf9",
+      "decision": "park",
+      "decision_reason": "Weak or negative signal without sufficient confidence.",
+      "guardrail_breach": false,
+      "confidence_score": 0.3555,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.6822,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_25b8181f08a498",
+      "decision": "park",
+      "decision_reason": "Weak or negative signal without sufficient confidence.",
+      "guardrail_breach": false,
+      "confidence_score": 0.3739,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    },
+    {
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet.",
+      "guardrail_breach": false,
+      "confidence_score": 0.6026,
+      "primary_metric_lift_pp": 0.0,
+      "timestamp": "2026-03-05T12:00:00+00:00"
+    }
+  ]
+}

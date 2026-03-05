@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "rows": [
+    {
+      "opportunity_id": "opp_001",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "first_user_source": "organic_search",
+      "first_user_medium": "organic",
+      "traffic_sessions": 455.87,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0
+    },
+    {
+      "opportunity_id": "opp_004",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
+      "first_user_source": "organic_search",
+      "first_user_medium": "organic",
+      "traffic_sessions": 224.9,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0
+    },
+    {
+      "opportunity_id": "opp_005",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
+      "first_user_source": "organic_search",
+      "first_user_medium": "organic",
+      "traffic_sessions": 112.45,
+      "qualified_signups": 14,
+      "paid_customers": 2,
+      "new_mrr": 98.0
+    },
+    {
+      "opportunity_id": "opp_006",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
+      "first_user_source": "linkedin",
+      "first_user_medium": "paid_social",
+      "traffic_sessions": 112.45,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0
+    }
+  ]
+}

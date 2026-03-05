@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "owner": "op1_operations",
+  "status": "active",
+  "description": "Decision policy for Stage3 experiment outcomes.",
+  "decision_order": [
+    "rollback",
+    "ship",
+    "iterate",
+    "park"
+  ],
+  "rules": {
+    "rollback": {
+      "if_any": [
+        "guardrail_breach=true",
+        "error_rate_delta_pp>=0.03",
+        "unsubscribe_rate_delta_pp>=0.01"
+      ]
+    },
+    "ship": {
+      "if_all": [
+        "primary_metric_lift_pp>=0.002",
+        "confidence_score>=0.7",
+        "guardrail_breach=false"
+      ]
+    },
+    "iterate": {
+      "if_all": [
+        "primary_metric_lift_pp>-0.001",
+        "confidence_score>=0.4",
+        "guardrail_breach=false"
+      ]
+    },
+    "park": {
+      "fallback": true
+    }
+  },
+  "notes": [
+    "Rollback has highest priority whenever guardrails are violated.",
+    "Ship only when measurable positive lift and acceptable confidence are both present."
+  ]
+}

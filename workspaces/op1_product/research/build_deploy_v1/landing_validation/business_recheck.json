@@ -1,0 +1,40 @@
+{
+  "generated_at": "2026-03-03T23:44:22Z",
+  "base_url": "https://webproductlandingvalidation.vercel.app",
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "adapter": "invoice-followup",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "overdue_invoice_response",
+      "status": "pass",
+      "http_status": 200,
+      "rule_id": "invoice-overdue",
+      "first_step": "Send one structured reminder today with invoice amount, due date, and a clear 48-hour action deadline.",
+      "attempts": 1
+    },
+    {
+      "name": "ghosting_response",
+      "status": "pass",
+      "http_status": 200,
+      "rule_id": "invoice-ghosting",
+      "first_step": "Switch to a final polite escalation template with a concrete payment link and escalation date.",
+      "attempts": 1
+    },
+    {
+      "name": "signup_invalid_email",
+      "status": "pass",
+      "http_status": 400,
+      "payload": {
+        "error": "Valid email is required"
+      },
+      "attempts": 1
+    },
+    {
+      "name": "scope_copy_guardrail",
+      "status": "pass",
+      "checked_phrases": 5,
+      "attempts": 1
+    }
+  ]
+}

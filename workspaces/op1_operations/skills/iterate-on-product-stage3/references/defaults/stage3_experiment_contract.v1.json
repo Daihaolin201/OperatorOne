@@ -1,0 +1,42 @@
+{
+  "version": "1.0",
+  "owner": "op1_operations",
+  "status": "active",
+  "description": "Canonical experiment contract for Stage3 product iteration.",
+  "required_fields": [
+    "experiment_id",
+    "hypothesis_id",
+    "title",
+    "status",
+    "owner",
+    "priority_tier",
+    "targeting",
+    "variant_plan",
+    "primary_metric",
+    "guardrail_metrics",
+    "sample_target",
+    "minimum_runtime_days",
+    "stop_rules",
+    "success_criteria",
+    "rollback_criteria"
+  ],
+  "allowed_status": [
+    "planned",
+    "running",
+    "paused",
+    "completed",
+    "rolled_back",
+    "parked"
+  ],
+  "allowed_variant_plan": [
+    "ab",
+    "multivariate",
+    "progressive_rollout"
+  ],
+  "validation_rules": {
+    "sample_target_min": 20,
+    "minimum_runtime_days_min": 3,
+    "guardrail_metrics_min_items": 1,
+    "stop_rules_min_items": 1
+  }
+}

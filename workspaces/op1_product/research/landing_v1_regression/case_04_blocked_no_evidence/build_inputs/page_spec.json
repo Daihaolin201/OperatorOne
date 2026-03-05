@@ -1,0 +1,184 @@
+{
+  "generated_at": "2026-03-04T01:32:59Z",
+  "page_spec_version": "1.1",
+  "project_id": "proj-opp-no-evidence-generic-operator-v1",
+  "adapter_name": "generic-operator",
+  "version": "1.1",
+  "meta": {
+    "title": "Turn repetitive operator work into a focused daily action system",
+    "description": "Turn repetitive operator work into a focused daily action system",
+    "page_mode": "landing",
+    "adapter_name": "generic-operator",
+    "profile": "landing-default",
+    "profile_display_name": "Landing Conversion Core"
+  },
+  "layout_profile": "landing-default",
+  "theme": {
+    "accent": "#2563eb",
+    "surface": "#0f172a",
+    "highlight": "#60a5fa"
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "landing",
+      "props": {
+        "headline": "Turn repetitive operator work into a focused daily action system",
+        "subheadline": "Replace fragmented manual steps with one repeatable workflow.",
+        "problem_statement": "Manual chasing creates delays and inconsistency.",
+        "segment_label": "Operator · Business operations · 1-20"
+      }
+    },
+    {
+      "module_id": "problem_agitation",
+      "kind": "landing",
+      "props": {
+        "title": "Why this bottleneck deserves immediate action",
+        "core_pain": "Manual chasing creates delays and inconsistency.",
+        "pain_points": [
+          "Ships one measurable workflow instead of bloated feature sets."
+        ],
+        "cost_of_inaction": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "benefit_bullets",
+      "kind": "landing",
+      "props": {
+        "title": "What improves after focused adoption",
+        "items": [
+          "Replace fragmented manual steps with one repeatable workflow.",
+          "Ships one measurable workflow instead of bloated feature sets."
+        ]
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "landing",
+      "props": {
+        "title": "Evidence behind this recommendation",
+        "items": [
+          "Ships one measurable workflow instead of bloated feature sets."
+        ]
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "landing",
+      "props": {
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Is this only for one industry?",
+            "answer": "No. The adapter model is designed to support multiple business opportunity types."
+          },
+          {
+            "question": "Can we iterate quickly after launch?",
+            "answer": "Yes. Rules, modules, and tests can be updated independently without full rebuilds."
+          }
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "landing",
+      "props": {
+        "title": "Start the focused pilot",
+        "description": "Join early access to validate one focused workflow before scaling scope.",
+        "cta_label": "Join pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "problem_agitation",
+      "benefit_bullets",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ],
+    "page_mode": "landing",
+    "required_modules": [
+      "hero_problem",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "forbidden_modules": [
+      "workflow_interactive",
+      "metric_snapshot",
+      "evidence_checklist",
+      "social_proof_strip"
+    ],
+    "lp_section_whitelist": [
+      "benefit_bullets",
+      "cta_waitlist",
+      "faq_list",
+      "hero_problem",
+      "problem_agitation",
+      "proof_points"
+    ],
+    "forbidden_terms": [
+      "reusable web-product builder",
+      "try the workflow assistant",
+      "focused landing validation",
+      "pilot trust signals"
+    ]
+  },
+  "project_spec_snapshot": {
+    "project_id": "proj-opp-no-evidence-generic-operator-v1",
+    "from_opportunity_id": "opp_no_evidence",
+    "adapter_name": "generic-operator"
+  }
+}

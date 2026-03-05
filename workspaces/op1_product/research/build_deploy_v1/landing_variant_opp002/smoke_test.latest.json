@@ -1,0 +1,48 @@
+{
+  "generated_at": "2026-03-03T23:58:03Z",
+  "base_url": "https://webproductlandingvariantopp002.vercel.app",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "homepage",
+      "status": "pass",
+      "http_status": 200,
+      "evidence": "Homepage reachable with modular signatures",
+      "attempts": 1
+    },
+    {
+      "name": "api_health",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "status": "ok",
+        "service": "op1-product-web-build-deploy-v1.1",
+        "project_id": "proj-opp-002-chargeback-response-v1",
+        "from_opportunity_id": "opp_002",
+        "adapter": "chargeback-response",
+        "timestamp": "2026-03-03T23:58:02.573Z"
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_first_step",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "first_step": "Prioritize disputes by amount and deadline, then submit one complete proof bundle for the highest-value case today.",
+        "next_steps_count": 3
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_signup",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "accepted": true,
+        "project_id": "proj-opp-002-chargeback-response-v1"
+      },
+      "attempts": 1
+    }
+  ]
+}

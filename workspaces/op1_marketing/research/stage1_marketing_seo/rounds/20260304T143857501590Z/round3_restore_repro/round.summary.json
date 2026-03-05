@@ -1,0 +1,92 @@
+{
+  "label": "round3_restore_repro",
+  "ran_at": "2026-03-04T14:39:00Z",
+  "summary": {
+    "generated_at": "2026-03-04T14:39:00Z",
+    "run_id": "20260304T143900Z",
+    "stage_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo",
+    "status": "passed",
+    "context_count": 11,
+    "keyword_count": 165,
+    "experiment_count": 66,
+    "ready_count": 49
+  },
+  "counts": {
+    "ready": 49,
+    "hold": 17,
+    "drop": 0
+  },
+  "scoreboard_summary": {
+    "experiment_count": 66,
+    "avg_overall_score": 78.26,
+    "ready_count": 49,
+    "hold_count": 17,
+    "drop_count": 0
+  },
+  "top_ready": [
+    {
+      "experiment_id": "exp_opportunity-opp-001_04",
+      "keyword": "overdue invoices followed vs manual",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_04",
+      "keyword": "monthly reporting labor vs manual",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_03",
+      "keyword": "how to default software output plus custom excel",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_06",
+      "keyword": "owner tenant workflows vs manual",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_04",
+      "keyword": "expense reimbursement remains vs manual",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    }
+  ],
+  "artifact_hashes": {
+    "run.latest.json": {
+      "sha256": "5170887ccfeb67575481f9a47060e893f10e3054d4fc5cd890d283d1661da64c",
+      "size_bytes": 6584
+    },
+    "state.latest.json": {
+      "sha256": "4aa711405aaae2cb478b12f542a4be5d23292fbb070540f531aefe8b04fc91c2",
+      "size_bytes": 569
+    },
+    "context_index.latest.json": {
+      "sha256": "f39c691a8dc9e8bd31159306137654870db329caa04aa99f51737d4d8102c61f",
+      "size_bytes": 21497
+    },
+    "keyword_graph.latest.csv": {
+      "sha256": "c0a9572bf63f48fd6164d4bc417876ae7ec974eae3be86e5c01b60d44d25eceb",
+      "size_bytes": 15952
+    },
+    "experiments.backlog.latest.json": {
+      "sha256": "8b19ff634359e97b6920fef01b128047bf3d308fb46423e0af20f192cec03107",
+      "size_bytes": 100381
+    },
+    "experiments.queue.latest.json": {
+      "sha256": "aec41223047edcafc48b3d68daec4f5f72895b95a3f8a54ad30acb269e9f12b4",
+      "size_bytes": 25279
+    },
+    "scoreboard.latest.json": {
+      "sha256": "79c1f640df20bad6af1079145400c7457d5156ce6c8b8ba10850d24e015f4639",
+      "size_bytes": 38960
+    },
+    "decision_log.latest.md": {
+      "sha256": "db33036c31c54489979e69acbbb6590a36c2f6c23781bc750ed6dd88081b494f",
+      "size_bytes": 2764
+    }
+  }
+}
