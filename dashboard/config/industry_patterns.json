@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "patterns": [
+    {
+      "name": "Observability-first dashboard",
+      "source": "LangSmith dashboards / filtering",
+      "why": "先把 trace、状态、错误聚合到统一视图，避免“有日志但没看板”。",
+      "applied": "统一快照 API + 可筛选能力清单 + handoff 状态表"
+    },
+    {
+      "name": "Automations + rule engine",
+      "source": "LangSmith automations / Grafana alerting",
+      "why": "将可联系外界的判定从“人工感觉”改成“策略规则 + 可解释原因”。",
+      "applied": "BLOCKED/REVIEW_REQUIRED/READY 三态门禁"
+    },
+    {
+      "name": "Policy as Code",
+      "source": "Open Policy Agent (OPA)",
+      "why": "把“允许外联”的策略与业务逻辑解耦，便于审计与持续优化。",
+      "applied": "readiness_policy.json + 规则评估结果详情"
+    },
+    {
+      "name": "Required reviewer for high-risk actions",
+      "source": "GitHub Environments protection",
+      "why": "高风险动作（外发、上线）默认需要人工确认，降低误触发风险。",
+      "applied": "manual arm 开关 + 审核前不进入 READY"
+    },
+    {
+      "name": "Idempotent external actions",
+      "source": "Stripe idempotency",
+      "why": "避免重复发送外联消息或重复执行外部动作。",
+      "applied": "在外联动作层预留 idempotency_key 设计位"
+    },
+    {
+      "name": "Separation of concerns for credentials",
+      "source": "OpenClaw secrets management",
+      "why": "凭据不和业务产物混存，避免明文泄漏与策略漂移。",
+      "applied": "只读审计 + reload + 接入状态检查"
+    },
+    {
+      "name": "Production reliability mindset",
+      "source": "Temporal/Prefect workflow docs",
+      "why": "状态可恢复、重试可控、失败可观测是“闭环系统”必备能力。",
+      "applied": "把每阶段 run/state/reproducibility 纳入统一健康判定"
+    },
+    {
+      "name": "SRE dashboard principle",
+      "source": "Google SRE monitoring principles",
+      "why": "看板要服务决策，而不是堆指标。",
+      "applied": "优先展示“下一步能否外联”及阻塞原因"
+    }
+  ]
+}

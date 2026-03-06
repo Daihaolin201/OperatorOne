@@ -51,6 +51,20 @@ Advanced:
 - If you are connected to default profile, you will not see `op1_*` agents.
 - Always use `openclaw --profile operatorone ...` when operating OperatorOne.
 
+## Dashboard (4-agent monitoring)
+
+OperatorOne now includes a local dashboard for:
+- 4-agent capability monitoring (12 capabilities)
+- handoff I/O visibility
+- external-contact gate (BLOCKED / REVIEW_REQUIRED / READY)
+- controlled channel/API integration actions
+
+Run:
+- `python3 dashboard/server.py --host 127.0.0.1 --port 8765`
+- Open: `http://127.0.0.1:8765`
+
+See `dashboard/README.md` for details.
+
 ## Collaboration
 
 See:

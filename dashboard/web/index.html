@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OperatorOne Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <h1>OperatorOne Multi-Agent Dashboard</h1>
+        <p class="sub">4 agents · 12 capabilities · external-contact readiness gate</p>
+      </div>
+      <div class="topbar-actions">
+        <button id="refreshBtn">刷新数据</button>
+        <span id="lastUpdated" class="muted">--</span>
+      </div>
+    </header>
+
+    <main>
+      <section class="grid grid-3">
+        <article class="card">
+          <h2>Demo 闭环门禁</h2>
+          <p id="demoGateStatus" class="status-pill status-unknown">UNKNOWN</p>
+          <ul id="demoGateReasons" class="reasons"></ul>
+        </article>
+        <article class="card">
+          <h2>Live 外联门禁</h2>
+          <p id="liveGateStatus" class="status-pill status-unknown">UNKNOWN</p>
+          <ul id="liveGateReasons" class="reasons"></ul>
+        </article>
+        <article class="card">
+          <h2>人工 Arm 开关（高风险门禁）</h2>
+          <p id="manualArmText" class="status-pill status-warning">OFF</p>
+          <div class="row">
+            <button id="armOnBtn">设为 ON</button>
+            <button id="armOffBtn" class="secondary">设为 OFF</button>
+          </div>
+          <p class="muted">仅在你确认可以外联时开启。</p>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Agent 总览</h2>
+        <table id="agentsTable">
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>状态</th>
+              <th>通过</th>
+              <th>警告</th>
+              <th>失败</th>
+              <th>总能力</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>12 项能力清单</h2>
+        <table id="capabilitiesTable">
+          <thead>
+            <tr>
+              <th>Agent</th>
+              <th>能力</th>
+              <th>状态</th>
+              <th>关键指标</th>
+              <th>更新时间</th>
+              <th>证据文件</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="card">
+        <h2>输入输出 / Handoff 链路</h2>
+        <table id="handoffsTable">
+          <thead>
+            <tr>
+              <th>文件</th>
+              <th>状态</th>
+              <th>from</th>
+              <th>to</th>
+              <th>更新时间</th>
+              <th>路径</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </section>
+
+      <section class="grid grid-2">
+        <article class="card">
+          <h2>社交账号接入（通过 OpenClaw）</h2>
+          <p class="muted">支持 Telegram / Discord / Slack / Google Chat / WhatsApp。</p>
+          <div class="grid form-grid">
+            <label>
+              Channel
+              <select id="channelSelect">
+                <option value="telegram">telegram</option>
+                <option value="discord">discord</option>
+                <option value="slack">slack</option>
+                <option value="googlechat">googlechat</option>
+                <option value="whatsapp">whatsapp</option>
+              </select>
+            </label>
+            <label>
+              account (可选)
+              <input id="channelAccount" placeholder="default" />
+            </label>
+            <label>
+              token (telegram/discord)
+              <input id="channelToken" placeholder="token" type="password" />
+            </label>
+            <label>
+              botToken (slack)
+              <input id="channelBotToken" placeholder="xoxb-..." type="password" />
+            </label>
+            <label>
+              appToken (slack)
+              <input id="channelAppToken" placeholder="xapp-..." type="password" />
+            </label>
+            <label>
+              webhookUrl (googlechat)
+              <input id="channelWebhookUrl" placeholder="https://..." type="password" />
+            </label>
+          </div>
+          <div class="row">
+            <button id="connectChannelBtn">执行接入</button>
+            <button id="disconnectChannelBtn" class="secondary">断开接入</button>
+            <button id="dryRunChannelBtn" class="secondary">仅预览命令</button>
+          </div>
+          <pre id="channelActionResult" class="result-box"></pre>
+
+          <h3>已连接渠道</h3>
+          <pre id="channelsSummary" class="result-box"></pre>
+        </article>
+
+        <article class="card">
+          <h2>API 集成登记（可审计）</h2>
+          <p class="muted">登记 API 连接信息，不保存明文密钥；推荐 secretRef。</p>
+          <div class="grid form-grid">
+            <label>
+              名称
+              <input id="apiName" placeholder="Stripe" />
+            </label>
+            <label>
+              Base URL
+              <input id="apiBaseUrl" placeholder="https://api.example.com" />
+            </label>
+            <label>
+              secretRef
+              <input id="apiSecretRef" placeholder="env:STRIPE_API_KEY 或 file:/path" />
+            </label>
+            <label>
+              ownerAgent
+              <select id="apiOwnerAgent">
+                <option value="">(none)</option>
+                <option value="op1_product">op1_product</option>
+                <option value="op1_marketing">op1_marketing</option>
+                <option value="op1_sales">op1_sales</option>
+                <option value="op1_operations">op1_operations</option>
+              </select>
+            </label>
+            <label>
+              备注
+              <input id="apiNotes" placeholder="用途/权限范围" />
+            </label>
+          </div>
+          <div class="row">
+            <button id="saveApiBtn">保存 API 集成</button>
+            <button id="refreshApiBtn" class="secondary">刷新列表</button>
+          </div>
+          <table id="apiConnectorsTable">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>名称</th>
+                <th>Base URL</th>
+                <th>secretRef</th>
+                <th>ownerAgent</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+      </section>
+
+      <section class="grid grid-2">
+        <article class="card">
+          <h2>Secrets / Security 检查</h2>
+          <div class="row">
+            <button id="runSecretsAuditBtn">运行 secrets audit</button>
+            <button id="reloadSecretsBtn" class="secondary">执行 secrets reload</button>
+          </div>
+          <pre id="secretsResult" class="result-box"></pre>
+        </article>
+
+        <article class="card">
+          <h2>行业方案映射（用于评审）</h2>
+          <ul id="industryPatterns" class="patterns"></ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

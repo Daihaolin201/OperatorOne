@@ -1,0 +1,17 @@
+{
+  "version": 1,
+  "freshnessHours": 168,
+  "demoGate": {
+    "requireAllCapabilitiesPassed": true,
+    "requireCoreHandoffs": true
+  },
+  "liveGate": {
+    "requireDemoReady": true,
+    "requireAllCapabilitiesPassed": true,
+    "requireCoreHandoffs": true,
+    "requireSecretsAuditClean": true,
+    "requireAtLeastOneConnectedChannel": true,
+    "requireManualArm": true,
+    "requireSecurityAuditNoCritical": true
+  }
+}
