@@ -38,6 +38,21 @@
 
 - 新增“怎么使用（3分钟）”引导区
 - 新增“下一步推荐动作”区（基于当前阶段）
+- 新增“阶段流程（演示视角）”与“阶段产物”可视化
+- 新增 artifact 查看器（可直接读取阶段输出文件）
+
+### E. Product 部署治理
+
+- Product live 部署支持 deterministic `vercel_project` 命名
+- 新增部署注册表 `deployments.json`（时间、mode、project、url/preview）
+- 把部署结果回写到 venture links 与 stage summary，方便评委演示
+
+### F. 鲁棒性加强（P4）
+
+- 新增 `stage_preflight`（合同与可复现性预检查）
+- 新增 `rehearsal_e2e`（simulation 一键彩排）
+- 新增 action 重复提交防抖（复用 running/queued job）
+- 新增 `venture_context.v1` 统一上下文快照
 - 保留 5-tab 结构并补强跨阶段决策提示
 
 ---

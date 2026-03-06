@@ -656,6 +656,47 @@ class DashboardHandler(BaseHTTPRequestHandler):
             return
         self._json_response(404, {"ok": False, "error": f"unknown studio jobs endpoint: {path}"})
 
+    def _handle_get_studio_artifact(self, query: Dict[str, List[str]]) -> None:
+        path_values = query.get("path") or []
+        if not path_values:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+        rel = str(path_values[-1]).strip()
+        if not rel:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        candidate = (REPO_ROOT / rel).resolve()
+        if not str(candidate).startswith(str(REPO_ROOT.resolve())):
+            self._json_response(403, {"ok": False, "error": "path escapes repository"})
+            return
+        if not candidate.exists() or not candidate.is_file():
+            self._json_response(404, {"ok": False, "error": "artifact not found"})
+            return
+
+        size = candidate.stat().st_size
+        max_chars = 120_000
+        text_content = None
+        binary = False
+        try:
+            text_content = candidate.read_text(encoding="utf-8")
+            if len(text_content) > max_chars:
+                text_content = text_content[:max_chars]
+        except Exception:
+            binary = True
+
+        self._json_response(
+            200,
+            {
+                "ok": True,
+                "path": rel,
+                "absolutePath": str(candidate),
+                "sizeBytes": size,
+                "binary": binary,
+                "content": None if binary else text_content,
+            },
+        )
+
     def _handle_post_studio_action(self, payload: Dict[str, Any]) -> None:
         try:
             result = STUDIO.dispatch_action(payload)
@@ -714,6 +755,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/studio/jobs" or path.startswith("/api/studio/jobs/"):
             self._handle_get_studio_jobs(path)
+            return
+        if path == "/api/studio/artifact":
+            self._handle_get_studio_artifact(query)
             return
         if path == "/api/runtime-flags":
             self._handle_get_runtime_flags()

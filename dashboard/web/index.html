@@ -45,13 +45,61 @@
       <section class="grid grid-2">
         <article class="card">
           <h2>怎么使用这个 Studio（3 分钟）</h2>
-          <ol id="quickstartList" class="guide-list"></ol>
+          <ul id="quickstartList" class="guide-list"></ul>
+          <div class="row">
+            <button id="runPreflightBtn" class="secondary">运行演示前预检查</button>
+            <button id="runRehearsalBtn" class="secondary">一键彩排（simulation）</button>
+          </div>
           <p class="muted">建议先全流程跑 simulation，确认后再尝试 live。</p>
         </article>
         <article class="card">
           <h2>下一步推荐动作</h2>
           <div id="recommendedActions" class="actions-list"></div>
           <p id="feedbackBar" class="feedback muted">系统准备中...</p>
+        </article>
+      </section>
+
+      <section class="grid grid-2">
+        <article class="card">
+          <h2>阶段流程（演示视角）</h2>
+          <table id="stageFlowTable">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>状态</th>
+                <th>说明</th>
+                <th>最近执行</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </article>
+        <article class="card">
+          <h2>阶段产物（你问的“结果在哪”）</h2>
+          <table id="stageResultsTable">
+            <thead>
+              <tr>
+                <th>Stage</th>
+                <th>运行结果</th>
+                <th>关键输出</th>
+                <th>产物文件</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+
+          <h3 class="mt">部署记录（simulation/live）</h3>
+          <table id="deploymentsTable">
+            <thead>
+              <tr>
+                <th>时间</th>
+                <th>mode</th>
+                <th>project</th>
+                <th>URL/预览</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
         </article>
       </section>
 
@@ -236,6 +284,12 @@
             <tbody></tbody>
           </table>
         </article>
+      </section>
+
+      <section class="card">
+        <h2>产物查看器</h2>
+        <p id="artifactPath" class="small">尚未选择产物</p>
+        <pre id="artifactContent" class="result-box">点击上方“查看产物”按钮后显示内容…</pre>
       </section>
 
       <section class="card">

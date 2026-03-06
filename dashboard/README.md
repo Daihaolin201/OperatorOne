@@ -46,21 +46,25 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 - venture 生命周期管理
 - stage action 调度（复用现有脚本）
-- 异步 job 执行
+- 异步 job 执行 + 重复提交防抖（同 action/venture 复用进行中任务）
 - stage timeline 记录
 - artifact 快照（按 venture_id）
+- venture context 同步（`venture_context.v1`）
 
 ### Phase 3（外联与部署）
 
 - 默认 simulation（安全）
 - live 模式需要 `manual arm ON` + `confirmLive=true`
 - Product live 部署需要 Vercel 已安装并登录
+- Product 部署支持 deterministic `--vercel-project` 命名治理
 - Sales commit 动作同样有 live 门禁
 
-### Phase 4（闭环自动化）
+### Phase 4（闭环自动化 + 鲁棒性）
 
 - Operations 执行后可回写 loop todos 到 Product/Marketing/Sales
 - 进入下一轮需人工点击 `confirm_iterate`
+- 新增 `stage_preflight`（合同/可复现性预检查）
+- 新增 `rehearsal_e2e`（simulation 一键彩排）
 
 ---
 
@@ -70,6 +74,7 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 - `GET /api/studio/fast-snapshot`（推荐，轻量）
 - `GET /api/studio/snapshot?includeMonitor=1`（需要时拉全）
+- `GET /api/studio/artifact?path=<repo-relative-path>`（读取产物）
 - `POST /api/studio/action`
 - `GET /api/studio/jobs`
 - `GET /api/studio/jobs/<job_id>`
@@ -93,6 +98,8 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 - `dashboard/.runtime/studio/stage_runs.json`
 - `dashboard/.runtime/studio/decision_gates.json`
 - `dashboard/.runtime/studio/loop_todos.json`
+- `dashboard/.runtime/studio/deployments.json`
+- `dashboard/.runtime/studio/contexts/<venture>.json`
 - `dashboard/.runtime/studio/artifacts/...`
 
 ---

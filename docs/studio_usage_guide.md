@@ -16,7 +16,7 @@
 2. **Product Build**
    - 默认 `simulation` 模式
    - 点击「执行 Product（landing + build/deploy）」
-   - 观察产物（preview path / deployment url）
+   - 观察产物（preview path / deployment url / vercel project）
 
 3. **Marketing Studio**
    - 点击：SEO → Content → Campaign
@@ -32,7 +32,26 @@
    - 点击「回写下一轮待办」
    - 最后点击「确认进入下一轮」
 
+6. **演示前检查（推荐）**
+   - 点击「运行演示前预检查」
+   - 可选点击「一键彩排（simulation）」验证全链路
+
 ---
+
+## 每个阶段的结果在哪里看
+
+1. 页面中的 **「阶段产物（你问的“结果在哪”）」** 表：
+   - 每个 stage 的最新 run 状态
+   - 关键输出（deployment url、preview path 等）
+   - 可直接点击「产物文件」按钮
+
+2. 页面底部 **「产物查看器」**：
+   - 展示你点击的 artifact 内容
+
+3. 本地文件路径：
+   - `dashboard/.runtime/studio/stage_runs.json`
+   - `dashboard/.runtime/studio/artifacts/<venture>/<run>/...`
+   - `dashboard/.runtime/studio/deployments.json`
 
 ## simulation 与 live 的区别
 

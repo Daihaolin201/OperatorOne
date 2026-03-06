@@ -12,6 +12,12 @@ const els = {
   quickstartList: document.getElementById("quickstartList"),
   recommendedActions: document.getElementById("recommendedActions"),
   feedbackBar: document.getElementById("feedbackBar"),
+  runPreflightBtn: document.getElementById("runPreflightBtn"),
+  runRehearsalBtn: document.getElementById("runRehearsalBtn"),
+
+  stageFlowTableBody: document.querySelector("#stageFlowTable tbody"),
+  stageResultsTableBody: document.querySelector("#stageResultsTable tbody"),
+  deploymentsTableBody: document.querySelector("#deploymentsTable tbody"),
 
   tabs: document.getElementById("tabs"),
 
@@ -50,13 +56,15 @@ const els = {
   jobsTableBody: document.querySelector("#jobsTable tbody"),
   runsTableBody: document.querySelector("#runsTable tbody"),
 
+  artifactPath: document.getElementById("artifactPath"),
+  artifactContent: document.getElementById("artifactContent"),
+
   actionResult: document.getElementById("actionResult"),
 };
 
 const state = {
   snapshot: null,
   monitorSnapshot: null,
-  monitorMeta: null,
   jobs: [],
   selectedTab: "idea",
   lastJobsSignature: "",
@@ -82,8 +90,8 @@ function asList(value) {
 
 function statusClass(status) {
   const s = String(status || "unknown").toLowerCase();
-  if (["passed", "ready", "succeeded", "success"].includes(s)) return "status-passed";
-  if (["warning", "review_required", "running", "queued"].includes(s)) return "status-warning";
+  if (["passed", "ready", "succeeded", "success", "completed"].includes(s)) return "status-passed";
+  if (["warning", "review_required", "running", "queued", "pending", "current"].includes(s)) return "status-warning";
   if (["failed", "blocked", "error"].includes(s)) return "status-failed";
   return "status-unknown";
 }
@@ -106,7 +114,13 @@ function formatTime(iso) {
 function updateFeedback(message, kind = "info") {
   if (!els.feedbackBar) return;
   els.feedbackBar.textContent = message;
-  els.feedbackBar.className = `feedback ${kind === "error" ? "status-failed" : kind === "ok" ? "status-passed" : "muted"}`;
+  if (kind === "error") {
+    els.feedbackBar.className = "feedback status-failed";
+  } else if (kind === "ok") {
+    els.feedbackBar.className = "feedback status-passed";
+  } else {
+    els.feedbackBar.className = "feedback muted";
+  }
 }
 
 async function getJSON(url) {
@@ -173,8 +187,8 @@ function renderTop() {
   const monitor = state.monitorSnapshot || snapshot.monitor || {};
   const readiness = monitor?.readiness || {};
 
-  if (state.snapshot?.generatedAt) {
-    els.lastUpdated.textContent = `更新于 ${formatTime(state.snapshot.generatedAt)}`;
+  if (snapshot.generatedAt) {
+    els.lastUpdated.textContent = `更新于 ${formatTime(snapshot.generatedAt)}`;
   }
 
   setPill(els.demoGateStatus, readiness?.demo?.status || "unknown");
@@ -236,10 +250,9 @@ function renderGuide(snapshot) {
       }
       const payload = action.payload || {};
       try {
-        const result = await runStudioAction(payload, action.label);
-        logActionResult(result);
+        await runStudioAction(payload, action.label);
       } catch (err) {
-        alert(`执行失败: ${err.message}`);
+        updateFeedback(`执行失败: ${err.message}`, "error");
       }
     });
 
@@ -249,6 +262,102 @@ function renderGuide(snapshot) {
     box.appendChild(desc);
     box.appendChild(row);
     els.recommendedActions.appendChild(box);
+  }
+}
+
+function renderStageFlow(snapshot) {
+  const rows = asList(snapshot.stageFlow);
+  els.stageFlowTableBody.innerHTML = "";
+  for (const row of rows) {
+    const tr = document.createElement("tr");
+    const lastRun = row.lastRun || {};
+    tr.innerHTML = `
+      <td>${safeText(row.stage)}</td>
+      <td><span class="status-pill ${statusClass(row.state)}">${safeText(row.state).toUpperCase()}</span></td>
+      <td>${safeText(row.narrative || "-")}</td>
+      <td>${safeText(lastRun.action || "-")} / ${safeText(lastRun.status || "-")}</td>
+    `;
+    els.stageFlowTableBody.appendChild(tr);
+  }
+}
+
+function summarizeStageOutput(summary) {
+  if (!summary || typeof summary !== "object") return "-";
+  const picks = [];
+  if (summary.deploymentUrl) picks.push(`url=${summary.deploymentUrl}`);
+  if (summary.previewPath) picks.push(`preview=${summary.previewPath}`);
+  if (summary.vercelProject) picks.push(`project=${summary.vercelProject}`);
+  if (summary.segmentIndex !== undefined) picks.push(`segment=${summary.segmentIndex}`);
+  if (summary.todoCount !== undefined) picks.push(`todos=${summary.todoCount}`);
+  if (summary.mode) picks.push(`mode=${summary.mode}`);
+  if (!picks.length) {
+    const keys = Object.keys(summary).slice(0, 4);
+    return keys.map((k) => `${k}=${safeText(summary[k])}`).join(" | ") || "-";
+  }
+  return picks.join(" | ");
+}
+
+async function openArtifact(path) {
+  if (!path) return;
+  els.artifactPath.textContent = path;
+  els.artifactContent.textContent = "加载中...";
+  try {
+    const data = await getJSON(`/api/studio/artifact?path=${encodeURIComponent(path)}`);
+    if (data.binary) {
+      els.artifactContent.textContent = `Binary file (size=${data.sizeBytes} bytes).\nPath: ${data.absolutePath}`;
+    } else {
+      els.artifactContent.textContent = data.content || "(empty)";
+    }
+  } catch (err) {
+    els.artifactContent.textContent = `读取失败: ${err.message}`;
+  }
+}
+
+function renderStageResults(snapshot) {
+  const rows = asList(snapshot.stageResults);
+  els.stageResultsTableBody.innerHTML = "";
+
+  for (const row of rows) {
+    const tr = document.createElement("tr");
+    const run = row.run || {};
+    tr.innerHTML = `
+      <td>${safeText(row.stage)}</td>
+      <td><span class="status-pill ${statusClass(run.status)}">${safeText(run.status).toUpperCase()}</span><br/><span class="small">${safeText(run.action || "-")}</span></td>
+      <td>${safeText(summarizeStageOutput(row.summary))}</td>
+      <td></td>
+    `;
+
+    const tdArt = tr.children[3];
+    const artifacts = asList(row.artifacts).slice(0, 5);
+    if (!artifacts.length) {
+      tdArt.textContent = "-";
+    } else {
+      for (const art of artifacts) {
+        const btn = document.createElement("button");
+        btn.className = "secondary";
+        btn.textContent = art.snapshotPath ? art.snapshotPath.split("/").pop() : art.type || "artifact";
+        btn.addEventListener("click", () => openArtifact(art.snapshotPath || art.sourcePath));
+        tdArt.appendChild(btn);
+      }
+    }
+
+    els.stageResultsTableBody.appendChild(tr);
+  }
+}
+
+function renderDeployments(snapshot) {
+  const rows = asList(snapshot.deployments);
+  els.deploymentsTableBody.innerHTML = "";
+  for (const row of rows) {
+    const tr = document.createElement("tr");
+    const url = row.url || row.previewPath || "-";
+    tr.innerHTML = `
+      <td>${safeText(formatTime(row.createdAt))}</td>
+      <td>${safeText(row.mode)}</td>
+      <td>${safeText(row.project || "-")}</td>
+      <td>${safeText(url)}</td>
+    `;
+    els.deploymentsTableBody.appendChild(tr);
   }
 }
 
@@ -284,7 +393,7 @@ function renderIdeas(snapshot) {
     btn.textContent = "创建 Venture";
     btn.addEventListener("click", async () => {
       try {
-        const res = await runStudioAction(
+        await runStudioAction(
           {
             action: "create_venture",
             opportunityId: idea.opportunityId,
@@ -293,9 +402,8 @@ function renderIdeas(snapshot) {
           },
           "创建 venture"
         );
-        logActionResult(res);
       } catch (err) {
-        alert(`创建 venture 失败: ${err.message}`);
+        updateFeedback(`创建 venture 失败: ${err.message}`, "error");
       }
     });
     tdAction.appendChild(btn);
@@ -327,13 +435,13 @@ function renderVentures(snapshot) {
     btn.disabled = venture.id === activeId;
     btn.addEventListener("click", async () => {
       try {
-        const res = await runStudioAction({ action: "set_active_venture", ventureId: venture.id, async: false }, "切换 venture");
-        logActionResult(res);
+        await runStudioAction({ action: "set_active_venture", ventureId: venture.id, async: false }, "切换 venture");
       } catch (err) {
-        alert(`切换 venture 失败: ${err.message}`);
+        updateFeedback(`切换 venture 失败: ${err.message}`, "error");
       }
     });
     tdAction.appendChild(btn);
+
     els.venturesTableBody.appendChild(tr);
   }
 }
@@ -352,6 +460,7 @@ function renderProduct(snapshot) {
     opportunityId: venture.opportunityId,
     productDeploymentUrl: links.productDeploymentUrl || null,
     productPreviewPath: links.productPreviewPath || null,
+    vercelProject: links.vercelProject || null,
     lastProductAction: venture.lastActions?.product || null,
   };
   els.productSummary.textContent = JSON.stringify(summary, null, 2);
@@ -395,7 +504,7 @@ function renderMarketing(snapshot) {
     btn.textContent = "选为 Sales 输入";
     btn.addEventListener("click", async () => {
       try {
-        const res = await runStudioAction(
+        await runStudioAction(
           {
             action: "select_marketing_campaign",
             ventureId: activeVentureId(),
@@ -404,9 +513,8 @@ function renderMarketing(snapshot) {
           },
           "选择 campaign"
         );
-        logActionResult(res);
       } catch (err) {
-        alert(`选择 campaign 失败: ${err.message}`);
+        updateFeedback(`选择 campaign 失败: ${err.message}`, "error");
       }
     });
     tdAction.appendChild(btn);
@@ -423,9 +531,9 @@ function renderSales(snapshot) {
     const tr = document.createElement("tr");
     tr.innerHTML = `
       <td>${safeText(seg.segmentIndex)}</td>
-      <td>${safeText(seg.segment_name || seg.target_segment?.role || "-")}</td>
-      <td>${safeText(scores.estimated_weekly_leads ?? scores.weekly_leads ?? "-")}</td>
-      <td>${safeText(scores.estimated_weekly_mql ?? scores.weekly_mql ?? "-")}</td>
+      <td>${safeText(seg.segment_name || "-")}</td>
+      <td>${safeText(scores.estimated_weekly_leads ?? "-")}</td>
+      <td>${safeText(scores.estimated_weekly_mql ?? "-")}</td>
     `;
     els.salesSegmentsTableBody.appendChild(tr);
   }
@@ -456,6 +564,7 @@ function renderOps(snapshot) {
   const summary = {
     operations: snapshot.activeContext?.operations || {},
     todoCount: todos.length,
+    insights: snapshot.crossAgentInsights || [],
   };
   els.opsSummary.textContent = JSON.stringify(summary, null, 2);
 }
@@ -495,6 +604,9 @@ function renderSnapshot(snapshot) {
   state.snapshot = snapshot;
   renderTop();
   renderGuide(snapshot);
+  renderStageFlow(snapshot);
+  renderStageResults(snapshot);
+  renderDeployments(snapshot);
   renderIdeas(snapshot);
   renderVentures(snapshot);
   renderProduct(snapshot);
@@ -515,7 +627,6 @@ async function refreshMonitorSnapshot(refresh = false) {
   const url = refresh ? "/api/monitor/cached-snapshot?refresh=1" : "/api/monitor/cached-snapshot";
   const data = await getJSON(url);
   state.monitorSnapshot = data.snapshot || null;
-  state.monitorMeta = data.meta || null;
   renderTop();
   return data;
 }
@@ -599,9 +710,7 @@ function bindEvents() {
   bindTabs();
 
   els.refreshBtn.addEventListener("click", () => {
-    refreshStudio({ forceMonitor: true }).catch((err) => {
-      updateFeedback(`刷新失败: ${err.message}`, "error");
-    });
+    refreshStudio({ forceMonitor: true }).catch((err) => updateFeedback(`刷新失败: ${err.message}`, "error"));
   });
 
   els.armOnBtn.addEventListener("click", async () => {
@@ -624,6 +733,27 @@ function bindEvents() {
     }
   });
 
+  els.runPreflightBtn.addEventListener("click", async () => {
+    const ventureId = activeVentureId();
+    try {
+      await runStudioAction({ action: "stage_preflight", ventureId, async: true }, "运行演示前预检查");
+    } catch (err) {
+      updateFeedback(`预检查失败: ${err.message}`, "error");
+    }
+  });
+
+  els.runRehearsalBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    const ok = confirm("将按 simulation 串行执行全流程彩排，可能耗时较长。继续吗？");
+    if (!ok) return;
+    try {
+      await runStudioAction({ action: "rehearsal_e2e", ventureId, async: true }, "一键彩排");
+    } catch (err) {
+      updateFeedback(`彩排失败: ${err.message}`, "error");
+    }
+  });
+
   els.refreshIdeasBtn.addEventListener("click", async () => {
     try {
       await runStudioAction({ action: "refresh_ideas", async: true }, "刷新 startup ideas");
@@ -638,7 +768,6 @@ function bindEvents() {
 
     const mode = els.productMode.value;
     const payload = { action: "run_product", ventureId, mode, async: true };
-
     if (mode === "live") {
       const ok = confirm("将执行 live 部署（可能触发 Vercel）。确认继续？");
       if (!ok) return;
