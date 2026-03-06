@@ -24,6 +24,7 @@ const els = {
   feedbackBar: document.getElementById("feedbackBar"),
   runPreflightBtn: document.getElementById("runPreflightBtn"),
   runRehearsalBtn: document.getElementById("runRehearsalBtn"),
+  resetDemoStateBtn: document.getElementById("resetDemoStateBtn"),
 
   stageFlowTableBody: document.querySelector("#stageFlowTable tbody"),
   stageResultsTableBody: document.querySelector("#stageResultsTable tbody"),
@@ -281,7 +282,11 @@ function renderTop() {
     els.vercelAuditSummary.textContent = `audit: total=${audit.projectCount ?? "-"}, keep=${audit.keep ?? "-"}, review=${audit.review ?? "-"}, cleanup=${audit.cleanupCandidates ?? "-"}`;
   }
 
-  const cap = snapshot.capabilitySummary || {};
+  const capFromMonitor = {
+    total: asList(monitor.capabilities).length,
+    passed: asList(monitor.capabilities).filter((x) => x?.status === "passed").length,
+  };
+  const cap = capFromMonitor.total > 0 ? capFromMonitor : snapshot.capabilitySummary || {};
   if (els.capabilitySummary) {
     els.capabilitySummary.textContent = `${cap.passed || 0}/${cap.total || 0} passed`;
   }
@@ -1102,6 +1107,19 @@ function bindEvents() {
         await runStudioAction({ action: "rehearsal_e2e", ventureId, async: true }, "一键彩排");
       } catch (err) {
         updateFeedback(`彩排失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.resetDemoStateBtn) {
+    els.resetDemoStateBtn.addEventListener("click", async () => {
+      const ok = confirm("将清空 Studio 演示历史（ventures/runs/jobs关联展示），保留 idea 数据。继续吗？");
+      if (!ok) return;
+      try {
+        await runStudioAction({ action: "reset_demo_state", keepIdeas: true, async: false }, "重置演示历史");
+        showToast("演示历史已重置", "ok");
+      } catch (err) {
+        updateFeedback(`重置失败: ${err.message}`, "error");
       }
     });
   }
