@@ -1,15 +1,13 @@
-# OperatorOne Dashboard (v1)
+# OperatorOne Venture Studio Dashboard (v1.1)
 
-一个本地可运行的 Dashboard，用于：
+这个 dashboard 现在有两层能力：
 
-1. 监控四个 agent（Product / Marketing / Sales / Operations）的运行状态
-2. 展示输入输出链路（handoffs）
-3. 给出“是否允许和外界联系”的门禁判定（BLOCKED / REVIEW_REQUIRED / READY）
-4. 提供受控接入能力（社交渠道接入 + API 集成登记 + secrets 审计）
+1. **Monitor**：4-agent 状态、12 能力、handoff 链路、外联门禁
+2. **Studio**：从 startup idea 选择项目，并逐阶段执行 Product → Marketing → Sales → Operations → Iterate
 
 ---
 
-## 快速启动
+## 启动
 
 在仓库根目录执行：
 
@@ -17,119 +15,89 @@
 python3 dashboard/server.py --host 127.0.0.1 --port 8765
 ```
 
-打开：
+浏览器打开：
 
 - <http://127.0.0.1:8765>
 
 ---
 
-## 数据来源
+## Phase 0-4 对应落地
 
-### Agent 能力与产物
+### Phase 0（产品化设计稿）
 
-- `workspaces/op1_product/research/...`
-- `workspaces/op1_marketing/research/...`
-- `workspaces/op1_sales/research/...`
-- `workspaces/op1_operations/research/...`
-- `handoffs/*.json`
+- `docs/studio_phase0_product_spec.md`
+- `dashboard/config/studio_phase0.json`
 
-### OpenClaw 运行时
+包含：核心对象（venture / stage_run / decision_gate / artifact / kpi_snapshot）、状态机、自动与人工动作边界。
 
-通过 CLI JSON 输出读取：
+### Phase 1（Studio 界面）
 
-- `openclaw --profile operatorone status --all --json`
-- `openclaw --profile operatorone channels status --json`
-- `openclaw --profile operatorone channels list --json`
-- `openclaw --profile operatorone secrets audit --json`
+5 个主 tab：
 
----
+- Idea Board
+- Product Build
+- Marketing Studio
+- Sales Console
+- Ops Loop
 
-## 门禁策略（Policy-as-Code）
+### Phase 2（执行引擎）
 
-配置文件：
+`dashboard/studio.py` 提供：
 
-- `dashboard/config/readiness_policy.json`
+- venture 生命周期管理
+- stage action 调度（复用现有脚本）
+- 异步 job 执行
+- stage timeline 记录
+- artifact 快照（按 venture_id）
 
-核心规则：
+### Phase 3（外联与部署）
 
-- **Demo Gate**：能力与核心 handoff 是否完整
-- **Live Gate**：在 Demo 基础上，要求渠道已连接、secrets 审计干净、人工 arm 开关开启、安全审计无 critical
+- 默认 simulation（安全）
+- live 模式需要 `manual arm ON` + `confirmLive=true`
+- Product live 部署需要 Vercel 已安装并登录
+- Sales commit 动作同样有 live 门禁
 
-状态含义：
+### Phase 4（闭环自动化）
 
-- `BLOCKED`：禁止外联（基础条件不足）
-- `REVIEW_REQUIRED`：具备部分条件，但需人工确认
-- `READY`：可进入外联执行
-
----
-
-## 社交渠道接入（受控）
-
-Dashboard 内提供受控动作（白名单命令）：
-
-- `channels add`
-- `channels remove`
-- `secrets audit`
-- `secrets reload`
-
-目前支持接入字段：
-
-- telegram / discord：`token`
-- slack：`botToken` + `appToken`
-- googlechat：`webhookUrl` 或 `audience`
-- whatsapp：可先创建 account（后续按 OpenClaw 流程完成登录）
-
-> 为安全起见，Dashboard 不提供任意 shell 执行。
+- Operations 执行后可回写 loop todos 到 Product/Marketing/Sales
+- 进入下一轮需人工点击 `confirm_iterate`
 
 ---
 
-## API 集成登记
+## 核心 API
 
-Dashboard 支持登记 API 连接元信息（名称、baseUrl、secretRef、ownerAgent、备注），
-用于审计与可视化，不强制保存明文密钥。
+### Studio
 
-本地保存路径：
+- `GET /api/studio/snapshot`
+- `POST /api/studio/action`
+- `GET /api/studio/jobs`
+- `GET /api/studio/jobs/<job_id>`
 
-- `dashboard/.runtime/api_connectors.json`
+### Monitor + Integration（兼容）
 
----
-
-## 文件结构
-
-```text
-/dashboard
-  collector.py                 # 快照采集与能力评估
-  server.py                    # HTTP API + 静态页面服务
-  /config
-    readiness_policy.json      # 门禁规则
-    industry_patterns.json     # 行业方案映射
-  /web
-    index.html
-    app.js
-    styles.css
-  /.runtime                    # 运行态数据（gitignore）
-```
+- `GET /api/snapshot`
+- `POST /api/runtime-flags/manual-arm`
+- `POST /api/integrations/channel/connect`
+- `POST /api/integrations/channel/disconnect`
+- `POST /api/integrations/secrets/audit`
+- `POST /api/integrations/secrets/reload`
 
 ---
 
-## 行业方案映射（已纳入）
+## 关键运行态文件
 
-- LangSmith：预置/自定义看板 + 自动化规则
-- OPA：策略与执行解耦（Policy-as-Code）
-- Grafana / SRE 实践：统一告警与面向决策的看板
-- GitHub Environments：高风险动作先审批
-- Stripe Idempotency：预留幂等动作设计位
-- OpenClaw Secrets：凭据审计与安全重载
+- `dashboard/.runtime/studio/state.json`
+- `dashboard/.runtime/studio/ventures.json`
+- `dashboard/.runtime/studio/stage_runs.json`
+- `dashboard/.runtime/studio/decision_gates.json`
+- `dashboard/.runtime/studio/loop_todos.json`
+- `dashboard/.runtime/studio/artifacts/...`
 
 ---
 
-## 当前边界
+## 安全边界
 
-v1 重点在“监控 + 门禁 + 受控接入”。
-
-后续可扩展：
-
-- 外联动作审批流（多人 reviewer）
-- 幂等键与动作重放保护
-- 实时流式事件（WebSocket）
-- 更细粒度的渠道/账号权限矩阵
+- 默认仅本机访问（127.0.0.1）
+- live 高风险动作需 manual arm + 显式确认
+- 无任意 shell 执行端点，动作仅白名单
+- 仍建议在真实对外场景下接入额外审批与幂等保护

@@ -23,6 +23,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import unquote, urlparse
 
 from collector import PROFILE, REPO_ROOT, collect_snapshot, first_json_from_text
+from studio import StudioError, StudioService
 
 
 DASHBOARD_DIR = Path(__file__).resolve().parent
@@ -76,6 +77,8 @@ CHANNEL_FLAG_MAP = {
         "authDir": "--auth-dir",
     },
 }
+
+STUDIO = StudioService(REPO_ROOT, DASHBOARD_DIR, PROFILE)
 
 
 def utc_iso() -> str:
@@ -515,6 +518,47 @@ class DashboardHandler(BaseHTTPRequestHandler):
         )
         self._json_response(200, {"ok": True, "connectors": connectors})
 
+    def _handle_get_studio_snapshot(self) -> None:
+        try:
+            snapshot = STUDIO.snapshot()
+            self._json_response(200, {"ok": True, "snapshot": snapshot})
+        except Exception as exc:  # noqa: BLE001
+            self._json_response(500, {"ok": False, "error": f"studio snapshot failed: {exc}"})
+
+    def _handle_get_studio_jobs(self, path: str) -> None:
+        # /api/studio/jobs or /api/studio/jobs/<id>
+        if path == "/api/studio/jobs":
+            self._json_response(200, {"ok": True, "jobs": STUDIO.list_jobs()})
+            return
+        prefix = "/api/studio/jobs/"
+        if path.startswith(prefix):
+            job_id = path[len(prefix):]
+            job = STUDIO.get_job(job_id)
+            if not job:
+                self._json_response(404, {"ok": False, "error": "job not found"})
+                return
+            self._json_response(200, {"ok": True, "job": job})
+            return
+        self._json_response(404, {"ok": False, "error": f"unknown studio jobs endpoint: {path}"})
+
+    def _handle_post_studio_action(self, payload: Dict[str, Any]) -> None:
+        try:
+            result = STUDIO.dispatch_action(payload)
+            append_audit(
+                {
+                    "ts": utc_iso(),
+                    "action": "studio_action",
+                    "studio_action": payload.get("action"),
+                    "ventureId": payload.get("ventureId"),
+                    "async": result.get("async"),
+                }
+            )
+            self._json_response(200, result)
+        except StudioError as exc:
+            self._json_response(400, {"ok": False, "error": str(exc)})
+        except Exception as exc:  # noqa: BLE001
+            self._json_response(500, {"ok": False, "error": f"studio action failed: {exc}"})
+
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         path = unquote(parsed.path)
@@ -532,6 +576,12 @@ class DashboardHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/snapshot":
             self._handle_get_snapshot()
+            return
+        if path == "/api/studio/snapshot":
+            self._handle_get_studio_snapshot()
+            return
+        if path == "/api/studio/jobs" or path.startswith("/api/studio/jobs/"):
+            self._handle_get_studio_jobs(path)
             return
         if path == "/api/runtime-flags":
             self._handle_get_runtime_flags()
@@ -554,6 +604,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
 
         if path == "/api/runtime-flags/manual-arm":
             self._handle_post_manual_arm(payload)
+            return
+        if path == "/api/studio/action":
+            self._handle_post_studio_action(payload)
             return
         if path == "/api/integrations/channel/connect":
             self._handle_post_channel_connect(payload)

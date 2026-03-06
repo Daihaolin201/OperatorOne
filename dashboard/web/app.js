@@ -1,74 +1,100 @@
 const els = {
   refreshBtn: document.getElementById("refreshBtn"),
   lastUpdated: document.getElementById("lastUpdated"),
+
   demoGateStatus: document.getElementById("demoGateStatus"),
-  demoGateReasons: document.getElementById("demoGateReasons"),
   liveGateStatus: document.getElementById("liveGateStatus"),
-  liveGateReasons: document.getElementById("liveGateReasons"),
-  manualArmText: document.getElementById("manualArmText"),
+  manualArmStatus: document.getElementById("manualArmStatus"),
   armOnBtn: document.getElementById("armOnBtn"),
   armOffBtn: document.getElementById("armOffBtn"),
-  agentsTableBody: document.querySelector("#agentsTable tbody"),
-  capabilitiesTableBody: document.querySelector("#capabilitiesTable tbody"),
-  handoffsTableBody: document.querySelector("#handoffsTable tbody"),
-  channelsSummary: document.getElementById("channelsSummary"),
-  channelSelect: document.getElementById("channelSelect"),
-  channelAccount: document.getElementById("channelAccount"),
-  channelToken: document.getElementById("channelToken"),
-  channelBotToken: document.getElementById("channelBotToken"),
-  channelAppToken: document.getElementById("channelAppToken"),
-  channelWebhookUrl: document.getElementById("channelWebhookUrl"),
-  connectChannelBtn: document.getElementById("connectChannelBtn"),
-  disconnectChannelBtn: document.getElementById("disconnectChannelBtn"),
-  dryRunChannelBtn: document.getElementById("dryRunChannelBtn"),
-  channelActionResult: document.getElementById("channelActionResult"),
-  runSecretsAuditBtn: document.getElementById("runSecretsAuditBtn"),
-  reloadSecretsBtn: document.getElementById("reloadSecretsBtn"),
-  secretsResult: document.getElementById("secretsResult"),
-  apiName: document.getElementById("apiName"),
-  apiBaseUrl: document.getElementById("apiBaseUrl"),
-  apiSecretRef: document.getElementById("apiSecretRef"),
-  apiOwnerAgent: document.getElementById("apiOwnerAgent"),
-  apiNotes: document.getElementById("apiNotes"),
-  saveApiBtn: document.getElementById("saveApiBtn"),
-  refreshApiBtn: document.getElementById("refreshApiBtn"),
-  apiConnectorsTableBody: document.querySelector("#apiConnectorsTable tbody"),
-  industryPatterns: document.getElementById("industryPatterns"),
+  vercelStatus: document.getElementById("vercelStatus"),
+
+  tabs: document.getElementById("tabs"),
+
+  refreshIdeasBtn: document.getElementById("refreshIdeasBtn"),
+  ideasTableBody: document.querySelector("#ideasTable tbody"),
+  venturesTableBody: document.querySelector("#venturesTable tbody"),
+
+  productMode: document.getElementById("productMode"),
+  runProductBtn: document.getElementById("runProductBtn"),
+  productSummary: document.getElementById("productSummary"),
+
+  runMarketingSeoBtn: document.getElementById("runMarketingSeoBtn"),
+  runMarketingContentBtn: document.getElementById("runMarketingContentBtn"),
+  runMarketingCampaignBtn: document.getElementById("runMarketingCampaignBtn"),
+  approveSelectedContentBtn: document.getElementById("approveSelectedContentBtn"),
+  rejectSelectedContentBtn: document.getElementById("rejectSelectedContentBtn"),
+  contentCandidatesTableBody: document.querySelector("#contentCandidatesTable tbody"),
+  campaignCandidatesTableBody: document.querySelector("#campaignCandidatesTable tbody"),
+
+  runSalesProspectingBtn: document.getElementById("runSalesProspectingBtn"),
+  runSalesOutreachPlanBtn: document.getElementById("runSalesOutreachPlanBtn"),
+  approveSalesOutreachBtn: document.getElementById("approveSalesOutreachBtn"),
+  dispatchSalesSimBtn: document.getElementById("dispatchSalesSimBtn"),
+  dispatchSalesLiveBtn: document.getElementById("dispatchSalesLiveBtn"),
+  runSalesConversionSimBtn: document.getElementById("runSalesConversionSimBtn"),
+  runSalesConversionLiveBtn: document.getElementById("runSalesConversionLiveBtn"),
+  salesSegmentsTableBody: document.querySelector("#salesSegmentsTable tbody"),
+  salesSummary: document.getElementById("salesSummary"),
+
+  runOpsFullBtn: document.getElementById("runOpsFullBtn"),
+  writebackOpsBtn: document.getElementById("writebackOpsBtn"),
+  confirmIterateBtn: document.getElementById("confirmIterateBtn"),
+  loopTodosTableBody: document.querySelector("#loopTodosTable tbody"),
+  opsSummary: document.getElementById("opsSummary"),
+
+  jobsTableBody: document.querySelector("#jobsTable tbody"),
+  runsTableBody: document.querySelector("#runsTable tbody"),
+
+  actionResult: document.getElementById("actionResult"),
 };
 
 let state = {
   snapshot: null,
+  selectedTab: "idea",
 };
 
-function statusToClass(status) {
-  const normalized = String(status || "unknown").toLowerCase();
-  if (["passed", "ready"].includes(normalized)) return "status-passed";
-  if (["warning", "review_required"].includes(normalized)) return "status-warning";
-  if (["failed", "blocked"].includes(normalized)) return "status-failed";
-  return "status-unknown";
-}
+const autoRefreshMs = 8000;
+let autoRefreshTimer = null;
 
-function renderStatusPill(el, status) {
-  const normalized = String(status || "UNKNOWN").toUpperCase();
-  el.className = `status-pill ${statusToClass(status)}`;
-  el.textContent = normalized;
-}
-
-function safeText(text) {
-  if (text === null || text === undefined) return "";
-  if (typeof text === "object") return JSON.stringify(text);
-  return String(text);
+function safeText(value) {
+  if (value === null || value === undefined) return "";
+  if (typeof value === "object") return JSON.stringify(value);
+  return String(value);
 }
 
 function asList(value) {
   return Array.isArray(value) ? value : [];
 }
 
+function statusClass(status) {
+  const s = String(status || "unknown").toLowerCase();
+  if (["passed", "ready", "succeeded", "success"].includes(s)) return "status-passed";
+  if (["warning", "review_required", "running", "queued"].includes(s)) return "status-warning";
+  if (["failed", "blocked", "error"].includes(s)) return "status-failed";
+  return "status-unknown";
+}
+
+function setPill(el, status, textOverride = null) {
+  if (!el) return;
+  el.className = `status-pill ${statusClass(status)}`;
+  el.textContent = textOverride || String(status || "UNKNOWN").toUpperCase();
+}
+
+function formatTime(iso) {
+  if (!iso) return "-";
+  try {
+    return new Date(iso).toLocaleString();
+  } catch {
+    return String(iso);
+  }
+}
+
 async function getJSON(url) {
   const res = await fetch(url, { cache: "no-store" });
   if (!res.ok) {
-    const txt = await res.text();
-    throw new Error(`HTTP ${res.status}: ${txt}`);
+    const text = await res.text();
+    throw new Error(`HTTP ${res.status}: ${text}`);
   }
   return await res.json();
 }
@@ -76,15 +102,13 @@ async function getJSON(url) {
 async function postJSON(url, payload = {}) {
   const res = await fetch(url, {
     method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
+    headers: { "Content-Type": "application/json" },
     body: JSON.stringify(payload),
   });
   const text = await res.text();
   let body = null;
   try {
-    body = text ? JSON.parse(text) : null;
+    body = text ? JSON.parse(text) : {};
   } catch {
     body = { ok: false, raw: text };
   }
@@ -94,302 +118,652 @@ async function postJSON(url, payload = {}) {
   return body;
 }
 
-function renderReasons(target, reasons) {
-  target.innerHTML = "";
-  const list = asList(reasons);
-  if (list.length === 0) {
-    const li = document.createElement("li");
-    li.textContent = "无阻塞原因";
-    target.appendChild(li);
-    return;
-  }
-  for (const reason of list) {
-    const li = document.createElement("li");
-    li.textContent = safeText(reason);
-    target.appendChild(li);
-  }
+function activeVenture() {
+  return state.snapshot?.activeVenture || null;
 }
 
-function renderAgents(agents) {
-  els.agentsTableBody.innerHTML = "";
-  for (const agent of asList(agents)) {
+function activeVentureId() {
+  return activeVenture()?.id || null;
+}
+
+function renderTop(snapshot) {
+  els.lastUpdated.textContent = `更新于 ${formatTime(snapshot.generatedAt)}`;
+
+  const monitor = snapshot.monitor || {};
+  const readiness = monitor.readiness || {};
+  setPill(els.demoGateStatus, readiness?.demo?.status || "unknown");
+  setPill(els.liveGateStatus, readiness?.liveExternalContact?.status || "unknown");
+
+  const arm = Boolean(snapshot.manualArmEnabled);
+  setPill(els.manualArmStatus, arm ? "ready" : "review_required", arm ? "ON" : "OFF");
+
+  const vercel = snapshot.vercel || {};
+  const bits = [
+    `installed=${vercel.installed ? "yes" : "no"}`,
+    `auth=${vercel.authenticated ? "yes" : "no"}`,
+  ];
+  if (vercel.note) bits.push(`note=${vercel.note}`);
+  els.vercelStatus.textContent = bits.join(" | ");
+}
+
+function renderIdeas(snapshot) {
+  const ideas = asList(snapshot.ideas);
+  els.ideasTableBody.innerHTML = "";
+
+  for (const idea of ideas) {
     const tr = document.createElement("tr");
+
+    const motivation = [
+      idea?.motivation?.leadPainEvidence,
+      idea?.motivation?.distributionEntry,
+      idea?.motivation?.budgetSignal,
+    ]
+      .filter(Boolean)
+      .slice(0, 2)
+      .join(" | ");
+
+    const risk = asList(idea.riskSummary).slice(0, 2).join(" | ");
+
     tr.innerHTML = `
-      <td>${safeText(agent.agent)}</td>
-      <td><span class="status-pill ${statusToClass(agent.status)}">${String(agent.status || "UNKNOWN").toUpperCase()}</span></td>
-      <td>${safeText(agent.passed || 0)}</td>
-      <td>${safeText(agent.warning || 0)}</td>
-      <td>${safeText(agent.failed || 0)}</td>
-      <td>${safeText(agent.capabilityTotal || 0)}</td>
+      <td>${safeText(idea.opportunityId)}</td>
+      <td>${safeText(idea.coreProblem || idea.title)}</td>
+      <td>${safeText(motivation || "-")}</td>
+      <td>${safeText(risk || "-")}</td>
+      <td>${safeText(idea.feasibilityScore ?? "-")}</td>
+      <td></td>
     `;
-    els.agentsTableBody.appendChild(tr);
-  }
-}
 
-function shortMetrics(metrics) {
-  if (!metrics || typeof metrics !== "object") return "-";
-  const keys = Object.keys(metrics).slice(0, 4);
-  return keys
-    .map((k) => `${k}: ${typeof metrics[k] === "object" ? JSON.stringify(metrics[k]).slice(0, 64) : String(metrics[k])}`)
-    .join(" | ");
-}
-
-function renderCapabilities(capabilities) {
-  els.capabilitiesTableBody.innerHTML = "";
-  for (const cap of asList(capabilities)) {
-    const evidence = asList(cap.evidence)
-      .map((item) => safeText(item.path || ""))
-      .join("\n");
-
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${safeText(cap.agent)}</td>
-      <td>${safeText(cap.label)}</td>
-      <td><span class="status-pill ${statusToClass(cap.status)}">${String(cap.status || "UNKNOWN").toUpperCase()}</span></td>
-      <td>${shortMetrics(cap.metrics)}</td>
-      <td>${safeText(cap.updatedAt || "-")}</td>
-      <td><pre class="small">${safeText(evidence || "-")}</pre></td>
-    `;
-    els.capabilitiesTableBody.appendChild(tr);
-  }
-}
-
-function renderHandoffs(handoffs) {
-  const items = asList(handoffs?.items);
-  els.handoffsTableBody.innerHTML = "";
-  for (const item of items) {
-    const tr = document.createElement("tr");
-    tr.innerHTML = `
-      <td>${safeText(item.name)}</td>
-      <td><span class="status-pill ${statusToClass(item.status)}">${String(item.status || "UNKNOWN").toUpperCase()}</span></td>
-      <td>${safeText(item.from || "-")}</td>
-      <td>${safeText(item.to || "-")}</td>
-      <td>${safeText(item.generatedAt || "-")}</td>
-      <td>${safeText(item.path || "-")}</td>
-    `;
-    els.handoffsTableBody.appendChild(tr);
-  }
-}
-
-function renderChannelsSummary(snapshot) {
-  const channelsStatus = snapshot?.runtime?.channelsStatus?.data || {};
-  const channelsList = snapshot?.runtime?.channelsList?.data || {};
-  const summary = {
-    status: channelsStatus,
-    list: channelsList,
-  };
-  els.channelsSummary.textContent = JSON.stringify(summary, null, 2);
-}
-
-function renderIndustryPatterns(snapshot) {
-  const patterns = asList(snapshot?.industryPatterns?.patterns);
-  els.industryPatterns.innerHTML = "";
-  for (const p of patterns) {
-    const li = document.createElement("li");
-    li.innerHTML = `
-      <strong>${safeText(p.name)}</strong><br />
-      <span class="small">Source: ${safeText(p.source)}</span><br />
-      <span>${safeText(p.why)}</span><br />
-      <span class="small">落地: ${safeText(p.applied)}</span>
-    `;
-    els.industryPatterns.appendChild(li);
-  }
-}
-
-function renderApiConnectors(snapshot) {
-  const items = asList(snapshot?.runtimeState?.apiConnectors?.items);
-  els.apiConnectorsTableBody.innerHTML = "";
-
-  for (const item of items) {
-    const tr = document.createElement("tr");
-    const tdAction = document.createElement("td");
+    const tdAction = tr.children[5];
     const btn = document.createElement("button");
-    btn.className = "secondary";
-    btn.textContent = "删除";
+    btn.textContent = "创建 Venture";
     btn.addEventListener("click", async () => {
       try {
-        await postJSON("/api/integrations/api-connectors/delete", { id: item.id });
-        await refreshAll();
+        const res = await runStudioAction({
+          action: "create_venture",
+          opportunityId: idea.opportunityId,
+          name: `${idea.opportunityId} venture`,
+          async: false,
+        });
+        logActionResult(res);
+        await refreshStudio();
       } catch (err) {
-        alert(`删除失败: ${err.message}`);
+        alert(`创建 venture 失败: ${err.message}`);
       }
     });
     tdAction.appendChild(btn);
 
+    els.ideasTableBody.appendChild(tr);
+  }
+}
+
+function renderVentures(snapshot) {
+  const ventures = asList(snapshot.ventures);
+  const activeId = snapshot.activeVentureId;
+  els.venturesTableBody.innerHTML = "";
+
+  for (const venture of ventures) {
+    const tr = document.createElement("tr");
     tr.innerHTML = `
-      <td>${safeText(item.id)}</td>
-      <td>${safeText(item.name)}</td>
-      <td>${safeText(item.baseUrl || "-")}</td>
-      <td>${safeText(item.secretRef || "-")}</td>
-      <td>${safeText(item.ownerAgent || "-")}</td>
+      <td>${safeText(venture.name)} ${venture.id === activeId ? '<span class="tag">active</span>' : ""}</td>
+      <td>${safeText(venture.opportunityId)}</td>
+      <td>${safeText(venture.stage)}</td>
+      <td>${safeText(venture.cycle || 1)}</td>
+      <td>${safeText(venture.status || "-")}</td>
+      <td></td>
     `;
-    tr.appendChild(tdAction);
-    els.apiConnectorsTableBody.appendChild(tr);
+
+    const tdAction = tr.children[5];
+    const btn = document.createElement("button");
+    btn.className = "secondary";
+    btn.textContent = venture.id === activeId ? "当前" : "设为当前";
+    btn.disabled = venture.id === activeId;
+    btn.addEventListener("click", async () => {
+      try {
+        const res = await runStudioAction({ action: "set_active_venture", ventureId: venture.id, async: false });
+        logActionResult(res);
+        await refreshStudio();
+      } catch (err) {
+        alert(`切换 venture 失败: ${err.message}`);
+      }
+    });
+    tdAction.appendChild(btn);
+
+    els.venturesTableBody.appendChild(tr);
+  }
+}
+
+function renderProduct(snapshot) {
+  const venture = snapshot.activeVenture;
+  if (!venture) {
+    els.productSummary.textContent = "请先在 Idea Board 创建并激活一个 venture。";
+    return;
+  }
+
+  const links = venture.links || {};
+  const summary = {
+    ventureId: venture.id,
+    stage: venture.stage,
+    opportunityId: venture.opportunityId,
+    productDeploymentUrl: links.productDeploymentUrl || null,
+    productPreviewPath: links.productPreviewPath || null,
+    lastProductAction: venture.lastActions?.product || null,
+  };
+  els.productSummary.textContent = JSON.stringify(summary, null, 2);
+}
+
+function renderMarketing(snapshot) {
+  const ctx = snapshot.activeContext?.marketing || {};
+  const content = asList(ctx.contentCandidates);
+  const campaigns = asList(ctx.campaignCandidates);
+
+  els.contentCandidatesTableBody.innerHTML = "";
+  for (const item of content) {
+    const tr = document.createElement("tr");
+    const cid = item.content_id || item.id || "";
+    const topic = item.topic || item.primary_keyword || item.intent || "-";
+    tr.innerHTML = `
+      <td><input type="checkbox" class="content-check" value="${safeText(cid)}" /></td>
+      <td>${safeText(cid)}</td>
+      <td>${safeText(item._bucket || item.queue_state || "-")}</td>
+      <td>${safeText(topic)}</td>
+      <td>${safeText(item.primary_keyword || item.keyword || "-")}</td>
+      <td>${safeText(item.priority_score ?? item.score ?? "-")}</td>
+    `;
+    els.contentCandidatesTableBody.appendChild(tr);
+  }
+
+  els.campaignCandidatesTableBody.innerHTML = "";
+  for (const row of campaigns) {
+    const tr = document.createElement("tr");
+    const campaignId = row.campaign_id || row.id || "";
+    tr.innerHTML = `
+      <td>${safeText(campaignId)}</td>
+      <td>${safeText(row._bucket || row.queue_state || "-")}</td>
+      <td>${safeText(row.primary_keyword || row.keyword || "-")}</td>
+      <td>${safeText(row.readiness_score ?? "-")}</td>
+      <td></td>
+    `;
+
+    const tdAction = tr.children[4];
+    const btn = document.createElement("button");
+    btn.textContent = "选为 Sales 输入";
+    btn.addEventListener("click", async () => {
+      try {
+        const res = await runStudioAction({
+          action: "select_marketing_campaign",
+          ventureId: activeVentureId(),
+          campaignId,
+          async: false,
+        });
+        logActionResult(res);
+        await refreshStudio();
+      } catch (err) {
+        alert(`选择 campaign 失败: ${err.message}`);
+      }
+    });
+    tdAction.appendChild(btn);
+
+    els.campaignCandidatesTableBody.appendChild(tr);
+  }
+}
+
+function renderSales(snapshot) {
+  const segments = asList(snapshot.activeContext?.sales?.segments);
+  els.salesSegmentsTableBody.innerHTML = "";
+  for (const seg of segments) {
+    const scores = seg.scores || {};
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${safeText(seg.segmentIndex)}</td>
+      <td>${safeText(seg.segment_name || seg.target_segment?.role || "-")}</td>
+      <td>${safeText(scores.estimated_weekly_leads ?? scores.weekly_leads ?? "-")}</td>
+      <td>${safeText(scores.estimated_weekly_mql ?? scores.weekly_mql ?? "-")}</td>
+    `;
+    els.salesSegmentsTableBody.appendChild(tr);
+  }
+
+  const summary = {
+    outreachBatchReady: snapshot.activeContext?.sales?.outreachBatchReady || null,
+    outreachDispatch: snapshot.activeContext?.sales?.outreachDispatch || null,
+    closeMotion: snapshot.activeContext?.sales?.closeMotion || null,
+  };
+  els.salesSummary.textContent = JSON.stringify(summary, null, 2);
+}
+
+function renderOps(snapshot) {
+  const todos = asList(snapshot.loopTodos);
+  els.loopTodosTableBody.innerHTML = "";
+
+  for (const todo of todos) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${safeText(todo.team)}</td>
+      <td>${safeText(todo.priority)}</td>
+      <td>${safeText(todo.title)}</td>
+      <td>${safeText(todo.sourceFile)}</td>
+    `;
+    els.loopTodosTableBody.appendChild(tr);
+  }
+
+  const summary = {
+    operations: snapshot.activeContext?.operations || {},
+    todoCount: todos.length,
+  };
+  els.opsSummary.textContent = JSON.stringify(summary, null, 2);
+}
+
+function renderJobs(snapshot) {
+  const jobs = asList(snapshot.jobs);
+  els.jobsTableBody.innerHTML = "";
+
+  for (const job of jobs) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${safeText(job.id)}</td>
+      <td>${safeText(job.action)}</td>
+      <td><span class="status-pill ${statusClass(job.status)}">${safeText(job.status).toUpperCase()}</span></td>
+      <td>${safeText(job.ventureId || "-")}</td>
+      <td>${safeText(formatTime(job.createdAt))}</td>
+    `;
+    els.jobsTableBody.appendChild(tr);
+  }
+}
+
+function renderRuns(snapshot) {
+  const runs = asList(snapshot.recentRuns);
+  els.runsTableBody.innerHTML = "";
+  for (const run of runs) {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
+      <td>${safeText(formatTime(run.createdAt))}</td>
+      <td>${safeText(run.stage)}</td>
+      <td>${safeText(run.action)}</td>
+      <td>${safeText(run.mode)}</td>
+      <td><span class="status-pill ${statusClass(run.status)}">${safeText(run.status).toUpperCase()}</span></td>
+    `;
+    els.runsTableBody.appendChild(tr);
   }
 }
 
 function renderSnapshot(snapshot) {
   state.snapshot = snapshot;
-
-  els.lastUpdated.textContent = `更新于 ${snapshot.generatedAt}`;
-
-  renderStatusPill(els.demoGateStatus, snapshot.readiness?.demo?.status);
-  renderStatusPill(els.liveGateStatus, snapshot.readiness?.liveExternalContact?.status);
-  renderReasons(els.demoGateReasons, snapshot.readiness?.demo?.reasons);
-  renderReasons(els.liveGateReasons, snapshot.readiness?.liveExternalContact?.reasons);
-
-  const armEnabled = Boolean(snapshot.runtimeState?.flags?.manualArmEnabled);
-  renderStatusPill(els.manualArmText, armEnabled ? "ready" : "review_required");
-  els.manualArmText.textContent = armEnabled ? "ON" : "OFF";
-
-  renderAgents(snapshot.agents);
-  renderCapabilities(snapshot.capabilities);
-  renderHandoffs(snapshot.handoffs);
-  renderChannelsSummary(snapshot);
-  renderApiConnectors(snapshot);
-  renderIndustryPatterns(snapshot);
+  renderTop(snapshot);
+  renderIdeas(snapshot);
+  renderVentures(snapshot);
+  renderProduct(snapshot);
+  renderMarketing(snapshot);
+  renderSales(snapshot);
+  renderOps(snapshot);
+  renderJobs(snapshot);
+  renderRuns(snapshot);
 }
 
-async function refreshAll() {
-  const data = await getJSON("/api/snapshot");
+function logActionResult(payload) {
+  els.actionResult.textContent = JSON.stringify(payload, null, 2);
+}
+
+async function refreshStudio() {
+  const data = await getJSON("/api/studio/snapshot");
   renderSnapshot(data.snapshot);
 }
 
-function collectChannelPayload() {
-  const channel = els.channelSelect.value;
-  const payload = {
-    channel,
-  };
-
-  const account = els.channelAccount.value.trim();
-  if (account) payload.account = account;
-
-  const token = els.channelToken.value.trim();
-  const botToken = els.channelBotToken.value.trim();
-  const appToken = els.channelAppToken.value.trim();
-  const webhookUrl = els.channelWebhookUrl.value.trim();
-
-  if (token) payload.token = token;
-  if (botToken) payload.botToken = botToken;
-  if (appToken) payload.appToken = appToken;
-  if (webhookUrl) payload.webhookUrl = webhookUrl;
-
-  return payload;
+async function runStudioAction(payload) {
+  const res = await postJSON("/api/studio/action", payload);
+  return res;
 }
 
-async function connectChannel(dryRun = false) {
-  const payload = collectChannelPayload();
-  payload.dryRun = dryRun;
-  const res = await postJSON("/api/integrations/channel/connect", payload);
-  els.channelActionResult.textContent = JSON.stringify(res, null, 2);
-  if (!dryRun) await refreshAll();
-}
-
-async function disconnectChannel() {
-  const payload = {
-    channel: els.channelSelect.value,
-  };
-  const account = els.channelAccount.value.trim();
-  if (account) payload.account = account;
-  payload.delete = true;
-
-  const res = await postJSON("/api/integrations/channel/disconnect", payload);
-  els.channelActionResult.textContent = JSON.stringify(res, null, 2);
-  await refreshAll();
-}
-
-async function runSecretsAudit() {
-  const res = await postJSON("/api/integrations/secrets/audit", {});
-  els.secretsResult.textContent = JSON.stringify(res, null, 2);
-  await refreshAll();
-}
-
-async function reloadSecrets() {
-  const res = await postJSON("/api/integrations/secrets/reload", {});
-  els.secretsResult.textContent = JSON.stringify(res, null, 2);
-  await refreshAll();
-}
-
-async function saveApiConnector() {
-  const payload = {
-    name: els.apiName.value.trim(),
-    baseUrl: els.apiBaseUrl.value.trim(),
-    secretRef: els.apiSecretRef.value.trim(),
-    ownerAgent: els.apiOwnerAgent.value,
-    notes: els.apiNotes.value.trim(),
-  };
-  if (!payload.name) {
-    alert("请填写 API 名称");
-    return;
+async function runActionAndRefresh(payload, opts = { immediateRefresh: true }) {
+  const res = await runStudioAction(payload);
+  logActionResult(res);
+  if (opts.immediateRefresh) {
+    await refreshStudio();
   }
-  await postJSON("/api/integrations/api-connectors/upsert", payload);
-  els.apiName.value = "";
-  els.apiBaseUrl.value = "";
-  els.apiSecretRef.value = "";
-  els.apiNotes.value = "";
-  await refreshAll();
+  return res;
 }
 
-async function setManualArm(enabled) {
-  await postJSON("/api/runtime-flags/manual-arm", { enabled });
-  await refreshAll();
+function selectedContentIds() {
+  const checks = document.querySelectorAll(".content-check:checked");
+  const ids = [];
+  checks.forEach((el) => {
+    const value = String(el.value || "").trim();
+    if (value) ids.push(value);
+  });
+  return ids;
+}
+
+function ensureActiveVentureOrAlert() {
+  const id = activeVentureId();
+  if (!id) {
+    alert("请先在 Idea Board 创建并激活 venture。");
+    return null;
+  }
+  return id;
+}
+
+function bindTabs() {
+  const tabButtons = document.querySelectorAll(".tab");
+  const panels = document.querySelectorAll(".tab-panel");
+
+  tabButtons.forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const tab = btn.dataset.tab;
+      if (!tab) return;
+      state.selectedTab = tab;
+
+      tabButtons.forEach((b) => b.classList.remove("active"));
+      btn.classList.add("active");
+
+      panels.forEach((p) => {
+        if (p.id === `tab-${tab}`) p.classList.add("active");
+        else p.classList.remove("active");
+      });
+    });
+  });
 }
 
 function bindEvents() {
+  bindTabs();
+
   els.refreshBtn.addEventListener("click", () => {
-    refreshAll().catch((err) => alert(`刷新失败: ${err.message}`));
+    refreshStudio().catch((err) => alert(`刷新失败: ${err.message}`));
   });
 
-  els.armOnBtn.addEventListener("click", () => {
-    setManualArm(true).catch((err) => alert(`设置失败: ${err.message}`));
+  els.armOnBtn.addEventListener("click", async () => {
+    try {
+      await postJSON("/api/runtime-flags/manual-arm", { enabled: true });
+      await refreshStudio();
+    } catch (err) {
+      alert(`设置 manual arm 失败: ${err.message}`);
+    }
   });
 
-  els.armOffBtn.addEventListener("click", () => {
-    setManualArm(false).catch((err) => alert(`设置失败: ${err.message}`));
+  els.armOffBtn.addEventListener("click", async () => {
+    try {
+      await postJSON("/api/runtime-flags/manual-arm", { enabled: false });
+      await refreshStudio();
+    } catch (err) {
+      alert(`设置 manual arm 失败: ${err.message}`);
+    }
   });
 
-  els.connectChannelBtn.addEventListener("click", () => {
-    connectChannel(false).catch((err) => {
-      els.channelActionResult.textContent = `接入失败: ${err.message}`;
+  els.refreshIdeasBtn.addEventListener("click", async () => {
+    try {
+      const res = await runActionAndRefresh({ action: "refresh_ideas", async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`刷新 ideas 失败: ${err.message}`);
+    }
+  });
+
+  els.runProductBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+
+    const mode = els.productMode.value;
+    const payload = {
+      action: "run_product",
+      ventureId,
+      mode,
+      async: true,
+    };
+    if (mode === "live") {
+      const ok = confirm("将执行 live 部署（可能触发 Vercel）。确认继续？");
+      if (!ok) return;
+      payload.confirmLive = true;
+    }
+
+    try {
+      const res = await runActionAndRefresh(payload);
+      logActionResult(res);
+    } catch (err) {
+      alert(`执行 Product 失败: ${err.message}`);
+    }
+  });
+
+  els.runMarketingSeoBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "run_marketing_seo", ventureId, mode: "shadow", async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`营销SEO失败: ${err.message}`);
+    }
+  });
+
+  els.runMarketingContentBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "run_marketing_content", ventureId, mode: "review", async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`内容生成失败: ${err.message}`);
+    }
+  });
+
+  els.runMarketingCampaignBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "run_marketing_campaign", ventureId, mode: "review", async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`campaign生成失败: ${err.message}`);
+    }
+  });
+
+  els.approveSelectedContentBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    const ids = selectedContentIds();
+    if (!ids.length) {
+      alert("请先勾选内容项");
+      return;
+    }
+
+    try {
+      const res = await runActionAndRefresh({
+        action: "review_marketing_content",
+        ventureId,
+        approveIds: ids,
+        rejectIds: [],
+        note: "approved_from_studio",
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`内容审批失败: ${err.message}`);
+    }
+  });
+
+  els.rejectSelectedContentBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    const ids = selectedContentIds();
+    if (!ids.length) {
+      alert("请先勾选内容项");
+      return;
+    }
+
+    try {
+      const res = await runActionAndRefresh({
+        action: "review_marketing_content",
+        ventureId,
+        approveIds: [],
+        rejectIds: ids,
+        reason: "studio_manual_reject",
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`内容驳回失败: ${err.message}`);
+    }
+  });
+
+  els.runSalesProspectingBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "run_sales_prospecting", ventureId, async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`prospecting 失败: ${err.message}`);
+    }
+  });
+
+  els.runSalesOutreachPlanBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "run_sales_outreach_plan", ventureId, async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`outreach plan 失败: ${err.message}`);
+    }
+  });
+
+  els.approveSalesOutreachBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({
+        action: "approve_sales_outreach",
+        ventureId,
+        approver: "studio_user",
+        note: "approved in studio",
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`approve outreach 失败: ${err.message}`);
+    }
+  });
+
+  els.dispatchSalesSimBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({
+        action: "dispatch_sales_outreach",
+        ventureId,
+        mode: "simulate",
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`dispatch simulate 失败: ${err.message}`);
+    }
+  });
+
+  els.dispatchSalesLiveBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    const ok = confirm("将执行 commit 外联（live）。确认继续？");
+    if (!ok) return;
+    try {
+      const res = await runActionAndRefresh({
+        action: "dispatch_sales_outreach",
+        ventureId,
+        mode: "commit",
+        confirmLive: true,
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`dispatch live 失败: ${err.message}`);
+    }
+  });
+
+  els.runSalesConversionSimBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({
+        action: "run_sales_conversion",
+        ventureId,
+        mode: "simulate",
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`conversion simulate 失败: ${err.message}`);
+    }
+  });
+
+  els.runSalesConversionLiveBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    const ok = confirm("将执行 conversion commit（live）。确认继续？");
+    if (!ok) return;
+    try {
+      const res = await runActionAndRefresh({
+        action: "run_sales_conversion",
+        ventureId,
+        mode: "commit",
+        confirmLive: true,
+        async: true,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`conversion live 失败: ${err.message}`);
+    }
+  });
+
+  els.runOpsFullBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "run_operations_full", ventureId, async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`operations full 失败: ${err.message}`);
+    }
+  });
+
+  els.writebackOpsBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    try {
+      const res = await runActionAndRefresh({ action: "writeback_operations", ventureId, async: true });
+      logActionResult(res);
+    } catch (err) {
+      alert(`ops writeback 失败: ${err.message}`);
+    }
+  });
+
+  els.confirmIterateBtn.addEventListener("click", async () => {
+    const ventureId = ensureActiveVentureOrAlert();
+    if (!ventureId) return;
+    const note = prompt("请输入进入下一轮的确认说明", "approved_next_cycle");
+    if (note === null) return;
+    try {
+      const res = await runActionAndRefresh({
+        action: "confirm_iterate",
+        ventureId,
+        note,
+        async: false,
+      });
+      logActionResult(res);
+    } catch (err) {
+      alert(`确认下一轮失败: ${err.message}`);
+    }
+  });
+}
+
+function startAutoRefresh() {
+  if (autoRefreshTimer) clearInterval(autoRefreshTimer);
+  autoRefreshTimer = setInterval(() => {
+    refreshStudio().catch(() => {
+      // silent background refresh failure
     });
-  });
-
-  els.disconnectChannelBtn.addEventListener("click", () => {
-    disconnectChannel().catch((err) => {
-      els.channelActionResult.textContent = `断开失败: ${err.message}`;
-    });
-  });
-
-  els.dryRunChannelBtn.addEventListener("click", () => {
-    connectChannel(true).catch((err) => {
-      els.channelActionResult.textContent = `预览失败: ${err.message}`;
-    });
-  });
-
-  els.runSecretsAuditBtn.addEventListener("click", () => {
-    runSecretsAudit().catch((err) => {
-      els.secretsResult.textContent = `secrets audit 失败: ${err.message}`;
-    });
-  });
-
-  els.reloadSecretsBtn.addEventListener("click", () => {
-    reloadSecrets().catch((err) => {
-      els.secretsResult.textContent = `secrets reload 失败: ${err.message}`;
-    });
-  });
-
-  els.saveApiBtn.addEventListener("click", () => {
-    saveApiConnector().catch((err) => alert(`保存失败: ${err.message}`));
-  });
-
-  els.refreshApiBtn.addEventListener("click", () => {
-    refreshAll().catch((err) => alert(`刷新失败: ${err.message}`));
-  });
+  }, autoRefreshMs);
 }
 
 async function main() {
   bindEvents();
-  await refreshAll();
+  await refreshStudio();
+  startAutoRefresh();
 }
 
 main().catch((err) => {

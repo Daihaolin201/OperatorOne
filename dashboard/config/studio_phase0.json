@@ -1,0 +1,146 @@
+{
+  "version": "v1.1",
+  "updatedAt": "2026-03-06T00:00:00Z",
+  "coreObjects": {
+    "venture": {
+      "description": "单个创业项目实例，贯穿 Product→Marketing→Sales→Operations→Iterate。",
+      "requiredFields": [
+        "id",
+        "opportunityId",
+        "name",
+        "stage",
+        "status",
+        "createdAt",
+        "updatedAt"
+      ]
+    },
+    "stage_run": {
+      "description": "每次执行动作的审计记录，包含命令、时长、状态、产物、错误信息。",
+      "requiredFields": [
+        "id",
+        "ventureId",
+        "stage",
+        "action",
+        "mode",
+        "status",
+        "startedAt",
+        "endedAt"
+      ]
+    },
+    "decision_gate": {
+      "description": "关键人工决策点，用于防止外联误触发与流程失控。",
+      "requiredFields": [
+        "gateId",
+        "ventureId",
+        "stage",
+        "decision",
+        "reason",
+        "decidedAt"
+      ]
+    },
+    "artifact": {
+      "description": "每次 stage_run 产出的结构化文件快照，可回放和可追踪。",
+      "requiredFields": [
+        "id",
+        "ventureId",
+        "stage",
+        "type",
+        "sourcePath",
+        "snapshotPath",
+        "createdAt"
+      ]
+    },
+    "kpi_snapshot": {
+      "description": "运营视角关键指标快照，用于判断是否进入下一轮迭代。",
+      "requiredFields": [
+        "ventureId",
+        "stage",
+        "metrics",
+        "capturedAt"
+      ]
+    }
+  },
+  "stateMachine": [
+    "IDEA_POOL",
+    "SELECTED",
+    "PRODUCT",
+    "MARKETING",
+    "SALES",
+    "OPERATIONS",
+    "ITERATE"
+  ],
+  "stagePolicies": {
+    "IDEA_POOL": {
+      "auto": [
+        "refresh_ideas"
+      ],
+      "manual": [
+        "create_venture",
+        "select_venture"
+      ]
+    },
+    "SELECTED": {
+      "auto": [
+        "hydrate_venture_context"
+      ],
+      "manual": [
+        "run_product_landing",
+        "run_product_build"
+      ]
+    },
+    "PRODUCT": {
+      "auto": [
+        "snapshot_product_artifacts"
+      ],
+      "manual": [
+        "run_marketing_seo",
+        "run_marketing_content"
+      ]
+    },
+    "MARKETING": {
+      "auto": [
+        "generate_content_and_campaign_candidates"
+      ],
+      "manual": [
+        "approve_content_selection",
+        "select_campaign",
+        "commit_campaign"
+      ]
+    },
+    "SALES": {
+      "auto": [
+        "prepare_outreach_plan"
+      ],
+      "manual": [
+        "approve_outreach_batch",
+        "dispatch_outreach",
+        "run_conversion"
+      ]
+    },
+    "OPERATIONS": {
+      "auto": [
+        "run_tracking_feedback_iteration",
+        "writeback_loop_todos"
+      ],
+      "manual": [
+        "confirm_next_cycle"
+      ]
+    },
+    "ITERATE": {
+      "auto": [
+        "hydrate_next_cycle_context"
+      ],
+      "manual": [
+        "start_next_product_cycle"
+      ]
+    }
+  },
+  "modePolicy": {
+    "defaultMode": "simulation",
+    "liveModeRequirements": [
+      "manual_arm_enabled",
+      "confirm_live=true",
+      "channels_connected_or_external_api_ready"
+    ]
+  }
+}

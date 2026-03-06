@@ -51,13 +51,11 @@ Advanced:
 - If you are connected to default profile, you will not see `op1_*` agents.
 - Always use `openclaw --profile operatorone ...` when operating OperatorOne.
 
-## Dashboard (4-agent monitoring)
+## Dashboard / Venture Studio
 
-OperatorOne now includes a local dashboard for:
-- 4-agent capability monitoring (12 capabilities)
-- handoff I/O visibility
-- external-contact gate (BLOCKED / REVIEW_REQUIRED / READY)
-- controlled channel/API integration actions
+OperatorOne now includes a local dashboard with two layers:
+- Monitor: 4-agent capability monitoring (12 capabilities), handoff I/O visibility, readiness gates
+- Studio: human-in-the-loop pipeline from startup idea selection to Product/Marketing/Sales/Operations iteration
 
 Run:
 - `python3 dashboard/server.py --host 127.0.0.1 --port 8765`
