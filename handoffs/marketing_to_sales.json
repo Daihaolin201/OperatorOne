@@ -1,15 +1,15 @@
 {
-  "generated_at": "2026-03-04T16:30:49Z",
+  "generated_at": "2026-03-06T00:16:56Z",
   "campaigns": [
     {
-      "campaign_id": "stage2-shadow-20260304153759",
-      "name": "Stage2 content publish shadow batch",
+      "campaign_id": "stage2-review-20260306001650",
+      "name": "Stage2 content publish manual review",
       "status": "review_approved",
       "auto_publish": false,
       "assets_total": 12,
-      "assets_approved": 11,
+      "assets_approved": 12,
       "assets_review_ready": 0,
-      "generated_at": "2026-03-04T15:37:59Z"
+      "generated_at": "2026-03-06T00:16:50Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
@@ -18,9 +18,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 151.88,
+      "budget": 152.2,
       "forecast_sql": 3.38,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "generated_at": "2026-03-06T00:16:56Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
@@ -29,20 +29,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 151.66,
-      "forecast_sql": 3.37,
-      "generated_at": "2026-03-04T16:30:49Z"
-    },
-    {
-      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
-      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
-      "status": "launch_ready",
-      "auto_launch": false,
-      "objective": "qualified_pipeline_capture",
-      "primary_channel": "email_nurture",
-      "budget": 151.51,
-      "forecast_sql": 3.37,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "budget": 151.97,
+      "forecast_sql": 3.38,
+      "generated_at": "2026-03-06T00:16:56Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
@@ -51,9 +40,20 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 148.99,
+      "budget": 149.3,
       "forecast_sql": 3.31,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "generated_at": "2026-03-06T00:16:56Z"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
+      "name": "Stage3 launch for cnt_exp-opportunity-opp-003-04",
+      "status": "launch_ready",
+      "auto_launch": false,
+      "objective": "qualified_pipeline_capture",
+      "primary_channel": "email_nurture",
+      "budget": 149.3,
+      "forecast_sql": 3.31,
+      "generated_at": "2026-03-06T00:16:56Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
@@ -62,9 +62,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 148.99,
+      "budget": 149.3,
       "forecast_sql": 3.31,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "generated_at": "2026-03-06T00:16:56Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
@@ -73,9 +73,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 148.99,
+      "budget": 149.3,
       "forecast_sql": 3.31,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "generated_at": "2026-03-06T00:16:56Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
@@ -84,9 +84,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 148.99,
+      "budget": 149.3,
       "forecast_sql": 3.31,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "generated_at": "2026-03-06T00:16:56Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
@@ -95,9 +95,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 148.99,
+      "budget": 149.3,
       "forecast_sql": 3.31,
-      "generated_at": "2026-03-04T16:30:49Z"
+      "generated_at": "2026-03-06T00:16:56Z"
     }
   ],
   "campaign_assets": [
@@ -106,7 +106,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 68.35,
+      "budget": 68.49,
       "utm_medium": "email"
     },
     {
@@ -114,7 +114,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 53.16,
+      "budget": 53.27,
       "utm_medium": "paid_social"
     },
     {
@@ -122,7 +122,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 30.37,
+      "budget": 30.44,
       "utm_medium": "organic"
     },
     {
@@ -130,7 +130,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 68.25,
+      "budget": 68.39,
       "utm_medium": "email"
     },
     {
@@ -138,7 +138,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 53.08,
+      "budget": 53.19,
       "utm_medium": "paid_social"
     },
     {
@@ -146,31 +146,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 30.33,
-      "utm_medium": "organic"
-    },
-    {
-      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
-      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
-      "channel": "email_nurture",
-      "status": "launch_ready",
-      "budget": 68.18,
-      "utm_medium": "email"
-    },
-    {
-      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
-      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
-      "channel": "linkedin",
-      "status": "launch_ready",
-      "budget": 53.03,
-      "utm_medium": "paid_social"
-    },
-    {
-      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
-      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
-      "channel": "organic_search",
-      "status": "launch_ready",
-      "budget": 30.3,
+      "budget": 30.39,
       "utm_medium": "organic"
     },
     {
@@ -178,7 +154,7 @@
       "content_id": "cnt_exp-opportunity-opp-001-04",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 67.05,
+      "budget": 67.19,
       "utm_medium": "email"
     },
     {
@@ -186,7 +162,7 @@
       "content_id": "cnt_exp-opportunity-opp-001-04",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 52.15,
+      "budget": 52.26,
       "utm_medium": "paid_social"
     },
     {
@@ -194,7 +170,31 @@
       "content_id": "cnt_exp-opportunity-opp-001-04",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 29.79,
+      "budget": 29.85,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
+      "content_id": "cnt_exp-opportunity-opp-003-04",
+      "channel": "email_nurture",
+      "status": "launch_ready",
+      "budget": 67.19,
+      "utm_medium": "email"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
+      "content_id": "cnt_exp-opportunity-opp-003-04",
+      "channel": "linkedin",
+      "status": "launch_ready",
+      "budget": 52.26,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
+      "content_id": "cnt_exp-opportunity-opp-003-04",
+      "channel": "organic_search",
+      "status": "launch_ready",
+      "budget": 29.85,
       "utm_medium": "organic"
     },
     {
@@ -202,7 +202,7 @@
       "content_id": "cnt_exp-opportunity-opp-004-03",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 67.05,
+      "budget": 67.19,
       "utm_medium": "email"
     },
     {
@@ -210,7 +210,7 @@
       "content_id": "cnt_exp-opportunity-opp-004-03",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 52.15,
+      "budget": 52.26,
       "utm_medium": "paid_social"
     },
     {
@@ -218,7 +218,7 @@
       "content_id": "cnt_exp-opportunity-opp-004-03",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 29.79,
+      "budget": 29.85,
       "utm_medium": "organic"
     },
     {
@@ -226,7 +226,7 @@
       "content_id": "cnt_exp-opportunity-opp-004-06",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 67.05,
+      "budget": 67.19,
       "utm_medium": "email"
     },
     {
@@ -234,7 +234,7 @@
       "content_id": "cnt_exp-opportunity-opp-004-06",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 52.15,
+      "budget": 52.26,
       "utm_medium": "paid_social"
     },
     {
@@ -242,7 +242,7 @@
       "content_id": "cnt_exp-opportunity-opp-004-06",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 29.79,
+      "budget": 29.85,
       "utm_medium": "organic"
     },
     {
@@ -250,7 +250,7 @@
       "content_id": "cnt_exp-opportunity-opp-005-04",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 67.05,
+      "budget": 67.19,
       "utm_medium": "email"
     },
     {
@@ -258,7 +258,7 @@
       "content_id": "cnt_exp-opportunity-opp-005-04",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 52.15,
+      "budget": 52.26,
       "utm_medium": "paid_social"
     },
     {
@@ -266,7 +266,7 @@
       "content_id": "cnt_exp-opportunity-opp-005-04",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 29.79,
+      "budget": 29.85,
       "utm_medium": "organic"
     },
     {
@@ -274,7 +274,7 @@
       "content_id": "cnt_exp-opportunity-opp-006-04",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 67.05,
+      "budget": 67.19,
       "utm_medium": "email"
     },
     {
@@ -282,7 +282,7 @@
       "content_id": "cnt_exp-opportunity-opp-006-04",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 52.15,
+      "budget": 52.26,
       "utm_medium": "paid_social"
     },
     {
@@ -290,7 +290,7 @@
       "content_id": "cnt_exp-opportunity-opp-006-04",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 29.79,
+      "budget": 29.85,
       "utm_medium": "organic"
     }
   ],
@@ -320,7 +320,7 @@
       "experiment_id": "exp_opportunity-opp-003_04",
       "keyword": "monthly reporting labor vs manual",
       "intent": "BOFU",
-      "status": "needs_revision",
+      "status": "approved",
       "format": "comparison-or-usecase",
       "title": "Monthly Reporting Labor Vs Manual: Practical buyer guide for teams evaluating alternatives",
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-003-04.md"
@@ -386,16 +386,6 @@
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md"
     },
     {
-      "content_id": "cnt_exp-opportunity-opp-004-02",
-      "experiment_id": "exp_opportunity-opp-004_02",
-      "keyword": "default software output plus custom excel template",
-      "intent": "BOFU",
-      "status": "approved",
-      "format": "comparison-or-usecase",
-      "title": "Default Software Output Plus Custom Excel Template: Practical buyer guide for teams evaluating alternatives",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-02.md"
-    },
-    {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
       "keyword": "chargeback disputes handled hoc causing avoidable checklist",
@@ -414,6 +404,16 @@
       "format": "playbook-or-template",
       "title": "Chargeback Disputes Handled Hoc Causing Avoidable Template: step-by-step playbook you can apply this week",
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md"
+    },
+    {
+      "content_id": "cnt_exp-handoff-opp-001-06",
+      "experiment_id": "exp_handoff-opp-001_06",
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "approved",
+      "format": "playbook-or-template",
+      "title": "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-handoff-opp-001-06.md"
     }
   ],
   "seo_targets": [
@@ -433,7 +433,7 @@
       "keyword": "monthly reporting labor vs manual",
       "intent": "BOFU",
       "priority_score": 94.05,
-      "status": "needs_revision"
+      "status": "approved"
     },
     {
       "keyword": "how to default software output plus custom excel",
@@ -472,12 +472,6 @@
       "status": "approved"
     },
     {
-      "keyword": "default software output plus custom excel template",
-      "intent": "BOFU",
-      "priority_score": 90.3,
-      "status": "approved"
-    },
-    {
       "keyword": "chargeback disputes handled hoc causing avoidable checklist",
       "intent": "MOFU",
       "priority_score": 90.05,
@@ -487,6 +481,12 @@
       "keyword": "chargeback disputes handled hoc causing avoidable template",
       "intent": "MOFU",
       "priority_score": 90.05,
+      "status": "approved"
+    },
+    {
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "priority_score": 87.45,
       "status": "approved"
     }
   ],

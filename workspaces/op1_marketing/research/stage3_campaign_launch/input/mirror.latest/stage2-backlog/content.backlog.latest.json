@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-04T15:37:59Z",
+  "generated_at": "2026-03-06T00:16:50Z",
   "status": "ok",
-  "snapshot_id": "stage2snap_20260304153759_25c465997d1b6bbb",
-  "stage1_snapshot_id": "snap_20260304144010_e796c1ab2d1a5613",
+  "snapshot_id": "stage2snap_20260306001631_713d3cd64cec788f",
+  "stage1_snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
   "mode": "shadow",
   "auto_publish": false,
   "items": [
@@ -28,7 +28,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -46,13 +46,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-02.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:35:44Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "editor pass 1"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-02.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-opportunity-opp-001-04",
@@ -76,7 +76,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -94,13 +94,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-04.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:35:44Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "editor pass 1"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-04.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-opportunity-opp-003-04",
@@ -124,13 +124,13 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
-        "word_count": 343,
+        "word_count": 340,
         "keyword_hits": 4,
-        "keyword_density_pct": 1.166,
+        "keyword_density_pct": 1.176,
         "risk_flags": [],
         "checks": {
           "word_count_ok": true,
@@ -141,14 +141,14 @@
           "score_floor_ok": true
         }
       },
-      "queue_state": "needs_revision",
+      "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-003-04.md",
       "review_decision": {
-        "decision": "needs_revision",
-        "reviewed_at": "2026-03-04T15:35:44Z",
-        "reason": "tighten evidence details",
-        "note": "editor pass 1"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-003-04.md"
+        "decision": "approved",
+        "reviewed_at": "2026-03-06T00:16:50Z",
+        "reason": "manual_approval",
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-opportunity-opp-004-03",
@@ -172,13 +172,13 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
-        "word_count": 370,
+        "word_count": 367,
         "keyword_hits": 4,
-        "keyword_density_pct": 1.081,
+        "keyword_density_pct": 1.09,
         "risk_flags": [],
         "checks": {
           "word_count_ok": true,
@@ -190,13 +190,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-03.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-03.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-opportunity-opp-004-06",
@@ -220,13 +220,13 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
-        "word_count": 358,
+        "word_count": 355,
         "keyword_hits": 4,
-        "keyword_density_pct": 1.117,
+        "keyword_density_pct": 1.127,
         "risk_flags": [],
         "checks": {
           "word_count_ok": true,
@@ -238,13 +238,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-06.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-06.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-opportunity-opp-005-04",
@@ -268,7 +268,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -286,13 +286,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-005-04.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-005-04.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-opportunity-opp-006-04",
@@ -316,7 +316,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -334,13 +334,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-006-04.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-006-04.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
@@ -365,7 +365,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -383,13 +383,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-03.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-03.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
@@ -413,7 +413,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -431,61 +431,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md"
-    },
-    {
-      "content_id": "cnt_exp-opportunity-opp-004-02",
-      "experiment_id": "exp_opportunity-opp-004_02",
-      "context_id": "opportunity::opp_004",
-      "source_bucket": "ready",
-      "mode": "shadow",
-      "primary_keyword": "default software output plus custom excel template",
-      "intent": "BOFU",
-      "overall_score": 82.3,
-      "confidence": "medium",
-      "priority_score": 90.3,
-      "recommended_format": "comparison-or-usecase",
-      "title_options": [
-        "Default Software Output Plus Custom Excel Template: Practical buyer guide for teams evaluating alternatives",
-        "Default Software Output Plus Custom Excel Template vs manual process: what actually changes in operations",
-        "Default Software Output Plus Custom Excel Template — decision framework for operators (Property manager / Property management…)"
-      ],
-      "selected_title": "Default Software Output Plus Custom Excel Template: Practical buyer guide for teams evaluating alternatives",
-      "cta": "Reach operators with 20-150 doors and reporting pain",
-      "source_pointers": [
-        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
-      ],
-      "stage_status": "drafted",
-      "qa": {
-        "result": "pass",
-        "quality_score": 100.0,
-        "word_count": 366,
-        "keyword_hits": 4,
-        "keyword_density_pct": 1.093,
-        "risk_flags": [],
-        "checks": {
-          "word_count_ok": true,
-          "source_traceability_ok": true,
-          "evidence_depth_ok": true,
-          "keyword_density_ok": true,
-          "policy_claims_ok": true,
-          "score_floor_ok": true
-        }
-      },
-      "queue_state": "approved",
-      "review_decision": {
-        "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
-        "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-02.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
@@ -509,7 +461,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -527,13 +479,13 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-05.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
-      },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-05.md"
+        "note": "capability check"
+      }
     },
     {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
@@ -557,7 +509,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "stage_status": "drafted",
+      "stage_status": "approved",
       "qa": {
         "result": "pass",
         "quality_score": 100.0,
@@ -575,22 +527,90 @@
         }
       },
       "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md",
       "review_decision": {
         "decision": "approved",
-        "reviewed_at": "2026-03-04T15:37:55Z",
+        "reviewed_at": "2026-03-06T00:16:50Z",
         "reason": "manual_approval",
-        "note": "bulk approve"
+        "note": "capability check"
+      }
+    },
+    {
+      "content_id": "cnt_exp-handoff-opp-001-06",
+      "experiment_id": "exp_handoff-opp-001_06",
+      "context_id": "handoff::opp-001",
+      "source_bucket": "ready",
+      "mode": "shadow",
+      "primary_keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "overall_score": 82.45,
+      "confidence": "medium",
+      "priority_score": 87.45,
+      "recommended_format": "playbook-or-template",
+      "title_options": [
+        "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
+        "How to fix overdue invoices are followed up manually and too late because owners… with a lightweight workflow",
+        "Overdue Invoices Followed Manually Late Because Checklist: templates, checklist, and execution plan"
+      ],
+      "selected_title": "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
+      "cta": "Review handoff",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "stage_status": "approved",
+      "qa": {
+        "result": "pass",
+        "quality_score": 100.0,
+        "word_count": 283,
+        "keyword_hits": 4,
+        "keyword_density_pct": 1.413,
+        "risk_flags": [],
+        "checks": {
+          "word_count_ok": true,
+          "source_traceability_ok": true,
+          "evidence_depth_ok": true,
+          "keyword_density_ok": true,
+          "policy_claims_ok": true,
+          "score_floor_ok": true
+        }
       },
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md"
+      "queue_state": "approved",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-handoff-opp-001-06.md",
+      "review_decision": {
+        "decision": "approved",
+        "reviewed_at": "2026-03-06T00:16:50Z",
+        "reason": "manual_approval",
+        "note": "capability check"
+      }
     }
   ],
   "summary": {
     "selected": 12,
-    "approved": 11,
+    "approved": 12,
     "review_ready": 0,
-    "needs_revision": 1,
+    "needs_revision": 0,
     "max_items": 12,
     "include_hold": false,
     "min_score": 78.0
+  },
+  "last_manual_review": {
+    "at": "2026-03-06T00:16:50Z",
+    "approved": [
+      "cnt_exp-handoff-opp-001-06",
+      "cnt_exp-opportunity-opp-001-04",
+      "cnt_exp-opportunity-opp-003-04",
+      "cnt_exp-opportunity-opp-004-03",
+      "cnt_exp-opportunity-opp-004-06",
+      "cnt_exp-opportunity-opp-005-04",
+      "cnt_exp-opportunity-opp-006-04",
+      "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
+      "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
+      "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
+    ],
+    "needs_revision": [],
+    "reason": "manual_review_requested_changes",
+    "note": "capability check"
   }
 }

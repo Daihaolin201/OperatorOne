@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-04T14:40:10Z",
+  "generated_at": "2026-03-06T00:16:27Z",
   "status": "ok",
-  "snapshot_id": "snap_20260304144010_e796c1ab2d1a5613",
+  "snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
   "queue": {
     "ready": [
       {
@@ -85,6 +85,16 @@
         "decision_reason": "score_and_risk_pass"
       },
       {
+        "experiment_id": "exp_handoff-opp-001_04",
+        "context_id": "handoff::opp-001",
+        "keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 84.01,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
         "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
         "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
         "keyword": "overdue invoices followed tool for freelancer small service owner",
@@ -121,6 +131,16 @@
         "intent": "MOFU",
         "overall_score": 83.05,
         "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_handoff-opp-001_06",
+        "context_id": "handoff::opp-001",
+        "keyword": "overdue invoices followed manually late because checklist",
+        "intent": "MOFU",
+        "overall_score": 82.45,
+        "confidence": "medium",
         "lifecycle_status": "shadow_validated",
         "decision_reason": "score_and_risk_pass"
       },
@@ -210,6 +230,16 @@
         "keyword": "expense reimbursement remains chaotic fraud prone template",
         "intent": "MOFU",
         "overall_score": 81.05,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_handoff-opp-001_02",
+        "context_id": "handoff::opp-001",
+        "keyword": "overdue invoices followed pricing",
+        "intent": "BOFU",
+        "overall_score": 80.89,
         "confidence": "medium",
         "lifecycle_status": "ready",
         "decision_reason": "score_and_risk_pass"
@@ -425,6 +455,16 @@
         "decision_reason": "score_and_risk_pass"
       },
       {
+        "experiment_id": "exp_handoff-opp-001_01",
+        "context_id": "handoff::opp-001",
+        "keyword": "best overdue invoices followed software",
+        "intent": "BOFU",
+        "overall_score": 76.95,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
         "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_04",
         "context_id": "project_spec::proj-opp-001-client-reporting-v1",
         "keyword": "best agencies rebuild client software",
@@ -567,6 +607,16 @@
         "decision_reason": "needs_iteration"
       },
       {
+        "experiment_id": "exp_handoff-opp-001_05",
+        "context_id": "handoff::opp-001",
+        "keyword": "manual csv overdue invoice checklist",
+        "intent": "MOFU",
+        "overall_score": 72.7,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
         "experiment_id": "exp_opportunity-opp-001_03",
         "context_id": "opportunity::opp_001",
         "keyword": "overdue invoices followed tool for freelancer small service owner",
@@ -592,6 +642,16 @@
         "keyword": "owner tenant workflows tool for property manager property management",
         "intent": "BOFU",
         "overall_score": 71.05,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_handoff-opp-001_03",
+        "context_id": "handoff::opp-001",
+        "keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "overall_score": 71.04,
         "confidence": "medium",
         "lifecycle_status": "scored",
         "decision_reason": "needs_iteration"
@@ -629,7 +689,7 @@
       {
         "experiment_id": "exp_opportunity-opp-003_05",
         "context_id": "opportunity::opp_003",
-        "keyword": "manage google ads home checklist",
+        "keyword": "been meaning make post checklist",
         "intent": "MOFU",
         "overall_score": 68.55,
         "confidence": "medium",
@@ -670,8 +730,8 @@
     "drop": []
   },
   "counts": {
-    "ready": 49,
-    "hold": 17,
+    "ready": 53,
+    "hold": 19,
     "drop": 0
   }
 }

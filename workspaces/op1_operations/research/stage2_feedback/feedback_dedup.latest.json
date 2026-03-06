@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T12:00:00+00:00",
+  "generated_at": "2026-03-06T00:18:09+00:00",
   "items": [
     {
       "feedback_item_id": "fi_4516a28f68345620",
@@ -215,22 +215,22 @@
     {
       "feedback_item_id": "fi_cde6408aad3cb28d",
       "dedupe_key": "1e0ce995fde4ec04bbb2298fef9e5266",
-      "canonical_feedback_id": "fb_b38fb8eb44046637a5b9f22c538d54c10b7816d9",
+      "canonical_feedback_id": "fb_d192b266dae23e55a8d9e4b956c8eefad6e681c3",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
       "actor_ids": [
-        "lead:opp_005-lead-019"
+        "lead:opp_005-lead-020"
       ],
       "lead_ids": [
-        "opp_005-lead-019"
+        "opp_005-lead-020"
       ],
       "feedback_type": "pricing",
       "topic": "pricing",
       "subtopic": "roi_unclear",
       "journey_stage": "signup_to_paid",
-      "first_seen": "2026-03-04T20:03:26+00:00",
-      "last_seen": "2026-03-04T20:03:26+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 4,
       "severity_avg": 4.0,
       "urgency_max": 4,
@@ -266,16 +266,16 @@
       ],
       "unknown_topic": false,
       "source_refs": [
-        "opp_005-lead-019"
+        "opp_005-lead-020"
       ],
       "event_refs": [
-        "fb_b38fb8eb44046637a5b9f22c538d54c10b7816d9"
+        "fb_d192b266dae23e55a8d9e4b956c8eefad6e681c3"
       ]
     },
     {
       "feedback_item_id": "fi_19d3de8c0c06e487",
       "dedupe_key": "84461b7116254f821ec5822c75f14efc",
-      "canonical_feedback_id": "fb_762d9bd4724d98c0b79afceb01d2716a28ed96ad",
+      "canonical_feedback_id": "fb_4bb353c47ee3a015b2194762ba4e932b814f8208",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -289,8 +289,8 @@
       "topic": "pricing",
       "subtopic": "price_sensitivity",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 4,
       "severity_avg": 4.0,
       "urgency_max": 3,
@@ -323,7 +323,7 @@
         "opp_005-lead-013"
       ],
       "event_refs": [
-        "fb_762d9bd4724d98c0b79afceb01d2716a28ed96ad"
+        "fb_4bb353c47ee3a015b2194762ba4e932b814f8208"
       ]
     },
     {
@@ -384,7 +384,7 @@
     {
       "feedback_item_id": "fi_dff6fd2b9cd41b4e",
       "dedupe_key": "bf1dc2d00330b9ece65abaac46d516f5",
-      "canonical_feedback_id": "fb_760057d53f5eca9eba094c71dcdcedc6fe8203af",
+      "canonical_feedback_id": "fb_fd4fcaaa5cef47e221999748682eb3d2acafe26f",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -398,8 +398,8 @@
       "topic": "pricing",
       "subtopic": "price_sensitivity",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 4,
       "severity_avg": 4.0,
       "urgency_max": 3,
@@ -434,7 +434,7 @@
         "opp_005-lead-006"
       ],
       "event_refs": [
-        "fb_760057d53f5eca9eba094c71dcdcedc6fe8203af"
+        "fb_fd4fcaaa5cef47e221999748682eb3d2acafe26f"
       ]
     },
     {
@@ -490,7 +490,7 @@
     {
       "feedback_item_id": "fi_d845182f6a359199",
       "dedupe_key": "2636b320f0ab964db8cd9aa934015ade",
-      "canonical_feedback_id": "fb_2f8cd287f7723d71a917375c28b0820bfd16ead3",
+      "canonical_feedback_id": "fb_62a05aaba698c2e2b7a18890e6c0b3a7ac2b4b09",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -504,8 +504,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -541,13 +541,13 @@
         "opp_005-lead-012"
       ],
       "event_refs": [
-        "fb_2f8cd287f7723d71a917375c28b0820bfd16ead3"
+        "fb_62a05aaba698c2e2b7a18890e6c0b3a7ac2b4b09"
       ]
     },
     {
       "feedback_item_id": "fi_3562d87345b818c1",
       "dedupe_key": "2b6e1b847edf8ce87135f95b8c2c024c",
-      "canonical_feedback_id": "fb_facf11f17fb9af2e5cdae4bdb9ddd9567e64bf3d",
+      "canonical_feedback_id": "fb_79cc37ee9c5f7881641b238c7aad2f3406db14e7",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -561,8 +561,8 @@
       "topic": "trust",
       "subtopic": "security",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -594,13 +594,13 @@
         "opp_005-lead-010"
       ],
       "event_refs": [
-        "fb_facf11f17fb9af2e5cdae4bdb9ddd9567e64bf3d"
+        "fb_79cc37ee9c5f7881641b238c7aad2f3406db14e7"
       ]
     },
     {
       "feedback_item_id": "fi_c0c51a7ced1c2fe7",
       "dedupe_key": "33cb4c9724973ee0ba6004e71e0ab519",
-      "canonical_feedback_id": "fb_f337b11ad40984b8def11b15380d9e57a0679bb7",
+      "canonical_feedback_id": "fb_137c6990612b58532d21c98257e379867e95be75",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -614,8 +614,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -647,7 +647,7 @@
         "opp_005-lead-005"
       ],
       "event_refs": [
-        "fb_f337b11ad40984b8def11b15380d9e57a0679bb7"
+        "fb_137c6990612b58532d21c98257e379867e95be75"
       ]
     },
     {
@@ -766,22 +766,22 @@
     {
       "feedback_item_id": "fi_7895224f9636f629",
       "dedupe_key": "50260d25af7f4cb6ded71b461cbd7b4b",
-      "canonical_feedback_id": "fb_20dcd30f0f565928eefaa8c6e71811efb5329fbf",
+      "canonical_feedback_id": "fb_8265871022c0e85ec5428f366364c6542f596483",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
       "actor_ids": [
-        "lead:opp_005-lead-020"
+        "lead:opp_005-lead-019"
       ],
       "lead_ids": [
-        "opp_005-lead-020"
+        "opp_005-lead-019"
       ],
       "feedback_type": "confusion",
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -814,16 +814,16 @@
       ],
       "unknown_topic": false,
       "source_refs": [
-        "opp_005-lead-020"
+        "opp_005-lead-019"
       ],
       "event_refs": [
-        "fb_20dcd30f0f565928eefaa8c6e71811efb5329fbf"
+        "fb_8265871022c0e85ec5428f366364c6542f596483"
       ]
     },
     {
       "feedback_item_id": "fi_1038de67ceb262c3",
       "dedupe_key": "5ecf1775451067f9cd14706790747f8c",
-      "canonical_feedback_id": "fb_40de9f4eac858da35c9b6f0ae6c291e0c3f79a68",
+      "canonical_feedback_id": "fb_63b7d21c5e9f25b513be11429ecd4dc319c5cb15",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -837,8 +837,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -875,28 +875,28 @@
         "opp_005-lead-009"
       ],
       "event_refs": [
-        "fb_40de9f4eac858da35c9b6f0ae6c291e0c3f79a68"
+        "fb_63b7d21c5e9f25b513be11429ecd4dc319c5cb15"
       ]
     },
     {
       "feedback_item_id": "fi_7f95bdafab5d5c9d",
       "dedupe_key": "b1a2e9e42339caf0dc051a7d1a28deb8",
-      "canonical_feedback_id": "fb_e97e64083efe5949e9a2b61ee18828413f5ecf86",
+      "canonical_feedback_id": "fb_a0f449de9d05b40f1629f19c35a9eb71bb9bae2d",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
       "actor_ids": [
-        "lead:opp_005-lead-017"
+        "lead:opp_005-lead-016"
       ],
       "lead_ids": [
-        "opp_005-lead-017"
+        "opp_005-lead-016"
       ],
       "feedback_type": "confusion",
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -927,31 +927,31 @@
       ],
       "unknown_topic": false,
       "source_refs": [
-        "opp_005-lead-017"
+        "opp_005-lead-016"
       ],
       "event_refs": [
-        "fb_e97e64083efe5949e9a2b61ee18828413f5ecf86"
+        "fb_a0f449de9d05b40f1629f19c35a9eb71bb9bae2d"
       ]
     },
     {
       "feedback_item_id": "fi_6503bc41af71ea54",
       "dedupe_key": "b68299ee24ec5526ffbd045857d73522",
-      "canonical_feedback_id": "fb_bbe9fb6dc0111489b05b19068617f41c80a3d9c2",
+      "canonical_feedback_id": "fb_a70d1834a45cae0866823bbffb069cf56258433c",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
       "actor_ids": [
-        "lead:opp_005-lead-016"
+        "lead:opp_005-lead-017"
       ],
       "lead_ids": [
-        "opp_005-lead-016"
+        "opp_005-lead-017"
       ],
       "feedback_type": "confusion",
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -984,16 +984,16 @@
       ],
       "unknown_topic": false,
       "source_refs": [
-        "opp_005-lead-016"
+        "opp_005-lead-017"
       ],
       "event_refs": [
-        "fb_bbe9fb6dc0111489b05b19068617f41c80a3d9c2"
+        "fb_a70d1834a45cae0866823bbffb069cf56258433c"
       ]
     },
     {
       "feedback_item_id": "fi_d5a065f840f9e540",
       "dedupe_key": "ba04fe98329b89b3b8f91a2db197ca5d",
-      "canonical_feedback_id": "fb_0b7edb2361a5eb856f449cb3805111c30337997d",
+      "canonical_feedback_id": "fb_8cfb89ac25cadd11c5e7d39f03c2d36a294dd47a",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1007,8 +1007,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1044,13 +1044,13 @@
         "opp_005-lead-008"
       ],
       "event_refs": [
-        "fb_0b7edb2361a5eb856f449cb3805111c30337997d"
+        "fb_8cfb89ac25cadd11c5e7d39f03c2d36a294dd47a"
       ]
     },
     {
       "feedback_item_id": "fi_df1923c65baa3f9a",
       "dedupe_key": "bd3bdf4fc44ef933cc2864c42f32e872",
-      "canonical_feedback_id": "fb_de3fd1e1a0e175029dff826cbd256dd63b4a3e6a",
+      "canonical_feedback_id": "fb_1c9489c4e47f4247092829c4506fe69c654717d8",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1064,8 +1064,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1104,7 +1104,7 @@
         "opp_005-lead-007"
       ],
       "event_refs": [
-        "fb_de3fd1e1a0e175029dff826cbd256dd63b4a3e6a"
+        "fb_1c9489c4e47f4247092829c4506fe69c654717d8"
       ]
     },
     {
@@ -1163,7 +1163,7 @@
     {
       "feedback_item_id": "fi_20cd1163dd14c475",
       "dedupe_key": "cd29c0bb05d1f1bc897ce5e884a2c367",
-      "canonical_feedback_id": "fb_ddb40c8e39f7b8ff6c4bb8a7b284e3e32491e755",
+      "canonical_feedback_id": "fb_829c25f1d4a9211346b0f298e9cedbb375b50c05",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1177,8 +1177,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1214,13 +1214,13 @@
         "opp_005-lead-002"
       ],
       "event_refs": [
-        "fb_ddb40c8e39f7b8ff6c4bb8a7b284e3e32491e755"
+        "fb_829c25f1d4a9211346b0f298e9cedbb375b50c05"
       ]
     },
     {
       "feedback_item_id": "fi_cefea68726e7028a",
       "dedupe_key": "d9affce72eaebfb9f79d952a9661b424",
-      "canonical_feedback_id": "fb_2b1c464db42cad0f236d11a602c7b51c554166e1",
+      "canonical_feedback_id": "fb_044804ba7b54d1a215d1ba7b4cd73186b770c549",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1234,8 +1234,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1273,13 +1273,13 @@
         "opp_005-lead-011"
       ],
       "event_refs": [
-        "fb_2b1c464db42cad0f236d11a602c7b51c554166e1"
+        "fb_044804ba7b54d1a215d1ba7b4cd73186b770c549"
       ]
     },
     {
       "feedback_item_id": "fi_4708e84a3075e1ba",
       "dedupe_key": "e11918bcd58e783a795d60e97dccc764",
-      "canonical_feedback_id": "fb_8578bebf9525c8fdb2325e3dc3f409bea16503f5",
+      "canonical_feedback_id": "fb_e6db6296b0a78febf921460a3fbf62e24b9ee5d6",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1293,8 +1293,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1329,13 +1329,13 @@
         "opp_005-lead-014"
       ],
       "event_refs": [
-        "fb_8578bebf9525c8fdb2325e3dc3f409bea16503f5"
+        "fb_e6db6296b0a78febf921460a3fbf62e24b9ee5d6"
       ]
     },
     {
       "feedback_item_id": "fi_d0c65423d9c21bef",
       "dedupe_key": "e56b77d9dff49aad4d630ab2d4cb4718",
-      "canonical_feedback_id": "fb_a187b600ca04c577a9e9000cfdc9827ca5441fb3",
+      "canonical_feedback_id": "fb_65c7ccd16dbbeee6a24c653222d19e76fcba02f9",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1349,8 +1349,8 @@
       "topic": "integration",
       "subtopic": "api",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1384,13 +1384,13 @@
         "opp_005-lead-004"
       ],
       "event_refs": [
-        "fb_a187b600ca04c577a9e9000cfdc9827ca5441fb3"
+        "fb_65c7ccd16dbbeee6a24c653222d19e76fcba02f9"
       ]
     },
     {
       "feedback_item_id": "fi_a5551dff9ba30ce4",
       "dedupe_key": "fa72c63e9abdf5318c214c7ee01420f8",
-      "canonical_feedback_id": "fb_45c7b70576d7a0bb8397e583814d89bce3ce3249",
+      "canonical_feedback_id": "fb_54b04fc4b41555161c29abc0c9f444b61d6a7c4d",
       "duplicate_feedback_ids": [],
       "duplicate_count": 1,
       "unique_actor_count": 1,
@@ -1404,8 +1404,8 @@
       "topic": "onboarding",
       "subtopic": "manual_work",
       "journey_stage": "problem_discovery",
-      "first_seen": "2026-03-04T20:38:22+00:00",
-      "last_seen": "2026-03-04T20:38:22+00:00",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
       "severity_max": 3,
       "severity_avg": 3.0,
       "urgency_max": 3,
@@ -1441,7 +1441,7 @@
         "opp_005-lead-018"
       ],
       "event_refs": [
-        "fb_45c7b70576d7a0bb8397e583814d89bce3ce3249"
+        "fb_54b04fc4b41555161c29abc0c9f444b61d6a7c4d"
       ]
     },
     {

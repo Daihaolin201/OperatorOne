@@ -1,8 +1,36 @@
 {
-  "generated_at": "2026-03-04T16:30:56Z",
-  "previous_snapshot_id": "stage3snap_20260304163049_1a34565a68b0489e",
-  "snapshot_id": "stage3snap_20260304163056_1a34565a68b0489e",
+  "generated_at": "2026-03-06T00:16:56Z",
+  "previous_snapshot_id": "stage3snap_20260306001634_be3985a11a0048aa",
+  "snapshot_id": "stage3snap_20260306001656_2fe04ae954c538fa",
   "added": [],
-  "changed": [],
+  "changed": [
+    {
+      "id": "stage2_run",
+      "path": "research/stage2_content_publish/run.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
+      "exists": true,
+      "sha256": "749270e9b7808cd3271c962411dca3ea94b070d77c2a37dc7dc255238aff52dc",
+      "size": 4833,
+      "mtime": 1772756210
+    },
+    {
+      "id": "stage2_backlog",
+      "path": "research/stage2_content_publish/content.backlog.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
+      "exists": true,
+      "sha256": "c10d98bea82a15bdad32726af6a48e4195f3bc887438912b9e9d163338f2fb68",
+      "size": 25159,
+      "mtime": 1772756210
+    },
+    {
+      "id": "stage2_queue",
+      "path": "research/stage2_content_publish/publish.queue.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
+      "exists": true,
+      "sha256": "5c9745ca30e499c9d9fc9f6917a9eb72e6da7ff437d2fc58ea9ae41f18373a1c",
+      "size": 26205,
+      "mtime": 1772756210
+    }
+  ],
   "removed": []
 }

@@ -1,13 +1,13 @@
 {
-  "generated_at": "2026-03-04T14:40:10Z",
+  "generated_at": "2026-03-06T00:16:27Z",
   "status": "ok",
   "scoring_version": "shadow_v1",
-  "snapshot_id": "snap_20260304144010_e796c1ab2d1a5613",
+  "snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
   "summary": {
-    "experiment_count": 66,
-    "avg_overall_score": 78.26,
-    "ready_count": 49,
-    "hold_count": 17,
+    "experiment_count": 72,
+    "avg_overall_score": 78.24,
+    "ready_count": 53,
+    "hold_count": 19,
     "drop_count": 0
   },
   "experiments": [
@@ -156,6 +156,24 @@
       "lifecycle_status": "shadow_validated"
     },
     {
+      "experiment_id": "exp_handoff-opp-001_04",
+      "context_id": "handoff::opp-001",
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "scores": {
+        "intent_match": 100.0,
+        "problem_message_fit": 81.25,
+        "differentiation": 80,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 23
+      },
+      "overall_score": 84.01,
+      "confidence": "medium",
+      "decision": "ready",
+      "decision_reason": "score_and_risk_pass",
+      "lifecycle_status": "shadow_validated"
+    },
+    {
       "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
       "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
       "keyword": "overdue invoices followed tool for freelancer small service owner",
@@ -223,6 +241,24 @@
       },
       "overall_score": 83.05,
       "confidence": "high",
+      "decision": "ready",
+      "decision_reason": "score_and_risk_pass",
+      "lifecycle_status": "shadow_validated"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_06",
+      "context_id": "handoff::opp-001",
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "scores": {
+        "intent_match": 87.86,
+        "problem_message_fit": 87.14,
+        "differentiation": 80,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 23
+      },
+      "overall_score": 82.45,
+      "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
       "lifecycle_status": "shadow_validated"
@@ -384,6 +420,24 @@
         "execution_risk_penalty": 37
       },
       "overall_score": 81.05,
+      "confidence": "medium",
+      "decision": "ready",
+      "decision_reason": "score_and_risk_pass",
+      "lifecycle_status": "ready"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_02",
+      "context_id": "handoff::opp-001",
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "scores": {
+        "intent_match": 87.5,
+        "problem_message_fit": 81.25,
+        "differentiation": 80,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 23
+      },
+      "overall_score": 80.89,
       "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
@@ -786,6 +840,24 @@
       "lifecycle_status": "ready"
     },
     {
+      "experiment_id": "exp_handoff-opp-001_01",
+      "context_id": "handoff::opp-001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "scores": {
+        "intent_match": 80.0,
+        "problem_message_fit": 73.0,
+        "differentiation": 80,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 23
+      },
+      "overall_score": 76.95,
+      "confidence": "medium",
+      "decision": "ready",
+      "decision_reason": "score_and_risk_pass",
+      "lifecycle_status": "ready"
+    },
+    {
       "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_04",
       "context_id": "project_spec::proj-opp-001-client-reporting-v1",
       "keyword": "best agencies rebuild client software",
@@ -1020,6 +1092,24 @@
       "lifecycle_status": "scored"
     },
     {
+      "experiment_id": "exp_handoff-opp-001_05",
+      "context_id": "handoff::opp-001",
+      "keyword": "manual csv overdue invoice checklist",
+      "intent": "MOFU",
+      "scores": {
+        "intent_match": 85.0,
+        "problem_message_fit": 51.0,
+        "differentiation": 80,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 23
+      },
+      "overall_score": 72.7,
+      "confidence": "medium",
+      "decision": "hold",
+      "decision_reason": "needs_iteration",
+      "lifecycle_status": "scored"
+    },
+    {
       "experiment_id": "exp_opportunity-opp-001_03",
       "context_id": "opportunity::opp_001",
       "keyword": "overdue invoices followed tool for freelancer small service owner",
@@ -1068,6 +1158,24 @@
         "execution_risk_penalty": 37
       },
       "overall_score": 71.05,
+      "confidence": "medium",
+      "decision": "hold",
+      "decision_reason": "needs_iteration",
+      "lifecycle_status": "scored"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_03",
+      "context_id": "handoff::opp-001",
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "scores": {
+        "intent_match": 68.75,
+        "problem_message_fit": 60.62,
+        "differentiation": 80,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 23
+      },
+      "overall_score": 71.04,
       "confidence": "medium",
       "decision": "hold",
       "decision_reason": "needs_iteration",
@@ -1130,7 +1238,7 @@
     {
       "experiment_id": "exp_opportunity-opp-003_05",
       "context_id": "opportunity::opp_003",
-      "keyword": "manage google ads home checklist",
+      "keyword": "been meaning make post checklist",
       "intent": "MOFU",
       "scores": {
         "intent_match": 85.0,

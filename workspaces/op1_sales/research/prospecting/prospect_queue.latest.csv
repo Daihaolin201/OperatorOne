@@ -1,7 +1,7 @@
 rank,opportunity_id,segment_name,target_role,target_company_size,target_industry,priority_score,matched_posts,top_keyword,first_20_targets_how
-1,opp_005,Expense reimbursement control,SMB owner / finance admin,10-100,General SMB,97.32,39,expense reimbursement remains vs manual,Interview SMBs with recurring reimbursement delays
-2,opp_001,Invoice follow-up automation,Freelancer / small service owner,1-20,Professional services,97.28,70,overdue invoices followed vs manual,Reach out to posters discussing overdue invoices and AR frustration
-3,opp_002,Chargeback response operations,Ecommerce owner / operations manager,3-50,DTC ecommerce,96.07,74,chargeback disputes handled tool for ecommerce operator ecommerce,Shortlist stores actively discussing dispute losses
-4,opp_003,Agency client reporting,Agency owner / account manager,5-50,Marketing agencies,89.38,137,agencies rebuild client tool for agency operator marketing services,Target agencies publicly discussing reporting bottlenecks
-5,opp_006,Spreadsheet/PDF workflow fragility,Operations admin,5-80,SMB operations/logistics,89.32,59,core workflows depend vs manual,Reach teams reporting PDF-to-Excel pain and formula breakage
-6,opp_004,Property manager owner/tenant workflow,Property manager,2-30,Property management,88.76,66,how to default software output plus custom excel,Reach operators with 20-150 doors and reporting pain
+1,opp_005,Expense reimbursement control,SMB owner / finance admin,10-100,General SMB,97.32,41,expense reimbursement remains vs manual,Interview SMBs with recurring reimbursement delays
+2,opp_001,Invoice follow-up automation,Freelancer / small service owner,1-20,Professional services,96.31,75,overdue invoices followed vs manual,Reach out to posters discussing overdue invoices and AR frustration
+3,opp_002,Chargeback response operations,Ecommerce owner / operations manager,3-50,DTC ecommerce,96.07,76,chargeback disputes handled tool for ecommerce operator ecommerce,Shortlist stores actively discussing dispute losses
+4,opp_003,Agency client reporting,Agency owner / account manager,5-50,Marketing agencies,89.38,150,agencies rebuild client tool for agency operator marketing services,Target agencies publicly discussing reporting bottlenecks
+5,opp_004,Property manager owner/tenant workflow,Property manager,2-30,Property management,89.32,66,how to default software output plus custom excel,Reach operators with 20-150 doors and reporting pain
+6,opp_006,Spreadsheet/PDF workflow fragility,Operations admin,5-80,SMB operations/logistics,89.32,63,core workflows depend vs manual,Reach teams reporting PDF-to-Excel pain and formula breakage

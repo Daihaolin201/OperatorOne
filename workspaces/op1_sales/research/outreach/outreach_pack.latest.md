@@ -1,6 +1,6 @@
 # Outreach Pack (Stage2 latest)
 
-Generated at: 2026-03-04T20:38:22+00:00
+Generated at: 2026-03-06T00:17:29+00:00
 Mode: approval_required
 
 ## Segment snapshot
@@ -36,11 +36,11 @@ Mode: approval_required
 | 13 | opp_005-lead-013 | A2 | SMB老板/财务负责人 | CPA raised fees 35% on me this for next year | low_fit | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1m6gbb7/cpa_raised_fees_35_on_me_this_for_next_year/ |
 | 14 | opp_005-lead-014 | A2 | SMB老板/财务负责人 | Software Guidance Request for Simple Income/Expense Reporting | qualified | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1qghh7b/software_guidance_request_for_simple/ |
 | 15 | opp_005-lead-015 | B1 | SMB老板/财务负责人 | I need a simple way to share a folder with my accountant once a year | qualified | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1qpcp5g/i_need_a_simple_way_to_share_a_folder_with_my/ |
-| 16 | opp_005-lead-016 | B1 | 电商老板/运营负责人 | E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025 | low_fit | email_nurture | https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/ |
-| 17 | opp_005-lead-017 | B1 | SMB老板/财务负责人 | I got my first client 7 months ago and I'm stuck | low_fit | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1ocn9pq/i_got_my_first_client_7_months_ago_and_im_stuck/ |
+| 16 | opp_005-lead-016 | B1 | SMB老板/财务负责人 | I got my first client 7 months ago and I'm stuck | low_fit | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1ocn9pq/i_got_my_first_client_7_months_ago_and_im_stuck/ |
+| 17 | opp_005-lead-017 | B1 | 电商老板/运营负责人 | E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025 | low_fit | email_nurture | https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/ |
 | 18 | opp_005-lead-018 | B1 | SMB老板/财务负责人 | A letter to myself: Everything I wish I'd known before starting my business | low_fit | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1jvolu4/a_letter_to_myself_everything_i_wish_id_known/ |
-| 19 | opp_005-lead-019 | B1 | SMB老板/财务负责人 | The real ROI of expense management isn't the software cost - it's the hours your team gets back | qualified | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/ |
-| 20 | opp_005-lead-020 | B1 | SMB老板/财务负责人 | Need help choosing POS, Inventory and book keeping software | low_fit | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/ |
+| 19 | opp_005-lead-019 | B1 | SMB老板/财务负责人 | Need help choosing POS, Inventory and book keeping software | low_fit | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/ |
+| 20 | opp_005-lead-020 | B1 | SMB老板/财务负责人 | The real ROI of expense management isn't the software cost - it's the hours your team gets back | qualified | email_nurture | https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/ |
 
 ## Outreach draft snippets (A1/A2/B1 examples)
 

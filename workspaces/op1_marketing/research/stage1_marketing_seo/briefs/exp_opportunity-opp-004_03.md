@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-004_03
 
-- Generated at: 2026-03-04T14:40:10Z
+- Generated at: 2026-03-06T00:16:27Z
 - Context: `opportunity::opp_004`
 - Keyword: **how to default software output plus custom excel** (BOFU)
 - Current shadow score: **86.05**

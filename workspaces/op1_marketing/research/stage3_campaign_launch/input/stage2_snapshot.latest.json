@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-04T16:30:56Z",
-  "snapshot_id": "stage3snap_20260304163056_1a34565a68b0489e",
+  "generated_at": "2026-03-06T00:16:56Z",
+  "snapshot_id": "stage3snap_20260306001656_2fe04ae954c538fa",
   "workspace_root": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing",
   "requirements": [
     {
@@ -8,45 +8,45 @@
       "path": "research/stage2_content_publish/run.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
       "exists": true,
-      "sha256": "472f8967245820fca3af5cc52257eedce870219a4ebf7d0bd8685bb0140aa3c1",
-      "size": 4046,
-      "mtime": 1772638679
+      "sha256": "749270e9b7808cd3271c962411dca3ea94b070d77c2a37dc7dc255238aff52dc",
+      "size": 4833,
+      "mtime": 1772756210
     },
     {
       "id": "stage2_backlog",
       "path": "research/stage2_content_publish/content.backlog.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
       "exists": true,
-      "sha256": "b3729eeb85ea6a58f891d74947ad0dab54d5cd33afa81cd9c1a1f1e666d06ede",
-      "size": 24456,
-      "mtime": 1772638679
+      "sha256": "c10d98bea82a15bdad32726af6a48e4195f3bc887438912b9e9d163338f2fb68",
+      "size": 25159,
+      "mtime": 1772756210
     },
     {
       "id": "stage2_queue",
       "path": "research/stage2_content_publish/publish.queue.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
       "exists": true,
-      "sha256": "464a9c7cdc3f997fc9a27df5fbe39d68b3d32300a90c3df8dc6fe22618942be6",
-      "size": 25506,
-      "mtime": 1772638679
+      "sha256": "5c9745ca30e499c9d9fc9f6917a9eb72e6da7ff437d2fc58ea9ae41f18373a1c",
+      "size": 26205,
+      "mtime": 1772756210
     },
     {
       "id": "stage2_qa",
       "path": "research/stage2_content_publish/qa.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
       "exists": true,
-      "sha256": "6373040995c81cae68f00daddac5f32dbad0d2b7511870f20ef8a75d0d466d8d",
-      "size": 5588,
-      "mtime": 1772638679
+      "sha256": "adfe8d7cb6000c8bc8ff945cf3eb1970d2277082fa3443bdff76cf6d7ba2e163",
+      "size": 5580,
+      "mtime": 1772756191
     },
     {
       "id": "product_to_marketing_handoff",
       "path": "../../handoffs/product_to_marketing.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
       "exists": true,
-      "sha256": "723cf998f634ca1deb16ac96911bf07ef8d37986d76bbf4641255eae6ae4c371",
-      "size": 404,
-      "mtime": 1772635210
+      "sha256": "f160f3ec11fd049f1679ef4d7e7c6214038559302687fe737c1313e3e2f943ba",
+      "size": 1710,
+      "mtime": 1772756181
     }
   ],
   "completeness": {

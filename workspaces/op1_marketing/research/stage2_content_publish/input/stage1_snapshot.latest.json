@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-04T15:37:59Z",
-  "snapshot_id": "stage2snap_20260304153759_25c465997d1b6bbb",
+  "generated_at": "2026-03-06T00:16:31Z",
+  "snapshot_id": "stage2snap_20260306001631_713d3cd64cec788f",
   "workspace_root": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing",
   "requirements": [
     {
@@ -8,54 +8,54 @@
       "path": "research/stage1_marketing_seo/run.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/run.latest.json",
       "exists": true,
-      "sha256": "eca3656bb12cef8adc034cc26b28b92f5c2e0a7df8da4fc93218e2a3c8605c5d",
+      "sha256": "af52d7f0d026476c59f99d73e6825ee70aa8aa45b1d08fcde29b833eecbc923e",
       "size": 6584,
-      "mtime": 1772635210
+      "mtime": 1772756187
     },
     {
       "id": "stage1_context_index",
       "path": "research/stage1_marketing_seo/context_index.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/context_index.latest.json",
       "exists": true,
-      "sha256": "27e8c66d3ad19bd8bec2e708c701c4944deec79a168716d32795a3cb0cbf8559",
-      "size": 21497,
-      "mtime": 1772635210
+      "sha256": "8317bcc1ab4cd6a96ff7c506268d152b6923b6a8e6c63c55c697b21ace136c0c",
+      "size": 22849,
+      "mtime": 1772756187
     },
     {
       "id": "stage1_backlog",
       "path": "research/stage1_marketing_seo/experiments.backlog.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.backlog.latest.json",
       "exists": true,
-      "sha256": "2c997e1e83767da527524ffda6d3b0708179f4ea92e1d8a71844a2109b251d34",
-      "size": 100381,
-      "mtime": 1772635210
+      "sha256": "4f5a3f2582db81258ed2f4eba9876453181f4e460f339de83c60c4e93f24e5c2",
+      "size": 108590,
+      "mtime": 1772756187
     },
     {
       "id": "stage1_queue",
       "path": "research/stage1_marketing_seo/experiments.queue.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.queue.latest.json",
       "exists": true,
-      "sha256": "f355735ade309a207489b7347b60ad65f37df9aa49565f0870297cbaeb80b2af",
-      "size": 25279,
-      "mtime": 1772635210
+      "sha256": "acd69b890eb9cc2df36f922b0093a9fec46537054f7692c3e656e03784ab8e0e",
+      "size": 27413,
+      "mtime": 1772756187
     },
     {
       "id": "stage1_scoreboard",
       "path": "research/stage1_marketing_seo/scoreboard.latest.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/scoreboard.latest.json",
       "exists": true,
-      "sha256": "73368d8d788ed1d0ad456c92fe6c5caa74ad4862a181c774862c442d16595130",
-      "size": 38960,
-      "mtime": 1772635210
+      "sha256": "7d6abfe86dc9c82fd77b15d159f6736404aacc0d7938cb1330ea82c177818b3d",
+      "size": 42329,
+      "mtime": 1772756187
     },
     {
       "id": "product_to_marketing_handoff",
       "path": "../../handoffs/product_to_marketing.json",
       "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
       "exists": true,
-      "sha256": "723cf998f634ca1deb16ac96911bf07ef8d37986d76bbf4641255eae6ae4c371",
-      "size": 404,
-      "mtime": 1772635210
+      "sha256": "f160f3ec11fd049f1679ef4d7e7c6214038559302687fe737c1313e3e2f943ba",
+      "size": 1710,
+      "mtime": 1772756181
     }
   ],
   "completeness": {

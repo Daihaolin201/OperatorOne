@@ -1,22 +1,5 @@
 {
-  "generated_at": "2026-03-04T20:38:22+00:00",
-  "batch_id": "batch-2026-03-04T203822+0000",
-  "requests": [
-    {
-      "lead_id": "opp_005-lead-001",
-      "channel": "email_nurture",
-      "target": "lead001@example.invalid",
-      "subject": "关于Expense reimbursement control：I caught an employee submitting fake expense reports",
-      "message": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1pdax88/i_caught_an_employee_submitting_fake_expense/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先做重复报销拦截+凭证追缴，不动主账务流程。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。",
-      "mode": "prepared"
-    },
-    {
-      "lead_id": "opp_005-lead-002",
-      "channel": "email_nurture",
-      "target": "lead002@example.invalid",
-      "subject": "关于Expense reimbursement control：How do you all handle employee expenses without los...",
-      "message": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1o6dmvd/how_do_you_all_handle_employee_expenses_without/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先做重复报销拦截+凭证追缴，不动主账务流程。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。",
-      "mode": "prepared"
-    }
-  ]
+  "generated_at": "2026-03-06T00:17:29+00:00",
+  "batch_id": "batch-2026-03-06T001729+0000",
+  "requests": []
 }

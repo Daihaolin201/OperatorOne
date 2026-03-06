@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-04T20:38:22+00:00",
+  "generated_at": "2026-03-06T00:17:29+00:00",
   "builder": "workspaces/op1_sales/scripts/build_outreach_stage2.py",
   "mode": "approval_required",
   "inputs": {
@@ -108,7 +108,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.8072,
+        "signal_score": 3.8057,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -166,7 +166,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.5698,
+        "signal_score": 3.5662,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -282,7 +282,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.983,
+        "signal_score": 2.9851,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -398,7 +398,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.6867,
+        "signal_score": 2.7115,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -456,7 +456,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.4866,
+        "signal_score": 2.4487,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -612,7 +612,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.0646,
+        "signal_score": 3.0442,
         "queries_matched": [
           "appointment booking software"
         ]
@@ -665,7 +665,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.0384,
+        "signal_score": 3.0329,
         "queries_matched": [
           "late payments"
         ]
@@ -718,7 +718,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.7952,
+        "signal_score": 2.7746,
         "queries_matched": [
           "double booking"
         ]
@@ -771,7 +771,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.1761,
+        "signal_score": 2.1498,
         "queries_matched": [
           "automation too expensive"
         ]
@@ -823,7 +823,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.0331,
+        "signal_score": 2.0603,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -860,53 +860,6 @@
       "priority_band": "B1",
       "opportunity_id": "opp_005",
       "segment_name": "Expense reimbursement control",
-      "inferred_role": "电商老板/运营负责人",
-      "target_company_size": "10-100",
-      "target_industry": "General SMB",
-      "pain_signal": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025",
-      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/",
-      "fit_hits": 0,
-      "fit_status": "low_fit",
-      "source": {
-        "subreddit": "ecommerce",
-        "signal_score": 1.7094,
-        "queries_matched": [
-          "manual order fraud checks"
-        ]
-      },
-      "channel_plan": [
-        {
-          "step": 1,
-          "day_offset": 0,
-          "channel": "email_nurture",
-          "touch_type": "initial"
-        }
-      ],
-      "message_pack": {
-        "email_nurture": {
-          "subject_control": "关于Expense reimbursement control：E-commerce Industry News Recap 🔥 Week of Aug 18th, ...",
-          "subject_challenger": "Expense reimbursement control的低成本试点建议",
-          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/）。\n我们最近在帮电商老板/运营负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
-        },
-        "linkedin": {
-          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
-          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
-        }
-      },
-      "assumptions": [
-        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
-        "该线索来自公开讨论信号，不等于已确认购买权限。",
-        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
-        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
-      ],
-      "status": "needs_review"
-    },
-    {
-      "lead_id": "opp_005-lead-017",
-      "rank": 17,
-      "priority_band": "B1",
-      "opportunity_id": "opp_005",
-      "segment_name": "Expense reimbursement control",
       "inferred_role": "SMB老板/财务负责人",
       "target_company_size": "10-100",
       "target_industry": "General SMB",
@@ -916,7 +869,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 1.7048,
+        "signal_score": 1.83,
         "queries_matched": [
           "double booking"
         ]
@@ -949,6 +902,53 @@
       "status": "needs_review"
     },
     {
+      "lead_id": "opp_005-lead-017",
+      "rank": 17,
+      "priority_band": "B1",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "inferred_role": "电商老板/运营负责人",
+      "target_company_size": "10-100",
+      "target_industry": "General SMB",
+      "pain_signal": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025",
+      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "ecommerce",
+        "signal_score": 1.6528,
+        "queries_matched": [
+          "manual order fraud checks"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Expense reimbursement control：E-commerce Industry News Recap 🔥 Week of Aug 18th, ...",
+          "subject_challenger": "Expense reimbursement control的低成本试点建议",
+          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/）。\n我们最近在帮电商老板/运营负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
       "lead_id": "opp_005-lead-018",
       "rank": 18,
       "priority_band": "B1",
@@ -963,7 +963,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 1.6508,
+        "signal_score": 1.6449,
         "queries_matched": [
           "chasing invoices",
           "automation too expensive"
@@ -999,53 +999,6 @@
     {
       "lead_id": "opp_005-lead-019",
       "rank": 19,
-      "priority_band": "B1",
-      "opportunity_id": "opp_005",
-      "segment_name": "Expense reimbursement control",
-      "inferred_role": "SMB老板/财务负责人",
-      "target_company_size": "10-100",
-      "target_industry": "General SMB",
-      "pain_signal": "The real ROI of expense management isn't the software cost - it's the hours your team gets back",
-      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/",
-      "fit_hits": 1,
-      "fit_status": "qualified",
-      "source": {
-        "subreddit": "smallbusiness",
-        "signal_score": 1.5822,
-        "queries_matched": [
-          "manual reporting",
-          "spreadsheet errors"
-        ]
-      },
-      "channel_plan": [
-        {
-          "step": 1,
-          "day_offset": 0,
-          "channel": "email_nurture",
-          "touch_type": "initial"
-        }
-      ],
-      "message_pack": {
-        "email_nurture": {
-          "subject_control": "关于Expense reimbursement control：The real ROI of expense management isn't the softwa...",
-          "subject_challenger": "Expense reimbursement control的低成本试点建议",
-          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
-        },
-        "linkedin": {
-          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
-          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
-        }
-      },
-      "assumptions": [
-        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
-        "该线索来自公开讨论信号，不等于已确认购买权限。",
-        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
-      ],
-      "status": "queued"
-    },
-    {
-      "lead_id": "opp_005-lead-020",
-      "rank": 20,
       "priority_band": "B1",
       "opportunity_id": "opp_005",
       "segment_name": "Expense reimbursement control",
@@ -1089,6 +1042,53 @@
         "低匹配线索：发送前必须人工复核后再入正式触达批次。"
       ],
       "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_005-lead-020",
+      "rank": 20,
+      "priority_band": "B1",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "10-100",
+      "target_industry": "General SMB",
+      "pain_signal": "The real ROI of expense management isn't the software cost - it's the hours your team gets back",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.457,
+        "queries_matched": [
+          "manual reporting",
+          "spreadsheet errors"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Expense reimbursement control：The real ROI of expense management isn't the softwa...",
+          "subject_challenger": "Expense reimbursement control的低成本试点建议",
+          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
     }
   ]
 }

@@ -1,6 +1,6 @@
 # Outreach Contact Resolution (Stage2 latest)
 
-Generated at: 2026-03-04T20:38:22+00:00
+Generated at: 2026-03-06T00:17:29+00:00
 
 ## Summary
 - Leads total: 20
@@ -33,5 +33,5 @@ Generated at: 2026-03-04T20:38:22+00:00
 | opp_005-lead-016 | B1 | low_fit | needs_review | manual | manual_export |  |
 | opp_005-lead-017 | B1 | low_fit | needs_review | manual | manual_export |  |
 | opp_005-lead-018 | B1 | low_fit | needs_review | manual | manual_export |  |
-| opp_005-lead-019 | B1 | qualified | ready_manual | manual | manual_export |  |
-| opp_005-lead-020 | B1 | low_fit | needs_review | manual | manual_export |  |
+| opp_005-lead-019 | B1 | low_fit | needs_review | manual | manual_export |  |
+| opp_005-lead-020 | B1 | qualified | ready_manual | manual | manual_export |  |

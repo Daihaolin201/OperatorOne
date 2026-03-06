@@ -1,10 +1,10 @@
 {
   "loop_state": "idle_ready",
-  "active_contexts": 11,
-  "backlog_size": 66,
-  "queue_size": 49,
+  "active_contexts": 12,
+  "backlog_size": 72,
+  "queue_size": 53,
   "last_full_rebuild_at": "2026-03-04T14:00:23Z",
-  "last_incremental_run_at": "2026-03-04T14:40:10Z",
+  "last_incremental_run_at": "2026-03-06T00:16:27Z",
   "mode": "shadow",
   "publish": false,
   "index": false,
@@ -15,10 +15,10 @@
     "ratio": 1.0,
     "missing_requirement_ids": []
   },
-  "snapshot_id": "snap_20260304144010_e796c1ab2d1a5613",
+  "snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
   "delta_counts": {
     "added": 0,
-    "changed": 1,
+    "changed": 8,
     "removed": 0
   },
   "last_run_status": "passed"

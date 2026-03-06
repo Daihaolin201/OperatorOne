@@ -1,9 +1,9 @@
 # Weekly KPI Snapshot (Stage1)
 
-Generated at: 2026-03-05T12:00:00+00:00
+Generated at: 2026-03-06T00:18:08+00:00
 
 ## 7-day rollup
-- sessions: 905.67
+- sessions: 905.64
 - qualified_signups: 13
 - paid_customers: 1
 - net_new_mrr: 49.0
@@ -11,7 +11,7 @@ Generated at: 2026-03-05T12:00:00+00:00
 ## Leading channel
 - source/medium: email_nurture / email
 - campaign_id: stage3-cnt-exp-opportunity-opp-005-04
-- sessions: 82.25
+- sessions: 82.42
 - qualified_signups: 1
 - new_mrr: 49.0
 

@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-003_04
 
-- Generated at: 2026-03-04T14:40:10Z
+- Generated at: 2026-03-06T00:16:27Z
 - Context: `opportunity::opp_003`
 - Keyword: **monthly reporting labor vs manual** (BOFU)
 - Current shadow score: **86.05**
@@ -11,7 +11,7 @@ If we position around 'monthly reporting labor vs manual' with explicit proof an
 ## Suggested page shape
 - H1 A: Monthly Reporting Labor Vs Manual
 - H1 B: Monthly Reporting Labor Vs Manual without extra manual overhead
-- Proof block: I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...
+- Proof block: I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...
 - CTA A: Target agencies publicly discussing reporting bottlenecks
 - CTA B: Start with monthly pilot
 

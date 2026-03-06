@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-04T14:40:10Z",
+  "generated_at": "2026-03-06T00:16:27Z",
   "status": "ok",
-  "snapshot_id": "snap_20260304144010_e796c1ab2d1a5613",
-  "experiment_count": 66,
+  "snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
+  "experiment_count": 72,
   "experiments": [
     {
       "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_01",
@@ -29,7 +29,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 74.25,
       "confidence": "medium"
@@ -59,7 +59,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 78.19,
       "confidence": "medium"
@@ -89,7 +89,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 68.34,
       "confidence": "medium"
@@ -119,7 +119,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 84.75,
       "confidence": "medium"
@@ -149,7 +149,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "medium"
@@ -179,9 +179,189 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.75,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_01",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-06T00:16:27Z",
+      "decision": "ready",
+      "overall_score": 76.95,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_02",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-06T00:16:27Z",
+      "decision": "ready",
+      "overall_score": 80.89,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_03",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-06T00:16:27Z",
+      "decision": "hold",
+      "overall_score": 71.04,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_04",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-06T00:16:27Z",
+      "decision": "ready",
+      "overall_score": 84.01,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_05",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "manual csv overdue invoice checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'manual csv overdue invoice checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Manual Csv Overdue Invoice Checklist",
+        "headline_variant_b": "Manual Csv Overdue Invoice Checklist without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with manual pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-06T00:16:27Z",
+      "decision": "hold",
+      "overall_score": 72.7,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_06",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Checklist",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Checklist without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-06T00:16:27Z",
+      "decision": "ready",
+      "overall_score": 82.45,
       "confidence": "medium"
     },
     {
@@ -209,7 +389,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "high"
@@ -239,7 +419,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 76.69,
       "confidence": "high"
@@ -269,7 +449,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 66.84,
       "confidence": "high"
@@ -299,7 +479,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 76.69,
       "confidence": "high"
@@ -329,7 +509,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 65.75,
       "confidence": "high"
@@ -359,7 +539,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 78.25,
       "confidence": "high"
@@ -389,7 +569,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -419,7 +599,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -449,7 +629,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 71.21,
       "confidence": "medium"
@@ -479,7 +659,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -509,7 +689,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 68.55,
       "confidence": "medium"
@@ -539,7 +719,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -569,7 +749,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -599,7 +779,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -629,7 +809,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 69.64,
       "confidence": "medium"
@@ -659,7 +839,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -689,7 +869,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -719,7 +899,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -735,7 +915,7 @@
       "change": {
         "headline_variant_a": "Best Monthly Reporting Labor Software",
         "headline_variant_b": "Best Monthly Reporting Labor Software without extra manual overhead",
-        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with best pilot"
       },
@@ -749,7 +929,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -765,7 +945,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Pricing",
         "headline_variant_b": "Monthly Reporting Labor Pricing without extra manual overhead",
-        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -779,7 +959,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -795,7 +975,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Tool For Agency Owner Account Manager",
         "headline_variant_b": "Monthly Reporting Labor Tool For Agency Owner Account Manager without extra manual overhead",
-        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -809,7 +989,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 71.21,
       "confidence": "medium"
@@ -825,7 +1005,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Vs Manual",
         "headline_variant_b": "Monthly Reporting Labor Vs Manual without extra manual overhead",
-        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -839,7 +1019,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -848,16 +1028,16 @@
       "experiment_id": "exp_opportunity-opp-003_05",
       "context_id": "opportunity::opp_003",
       "source_opportunity_id": "opp_003",
-      "keyword": "manage google ads home checklist",
+      "keyword": "been meaning make post checklist",
       "intent": "MOFU",
       "status": "scored",
-      "hypothesis": "If we position around 'manage google ads home checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "hypothesis": "If we position around 'been meaning make post checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
-        "headline_variant_a": "Manage Google Ads Home Checklist",
-        "headline_variant_b": "Manage Google Ads Home Checklist without extra manual overhead",
-        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "headline_variant_a": "Been Meaning Make Post Checklist",
+        "headline_variant_b": "Been Meaning Make Post Checklist without extra manual overhead",
+        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
-        "cta_variant_b": "Start with manage pilot"
+        "cta_variant_b": "Start with been pilot"
       },
       "primary_metric": "shadow_overall_score",
       "guardrail_metrics": [
@@ -869,7 +1049,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 68.55,
       "confidence": "medium"
@@ -885,7 +1065,7 @@
       "change": {
         "headline_variant_a": "Manual Exports Custom Spreadsheet Report Rewriting Template",
         "headline_variant_b": "Manual Exports Custom Spreadsheet Report Rewriting Template without extra manual overhead",
-        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with manual pilot"
       },
@@ -899,7 +1079,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -929,7 +1109,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 80.8,
       "confidence": "medium"
@@ -959,7 +1139,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 82.3,
       "confidence": "medium"
@@ -989,7 +1169,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1019,7 +1199,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -1049,7 +1229,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 71.05,
       "confidence": "medium"
@@ -1079,7 +1259,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1109,7 +1289,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 75.55,
       "confidence": "medium"
@@ -1139,7 +1319,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -1169,7 +1349,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 69.64,
       "confidence": "medium"
@@ -1199,7 +1379,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1229,7 +1409,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -1259,7 +1439,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 81.05,
       "confidence": "medium"
@@ -1289,7 +1469,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 78.05,
       "confidence": "medium"
@@ -1319,7 +1499,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.49,
       "confidence": "medium"
@@ -1349,7 +1529,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "hold",
       "overall_score": 72.84,
       "confidence": "medium"
@@ -1379,7 +1559,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 86.05,
       "confidence": "medium"
@@ -1409,7 +1589,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -1439,7 +1619,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 78.24,
       "confidence": "medium"
@@ -1469,7 +1649,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 77.55,
       "confidence": "high"
@@ -1499,7 +1679,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1529,7 +1709,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 83.68,
       "confidence": "high"
@@ -1559,7 +1739,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1589,7 +1769,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1619,7 +1799,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1649,7 +1829,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1679,7 +1859,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 84.17,
       "confidence": "high"
@@ -1709,7 +1889,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1739,7 +1919,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "high"
@@ -1769,7 +1949,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1799,7 +1979,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1830,7 +2010,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 76.65,
       "confidence": "high"
@@ -1861,7 +2041,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -1892,7 +2072,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 83.87,
       "confidence": "high"
@@ -1923,7 +2103,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -1954,7 +2134,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"
@@ -1985,7 +2165,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-04T14:40:10Z",
+      "generated_at": "2026-03-06T00:16:27Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"

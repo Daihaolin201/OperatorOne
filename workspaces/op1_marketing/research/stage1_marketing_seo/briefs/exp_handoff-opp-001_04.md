@@ -1,9 +1,9 @@
-# SEO Experiment Brief — exp_blueprint-proj-opp-001-invoice-followup-_04
+# SEO Experiment Brief — exp_handoff-opp-001_04
 
 - Generated at: 2026-03-06T00:16:27Z
-- Context: `blueprint::proj-opp-001-invoice-followup-pilot-v1`
+- Context: `handoff::opp-001`
 - Keyword: **overdue invoices followed vs manual** (BOFU)
-- Current shadow score: **84.75**
+- Current shadow score: **84.01**
 
 ## Hypothesis
 If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.
@@ -12,17 +12,17 @@ If we position around 'overdue invoices followed vs manual' with explicit proof 
 - H1 A: Overdue Invoices Followed Vs Manual
 - H1 B: Overdue Invoices Followed Vs Manual without extra manual overhead
 - Proof block: Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)
-- CTA A: Join the 14-day overdue-invoice pilot
+- CTA A: Review handoff
 - CTA B: Start with overdue pilot
 
 ## Context summary
-- ICP: Freelancer / small service owner in professional services (1-20 employees)
+- ICP: Freelancer / small service owner / Professional services / 1-20
 - Problem: Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.
-- Value proposition: Turn overdue invoices into a daily action queue with clear follow-up playbooks so owners recover cash faster without awkward manual chasing.
+- Value proposition: Turn overdue invoices into a daily follow-up action queue
 
 ## Guardrails
 - Success rule: overall_score >= 72 and execution_risk_penalty <= 65
 - Stop rule: overall_score < 55 for two consecutive runs
 
 ## Source pointers
-- `../op1_product/research/stage3_mvp_scope/project_blueprint.json`
+- `../../handoffs/product_to_marketing.json`

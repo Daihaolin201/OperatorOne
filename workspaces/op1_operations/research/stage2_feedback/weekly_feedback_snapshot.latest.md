@@ -1,6 +1,6 @@
 # Weekly Feedback Snapshot (Stage2)
 
-Generated at: 2026-03-05T12:00:00+00:00
+Generated at: 2026-03-06T00:18:09+00:00
 
 ## 7-day rollup
 - feedback_events: 31

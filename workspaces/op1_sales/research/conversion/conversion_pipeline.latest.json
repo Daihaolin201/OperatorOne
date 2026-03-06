@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T00:00:00+00:00",
+  "generated_at": "2026-03-06T00:00:00+00:00",
   "builder": "workspaces/op1_sales/scripts/build_conversion_pipeline_stage3.py",
   "inputs": {
     "stage2_queue": "workspaces/op1_sales/research/outreach/outreach_queue.resolved.latest.json",
@@ -42,7 +42,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.5698,
+        "signal_score": 3.5662,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -87,7 +87,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -102,7 +102,7 @@
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         },
@@ -117,12 +117,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1oki786/1m_revenue_and_i_just_paid_tax_penalties_because/"
         }
@@ -132,7 +132,7 @@
       "champion_confidence": 0.02,
       "conversion_readiness_score": 0.0,
       "next_best_action": "记录丢单复盘并更新异议打法",
-      "next_action_due_at": "2026-03-08T00:00:00+00:00",
+      "next_action_due_at": "2026-03-09T00:00:00+00:00",
       "next_action_priority": "low"
     },
     {
@@ -144,16 +144,15 @@
       "inferred_role": "SMB老板/财务负责人",
       "target_company_size": "10-100",
       "target_industry": "General SMB",
-      "pain_signal": "The real ROI of expense management isn't the software cost - it's the hours your team gets back",
-      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/",
-      "fit_hits": 1,
-      "fit_status": "qualified",
+      "pain_signal": "Need help choosing POS, Inventory and book keeping software",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 1.5822,
+        "signal_score": 1.4908,
         "queries_matched": [
-          "manual reporting",
-          "spreadsheet errors"
+          "inventory spreadsheet"
         ]
       },
       "channel_plan": [
@@ -166,9 +165,9 @@
       ],
       "message_pack": {
         "email_nurture": {
-          "subject_control": "关于Expense reimbursement control：The real ROI of expense management isn't the softwa...",
+          "subject_control": "关于Expense reimbursement control：Need help choosing POS, Inventory and book keeping ...",
           "subject_challenger": "Expense reimbursement control的低成本试点建议",
-          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
         },
         "linkedin": {
           "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
@@ -179,12 +178,12 @@
         "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
         "该线索来自公开讨论信号，不等于已确认购买权限。",
         "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
-        "未匹配直接联系人，当前走 manual_export 路由。"
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
       ],
-      "status": "ready_manual",
-      "dispatch_eligible": true,
+      "status": "needs_review",
+      "dispatch_eligible": false,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -199,9 +198,9 @@
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
-          "detail": "ready_manual"
+          "detail": "needs_review"
         },
         {
           "stage": "paid_started",
@@ -219,14 +218,14 @@
           "snippet": "conversion"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
-          "snippet": "The real ROI of expense management isn't the software cost - it's the hours your team gets back"
+          "snippet": "Need help choosing POS, Inventory and book keeping software"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
-          "snippet": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/"
+          "snippet": "https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/"
         }
       ],
       "timing_hold": false,
@@ -234,7 +233,7 @@
       "champion_confidence": 0.99,
       "conversion_readiness_score": 100.0,
       "next_best_action": "转运营交接并确认首月扩展目标",
-      "next_action_due_at": "2026-03-08T00:00:00+00:00",
+      "next_action_due_at": "2026-03-09T00:00:00+00:00",
       "next_action_priority": "medium"
     },
     {
@@ -296,7 +295,7 @@
       "status": "ready_to_send",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "direct",
           "channel": "email_nurture",
@@ -310,7 +309,7 @@
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_to_send"
         },
@@ -330,12 +329,12 @@
           "snippet": "booked_call"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "I caught an employee submitting fake expense reports"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1pdax88/i_caught_an_employee_submitting_fake_expense/"
         }
@@ -345,7 +344,7 @@
       "champion_confidence": 0.72,
       "conversion_readiness_score": 66.0,
       "next_best_action": "完成discovery并确定pilot成功标准",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -363,7 +362,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.0331,
+        "signal_score": 2.0603,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -396,7 +395,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -411,7 +410,7 @@
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         },
@@ -431,12 +430,12 @@
           "snippet": "interested"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "I need a simple way to share a folder with my accountant once a year"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1qpcp5g/i_need_a_simple_way_to_share_a_folder_with_my/"
         }
@@ -446,7 +445,7 @@
       "champion_confidence": 0.52,
       "conversion_readiness_score": 48.0,
       "next_best_action": "完成discovery并确定pilot成功标准",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -464,7 +463,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.983,
+        "signal_score": 2.9851,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -509,7 +508,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -520,11 +519,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -533,12 +532,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "I’m tired of bookkeeping for my husband’s business"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1pl2ptz/im_tired_of_bookkeeping_for_my_husbands_business/"
         }
@@ -548,7 +547,7 @@
       "champion_confidence": 0.5,
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -611,7 +610,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -622,11 +621,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -635,12 +634,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "small business bookkeeping feels like another job"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1p2q0k4/small_business_bookkeeping_feels_like_another_job/"
         }
@@ -650,7 +649,7 @@
       "champion_confidence": 0.5,
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -668,7 +667,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.6867,
+        "signal_score": 2.7115,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -713,7 +712,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -724,11 +723,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -737,12 +736,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni..."
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1pdxx9w/growing_team_14_ppl_looking_for_the_best_virtual/"
         }
@@ -752,7 +751,7 @@
       "champion_confidence": 0.5,
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -770,7 +769,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.8072,
+        "signal_score": 3.8057,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -814,7 +813,7 @@
       "status": "ready_to_send",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "direct",
           "channel": "email_nurture",
@@ -824,11 +823,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_to_send"
         }
@@ -842,12 +841,12 @@
           "snippet": "timing"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "How do you all handle employee expenses without losing your mind?"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1o6dmvd/how_do_you_all_handle_employee_expenses_without/"
         }
@@ -857,7 +856,7 @@
       "champion_confidence": 0.48,
       "conversion_readiness_score": 46.0,
       "next_best_action": "按客户时机窗口回访并重提14天pilot（保留低摩擦入口）",
-      "next_action_due_at": "2026-03-12T00:00:00+00:00",
+      "next_action_due_at": "2026-03-13T00:00:00+00:00",
       "next_action_priority": "medium"
     },
     {
@@ -875,7 +874,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.4866,
+        "signal_score": 2.4487,
         "queries_matched": [
           "receipt bookkeeping manual"
         ]
@@ -914,7 +913,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -925,11 +924,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -938,12 +937,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "How do you grow a remote bookkeeping business when you're starting from zero?"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1r6orwz/how_do_you_grow_a_remote_bookkeeping_business/"
         }
@@ -953,7 +952,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1010,7 +1009,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1021,11 +1020,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -1034,12 +1033,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "Business bank account for contractors that separates job income automatically or am I asking ..."
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1qnn43q/business_bank_account_for_contractors_that/"
         }
@@ -1049,7 +1048,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1106,7 +1105,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1117,11 +1116,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -1130,12 +1129,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "Partner not taking Accounting Seriously"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1r4zzj5/partner_not_taking_accounting_seriously/"
         }
@@ -1145,7 +1144,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1163,7 +1162,7 @@
       "fit_status": "qualified",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.1761,
+        "signal_score": 2.1498,
         "queries_matched": [
           "automation too expensive"
         ]
@@ -1202,7 +1201,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1213,11 +1212,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -1226,12 +1225,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "Software Guidance Request for Simple Income/Expense Reporting"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1qghh7b/software_guidance_request_for_simple/"
         }
@@ -1241,7 +1240,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1304,7 +1303,7 @@
       "status": "ready_manual",
       "dispatch_eligible": true,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1315,11 +1314,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "ready_manual"
         }
@@ -1339,12 +1338,12 @@
           "snippet": "budget"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "The tools actually running my 3-person landscaping business"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1rairx5/the_tools_actually_running_my_3person_landscaping/"
         }
@@ -1354,7 +1353,98 @@
       "champion_confidence": 0.44,
       "conversion_readiness_score": 43.0,
       "next_best_action": "优先处理异议：budget，处理后发起明确成交请求",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
+      "next_action_priority": "high"
+    },
+    {
+      "lead_id": "opp_005-lead-020",
+      "rank": 20,
+      "priority_band": "B1",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "10-100",
+      "target_industry": "General SMB",
+      "pain_signal": "The real ROI of expense management isn't the software cost - it's the hours your team gets back",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.457,
+        "queries_matched": [
+          "manual reporting",
+          "spreadsheet errors"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Expense reimbursement control：The real ROI of expense management isn't the softwa...",
+          "subject_challenger": "Expense reimbursement control的低成本试点建议",
+          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "未匹配直接联系人，当前走 manual_export 路由。"
+      ],
+      "status": "ready_manual",
+      "dispatch_eligible": true,
+      "contact_resolution": {
+        "resolved_at": "2026-03-06T00:17:29+00:00",
+        "primary_route": {
+          "route_type": "manual",
+          "channel": "manual_export",
+          "target": "",
+          "display_name": "",
+          "fallback_from": "email_nurture",
+          "step": 1
+        }
+      },
+      "current_stage": "qualified_interest",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
+      "stage_history": [
+        {
+          "stage": "qualified_interest",
+          "entered_at": "2026-03-06T00:17:29+00:00",
+          "source": "stage2_queue",
+          "detail": "ready_manual"
+        }
+      ],
+      "objections_open": [],
+      "objections_resolved": [],
+      "value_evidence": [
+        {
+          "ts": "2026-03-06T00:17:29+00:00",
+          "source": "stage2_queue",
+          "snippet": "The real ROI of expense management isn't the software cost - it's the hours your team gets back"
+        },
+        {
+          "ts": "2026-03-06T00:17:29+00:00",
+          "source": "stage2_queue",
+          "snippet": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/"
+        }
+      ],
+      "timing_hold": false,
+      "lost_reason": "",
+      "champion_confidence": 0.4,
+      "conversion_readiness_score": 40.0,
+      "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1372,7 +1462,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.0646,
+        "signal_score": 3.0442,
         "queries_matched": [
           "appointment booking software"
         ]
@@ -1411,7 +1501,7 @@
       "status": "needs_review",
       "dispatch_eligible": false,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1422,11 +1512,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "needs_review"
         }
@@ -1435,12 +1525,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "I was hired to save a company from collapse. They gave me zero authority and now blame me for..."
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1mbaofb/i_was_hired_to_save_a_company_from_collapse_they/"
         }
@@ -1450,7 +1540,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 18.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1468,7 +1558,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 3.0384,
+        "signal_score": 3.0329,
         "queries_matched": [
           "late payments"
         ]
@@ -1507,7 +1597,7 @@
       "status": "needs_review",
       "dispatch_eligible": false,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1518,11 +1608,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "needs_review"
         }
@@ -1531,12 +1621,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "Need advice: Wholesale account owes me $25K and keeps ghosting me"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1p0zi4o/need_advice_wholesale_account_owes_me_25k_and/"
         }
@@ -1546,7 +1636,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 18.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1564,7 +1654,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 2.7952,
+        "signal_score": 2.7746,
         "queries_matched": [
           "double booking"
         ]
@@ -1603,7 +1693,7 @@
       "status": "needs_review",
       "dispatch_eligible": false,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1614,11 +1704,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "needs_review"
         }
@@ -1627,12 +1717,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "CPA raised fees 35% on me this for next year"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1m6gbb7/cpa_raised_fees_35_on_me_this_for_next_year/"
         }
@@ -1642,102 +1732,12 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 18.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
       "lead_id": "opp_005-lead-016",
       "rank": 16,
-      "priority_band": "B1",
-      "opportunity_id": "opp_005",
-      "segment_name": "Expense reimbursement control",
-      "inferred_role": "电商老板/运营负责人",
-      "target_company_size": "10-100",
-      "target_industry": "General SMB",
-      "pain_signal": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025",
-      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/",
-      "fit_hits": 0,
-      "fit_status": "low_fit",
-      "source": {
-        "subreddit": "ecommerce",
-        "signal_score": 1.7094,
-        "queries_matched": [
-          "manual order fraud checks"
-        ]
-      },
-      "channel_plan": [
-        {
-          "step": 1,
-          "day_offset": 0,
-          "channel": "email_nurture",
-          "touch_type": "initial"
-        }
-      ],
-      "message_pack": {
-        "email_nurture": {
-          "subject_control": "关于Expense reimbursement control：E-commerce Industry News Recap 🔥 Week of Aug 18th, ...",
-          "subject_challenger": "Expense reimbursement control的低成本试点建议",
-          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/）。\n我们最近在帮电商老板/运营负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
-        },
-        "linkedin": {
-          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
-          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
-        }
-      },
-      "assumptions": [
-        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
-        "该线索来自公开讨论信号，不等于已确认购买权限。",
-        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
-        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
-      ],
-      "status": "needs_review",
-      "dispatch_eligible": false,
-      "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
-        "primary_route": {
-          "route_type": "manual",
-          "channel": "manual_export",
-          "target": "",
-          "display_name": "",
-          "fallback_from": "email_nurture",
-          "step": 1
-        }
-      },
-      "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
-      "stage_history": [
-        {
-          "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
-          "source": "stage2_queue",
-          "detail": "needs_review"
-        }
-      ],
-      "objections_open": [],
-      "objections_resolved": [],
-      "value_evidence": [
-        {
-          "ts": "2026-03-04T20:38:22+00:00",
-          "source": "stage2_queue",
-          "snippet": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025"
-        },
-        {
-          "ts": "2026-03-04T20:38:22+00:00",
-          "source": "stage2_queue",
-          "snippet": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/"
-        }
-      ],
-      "timing_hold": false,
-      "lost_reason": "",
-      "champion_confidence": 0.4,
-      "conversion_readiness_score": 13.0,
-      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
-      "next_action_priority": "high"
-    },
-    {
-      "lead_id": "opp_005-lead-017",
-      "rank": 17,
       "priority_band": "B1",
       "opportunity_id": "opp_005",
       "segment_name": "Expense reimbursement control",
@@ -1750,7 +1750,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 1.7048,
+        "signal_score": 1.83,
         "queries_matched": [
           "double booking"
         ]
@@ -1783,7 +1783,7 @@
       "status": "needs_review",
       "dispatch_eligible": false,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1794,11 +1794,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "needs_review"
         }
@@ -1807,12 +1807,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "I got my first client 7 months ago and I'm stuck"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1ocn9pq/i_got_my_first_client_7_months_ago_and_im_stuck/"
         }
@@ -1822,7 +1822,97 @@
       "champion_confidence": 0.4,
       "conversion_readiness_score": 13.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
+      "next_action_priority": "high"
+    },
+    {
+      "lead_id": "opp_005-lead-017",
+      "rank": 17,
+      "priority_band": "B1",
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "inferred_role": "电商老板/运营负责人",
+      "target_company_size": "10-100",
+      "target_industry": "General SMB",
+      "pain_signal": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025",
+      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "ecommerce",
+        "signal_score": 1.6528,
+        "queries_matched": [
+          "manual order fraud checks"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Expense reimbursement control：E-commerce Industry News Recap 🔥 Week of Aug 18th, ...",
+          "subject_challenger": "Expense reimbursement control的低成本试点建议",
+          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/）。\n我们最近在帮电商老板/运营负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review",
+      "dispatch_eligible": false,
+      "contact_resolution": {
+        "resolved_at": "2026-03-06T00:17:29+00:00",
+        "primary_route": {
+          "route_type": "manual",
+          "channel": "manual_export",
+          "target": "",
+          "display_name": "",
+          "fallback_from": "email_nurture",
+          "step": 1
+        }
+      },
+      "current_stage": "qualified_interest",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
+      "stage_history": [
+        {
+          "stage": "qualified_interest",
+          "entered_at": "2026-03-06T00:17:29+00:00",
+          "source": "stage2_queue",
+          "detail": "needs_review"
+        }
+      ],
+      "objections_open": [],
+      "objections_resolved": [],
+      "value_evidence": [
+        {
+          "ts": "2026-03-06T00:17:29+00:00",
+          "source": "stage2_queue",
+          "snippet": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025"
+        },
+        {
+          "ts": "2026-03-06T00:17:29+00:00",
+          "source": "stage2_queue",
+          "snippet": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/"
+        }
+      ],
+      "timing_hold": false,
+      "lost_reason": "",
+      "champion_confidence": 0.4,
+      "conversion_readiness_score": 13.0,
+      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1840,7 +1930,7 @@
       "fit_status": "low_fit",
       "source": {
         "subreddit": "smallbusiness",
-        "signal_score": 1.6508,
+        "signal_score": 1.6449,
         "queries_matched": [
           "chasing invoices",
           "automation too expensive"
@@ -1874,7 +1964,7 @@
       "status": "needs_review",
       "dispatch_eligible": false,
       "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
+        "resolved_at": "2026-03-06T00:17:29+00:00",
         "primary_route": {
           "route_type": "manual",
           "channel": "manual_export",
@@ -1885,11 +1975,11 @@
         }
       },
       "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
+      "stage_entered_at": "2026-03-06T00:17:29+00:00",
       "stage_history": [
         {
           "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
+          "entered_at": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "detail": "needs_review"
         }
@@ -1898,12 +1988,12 @@
       "objections_resolved": [],
       "value_evidence": [
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "A letter to myself: Everything I wish I'd known before starting my business"
         },
         {
-          "ts": "2026-03-04T20:38:22+00:00",
+          "ts": "2026-03-06T00:17:29+00:00",
           "source": "stage2_queue",
           "snippet": "https://www.reddit.com/r/smallbusiness/comments/1jvolu4/a_letter_to_myself_everything_i_wish_id_known/"
         }
@@ -1913,97 +2003,7 @@
       "champion_confidence": 0.4,
       "conversion_readiness_score": 13.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
-      "next_action_priority": "high"
-    },
-    {
-      "lead_id": "opp_005-lead-020",
-      "rank": 20,
-      "priority_band": "B1",
-      "opportunity_id": "opp_005",
-      "segment_name": "Expense reimbursement control",
-      "inferred_role": "SMB老板/财务负责人",
-      "target_company_size": "10-100",
-      "target_industry": "General SMB",
-      "pain_signal": "Need help choosing POS, Inventory and book keeping software",
-      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/",
-      "fit_hits": 0,
-      "fit_status": "low_fit",
-      "source": {
-        "subreddit": "smallbusiness",
-        "signal_score": 1.4908,
-        "queries_matched": [
-          "inventory spreadsheet"
-        ]
-      },
-      "channel_plan": [
-        {
-          "step": 1,
-          "day_offset": 0,
-          "channel": "email_nurture",
-          "touch_type": "initial"
-        }
-      ],
-      "message_pack": {
-        "email_nurture": {
-          "subject_control": "关于Expense reimbursement control：Need help choosing POS, Inventory and book keeping ...",
-          "subject_challenger": "Expense reimbursement control的低成本试点建议",
-          "body": "你好，看到你在Expense reimbursement control相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上税季资料归档模板，降低交接混乱。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
-        },
-        "linkedin": {
-          "initial": "看到你在Expense reimbursement control上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上税季资料归档模板，降低交接混乱。",
-          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
-        }
-      },
-      "assumptions": [
-        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
-        "该线索来自公开讨论信号，不等于已确认购买权限。",
-        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
-        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
-      ],
-      "status": "needs_review",
-      "dispatch_eligible": false,
-      "contact_resolution": {
-        "resolved_at": "2026-03-04T20:38:22+00:00",
-        "primary_route": {
-          "route_type": "manual",
-          "channel": "manual_export",
-          "target": "",
-          "display_name": "",
-          "fallback_from": "email_nurture",
-          "step": 1
-        }
-      },
-      "current_stage": "qualified_interest",
-      "stage_entered_at": "2026-03-04T20:38:22+00:00",
-      "stage_history": [
-        {
-          "stage": "qualified_interest",
-          "entered_at": "2026-03-04T20:38:22+00:00",
-          "source": "stage2_queue",
-          "detail": "needs_review"
-        }
-      ],
-      "objections_open": [],
-      "objections_resolved": [],
-      "value_evidence": [
-        {
-          "ts": "2026-03-04T20:38:22+00:00",
-          "source": "stage2_queue",
-          "snippet": "Need help choosing POS, Inventory and book keeping software"
-        },
-        {
-          "ts": "2026-03-04T20:38:22+00:00",
-          "source": "stage2_queue",
-          "snippet": "https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/"
-        }
-      ],
-      "timing_hold": false,
-      "lost_reason": "",
-      "champion_confidence": 0.4,
-      "conversion_readiness_score": 13.0,
-      "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-06T00:00:00+00:00",
+      "next_action_due_at": "2026-03-07T00:00:00+00:00",
       "next_action_priority": "high"
     }
   ]

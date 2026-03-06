@@ -14,6 +14,21 @@ how to overdue invoices followed manually late because,TOFU,blueprint::proj-opp-
 how to turn overdue invoices daily action queue,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
 overdue invoices followed automation,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
 overdue invoices followed examples,TOFU,blueprint::proj-opp-001-invoice-followup-pilot-v1,opp_001,0.0
+best overdue invoices followed software,BOFU,handoff::opp-001,,0.0
+overdue invoices followed pricing,BOFU,handoff::opp-001,,0.0
+overdue invoices followed tool for freelancer small service owner,BOFU,handoff::opp-001,,0.0
+overdue invoices followed vs manual,BOFU,handoff::opp-001,,0.0
+manual csv overdue invoice checklist,MOFU,handoff::opp-001,,0.0
+overdue invoices followed manually late because checklist,MOFU,handoff::opp-001,,0.0
+overdue invoices followed manually late because template,MOFU,handoff::opp-001,,0.0
+overdue invoices followed manually late because workflow,MOFU,handoff::opp-001,,0.0
+overdue invoices followed playbook,MOFU,handoff::opp-001,,0.0
+overdue invoices followed process,MOFU,handoff::opp-001,,0.0
+turn overdue invoices daily follow action template,MOFU,handoff::opp-001,,0.0
+how to overdue invoices followed manually late because,TOFU,handoff::opp-001,,0.0
+how to turn overdue invoices daily follow action,TOFU,handoff::opp-001,,0.0
+overdue invoices followed automation,TOFU,handoff::opp-001,,0.0
+overdue invoices followed examples,TOFU,handoff::opp-001,,0.0
 best overdue invoices followed software,BOFU,landing::opp_001,opp_001,0.0
 overdue invoices followed pricing,BOFU,landing::opp_001,opp_001,0.0
 overdue invoices followed tool for freelancer small service owner,BOFU,landing::opp_001,opp_001,0.0
@@ -63,7 +78,7 @@ best monthly reporting labor software,BOFU,opportunity::opp_003,opp_003,3.964
 monthly reporting labor pricing,BOFU,opportunity::opp_003,opp_003,3.964
 monthly reporting labor tool for agency owner account manager,BOFU,opportunity::opp_003,opp_003,3.964
 monthly reporting labor vs manual,BOFU,opportunity::opp_003,opp_003,3.964
-manage google ads home checklist,MOFU,opportunity::opp_003,opp_003,3.964
+been meaning make post checklist,MOFU,opportunity::opp_003,opp_003,3.964
 manual exports custom spreadsheet report rewriting template,MOFU,opportunity::opp_003,opp_003,3.964
 monthly reporting labor heavy often unclear checklist,MOFU,opportunity::opp_003,opp_003,3.964
 monthly reporting labor heavy often unclear template,MOFU,opportunity::opp_003,opp_003,3.964

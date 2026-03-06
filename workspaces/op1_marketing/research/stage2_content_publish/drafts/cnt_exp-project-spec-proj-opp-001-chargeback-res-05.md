@@ -6,7 +6,7 @@ intent: MOFU
 primary_keyword: chargeback disputes handled hoc causing avoidable checklist
 mode: shadow
 status: draft
-generated_at: 2026-03-04T15:37:59Z
+generated_at: 2026-03-06T00:16:31Z
 ---
 
 # Chargeback Disputes Handled Hoc Causing Avoidable Checklist: step-by-step playbook you can apply this week

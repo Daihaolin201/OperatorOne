@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-05T12:00:00+00:00",
+  "generated_at": "2026-03-06T00:18:08+00:00",
   "stage": "stage1_tracking",
   "mode": "simulated_signals",
   "inputs": {
@@ -9,8 +9,8 @@
   },
   "summary": {
     "traffic": {
-      "sessions": 905.67,
-      "unique_visitors_est": 742.65,
+      "sessions": 905.64,
+      "unique_visitors_est": 742.62,
       "unattributed_traffic_rate": 0.0,
       "forecast_share": 1.0
     },

@@ -6,7 +6,7 @@ intent: BOFU
 primary_keyword: how to default software output plus custom excel
 mode: shadow
 status: draft
-generated_at: 2026-03-04T15:37:59Z
+generated_at: 2026-03-06T00:16:31Z
 ---
 
 # How To Default Software Output Plus Custom Excel: Practical buyer guide for teams evaluating alternatives
@@ -24,7 +24,7 @@ Default PM software output plus custom Excel edits.
 - Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness
 - It does not help. If anything, it makes people automatically annoyed. Call and talk. We are human beings and we will work with you if you communicate. Asking AI to quote a bunch of nonsense (which usually doesn’t apply) ...
 - Impossible food sues to cancel earlier trademark owners
-- Launch HN: Recall.ai (YC W20) – API for meeting recordings and transcripts Hey HN, we&#x27;re David and Amanda from Recall.ai (<a href="https:&#x2F;&#x2F;www.recall.ai">https:&#x2F;&#x2F;www.recall.ai</a>). Today we’re l...
+- Launch HN: Finley (YC W21) – Debt capital monitoring and reporting software Hey HN! We’re Kevin, Jeremy, and Josiah, and we’re in the current YC batch. We’re building Finley (<a href="https:&#x2F;&#x2F;www.finleycms.com"...
 
 ## Recommended approach
 1. Identify where the manual process breaks most often.

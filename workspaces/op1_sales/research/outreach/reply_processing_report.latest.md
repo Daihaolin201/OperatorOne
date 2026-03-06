@@ -1,6 +1,7 @@
 # Reply Processing Report (Stage2 latest)
 
-Generated at: 2026-03-04T20:38:22+00:00
+Generated at: 2026-03-06T00:17:29+00:00
+Classifier version: stage2-reply-v2
 
 ## Summary
 - Input replies: 6

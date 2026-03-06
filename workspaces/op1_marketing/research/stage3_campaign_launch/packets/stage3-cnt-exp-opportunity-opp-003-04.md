@@ -1,14 +1,14 @@
-# Stage3 Launch Packet — stage3-cnt-exp-opportunity-opp-001-04
+# Stage3 Launch Packet — stage3-cnt-exp-opportunity-opp-003-04
 
 - Generated at: 2026-03-06T00:16:56Z
 - Status: `launch_ready`
 - Objective: `qualified_pipeline_capture`
-- Content asset: `cnt_exp-opportunity-opp-001-04`
+- Content asset: `cnt_exp-opportunity-opp-003-04`
 - Intent: `BOFU`
 - Landing URL: https://operatorone.ai/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1/landing_package.json
 
 ## Hypothesis
-For high-intent operators searching 'overdue invoices followed vs manual', a proof-led email_nurture narrative will lift qualified lead rate.
+For high-intent operators searching 'monthly reporting labor vs manual', a proof-led email_nurture narrative will lift qualified lead rate.
 
 ## Channel allocation
 - **email_nurture** | budget=67.19 | medium=email | variants=control,challenger

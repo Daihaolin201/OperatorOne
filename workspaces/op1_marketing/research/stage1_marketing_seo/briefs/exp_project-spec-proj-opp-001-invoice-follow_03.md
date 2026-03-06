@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_project-spec-proj-opp-001-invoice-follow_03
 
-- Generated at: 2026-03-04T14:40:10Z
+- Generated at: 2026-03-06T00:16:27Z
 - Context: `project_spec::proj-opp-001-invoice-followup-v1`
 - Keyword: **overdue invoices followed tool for freelancer small service owner** (BOFU)
 - Current shadow score: **83.87**

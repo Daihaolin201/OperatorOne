@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-005_04
 
-- Generated at: 2026-03-04T14:40:10Z
+- Generated at: 2026-03-06T00:16:27Z
 - Context: `opportunity::opp_005`
 - Keyword: **expense reimbursement remains vs manual** (BOFU)
 - Current shadow score: **86.05**
