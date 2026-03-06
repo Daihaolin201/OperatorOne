@@ -68,14 +68,16 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 ### Studio
 
-- `GET /api/studio/snapshot`
+- `GET /api/studio/fast-snapshot`（推荐，轻量）
+- `GET /api/studio/snapshot?includeMonitor=1`（需要时拉全）
 - `POST /api/studio/action`
 - `GET /api/studio/jobs`
 - `GET /api/studio/jobs/<job_id>`
 
 ### Monitor + Integration（兼容）
 
-- `GET /api/snapshot`
+- `GET /api/monitor/cached-snapshot`（缓存监控快照）
+- `GET /api/snapshot`（兼容接口，cache-backed）
 - `POST /api/runtime-flags/manual-arm`
 - `POST /api/integrations/channel/connect`
 - `POST /api/integrations/channel/disconnect`
@@ -94,6 +96,11 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 - `dashboard/.runtime/studio/artifacts/...`
 
 ---
+
+## 使用与优化文档
+
+- 使用指南：`docs/studio_usage_guide.md`
+- 优化报告：`docs/studio_optimization_report.md`
 
 ## 安全边界
 

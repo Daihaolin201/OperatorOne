@@ -15,12 +15,14 @@ import json
 import mimetypes
 import os
 import subprocess
+import threading
+import time
 from datetime import datetime, timezone
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-from urllib.parse import unquote, urlparse
+from urllib.parse import parse_qs, unquote, urlparse
 
 from collector import PROFILE, REPO_ROOT, collect_snapshot, first_json_from_text
 from studio import StudioError, StudioService
@@ -79,6 +81,17 @@ CHANNEL_FLAG_MAP = {
 }
 
 STUDIO = StudioService(REPO_ROOT, DASHBOARD_DIR, PROFILE)
+
+MONITOR_CACHE_TTL_SECONDS = int(os.environ.get("OPERATORONE_MONITOR_CACHE_TTL", "45"))
+_MONITOR_CACHE_LOCK = threading.Lock()
+_MONITOR_CACHE: Dict[str, Any] = {
+    "snapshot": None,
+    "generatedAt": None,
+    "expiresAt": 0.0,
+    "durationMs": None,
+    "error": None,
+    "refreshing": False,
+}
 
 
 def utc_iso() -> str:
@@ -170,6 +183,90 @@ def run_command(cmd: List[str], timeout: int = 120) -> Dict[str, Any]:
         except Exception:  # noqa: BLE001
             pass
     return out
+
+
+def _build_monitor_snapshot() -> Tuple[Dict[str, Any], int]:
+    start = time.perf_counter()
+    flags = load_flags()
+    connectors = load_api_connectors()
+    snapshot = collect_snapshot(runtime_flags=flags)
+    snapshot["runtimeState"] = {
+        "flags": flags,
+        "apiConnectors": connectors,
+    }
+    duration_ms = int((time.perf_counter() - start) * 1000)
+    return snapshot, duration_ms
+
+
+def _refresh_monitor_cache_sync() -> None:
+    try:
+        snapshot, duration_ms = _build_monitor_snapshot()
+        generated_at = utc_iso()
+        with _MONITOR_CACHE_LOCK:
+            _MONITOR_CACHE.update(
+                {
+                    "snapshot": snapshot,
+                    "generatedAt": generated_at,
+                    "expiresAt": time.time() + MONITOR_CACHE_TTL_SECONDS,
+                    "durationMs": duration_ms,
+                    "error": None,
+                }
+            )
+    except Exception as exc:  # noqa: BLE001
+        with _MONITOR_CACHE_LOCK:
+            _MONITOR_CACHE["error"] = str(exc)
+
+
+def _refresh_monitor_cache_worker() -> None:
+    with _MONITOR_CACHE_LOCK:
+        if _MONITOR_CACHE.get("refreshing"):
+            return
+        _MONITOR_CACHE["refreshing"] = True
+    try:
+        _refresh_monitor_cache_sync()
+    finally:
+        with _MONITOR_CACHE_LOCK:
+            _MONITOR_CACHE["refreshing"] = False
+
+
+def _trigger_monitor_refresh(force: bool = False) -> None:
+    should_refresh = False
+    with _MONITOR_CACHE_LOCK:
+        now = time.time()
+        has_snapshot = _MONITOR_CACHE.get("snapshot") is not None
+        expired = now >= float(_MONITOR_CACHE.get("expiresAt") or 0.0)
+        refreshing = bool(_MONITOR_CACHE.get("refreshing"))
+        should_refresh = (force or (not has_snapshot) or expired) and not refreshing
+
+    if should_refresh:
+        thread = threading.Thread(target=_refresh_monitor_cache_worker, daemon=True, name="monitor-cache-refresh")
+        thread.start()
+
+
+def get_monitor_cache_view() -> Dict[str, Any]:
+    with _MONITOR_CACHE_LOCK:
+        snapshot = _MONITOR_CACHE.get("snapshot")
+        generated_at = _MONITOR_CACHE.get("generatedAt")
+        expires_at = float(_MONITOR_CACHE.get("expiresAt") or 0.0)
+        duration_ms = _MONITOR_CACHE.get("durationMs")
+        error = _MONITOR_CACHE.get("error")
+        refreshing = bool(_MONITOR_CACHE.get("refreshing"))
+
+    now = time.time()
+    stale = (snapshot is None) or (now >= expires_at)
+    return {
+        "snapshot": snapshot,
+        "meta": {
+            "generatedAt": generated_at,
+            "expiresAt": datetime.fromtimestamp(expires_at, tz=timezone.utc).isoformat() if expires_at else None,
+            "stale": stale,
+            "refreshing": refreshing,
+            "durationMs": duration_ms,
+            "ttlSeconds": MONITOR_CACHE_TTL_SECONDS,
+            "error": error,
+            "hasSnapshot": snapshot is not None,
+        },
+    }
 
 
 def safe_command_preview(cmd: List[str], payload: Dict[str, Any]) -> str:
@@ -330,15 +427,16 @@ class DashboardHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(content)
 
-    def _handle_get_snapshot(self) -> None:
-        flags = load_flags()
-        connectors = load_api_connectors()
-        snapshot = collect_snapshot(runtime_flags=flags)
-        snapshot["runtimeState"] = {
-            "flags": flags,
-            "apiConnectors": connectors,
-        }
-        self._json_response(200, {"ok": True, "snapshot": snapshot})
+    def _handle_get_snapshot(self, refresh: bool = False) -> None:
+        # Backward-compatible monitor endpoint, now cache-backed.
+        _trigger_monitor_refresh(force=refresh)
+        view = get_monitor_cache_view()
+        self._json_response(200, {"ok": True, "snapshot": view.get("snapshot"), "meta": view.get("meta")})
+
+    def _handle_get_monitor_cached_snapshot(self, refresh: bool = False) -> None:
+        _trigger_monitor_refresh(force=refresh)
+        view = get_monitor_cache_view()
+        self._json_response(200, {"ok": True, "snapshot": view.get("snapshot"), "meta": view.get("meta")})
 
     def _handle_get_runtime_flags(self) -> None:
         self._json_response(200, {"ok": True, "flags": load_flags()})
@@ -358,6 +456,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
                 "enabled": enabled,
             }
         )
+        _trigger_monitor_refresh(force=True)
         self._json_response(200, {"ok": True, "flags": flags})
 
     def _handle_post_channel_connect(self, payload: Dict[str, Any]) -> None:
@@ -518,22 +617,38 @@ class DashboardHandler(BaseHTTPRequestHandler):
         )
         self._json_response(200, {"ok": True, "connectors": connectors})
 
-    def _handle_get_studio_snapshot(self) -> None:
+    def _handle_get_studio_snapshot(self, *, include_monitor: bool = False, include_run_details: bool = False) -> None:
+        started = time.perf_counter()
         try:
-            snapshot = STUDIO.snapshot()
-            self._json_response(200, {"ok": True, "snapshot": snapshot})
+            monitor_view = get_monitor_cache_view()
+            snapshot = STUDIO.snapshot(
+                monitor_snapshot=monitor_view.get("snapshot") if include_monitor else None,
+                include_run_details=include_run_details,
+            )
+            duration_ms = int((time.perf_counter() - started) * 1000)
+            payload = {
+                "ok": True,
+                "snapshot": snapshot,
+                "meta": {
+                    "durationMs": duration_ms,
+                    "includeMonitor": include_monitor,
+                    "includeRunDetails": include_run_details,
+                    "monitor": monitor_view.get("meta"),
+                },
+            }
+            self._json_response(200, payload)
         except Exception as exc:  # noqa: BLE001
             self._json_response(500, {"ok": False, "error": f"studio snapshot failed: {exc}"})
 
     def _handle_get_studio_jobs(self, path: str) -> None:
         # /api/studio/jobs or /api/studio/jobs/<id>
         if path == "/api/studio/jobs":
-            self._json_response(200, {"ok": True, "jobs": STUDIO.list_jobs()})
+            self._json_response(200, {"ok": True, "jobs": STUDIO.list_jobs(include_result=False)})
             return
         prefix = "/api/studio/jobs/"
         if path.startswith(prefix):
             job_id = path[len(prefix):]
-            job = STUDIO.get_job(job_id)
+            job = STUDIO.get_job(job_id, include_result=True)
             if not job:
                 self._json_response(404, {"ok": False, "error": "job not found"})
                 return
@@ -562,6 +677,14 @@ class DashboardHandler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         path = unquote(parsed.path)
+        query = parse_qs(parsed.query or "")
+
+        def _qflag(name: str, default: bool = False) -> bool:
+            values = query.get(name)
+            if not values:
+                return default
+            raw = str(values[-1]).strip().lower()
+            return raw in {"1", "true", "yes", "on"}
 
         if path == "/api/health":
             self._json_response(
@@ -575,10 +698,19 @@ class DashboardHandler(BaseHTTPRequestHandler):
             )
             return
         if path == "/api/snapshot":
-            self._handle_get_snapshot()
+            self._handle_get_snapshot(refresh=_qflag("refresh", False))
+            return
+        if path == "/api/monitor/cached-snapshot":
+            self._handle_get_monitor_cached_snapshot(refresh=_qflag("refresh", False))
             return
         if path == "/api/studio/snapshot":
-            self._handle_get_studio_snapshot()
+            self._handle_get_studio_snapshot(
+                include_monitor=_qflag("includeMonitor", False),
+                include_run_details=_qflag("includeRunDetails", False),
+            )
+            return
+        if path == "/api/studio/fast-snapshot":
+            self._handle_get_studio_snapshot(include_monitor=False, include_run_details=False)
             return
         if path == "/api/studio/jobs" or path.startswith("/api/studio/jobs/"):
             self._handle_get_studio_jobs(path)
@@ -644,10 +776,13 @@ def parse_args() -> argparse.Namespace:
 
 def main() -> None:
     ensure_runtime_files()
+    # Warm monitor snapshot cache asynchronously so initial UI can load fast.
+    _trigger_monitor_refresh(force=True)
     args = parse_args()
     server = ThreadingHTTPServer((args.host, args.port), DashboardHandler)
     print(f"OperatorOne dashboard running on http://{args.host}:{args.port}")
     print(f"Profile: {PROFILE}")
+    print(f"Monitor cache TTL: {MONITOR_CACHE_TTL_SECONDS}s")
     print("Press Ctrl+C to stop.")
     try:
         server.serve_forever()

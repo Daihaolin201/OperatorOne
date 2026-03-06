@@ -62,6 +62,7 @@ Run:
 - Open: `http://127.0.0.1:8765`
 
 See `dashboard/README.md` for details.
+Quick usage guide: `docs/studio_usage_guide.md`.
 
 ## Collaboration
 

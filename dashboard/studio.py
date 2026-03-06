@@ -28,7 +28,6 @@ from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 
-from collector import collect_snapshot
 
 
 STAGE_ORDER = [
@@ -47,6 +46,20 @@ ASYNC_ACTIONS = {
     "run_marketing_seo",
     "run_marketing_content",
     "review_marketing_content",
+    "run_marketing_campaign",
+    "run_sales_prospecting",
+    "run_sales_outreach_plan",
+    "approve_sales_outreach",
+    "dispatch_sales_outreach",
+    "run_sales_conversion",
+    "run_operations_full",
+    "writeback_operations",
+}
+
+DUPLICATE_GUARD_ACTIONS = {
+    "run_product",
+    "run_marketing_seo",
+    "run_marketing_content",
     "run_marketing_campaign",
     "run_sales_prospecting",
     "run_sales_outreach_plan",
@@ -621,16 +634,42 @@ class StudioService:
         self.executor.submit(runner)
         return copy.deepcopy(job)
 
-    def list_jobs(self) -> List[Dict[str, Any]]:
+    def _summarize_job(self, job: Dict[str, Any], *, include_result: bool = False) -> Dict[str, Any]:
+        summary = {
+            "id": job.get("id"),
+            "action": job.get("action"),
+            "ventureId": job.get("ventureId"),
+            "status": job.get("status"),
+            "createdAt": job.get("createdAt"),
+            "startedAt": job.get("startedAt"),
+            "finishedAt": job.get("finishedAt"),
+            "error": job.get("error"),
+        }
+        if include_result:
+            summary["result"] = job.get("result")
+        else:
+            result = job.get("result") or {}
+            run = result.get("run") if isinstance(result, dict) else None
+            if isinstance(run, dict):
+                summary["resultSummary"] = {
+                    "runId": run.get("id"),
+                    "stage": run.get("stage"),
+                    "status": run.get("status"),
+                }
+        return summary
+
+    def list_jobs(self, *, include_result: bool = False) -> List[Dict[str, Any]]:
         with self.jobs_lock:
-            items = [copy.deepcopy(v) for v in self.jobs.values()]
+            items = [self._summarize_job(copy.deepcopy(v), include_result=include_result) for v in self.jobs.values()]
         items.sort(key=lambda x: x.get("createdAt", ""), reverse=True)
         return items[:100]
 
-    def get_job(self, job_id: str) -> Optional[Dict[str, Any]]:
+    def get_job(self, job_id: str, *, include_result: bool = True) -> Optional[Dict[str, Any]]:
         with self.jobs_lock:
             item = self.jobs.get(job_id)
-            return copy.deepcopy(item) if item else None
+            if not item:
+                return None
+            return self._summarize_job(copy.deepcopy(item), include_result=include_result)
 
     # ------------------------------------------------------------------
     # Action execution helpers
@@ -699,7 +738,16 @@ class StudioService:
         stage1_ready = []
         for item in ((marketing_stage1.get("queue") or {}).get("ready") or []):
             if item_matches_opp(item, opp_id):
-                stage1_ready.append(item)
+                stage1_ready.append(
+                    {
+                        "experiment_id": item.get("experiment_id"),
+                        "opportunity_id": item.get("opportunity_id"),
+                        "primary_keyword": item.get("primary_keyword"),
+                        "intent": item.get("intent"),
+                        "queue_state": item.get("queue_state"),
+                        "score": item.get("score") or item.get("priority_score"),
+                    }
+                )
 
         marketing_stage2 = self._parse_json(
             self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json",
@@ -709,9 +757,16 @@ class StudioService:
         for bucket in ["approved", "review_ready", "needs_revision", "blocked"]:
             for item in ((marketing_stage2.get("queue") or {}).get(bucket) or []):
                 if item_matches_opp(item, opp_id):
-                    row = copy.deepcopy(item)
-                    row["_bucket"] = bucket
-                    content_candidates.append(row)
+                    content_candidates.append(
+                        {
+                            "content_id": item.get("content_id") or item.get("id"),
+                            "_bucket": bucket,
+                            "topic": item.get("topic"),
+                            "primary_keyword": item.get("primary_keyword") or item.get("keyword"),
+                            "priority_score": item.get("priority_score") or item.get("score"),
+                            "opportunity_id": item.get("opportunity_id"),
+                        }
+                    )
 
         marketing_stage3 = self._parse_json(
             self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json",
@@ -721,9 +776,15 @@ class StudioService:
         for bucket in ["launch_ready", "watchlist", "hold"]:
             for item in ((marketing_stage3.get("queue") or {}).get(bucket) or []):
                 if item_matches_opp(item, opp_id):
-                    row = copy.deepcopy(item)
-                    row["_bucket"] = bucket
-                    campaign_candidates.append(row)
+                    campaign_candidates.append(
+                        {
+                            "campaign_id": item.get("campaign_id") or item.get("id"),
+                            "_bucket": bucket,
+                            "primary_keyword": item.get("primary_keyword") or item.get("keyword"),
+                            "readiness_score": item.get("readiness_score") or item.get("score"),
+                            "opportunity_id": item.get("opportunity_id"),
+                        }
+                    )
 
         prospect_queue = self._parse_json(
             self.sales_dir / "research/prospecting/prospect_queue.latest.json",
@@ -732,9 +793,18 @@ class StudioService:
         segments = []
         for idx, seg in enumerate(prospect_queue.get("segments") or []):
             if item_matches_opp(seg, opp_id):
-                row = copy.deepcopy(seg)
-                row["segmentIndex"] = idx
-                segments.append(row)
+                scores = seg.get("scores") or {}
+                segments.append(
+                    {
+                        "segmentIndex": idx,
+                        "segment_name": seg.get("segment_name") or ((seg.get("target_segment") or {}).get("role")),
+                        "scores": {
+                            "estimated_weekly_leads": scores.get("estimated_weekly_leads") or scores.get("weekly_leads"),
+                            "estimated_weekly_mql": scores.get("estimated_weekly_mql") or scores.get("weekly_mql"),
+                            "segment_score": scores.get("segment_score") or scores.get("score"),
+                        },
+                    }
+                )
 
         outreach_ready = self._parse_json(
             self.sales_dir / "research/outreach/outreach_batch.ready.json",
@@ -763,22 +833,62 @@ class StudioService:
             {},
         )
 
+        stage1_summary = ops_stage1.get("summary") or {}
+        stage2_summary = ops_stage2.get("summary") or {}
+        stage3_summary = ops_stage3.get("summary") or {}
+
         return {
             "marketing": {
-                "stage1Ready": stage1_ready[:50],
-                "contentCandidates": content_candidates[:100],
-                "campaignCandidates": campaign_candidates[:100],
+                "stage1Ready": stage1_ready[:30],
+                "contentCandidates": content_candidates[:50],
+                "campaignCandidates": campaign_candidates[:50],
+                "queueCounts": {
+                    "content": {
+                        k: len(((marketing_stage2.get("queue") or {}).get(k) or []))
+                        for k in ["approved", "review_ready", "needs_revision", "blocked"]
+                    },
+                    "campaign": {
+                        k: len(((marketing_stage3.get("queue") or {}).get(k) or []))
+                        for k in ["launch_ready", "watchlist", "hold"]
+                    },
+                },
             },
             "sales": {
                 "segments": segments[:20],
-                "outreachBatchReady": outreach_ready,
-                "outreachDispatch": outreach_dispatch,
-                "closeMotion": close_motion,
+                "outreachBatchReady": {
+                    "generated_at": outreach_ready.get("generated_at"),
+                    "segment_index": outreach_ready.get("segment_index"),
+                    "message_count": len(outreach_ready.get("messages") or []),
+                    "status": outreach_ready.get("status"),
+                },
+                "outreachDispatch": {
+                    "generated_at": outreach_dispatch.get("generated_at"),
+                    "mode": outreach_dispatch.get("mode"),
+                    "summary": outreach_dispatch.get("summary"),
+                },
+                "closeMotion": {
+                    "generated_at": close_motion.get("generated_at"),
+                    "headline": close_motion.get("headline") or close_motion.get("summary"),
+                },
             },
             "operations": {
-                "stage1Scoreboard": ops_stage1,
-                "stage2Scoreboard": ops_stage2,
-                "stage3Scoreboard": ops_stage3,
+                "stage1": {
+                    "sessions": ((stage1_summary.get("traffic") or {}).get("sessions")),
+                    "qualified_signups": ((stage1_summary.get("signups") or {}).get("qualified_signups")),
+                    "paid_customers": ((stage1_summary.get("signups") or {}).get("paid_customers")),
+                    "net_new_mrr": ((stage1_summary.get("revenue") or {}).get("net_new_mrr")),
+                },
+                "stage2": {
+                    "feedback_items_total": ((stage2_summary.get("feedback") or {}).get("feedback_items_total")),
+                    "themes_total": ((stage2_summary.get("feedback") or {}).get("themes_total")),
+                    "expected_mrr_delta_30d": ((stage2_summary.get("impact") or {}).get("expected_mrr_delta_30d")),
+                },
+                "stage3": {
+                    "experiments_planned": ((stage3_summary.get("flow") or {}).get("experiments_planned")),
+                    "ship_count": ((stage3_summary.get("outcomes") or {}).get("ship_count")),
+                    "iterate_count": ((stage3_summary.get("outcomes") or {}).get("iterate_count")),
+                    "observed_mrr_delta_30d": ((stage3_summary.get("outcomes") or {}).get("observed_mrr_delta_30d")),
+                },
             },
         }
 
@@ -1861,6 +1971,185 @@ class StudioService:
 
         return {"venture": updated}
 
+    def _summarize_run(self, run: Dict[str, Any], *, include_details: bool = False) -> Dict[str, Any]:
+        summary = {
+            "id": run.get("id"),
+            "ventureId": run.get("ventureId"),
+            "stage": run.get("stage"),
+            "action": run.get("action"),
+            "mode": run.get("mode"),
+            "status": run.get("status"),
+            "createdAt": run.get("createdAt"),
+            "startedAt": run.get("startedAt"),
+            "endedAt": run.get("endedAt"),
+            "error": run.get("error"),
+            "summary": run.get("summary"),
+            "artifactCount": len(run.get("artifacts") or []),
+            "stepCount": len(run.get("steps") or []),
+        }
+        if include_details:
+            summary["steps"] = run.get("steps")
+            summary["artifacts"] = run.get("artifacts")
+        return summary
+
+    def _running_job_for(self, action: str, venture_id: Optional[str]) -> Optional[Dict[str, Any]]:
+        with self.jobs_lock:
+            items = list(self.jobs.values())
+        for job in items:
+            if job.get("action") != action:
+                continue
+            if str(job.get("ventureId") or "") != str(venture_id or ""):
+                continue
+            if job.get("status") in {"queued", "running"}:
+                return copy.deepcopy(job)
+        return None
+
+    def _next_recommended_actions(self, active_venture: Optional[Dict[str, Any]], active_context: Dict[str, Any]) -> List[Dict[str, Any]]:
+        if not active_venture:
+            return [
+                {
+                    "action": "refresh_ideas",
+                    "label": "刷新 startup ideas",
+                    "description": "先刷新 Product ideas，再选择一个项目创建 venture。",
+                    "stage": "IDEA_POOL",
+                    "payload": {"action": "refresh_ideas", "async": True},
+                }
+            ]
+
+        stage = str(active_venture.get("stage") or "SELECTED")
+        vid = active_venture.get("id")
+        selections = active_venture.get("selections") or {}
+        out: List[Dict[str, Any]] = []
+
+        if stage in {"SELECTED", "PRODUCT"}:
+            out.append(
+                {
+                    "action": "run_product",
+                    "label": "执行 Product（simulation）",
+                    "description": "生成 landing + 本地预览（不触发 live 部署）。",
+                    "stage": "PRODUCT",
+                    "payload": {"action": "run_product", "ventureId": vid, "mode": "simulation", "async": True},
+                }
+            )
+        if stage == "MARKETING":
+            out.extend(
+                [
+                    {
+                        "action": "run_marketing_seo",
+                        "label": "运行 SEO experiments",
+                        "description": "刷新关键词与实验队列。",
+                        "stage": "MARKETING",
+                        "payload": {"action": "run_marketing_seo", "ventureId": vid, "mode": "shadow", "async": True},
+                    },
+                    {
+                        "action": "run_marketing_content",
+                        "label": "生成 Publish content 候选",
+                        "description": "生成内容候选后进行人工勾选审批。",
+                        "stage": "MARKETING",
+                        "payload": {"action": "run_marketing_content", "ventureId": vid, "mode": "review", "async": True},
+                    },
+                    {
+                        "action": "run_marketing_campaign",
+                        "label": "生成 Launch campaigns 候选",
+                        "description": "选择 campaign 后推进到 Sales。",
+                        "stage": "MARKETING",
+                        "payload": {"action": "run_marketing_campaign", "ventureId": vid, "mode": "review", "async": True},
+                    },
+                ]
+            )
+            if not selections.get("campaignId"):
+                out.append(
+                    {
+                        "action": "select_marketing_campaign",
+                        "label": "从候选中选择 campaign",
+                        "description": "选择一个 campaign 作为 Sales 输入。",
+                        "stage": "MARKETING",
+                        "payload": {"action": "select_marketing_campaign", "ventureId": vid},
+                        "requiresUserChoice": True,
+                    }
+                )
+        if stage == "SALES":
+            out.extend(
+                [
+                    {
+                        "action": "run_sales_prospecting",
+                        "label": "Identify prospects",
+                        "description": "生成分层线索队列。",
+                        "stage": "SALES",
+                        "payload": {"action": "run_sales_prospecting", "ventureId": vid, "async": True},
+                    },
+                    {
+                        "action": "run_sales_outreach_plan",
+                        "label": "规划 Send outreach",
+                        "description": "生成外联批次并等待人工批准。",
+                        "stage": "SALES",
+                        "payload": {"action": "run_sales_outreach_plan", "ventureId": vid, "async": True},
+                    },
+                    {
+                        "action": "approve_sales_outreach",
+                        "label": "批准外联批次",
+                        "description": "人工审批后才允许 dispatch。",
+                        "stage": "SALES",
+                        "payload": {"action": "approve_sales_outreach", "ventureId": vid, "async": True},
+                    },
+                    {
+                        "action": "dispatch_sales_outreach",
+                        "label": "Dispatch（simulate）",
+                        "description": "建议先 simulate，确认后再 commit。",
+                        "stage": "SALES",
+                        "payload": {
+                            "action": "dispatch_sales_outreach",
+                            "ventureId": vid,
+                            "mode": "simulate",
+                            "async": True,
+                        },
+                    },
+                    {
+                        "action": "run_sales_conversion",
+                        "label": "Convert（simulate）",
+                        "description": "模拟转化，观察 close motion 与 scorecard。",
+                        "stage": "SALES",
+                        "payload": {
+                            "action": "run_sales_conversion",
+                            "ventureId": vid,
+                            "mode": "simulate",
+                            "async": True,
+                        },
+                    },
+                ]
+            )
+        if stage == "OPERATIONS":
+            out.append(
+                {
+                    "action": "run_operations_full",
+                    "label": "Run Operations full loop",
+                    "description": "执行 tracking + feedback + iteration。",
+                    "stage": "OPERATIONS",
+                    "payload": {"action": "run_operations_full", "ventureId": vid, "async": True},
+                }
+            )
+        if stage == "ITERATE":
+            out.extend(
+                [
+                    {
+                        "action": "writeback_operations",
+                        "label": "回写下一轮待办",
+                        "description": "把 Ops 产物回写到 Product/Marketing/Sales 待办。",
+                        "stage": "ITERATE",
+                        "payload": {"action": "writeback_operations", "ventureId": vid, "async": True},
+                    },
+                    {
+                        "action": "confirm_iterate",
+                        "label": "确认进入下一轮",
+                        "description": "人工确认后回到 Product 阶段。",
+                        "stage": "ITERATE",
+                        "payload": {"action": "confirm_iterate", "ventureId": vid, "async": False},
+                    },
+                ]
+            )
+
+        return out[:8]
+
     def _run_action_sync(self, action: str, payload: Dict[str, Any]) -> Dict[str, Any]:
         dispatch = {
             "refresh_ideas": self._action_refresh_ideas,
@@ -1891,9 +2180,22 @@ class StudioService:
         if not action:
             raise StudioError("action is required")
 
-        if action in ASYNC_ACTIONS and payload.get("async", True):
+        venture_id = payload.get("ventureId")
+        request_async = bool(payload.get("async", True))
+
+        if action in ASYNC_ACTIONS and request_async:
+            if action in DUPLICATE_GUARD_ACTIONS:
+                existing = self._running_job_for(action, venture_id)
+                if existing:
+                    return {
+                        "ok": True,
+                        "async": True,
+                        "duplicate": True,
+                        "job": self._summarize_job(existing, include_result=False),
+                        "message": "existing queued/running job reused",
+                    }
             job = self._submit_job(action, payload)
-            return {"ok": True, "async": True, "job": job}
+            return {"ok": True, "async": True, "job": self._summarize_job(job, include_result=False)}
 
         result = self._run_action_sync(action, payload)
         return {"ok": True, "async": False, "result": result}
@@ -1901,7 +2203,12 @@ class StudioService:
     # ------------------------------------------------------------------
     # Snapshot
     # ------------------------------------------------------------------
-    def snapshot(self) -> Dict[str, Any]:
+    def snapshot(
+        self,
+        *,
+        monitor_snapshot: Optional[Dict[str, Any]] = None,
+        include_run_details: bool = False,
+    ) -> Dict[str, Any]:
         with self.store_lock:
             state = self._load_state()
             ventures_payload = self._load_ventures()
@@ -1923,13 +2230,21 @@ class StudioService:
         opp_id = (active_venture or {}).get("opportunityId")
         active_context = self._read_active_context(opp_id)
 
-        # Keep existing monitor snapshot for readiness + connected account status.
-        monitor_flags = self._read_json(self.flags_path, {"manualArmEnabled": False})
-        monitor_snapshot = collect_snapshot(runtime_flags=monitor_flags)
-
         runs = runs_payload.get("items", [])
         gates = gates_payload.get("items", [])
         todos = [x for x in (todos_payload.get("items") or []) if (not active_id or x.get("ventureId") == active_id)]
+
+        recent_runs_raw = [x for x in reversed(runs) if (not active_id or x.get("ventureId") in {None, active_id})][:40]
+        recent_runs = [self._summarize_run(run, include_details=include_run_details) for run in recent_runs_raw]
+
+        quickstart = [
+            "1) 在 Idea Board 点击“刷新 startup ideas”",
+            "2) 选择一个 idea，点击“创建 Venture”",
+            "3) Product tab 执行 Product（建议 simulation）",
+            "4) Marketing tab 生成内容/campaign 并人工选择",
+            "5) Sales tab 先 simulate，再决定是否 live",
+            "6) Ops tab 运行闭环并确认进入下一轮",
+        ]
 
         return {
             "generatedAt": now_iso(),
@@ -1938,12 +2253,16 @@ class StudioService:
             "activeVentureId": active_id,
             "activeVenture": active_venture,
             "activeContext": active_context,
-            "recentRuns": [x for x in reversed(runs) if (not active_id or x.get("ventureId") in {None, active_id})][:40],
+            "recentRuns": recent_runs,
             "recentGates": [x for x in reversed(gates) if (not active_id or x.get("ventureId") == active_id)][:40],
             "loopTodos": todos[:100],
-            "jobs": self.list_jobs(),
+            "jobs": self.list_jobs(include_result=False),
             "vercel": self._vercel_status(),
-            "manualArmEnabled": bool(monitor_flags.get("manualArmEnabled", False)),
+            "manualArmEnabled": bool(self._manual_arm_enabled()),
             "monitor": monitor_snapshot,
             "stateMachine": STAGE_ORDER,
+            "guide": {
+                "quickstart": quickstart,
+                "nextRecommendedActions": self._next_recommended_actions(active_venture, active_context),
+            },
         }
