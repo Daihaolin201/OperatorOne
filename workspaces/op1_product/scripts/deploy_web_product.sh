@@ -3,13 +3,14 @@ set -euo pipefail
 
 APP_DIR=""
 LOG_DIR=""
-TARGET="production"
+TARGET="preview"
+VERCEL_PROJECT=""
 START_DIR="$(pwd)"
 
 usage() {
   cat <<'USAGE'
 Usage:
-  scripts/deploy_web_product.sh --app-dir <path> [--log-dir <path>] [--target production|preview]
+  scripts/deploy_web_product.sh --app-dir <path> [--log-dir <path>] [--target production|preview] [--vercel-project <name>]
 
 Description:
   Deploys a scaffolded web product to Vercel and prints the deployment URL to stdout.
@@ -28,6 +29,10 @@ while [[ $# -gt 0 ]]; do
       ;;
     --target)
       TARGET="$2"
+      shift 2
+      ;;
+    --vercel-project)
+      VERCEL_PROJECT="$2"
       shift 2
       ;;
     -h|--help)
@@ -49,6 +54,11 @@ fi
 
 if [[ ! -d "$APP_DIR" ]]; then
   echo "App directory does not exist: $APP_DIR" >&2
+  exit 2
+fi
+
+if [[ "$TARGET" != "production" && "$TARGET" != "preview" ]]; then
+  echo "Invalid --target: $TARGET (expected production|preview)" >&2
   exit 2
 fi
 
@@ -76,8 +86,13 @@ log_file="$LOG_DIR/deploy_${timestamp}.log"
 
 pushd "$APP_DIR" >/dev/null
 
-# If not linked, let CLI initialize project defaults non-interactively.
-if [[ ! -f ".vercel/project.json" ]]; then
+# Link project non-interactively. If deterministic project name is provided, enforce it.
+if [[ -n "$VERCEL_PROJECT" ]]; then
+  {
+    echo "[info] Linking to Vercel project: $VERCEL_PROJECT"
+    vercel link --yes --project "$VERCEL_PROJECT" || true
+  } >>"$log_file" 2>&1
+elif [[ ! -f ".vercel/project.json" ]]; then
   {
     echo "[info] Linking project non-interactively (default scope/settings)."
     vercel link --yes || true
@@ -147,6 +162,7 @@ cat >"$LOG_DIR/deploy_latest.json" <<JSON
 {
   "deployed_at": "$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
   "target": "$TARGET",
+  "vercel_project": "$VERCEL_PROJECT",
   "app_dir": "$(pwd)",
   "deployment_url": "$url",
   "public_url": "$public_url",

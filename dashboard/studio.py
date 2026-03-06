@@ -27,6 +27,7 @@ from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
+from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 
 
@@ -39,6 +40,8 @@ STAGE_ORDER = [
     "OPERATIONS",
     "ITERATE",
 ]
+
+SCRIPTS_DIR = Path(__file__).resolve().parents[1] / "scripts"
 
 ASYNC_ACTIONS = {
     "refresh_ideas",
@@ -127,6 +130,32 @@ def flatten_strings(obj: Any) -> List[str]:
     return out
 
 
+def deep_find_first_value(obj: Any, candidate_keys: List[str]) -> Optional[str]:
+    keyset = {k.lower() for k in candidate_keys}
+
+    def _walk(node: Any) -> Optional[str]:
+        if isinstance(node, dict):
+            for k, v in node.items():
+                if str(k).lower() in keyset and isinstance(v, (str, int, float)):
+                    text = str(v).strip()
+                    if text:
+                        return text
+            for v in node.values():
+                found = _walk(v)
+                if found:
+                    return found
+            return None
+        if isinstance(node, list):
+            for v in node:
+                found = _walk(v)
+                if found:
+                    return found
+            return None
+        return None
+
+    return _walk(obj)
+
+
 def item_matches_opp(item: Any, opp_id: Optional[str]) -> bool:
     if not opp_id:
         return True
@@ -174,6 +203,7 @@ class StudioService:
         self.runtime_dir = self.dashboard_dir / ".runtime"
         self.studio_dir = self.runtime_dir / "studio"
         self.artifacts_dir = self.studio_dir / "artifacts"
+        self.rehearsals_dir = self.studio_dir / "rehearsals"
 
         self.state_path = self.studio_dir / "state.json"
         self.ventures_path = self.studio_dir / "ventures.json"
@@ -189,6 +219,7 @@ class StudioService:
         self.marketing_dir = self.repo_root / "workspaces" / "op1_marketing"
         self.sales_dir = self.repo_root / "workspaces" / "op1_sales"
         self.operations_dir = self.repo_root / "workspaces" / "op1_operations"
+        self.scripts_dir = self.repo_root / "scripts"
 
         self.store_lock = threading.Lock()
 
@@ -205,12 +236,14 @@ class StudioService:
         self.studio_dir.mkdir(parents=True, exist_ok=True)
         self.artifacts_dir.mkdir(parents=True, exist_ok=True)
         self.contexts_dir.mkdir(parents=True, exist_ok=True)
+        self.rehearsals_dir.mkdir(parents=True, exist_ok=True)
 
         if not self.state_path.exists():
             self._write_json(
                 self.state_path,
                 {
                     "activeVentureId": None,
+                    "ideaNonce": 0,
                     "updatedAt": now_iso(),
                 },
             )
@@ -357,6 +390,21 @@ class StudioService:
         opp = canonical_opp_id(venture.get("opportunityId")) or "opp-unknown"
         venture_name = slugify(str(venture.get("name") or venture.get("id") or "venture"), 36)
         return slugify(f"op1-{opp}-{venture_name}", 56)
+
+    def _git_commit_sha(self) -> Optional[str]:
+        try:
+            proc = subprocess.run(
+                ["git", "rev-parse", "HEAD"],
+                cwd=str(self.repo_root),
+                capture_output=True,
+                text=True,
+                timeout=10,
+            )
+            if proc.returncode != 0:
+                return None
+            return (proc.stdout or "").strip()[:40] or None
+        except Exception:
+            return None
 
     def _append_deployment_record(self, record: Dict[str, Any]) -> None:
         with self.store_lock:
@@ -566,7 +614,18 @@ class StudioService:
             }
             ideas.append(idea)
 
-        ideas.sort(key=lambda x: float(x.get("feasibilityScore") or 0.0), reverse=True)
+        state = self._load_state()
+        nonce = int(state.get("ideaNonce", 0) or 0)
+
+        def _rank(item: Dict[str, Any]) -> float:
+            base = float(item.get("feasibilityScore") or 0.0)
+            if nonce <= 0:
+                return base
+            key = f"{item.get('opportunityId')}::{nonce}"
+            jitter = (abs(hash(key)) % 1000) / 1000.0
+            return base + jitter * 0.3
+
+        ideas.sort(key=_rank, reverse=True)
         return ideas
 
     def _find_venture(self, ventures: List[Dict[str, Any]], venture_id: str) -> Optional[Dict[str, Any]]:
@@ -982,10 +1041,167 @@ class StudioService:
             },
         }
 
+    def _capability_summary(self, monitor_snapshot: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+        if not isinstance(monitor_snapshot, dict):
+            return {"total": 0, "passed": 0, "failed": 0, "byAgent": []}
+
+        caps = monitor_snapshot.get("capabilities") or []
+        passed = sum(1 for c in caps if str((c or {}).get("status")) == "passed")
+        failed = sum(1 for c in caps if str((c or {}).get("status")) != "passed")
+        by_agent = []
+        for row in monitor_snapshot.get("agents") or []:
+            by_agent.append(
+                {
+                    "agent": row.get("agent"),
+                    "status": row.get("status"),
+                    "passed": row.get("passed"),
+                    "failed": row.get("failed"),
+                    "capabilityTotal": row.get("capabilityTotal"),
+                }
+            )
+
+        return {
+            "total": len(caps),
+            "passed": passed,
+            "failed": failed,
+            "byAgent": by_agent,
+        }
+
+    def _with_utm(self, url: Optional[str], *, source: str, medium: str, campaign: str, content: str) -> Optional[str]:
+        if not url or not isinstance(url, str) or not url.startswith("http"):
+            return None
+        parsed = urlparse(url)
+        query = dict(parse_qsl(parsed.query, keep_blank_values=True))
+        query.update(
+            {
+                "utm_source": source,
+                "utm_medium": medium,
+                "utm_campaign": campaign,
+                "utm_content": content,
+            }
+        )
+        return urlunparse(parsed._replace(query=urlencode(query, doseq=True)))
+
+    def _find_landing_url(self, landing: Dict[str, Any]) -> Optional[str]:
+        for value in flatten_strings(landing):
+            text = str(value).strip()
+            if text.startswith("http://") or text.startswith("https://"):
+                return text
+        return None
+
+    def _build_message_pack(self, opp_id: Optional[str]) -> Dict[str, Any]:
+        landing = self._parse_json(self.product_dir / "research/landing_v1/landing_package.json", {})
+        content_queue = self._parse_json(self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json", {})
+        campaign_queue = self._parse_json(self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json", {})
+        outreach = self._parse_json(self.sales_dir / "research/outreach/outreach_batch.ready.json", {})
+
+        landing_headline = deep_find_first_value(landing, ["headline", "hero_headline", "title", "value_proposition"]) or ""
+        landing_cta = deep_find_first_value(landing, ["cta", "primary_cta", "button_text", "call_to_action"]) or ""
+        proof_point = deep_find_first_value(landing, ["social_proof", "proof", "credibility", "metric", "result"]) or ""
+
+        top_content = None
+        top_content_bucket = None
+        for bucket in ["approved", "review_ready", "needs_revision", "blocked"]:
+            for item in ((content_queue.get("queue") or {}).get(bucket) or []):
+                if item_matches_opp(item, opp_id):
+                    top_content = item
+                    top_content_bucket = bucket
+                    break
+            if top_content:
+                break
+
+        top_campaign = None
+        top_campaign_bucket = None
+        for bucket in ["launch_ready", "watchlist", "hold"]:
+            for item in ((campaign_queue.get("queue") or {}).get(bucket) or []):
+                if item_matches_opp(item, opp_id):
+                    top_campaign = item
+                    top_campaign_bucket = bucket
+                    break
+            if top_campaign:
+                break
+
+        first_message = None
+        for msg in outreach.get("messages") or []:
+            if isinstance(msg, dict):
+                first_message = msg
+                break
+
+        ad_copy = None
+        if isinstance(top_campaign, dict):
+            ad_copy = top_campaign.get("ad_copy") or top_campaign.get("copy") or top_campaign.get("hook")
+        if not ad_copy and isinstance(top_content, dict):
+            ad_copy = top_content.get("summary") or top_content.get("angle")
+
+        sales_opening = None
+        if isinstance(first_message, dict):
+            sales_opening = first_message.get("body") or first_message.get("opening_line")
+
+        base_url = self._find_landing_url(landing)
+        campaign_slug = slugify(str(opp_id or "venture-campaign"), 48)
+        utm_links = {
+            "search": self._with_utm(base_url, source="google", medium="cpc", campaign=campaign_slug, content="judge-search-ad"),
+            "linkedin": self._with_utm(base_url, source="linkedin", medium="paid_social", campaign=campaign_slug, content="judge-linkedin-ad"),
+            "x": self._with_utm(base_url, source="x", medium="paid_social", campaign=campaign_slug, content="judge-x-ad"),
+            "sales_email": self._with_utm(base_url, source="sales", medium="email", campaign=campaign_slug, content="judge-outreach"),
+        }
+
+        alignment = {
+            "landingVsAd": bool(landing_headline and ad_copy),
+            "adVsSales": bool(ad_copy and sales_opening),
+            "landingVsSales": bool(landing_headline and sales_opening),
+        }
+
+        return {
+            "opportunityId": opp_id,
+            "messagePack": {
+                "valueProposition": landing_headline or None,
+                "primaryCta": landing_cta or None,
+                "proofPoint": proof_point or None,
+            },
+            "content": {
+                "contentId": (top_content or {}).get("content_id") if isinstance(top_content, dict) else None,
+                "bucket": top_content_bucket,
+                "snippet": (top_content or {}).get("summary") if isinstance(top_content, dict) else None,
+            },
+            "campaign": {
+                "campaignId": (top_campaign or {}).get("campaign_id") if isinstance(top_campaign, dict) else None,
+                "bucket": top_campaign_bucket,
+                "adCopy": ad_copy,
+            },
+            "sales": {
+                "messageId": (first_message or {}).get("id") if isinstance(first_message, dict) else None,
+                "opening": sales_opening,
+            },
+            "utmLinks": utm_links,
+            "alignment": alignment,
+        }
+
+    def _build_go_to_market_preview(self, opp_id: Optional[str]) -> Dict[str, Any]:
+        payload = self._build_message_pack(opp_id)
+        pack = payload.get("messagePack") or {}
+        campaign = payload.get("campaign") or {}
+        content = payload.get("content") or {}
+        sales = payload.get("sales") or {}
+        return {
+            "landingHeadline": pack.get("valueProposition"),
+            "landingCta": pack.get("primaryCta"),
+            "adPreview": campaign.get("adCopy") or content.get("snippet"),
+            "campaignId": campaign.get("campaignId"),
+            "contentId": content.get("contentId"),
+            "salesOpening": sales.get("opening"),
+            "messageMatch": payload.get("alignment") or {},
+            "utmLinks": payload.get("utmLinks") or {},
+        }
+
     # ------------------------------------------------------------------
     # Actions
     # ------------------------------------------------------------------
     def _action_refresh_ideas(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        mode = str(payload.get("mode") or "deterministic").strip().lower()
+        if mode not in {"deterministic", "explore"}:
+            raise StudioError("refresh_ideas mode must be deterministic or explore")
+
         step = self._command_step(
             "run_generate_startup_ideas",
             ["bash", "scripts/run_generate_startup_ideas.sh"],
@@ -1001,6 +1217,15 @@ class StudioService:
             paths=list(self._ideas_paths()),
         )
 
+        if status == "passed":
+            with self.store_lock:
+                state = self._load_state()
+                if mode == "explore":
+                    state["ideaNonce"] = int(state.get("ideaNonce", 0) or 0) + 1
+                else:
+                    state["ideaNonce"] = 0
+                self._save_state(state)
+
         run = self._record_run(
             venture_id=None,
             stage="IDEA_POOL",
@@ -1009,7 +1234,7 @@ class StudioService:
             status=status,
             steps=[step],
             artifacts=artifacts,
-            summary={"ideasCount": len(self.list_ideas())},
+            summary={"ideasCount": len(self.list_ideas()), "mode": mode},
             error=step["stderrTail"][-500:] if status == "failed" else None,
         )
         if status != "passed":
@@ -1040,6 +1265,9 @@ class StudioService:
 
         confirm_live = bool(payload.get("confirmLive", False))
         dry_run = bool(payload.get("dryRun", False))
+        deploy_target = str(payload.get("deployTarget") or "preview").strip().lower()
+        if deploy_target not in {"preview", "production"}:
+            raise StudioError("deployTarget must be preview or production")
 
         venture = self._require_venture(venture_id)
         opp_id = venture.get("opportunityId")
@@ -1047,6 +1275,7 @@ class StudioService:
             raise StudioError("venture opportunityId missing")
 
         vercel_project = self._vercel_project_name_for_venture(venture)
+        commit_sha = self._git_commit_sha()
 
         steps: List[Dict[str, Any]] = []
 
@@ -1066,7 +1295,7 @@ class StudioService:
                 status="failed",
                 steps=steps,
                 artifacts=[],
-                summary={"vercelProject": vercel_project},
+                summary={"vercelProject": vercel_project, "deployTarget": deploy_target},
                 error=step_landing["stderrTail"][-500:],
             )
             raise StudioError(f"Product landing step failed: {step_landing['stderrTail'][:300]}")
@@ -1079,6 +1308,8 @@ class StudioService:
                 raise StudioError("live mode requires confirmLive=true")
             if not self._manual_arm_enabled():
                 raise StudioError("manual arm is OFF; cannot run live product deployment")
+            if deploy_target == "production" and not bool(payload.get("confirmProduction", False)):
+                raise StudioError("production deployment requires confirmProduction=true")
 
             vercel = self._vercel_status()
             if not (vercel.get("installed") and vercel.get("authenticated")):
@@ -1090,6 +1321,7 @@ class StudioService:
                     "deploymentUrl": None,
                     "previewPath": None,
                     "vercelProject": vercel_project,
+                    "deployTarget": deploy_target,
                     "dryRun": True,
                     "message": "Live deployment preflight passed; dry-run skipped deploy.",
                 }
@@ -1119,6 +1351,7 @@ class StudioService:
                                 "at": now_iso(),
                                 "mode": mode,
                                 "dryRun": True,
+                                "deployTarget": deploy_target,
                             },
                         },
                     },
@@ -1136,6 +1369,8 @@ class StudioService:
                     "--allow-spec-autogen",
                     "--vercel-project",
                     vercel_project,
+                    "--deploy-target",
+                    deploy_target,
                 ],
                 cwd=self.product_dir,
                 timeout=3600,
@@ -1150,26 +1385,13 @@ class StudioService:
                     status="failed",
                     steps=steps,
                     artifacts=[],
-                    summary={"vercelProject": vercel_project},
+                    summary={"vercelProject": vercel_project, "deployTarget": deploy_target},
                     error=step_build["stderrTail"][-500:],
                 )
                 raise StudioError(f"Product build/deploy failed: {step_build['stderrTail'][:300]}")
 
             product_run = self._parse_json(self.product_dir / "research/stage2_web_product/run.latest.json", {})
             deployment_url = ((product_run.get("output") or {}).get("deployed_url"))
-
-            self._append_deployment_record(
-                {
-                    "id": f"dep_{uuid.uuid4().hex[:10]}",
-                    "ventureId": venture_id,
-                    "opportunityId": opp_id,
-                    "mode": "live",
-                    "project": vercel_project,
-                    "url": deployment_url,
-                    "createdAt": now_iso(),
-                    "runHint": "run_build_deploy_v1.sh",
-                }
-            )
         else:
             # Simulation mode: build local preview without external deployment.
             landing_run = self._parse_json(self.product_dir / "research/stage3_landing_launch/run.latest.json", {})
@@ -1196,25 +1418,13 @@ class StudioService:
                 steps.append(step_preview)
                 if step_preview["status"] == "passed":
                     preview_path = str(preview_dir)
-                    self._append_deployment_record(
-                        {
-                            "id": f"dep_{uuid.uuid4().hex[:10]}",
-                            "ventureId": venture_id,
-                            "opportunityId": opp_id,
-                            "mode": "simulation",
-                            "project": vercel_project,
-                            "url": None,
-                            "previewPath": preview_path,
-                            "createdAt": now_iso(),
-                            "runHint": "scaffold_web_product.py",
-                        }
-                    )
 
         artifact_paths = [
             self.product_dir / "research/stage3_landing_launch/run.latest.json",
             self.product_dir / "research/stage2_web_product/run.latest.json",
             self.product_dir / "research/landing_v1/landing_package.json",
             self.repo_root / "handoffs/product_to_marketing.json",
+            self.product_dir / "research/build_deploy_v1/deploy_latest.json",
         ]
         if preview_path:
             preview_index = Path(preview_path) / "index.html"
@@ -1234,7 +1444,9 @@ class StudioService:
             "deploymentUrl": deployment_url,
             "previewPath": preview_path,
             "vercelProject": vercel_project,
+            "deployTarget": deploy_target,
             "dryRun": dry_run,
+            "commit": commit_sha,
         }
 
         run = self._record_run(
@@ -1248,6 +1460,23 @@ class StudioService:
             summary=summary,
         )
 
+        self._append_deployment_record(
+            {
+                "id": f"dep_{uuid.uuid4().hex[:10]}",
+                "ventureId": venture_id,
+                "opportunityId": opp_id,
+                "mode": mode,
+                "project": vercel_project,
+                "env": "production" if deploy_target == "production" else "preview",
+                "url": deployment_url,
+                "previewPath": preview_path,
+                "commit": commit_sha,
+                "runId": run["id"],
+                "createdAt": now_iso(),
+                "runHint": "run_build_deploy_v1.sh" if mode == "live" else "scaffold_web_product.py",
+            }
+        )
+
         updated = self._update_venture(
             venture_id,
             lambda v: {
@@ -1258,6 +1487,7 @@ class StudioService:
                     "productDeploymentUrl": deployment_url,
                     "productPreviewPath": preview_path,
                     "vercelProject": vercel_project,
+                    "vercelEnv": "production" if deploy_target == "production" else "preview",
                 },
                 "lastActions": {
                     **(v.get("lastActions") or {}),
@@ -1266,6 +1496,7 @@ class StudioService:
                         "at": now_iso(),
                         "mode": mode,
                         "dryRun": dry_run,
+                        "deployTarget": deploy_target,
                     },
                 },
             },
@@ -2091,6 +2322,19 @@ class StudioService:
             payload_store["items"] = items
             self._save_loop_todos(payload_store)
 
+        suggestions: Dict[str, List[Dict[str, Any]]] = {"product": [], "marketing": [], "sales": []}
+        for team in ["product", "marketing", "sales"]:
+            team_todos = [x for x in todos if x.get("team") == team]
+            team_todos.sort(key=lambda x: str(x.get("priority") or "P9"))
+            for item in team_todos[:3]:
+                suggestions[team].append(
+                    {
+                        "title": item.get("title"),
+                        "priority": item.get("priority"),
+                        "source": item.get("sourceFile"),
+                    }
+                )
+
         run = self._record_run(
             venture_id=venture_id,
             stage="OPERATIONS",
@@ -2099,7 +2343,7 @@ class StudioService:
             status="passed",
             steps=[],
             artifacts=[],
-            summary={"todoCount": len(todos)},
+            summary={"todoCount": len(todos), "suggestions": suggestions},
         )
 
         updated = self._update_venture(
@@ -2109,13 +2353,18 @@ class StudioService:
                 "stage": "ITERATE",
                 "lastActions": {
                     **(v.get("lastActions") or {}),
-                    "operationsWriteback": {"runId": run["id"], "at": now_iso(), "todoCount": len(todos)},
+                    "operationsWriteback": {
+                        "runId": run["id"],
+                        "at": now_iso(),
+                        "todoCount": len(todos),
+                        "suggestions": suggestions,
+                    },
                 },
             },
         )
 
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated, "todos": todos}
+        return {"run": run, "venture": updated, "todos": todos, "suggestions": suggestions}
 
     def _action_confirm_iterate(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2152,6 +2401,8 @@ class StudioService:
         return {"venture": updated}
 
     def _action_stage_preflight(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        venture_id = str(payload.get("ventureId") or "").strip() or None
+
         checks = [
             ("marketing_verify_stage2", ["python3", "skills/op1-marketing-content-publish-stage2/scripts/verify_stage2_contract.py"], self.marketing_dir),
             ("marketing_verify_stage3", ["python3", "skills/op1-marketing-campaign-launch-stage3/scripts/verify_stage3_contract.py"], self.marketing_dir),
@@ -2162,22 +2413,68 @@ class StudioService:
             ("ops_verify_stage3", ["python3", "scripts/verify_stage3_reproducibility.py"], self.operations_dir),
         ]
         steps = [self._command_step(name, cmd, cwd=cwd, timeout=900) for name, cmd, cwd in checks]
-        failed = [s for s in steps if s.get("status") != "passed"]
-        status = "failed" if failed else "passed"
+
+        extra_checks = []
+        vercel = self._vercel_status()
+        extra_checks.append(
+            {
+                "name": "vercel_ready",
+                "status": "passed" if (vercel.get("installed") and vercel.get("authenticated")) else "warning",
+                "summary": {"installed": vercel.get("installed"), "authenticated": vercel.get("authenticated"), "note": vercel.get("note")},
+            }
+        )
+
+        arm_on = self._manual_arm_enabled()
+        extra_checks.append(
+            {
+                "name": "manual_arm",
+                "status": "passed" if arm_on else "warning",
+                "summary": {"enabled": arm_on},
+            }
+        )
+
+        if venture_id:
+            venture = self._require_venture(venture_id)
+            has_opp = bool(venture.get("opportunityId"))
+            extra_checks.append(
+                {
+                    "name": "venture_context_contract",
+                    "status": "passed" if has_opp else "failed",
+                    "summary": {"ventureId": venture_id, "opportunityId": venture.get("opportunityId"), "stage": venture.get("stage")},
+                }
+            )
+
+        failed_steps = [s for s in steps if s.get("status") != "passed"]
+        failed_extra = [s for s in extra_checks if s.get("status") == "failed"]
+        warning_extra = [s for s in extra_checks if s.get("status") == "warning"]
+
+        status = "failed" if (failed_steps or failed_extra) else "passed"
+
+        summary = {
+            "totalChecks": len(steps) + len(extra_checks),
+            "failedChecks": len(failed_steps) + len(failed_extra),
+            "warningChecks": len(warning_extra),
+            "extraChecks": extra_checks,
+            "nextSteps": [
+                "如果要 live 演示：先打开 Manual Arm 并确认 Vercel 登录可用。",
+                "如果 preflight 失败：先修复 failed check，再执行 rehearsal_e2e。",
+            ],
+        }
 
         run = self._record_run(
-            venture_id=payload.get("ventureId"),
+            venture_id=venture_id,
             stage="PRECHECK",
             action="stage_preflight",
             mode="simulation",
             status=status,
             steps=steps,
             artifacts=[],
-            summary={"totalChecks": len(steps), "failedChecks": len(failed)},
-            error=failed[0].get("stderrTail")[-500:] if failed else None,
+            summary=summary,
+            error=failed_steps[0].get("stderrTail")[-500:] if failed_steps else (failed_extra[0].get("name") if failed_extra else None),
         )
-        if failed:
-            raise StudioError(f"preflight failed at {failed[0].get('name')}")
+        if status == "failed":
+            first_name = failed_steps[0].get("name") if failed_steps else failed_extra[0].get("name")
+            raise StudioError(f"preflight failed at {first_name}")
         return {"run": run}
 
     def _action_rehearsal_e2e(self, payload: Dict[str, Any]) -> Dict[str, Any]:
@@ -2201,12 +2498,24 @@ class StudioService:
         ]
 
         completed = []
+        replay = {
+            "generatedAt": now_iso(),
+            "ventureId": venture_id,
+            "sequence": [x[0] for x in sequence],
+            "steps": completed,
+        }
+
         for action, p in sequence:
             try:
                 result = self._run_action_sync(action, {"action": action, **p})
                 completed.append({"action": action, "status": "passed", "resultKeys": list(result.keys())})
             except Exception as exc:  # noqa: BLE001
                 completed.append({"action": action, "status": "failed", "error": str(exc)})
+                replay["status"] = "failed"
+                replay["error"] = str(exc)
+                replay_path = self.rehearsals_dir / f"rehearsal_{venture_id}_{now_dt().strftime('%Y%m%d%H%M%S')}.json"
+                self._write_json(replay_path, replay)
+
                 run = self._record_run(
                     venture_id=venture_id,
                     stage="REHEARSAL",
@@ -2214,11 +2523,27 @@ class StudioService:
                     mode="simulation",
                     status="failed",
                     steps=[],
-                    artifacts=[],
-                    summary={"completed": completed},
+                    artifacts=self._copy_artifacts(
+                        venture_id=venture_id,
+                        stage="REHEARSAL",
+                        run_id=f"rehearsal_{now_dt().strftime('%Y%m%d%H%M%S')}",
+                        paths=[replay_path],
+                    ),
+                    summary={"completed": completed, "replayPath": str(replay_path.relative_to(self.repo_root))},
                     error=str(exc),
                 )
                 raise StudioError(f"rehearsal failed at {action}: {exc}")
+
+        replay["status"] = "passed"
+        replay_path = self.rehearsals_dir / f"rehearsal_{venture_id}_{now_dt().strftime('%Y%m%d%H%M%S')}.json"
+        self._write_json(replay_path, replay)
+
+        artifacts = self._copy_artifacts(
+            venture_id=venture_id,
+            stage="REHEARSAL",
+            run_id=f"rehearsal_{now_dt().strftime('%Y%m%d%H%M%S')}",
+            paths=[replay_path],
+        )
 
         run = self._record_run(
             venture_id=venture_id,
@@ -2227,11 +2552,67 @@ class StudioService:
             mode="simulation",
             status="passed",
             steps=[],
-            artifacts=[],
-            summary={"completed": completed},
+            artifacts=artifacts,
+            summary={"completed": completed, "replayPath": str(replay_path.relative_to(self.repo_root))},
         )
         self._sync_venture_context(venture_id)
-        return {"run": run, "completed": completed}
+        return {"run": run, "completed": completed, "replayPath": str(replay_path.relative_to(self.repo_root))}
+
+    def _run_vercel_audit_script(self, *, apply: bool = False, max_delete: int = 5, strategy: str = "archive") -> Dict[str, Any]:
+        script = self.scripts_dir / "vercel_audit_cleanup.py"
+        if not script.exists():
+            raise StudioError("missing scripts/vercel_audit_cleanup.py")
+
+        cmd = ["python3", str(script), "--keep-prefix", "op1-"]
+        if apply:
+            cmd.extend(["--apply", "--strategy", strategy, "--max-delete", str(max_delete)])
+
+        step = self._command_step("vercel_audit_cleanup", cmd, cwd=self.repo_root, timeout=600)
+        if step["status"] != "passed":
+            raise StudioError(f"vercel audit script failed: {step['stderrTail'][:300]}")
+
+        report_path = self.runtime_dir / "studio" / "vercel_audit.latest.json"
+        report = self._parse_json(report_path, {})
+        return {"step": step, "report": report, "reportPath": str(report_path.relative_to(self.repo_root))}
+
+    def _action_vercel_audit(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        result = self._run_vercel_audit_script(apply=False)
+        run = self._record_run(
+            venture_id=payload.get("ventureId"),
+            stage="PRECHECK",
+            action="vercel_audit",
+            mode="simulation",
+            status="passed",
+            steps=[result["step"]],
+            artifacts=[],
+            summary={"reportPath": result["reportPath"]},
+        )
+        return {"run": run, "report": result["report"], "reportPath": result["reportPath"]}
+
+    def _action_vercel_cleanup_apply(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        max_delete = int(payload.get("maxDelete", 3) or 3)
+        strategy = str(payload.get("strategy") or "archive").strip().lower()
+        if strategy not in {"archive", "delete"}:
+            raise StudioError("strategy must be archive or delete")
+
+        confirm = bool(payload.get("confirm", False))
+        if not confirm:
+            raise StudioError("vercel cleanup apply requires confirm=true")
+        if strategy == "delete" and not bool(payload.get("confirmDelete", False)):
+            raise StudioError("delete strategy requires confirmDelete=true")
+
+        result = self._run_vercel_audit_script(apply=True, max_delete=max_delete, strategy=strategy)
+        run = self._record_run(
+            venture_id=payload.get("ventureId"),
+            stage="PRECHECK",
+            action="vercel_cleanup_apply",
+            mode="live",
+            status="passed",
+            steps=[result["step"]],
+            artifacts=[],
+            summary={"reportPath": result["reportPath"], "maxDelete": max_delete, "strategy": strategy},
+        )
+        return {"run": run, "report": result["report"], "reportPath": result["reportPath"]}
 
     def _summarize_run(self, run: Dict[str, Any], *, include_details: bool = False) -> Dict[str, Any]:
         summary = {
@@ -2266,6 +2647,193 @@ class StudioService:
                 return copy.deepcopy(job)
         return None
 
+    def _action_state_map(self, *, venture_id: Optional[str], recommended_actions: List[Dict[str, Any]], recent_runs: List[Dict[str, Any]]) -> Dict[str, Dict[str, Any]]:
+        actions = {str(item.get("action")) for item in recommended_actions if item.get("action")}
+        status_map: Dict[str, Dict[str, Any]] = {}
+
+        # Running/queued jobs dominate state.
+        for action in actions:
+            job = self._running_job_for(action, venture_id)
+            if job:
+                status_map[action] = {
+                    "status": str(job.get("status") or "running"),
+                    "jobId": job.get("id"),
+                    "updatedAt": job.get("updatedAt") or job.get("createdAt"),
+                    "message": job.get("error") or None,
+                }
+
+        # Backfill with latest run status when no running job.
+        for run in recent_runs:
+            action = str(run.get("action") or "")
+            if action not in actions:
+                continue
+            if action in status_map:
+                continue
+            status = str(run.get("status") or "unknown")
+            normalized = "succeeded" if status == "passed" else "failed" if status == "failed" else "idle"
+            status_map[action] = {
+                "status": normalized,
+                "runId": run.get("id"),
+                "updatedAt": run.get("endedAt") or run.get("createdAt"),
+                "message": run.get("error"),
+            }
+
+        for action in actions:
+            status_map.setdefault(action, {"status": "idle", "message": None})
+
+        return status_map
+
+    def _global_run_state(self, *, venture_id: Optional[str], recent_runs: List[Dict[str, Any]]) -> Dict[str, Any]:
+        with self.jobs_lock:
+            jobs = [copy.deepcopy(v) for v in self.jobs.values()]
+
+        scoped_jobs = [
+            j
+            for j in jobs
+            if (not venture_id or str(j.get("ventureId") or "") == str(venture_id)) and j.get("status") in {"queued", "running"}
+        ]
+        scoped_jobs.sort(key=lambda x: str(x.get("createdAt") or ""), reverse=True)
+
+        if scoped_jobs:
+            top = scoped_jobs[0]
+            started_at = top.get("startedAt") or top.get("createdAt")
+            elapsed_ms = None
+            if started_at:
+                try:
+                    dt = datetime.fromisoformat(str(started_at).replace("Z", "+00:00"))
+                    elapsed_ms = int((now_dt() - dt).total_seconds() * 1000)
+                except Exception:
+                    elapsed_ms = None
+            return {
+                "status": str(top.get("status") or "running"),
+                "runningAction": top.get("action"),
+                "runningJobId": top.get("id"),
+                "elapsedMs": elapsed_ms,
+                "runningCount": len(scoped_jobs),
+                "lastError": None,
+            }
+
+        last_failed = None
+        for run in recent_runs:
+            if run.get("status") == "failed":
+                last_failed = run
+                break
+
+        return {
+            "status": "idle",
+            "runningAction": None,
+            "runningJobId": None,
+            "elapsedMs": None,
+            "runningCount": 0,
+            "lastError": last_failed.get("error") if last_failed else None,
+            "lastFailedAction": last_failed.get("action") if last_failed else None,
+        }
+
+    def _build_stage_artifact_cards(self, stage_results: List[Dict[str, Any]], deployments: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+        by_stage: Dict[str, Dict[str, Any]] = {str(x.get("stage")): x for x in stage_results}
+        cards: List[Dict[str, Any]] = []
+
+        def file_item(label: str, path: Optional[str]) -> Optional[Dict[str, Any]]:
+            if not path:
+                return None
+            p = str(path)
+            return {
+                "label": label,
+                "kind": "file",
+                "path": p,
+                "previewable": p.endswith(".html") or p.endswith(".htm"),
+            }
+
+        def url_item(label: str, url: Optional[str]) -> Optional[Dict[str, Any]]:
+            if not url:
+                return None
+            return {"label": label, "kind": "url", "url": url}
+
+        product = by_stage.get("PRODUCT") or {}
+        product_summary = product.get("summary") or {}
+        product_artifacts = product.get("artifacts") or []
+        build_report = None
+        for art in product_artifacts:
+            p = art.get("snapshotPath") or art.get("sourcePath")
+            if p and ("stage2_web_product/run.latest.json" in p or "run.latest.json" in p):
+                build_report = p
+                break
+        preview_ref = product_summary.get("previewPath")
+        if isinstance(preview_ref, str) and preview_ref and not preview_ref.endswith(".html"):
+            preview_ref = str(Path(preview_ref) / "index.html")
+
+        product_items = [
+            url_item("Open Deployment", product_summary.get("deploymentUrl")),
+            file_item("Open Preview", preview_ref),
+            file_item("Open Build Report", build_report),
+            url_item("Open in Vercel", f"https://vercel.com/dashboard/projects/{product_summary.get('vercelProject')}" if product_summary.get("vercelProject") else None),
+        ]
+        cards.append({"stage": "PRODUCT", "title": "Product 产物", "items": [x for x in product_items if x]})
+
+        marketing = by_stage.get("MARKETING") or {}
+        marketing_artifacts = marketing.get("artifacts") or []
+        content_queue = None
+        campaign_queue = None
+        for art in marketing_artifacts:
+            p = art.get("snapshotPath") or art.get("sourcePath")
+            if not p:
+                continue
+            if "publish.queue.latest.json" in p and not content_queue:
+                content_queue = p
+            if "campaigns.queue.latest.json" in p and not campaign_queue:
+                campaign_queue = p
+        cards.append(
+            {
+                "stage": "MARKETING",
+                "title": "Marketing 产物",
+                "items": [x for x in [file_item("Open Content Queue", content_queue), file_item("Open Campaign Queue", campaign_queue)] if x],
+            }
+        )
+
+        sales = by_stage.get("SALES") or {}
+        sales_artifacts = sales.get("artifacts") or []
+        outreach_pack = None
+        conversion_board = None
+        for art in sales_artifacts:
+            p = art.get("snapshotPath") or art.get("sourcePath")
+            if not p:
+                continue
+            if "outreach_batch.ready.json" in p and not outreach_pack:
+                outreach_pack = p
+            if "conversion_scoreboard" in p and not conversion_board:
+                conversion_board = p
+        cards.append(
+            {
+                "stage": "SALES",
+                "title": "Sales 产物",
+                "items": [x for x in [file_item("Open Outreach Pack", outreach_pack), file_item("Open Conversion Scoreboard", conversion_board)] if x],
+            }
+        )
+
+        ops = by_stage.get("OPERATIONS") or {}
+        ops_artifacts = ops.get("artifacts") or []
+        kpi_snapshot = None
+        loop_todos = None
+        for art in ops_artifacts:
+            p = art.get("snapshotPath") or art.get("sourcePath")
+            if not p:
+                continue
+            if "stage1_scoreboard" in p and not kpi_snapshot:
+                kpi_snapshot = p
+            if "loop_todos" in p and not loop_todos:
+                loop_todos = p
+        if not loop_todos:
+            loop_todos = "dashboard/.runtime/studio/loop_todos.json"
+        cards.append(
+            {
+                "stage": "OPERATIONS",
+                "title": "Operations 产物",
+                "items": [x for x in [file_item("Open KPI Snapshot", kpi_snapshot), file_item("Open Loop Todos", loop_todos)] if x],
+            }
+        )
+
+        return cards
+
     def _next_recommended_actions(self, active_venture: Optional[Dict[str, Any]], active_context: Dict[str, Any]) -> List[Dict[str, Any]]:
         if not active_venture:
             return [
@@ -2281,15 +2849,7 @@ class StudioService:
         stage = str(active_venture.get("stage") or "SELECTED")
         vid = active_venture.get("id")
         selections = active_venture.get("selections") or {}
-        out: List[Dict[str, Any]] = [
-            {
-                "action": "stage_preflight",
-                "label": "运行演示前预检查",
-                "description": "执行 Marketing/Sales/Ops 合同与可复现性检查。",
-                "stage": "PRECHECK",
-                "payload": {"action": "stage_preflight", "ventureId": vid, "async": True},
-            }
-        ]
+        out: List[Dict[str, Any]] = []
 
         if stage in {"SELECTED", "PRODUCT"}:
             out.append(
@@ -2418,14 +2978,30 @@ class StudioService:
                 ]
             )
 
-        out.append(
-            {
-                "action": "rehearsal_e2e",
-                "label": "一键彩排（simulation）",
-                "description": "按安全模式串行执行全流程，用于演示前检查。",
-                "stage": "REHEARSAL",
-                "payload": {"action": "rehearsal_e2e", "ventureId": vid, "async": True},
-            }
+        out.extend(
+            [
+                {
+                    "action": "stage_preflight",
+                    "label": "运行演示前预检查",
+                    "description": "执行 Marketing/Sales/Ops 合同与可复现性检查。",
+                    "stage": "PRECHECK",
+                    "payload": {"action": "stage_preflight", "ventureId": vid, "async": True},
+                },
+                {
+                    "action": "vercel_audit",
+                    "label": "审计 Vercel 项目",
+                    "description": "整理项目清单并识别可清理候选。",
+                    "stage": "PRECHECK",
+                    "payload": {"action": "vercel_audit", "ventureId": vid, "async": True},
+                },
+                {
+                    "action": "rehearsal_e2e",
+                    "label": "一键彩排（simulation）",
+                    "description": "按安全模式串行执行全流程，用于演示前检查。",
+                    "stage": "REHEARSAL",
+                    "payload": {"action": "rehearsal_e2e", "ventureId": vid, "async": True},
+                },
+            ]
         )
 
         return out[:10]
@@ -2451,6 +3027,8 @@ class StudioService:
             "confirm_iterate": self._action_confirm_iterate,
             "stage_preflight": self._action_stage_preflight,
             "rehearsal_e2e": self._action_rehearsal_e2e,
+            "vercel_audit": self._action_vercel_audit,
+            "vercel_cleanup_apply": self._action_vercel_cleanup_apply,
         }
         fn = dispatch.get(action)
         if not fn:
@@ -2584,12 +3162,10 @@ class StudioService:
             )
 
         quickstart = [
-            "在 Idea Board 点击“刷新 startup ideas”",
-            "选择一个 idea，点击“创建 Venture”",
-            "到 Product 页执行 Product（建议 simulation）",
-            "到 Marketing 页生成内容/campaign并人工选择",
-            "到 Sales 页先 simulate，再决定是否 live",
-            "到 Ops 页运行闭环并确认进入下一轮",
+            "先看 Judge Mode 顶部：当前项目、阶段、产物入口、下一步动作。",
+            "点击“运行演示前预检查”，确认合同与环境都通过。",
+            "先走 simulation 全流程，再决定是否 live。",
+            "live 仅在 Manual Arm ON + 显式确认后执行。",
         ]
 
         deployments = [
@@ -2597,6 +3173,8 @@ class StudioService:
             for x in reversed(deployments_payload.get("items") or [])
             if (not active_id or x.get("ventureId") == active_id)
         ][:30]
+
+        vercel_audit = self._parse_json(self.runtime_dir / "studio" / "vercel_audit.latest.json", {})
 
         venture_context = self._read_venture_context(active_id) if active_id else {}
 
@@ -2611,6 +3189,22 @@ class StudioService:
                 }
             )
 
+        message_pack = self._build_message_pack(opp_id)
+        recommended_actions = self._next_recommended_actions(active_venture, active_context)
+        action_states = self._action_state_map(venture_id=active_id, recommended_actions=recommended_actions, recent_runs=recent_runs)
+        global_run_state = self._global_run_state(venture_id=active_id, recent_runs=recent_runs_raw)
+        stage_artifact_cards = self._build_stage_artifact_cards(stage_results, deployments)
+
+        vercel_audit_summary = {
+            "generatedAt": vercel_audit.get("generatedAt"),
+            "ok": vercel_audit.get("ok"),
+            "projectCount": vercel_audit.get("projectCount"),
+            "keep": len(((vercel_audit.get("classified") or {}).get("keep") or [])),
+            "review": len(((vercel_audit.get("classified") or {}).get("review") or [])),
+            "cleanupCandidates": len(((vercel_audit.get("classified") or {}).get("cleanupCandidates") or [])),
+            "reportPath": "dashboard/.runtime/studio/vercel_audit.latest.json" if vercel_audit else None,
+        }
+
         return {
             "generatedAt": now_iso(),
             "ideas": self.list_ideas(),
@@ -2621,18 +3215,26 @@ class StudioService:
             "ventureContext": venture_context,
             "stageFlow": stage_flow,
             "stageResults": stage_results,
+            "stageArtifactCards": stage_artifact_cards,
             "recentRuns": recent_runs,
             "recentGates": [x for x in reversed(gates) if (not active_id or x.get("ventureId") == active_id)][:40],
             "loopTodos": todos[:100],
             "deployments": deployments,
             "crossAgentInsights": cross_agent_insights,
+            "goToMarketPreview": self._build_go_to_market_preview(opp_id),
+            "messagePack": message_pack,
+            "capabilitySummary": self._capability_summary(monitor_snapshot),
             "jobs": self.list_jobs(include_result=False),
             "vercel": self._vercel_status(),
+            "vercelAuditSummary": vercel_audit_summary,
             "manualArmEnabled": bool(self._manual_arm_enabled()),
             "monitor": monitor_snapshot,
             "stateMachine": STAGE_ORDER,
+            "globalRunState": global_run_state,
             "guide": {
                 "quickstart": quickstart,
-                "nextRecommendedActions": self._next_recommended_actions(active_venture, active_context),
+                "nextRecommendedActions": recommended_actions,
+                "primaryRecommendedAction": recommended_actions[0] if recommended_actions else None,
+                "actionStates": action_states,
             },
         }

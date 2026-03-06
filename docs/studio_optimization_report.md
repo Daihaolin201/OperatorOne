@@ -55,6 +55,16 @@
 - 新增 `venture_context.v1` 统一上下文快照
 - 保留 5-tab 结构并补强跨阶段决策提示
 
+### G. 演示产品化补强（本轮新增）
+
+- Judge Focus 四块（项目/阶段/产物/下一步）
+- 阶段产物“卡片 + 链接”替代长文本
+- 本地 HTML 预览路由：`/api/studio/preview?path=...`
+- 全局运行条（当前 action、耗时、最近错误）
+- 按钮状态机（idle/queued/running/succeeded/failed）与完成 toast
+- `messagePack` + UTM 自动拼接（Landing/Ad/Sales 并排）
+- Vercel 治理增强：部署 registry 新字段、cleanup 策略 archive/delete
+
 ---
 
 ## 实测结果（本机）

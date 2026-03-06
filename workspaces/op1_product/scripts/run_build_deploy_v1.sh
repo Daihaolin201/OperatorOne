@@ -19,6 +19,8 @@ ADAPTER_ID=""
 PAGE_PROFILE=""
 DEPLOY_URL=""
 PAGE_SPEC_PATH=""
+DEPLOY_TARGET="preview"
+VERCEL_PROJECT=""
 
 usage() {
   cat <<'USAGE'
@@ -35,6 +37,8 @@ Options:
   --page-profile <id>        Force page layout profile id during page-spec compile
   --skip-page-strategy-test  Skip page strategy test stage
   --no-rollback              Disable auto rollback attempt on post-deploy failure
+  --deploy-target <target>   Vercel target: preview|production (default: preview)
+  --vercel-project <name>    Force deterministic Vercel project name
   --app-dir <path>           Override scaffold output app directory
   --artifact-dir <path>      Override artifact output directory
   --help                     Show help
@@ -79,6 +83,14 @@ while [[ $# -gt 0 ]]; do
       ROLLBACK_ON_FAIL="no"
       shift
       ;;
+    --deploy-target)
+      DEPLOY_TARGET="$2"
+      shift 2
+      ;;
+    --vercel-project)
+      VERCEL_PROJECT="$2"
+      shift 2
+      ;;
     --app-dir)
       APP_DIR="$2"
       shift 2
@@ -98,6 +110,11 @@ while [[ $# -gt 0 ]]; do
       ;;
   esac
 done
+
+if [[ "$DEPLOY_TARGET" != "preview" && "$DEPLOY_TARGET" != "production" ]]; then
+  echo "Invalid --deploy-target: $DEPLOY_TARGET (expected preview|production)" >&2
+  exit 2
+fi
 
 mkdir -p "$ARTIFACT_DIR"
 mkdir -p "$(dirname "$STATE_FILE")"
@@ -275,8 +292,12 @@ if [[ -n "$LEGACY_BLUEPRINT_PATH" ]]; then
 fi
 
 CURRENT_STEP="deploy"
-append_event "$CURRENT_STEP" "in_progress" "Deploying to Vercel"
-DEPLOY_URL="$($ROOT_DIR/scripts/deploy_web_product.sh --app-dir "$APP_DIR" --log-dir "$ARTIFACT_DIR" --target production)"
+append_event "$CURRENT_STEP" "in_progress" "Deploying to Vercel ($DEPLOY_TARGET)"
+DEPLOY_CMD=("$ROOT_DIR/scripts/deploy_web_product.sh" --app-dir "$APP_DIR" --log-dir "$ARTIFACT_DIR" --target "$DEPLOY_TARGET")
+if [[ -n "$VERCEL_PROJECT" ]]; then
+  DEPLOY_CMD+=(--vercel-project "$VERCEL_PROJECT")
+fi
+DEPLOY_URL="$("${DEPLOY_CMD[@]}")"
 append_event "$CURRENT_STEP" "done" "Deployment URL: $DEPLOY_URL"
 
 CURRENT_STEP="deployment_health_gate"
@@ -353,7 +374,7 @@ append_event "$CURRENT_STEP" "done" "Business-rule tests passed"
 
 CURRENT_STEP="report"
 append_event "$CURRENT_STEP" "in_progress" "Writing run report"
-python3 - "$RUN_REPORT" "$RUN_ID" "$PROJECT_SPEC_PATH" "$APP_DIR" "$ARTIFACT_DIR" "$DEPLOY_URL" "$SCAFFOLD_SUMMARY" "$SMOKE_REPORT" "$PAGE_STRATEGY_REPORT" "$BUSINESS_REPORT" "$LEGACY_BLUEPRINT_PATH" "$ROLLBACK_ON_FAIL" "$RUN_PAGE_STRATEGY_TEST" "$PAGE_SPEC_PATH" <<'PY'
+python3 - "$RUN_REPORT" "$RUN_ID" "$PROJECT_SPEC_PATH" "$APP_DIR" "$ARTIFACT_DIR" "$DEPLOY_URL" "$SCAFFOLD_SUMMARY" "$SMOKE_REPORT" "$PAGE_STRATEGY_REPORT" "$BUSINESS_REPORT" "$LEGACY_BLUEPRINT_PATH" "$ROLLBACK_ON_FAIL" "$RUN_PAGE_STRATEGY_TEST" "$PAGE_SPEC_PATH" "$DEPLOY_TARGET" "$VERCEL_PROJECT" <<'PY'
 import datetime as dt
 import json
 import pathlib
@@ -373,6 +394,8 @@ legacy_blueprint = sys.argv[11]
 rollback_on_fail = sys.argv[12]
 run_page_strategy_test = sys.argv[13]
 page_spec_path = pathlib.Path(sys.argv[14]).resolve()
+deploy_target = sys.argv[15]
+vercel_project = sys.argv[16] or None
 
 scaffold_summary = json.loads(scaffold_summary_path.read_text(encoding="utf-8"))
 smoke_report = json.loads(smoke_path.read_text(encoding="utf-8"))
@@ -402,6 +425,8 @@ report = {
         "from_opportunity_id": scaffold_summary.get("from_opportunity_id"),
         "adapter_name": adapter_name,
         "page_strategy_test_enabled": run_page_strategy_test,
+        "deploy_target": deploy_target,
+        "vercel_project": vercel_project,
     },
     "output": {
         "app_dir": str(app_dir),
@@ -413,6 +438,7 @@ report = {
         "page_strategy_test_report": str(page_strategy_path),
         "business_test_report": str(business_path),
         "deploy_log_hint": str(artifact_dir / "deploy_latest.json"),
+        "deploy_target": deploy_target,
     },
     "checks": {
         "deployment_health_gate": "passed",

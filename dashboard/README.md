@@ -66,6 +66,21 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 - 新增 `stage_preflight`（合同/可复现性预检查）
 - 新增 `rehearsal_e2e`（simulation 一键彩排）
 
+### v1.2 演示升级（P0-P4 落地增强）
+
+- Judge Focus 四块信息：当前项目 / 当前阶段 / 产物入口 / 下一步唯一动作
+- 阶段产物卡片化：Product/Marketing/Sales/Ops 均提供可点击入口
+- 操作状态机：idle → queued → running → succeeded/failed（按钮旁状态 + 全局运行条 + toast）
+- `messagePack` 联动：Landing 价值主张 + 广告文案 + Sales 开场并排预览，自动生成 UTM 链接
+- Product 部署治理：
+  - deterministic 项目名 `op1-<opp>-<venture>`
+  - 部署注册表新增 `env / commit / runId`
+  - live 默认 preview，production 需 `confirmProduction=true`
+- Vercel 两段治理：
+  - `vercel_audit` 只读审计
+  - `vercel_cleanup_apply` 支持 `strategy=archive|delete`（默认 archive，delete 需二次确认）
+- `rehearsal_e2e` 生成可回放彩排报告（replay JSON）
+
 ---
 
 ## 核心 API

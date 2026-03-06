@@ -697,6 +697,42 @@ class DashboardHandler(BaseHTTPRequestHandler):
             },
         )
 
+    def _handle_get_studio_preview(self, query: Dict[str, List[str]]) -> None:
+        path_values = query.get("path") or []
+        if not path_values:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        raw = str(path_values[-1]).strip()
+        if not raw:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        candidate = Path(raw)
+        if not candidate.is_absolute():
+            candidate = (REPO_ROOT / raw).resolve()
+        else:
+            candidate = candidate.resolve()
+
+        if candidate.is_dir():
+            candidate = (candidate / "index.html").resolve()
+
+        if not str(candidate).startswith(str(REPO_ROOT.resolve())):
+            self._json_response(403, {"ok": False, "error": "path escapes repository"})
+            return
+        if not candidate.exists() or not candidate.is_file():
+            self._json_response(404, {"ok": False, "error": "preview file not found"})
+            return
+
+        content = candidate.read_bytes()
+        mime = mimetypes.guess_type(str(candidate))[0] or "text/plain"
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", f"{mime}; charset=utf-8" if mime.startswith("text/") else mime)
+        self.send_header("Content-Length", str(len(content)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(content)
+
     def _handle_post_studio_action(self, payload: Dict[str, Any]) -> None:
         try:
             result = STUDIO.dispatch_action(payload)
@@ -758,6 +794,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/studio/artifact":
             self._handle_get_studio_artifact(query)
+            return
+        if path == "/api/studio/preview":
+            self._handle_get_studio_preview(query)
             return
         if path == "/api/runtime-flags":
             self._handle_get_runtime_flags()

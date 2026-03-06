@@ -56,6 +56,13 @@ body {
   gap: 10px;
 }
 
+.mode-label {
+  font-size: 12px;
+  color: var(--muted);
+  display: grid;
+  gap: 4px;
+}
+
 main {
   padding: 22px;
   display: grid;
@@ -73,6 +80,10 @@ main {
 
 .grid-4 {
   grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.grid-5 {
+  grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .card {
@@ -172,7 +183,8 @@ button:hover {
 .status-passed,
 .status-ready,
 .status-succeeded,
-.status-success {
+.status-success,
+.status-completed {
   background: rgba(46, 160, 67, 0.18);
   color: #58d68d;
 }
@@ -180,7 +192,9 @@ button:hover {
 .status-warning,
 .status-review_required,
 .status-running,
-.status-queued {
+.status-queued,
+.status-pending,
+.status-current {
   background: rgba(210, 153, 34, 0.2);
   color: #f4bf4f;
 }
@@ -296,6 +310,64 @@ textarea {
   margin-top: 8px;
 }
 
+.linkish {
+  color: #7fb3ff;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+body[data-mode="judge"] .advanced-only {
+  display: none !important;
+}
+
+body[data-mode="builder"] .judge-focus {
+  opacity: 0.9;
+}
+
+.action-status {
+  display: inline-block;
+  margin-left: 8px;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+}
+
+.toast-container {
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  gap: 8px;
+  z-index: 99;
+}
+
+.toast {
+  background: #1b2430;
+  border: 1px solid var(--line);
+  border-left: 4px solid #7fb3ff;
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  font-size: 12px;
+  min-width: 240px;
+  max-width: 380px;
+}
+
+.toast.ok {
+  border-left-color: var(--ok);
+}
+
+.toast.error {
+  border-left-color: var(--fail);
+}
+
+@media (max-width: 1600px) {
+  .grid-5 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 1400px) {
   .grid-4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -304,7 +376,8 @@ textarea {
 
 @media (max-width: 900px) {
   .grid-2,
-  .grid-4 {
+  .grid-4,
+  .grid-5 {
     grid-template-columns: 1fr;
   }
 
