@@ -222,10 +222,8 @@ OperatorOne/
 ├── dashboard/           Local monitor and venture studio web app
 ├── apps/                Next.js portal and product apps
 ├── packages/            Shared @op1/* packages
-├── openclaw/            Profile sync and safety scripts
-├── official-site/       OperatorOne intro page
-├── shared/              Shared prompts, skills, templates
-└── docs/                Architecture, runbook, collaboration protocol
+├── scripts/             CI helper scripts
+└── docs/                Architecture, runbook, test policy
 ```
 
 ---
@@ -251,8 +249,6 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 </div>
 
 <br/>
-
-Full walkthrough: [`docs/demo_video_script.md`](docs/demo_video_script.md)
 
 ---
 
@@ -456,10 +452,8 @@ OperatorOne/
 ├── dashboard/           本地监控器与创业工作室 Web 应用
 ├── apps/                Next.js 门户及产品应用
 ├── packages/            共享 @op1/* 软件包
-├── openclaw/            配置同步与安全脚本
-├── official-site/       OperatorOne 官方介绍页
-├── shared/              共享提示词、技能与模板
-└── docs/                架构设计、运维手册、协作协议
+├── scripts/             CI 辅助脚本
+└── docs/                架构设计、运维手册、测试策略
 ```
 
 ---
@@ -486,4 +480,4 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 <br/>
 
-完整演示脚本：[`docs/demo_video_script.md`](docs/demo_video_script.md)
+完整演示脚本：[`docs/runbook.md`](docs/runbook.md)

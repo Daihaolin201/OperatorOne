@@ -569,6 +569,27 @@ class DashboardHandler(BaseHTTPRequestHandler):
         events = run.get("events") or []
         self._json_response(200, {"ok": True, "run_id": run_id, "events": events})
 
+    def _handle_get_run_replay(self, run_id: str) -> None:
+        replay_path = STUDIO.studio_dir / "replays" / f"{run_id}.json"
+        if not replay_path.exists():
+            self._json_response(404, {"ok": False, "error": "replay not found"})
+            return
+        try:
+            data = json.loads(replay_path.read_text())
+            self._json_response(200, data)
+        except Exception as exc:  # noqa: BLE001
+            self._json_response(500, {"ok": False, "error": f"replay read failed: {exc}"})
+
+    def _handle_get_runs_list(self) -> None:
+        with STUDIO.store_lock:
+            runs_payload = STUDIO._load_runs()
+        api_runs = [
+            item
+            for item in runs_payload.get("items", [])
+            if isinstance(item, dict) and item.get("run_type") == "api"
+        ]
+        self._json_response(200, {"ok": True, "runs": api_runs})
+
     def _handle_post_run_cancel(self, run_id: str) -> None:
         run = self._get_api_run_by_id(run_id)
         if not run:
@@ -1214,12 +1235,20 @@ a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0
         if path == "/api/integrations/api-connectors":
             self._handle_get_api_connectors()
             return
+        if path == "/api/runs":
+            self._handle_get_runs_list()
+            return
         if path.startswith("/api/runs/"):
             suffix = path[len("/api/runs/"):]
             if suffix.endswith("/events"):
                 run_id = suffix[: -len("/events")]
                 if run_id:
                     self._handle_get_run_events(run_id)
+                    return
+            elif suffix.endswith("/replay"):
+                run_id = suffix[: -len("/replay")]
+                if run_id:
+                    self._handle_get_run_replay(run_id)
                     return
             elif suffix:
                 self._handle_get_run(suffix)

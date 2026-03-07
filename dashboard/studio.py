@@ -310,6 +310,50 @@ class StudioService:
         path.parent.mkdir(parents=True, exist_ok=True)
         path.write_text(json.dumps(payload, ensure_ascii=False, indent=2))
 
+    def _write_replay(self, run_id: str) -> None:
+        replays_dir = self.studio_dir / "replays"
+        replays_dir.mkdir(parents=True, exist_ok=True)
+
+        run: Dict[str, Any] | None = None
+        with self.store_lock:
+            runs_payload = self._load_runs()
+        for item in runs_payload.get("items", []):
+            if isinstance(item, dict) and item.get("run_type") == "api" and item.get("run_id") == run_id:
+                run = item
+                break
+        if run is None:
+            return
+
+        steps = run.get("steps") or []
+        failed_step: str | None = None
+        failed_error: str | None = None
+        for step in steps:
+            if isinstance(step, dict) and step.get("status") == "failed":
+                failed_step = step.get("name")
+                failed_error = step.get("error")
+                break
+
+        model_usage = {
+            "provider": "z.ai",
+            "model": "glm-5",
+            "total_calls": len(steps),
+            "total_tokens": 0,
+        }
+
+        replay = {
+            "run_id": run_id,
+            "status": run.get("status"),
+            "mode": run.get("mode", "simulation"),
+            "started_at": run.get("started_at"),
+            "finished_at": run.get("finished_at"),
+            "steps": steps,
+            "model_usage": model_usage,
+            "failed_step": failed_step,
+            "error": failed_error,
+        }
+
+        self._write_json(replays_dir / f"{run_id}.json", replay)
+
     def _load_state(self) -> Dict[str, Any]:
         return self._read_json(self.state_path, {"activeVentureId": None})
 
@@ -4202,6 +4246,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                     run["finished_at"] = now_iso()
                     run["current_step"] = stage_name
                     _save_target_run(run)
+                self._write_replay(run_id)
                 return
 
             with self.store_lock:
@@ -4226,6 +4271,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             run["finished_at"] = now_iso()
             run["current_step"] = None
             _save_target_run(run)
+        self._write_replay(run_id)
 
     def _run_vercel_audit_script(self, *, apply: bool = False, max_delete: int = 5, strategy: str = "archive") -> Dict[str, Any]:
         script = self.scripts_dir / "vercel_audit_cleanup.py"

@@ -73,8 +73,21 @@ workspaces/*/research/stage1_marketing_seo/input/mirror.latest/
 apps/**/.env.local
 apps/**/.env.*.local
 
-# Sisyphus agent runtime state
+# Sisyphus agent runtime state (AI work notes, not source code)
 .sisyphus/
+
+# Test result snapshots (regenerable, not source code)
+test_results/
+
+# openclaw sync scripts (developer tooling, not project source)
+openclaw/
+
+# official-site and shared prompts (moved outside repo)
+official-site/
+shared/
+
+# dashboard runtime state (ephemeral, regenerated on each run)
+dashboard/.runtime/
 
 # NOTE: Machine-generated run artifacts (*.latest.*, run.*.json, etc.) are INTENTIONALLY TRACKED
 # These files contain critical state snapshots for audit trails and reproducibility.
