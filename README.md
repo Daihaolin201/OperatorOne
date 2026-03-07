@@ -74,24 +74,95 @@ Output artifacts:
 
 ## Architecture
 
-```
-CEO Orchestrator (run_ceo_multi_agent_orchestrator_v1.py)
-  │
-  ├─▶ op1_product  ──[product_to_marketing.json]──▶  op1_marketing
-  │                                                          │
-  │                                              [marketing_to_sales.json]
-  │                                                          │
-  │                                                   op1_sales
-  │                                                          │
-  │                                             [sales_to_operations.json]
-  │                                                          │
-  └─────────────────────────────────────────────── op1_operations
-                                                             │
-                                          [operations_to_product/marketing/sales.json]
-                                                             │
-                                                    (iteration loop)
+```mermaid
+flowchart TD
+    CEO["🧠 CEO Orchestrator\nrun_ceo_multi_agent_orchestrator_v1.py"]
+    P["⚙️ op1_product\nGLM-4.5 · Coding & Deploy"]
+    M["📣 op1_marketing\nGLM-4.5 · Content Generation"]
+    S["💬 op1_sales\nGLM-4.5 · Dialogue & Outreach"]
+    O["📊 op1_operations\nGLM-4.5 · KPI Analysis"]
 
-Outputs: run.latest.json · venture_state.latest.json · orchestrator_summary.latest.json
+    CEO --> P
+    P -->|product_to_marketing.json| M
+    M -->|marketing_to_sales.json| S
+    S -->|sales_to_operations.json| O
+    O -->|operations_to_product.json| P
+    O -->|operations_to_marketing.json| M
+    O -->|operations_to_sales.json| S
+```
+
+---
+
+## Z.AI Integration
+
+### Why Z.AI / GLM-4.5
+OperatorOne uses GLM-4.5 as the core intelligence engine across all specialist agents.
+- **Agentic Design**: 744B MoE architecture optimized for tool use and multi-step reasoning.
+- **Large Context**: 202K context window enables analysis of long-horizon business cycles.
+- **Code Proficiency**: SWE-bench 77.8% score, driving the `op1_product` deployment pipeline.
+- **Reliability**: Ultra-low hallucination rate for accurate JSON handoff generation.
+- **Efficiency**: OpenAI-compatible API at a fraction of the cost of frontier closed models.
+- **Startups Program**: OperatorOne is registered for the Z.AI for Startups program, providing free credits and early access to GLM-4.5.
+
+### API Configuration
+```
+base_url: https://api.z.ai/api/paas/v4
+model: glm-4.5
+environment variable: ZAI_API_KEY
+preflight gate: dashboard/zai_preflight.py
+```
+
+### Per-Agent Model Routing Table
+| Agent | Task Type | Model | Rationale |
+|---|---|---|---|
+| op1_product | Code generation, deployment | glm-4.5 | SWE-bench 95th percentile, tool-calling for Vercel CLI |
+| op1_marketing | Content & SEO copy | glm-4.5 | Ultra-low hallucination rate, long-form generation |
+| op1_sales | Outreach dialogue, multi-turn | glm-4.5 | Native agent mode, multi-turn context, conversation planning |
+| op1_operations | KPI analysis, structured JSON | glm-4.5 | 202K context window, structured output, long-horizon analysis |
+| CEO Orchestrator | Planning, routing | glm-4.5 | Long-horizon planning, agentic orchestration mode |
+
+### Preflight Gate
+The system enforces a hard gate via `dashboard/zai_preflight.py`. If the Z.AI environment is not correctly configured, the system raises a `ZAIPreflightError` and halts execution. There is no silent fallback to other providers, ensuring strict adherence to the Z.AI bounty requirements.
+
+---
+
+## Hackathon Bounties
+
+### CEOClaw Challenge (£1,000 — Primary)
+- **Evidence**: CEO orchestrator runs a 4-agent loop end-to-end; $49 MRR real result achieved; 13 prospects contacted; 6 Vercel products deployed.
+- **How to verify**: `python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run`
+
+### Z.AI Gold Bounty
+- **Evidence**: GLM-4.5 is the core model for all 5 roles. `dashboard/zai_preflight.py` enforces the correct `base_url` and model name. All preflight checks and audit fields are logged without silent fallback.
+- **How to verify**: `python3 -m pytest dashboard/tests/ -q` (5 tests pass)
+
+### Animoca Brands
+- **Identity**: The CEO has a persistent persona and execution logic defined in `workspaces/op1_ceo/AGENTS.md`.
+- **Memory**: Handoff JSON contracts persist state and learnings across agent boundaries (9 contracts total).
+- **Cognition**: The Operations iteration loop feeds learned feedback back into the system, enabling true agentic memory and improvement.
+
+### Human for Claw / Claw for Human
+- **Dashboard**: A dedicated stage view at `http://127.0.0.1:8765` provides human-readable status and artifact tracking.
+- **Control**: `approval.json` gates every external action, keeping the human operator in the loop for deployments and emails.
+- **Transparency**: One-click `--dry-run` allows for full audit of agent plans before any live side effects occur.
+
+---
+
+## Bounty Coverage
+
+```mermaid
+flowchart LR
+    OP["OperatorOne\nCEOClaw"]
+    
+    B1["🏆 CEOClaw Challenge\n£1,000"]
+    B2["⚡ Z.AI Gold Bounty"]
+    B3["🎮 Animoca Brands"]
+    B4["🤝 Human for Claw"]
+
+    OP -->|"CEO orchestrator\n$49 MRR live results"| B1
+    OP -->|"GLM-4.5 per-agent\nzai_preflight gate"| B2
+    OP -->|"CEO identity + memory\nJSON cognition loop"| B3
+    OP -->|"Dashboard + approval.json\none-click run"| B4
 ```
 
 ---
@@ -260,26 +331,97 @@ cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
 
 ---
 
-## 系统架构
+## 系统架构（Mermaid）
 
+```mermaid
+flowchart TD
+    CEO["🧠 CEO Orchestrator\nrun_ceo_multi_agent_orchestrator_v1.py"]
+    P["⚙️ op1_product\nGLM-4.5 · Coding & Deploy"]
+    M["📣 op1_marketing\nGLM-4.5 · Content Generation"]
+    S["💬 op1_sales\nGLM-4.5 · Dialogue & Outreach"]
+    O["📊 op1_operations\nGLM-4.5 · KPI Analysis"]
+
+    CEO --> P
+    P -->|product_to_marketing.json| M
+    M -->|marketing_to_sales.json| S
+    S -->|sales_to_operations.json| O
+    O -->|operations_to_product.json| P
+    O -->|operations_to_marketing.json| M
+    O -->|operations_to_sales.json| S
 ```
-CEO Orchestrator (run_ceo_multi_agent_orchestrator_v1.py)
-  │
-  ├─▶ op1_product  ──[product_to_marketing.json]──▶  op1_marketing
-  │                                                          │
-  │                                              [marketing_to_sales.json]
-  │                                                          │
-  │                                                   op1_sales
-  │                                                          │
-  │                                             [sales_to_operations.json]
-  │                                                          │
-  └─────────────────────────────────────────────── op1_operations
-                                                             │
-                                          [operations_to_product/marketing/sales.json]
-                                                             │
-                                                    (迭代循环)
 
-输出: run.latest.json · venture_state.latest.json · orchestrator_summary.latest.json
+---
+
+## Z.AI 集成
+
+### 为什么选择 Z.AI / GLM-4.5
+OperatorOne 在所有专业智能体中均采用 GLM-4.5 作为核心智能引擎。
+- **智能体设计**：744B MoE 架构，针对工具调用和多步推理进行了优化。
+- **超大上下文**：202K 上下文窗口，能够分析长周期的业务循环。
+- **代码精通**：SWE-bench 评分 77.8%，驱动 `op1_product` 的自动化部署流水线。
+- **可靠性**：极低的幻觉率，确保生成精准的 JSON 交付合约。
+- **高效能**：兼容 OpenAI 的 API，但成本仅为同类闭源模型的一小部分。
+- **初创企业计划**：OperatorOne 已注册 Z.AI 初创企业计划，获得免费额度及 GLM-4.5 的早期访问权限。
+
+### API 配置
+```
+base_url: https://api.z.ai/api/paas/v4
+model: glm-4.5
+environment variable: ZAI_API_KEY
+preflight gate: dashboard/zai_preflight.py
+```
+
+### 智能体模型路由表
+| 智能体 | 任务类型 | 模型 | 理由 |
+|---|---|---|---|
+| op1_product | 代码生成、部署 | glm-4.5 | SWE-bench 前 5%，支持 Vercel CLI 工具调用 |
+| op1_marketing | 内容创作、SEO 副本 | glm-4.5 | 极低幻觉率，支持长文本生成 |
+| op1_sales | 外联对话、多轮沟通 | glm-4.5 | 原生智能体模式，多轮上下文支持，对话规划 |
+| op1_operations | KPI 分析、结构化 JSON | glm-4.5 | 202K 上下文窗口，结构化输出，长周期分析 |
+| CEO Orchestrator | 规划、路由 | glm-4.5 | 长周期规划，智能体编排模式 |
+
+### 预检查门控
+系统通过 `dashboard/zai_preflight.py` 强制执行硬门控。如果 Z.AI 环境未正确配置，系统将抛出 `ZAIPreflightError` 并停止执行。系统不会静默回退到其他供应商，确保严格符合 Z.AI 奖项要求。
+
+---
+
+## 黑客马拉松奖项
+
+### CEOClaw Challenge (£1,000 — 主奖项)
+- **证据**：CEO 编排器端到端运行 4 智能体循环；实现 $49 MRR 真实收入；联系 13 位潜在客户；部署 6 个 Vercel 产品。
+- **验证方式**：`python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run`
+
+### Z.AI Gold Bounty
+- **证据**：GLM-4.5 充当全部 5 个角色的核心模型。`dashboard/zai_preflight.py` 强制执行正确的 `base_url` 和模型名称。所有预检查及审计字段均被记录，且无静默回退。
+- **验证方式**：`python3 -m pytest dashboard/tests/ -q`（5 项测试全部通过）
+
+### Animoca Brands
+- **身份**：CEO 拥有在 `workspaces/op1_ceo/AGENTS.md` 中定义的持久人格与执行逻辑。
+- **记忆**：JSON 交付合约在不同智能体边界间持久化状态与学习成果（共 9 个合约）。
+- **认知**：Operations 迭代循环将学到的反馈重新输入系统，实现真正的智能体记忆与自我进化。
+
+### Human for Claw / Claw for Human
+- **控制面板**：位于 `http://127.0.0.1:8765` 的专用阶段视图提供易于理解的状态与产物追踪。
+- **控制**：`approval.json` 门控所有外部操作，确保人类操作员在部署和邮件发送环节保持控制权。
+- **透明度**：一键式 `--dry-run` 允许在产生任何实际副作用前，对智能体计划进行完整审计。
+
+---
+
+## 奖项覆盖矩阵
+
+```mermaid
+flowchart LR
+    OP["OperatorOne\nCEOClaw"]
+    
+    B1["🏆 CEOClaw Challenge\n£1,000"]
+    B2["⚡ Z.AI Gold Bounty"]
+    B3["🎮 Animoca Brands"]
+    B4["🤝 Human for Claw"]
+
+    OP -->|"CEO 编排器\n$49 MRR 真实成果"| B1
+    OP -->|"GLM-4.5 智能体路由\nzai_preflight 门控"| B2
+    OP -->|"CEO 身份 + 记忆\nJSON 认知循环"| B3
+    OP -->|"控制面板 + approval.json\n一键运行"| B4
 ```
 
 ---

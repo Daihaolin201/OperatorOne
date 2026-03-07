@@ -101,3 +101,21 @@
 - 仅用 Python 标准库（dataclass, typing）
 - 无外部依赖
 - 所有 JSON 文件均人类可读
+
+## [2026-03-07] T3: Dashboard CTA骨架
+
+### 新增前端组件
+- `dashboard/web/index.html`：新增 CTA section (button + badge + error banner)
+- `dashboard/web/styles.css`：新增 `.run-demo-btn`, `.run-id-badge`, `.run-error-banner` 样式
+- `dashboard/web/app.js`：新增事件监听与 API 调用逻辑
+
+### 关键决策
+- **Mock优先**：考虑到 `/api/runs` 后端尚未就绪，前端实现自动 fallback (404/500 -> generate local ID)
+- **非侵入式布局**：将 CTA 放置在 main 顶部，作为独立 section，不破坏现有 grid/card 结构
+- **交互反馈**：点击即 disable，防止重复提交；成功显示 run_id，失败显示错误条
+- **纯原生实现**：不引入 React/Vue 等框架，保持与现有 vanilla JS/CSS 一致
+
+### 约束严守
+- 未修改 `dashboard/server.py`（后端留给 T7）
+- 保持 `judge` 和 `builder` 模式可见性（放在通用区域）
+- 样式复用现有 CSS 变量 (`--btn`, `--card`, `--ok`, `--fail`)
