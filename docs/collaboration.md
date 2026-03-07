@@ -62,7 +62,15 @@ Changes touching any of the following require both collaborators:
 
 ---
 
-## 4) Documentation parity rule
+## 4) Contract gate rule
+
+For any PR touching handoff producers or `handoffs/*.json`:
+
+- Run locally: `python3 scripts/validate_handoffs.py --repo-root .`
+- Keep `contract_version/generated_at/generated_by` fields valid.
+- CI workflow `handoff-contract-validation` must pass.
+
+## 5) Documentation parity rule
 
 If a PR changes runtime behavior, update docs in the same PR.
 
@@ -74,7 +82,7 @@ No "docs later" for architecture/contract changes.
 
 ---
 
-## 5) Runtime convention
+## 6) Runtime convention
 
 Always run OperatorOne with dedicated profile:
 
@@ -84,7 +92,7 @@ Avoid using default profile for OperatorOne operations.
 
 ---
 
-## 6) Push policy
+## 7) Push policy
 
 - Local commits are encouraged.
 - Push/merge timing should be coordinated (batch by milestone when possible).
@@ -92,7 +100,7 @@ Avoid using default profile for OperatorOne operations.
 
 ---
 
-## 7) Commit style
+## 8) Commit style
 
 - `feat(product): ...`
 - `feat(marketing): ...`
