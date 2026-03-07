@@ -50,4 +50,8 @@ When you change one of these, update related docs in the same PR:
    - Run: `python3 scripts/validate_handoffs.py --repo-root .`
    - If legacy files miss metadata fields, run: `python3 scripts/upgrade_handoffs.py --repo-root .`
 
+6. **Large generated output churn in a PR**
+   - Run: `python3 scripts/change_hygiene_guard.py --staged`
+   - Keep source/config/docs and generated runtime outputs in separate commits when possible.
+
 If docs and runtime drift, runtime wins temporarily—but docs must be fixed in the same development cycle.

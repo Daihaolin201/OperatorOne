@@ -70,6 +70,12 @@ For any PR touching handoff producers or `handoffs/*.json`:
 - Keep `contract_version/generated_at/generated_by` fields valid.
 - CI workflow `handoff-contract-validation` must pass.
 
+For any PR with broad execution output churn:
+
+- Run: `python3 scripts/change_hygiene_guard.py --staged`
+- Split source/config/docs changes and generated artifact refreshes into separate commits/PRs.
+- CI workflow `change-hygiene` must pass (unless explicitly overridden by policy).
+
 ## 5) Documentation parity rule
 
 If a PR changes runtime behavior, update docs in the same PR.

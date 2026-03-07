@@ -165,6 +165,19 @@ Upgrade existing handoff files to current contract metadata fields (`contract_ve
 python3 scripts/upgrade_handoffs.py --repo-root .
 ```
 
+Change-hygiene guard (prevent mixed source + generated artifact churn in one change-set):
+
+```bash
+python3 scripts/change_hygiene_guard.py --staged
+```
+
+Generated artifact cleanup helper (safe dry-run first):
+
+```bash
+python3 scripts/reset_generated_artifacts.py
+python3 scripts/reset_generated_artifacts.py --apply
+```
+
 ## 6) Troubleshooting
 
 ### `op1_*` agents not visible in web

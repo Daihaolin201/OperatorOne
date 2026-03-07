@@ -118,6 +118,12 @@ Contract validation helpers:
 - `python3 scripts/validate_handoffs.py --repo-root .`
 - `python3 scripts/upgrade_handoffs.py --repo-root .`
 
+Change hygiene helpers:
+
+- `python3 scripts/change_hygiene_guard.py --staged` (check staged set for mixed source+generated churn)
+- `python3 scripts/reset_generated_artifacts.py` (dry-run noisy generated deltas)
+- `python3 scripts/reset_generated_artifacts.py --apply` (restore noisy generated deltas)
+
 ---
 
 ## Note on generated artifacts
