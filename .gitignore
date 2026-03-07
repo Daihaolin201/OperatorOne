@@ -75,3 +75,8 @@ apps/**/.env.*.local
 
 # Sisyphus agent runtime state
 .sisyphus/
+
+# NOTE: Machine-generated run artifacts (*.latest.*, run.*.json, etc.) are INTENTIONALLY TRACKED
+# These files contain critical state snapshots for audit trails and reproducibility.
+# GitHub PR diffs are configured via .gitattributes to collapse these as 'linguist-generated'
+# for readability, but they remain committed to the repository for full traceability.

@@ -25,7 +25,7 @@ class TestZAIPreflightGate:
         assert audit is not None
         assert isinstance(audit, dict)
         assert audit["provider"] == "z.ai"
-        assert audit["model"] == "glm-4.5"
+        assert audit["model"] == "glm-5"
         assert audit["step"] == "env_check"
         assert "latency_ms" in audit
         assert "request_id" in audit
