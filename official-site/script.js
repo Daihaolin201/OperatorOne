@@ -8,7 +8,7 @@ const i18n = {
     'nav.capabilities': 'Capabilities',
     'nav.loop': 'Execution Loop',
     'nav.usecases': 'Use Cases',
-    'nav.contact': 'Contact',
+    'nav.faq': 'FAQ',
 
     'hero.badge': 'Official Site · Multi-Agent Startup OS',
     'hero.title.line1': 'Turn startup execution',
@@ -17,7 +17,7 @@ const i18n = {
       'OperatorOne combines four specialist agents and one manager control plane to connect idea discovery, product launch, demand generation, conversion, and iteration in one coordinated operating loop.',
     'hero.dynamicPrefix': 'Now accelerating:',
     'hero.ctaPrimary': 'See the operating loop',
-    'hero.ctaSecondary': 'Request a live walkthrough',
+    'hero.ctaSecondary': 'Jump to FAQ',
 
     'metric.agents': 'Specialist agents',
     'metric.manager': 'Manager control plane',
@@ -134,6 +134,13 @@ const i18n = {
     'contact.success': 'Demo request saved. Preferred channel: {channel}.',
     'contact.error': 'Please complete the required fields first.',
 
+    'intro.badge': 'Project Introduction Page',
+    'intro.title': "This page is built as OperatorOne's official project introduction page",
+    'intro.desc':
+      'It gives visitors a fast overview of the multi-agent architecture, execution loop, and core value proposition.',
+    'intro.ctaPrimary': 'Back to top',
+    'intro.ctaSecondary': 'Open live intro page',
+
     'footer.text': '© 2026 OperatorOne. Built for high-velocity teams and ambitious founders.',
 
     dynamicPhrases: [
@@ -153,7 +160,7 @@ const i18n = {
     'nav.capabilities': '能力',
     'nav.loop': '执行闭环',
     'nav.usecases': '使用场景',
-    'nav.contact': '联系',
+    'nav.faq': '常见问题',
 
     'hero.badge': '官方站点 · Multi-Agent Startup OS',
     'hero.title.line1': '让创业执行',
@@ -162,7 +169,7 @@ const i18n = {
       'OperatorOne 通过 4 个专家 Agent 与 1 个管理控制平面，把机会发现、产品上线、需求生成、转化和迭代连接成统一执行环路。',
     'hero.dynamicPrefix': '正在加速：',
     'hero.ctaPrimary': '查看执行闭环',
-    'hero.ctaSecondary': '预约实时演示',
+    'hero.ctaSecondary': '查看常见问题',
 
     'metric.agents': '专家 Agent',
     'metric.manager': '管理控制平面',
@@ -268,6 +275,12 @@ const i18n = {
     'contact.success': '演示申请已保存。首选联系渠道：{channel}。',
     'contact.error': '请先完整填写必填字段。',
 
+    'intro.badge': '项目介绍页',
+    'intro.title': '此页面为 OperatorOne 的官方项目介绍页',
+    'intro.desc': '用于向访问者快速展示多智能体架构、执行闭环与核心价值主张。',
+    'intro.ctaPrimary': '返回顶部',
+    'intro.ctaSecondary': '打开在线介绍页',
+
     'footer.text': '© 2026 OperatorOne. 为高执行力团队与进取型创业者打造。',
 
     dynamicPhrases: ['发现高价值机会', '生成并部署转化落地页', '打通营销到销售 handoff', '把反馈变成下一轮增长动作'],
@@ -275,8 +288,7 @@ const i18n = {
 };
 
 const defaultLocale = 'en-GB';
-let currentLocale = localStorage.getItem('op1_locale');
-if (!i18n[currentLocale]) currentLocale = defaultLocale;
+let currentLocale = defaultLocale;
 
 const phraseNode = document.getElementById('dynamic-phrase');
 const yearNode = document.getElementById('year');
@@ -432,33 +444,6 @@ faqItems.forEach((item, index) => {
   });
 });
 
-const leadForm = document.getElementById('lead-form');
-const feedbackNode = document.getElementById('form-feedback');
-
-if (leadForm && feedbackNode) {
-  leadForm.addEventListener('submit', (event) => {
-    event.preventDefault();
-    const formData = new FormData(leadForm);
-
-    const name = String(formData.get('name') || '').trim();
-    const company = String(formData.get('company') || '').trim();
-    const challenge = String(formData.get('challenge') || '').trim();
-    const channelSelect = leadForm.querySelector('select[name="channel"]');
-    const selectedChannelText =
-      channelSelect?.options?.[channelSelect.selectedIndex]?.textContent?.trim() || '';
-
-    if (!name || !company || !challenge || !selectedChannelText) {
-      feedbackNode.className = 'form-feedback error';
-      feedbackNode.textContent = t('contact.error');
-      return;
-    }
-
-    feedbackNode.className = 'form-feedback success';
-    feedbackNode.textContent = t('contact.success').replace('{channel}', selectedChannelText);
-    leadForm.reset();
-  });
-}
-
 // Language buttons
 
 document.querySelectorAll('.lang-btn').forEach((btn) => {
@@ -467,7 +452,6 @@ document.querySelectorAll('.lang-btn').forEach((btn) => {
     if (!i18n[lang] || lang === currentLocale) return;
 
     currentLocale = lang;
-    localStorage.setItem('op1_locale', currentLocale);
     applyTranslations();
   });
 });

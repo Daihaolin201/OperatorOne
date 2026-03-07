@@ -548,68 +548,11 @@ p {
   line-height: 1.7;
 }
 
-.lead-form {
-  margin-top: 24px;
-  display: grid;
-  gap: 14px;
-}
-
-.field-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+.cta-actions {
+  margin-top: 22px;
+  display: flex;
+  flex-wrap: wrap;
   gap: 12px;
-}
-
-.lead-form label {
-  display: grid;
-  gap: 8px;
-}
-
-.lead-form span {
-  font-size: 0.9rem;
-  color: #dce5ff;
-  font-weight: 550;
-}
-
-.lead-form input,
-.lead-form select,
-.lead-form textarea {
-  width: 100%;
-  border: 1px solid rgba(154, 171, 236, 0.38);
-  background: rgba(9, 15, 31, 0.78);
-  color: #f0f4ff;
-  border-radius: 12px;
-  padding: 12px 13px;
-  font-size: 0.94rem;
-  font-family: inherit;
-  outline: none;
-  transition: border-color 0.22s ease, box-shadow 0.22s ease;
-}
-
-.lead-form input:focus,
-.lead-form select:focus,
-.lead-form textarea:focus {
-  border-color: rgba(126, 153, 255, 0.85);
-  box-shadow: 0 0 0 4px rgba(108, 133, 255, 0.22);
-}
-
-.lead-form textarea {
-  resize: vertical;
-  min-height: 120px;
-}
-
-.form-feedback {
-  min-height: 22px;
-  font-size: 0.92rem;
-  color: #b9c8ff;
-}
-
-.form-feedback.success {
-  color: var(--success);
-}
-
-.form-feedback.error {
-  color: var(--danger);
 }
 
 footer {
@@ -710,8 +653,7 @@ footer {
   .pain-grid,
   .agent-grid,
   .usecase-grid,
-  .assurance-grid,
-  .field-grid {
+  .assurance-grid {
     grid-template-columns: 1fr;
   }
 

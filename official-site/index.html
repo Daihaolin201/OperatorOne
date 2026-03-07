@@ -32,7 +32,7 @@
         <a href="#capabilities" data-i18n="nav.capabilities">Capabilities</a>
         <a href="#loop" data-i18n="nav.loop">Execution Loop</a>
         <a href="#use-cases" data-i18n="nav.usecases">Use Cases</a>
-        <a href="#contact" data-i18n="nav.contact">Contact</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
       </nav>
 
       <div class="lang-toggle" role="group" aria-label="Language switch">
@@ -65,7 +65,7 @@
 
         <div class="hero-cta">
           <a class="btn btn-primary" href="#loop" data-i18n="hero.ctaPrimary">See the operating loop</a>
-          <a class="btn btn-ghost" href="#contact" data-i18n="hero.ctaSecondary">Request a live walkthrough</a>
+          <a class="btn btn-ghost" href="#faq" data-i18n="hero.ctaSecondary">Request a live walkthrough</a>
         </div>
 
         <div class="metrics">
@@ -315,57 +315,23 @@
         </div>
       </section>
 
-      <section class="section cta-section reveal" id="contact">
-        <p class="chip" data-i18n="contact.badge">Contact & Demo</p>
-        <h2 data-i18n="contact.title">Request a walkthrough (without email links)</h2>
-        <p data-i18n="contact.desc">
-          Tell us your team context and preferred channel. This form flow can later be connected to your CRM or
-          messaging webhook.
+      <section class="section cta-section reveal" id="intro-page">
+        <p class="chip" data-i18n="intro.badge">Project Introduction Page</p>
+        <h2 data-i18n="intro.title">This page is built as OperatorOne's official project introduction page</h2>
+        <p data-i18n="intro.desc">
+          It gives visitors a fast overview of the multi-agent architecture, execution loop, and core value proposition.
         </p>
-
-        <form id="lead-form" class="lead-form">
-          <div class="field-grid">
-            <label>
-              <span data-i18n="contact.form.name">Name</span>
-              <input type="text" name="name" required data-i18n-placeholder="contact.placeholder.name" placeholder="Your name" />
-            </label>
-            <label>
-              <span data-i18n="contact.form.company">Company / Team</span>
-              <input type="text" name="company" required data-i18n-placeholder="contact.placeholder.company" placeholder="Your company" />
-            </label>
-          </div>
-
-          <div class="field-grid">
-            <label>
-              <span data-i18n="contact.form.role">Your role</span>
-              <input type="text" name="role" data-i18n-placeholder="contact.placeholder.role" placeholder="Founder / PM / Growth" />
-            </label>
-            <label>
-              <span data-i18n="contact.form.channel">Preferred contact channel</span>
-              <select name="channel" required>
-                <option value="WeChat" data-i18n="contact.channel.wechat">WeChat</option>
-                <option value="WhatsApp" data-i18n="contact.channel.whatsapp">WhatsApp</option>
-                <option value="Telegram" data-i18n="contact.channel.telegram">Telegram</option>
-                <option value="Discord" data-i18n="contact.channel.discord">Discord</option>
-                <option value="Phone" data-i18n="contact.channel.phone">Phone / Call</option>
-              </select>
-            </label>
-          </div>
-
-          <label>
-            <span data-i18n="contact.form.challenge">What pain point should we prioritise for your demo?</span>
-            <textarea
-              name="challenge"
-              required
-              rows="4"
-              data-i18n-placeholder="contact.placeholder.challenge"
-              placeholder="e.g. We need to speed up landing launch and sales handoff"
-            ></textarea>
-          </label>
-
-          <button type="submit" class="btn btn-primary" data-i18n="contact.form.submit">Submit demo request</button>
-          <p id="form-feedback" class="form-feedback" aria-live="polite"></p>
-        </form>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#hero" data-i18n="intro.ctaPrimary">Back to top</a>
+          <a
+            class="btn btn-ghost"
+            href="https://official-site-theta.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="intro.ctaSecondary"
+            >Open live intro page</a
+          >
+        </div>
       </section>
     </main>
 

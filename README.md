@@ -54,6 +54,7 @@ See `handoffs/README.md` for contract details.
 - `workspaces/` — isolated agent workspaces and stage artifacts
 - `handoffs/` — inter-agent JSON contracts
 - `dashboard/` — local monitor + venture studio web app
+- `official-site/` — OperatorOne official project introduction page (landing/login-style entry page)
 - `shared/` — shared prompts/skills/templates
 - `docs/` — architecture, collaboration protocol, runbook
 
@@ -93,6 +94,29 @@ Details:
 
 - `dashboard/README.md`
 - `docs/studio_usage_guide.md`
+
+---
+
+## Official project introduction page
+
+OperatorOne includes an official intro page in `official-site/`.
+
+Purpose:
+- Introduce the project clearly to collaborators, prospects, and new team members.
+- Explain multi-agent capabilities, handoff loop, and value proposition on one page.
+
+Local preview:
+
+```bash
+cd official-site
+python3 -m http.server 4173
+```
+
+Open:
+- <http://127.0.0.1:4173>
+
+Current live URL:
+- <https://official-site-theta.vercel.app>
 
 ---
 
