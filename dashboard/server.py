@@ -446,6 +446,18 @@ class DashboardHandler(BaseHTTPRequestHandler):
     def _handle_get_api_connectors(self) -> None:
         self._json_response(200, {"ok": True, "connectors": load_api_connectors()})
 
+    def _handle_post_runs(self, payload: Dict[str, Any]) -> None:
+        run_id = f"run_demo_{int(time.time() * 1000)}"
+        append_audit(
+            {
+                "ts": utc_iso(),
+                "action": "run_demo_create",
+                "run_id": run_id,
+                "payload": payload,
+            }
+        )
+        self._json_response(200, {"ok": True, "run_id": run_id})
+
     def _handle_post_manual_arm(self, payload: Dict[str, Any]) -> None:
         enabled = bool(payload.get("enabled", False))
         flags = load_flags()
@@ -626,7 +638,7 @@ class DashboardHandler(BaseHTTPRequestHandler):
             monitor_snapshot = monitor_view.get("snapshot")
             if not monitor_snapshot:
                 try:
-                    monitor_snapshot = collect_snapshot(runtime_flags=load_runtime_flags())
+                    monitor_snapshot = collect_snapshot(runtime_flags=load_flags())
                 except Exception:
                     monitor_snapshot = None
 
@@ -1098,12 +1110,15 @@ a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0
         if path == "/api/integrations/api-connectors/delete":
             self._handle_post_api_connector_delete(payload)
             return
+        if path == "/api/runs":
+            self._handle_post_runs(payload)
+            return
 
         self._json_response(404, {"ok": False, "error": f"unknown endpoint: {path}"})
 
-    def log_message(self, fmt: str, *args: Any) -> None:  # noqa: A003
+    def log_message(self, format: str, *args: Any) -> None:  # noqa: A003
         # Keep local stdout readable while still giving useful request logs.
-        message = fmt % args
+        message = format % args
         print(f"[{utc_iso()}] {self.client_address[0]} {self.command} {self.path} :: {message}")
 
 
