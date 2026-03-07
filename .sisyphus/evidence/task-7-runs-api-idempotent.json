@@ -1,0 +1,25 @@
+{
+  "test": "idempotent",
+  "description": "Second POST /api/runs while active run exists -> reused=true, same run_id",
+  "run_id": "run_beeccb364b15",
+  "steps": [
+    {
+      "step": "POST /api/runs (second call, different mode param)",
+      "response": {
+        "ok": true,
+        "reused": true,
+        "run_id": "run_beeccb364b15",
+        "status": "queued",
+        "mode": "simulation",
+        "model_provider": "z.ai",
+        "model_name": "glm-5",
+        "started_at": "2026-03-07T23:34:07.838471+00:00"
+      }
+    }
+  ],
+  "assertions": {
+    "reused": true,
+    "ok": true,
+    "status_queued_or_running": true
+  }
+}

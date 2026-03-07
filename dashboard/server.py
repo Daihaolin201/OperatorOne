@@ -446,17 +446,145 @@ class DashboardHandler(BaseHTTPRequestHandler):
     def _handle_get_api_connectors(self) -> None:
         self._json_response(200, {"ok": True, "connectors": load_api_connectors()})
 
+    # ------------------------------------------------------------------
+    # Run lifecycle helpers
+    # ------------------------------------------------------------------
+    def _build_run_object(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        import uuid as _uuid
+        run_id = f"run_{_uuid.uuid4().hex[:12]}"
+        mode = str(payload.get("mode", "simulation")).strip() or "simulation"
+        model_provider = str(payload.get("model_provider", "z.ai")).strip() or "z.ai"
+        model_name = str(payload.get("model_name", "glm-5")).strip() or "glm-5"
+        return {
+            "run_id": run_id,
+            "run_type": "api",
+            "status": "queued",
+            "current_step": None,
+            "started_at": utc_iso(),
+            "finished_at": None,
+            "mode": mode,
+            "model_provider": model_provider,
+            "model_name": model_name,
+            "steps": [],
+            "events": [],
+        }
+
+    def _find_active_api_run(self) -> Optional[Dict[str, Any]]:
+        with STUDIO.store_lock:
+            runs_payload = STUDIO._load_runs()
+        for item in runs_payload.get("items", []):
+            if not isinstance(item, dict):
+                continue
+            if item.get("run_type") != "api":
+                continue
+            if item.get("status") in ("queued", "running"):
+                return item
+        return None
+
+    def _get_api_run_by_id(self, run_id: str) -> Optional[Dict[str, Any]]:
+        with STUDIO.store_lock:
+            runs_payload = STUDIO._load_runs()
+        for item in runs_payload.get("items", []):
+            if not isinstance(item, dict):
+                continue
+            if item.get("run_type") == "api" and item.get("run_id") == run_id:
+                return item
+        return None
+
+    def _upsert_api_run(self, run: Dict[str, Any]) -> None:
+        run_id = run["run_id"]
+        with STUDIO.store_lock:
+            runs_payload = STUDIO._load_runs()
+            items = runs_payload.get("items", [])
+            replaced = False
+            for idx, item in enumerate(items):
+                if isinstance(item, dict) and item.get("run_type") == "api" and item.get("run_id") == run_id:
+                    items[idx] = run
+                    replaced = True
+                    break
+            if not replaced:
+                items.append(run)
+            # keep bounded
+            if len(items) > 500:
+                items = items[-500:]
+            runs_payload["items"] = items
+            STUDIO._save_runs(runs_payload)
+
+    # ------------------------------------------------------------------
+    # Run endpoint handlers
+    # ------------------------------------------------------------------
     def _handle_post_runs(self, payload: Dict[str, Any]) -> None:
-        run_id = f"run_demo_{int(time.time() * 1000)}"
+        # Idempotency: if active run exists, reuse it
+        existing = self._find_active_api_run()
+        if existing:
+            resp = {
+                "ok": True,
+                "reused": True,
+                "run_id": existing["run_id"],
+                "status": existing["status"],
+                "mode": existing.get("mode", "simulation"),
+                "model_provider": existing.get("model_provider", "z.ai"),
+                "model_name": existing.get("model_name", "glm-5"),
+                "started_at": existing.get("started_at"),
+            }
+            self._json_response(200, resp)
+            return
+
+        run = self._build_run_object(payload)
+        self._upsert_api_run(run)
         append_audit(
             {
                 "ts": utc_iso(),
-                "action": "run_demo_create",
-                "run_id": run_id,
-                "payload": payload,
+                "action": "run_create",
+                "run_id": run["run_id"],
+                "mode": run["mode"],
             }
         )
-        self._json_response(200, {"ok": True, "run_id": run_id})
+        self._json_response(
+            200,
+            {
+                "ok": True,
+                "reused": False,
+                "run_id": run["run_id"],
+                "status": run["status"],
+                "mode": run["mode"],
+                "model_provider": run["model_provider"],
+                "model_name": run["model_name"],
+                "started_at": run["started_at"],
+            },
+        )
+
+    def _handle_get_run(self, run_id: str) -> None:
+        run = self._get_api_run_by_id(run_id)
+        if not run:
+            self._json_response(404, {"ok": False, "error": f"run not found: {run_id}"})
+            return
+        self._json_response(200, {"ok": True, "run": run})
+
+    def _handle_get_run_events(self, run_id: str) -> None:
+        run = self._get_api_run_by_id(run_id)
+        if not run:
+            self._json_response(404, {"ok": False, "error": f"run not found: {run_id}"})
+            return
+        events = run.get("events") or []
+        self._json_response(200, {"ok": True, "run_id": run_id, "events": events})
+
+    def _handle_post_run_cancel(self, run_id: str) -> None:
+        run = self._get_api_run_by_id(run_id)
+        if not run:
+            self._json_response(404, {"ok": False, "error": f"run not found: {run_id}"})
+            return
+        if run.get("status") not in ("queued", "running"):
+            self._json_response(409, {"ok": False, "error": "run is not cancellable", "status": run.get("status")})
+            return
+        run["status"] = "cancelled"
+        run["finished_at"] = utc_iso()
+        run["events"] = list(run.get("events") or []) + [
+            {"ts": utc_iso(), "type": "cancelled", "message": "run cancelled via API"}
+        ]
+        self._upsert_api_run(run)
+        append_audit({"ts": utc_iso(), "action": "run_cancel", "run_id": run_id})
+        self._json_response(200, {"ok": True, "run_id": run_id, "status": "cancelled"})
 
     def _handle_post_manual_arm(self, payload: Dict[str, Any]) -> None:
         enabled = bool(payload.get("enabled", False))
@@ -1073,6 +1201,16 @@ a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0
         if path == "/api/integrations/api-connectors":
             self._handle_get_api_connectors()
             return
+        if path.startswith("/api/runs/"):
+            suffix = path[len("/api/runs/"):]
+            if suffix.endswith("/events"):
+                run_id = suffix[: -len("/events")]
+                if run_id:
+                    self._handle_get_run_events(run_id)
+                    return
+            elif suffix:
+                self._handle_get_run(suffix)
+                return
 
         self._serve_static(path)
 
@@ -1113,6 +1251,11 @@ a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0
         if path == "/api/runs":
             self._handle_post_runs(payload)
             return
+        if path.startswith("/api/runs/") and path.endswith("/cancel"):
+            run_id = path[len("/api/runs/"): -len("/cancel")]
+            if run_id:
+                self._handle_post_run_cancel(run_id)
+                return
 
         self._json_response(404, {"ok": False, "error": f"unknown endpoint: {path}"})
 

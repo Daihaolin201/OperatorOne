@@ -166,3 +166,39 @@
 - JSON structure validation plus strict key assertions (`5 agents`, required top-level sections) provides fast integrity checks.
 - Markdown table-density checks (`wc -l`, pipe count, agent mention count, pass/fail/skip keyword count) are practical for report quality enforcement.
 - Capability-point counting script is useful for objective coverage tracking; this run totals `35` points.
+
+## [2026-03-07] T7: Dashboard API /runs
+
+### 文件改动
+- `dashboard/server.py`：升级 `_handle_post_runs`，新增 4 个 helper + 3 个 handler
+
+### 新增方法（server.py DashboardHandler）
+- `_build_run_object(payload)` — 从请求 payload 构建 API run 对象，run_type="api" 区分 studio stage runs
+- `_find_active_api_run()` — 查找 status 为 queued/running 的 API run（幂等控制）
+- `_get_api_run_by_id(run_id)` — 按 run_id 查找 API run
+- `_upsert_api_run(run)` — 写入/更新 runs.json，bounded 到 500 条
+- `_handle_get_run(run_id)` — GET /api/runs/<id>
+- `_handle_get_run_events(run_id)` — GET /api/runs/<id>/events（JSON poll，非 SSE）
+- `_handle_post_run_cancel(run_id)` — POST /api/runs/<id>/cancel（T11 骨架）
+
+### 路由注册
+- do_GET：`/api/runs/<id>` → `_handle_get_run`；`/api/runs/<id>/events` → `_handle_get_run_events`
+- do_POST：`/api/runs` → `_handle_post_runs`；`/api/runs/<id>/cancel` → `_handle_post_run_cancel`
+
+### 关键决策
+- `run_type: "api"` 字段区分 API runs 与 studio stage runs（共用 `stage_runs.json` / `_load_runs/_save_runs`）
+- 幂等策略：存在 queued/running API run 时直接返回 `{reused: true}`（200），不创建新 run
+- cancel 只允许 queued/running 状态，已完成/失败/已取消返回 409
+- `_upsert_api_run` 加 `STUDIO.store_lock` 锁，与 studio.py 的并发安全模式一致
+- run 对象字段：`run_id, run_type, status, current_step, started_at, finished_at, mode, model_provider, model_name, steps[], events[]`
+- 默认值：`mode=simulation, model_provider=z.ai, model_name=glm-5`
+
+### 证据
+- `.sisyphus/evidence/task-7-runs-api-happy.json` — 真实 curl 响应 (POST→GET→GET events)
+- `.sisyphus/evidence/task-7-runs-api-idempotent.json` — 幂等复用测试（reused=true）
+
+### 约束遵守
+- 未修改 `studio.py`
+- 未删除现有逻辑，仅升级 `_handle_post_runs`
+- 无 API key 出现在证据文件中
+- 现有 `/api/studio/*` 接口未受影响
