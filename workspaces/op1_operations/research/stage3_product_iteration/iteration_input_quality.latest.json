@@ -1,0 +1,45 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "warnings": [],
+  "warning_count": 0,
+  "adapter_status": [
+    {
+      "adapter_id": "stage1_metrics",
+      "enabled": true,
+      "path": "workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.json",
+      "exists": true
+    },
+    {
+      "adapter_id": "stage2_feedback",
+      "enabled": true,
+      "path": "workspaces/op1_operations/research/stage2_feedback/stage2_feedback_scoreboard.latest.json",
+      "exists": true
+    },
+    {
+      "adapter_id": "stage2_priority_queue",
+      "enabled": true,
+      "path": "workspaces/op1_operations/research/stage2_feedback/feedback_priority_queue.latest.json",
+      "exists": true
+    },
+    {
+      "adapter_id": "product_delivery_state",
+      "enabled": true,
+      "path": "workspaces/op1_product/research/stage2_web_product/state.latest.json",
+      "exists": true
+    },
+    {
+      "adapter_id": "live_experiment_platform",
+      "enabled": false,
+      "path": "workspaces/op1_operations/research/stage3_product_iteration/live_experiment_events.latest.jsonl",
+      "exists": true
+    }
+  ],
+  "inputs_present": {
+    "adapters_config": true,
+    "stage1": true,
+    "stage2": true,
+    "product_blueprint": true,
+    "priority_queue_rows": 31,
+    "project_specs": 4
+  }
+}

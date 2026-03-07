@@ -1,0 +1,1709 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "items": [
+    {
+      "feedback_item_id": "fi_4516a28f68345620",
+      "dedupe_key": "4855e8f6130ad7ef4e2ee013d02854e9",
+      "canonical_feedback_id": "fb_eb3bcf79e93a3f318ac6436152121212f54671ab",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-003"
+      ],
+      "lead_ids": [
+        "opp_005-lead-003"
+      ],
+      "feedback_type": "churn_risk",
+      "topic": "trust",
+      "subtopic": "unsubscribe",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 5,
+      "severity_avg": 5.0,
+      "urgency_max": 4,
+      "urgency_avg": 4.0,
+      "sentiment_score_avg": -0.9,
+      "confidence_avg": 0.8655,
+      "evidence_weight_avg": 0.95,
+      "source_adapters": {
+        "sales_conversion_events": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "unsubscribe",
+      "raw_text_examples": [
+        "unsubscribe"
+      ],
+      "tokens": [
+        "unsubscribe"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-003"
+      ],
+      "event_refs": [
+        "fb_eb3bcf79e93a3f318ac6436152121212f54671ab"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_145b80d81931e921",
+      "dedupe_key": "e9c5a1a3395d12f767af4eeb367525f0",
+      "canonical_feedback_id": "fb_23f3ddfec29d08869f0f2c496a30a132715e9f31",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-003"
+      ],
+      "lead_ids": [
+        "opp_005-lead-003"
+      ],
+      "feedback_type": "churn_risk",
+      "topic": "trust",
+      "subtopic": "unsubscribe",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 5,
+      "severity_avg": 5.0,
+      "urgency_max": 4,
+      "urgency_avg": 4.0,
+      "sentiment_score_avg": -0.9,
+      "confidence_avg": 0.855,
+      "evidence_weight_avg": 0.92,
+      "source_adapters": {
+        "sales_outreach_replies": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "please unsubscribe me from future emails",
+      "raw_text_examples": [
+        "Please unsubscribe me from future emails."
+      ],
+      "tokens": [
+        "unsubscribe",
+        "future",
+        "emails"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-003"
+      ],
+      "event_refs": [
+        "fb_23f3ddfec29d08869f0f2c496a30a132715e9f31"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_e8bb3b9ba18ddff2",
+      "dedupe_key": "ee22cce51457f2af266b151898f3aafa",
+      "canonical_feedback_id": "fb_f281c738a4aa1dc9022c6727666dc0881a45cb16",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-001"
+      ],
+      "lead_ids": [
+        "opp_005-lead-001"
+      ],
+      "feedback_type": "confusion",
+      "topic": "trust",
+      "subtopic": "fraud_risk",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 5,
+      "severity_avg": 5.0,
+      "urgency_max": 4,
+      "urgency_avg": 4.0,
+      "sentiment_score_avg": -0.9,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "i caught an employee submitting fake expense reports",
+      "raw_text_examples": [
+        "I caught an employee submitting fake expense reports"
+      ],
+      "tokens": [
+        "caught",
+        "employee",
+        "submitting",
+        "fake",
+        "expense",
+        "reports"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-001"
+      ],
+      "event_refs": [
+        "fb_f281c738a4aa1dc9022c6727666dc0881a45cb16"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_c2f297b35bf000f8",
+      "dedupe_key": "12a82b07d2a604cb4589135c5ca026dc",
+      "canonical_feedback_id": "fb_a7df0141dfe136930dcfd3206c339b858f031aad",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-004"
+      ],
+      "lead_ids": [
+        "opp_005-lead-004"
+      ],
+      "feedback_type": "pricing",
+      "topic": "pricing",
+      "subtopic": "budget",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 4,
+      "severity_avg": 4.0,
+      "urgency_max": 4,
+      "urgency_avg": 4.0,
+      "sentiment_score_avg": -0.7,
+      "confidence_avg": 0.855,
+      "evidence_weight_avg": 0.92,
+      "source_adapters": {
+        "sales_outreach_replies": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "this looks expensive and beyond our current budget",
+      "raw_text_examples": [
+        "This looks expensive and beyond our current budget."
+      ],
+      "tokens": [
+        "looks",
+        "expensive",
+        "beyond",
+        "current",
+        "budget"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-004"
+      ],
+      "event_refs": [
+        "fb_a7df0141dfe136930dcfd3206c339b858f031aad"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_cde6408aad3cb28d",
+      "dedupe_key": "1e0ce995fde4ec04bbb2298fef9e5266",
+      "canonical_feedback_id": "fb_d192b266dae23e55a8d9e4b956c8eefad6e681c3",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-020"
+      ],
+      "lead_ids": [
+        "opp_005-lead-020"
+      ],
+      "feedback_type": "pricing",
+      "topic": "pricing",
+      "subtopic": "roi_unclear",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 4,
+      "severity_avg": 4.0,
+      "urgency_max": 4,
+      "urgency_avg": 4.0,
+      "sentiment_score_avg": -0.7,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "the real roi of expense management isn t the software cost it s the hours your team gets back",
+      "raw_text_examples": [
+        "The real ROI of expense management isn't the software cost - it's the hours your team gets back"
+      ],
+      "tokens": [
+        "real",
+        "roi",
+        "expense",
+        "management",
+        "isn",
+        "software",
+        "cost",
+        "hours",
+        "team",
+        "gets",
+        "back"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-020"
+      ],
+      "event_refs": [
+        "fb_d192b266dae23e55a8d9e4b956c8eefad6e681c3"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_19d3de8c0c06e487",
+      "dedupe_key": "84461b7116254f821ec5822c75f14efc",
+      "canonical_feedback_id": "fb_4bb353c47ee3a015b2194762ba4e932b814f8208",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-013"
+      ],
+      "lead_ids": [
+        "opp_005-lead-013"
+      ],
+      "feedback_type": "pricing",
+      "topic": "pricing",
+      "subtopic": "price_sensitivity",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 4,
+      "severity_avg": 4.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": -0.7,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "cpa raised fees 35 on me this for next year",
+      "raw_text_examples": [
+        "CPA raised fees 35% on me this for next year"
+      ],
+      "tokens": [
+        "cpa",
+        "raised",
+        "fees",
+        "next",
+        "year"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-013"
+      ],
+      "event_refs": [
+        "fb_4bb353c47ee3a015b2194762ba4e932b814f8208"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_63872398f74f64a7",
+      "dedupe_key": "90232fd091caccbd2ba1450395a0192c",
+      "canonical_feedback_id": "fb_2608df2047a7e9d14c5f3d3a2089556f41f08d13",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-015"
+      ],
+      "lead_ids": [
+        "opp_005-lead-015"
+      ],
+      "feedback_type": "objection",
+      "topic": "retention",
+      "subtopic": "competitor_lockin",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 4,
+      "severity_avg": 4.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": -0.7,
+      "confidence_avg": 0.855,
+      "evidence_weight_avg": 0.92,
+      "source_adapters": {
+        "sales_outreach_replies": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "no thanks we already use another system and are not interested",
+      "raw_text_examples": [
+        "No thanks, we already use another system and are not interested."
+      ],
+      "tokens": [
+        "thanks",
+        "already",
+        "use",
+        "another",
+        "system",
+        "interested"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-005"
+      ],
+      "event_refs": [
+        "fb_2608df2047a7e9d14c5f3d3a2089556f41f08d13"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_dff6fd2b9cd41b4e",
+      "dedupe_key": "bf1dc2d00330b9ece65abaac46d516f5",
+      "canonical_feedback_id": "fb_fd4fcaaa5cef47e221999748682eb3d2acafe26f",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-006"
+      ],
+      "lead_ids": [
+        "opp_005-lead-006"
+      ],
+      "feedback_type": "pricing",
+      "topic": "pricing",
+      "subtopic": "price_sensitivity",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 4,
+      "severity_avg": 4.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": -0.7,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "small business bookkeeping feels like another job",
+      "raw_text_examples": [
+        "small business bookkeeping feels like another job"
+      ],
+      "tokens": [
+        "small",
+        "business",
+        "bookkeeping",
+        "feels",
+        "like",
+        "another",
+        "job"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-006"
+      ],
+      "event_refs": [
+        "fb_fd4fcaaa5cef47e221999748682eb3d2acafe26f"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_cbdeef528f65f492",
+      "dedupe_key": "dc968d7676b209b97636b6aef0ade47f",
+      "canonical_feedback_id": "fb_9c98549a3d3725b76bec7ba076466dffcb4af9e3",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-004"
+      ],
+      "lead_ids": [
+        "opp_005-lead-004"
+      ],
+      "feedback_type": "pricing",
+      "topic": "pricing",
+      "subtopic": "budget",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 4,
+      "severity_avg": 4.0,
+      "urgency_max": 4,
+      "urgency_avg": 4.0,
+      "sentiment_score_avg": -0.7,
+      "confidence_avg": 0.8655,
+      "evidence_weight_avg": 0.95,
+      "source_adapters": {
+        "sales_conversion_events": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "budget",
+      "raw_text_examples": [
+        "budget"
+      ],
+      "tokens": [
+        "budget"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-004"
+      ],
+      "event_refs": [
+        "fb_9c98549a3d3725b76bec7ba076466dffcb4af9e3"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_d845182f6a359199",
+      "dedupe_key": "2636b320f0ab964db8cd9aa934015ade",
+      "canonical_feedback_id": "fb_62a05aaba698c2e2b7a18890e6c0b3a7ac2b4b09",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-012"
+      ],
+      "lead_ids": [
+        "opp_005-lead-012"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "need advice wholesale account owes me 25k and keeps ghosting me",
+      "raw_text_examples": [
+        "Need advice: Wholesale account owes me $25K and keeps ghosting me"
+      ],
+      "tokens": [
+        "need",
+        "advice",
+        "wholesale",
+        "account",
+        "owes",
+        "25k",
+        "keeps",
+        "ghosting"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-012"
+      ],
+      "event_refs": [
+        "fb_62a05aaba698c2e2b7a18890e6c0b3a7ac2b4b09"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_3562d87345b818c1",
+      "dedupe_key": "2b6e1b847edf8ce87135f95b8c2c024c",
+      "canonical_feedback_id": "fb_79cc37ee9c5f7881641b238c7aad2f3406db14e7",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-010"
+      ],
+      "lead_ids": [
+        "opp_005-lead-010"
+      ],
+      "feedback_type": "confusion",
+      "topic": "trust",
+      "subtopic": "security",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "partner not taking accounting seriously",
+      "raw_text_examples": [
+        "Partner not taking Accounting Seriously"
+      ],
+      "tokens": [
+        "partner",
+        "taking",
+        "accounting",
+        "seriously"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-010"
+      ],
+      "event_refs": [
+        "fb_79cc37ee9c5f7881641b238c7aad2f3406db14e7"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_c0c51a7ced1c2fe7",
+      "dedupe_key": "33cb4c9724973ee0ba6004e71e0ab519",
+      "canonical_feedback_id": "fb_137c6990612b58532d21c98257e379867e95be75",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-005"
+      ],
+      "lead_ids": [
+        "opp_005-lead-005"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "i m tired of bookkeeping for my husband s business",
+      "raw_text_examples": [
+        "I’m tired of bookkeeping for my husband’s business"
+      ],
+      "tokens": [
+        "tired",
+        "bookkeeping",
+        "husband",
+        "business"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-005"
+      ],
+      "event_refs": [
+        "fb_137c6990612b58532d21c98257e379867e95be75"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_173b803f9c455ac2",
+      "dedupe_key": "3fe95e701805403f47aba1112ad3bb64",
+      "canonical_feedback_id": "fb_e4345b22c670f0c289bcb8d49d07027930d51938",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-015"
+      ],
+      "lead_ids": [
+        "opp_005-lead-015"
+      ],
+      "feedback_type": "confusion",
+      "topic": "integration",
+      "subtopic": "data_sync",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "i need a simple way to share a folder with my accountant once a year",
+      "raw_text_examples": [
+        "I need a simple way to share a folder with my accountant once a year"
+      ],
+      "tokens": [
+        "need",
+        "simple",
+        "way",
+        "share",
+        "folder",
+        "accountant",
+        "once",
+        "year"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-015"
+      ],
+      "event_refs": [
+        "fb_e4345b22c670f0c289bcb8d49d07027930d51938"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_d56174f308ac5028",
+      "dedupe_key": "4639653135a02182f6646ff58b62f0d8",
+      "canonical_feedback_id": "fb_ca0a93c8d53dbca4d1a22c4d907d7cce29ca0831",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-003"
+      ],
+      "lead_ids": [
+        "opp_005-lead-003"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "1m revenue and i just paid tax penalties because i can t keep up with bookkeeping",
+      "raw_text_examples": [
+        "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping"
+      ],
+      "tokens": [
+        "revenue",
+        "paid",
+        "tax",
+        "penalties",
+        "because",
+        "keep",
+        "bookkeeping"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-003"
+      ],
+      "event_refs": [
+        "fb_ca0a93c8d53dbca4d1a22c4d907d7cce29ca0831"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_7895224f9636f629",
+      "dedupe_key": "50260d25af7f4cb6ded71b461cbd7b4b",
+      "canonical_feedback_id": "fb_8265871022c0e85ec5428f366364c6542f596483",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-019"
+      ],
+      "lead_ids": [
+        "opp_005-lead-019"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "need help choosing pos inventory and book keeping software",
+      "raw_text_examples": [
+        "Need help choosing POS, Inventory and book keeping software"
+      ],
+      "tokens": [
+        "need",
+        "help",
+        "choosing",
+        "pos",
+        "inventory",
+        "book",
+        "keeping",
+        "software"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-019"
+      ],
+      "event_refs": [
+        "fb_8265871022c0e85ec5428f366364c6542f596483"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_1038de67ceb262c3",
+      "dedupe_key": "5ecf1775451067f9cd14706790747f8c",
+      "canonical_feedback_id": "fb_63b7d21c5e9f25b513be11429ecd4dc319c5cb15",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-009"
+      ],
+      "lead_ids": [
+        "opp_005-lead-009"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "business bank account for contractors that separates job income automatically or am i asking",
+      "raw_text_examples": [
+        "Business bank account for contractors that separates job income automatically or am I asking ..."
+      ],
+      "tokens": [
+        "business",
+        "bank",
+        "account",
+        "contractors",
+        "separates",
+        "job",
+        "income",
+        "automatically",
+        "asking"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-009"
+      ],
+      "event_refs": [
+        "fb_63b7d21c5e9f25b513be11429ecd4dc319c5cb15"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_7f95bdafab5d5c9d",
+      "dedupe_key": "b1a2e9e42339caf0dc051a7d1a28deb8",
+      "canonical_feedback_id": "fb_a0f449de9d05b40f1629f19c35a9eb71bb9bae2d",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-016"
+      ],
+      "lead_ids": [
+        "opp_005-lead-016"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "i got my first client 7 months ago and i m stuck",
+      "raw_text_examples": [
+        "I got my first client 7 months ago and I'm stuck"
+      ],
+      "tokens": [
+        "got",
+        "first",
+        "client",
+        "months",
+        "ago",
+        "stuck"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-016"
+      ],
+      "event_refs": [
+        "fb_a0f449de9d05b40f1629f19c35a9eb71bb9bae2d"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_6503bc41af71ea54",
+      "dedupe_key": "b68299ee24ec5526ffbd045857d73522",
+      "canonical_feedback_id": "fb_a70d1834a45cae0866823bbffb069cf56258433c",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-017"
+      ],
+      "lead_ids": [
+        "opp_005-lead-017"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "e commerce industry news recap week of aug 18th 2025",
+      "raw_text_examples": [
+        "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025"
+      ],
+      "tokens": [
+        "commerce",
+        "industry",
+        "news",
+        "recap",
+        "week",
+        "aug",
+        "18th",
+        "2025"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-017"
+      ],
+      "event_refs": [
+        "fb_a70d1834a45cae0866823bbffb069cf56258433c"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_d5a065f840f9e540",
+      "dedupe_key": "ba04fe98329b89b3b8f91a2db197ca5d",
+      "canonical_feedback_id": "fb_8cfb89ac25cadd11c5e7d39f03c2d36a294dd47a",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-008"
+      ],
+      "lead_ids": [
+        "opp_005-lead-008"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "how do you grow a remote bookkeeping business when you re starting from zero",
+      "raw_text_examples": [
+        "How do you grow a remote bookkeeping business when you're starting from zero?"
+      ],
+      "tokens": [
+        "how",
+        "grow",
+        "remote",
+        "bookkeeping",
+        "business",
+        "when",
+        "starting",
+        "zero"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-008"
+      ],
+      "event_refs": [
+        "fb_8cfb89ac25cadd11c5e7d39f03c2d36a294dd47a"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_df1923c65baa3f9a",
+      "dedupe_key": "bd3bdf4fc44ef933cc2864c42f32e872",
+      "canonical_feedback_id": "fb_1c9489c4e47f4247092829c4506fe69c654717d8",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-007"
+      ],
+      "lead_ids": [
+        "opp_005-lead-007"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "growing team 14 ppl looking for the best virtual credit card for expense automation drowni",
+      "raw_text_examples": [
+        "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni..."
+      ],
+      "tokens": [
+        "growing",
+        "team",
+        "ppl",
+        "looking",
+        "best",
+        "virtual",
+        "credit",
+        "card",
+        "expense",
+        "automation",
+        "drowni"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-007"
+      ],
+      "event_refs": [
+        "fb_1c9489c4e47f4247092829c4506fe69c654717d8"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_0ef866c13de81729",
+      "dedupe_key": "c13034dc40dbd4c4492c60fc7fd7ad04",
+      "canonical_feedback_id": "fb_90744dd816551e4ec3b7f7b8e75d0adb829f3607",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-002"
+      ],
+      "lead_ids": [
+        "opp_005-lead-002"
+      ],
+      "feedback_type": "other",
+      "topic": "retention",
+      "subtopic": "timing_hold",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 2,
+      "urgency_avg": 2.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.855,
+      "evidence_weight_avg": 0.92,
+      "source_adapters": {
+        "sales_outreach_replies": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "not now please circle back next quarter",
+      "raw_text_examples": [
+        "Not now. Please circle back next quarter."
+      ],
+      "tokens": [
+        "circle",
+        "back",
+        "next",
+        "quarter"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-002"
+      ],
+      "event_refs": [
+        "fb_90744dd816551e4ec3b7f7b8e75d0adb829f3607"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_20cd1163dd14c475",
+      "dedupe_key": "cd29c0bb05d1f1bc897ce5e884a2c367",
+      "canonical_feedback_id": "fb_829c25f1d4a9211346b0f298e9cedbb375b50c05",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-002"
+      ],
+      "lead_ids": [
+        "opp_005-lead-002"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "how do you all handle employee expenses without losing your mind",
+      "raw_text_examples": [
+        "How do you all handle employee expenses without losing your mind?"
+      ],
+      "tokens": [
+        "how",
+        "all",
+        "handle",
+        "employee",
+        "expenses",
+        "without",
+        "losing",
+        "mind"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-002"
+      ],
+      "event_refs": [
+        "fb_829c25f1d4a9211346b0f298e9cedbb375b50c05"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_cefea68726e7028a",
+      "dedupe_key": "d9affce72eaebfb9f79d952a9661b424",
+      "canonical_feedback_id": "fb_044804ba7b54d1a215d1ba7b4cd73186b770c549",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-011"
+      ],
+      "lead_ids": [
+        "opp_005-lead-011"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "i was hired to save a company from collapse they gave me zero authority and now blame me for",
+      "raw_text_examples": [
+        "I was hired to save a company from collapse. They gave me zero authority and now blame me for..."
+      ],
+      "tokens": [
+        "was",
+        "hired",
+        "save",
+        "company",
+        "collapse",
+        "they",
+        "gave",
+        "zero",
+        "authority",
+        "blame"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-011"
+      ],
+      "event_refs": [
+        "fb_044804ba7b54d1a215d1ba7b4cd73186b770c549"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_4708e84a3075e1ba",
+      "dedupe_key": "e11918bcd58e783a795d60e97dccc764",
+      "canonical_feedback_id": "fb_e6db6296b0a78febf921460a3fbf62e24b9ee5d6",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-014"
+      ],
+      "lead_ids": [
+        "opp_005-lead-014"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "software guidance request for simple income expense reporting",
+      "raw_text_examples": [
+        "Software Guidance Request for Simple Income/Expense Reporting"
+      ],
+      "tokens": [
+        "software",
+        "guidance",
+        "request",
+        "simple",
+        "income",
+        "expense",
+        "reporting"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-014"
+      ],
+      "event_refs": [
+        "fb_e6db6296b0a78febf921460a3fbf62e24b9ee5d6"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_d0c65423d9c21bef",
+      "dedupe_key": "e56b77d9dff49aad4d630ab2d4cb4718",
+      "canonical_feedback_id": "fb_65c7ccd16dbbeee6a24c653222d19e76fcba02f9",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-004"
+      ],
+      "lead_ids": [
+        "opp_005-lead-004"
+      ],
+      "feedback_type": "confusion",
+      "topic": "integration",
+      "subtopic": "api",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "the tools actually running my 3 person landscaping business",
+      "raw_text_examples": [
+        "The tools actually running my 3-person landscaping business"
+      ],
+      "tokens": [
+        "tools",
+        "actually",
+        "running",
+        "person",
+        "landscaping",
+        "business"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-004"
+      ],
+      "event_refs": [
+        "fb_65c7ccd16dbbeee6a24c653222d19e76fcba02f9"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_a5551dff9ba30ce4",
+      "dedupe_key": "fa72c63e9abdf5318c214c7ee01420f8",
+      "canonical_feedback_id": "fb_54b04fc4b41555161c29abc0c9f444b61d6a7c4d",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-018"
+      ],
+      "lead_ids": [
+        "opp_005-lead-018"
+      ],
+      "feedback_type": "confusion",
+      "topic": "onboarding",
+      "subtopic": "manual_work",
+      "journey_stage": "problem_discovery",
+      "first_seen": "2026-03-06T00:17:29+00:00",
+      "last_seen": "2026-03-06T00:17:29+00:00",
+      "severity_max": 3,
+      "severity_avg": 3.0,
+      "urgency_max": 3,
+      "urgency_avg": 3.0,
+      "sentiment_score_avg": 0.0,
+      "confidence_avg": 0.742,
+      "evidence_weight_avg": 0.82,
+      "source_adapters": {
+        "conversion_pipeline_pains": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "problem_discovery": 1
+      },
+      "normalized_text": "a letter to myself everything i wish i d known before starting my business",
+      "raw_text_examples": [
+        "A letter to myself: Everything I wish I'd known before starting my business"
+      ],
+      "tokens": [
+        "letter",
+        "myself",
+        "everything",
+        "wish",
+        "known",
+        "before",
+        "starting",
+        "business"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "opp_005-lead-018"
+      ],
+      "event_refs": [
+        "fb_54b04fc4b41555161c29abc0c9f444b61d6a7c4d"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_4ce20753af835555",
+      "dedupe_key": "42763819e53e46669c42752231ab62a7",
+      "canonical_feedback_id": "fb_9615f2a583d42908383d5f9052aedfe91b8a0714",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-019"
+      ],
+      "lead_ids": [
+        "opp_005-lead-019"
+      ],
+      "feedback_type": "praise",
+      "topic": "billing",
+      "subtopic": "payment_flow",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 1,
+      "severity_avg": 1.0,
+      "urgency_max": 1,
+      "urgency_avg": 1.0,
+      "sentiment_score_avg": 0.65,
+      "confidence_avg": 0.855,
+      "evidence_weight_avg": 0.92,
+      "source_adapters": {
+        "sales_outreach_replies": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "looks good let s start this week payment sent",
+      "raw_text_examples": [
+        "Looks good. Let's start this week, payment sent."
+      ],
+      "tokens": [
+        "looks",
+        "good",
+        "let",
+        "start",
+        "week",
+        "payment",
+        "sent"
+      ],
+      "unknown_topic": false,
+      "source_refs": [
+        "rpl-006"
+      ],
+      "event_refs": [
+        "fb_9615f2a583d42908383d5f9052aedfe91b8a0714"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_aac0b8f139f3af11",
+      "dedupe_key": "5dbcbea0dbed010ae992483a537f2bf7",
+      "canonical_feedback_id": "fb_98723dd8985f4db6f8c0d2c2497e211ddc3d10ae",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-019"
+      ],
+      "lead_ids": [
+        "opp_005-lead-019"
+      ],
+      "feedback_type": "praise",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 1,
+      "severity_avg": 1.0,
+      "urgency_max": 1,
+      "urgency_avg": 1.0,
+      "sentiment_score_avg": 0.65,
+      "confidence_avg": 0.8655,
+      "evidence_weight_avg": 0.95,
+      "source_adapters": {
+        "sales_conversion_events": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "conversion",
+      "raw_text_examples": [
+        "conversion"
+      ],
+      "tokens": [
+        "conversion"
+      ],
+      "unknown_topic": true,
+      "source_refs": [
+        "rpl-006"
+      ],
+      "event_refs": [
+        "fb_98723dd8985f4db6f8c0d2c2497e211ddc3d10ae"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_402714b492058f2d",
+      "dedupe_key": "7f4e79b6fb733e3dcb7eab87928feb37",
+      "canonical_feedback_id": "fb_144271eb82e5a78edca972481127dfcae10f6977",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-001"
+      ],
+      "lead_ids": [
+        "opp_005-lead-001"
+      ],
+      "feedback_type": "praise",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 1,
+      "severity_avg": 1.0,
+      "urgency_max": 1,
+      "urgency_avg": 1.0,
+      "sentiment_score_avg": 0.65,
+      "confidence_avg": 0.8655,
+      "evidence_weight_avg": 0.95,
+      "source_adapters": {
+        "sales_conversion_events": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "booked call",
+      "raw_text_examples": [
+        "booked_call"
+      ],
+      "tokens": [
+        "booked",
+        "call"
+      ],
+      "unknown_topic": true,
+      "source_refs": [
+        "rpl-001"
+      ],
+      "event_refs": [
+        "fb_144271eb82e5a78edca972481127dfcae10f6977"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_f153d594352f0a1a",
+      "dedupe_key": "c9a953e3c0319e1fc78fb972f84432b4",
+      "canonical_feedback_id": "fb_1ce0e7cc8c601d4c1b8b0b19d3361f21cd9420d8",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-001"
+      ],
+      "lead_ids": [
+        "opp_005-lead-001"
+      ],
+      "feedback_type": "praise",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 1,
+      "severity_avg": 1.0,
+      "urgency_max": 1,
+      "urgency_avg": 1.0,
+      "sentiment_score_avg": 0.65,
+      "confidence_avg": 0.855,
+      "evidence_weight_avg": 0.92,
+      "source_adapters": {
+        "sales_outreach_replies": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "interested can we book a demo call tomorrow",
+      "raw_text_examples": [
+        "Interested. Can we book a demo call tomorrow?"
+      ],
+      "tokens": [
+        "interested",
+        "book",
+        "demo",
+        "call",
+        "tomorrow"
+      ],
+      "unknown_topic": true,
+      "source_refs": [
+        "rpl-001"
+      ],
+      "event_refs": [
+        "fb_1ce0e7cc8c601d4c1b8b0b19d3361f21cd9420d8"
+      ]
+    },
+    {
+      "feedback_item_id": "fi_c1a4246acfc6988d",
+      "dedupe_key": "f63348bc33656aec2d822f31d08eea01",
+      "canonical_feedback_id": "fb_443912baed38e03e2399d74c11de03fb627ee406",
+      "duplicate_feedback_ids": [],
+      "duplicate_count": 1,
+      "unique_actor_count": 1,
+      "actor_ids": [
+        "lead:opp_005-lead-015"
+      ],
+      "lead_ids": [
+        "opp_005-lead-015"
+      ],
+      "feedback_type": "praise",
+      "topic": "general",
+      "subtopic": "uncategorized",
+      "journey_stage": "signup_to_paid",
+      "first_seen": "2026-03-04T20:03:26+00:00",
+      "last_seen": "2026-03-04T20:03:26+00:00",
+      "severity_max": 1,
+      "severity_avg": 1.0,
+      "urgency_max": 1,
+      "urgency_avg": 1.0,
+      "sentiment_score_avg": 0.65,
+      "confidence_avg": 0.8655,
+      "evidence_weight_avg": 0.95,
+      "source_adapters": {
+        "sales_conversion_events": 1
+      },
+      "language_mix": {
+        "en": 1
+      },
+      "journey_stage_mix": {
+        "signup_to_paid": 1
+      },
+      "normalized_text": "interested",
+      "raw_text_examples": [
+        "interested"
+      ],
+      "tokens": [
+        "interested"
+      ],
+      "unknown_topic": true,
+      "source_refs": [
+        "rpl-005"
+      ],
+      "event_refs": [
+        "fb_443912baed38e03e2399d74c11de03fb627ee406"
+      ]
+    }
+  ]
+}

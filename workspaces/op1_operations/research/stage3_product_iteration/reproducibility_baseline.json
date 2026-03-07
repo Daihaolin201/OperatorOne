@@ -1,0 +1,27 @@
+{
+  "generated_at": "2026-03-05T12:00:00+00:00",
+  "hashes": {
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/iteration_inputs.latest.json": "1970e8225fdc41bc9aa729da54dd2100d577ccc761fb6e806fb278c0200ac078",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/iteration_input_quality.latest.json": "0da90325f44624062965e2313561fccdaabdede4bb9479dca4fb13d6f929fdcc",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/opportunity_solution_tree.latest.json": "5667206ed86c27d7e387cd2a8199a71a341ac23b869997a5d4370276c7bde622",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/hypothesis_registry.latest.jsonl": "75eea7f3edd51c96391325ac5a6dbd290df5c7fb32c77f6820a65d1c577a1218",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/experiment_backlog.latest.json": "5e6e61a8df09820f1b52e2952886b9f1a397bdd54efb2ccfec4b7590c4dd768f",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/experiment_contract_validation.latest.json": "a5ed32431410f6311d81148ce192bd1cb571585d4836d448c78a82670da71c0b",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/iteration_portfolio.latest.json": "106232318541cd4f4d6c31f5564b3450f98a9ed9187d070fca6b7e1838c18564",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/variant_specs.latest.json": "7abf156bb0d940772b678b9bd742dbb181aca21c6daab78e7bde359f790ca196",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/rollout_log.latest.json": "fcc96440cf3821563a9bd0bb4f1b33ddbc076757e2b13893c90ae43ed8944a8b",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/experiment_monitor.latest.json": "d64f7b706bc9e0c207ef8a05f908e793787597b970ef8aaaf1f9465725b2a714",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/experiment_results.latest.json": "f87cd702509adcae70d27fbccca504c9defc117077d4363040779f95ec5fb769",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/iteration_decision_log.latest.json": "91b1f58030e9d1e4ea0e494b3503fd61e1fd6b6d9a7b4b1e9220847e148c3c9b",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/learning_log.latest.md": "71da7ca8f8dec3a1d5ae69a06f1da2852bfe72b33019579120016531f7371620",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/delivery_performance.latest.json": "1daa7202a66829f8e699a861034680206099dacc8118793e17ad0e12ebe74e95",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/iteration_alerts.latest.json": "bac6fc4ae9f477aa3e5693a2b9f6d685ac6f2db0694d0e19427660356a2d4237",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/stage3_iteration_scoreboard.latest.json": "b6b27a4464bb574f94ff5efd2b540cb22acfacd2c8cfcd621e24a16e99fc21b7",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/stage3_iteration_scoreboard.latest.md": "26e9707d94fe5f3ff952465a159a2447c36ad95134f94fae5ddc53f041e8e29a",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/weekly_iteration_snapshot.latest.md": "68b36c9dcd74a1c667aff18502380abe7050ed2d784bc7c312a6ced096a37478",
+    "/Users/user/.openclaw/workspace/OperatorOne/handoffs/operations_to_product_iterate.json": "b3b29f5c8ad63f740e7964febb7e01e1873234b9fe428edfaaa7eb8b48f67630",
+    "/Users/user/.openclaw/workspace/OperatorOne/handoffs/operations_to_marketing_iterate.json": "0957fc94d340984ea67d5d75e5021008469149f58ffab53dc40a52c9d035e601",
+    "/Users/user/.openclaw/workspace/OperatorOne/handoffs/operations_to_sales_iterate.json": "c408767f16a5929c91330efd1ef8a4dd73a328d36131dedf4bdc20a70ef39f34"
+  },
+  "note": "Baseline for Stage3 reproducibility checks"
+}

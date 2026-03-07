@@ -1,0 +1,50 @@
+{
+  "registry_version": "1.0",
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "description": "Domain-specific hero with value proposition and audience segment"
+    },
+    {
+      "module_id": "workflow_interactive",
+      "kind": "workflow",
+      "description": "Interactive workflow assistant connected to /api/first-step"
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "description": "Outcome-oriented proof or capability claims"
+    },
+    {
+      "module_id": "evidence_checklist",
+      "kind": "checklist",
+      "description": "Operational checklist emphasizing risk control steps"
+    },
+    {
+      "module_id": "metric_snapshot",
+      "kind": "metric",
+      "description": "Primary success metric and target"
+    },
+    {
+      "module_id": "pricing_cards",
+      "kind": "pricing",
+      "description": "Two-plan pricing hypothesis card"
+    },
+    {
+      "module_id": "risk_guardrails",
+      "kind": "risk",
+      "description": "Kill criteria and guardrail constraints"
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "description": "Primary lead-capture call-to-action with email form"
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "description": "FAQ clarifying purchase and implementation concerns"
+    }
+  ]
+}

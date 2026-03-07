@@ -1,0 +1,9 @@
+{
+  "name": "proj-opp-002-chargeback-response-v1",
+  "version": "0.2.0",
+  "private": true,
+  "description": "Adapter-driven scaffold for Build & Deploy simple web products",
+  "scripts": {
+    "start": "echo 'Use vercel dev for local development'"
+  }
+}

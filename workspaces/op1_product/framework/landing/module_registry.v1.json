@@ -1,0 +1,41 @@
+{
+  "registry_version": "1.0",
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "description": "Landing hero with audience, value proposition, and core problem statement."
+    },
+    {
+      "module_id": "problem_agitation",
+      "kind": "problem",
+      "description": "Problem framing and cost-of-inaction section."
+    },
+    {
+      "module_id": "benefit_bullets",
+      "kind": "benefits",
+      "description": "Outcome-oriented benefit bullets mapped to opportunity pain."
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "description": "Evidence-backed credibility section."
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "description": "Objection handling FAQ blocks."
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "description": "Single primary conversion CTA with email form."
+    }
+  ],
+  "forbidden_default_modules": [
+    "workflow_interactive",
+    "metric_snapshot",
+    "evidence_checklist",
+    "social_proof_strip"
+  ]
+}

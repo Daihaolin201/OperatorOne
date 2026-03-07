@@ -1,0 +1,120 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "op1_product/build_deploy_page_spec.v1",
+  "title": "BuildDeployPageSpecV1",
+  "type": "object",
+  "required": [
+    "page_spec_version",
+    "generated_at",
+    "project_id",
+    "adapter_name",
+    "layout_profile",
+    "theme",
+    "modules",
+    "testing"
+  ],
+  "properties": {
+    "page_spec_version": { "type": "string" },
+    "generated_at": { "type": "string" },
+    "project_id": { "type": "string" },
+    "adapter_name": { "type": "string" },
+    "layout_profile": { "type": "string" },
+    "theme": {
+      "type": "object",
+      "required": ["accent", "surface", "highlight"],
+      "properties": {
+        "accent": { "type": "string" },
+        "surface": { "type": "string" },
+        "highlight": { "type": "string" }
+      }
+    },
+    "meta": {
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "description": { "type": "string" }
+      }
+    },
+    "modules": {
+      "type": "array",
+      "minItems": 3,
+      "items": {
+        "type": "object",
+        "required": ["module_id", "kind", "props"],
+        "properties": {
+          "module_id": { "type": "string" },
+          "kind": { "type": "string" },
+          "props": { "type": "object" }
+        }
+      }
+    },
+    "testing": {
+      "type": "object",
+      "required": ["expected_modules", "primary_cta_module", "max_primary_cta_buttons"],
+      "properties": {
+        "expected_modules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "primary_cta_module": { "type": "string" },
+        "max_primary_cta_buttons": { "type": "integer", "minimum": 1 },
+        "require_viewport_meta": { "type": "boolean" },
+        "responsive_markers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "device_profiles": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["id", "width", "height"],
+            "properties": {
+              "id": { "type": "string" },
+              "width": { "type": "integer", "minimum": 1 },
+              "height": { "type": "integer", "minimum": 1 }
+            }
+          }
+        },
+        "performance_budget": {
+          "type": "object",
+          "properties": {
+            "lcp_ms": { "type": "number", "minimum": 1 },
+            "inp_ms": { "type": "number", "minimum": 1 },
+            "cls_max": { "type": "number", "minimum": 0 }
+          }
+        },
+        "security_headers": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["name", "must_include"],
+            "properties": {
+              "name": { "type": "string" },
+              "must_include": { "type": "string" }
+            }
+          }
+        },
+        "page_mode": { "type": "string" },
+        "required_modules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_modules": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "lp_section_whitelist": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "forbidden_terms": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "project_spec_snapshot": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,489 @@
+{
+  "generated_at": "2026-03-07T18:46:55+00:00",
+  "item_count": 15,
+  "running_count": 3,
+  "completed_count": 1,
+  "rollback_count": 0,
+  "rows": [
+    {
+      "experiment_id": "exp3_c3a320476dbf99",
+      "flag_key": "flag_exp3_c3a320476dbf99",
+      "variant_set_id": "varset_58362bf735",
+      "rollout_status": "held",
+      "running": true,
+      "risk_band": "medium",
+      "reached_percent": 50,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "done"
+        },
+        {
+          "step_percent": 5,
+          "status": "done"
+        },
+        {
+          "step_percent": 20,
+          "status": "done"
+        },
+        {
+          "step_percent": 50,
+          "status": "done"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_59cab733ebc263",
+      "flag_key": "flag_exp3_59cab733ebc263",
+      "variant_set_id": "varset_c6b0d4fbcf",
+      "rollout_status": "held",
+      "running": true,
+      "risk_band": "medium",
+      "reached_percent": 50,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "done"
+        },
+        {
+          "step_percent": 5,
+          "status": "done"
+        },
+        {
+          "step_percent": 20,
+          "status": "done"
+        },
+        {
+          "step_percent": 50,
+          "status": "done"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_cc6418573e5369",
+      "flag_key": "flag_exp3_cc6418573e5369",
+      "variant_set_id": "varset_e2bf169e58",
+      "rollout_status": "completed",
+      "running": true,
+      "risk_band": "low",
+      "reached_percent": 100,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "done"
+        },
+        {
+          "step_percent": 5,
+          "status": "done"
+        },
+        {
+          "step_percent": 20,
+          "status": "done"
+        },
+        {
+          "step_percent": 50,
+          "status": "done"
+        },
+        {
+          "step_percent": 100,
+          "status": "done"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_05035039912c10",
+      "flag_key": "flag_exp3_05035039912c10",
+      "variant_set_id": "varset_b7ea8164f6",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "high",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "flag_key": "flag_exp3_c6b83944f78cc7",
+      "variant_set_id": "varset_1d6f2968b2",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "high",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_aff51f279f27df",
+      "flag_key": "flag_exp3_aff51f279f27df",
+      "variant_set_id": "varset_df3dae83fc",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "low",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "flag_key": "flag_exp3_72c353fd9fdd32",
+      "variant_set_id": "varset_9360ed1511",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_6560f49deb814a",
+      "flag_key": "flag_exp3_6560f49deb814a",
+      "variant_set_id": "varset_29a170045e",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "low",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_299c70c714d04e",
+      "flag_key": "flag_exp3_299c70c714d04e",
+      "variant_set_id": "varset_98099f6992",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_bd55e0ff614989",
+      "flag_key": "flag_exp3_bd55e0ff614989",
+      "variant_set_id": "varset_6662093d02",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "flag_key": "flag_exp3_368bdcc2cc5f04",
+      "variant_set_id": "varset_188c8fdf66",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_4d927033157cf9",
+      "flag_key": "flag_exp3_4d927033157cf9",
+      "variant_set_id": "varset_00081135b1",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "flag_key": "flag_exp3_0ea2c8672f4892",
+      "variant_set_id": "varset_2d950b7e12",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_25b8181f08a498",
+      "flag_key": "flag_exp3_25b8181f08a498",
+      "variant_set_id": "varset_cf7ae3d8c7",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    },
+    {
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "flag_key": "flag_exp3_b40d4807f0bce0",
+      "variant_set_id": "varset_9c73d020b9",
+      "rollout_status": "planned",
+      "running": false,
+      "risk_band": "medium",
+      "reached_percent": 0,
+      "steps": [
+        {
+          "step_percent": 1,
+          "status": "pending"
+        },
+        {
+          "step_percent": 5,
+          "status": "pending"
+        },
+        {
+          "step_percent": 20,
+          "status": "pending"
+        },
+        {
+          "step_percent": 50,
+          "status": "pending"
+        },
+        {
+          "step_percent": 100,
+          "status": "pending"
+        }
+      ],
+      "guardrail_breach": false
+    }
+  ]
+}

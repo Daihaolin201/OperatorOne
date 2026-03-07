@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="en-GB">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OperatorOne — Multi-Agent Startup Operating System</title>
+    <meta
+      name="description"
+      content="OperatorOne is a multi-agent startup operating system that turns idea discovery, landing deployment, marketing, sales, and operations feedback into one auditable growth loop."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-glow" aria-hidden="true"></div>
+    <div class="scroll-progress" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-text">OperatorOne</span>
+      </div>
+
+      <nav>
+        <a href="#pain" data-i18n="nav.pain">Pain Points</a>
+        <a href="#capabilities" data-i18n="nav.capabilities">Capabilities</a>
+        <a href="#loop" data-i18n="nav.loop">Execution Loop</a>
+        <a href="#use-cases" data-i18n="nav.usecases">Use Cases</a>
+        <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      </nav>
+
+      <div class="lang-toggle" role="group" aria-label="Language switch">
+        <button type="button" class="lang-btn" data-lang="en-GB">EN-GB</button>
+        <button type="button" class="lang-btn" data-lang="zh-CN">中文</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero section reveal" id="hero">
+        <p class="chip" data-i18n="hero.badge">Official Site · Multi-Agent Startup OS</p>
+        <h1>
+          <span data-i18n="hero.title.line1">Turn startup execution</span>
+          <br />
+          <span class="gradient-text" data-i18n="hero.title.highlight"
+            >from chaotic guesswork into an auditable growth engine</span
+          >
+        </h1>
+
+        <p class="hero-desc" data-i18n="hero.desc">
+          OperatorOne combines four specialist agents and one manager control plane to connect idea
+          discovery, product launch, demand generation, conversion, and iteration in one coordinated
+          operating loop.
+        </p>
+
+        <div class="hero-dynamic">
+          <span data-i18n="hero.dynamicPrefix">Now accelerating:</span>
+          <span id="dynamic-phrase">Discovering high-value opportunities</span>
+        </div>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#loop" data-i18n="hero.ctaPrimary">See the operating loop</a>
+          <a class="btn btn-ghost" href="#faq" data-i18n="hero.ctaSecondary">Request a live walkthrough</a>
+        </div>
+
+        <div class="metrics">
+          <div class="metric-card tilt-card">
+            <h3 data-counter="4">0</h3>
+            <p data-i18n="metric.agents">Specialist agents</p>
+          </div>
+          <div class="metric-card tilt-card">
+            <h3 data-counter="1">0</h3>
+            <p data-i18n="metric.manager">Manager control plane</p>
+          </div>
+          <div class="metric-card tilt-card">
+            <h3 data-counter="9">0</h3>
+            <p data-i18n="metric.handoffs">Contracted handoffs</p>
+          </div>
+          <div class="metric-card tilt-card">
+            <h3 data-counter="100">0</h3>
+            <p data-i18n="metric.mrr">North-star MRR goal</p>
+          </div>
+        </div>
+
+        <div class="trust-strip reveal">
+          <span class="trust-pill" data-i18n="trust.1">Contract-first architecture</span>
+          <span class="trust-pill" data-i18n="trust.2">Human-in-the-loop controls</span>
+          <span class="trust-pill" data-i18n="trust.3">Reproducible stage outputs</span>
+          <span class="trust-pill" data-i18n="trust.4">Policy-gated external actions</span>
+        </div>
+      </section>
+
+      <section class="section reveal" id="pain">
+        <div class="section-head">
+          <p class="chip" data-i18n="pain.badge">Founder Reality</p>
+          <h2 data-i18n="pain.title">OperatorOne solves four execution bottlenecks that kill momentum</h2>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain-card tilt-card">
+            <h3 data-i18n="pain.1.title">Pain 01 · Opportunity selection is subjective</h3>
+            <p data-i18n="pain.1.body">Teams drown in ideas and struggle to prove what is worth building.</p>
+            <p class="solution" data-i18n="pain.1.solution"
+              >✅ Multi-source discovery and weighted scoring keep focus on high-value opportunities.</p
+            >
+          </article>
+
+          <article class="pain-card tilt-card">
+            <h3 data-i18n="pain.2.title">Pain 02 · Time-to-launch is too slow</h3>
+            <p data-i18n="pain.2.body">Execution stalls at landing build, deployment, and quality checks.</p>
+            <p class="solution" data-i18n="pain.2.solution"
+              >✅ Product Agent generates and deploys conversion-ready pages with validation outputs.</p
+            >
+          </article>
+
+          <article class="pain-card tilt-card">
+            <h3 data-i18n="pain.3.title">Pain 03 · Marketing and sales handoff breaks</h3>
+            <p data-i18n="pain.3.body">Insights, campaigns, outreach, and replies are often disconnected.</p>
+            <p class="solution" data-i18n="pain.3.solution"
+              >✅ JSON handoff contracts keep Marketing → Sales → Operations traceable.</p
+            >
+          </article>
+
+          <article class="pain-card tilt-card">
+            <h3 data-i18n="pain.4.title">Pain 04 · Feedback never becomes a loop</h3>
+            <p data-i18n="pain.4.body">Without unified metrics, teams can’t prioritise the next iteration.</p>
+            <p class="solution" data-i18n="pain.4.solution"
+              >✅ Operations closes the loop with KPI tracking, feedback triage, and iterate handoffs.</p
+            >
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="capabilities">
+        <div class="section-head">
+          <p class="chip" data-i18n="cap.badge">Capability Architecture</p>
+          <h2 data-i18n="cap.title">Five roles, one coordinated startup operating system</h2>
+        </div>
+
+        <div class="agent-grid">
+          <article class="agent-card tilt-card">
+            <h3>Product Agent</h3>
+            <ul>
+              <li data-i18n="cap.product.1">Generate startup ideas from live market signals</li>
+              <li data-i18n="cap.product.2">Build and deploy simple web products</li>
+              <li data-i18n="cap.product.3">Create conversion-first landing packages</li>
+            </ul>
+          </article>
+
+          <article class="agent-card tilt-card">
+            <h3>Marketing Agent</h3>
+            <ul>
+              <li data-i18n="cap.marketing.1">Run SEO experiments and content pipelines</li>
+              <li data-i18n="cap.marketing.2">Prepare campaign candidates with quality gates</li>
+              <li data-i18n="cap.marketing.3">Update sales-ready handoff artefacts</li>
+            </ul>
+          </article>
+
+          <article class="agent-card tilt-card">
+            <h3>Sales Agent</h3>
+            <ul>
+              <li data-i18n="cap.sales.1">Build prospect queues and outreach batches</li>
+              <li data-i18n="cap.sales.2">Run approval-gated outbound execution</li>
+              <li data-i18n="cap.sales.3">Generate conversion scoreboards and close plans</li>
+            </ul>
+          </article>
+
+          <article class="agent-card tilt-card">
+            <h3>Operations Agent</h3>
+            <ul>
+              <li data-i18n="cap.ops.1">Track traffic, signups, and early revenue</li>
+              <li data-i18n="cap.ops.2">Prioritise user feedback by impact</li>
+              <li data-i18n="cap.ops.3">Write cross-team iterate handoffs</li>
+            </ul>
+          </article>
+
+          <article class="agent-card wide tilt-card">
+            <h3>Manager Control Plane</h3>
+            <ul>
+              <li data-i18n="cap.manager.1">Cross-agent audits and architecture coherence</li>
+              <li data-i18n="cap.manager.2">Runbook and contract governance</li>
+              <li data-i18n="cap.manager.3">Operational quality and documentation hygiene</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="loop">
+        <div class="section-head">
+          <p class="chip" data-i18n="loop.badge">Execution Loop</p>
+          <h2 data-i18n="loop.title">From signal to iteration: one visible and auditable flow</h2>
+        </div>
+
+        <div class="loop-wrap">
+          <div class="loop-orbit">
+            <div class="center-node">OperatorOne</div>
+            <span class="orbit-node n1">Product</span>
+            <span class="orbit-node n2">Marketing</span>
+            <span class="orbit-node n3">Sales</span>
+            <span class="orbit-node n4">Ops</span>
+          </div>
+
+          <ol class="loop-steps">
+            <li>
+              <span>01</span>
+              <strong data-i18n="loop.step1">Product discovers opportunities and ships deployable assets</strong>
+            </li>
+            <li>
+              <span>02</span>
+              <strong data-i18n="loop.step2">Marketing turns assets into SEO/content/campaign motions</strong>
+            </li>
+            <li>
+              <span>03</span>
+              <strong data-i18n="loop.step3">Sales executes approved outreach and conversion workflows</strong>
+            </li>
+            <li>
+              <span>04</span>
+              <strong data-i18n="loop.step4">Operations feeds KPI and feedback into the next iteration cycle</strong>
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section reveal" id="use-cases">
+        <div class="section-head">
+          <p class="chip" data-i18n="usecases.badge">Use-Case Tracks</p>
+          <h2 data-i18n="usecases.title">Designed for teams that need speed without losing control</h2>
+        </div>
+
+        <div class="usecase-grid">
+          <article class="usecase-card tilt-card">
+            <h3 data-i18n="usecases.1.title">Solo Founder Mode</h3>
+            <p data-i18n="usecases.1.body">Validate opportunities, launch pages, and test demand in days, not months.</p>
+          </article>
+          <article class="usecase-card tilt-card">
+            <h3 data-i18n="usecases.2.title">Startup Studio Mode</h3>
+            <p data-i18n="usecases.2.body">Run multiple venture experiments with contract-based coordination across teams.</p>
+          </article>
+          <article class="usecase-card tilt-card">
+            <h3 data-i18n="usecases.3.title">Growth Squad Mode</h3>
+            <p data-i18n="usecases.3.body">Bridge product, marketing, sales, and ops with shared visibility and traceable outputs.</p>
+          </article>
+          <article class="usecase-card tilt-card">
+            <h3 data-i18n="usecases.4.title">Agency + Client Mode</h3>
+            <p data-i18n="usecases.4.body">Deliver auditable execution reports to clients while keeping an iteration-ready pipeline.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="reliability">
+        <div class="section-head">
+          <p class="chip" data-i18n="rel.badge">Reliability by Design</p>
+          <h2 data-i18n="rel.title">Built with the trust and control patterns used by top B2B products</h2>
+        </div>
+
+        <div class="assurance-grid">
+          <article class="assurance-card tilt-card">
+            <h3 data-i18n="rel.1.title">Proof-first storytelling</h3>
+            <p data-i18n="rel.1.body">Clear value statement, measurable outputs, and explicit operating boundaries.</p>
+          </article>
+          <article class="assurance-card tilt-card">
+            <h3 data-i18n="rel.2.title">Two-speed action model</h3>
+            <p data-i18n="rel.2.body">Simulation by default, live actions only through policy gates and human confirmation.</p>
+          </article>
+          <article class="assurance-card tilt-card">
+            <h3 data-i18n="rel.3.title">Artifact traceability</h3>
+            <p data-i18n="rel.3.body">Every stage emits machine-readable snapshots for replay, audit, and debugging.</p>
+          </article>
+          <article class="assurance-card tilt-card">
+            <h3 data-i18n="rel.4.title">Control-plane governance</h3>
+            <p data-i18n="rel.4.body">Manager workspace keeps contracts, docs, and orchestration consistent over time.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="faq">
+        <div class="section-head">
+          <p class="chip">FAQ</p>
+          <h2 data-i18n="faq.title">Common questions</h2>
+        </div>
+
+        <div class="faq-list">
+          <article class="faq-item">
+            <button class="faq-q" type="button" data-i18n="faq.q1">Is this only for technical teams?</button>
+            <div class="faq-a" data-i18n="faq.a1">
+              No. OperatorOne is designed for mixed teams with clear handoffs and approval gates.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-q" type="button" data-i18n="faq.q2">Can we start in safe mode?</button>
+            <div class="faq-a" data-i18n="faq.a2">
+              Yes. Simulation mode is the default. Live actions are manually armed.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-q" type="button" data-i18n="faq.q3">How do we monitor quality?</button>
+            <div class="faq-a" data-i18n="faq.a3">
+              Through stage reports, reproducibility snapshots, and contract validation.
+            </div>
+          </article>
+
+          <article class="faq-item">
+            <button class="faq-q" type="button" data-i18n="faq.q4">Can we customise each agent workflow?</button>
+            <div class="faq-a" data-i18n="faq.a4">
+              Yes. Each workspace is modular and can be adapted by domain without breaking the loop.
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta-section reveal" id="intro-page">
+        <p class="chip" data-i18n="intro.badge">Project Introduction Page</p>
+        <h2 data-i18n="intro.title">This page is built as OperatorOne's official project introduction page</h2>
+        <p data-i18n="intro.desc">
+          It gives visitors a fast overview of the multi-agent architecture, execution loop, and core value proposition.
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="#hero" data-i18n="intro.ctaPrimary">Back to top</a>
+          <a
+            class="btn btn-ghost"
+            href="https://official-site-theta.vercel.app"
+            target="_blank"
+            rel="noreferrer"
+            data-i18n="intro.ctaSecondary"
+            >Open live intro page</a
+          >
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p data-i18n="footer.text">© 2026 OperatorOne. Built for high-velocity teams and ambitious founders.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>

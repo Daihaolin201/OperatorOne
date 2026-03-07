@@ -1,0 +1,49 @@
+{
+  "generated_at": "2026-03-03T16:29:41Z",
+  "base_url": "https://webproductmodularinvoice.vercel.app",
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "adapter_name": "invoice-followup",
+  "layout_profile": "invoice-followup",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "module_presence",
+      "status": "pass",
+      "expected_count": 7,
+      "detected_count": 7,
+      "attempts": 1
+    },
+    {
+      "name": "module_order",
+      "status": "pass",
+      "expected": [
+        "hero_problem",
+        "workflow_interactive",
+        "proof_points",
+        "risk_guardrails",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ],
+      "detected": [
+        "hero_problem",
+        "workflow_interactive",
+        "proof_points",
+        "risk_guardrails",
+        "pricing_cards",
+        "cta_waitlist",
+        "faq_list"
+      ]
+    },
+    {
+      "name": "primary_cta_uniqueness",
+      "status": "pass",
+      "primary_cta_count": 1,
+      "max_primary_cta": 1
+    },
+    {
+      "name": "legacy_badge_removed",
+      "status": "pass"
+    }
+  ]
+}

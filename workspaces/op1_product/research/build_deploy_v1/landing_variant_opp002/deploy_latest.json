@@ -1,0 +1,8 @@
+{
+  "deployed_at": "2026-03-03T23:58:01Z",
+  "target": "production",
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_landing_variant_opp002",
+  "deployment_url": "https://webproductlandingvariantopp002-eumlsho23-superme1.vercel.app",
+  "public_url": "https://webproductlandingvariantopp002.vercel.app",
+  "log_file": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/landing_variant_opp002/deploy_20260303T235744Z.log"
+}

@@ -1,0 +1,316 @@
+{
+  "generated_at": "2026-03-07T18:46:55+00:00",
+  "item_count": 15,
+  "totals": {
+    "observed_signup_delta_30d": 3.838,
+    "observed_paid_delta_30d": 0.2952,
+    "observed_mrr_delta_30d": 15.6691
+  },
+  "decision_counts": {
+    "iterate": 10,
+    "ship": 2,
+    "park": 3
+  },
+  "rows": [
+    {
+      "experiment_id": "exp3_cc6418573e5369",
+      "rank": 3,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "completed",
+      "guardrail_breach": false,
+      "confidence_score": 0.7046,
+      "primary_metric_lift_pp": 0.015696,
+      "observed_signup_delta_30d": 2.2362,
+      "observed_paid_delta_30d": 0.172,
+      "observed_mrr_delta_30d": 8.4262,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0054,
+        "error_rate_delta_pp": 0.0123,
+        "srm_ratio_deviation": 0.0454,
+        "data_lag_hours": 7.46
+      },
+      "decision": "ship",
+      "decision_reason": "Primary metric improved with acceptable confidence and healthy guardrails."
+    },
+    {
+      "experiment_id": "exp3_c3a320476dbf99",
+      "rank": 1,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "held",
+      "guardrail_breach": false,
+      "confidence_score": 0.6775,
+      "primary_metric_lift_pp": 0.006327,
+      "observed_signup_delta_30d": 0.9014,
+      "observed_paid_delta_30d": 0.0693,
+      "observed_mrr_delta_30d": 4.0759,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0072,
+        "error_rate_delta_pp": 0.0078,
+        "srm_ratio_deviation": 0.0212,
+        "data_lag_hours": 3.45
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_59cab733ebc263",
+      "rank": 2,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "held",
+      "guardrail_breach": false,
+      "confidence_score": 0.74,
+      "primary_metric_lift_pp": 0.004916,
+      "observed_signup_delta_30d": 0.7004,
+      "observed_paid_delta_30d": 0.0539,
+      "observed_mrr_delta_30d": 3.167,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0022,
+        "error_rate_delta_pp": 0.0132,
+        "srm_ratio_deviation": 0.0519,
+        "data_lag_hours": 8.62
+      },
+      "decision": "ship",
+      "decision_reason": "Primary metric improved with acceptable confidence and healthy guardrails."
+    },
+    {
+      "experiment_id": "exp3_05035039912c10",
+      "rank": 4,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.8437,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0028,
+        "error_rate_delta_pp": 0.0118,
+        "srm_ratio_deviation": 0.0343,
+        "data_lag_hours": 10.62
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "rank": 5,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.455,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0041,
+        "error_rate_delta_pp": 0.0148,
+        "srm_ratio_deviation": 0.0409,
+        "data_lag_hours": 9.97
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_aff51f279f27df",
+      "rank": 6,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.7107,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0045,
+        "error_rate_delta_pp": 0.0064,
+        "srm_ratio_deviation": 0.0135,
+        "data_lag_hours": 4.98
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "rank": 7,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.6905,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.005,
+        "error_rate_delta_pp": 0.0039,
+        "srm_ratio_deviation": 0.017,
+        "data_lag_hours": 5.94
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_6560f49deb814a",
+      "rank": 8,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.3685,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0033,
+        "error_rate_delta_pp": 0.008,
+        "srm_ratio_deviation": 0.0146,
+        "data_lag_hours": 6.72
+      },
+      "decision": "park",
+      "decision_reason": "Weak or negative signal without sufficient confidence."
+    },
+    {
+      "experiment_id": "exp3_299c70c714d04e",
+      "rank": 9,
+      "primary_metric": "signup_to_paid_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.8458,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0051,
+        "error_rate_delta_pp": 0.0128,
+        "srm_ratio_deviation": 0.0336,
+        "data_lag_hours": 8.42
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_bd55e0ff614989",
+      "rank": 10,
+      "primary_metric": "visit_to_signup_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.4008,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0019,
+        "error_rate_delta_pp": 0.0045,
+        "srm_ratio_deviation": 0.0468,
+        "data_lag_hours": 4.5
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "rank": 11,
+      "primary_metric": "visit_to_signup_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.7291,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0015,
+        "error_rate_delta_pp": 0.0086,
+        "srm_ratio_deviation": 0.0598,
+        "data_lag_hours": 8.22
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_4d927033157cf9",
+      "rank": 12,
+      "primary_metric": "visit_to_signup_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.3555,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0059,
+        "error_rate_delta_pp": 0.0127,
+        "srm_ratio_deviation": 0.0111,
+        "data_lag_hours": 4.01
+      },
+      "decision": "park",
+      "decision_reason": "Weak or negative signal without sufficient confidence."
+    },
+    {
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "rank": 13,
+      "primary_metric": "visit_to_signup_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.6822,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.004,
+        "error_rate_delta_pp": 0.0043,
+        "srm_ratio_deviation": 0.0219,
+        "data_lag_hours": 4.77
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    },
+    {
+      "experiment_id": "exp3_25b8181f08a498",
+      "rank": 14,
+      "primary_metric": "visit_to_signup_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.3739,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0021,
+        "error_rate_delta_pp": 0.0109,
+        "srm_ratio_deviation": 0.0104,
+        "data_lag_hours": 9.01
+      },
+      "decision": "park",
+      "decision_reason": "Weak or negative signal without sufficient confidence."
+    },
+    {
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "rank": 15,
+      "primary_metric": "visit_to_signup_rate",
+      "rollout_status": "planned",
+      "guardrail_breach": false,
+      "confidence_score": 0.6026,
+      "primary_metric_lift_pp": 0.0,
+      "observed_signup_delta_30d": 0.0,
+      "observed_paid_delta_30d": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0064,
+        "error_rate_delta_pp": 0.0112,
+        "srm_ratio_deviation": 0.0201,
+        "data_lag_hours": 9.29
+      },
+      "decision": "iterate",
+      "decision_reason": "Signal is directional but not strong enough for ship decision yet."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "loop_state": "idle_ready",
+  "active_contexts": 11,
+  "backlog_size": 66,
+  "queue_size": 49,
+  "last_full_rebuild_at": "2026-03-04T14:00:23Z",
+  "last_incremental_run_at": "2026-03-04T14:38:57Z",
+  "mode": "shadow",
+  "publish": false,
+  "index": false,
+  "continuous": true,
+  "input_completeness": {
+    "required": 13,
+    "present": 13,
+    "ratio": 1.0,
+    "missing_requirement_ids": []
+  },
+  "snapshot_id": "snap_20260304143857_e796c1ab2d1a5613",
+  "delta_counts": {
+    "added": 0,
+    "changed": 0,
+    "removed": 0
+  },
+  "last_run_status": "passed"
+}

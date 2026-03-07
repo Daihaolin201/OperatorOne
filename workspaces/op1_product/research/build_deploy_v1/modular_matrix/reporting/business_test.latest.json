@@ -1,0 +1,26 @@
+{
+  "generated_at": "2026-03-03T16:31:15Z",
+  "base_url": "https://webproductmodularreporting.vercel.app",
+  "project_id": "proj-opp-001-client-reporting-v1",
+  "adapter": "client-reporting",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "monthly_reporting_response",
+      "status": "pass",
+      "http_status": 200,
+      "rule_id": "monthly-reporting",
+      "first_step": "Define a one-page KPI summary template before adding channel-specific detail.",
+      "attempts": 1
+    },
+    {
+      "name": "signup_invalid_email",
+      "status": "pass",
+      "http_status": 400,
+      "payload": {
+        "error": "Valid email is required"
+      },
+      "attempts": 1
+    }
+  ]
+}

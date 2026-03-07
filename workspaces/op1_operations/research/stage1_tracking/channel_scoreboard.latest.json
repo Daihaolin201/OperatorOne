@@ -1,0 +1,137 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "rows": [
+    {
+      "source": "email_nurture",
+      "medium": "email",
+      "campaign_id": "unknown",
+      "sessions": 0.0,
+      "qualified_signups": 1,
+      "paid_customers": 1,
+      "new_mrr": 49.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 1.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "manual_export",
+      "medium": "manual",
+      "campaign_id": "unknown",
+      "sessions": 0.0,
+      "qualified_signups": 13,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "email_nurture",
+      "medium": "email",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-04",
+      "sessions": 235.1,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "email_nurture",
+      "medium": "email",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-02",
+      "sessions": 227.06,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "email_nurture",
+      "medium": "email",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-01",
+      "sessions": 200.24,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "organic_search",
+      "medium": "organic",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-04",
+      "sessions": 62.69,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "organic_search",
+      "medium": "organic",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-02",
+      "sessions": 60.54,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "organic_search",
+      "medium": "organic",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-01",
+      "sessions": 53.4,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "linkedin",
+      "medium": "paid_social",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-04",
+      "sessions": 23.65,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "linkedin",
+      "medium": "paid_social",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-02",
+      "sessions": 22.84,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    },
+    {
+      "source": "linkedin",
+      "medium": "paid_social",
+      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-01",
+      "sessions": 20.14,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0
+    }
+  ]
+}

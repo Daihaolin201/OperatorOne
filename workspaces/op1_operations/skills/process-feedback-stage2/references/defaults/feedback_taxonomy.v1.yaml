@@ -1,0 +1,47 @@
+{
+  "version": "1.0",
+  "owner": "op1_operations",
+  "topics": {
+    "pricing": {
+      "subtopics": ["budget", "roi_unclear", "price_sensitivity", "cost_risk"],
+      "synonyms": ["price", "cost", "expensive", "budget"]
+    },
+    "trust": {
+      "subtopics": ["unsubscribe", "security", "compliance", "fraud_risk", "no_interest"],
+      "synonyms": ["unsubscribe", "trust", "risk", "fraud", "secure"]
+    },
+    "integration": {
+      "subtopics": ["api", "workflow_fit", "tool_stack", "data_sync"],
+      "synonyms": ["integration", "api", "workflow", "stack"]
+    },
+    "onboarding": {
+      "subtopics": ["setup_complexity", "learning_curve", "manual_work", "reporting_friction"],
+      "synonyms": ["onboarding", "setup", "manual", "spreadsheet", "bookkeeping"]
+    },
+    "performance": {
+      "subtopics": ["bug", "latency", "stability", "error"],
+      "synonyms": ["bug", "error", "slow", "crash"]
+    },
+    "support": {
+      "subtopics": ["response_time", "guidance_gap", "handoff_gap"],
+      "synonyms": ["support", "help", "response"]
+    },
+    "billing": {
+      "subtopics": ["invoice_flow", "payment_flow", "chargeback", "collection"],
+      "synonyms": ["invoice", "payment", "chargeback", "fee"]
+    },
+    "retention": {
+      "subtopics": ["timing_hold", "churn_signal", "competitor_lockin", "conversion_signal"],
+      "synonyms": ["later", "not now", "churn", "already using", "booked call", "converted"]
+    },
+    "general": {
+      "subtopics": ["uncategorized"],
+      "synonyms": []
+    }
+  },
+  "tagging_rules": {
+    "allow_free_text_topic": false,
+    "allow_free_text_subtopic": true,
+    "max_unknown_topic_rate": 0.15
+  }
+}

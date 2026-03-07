@@ -1,0 +1,67 @@
+{
+  "version": "1.0",
+  "generated_by": "op1_operations_stage2_feedback",
+  "mode": "simulated_signals_with_live_adapter_slots",
+  "adapters": [
+    {
+      "id": "sales_outreach_replies",
+      "enabled": true,
+      "optional": false,
+      "type": "jsonl",
+      "path": "workspaces/op1_sales/research/outreach/outreach_events.latest.jsonl",
+      "source_system": "sales_outreach",
+      "feedback_origin": "solicited",
+      "source_reliability": 0.92
+    },
+    {
+      "id": "sales_conversion_events",
+      "enabled": true,
+      "optional": false,
+      "type": "jsonl",
+      "path": "workspaces/op1_sales/research/conversion/conversion_events.latest.jsonl",
+      "source_system": "sales_conversion",
+      "feedback_origin": "solicited",
+      "source_reliability": 0.95
+    },
+    {
+      "id": "conversion_pipeline_pains",
+      "enabled": true,
+      "optional": false,
+      "type": "json",
+      "path": "workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json",
+      "source_system": "pipeline_context",
+      "feedback_origin": "unsolicited",
+      "source_reliability": 0.82
+    },
+    {
+      "id": "manual_feedback_notes",
+      "enabled": true,
+      "optional": true,
+      "type": "jsonl",
+      "path": "workspaces/op1_operations/research/stage2_feedback/manual_feedback_notes.latest.jsonl",
+      "source_system": "manual_notes",
+      "feedback_origin": "solicited",
+      "source_reliability": 0.76
+    },
+    {
+      "id": "product_runtime_feedback",
+      "enabled": false,
+      "optional": true,
+      "type": "jsonl",
+      "path": "workspaces/op1_product/research/stage2_feedback/product_feedback_events.latest.jsonl",
+      "source_system": "product_runtime",
+      "feedback_origin": "prompted",
+      "source_reliability": 0.88
+    }
+  ],
+  "thresholds": {
+    "max_duplicate_rate": 0.25,
+    "max_unknown_topic_rate": 0.15,
+    "max_data_lag_hours": 72,
+    "min_triaged_rate": 0.6,
+    "max_p0_untriaged": 0,
+    "max_unowned_p0_items": 0
+  },
+  "default_asp_proxy": 49.0,
+  "currency": "USD"
+}

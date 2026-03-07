@@ -5,6 +5,10 @@ Put Product-only skills here.
 Recommended naming:
 - `op1-product-<capability>/SKILL.md`
 
-Examples:
+Installed:
+- `op1-product-idea-discovery`
 - `op1-product-idea-screening`
 - `op1-product-mvp-scope`
+- `op1-product-create-landing-pages`
+- `op1-product-landing-handoff`
+- `op1-product-web-build-deploy`

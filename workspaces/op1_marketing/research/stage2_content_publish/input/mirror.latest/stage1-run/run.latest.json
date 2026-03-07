@@ -1,0 +1,193 @@
+{
+  "generated_at": "2026-03-07T18:39:29Z",
+  "run_id": "20260307T183929Z",
+  "capability": "marketing_seo_stage1_continuous_shadow_v1",
+  "status": "passed",
+  "mode": "shadow",
+  "continuous": true,
+  "publish": false,
+  "index": false,
+  "run_scope": "incremental",
+  "input_sync": {
+    "snapshot_id": "snap_20260307183929_b24188e536a053dc",
+    "completeness": {
+      "required": 13,
+      "present": 13,
+      "ratio": 1.0,
+      "missing_requirement_ids": []
+    },
+    "delta_counts": {
+      "added": 0,
+      "changed": 6,
+      "removed": 0
+    },
+    "requirements": [
+      {
+        "id": "stage1_opportunity_records",
+        "path": "../op1_product/research/stage1_idea_discovery/opportunity_records.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "stage2_scoring",
+        "path": "../op1_product/research/stage2_idea_screening/scoring.csv",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage2_idea_screening/scoring.csv"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "stage2_decision_log",
+        "path": "../op1_product/research/stage2_idea_screening/decision_log.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage2_idea_screening/decision_log.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "stage3_project_blueprint",
+        "path": "../op1_product/research/stage3_mvp_scope/project_blueprint.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "stage2_web_run",
+        "path": "../op1_product/research/stage2_web_product/run.latest.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage2_web_product/run.latest.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "stage2_web_state",
+        "path": "../op1_product/research/stage2_web_product/state.latest.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage2_web_product/state.latest.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "stage3_landing_run",
+        "path": "../op1_product/research/stage3_landing_launch/run.latest.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/stage3_landing_launch/run.latest.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "live_examples",
+        "path": "../op1_product/research/live_examples.latest.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/live_examples.latest.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "project_specs",
+        "path": "../op1_product/research/build_deploy_v1/project_spec*.json",
+        "glob": true,
+        "min_matches": 1,
+        "matched_count": 4,
+        "matched_files": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json",
+          "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+          "../op1_product/research/build_deploy_v1/project_spec.json",
+          "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "landing_package",
+        "path": "../op1_product/research/landing_v1/landing_package.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/landing_v1/landing_package.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "landing_contract_test",
+        "path": "../op1_product/research/landing_v1/landing_contract_test.latest.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/landing_v1/landing_contract_test.latest.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "landing_semantic_test",
+        "path": "../op1_product/research/landing_v1/landing_semantic_test.latest.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../op1_product/research/landing_v1/landing_semantic_test.latest.json"
+        ],
+        "status": "present"
+      },
+      {
+        "id": "product_to_marketing_handoff",
+        "path": "../../handoffs/product_to_marketing.json",
+        "glob": false,
+        "min_matches": 1,
+        "matched_count": 1,
+        "matched_files": [
+          "../../handoffs/product_to_marketing.json"
+        ],
+        "status": "present"
+      }
+    ]
+  },
+  "outputs": {
+    "context_index": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/context_index.latest.json",
+    "keyword_graph": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/keyword_graph.latest.csv",
+    "backlog": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.backlog.latest.json",
+    "queue": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.queue.latest.json",
+    "scoreboard": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/scoreboard.latest.json",
+    "decision_log": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/decision_log.latest.md",
+    "briefs_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/briefs"
+  },
+  "stats": {
+    "context_count": 12,
+    "keyword_count": 180,
+    "experiment_count": 72,
+    "brief_count": 12,
+    "queue_counts": {
+      "ready": 54,
+      "hold": 18,
+      "drop": 0
+    }
+  }
+}

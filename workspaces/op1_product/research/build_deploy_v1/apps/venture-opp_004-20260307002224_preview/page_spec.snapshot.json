@@ -1,0 +1,169 @@
+{
+  "page_spec_version": "1.0",
+  "generated_at": "2026-03-07T00:22:30Z",
+  "project_id": "proj-opp-004-client-reporting-v1",
+  "adapter_name": "client-reporting",
+  "layout_profile": "client-reporting",
+  "theme": {
+    "accent": "#2563eb",
+    "surface": "#111827",
+    "highlight": "#60a5fa"
+  },
+  "meta": {
+    "title": "Ship client-ready monthly reporting with one repeatable workflow",
+    "description": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence."
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "props": {
+        "headline": "Ship client-ready monthly reporting with one repeatable workflow",
+        "subheadline": "Ship client-ready monthly reporting with one repeatable workflow",
+        "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+        "segment_label": "Agency operator · Marketing services · 2-30",
+        "adapter_name": "Client Reporting Assistant",
+        "profile_name": "client-reporting"
+      }
+    },
+    {
+      "module_id": "workflow_interactive",
+      "kind": "workflow",
+      "props": {
+        "title": "Try the workflow assistant",
+        "prompt_label": "Describe your reporting bottleneck",
+        "prompt_placeholder": "e.g. We spend too long rebuilding monthly reports for non-technical clients.",
+        "action_label": "Generate reporting workflow"
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "props": {
+        "title": "Why this approach",
+        "items": [
+          "Launch HN: Finley (YC W21) – Debt capital monitoring and reporting software Hey HN! We’re Kevin, Jeremy, and Josiah, and we’re in…",
+          "Single reporting template reused across clients with controlled customization.",
+          "Weekly QA loop to improve clarity and trust with each reporting cycle."
+        ]
+      }
+    },
+    {
+      "module_id": "metric_snapshot",
+      "kind": "metric",
+      "props": {
+        "title": "Validation target",
+        "metric": "Qualified intent captures",
+        "target": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "pricing_cards",
+      "kind": "pricing",
+      "props": {
+        "title": "Pricing hypothesis",
+        "plan_a": "$49/month agency starter",
+        "plan_b": "$149/month multi-client"
+      }
+    },
+    {
+      "module_id": "risk_guardrails",
+      "kind": "risk",
+      "props": {
+        "title": "Guardrails",
+        "items": [
+          "Fewer than 2 qualified intent captures after 20 targeted visitors",
+          "Core workflow completion rate below 20% in first-session usage"
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "props": {
+        "title": "Start with one pilot workflow",
+        "description": "Join pilot to standardize KPI narratives and cut report prep time.",
+        "cta_label": "Join reporting pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "props": {
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Will this remove analyst judgment?",
+            "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+          },
+          {
+            "question": "Can we keep client-specific KPI sets?",
+            "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+          }
+        ]
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "workflow_interactive",
+      "proof_points",
+      "metric_snapshot",
+      "pricing_cards",
+      "risk_guardrails",
+      "cta_waitlist",
+      "faq_list"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ]
+  }
+}

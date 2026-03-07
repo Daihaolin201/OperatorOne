@@ -1,0 +1,14 @@
+{
+  "generated_at": "2026-03-04T01:32:59Z",
+  "status": "blocked",
+  "selected_opportunity_id": "opp_no_evidence",
+  "stage2_mode": "existing",
+  "project_spec_mode": "generated_project_spec",
+  "quality_gate_failures": [
+    {
+      "name": "claim_evidence_traceability_100pct",
+      "status": "fail",
+      "detail": "coverage=0.0; unmapped=['claim_problem', 'claim_value', 'claim_headline', 'claim_proof_01']"
+    }
+  ]
+}

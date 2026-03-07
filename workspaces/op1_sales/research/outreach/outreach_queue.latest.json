@@ -1,0 +1,1089 @@
+{
+  "generated_at": "2026-03-07T17:36:59+00:00",
+  "builder": "workspaces/op1_sales/scripts/build_outreach_stage2.py",
+  "mode": "approval_required",
+  "inputs": {
+    "prospect_queue": "workspaces/op1_sales/research/prospecting/prospect_queue.latest.json",
+    "marketing_to_sales": "handoffs/marketing_to_sales.json"
+  },
+  "segment": {
+    "rank_index": 0,
+    "opportunity_id": "opp_003",
+    "segment_name": "Agency client reporting",
+    "priority_score": 89.38
+  },
+  "summary": {
+    "leads_total": 20,
+    "qualified_leads": 20,
+    "low_fit_leads": 0,
+    "send_ready_leads": 20,
+    "review_required_leads": 0,
+    "band_counts": {
+      "A1": 7,
+      "A2": 7,
+      "B1": 6
+    },
+    "preferred_channels": [
+      "email_nurture",
+      "linkedin",
+      "organic_search"
+    ],
+    "dispatch_ready": false,
+    "dispatch_blockers": [
+      "manual_approval_required",
+      "channel_config_not_verified"
+    ]
+  },
+  "leads": [
+    {
+      "lead_id": "opp_003-lead-001",
+      "rank": 1,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "0-30k a Month - What I learnt running a marketing agency for 5 years",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1ni951d/030k_a_month_what_i_learnt_running_a_marketing/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 3.7743,
+        "queries_matched": [
+          "monthly report takes too long"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：0-30k a Month - What I learnt running a marketing a...",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1ni951d/030k_a_month_what_i_learnt_running_a_marketing/）。\n我们最近在帮Agency owner/Account lead处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-002",
+      "rank": 2,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "If you're spending $10K+/month on Google Ads and your cost per lead went up this year, I thin...",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1oe6b1f/if_youre_spending_10kmonth_on_google_ads_and_your/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 3.5144,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：If you're spending $10K+/month on Google Ads and yo...",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1oe6b1f/if_youre_spending_10kmonth_on_google_ads_and_your/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-003",
+      "rank": 3,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "I've audited 50+ Google Ads accounts spending $10K+/month. 95% make the same 7 mistakes. Here...",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1o6hva6/ive_audited_50_google_ads_accounts_spending/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 3.4727,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：I've audited 50+ Google Ads accounts spending $10K+...",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1o6hva6/ive_audited_50_google_ads_accounts_spending/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-004",
+      "rank": 4,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "You can now import Meta data into GA4",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1o2208n/you_can_now_import_meta_data_into_ga4/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 3.2879,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：You can now import Meta data into GA4",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1o2208n/you_can_now_import_meta_data_into_ga4/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-005",
+      "rank": 5,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Google Ads click fraud is killing any confidence I had in this platform",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1qo1hgg/google_ads_click_fraud_is_killing_any_confidence/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 3.2345,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Google Ads click fraud is killing any confidence I ...",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1qo1hgg/google_ads_click_fraud_is_killing_any_confidence/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-006",
+      "rank": 6,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "we turn away clients under $30k MRR. I should've started doing it earlier",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1rg1rbt/we_turn_away_clients_under_30k_mrr_i_shouldve/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 3.1526,
+        "queries_matched": [
+          "client reporting manual",
+          "monthly report takes too long"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：we turn away clients under $30k MRR. I should've st...",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1rg1rbt/we_turn_away_clients_under_30k_mrr_i_shouldve/）。\n我们最近在帮Agency owner/Account lead处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-007",
+      "rank": 7,
+      "priority_band": "A1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Major Google Ads Updates You Need to Know About (December 2025)",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1pjg0j3/major_google_ads_updates_you_need_to_know_about/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 3.0555,
+        "queries_matched": [
+          "GA4 Google Ads discrepancy",
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Major Google Ads Updates You Need to Know About (De...",
+          "subject_challenger": "Agency client reporting能否一周内先降手工负担？",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1pjg0j3/major_google_ads_updates_you_need_to_know_about/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先自动化月报解释层，减少手工拼接和复述。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先自动化月报解释层，减少手工拼接和复述。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-008",
+      "rank": 8,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Do you think AI will replace most agency services?",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1r3jpvm/do_you_think_ai_will_replace_most_agency_services/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 3.0485,
+        "queries_matched": [
+          "client reporting manual"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Do you think AI will replace most agency services?",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1r3jpvm/do_you_think_ai_will_replace_most_agency_services/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-009",
+      "rank": 9,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Client Acquisition is the Absolute Easiest Thing",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1pl9mpe/client_acquisition_is_the_absolute_easiest_thing/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 3.0405,
+        "queries_matched": [
+          "client reporting manual"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Client Acquisition is the Absolute Easiest Thing",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1pl9mpe/client_acquisition_is_the_absolute_easiest_thing/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-010",
+      "rank": 10,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Cut wasted spend by 35%, what else can we do?",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1o1brjc/cut_wasted_spend_by_35_what_else_can_we_do/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 2.9143,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Cut wasted spend by 35%, what else can we do?",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1o1brjc/cut_wasted_spend_by_35_what_else_can_we_do/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-011",
+      "rank": 11,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Insights from 31 Google Ads accounts audited: 14 things that stood out the most",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1mdhpxt/insights_from_31_google_ads_accounts_audited_14/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 2.9048,
+        "queries_matched": [
+          "GA4 Google Ads discrepancy",
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Insights from 31 Google Ads accounts audited: 14 th...",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1mdhpxt/insights_from_31_google_ads_accounts_audited_14/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-012",
+      "rank": 12,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Astroturfing Will Not Be Tolerated.",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1qcdm51/astroturfing_will_not_be_tolerated/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 2.8864,
+        "queries_matched": [
+          "client reporting manual"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Astroturfing Will Not Be Tolerated.",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1qcdm51/astroturfing_will_not_be_tolerated/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-013",
+      "rank": 13,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Cold Emailing – Too Much Hype. Manual Outreach Got Much Better Results.",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1mo1z4e/cold_emailing_too_much_hype_manual_outreach_got/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 2.8592,
+        "queries_matched": [
+          "client reporting manual"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Cold Emailing – Too Much Hype. Manual Outreach Got ...",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1mo1z4e/cold_emailing_too_much_hype_manual_outreach_got/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-014",
+      "rank": 14,
+      "priority_band": "A2",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Been bumping into automation/AI lately and wanna know if it’s actually worth it",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1q450xv/been_bumping_into_automationai_lately_and_wanna/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 2.8014,
+        "queries_matched": [
+          "reporting automation"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Been bumping into automation/AI lately and wanna kn...",
+          "subject_challenger": "Agency client reporting：先做小改造，少走弯路",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1q450xv/been_bumping_into_automationai_lately_and_wanna/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先接核心指标看板，缩短出报时间。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先接核心指标看板，缩短出报时间。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-015",
+      "rank": 15,
+      "priority_band": "B1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Do you think Google will ever bring back full search term visibility?",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1njcnc9/do_you_think_google_will_ever_bring_back_full/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 2.7305,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Do you think Google will ever bring back full searc...",
+          "subject_challenger": "Agency client reporting的低成本试点建议",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1njcnc9/do_you_think_google_will_ever_bring_back_full/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上可复用模板，降低重复劳动。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上可复用模板，降低重复劳动。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-016",
+      "rank": 16,
+      "priority_band": "B1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Underrated Things Prospects and Clients Actually Love",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1qqbpwo/underrated_things_prospects_and_clients_actually/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 2.7024,
+        "queries_matched": [
+          "client reporting manual"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Underrated Things Prospects and Clients Actually Love",
+          "subject_challenger": "Agency client reporting的低成本试点建议",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1qqbpwo/underrated_things_prospects_and_clients_actually/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上可复用模板，降低重复劳动。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上可复用模板，降低重复劳动。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-017",
+      "rank": 17,
+      "priority_band": "B1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Client reporting feels way more manual than it should… what slows you down the most?",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1myo7la/client_reporting_feels_way_more_manual_than_it/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 2.6904,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Client reporting feels way more manual than it shou...",
+          "subject_challenger": "Agency client reporting的低成本试点建议",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1myo7la/client_reporting_feels_way_more_manual_than_it/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上可复用模板，降低重复劳动。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上可复用模板，降低重复劳动。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-018",
+      "rank": 18,
+      "priority_band": "B1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "10-15 Leads Per Month Or You Don’t Pay",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1rbz226/1015_leads_per_month_or_you_dont_pay/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 2.6854,
+        "queries_matched": [
+          "client reporting manual",
+          "monthly report takes too long"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：10-15 Leads Per Month Or You Don’t Pay",
+          "subject_challenger": "Agency client reporting的低成本试点建议",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1rbz226/1015_leads_per_month_or_you_dont_pay/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上可复用模板，降低重复劳动。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上可复用模板，降低重复劳动。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-019",
+      "rank": 19,
+      "priority_band": "B1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "Agency owner/Account lead",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "Got 50% open rates on cold emails but moving back to manual outreach (Campaign Update)",
+      "evidence_url": "https://www.reddit.com/r/agency/comments/1quoezk/got_50_open_rates_on_cold_emails_but_moving_back/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "agency",
+        "signal_score": 2.6372,
+        "queries_matched": [
+          "client reporting manual"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：Got 50% open rates on cold emails but moving back t...",
+          "subject_challenger": "Agency client reporting的低成本试点建议",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/agency/comments/1quoezk/got_50_open_rates_on_cold_emails_but_moving_back/）。\n我们最近在帮Agency owner/Account lead处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上可复用模板，降低重复劳动。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上可复用模板，降低重复劳动。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_003-lead-020",
+      "rank": 20,
+      "priority_band": "B1",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
+      "inferred_role": "投放负责人/绩效负责人",
+      "target_company_size": "5-50",
+      "target_industry": "Marketing agencies",
+      "pain_signal": "9 years doing PPC. Feeling stuck and lacking confidence.",
+      "evidence_url": "https://www.reddit.com/r/PPC/comments/1rjsknu/9_years_doing_ppc_feeling_stuck_and_lacking/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "PPC",
+        "signal_score": 2.6118,
+        "queries_matched": [
+          "client reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Agency client reporting：9 years doing PPC. Feeling stuck and lacking confid...",
+          "subject_challenger": "Agency client reporting的低成本试点建议",
+          "body": "你好，看到你在Agency client reporting相关讨论中的信号（https://www.reddit.com/r/PPC/comments/1rjsknu/9_years_doing_ppc_feeling_stuck_and_lacking/）。\n我们最近在帮投放负责人/绩效负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上可复用模板，降低重复劳动。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Agency client reporting上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上可复用模板，降低重复劳动。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    }
+  ]
+}

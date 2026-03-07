@@ -1,0 +1,32 @@
+{
+  "generated_at": "2026-03-04T01:33:29Z",
+  "base_url": "https://webproductlandingstage3opp002.vercel.app",
+  "project_id": "proj-opp-002-chargeback-response-v1",
+  "adapter": "chargeback-response",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "chargeback_burst_response",
+      "status": "pass",
+      "http_status": 200,
+      "rule_id": "chargeback-burst",
+      "first_step": "Prioritize disputes by amount and deadline, then submit one complete proof bundle for the highest-value case today.",
+      "attempts": 1
+    },
+    {
+      "name": "signup_invalid_email",
+      "status": "pass",
+      "http_status": 400,
+      "payload": {
+        "error": "Valid email is required"
+      },
+      "attempts": 1
+    },
+    {
+      "name": "scope_copy_guardrail",
+      "status": "pass",
+      "checked_phrases": 5,
+      "attempts": 1
+    }
+  ]
+}

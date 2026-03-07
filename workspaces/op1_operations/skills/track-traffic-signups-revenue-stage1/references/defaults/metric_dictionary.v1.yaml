@@ -1,0 +1,74 @@
+version: 1.0
+owner: op1_operations
+status: active
+
+metrics:
+  sessions:
+    definition: Sum(event_count) where event_name=session_observed and quality_is_bot=false and quality_is_internal=false
+    grain: daily
+    source: canonical events
+
+  unique_visitors_est:
+    definition: sessions * unique_visitor_ratio (config)
+    grain: daily
+    source: derived
+
+  qualified_signups:
+    definition: Distinct lead_id where event_name in [signup_qualified]
+    grain: daily
+    source: canonical events
+
+  signups_total:
+    definition: Distinct lead_id where event_name in [signup_captured, signup_qualified, paid_started]
+    grain: daily
+    source: canonical events
+
+  paid_customers:
+    definition: Distinct lead_id where event_name=paid_started
+    grain: daily
+    source: canonical events
+
+  visit_to_signup_rate:
+    definition: qualified_signups / sessions
+    grain: daily
+    source: derived
+
+  signup_to_paid_rate:
+    definition: paid_customers / qualified_signups
+    grain: daily
+    source: derived
+
+  new_mrr:
+    definition: Sum(revenue_delta_mrr) where mrr_movement_type=new_business
+    grain: daily
+    source: mrr_movement events
+
+  expansion_mrr:
+    definition: Sum(revenue_delta_mrr) where mrr_movement_type=expansion
+    grain: daily
+    source: mrr_movement events
+
+  contraction_mrr:
+    definition: Sum(abs(revenue_delta_mrr)) where mrr_movement_type=contraction
+    grain: daily
+    source: mrr_movement events
+
+  churn_mrr:
+    definition: Sum(abs(revenue_delta_mrr)) where mrr_movement_type=churn
+    grain: daily
+    source: mrr_movement events
+
+  reactivation_mrr:
+    definition: Sum(revenue_delta_mrr) where mrr_movement_type=reactivation
+    grain: daily
+    source: mrr_movement events
+
+  net_new_mrr:
+    definition: new_mrr + expansion_mrr + reactivation_mrr - contraction_mrr - churn_mrr
+    grain: daily
+    source: derived
+
+  unattributed_traffic_rate:
+    definition: unattributed_sessions / sessions
+    grain: daily
+    source: traffic quality

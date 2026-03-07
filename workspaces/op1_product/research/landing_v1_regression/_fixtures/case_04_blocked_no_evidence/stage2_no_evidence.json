@@ -1,0 +1,20 @@
+{
+  "generated_at": "2026-03-04T01:32:59Z",
+  "decisions": [
+    {
+      "opportunity_id": "opp_no_evidence",
+      "decision": "advance",
+      "hard_gate_pass": true,
+      "weighted_score": 6.5,
+      "confidence": {
+        "level": "medium"
+      },
+      "scores": {
+        "pain_severity": {
+          "score": 6,
+          "risk_if_wrong": "Pain may be less urgent than assumed"
+        }
+      }
+    }
+  ]
+}

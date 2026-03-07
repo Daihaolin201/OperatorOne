@@ -1,0 +1,42 @@
+{
+  "batch_id": "batch-2026-03-07T173659+0000",
+  "generated_at": "2026-03-07T17:36:59+00:00",
+  "approval_required": true,
+  "approved": false,
+  "mode": "approval_required",
+  "segment": {
+    "opportunity_id": "opp_003",
+    "segment_name": "Agency client reporting"
+  },
+  "lead_ids": [
+    "opp_003-lead-001",
+    "opp_003-lead-002",
+    "opp_003-lead-003",
+    "opp_003-lead-004",
+    "opp_003-lead-005",
+    "opp_003-lead-006",
+    "opp_003-lead-007",
+    "opp_003-lead-008",
+    "opp_003-lead-009",
+    "opp_003-lead-010",
+    "opp_003-lead-011",
+    "opp_003-lead-012",
+    "opp_003-lead-013",
+    "opp_003-lead-014",
+    "opp_003-lead-015",
+    "opp_003-lead-016",
+    "opp_003-lead-017",
+    "opp_003-lead-018",
+    "opp_003-lead-019",
+    "opp_003-lead-020"
+  ],
+  "eligible_count": 20,
+  "dispatch_policy": {
+    "max_send_per_day": 20,
+    "frequency_cap_hours": 48,
+    "channel_fallback": "manual_export"
+  },
+  "approved_at": "",
+  "approved_by": "",
+  "approval_note": "Set approved=true and fill approved_at/by before any dispatch script can run."
+}

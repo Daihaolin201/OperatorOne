@@ -1,0 +1,103 @@
+{
+  "adapter_id": "client-reporting",
+  "display_name": "Client Reporting Assistant",
+  "description": "For agencies producing recurring client reports and KPI summaries.",
+  "match_keywords": [
+    "report",
+    "dashboard",
+    "agency",
+    "client",
+    "ppc",
+    "marketing"
+  ],
+  "offer_headline": "Ship client-ready monthly reporting with one repeatable workflow",
+  "page_profile": "client-reporting",
+  "cta_support_text": "Join pilot to standardize KPI narratives and cut report prep time.",
+  "proof_points": [
+    "Single reporting template reused across clients with controlled customization.",
+    "Business-outcome-first narrative to reduce stakeholder confusion.",
+    "Weekly QA loop to improve clarity and trust with each reporting cycle."
+  ],
+  "faq": [
+    {
+      "question": "Will this remove analyst judgment?",
+      "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+    },
+    {
+      "question": "Can we keep client-specific KPI sets?",
+      "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+    }
+  ],
+  "operational_checklist": [
+    "Lock one KPI glossary used across all reports.",
+    "Create an executive summary before channel detail.",
+    "Run a QA checklist before every client send."
+  ],
+  "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+  "segment_override": {
+    "role": "Agency operator",
+    "industry": "Marketing services",
+    "company_size": "2-30"
+  },
+  "workflow": {
+    "prompt_label": "Describe your reporting bottleneck",
+    "prompt_placeholder": "e.g. We spend too long rebuilding monthly reports for non-technical clients.",
+    "primary_action_label": "Generate reporting workflow",
+    "rules": [
+      {
+        "id": "monthly-reporting",
+        "priority": 10,
+        "keywords": [
+          "monthly",
+          "report",
+          "client",
+          "manual"
+        ],
+        "first_step": "Define a one-page KPI summary template before adding channel-specific detail.",
+        "next_steps": [
+          "Standardize metric definitions across clients.",
+          "Auto-fill narrative sections from KPI deltas.",
+          "Collect client questions to improve the next template iteration."
+        ]
+      },
+      {
+        "id": "unclear-performance",
+        "priority": 8,
+        "keywords": [
+          "confusing",
+          "unclear",
+          "explaining",
+          "results"
+        ],
+        "first_step": "Rewrite report output into business outcomes first, then append technical metrics.",
+        "next_steps": [
+          "Map each KPI to an explicit business decision.",
+          "Highlight one win and one risk every cycle.",
+          "Use consistent visuals for comparability."
+        ]
+      }
+    ],
+    "default_response": {
+      "first_step": "Start with one reusable reporting structure and avoid custom format changes per client.",
+      "next_steps": [
+        "Lock metric glossary.",
+        "Automate export collection.",
+        "Review report quality with a short QA checklist."
+      ]
+    }
+  },
+  "pricing_defaults": {
+    "plan_a": "$49/month agency starter",
+    "plan_b": "$149/month multi-client"
+  },
+  "business_tests": [
+    {
+      "name": "monthly_reporting_response",
+      "input": "Our agency monthly reports are too manual and hard for clients to read.",
+      "expect_first_step_contains": [
+        "KPI",
+        "template"
+      ]
+    }
+  ]
+}

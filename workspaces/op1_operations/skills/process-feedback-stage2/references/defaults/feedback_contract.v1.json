@@ -1,0 +1,62 @@
+{
+  "version": "1.0",
+  "owner": "op1_operations",
+  "status": "active",
+  "description": "Canonical contract for Stage2 feedback processing.",
+  "required_fields": [
+    "feedback_id",
+    "feedback_time",
+    "source_adapter",
+    "source_system",
+    "feedback_origin",
+    "actor_id",
+    "feedback_type",
+    "topic",
+    "subtopic",
+    "journey_stage",
+    "raw_text",
+    "severity",
+    "urgency",
+    "sentiment",
+    "sentiment_score",
+    "evidence_weight",
+    "confidence"
+  ],
+  "field_constraints": {
+    "severity": "integer 1..5",
+    "urgency": "integer 1..5",
+    "sentiment_score": "float -1..1",
+    "evidence_weight": "float 0..1",
+    "confidence": "float 0..1"
+  },
+  "allowed_feedback_type": [
+    "bug",
+    "feature_request",
+    "objection",
+    "praise",
+    "confusion",
+    "churn_risk",
+    "pricing",
+    "other"
+  ],
+  "allowed_journey_stage": [
+    "problem_discovery",
+    "signup_to_paid",
+    "post_purchase",
+    "unknown"
+  ],
+  "closed_loop_status_flow": [
+    "new",
+    "triaged",
+    "accepted",
+    "planned",
+    "shipped",
+    "verified",
+    "notified"
+  ],
+  "evidence_policy": {
+    "requires_source_ref": true,
+    "requires_text_or_detail": true,
+    "requires_traceable_origin": true
+  }
+}

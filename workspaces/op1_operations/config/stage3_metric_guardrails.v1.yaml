@@ -1,0 +1,29 @@
+{
+  "version": "1.0",
+  "primary_metrics": [
+    "visit_to_signup_rate",
+    "signup_to_paid_rate",
+    "net_new_mrr"
+  ],
+  "guardrail_metrics": {
+    "unsubscribe_rate": {
+      "max_delta_pp": 0.01
+    },
+    "error_rate": {
+      "max_delta_pp": 0.03
+    },
+    "p95_latency_ms": {
+      "max_value": 1200
+    },
+    "data_lag_hours": {
+      "max_value": 24
+    },
+    "srm_ratio_deviation": {
+      "max_value": 0.1
+    }
+  },
+  "evaluation_windows": {
+    "minimum_runtime_days": 7,
+    "primary_checkpoints_days": [3, 7, 14]
+  }
+}

@@ -1,0 +1,60 @@
+{
+  "version": "1.0",
+  "generated_by": "op1_operations_stage1_tracking",
+  "as_of_mode": "event_timestamp",
+  "adapters": [
+    {
+      "id": "marketing_campaign_shadow",
+      "enabled": true,
+      "type": "json",
+      "path": "workspaces/op1_marketing/research/stage3_campaign_launch/campaigns.queue.latest.json",
+      "event_namespace": "traffic",
+      "allow_forecast": true
+    },
+    {
+      "id": "sales_outreach_sim",
+      "enabled": true,
+      "type": "jsonl",
+      "path": "workspaces/op1_sales/research/outreach/outreach_events.latest.jsonl",
+      "event_namespace": "signup"
+    },
+    {
+      "id": "sales_conversion_sim",
+      "enabled": true,
+      "type": "jsonl",
+      "path": "workspaces/op1_sales/research/conversion/conversion_events.latest.jsonl",
+      "event_namespace": "signup_revenue"
+    },
+    {
+      "id": "sales_conversion_scoreboard",
+      "enabled": true,
+      "type": "json",
+      "path": "workspaces/op1_sales/research/conversion/conversion_scoreboard.latest.json",
+      "event_namespace": "billing_proxy"
+    },
+    {
+      "id": "product_web_runtime",
+      "enabled": false,
+      "type": "jsonl",
+      "path": "workspaces/op1_product/research/stage1_tracking/product_events.latest.jsonl",
+      "event_namespace": "product"
+    }
+  ],
+  "channel_medium_map": {
+    "email_nurture": "email",
+    "email": "email",
+    "linkedin": "paid_social",
+    "organic_search": "organic",
+    "manual_export": "manual"
+  },
+  "quality_thresholds": {
+    "max_duplicate_rate": 0.01,
+    "max_unattributed_traffic_rate": 0.05,
+    "max_data_lag_hours": 48,
+    "min_visit_to_signup_rate": 0.005,
+    "min_signup_to_paid_rate": 0.03
+  },
+  "traffic_estimation": {
+    "unique_visitor_ratio": 0.82
+  }
+}

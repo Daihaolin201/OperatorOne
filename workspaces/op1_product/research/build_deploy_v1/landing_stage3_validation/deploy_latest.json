@@ -1,0 +1,8 @@
+{
+  "deployed_at": "2026-03-04T01:32:17Z",
+  "target": "production",
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_landing_stage3_validation",
+  "deployment_url": "https://webproductlandingstage3validation-igf5a4zzo-superme1.vercel.app",
+  "public_url": "https://webproductlandingstage3validation.vercel.app",
+  "log_file": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/landing_stage3_validation/deploy_20260304T013200Z.log"
+}

@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-03-07T01:54:26Z",
+  "status": "passed",
+  "pipeline": "stage2_feedback",
+  "outputs": {
+    "scoreboard_json": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/stage2_feedback_scoreboard.latest.json",
+    "scoreboard_md": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/stage2_feedback_scoreboard.latest.md",
+    "weekly_snapshot_md": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/weekly_feedback_snapshot.latest.md",
+    "reproducibility_json": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage2_feedback/reproducibility_report.latest.json"
+  },
+  "headline": {
+    "feedback_events_total": 31,
+    "feedback_items_total": 31,
+    "p0_count": 0,
+    "expected_mrr_delta_30d": 77.101,
+    "alerts_count": 0
+  }
+}

@@ -1,0 +1,556 @@
+{
+  "generated_at": "2026-03-07T19:11:18Z",
+  "status": "ok",
+  "mode": "review",
+  "auto_publish": false,
+  "queue": {
+    "approved": [
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_02",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "agencies rebuild client tool for agency operator marketing services",
+        "intent": "BOFU",
+        "overall_score": 84.17,
+        "confidence": "high",
+        "priority_score": 94.17,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Agencies Rebuild Client Tool For Agency Operator Marketing Services: Practical buyer guide for teams evaluating alternatives",
+          "Agencies Rebuild Client Tool For Agency Operator Marketing Services vs manual process: what actually changes in operations",
+          "Agencies Rebuild Client Tool For Agency Operator Marketing Services — decision framework for operators (Agency operator / Marketing services /…)"
+        ],
+        "selected_title": "Agencies Rebuild Client Tool For Agency Operator Marketing Services: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+        ],
+        "stage_status": "approved",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 301,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.329,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "approved",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-02.md",
+        "review_decision": {
+          "decision": "approved",
+          "reviewed_at": "2026-03-07T19:11:18Z",
+          "reason": "manual_approval",
+          "note": "approved_from_studio"
+        }
+      },
+      {
+        "content_id": "cnt_exp-opportunity-opp-001-04",
+        "experiment_id": "exp_opportunity-opp-001_04",
+        "context_id": "opportunity::opp_001",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "priority_score": 94.05,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
+          "Overdue Invoices Followed Vs Manual vs manual process: what actually changes in operations",
+          "Overdue Invoices Followed Vs Manual — decision framework for operators (Freelancer / small service owner / Prof…)"
+        ],
+        "selected_title": "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach out to posters discussing overdue invoices and AR frustration",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "stage_status": "approved",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 338,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.183,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "approved",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-04.md",
+        "review_decision": {
+          "decision": "approved",
+          "reviewed_at": "2026-03-07T19:11:18Z",
+          "reason": "manual_approval",
+          "note": "approved_from_studio"
+        }
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "overall_score": 83.87,
+        "confidence": "high",
+        "priority_score": 93.87,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Overdue Invoices Followed Tool For Freelancer Small Service Owner: Practical buyer guide for teams evaluating alternatives",
+          "Overdue Invoices Followed Tool For Freelancer Small Service Owner vs manual process: what actually changes in operations",
+          "Overdue Invoices Followed Tool For Freelancer Small Service Owner — decision framework for operators (Freelancer / small service owner / Prof…)"
+        ],
+        "selected_title": "Overdue Invoices Followed Tool For Freelancer Small Service Owner: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+          "../op1_product/research/build_deploy_v1/project_spec.json"
+        ],
+        "stage_status": "approved",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 313,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.278,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "approved",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-03.md",
+        "review_decision": {
+          "decision": "approved",
+          "reviewed_at": "2026-03-07T19:11:18Z",
+          "reason": "manual_approval",
+          "note": "approved_from_studio"
+        }
+      }
+    ],
+    "review_ready": [
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_03",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
+        "intent": "BOFU",
+        "overall_score": 83.68,
+        "confidence": "high",
+        "priority_score": 93.68,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce: Practical buyer guide for teams evaluating alternatives",
+          "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce vs manual process: what actually changes in operations",
+          "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce — decision framework for operators (Ecommerce operator / Ecommerce / 1-50)"
+        ],
+        "selected_title": "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 296,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.351,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-02",
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_02",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "chargeback disputes handled pricing",
+        "intent": "BOFU",
+        "overall_score": 81.49,
+        "confidence": "high",
+        "priority_score": 91.49,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Chargeback Disputes Handled Pricing: Practical buyer guide for teams evaluating alternatives",
+          "Chargeback Disputes Handled Pricing vs manual process: what actually changes in operations",
+          "Chargeback Disputes Handled Pricing — decision framework for operators (Ecommerce operator / Ecommerce / 1-50)"
+        ],
+        "selected_title": "Chargeback Disputes Handled Pricing: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 280,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.429,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-02.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-04",
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_04",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "chargeback disputes handled vs manual",
+        "intent": "BOFU",
+        "overall_score": 81.49,
+        "confidence": "high",
+        "priority_score": 91.49,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Chargeback Disputes Handled Vs Manual: Practical buyer guide for teams evaluating alternatives",
+          "Chargeback Disputes Handled Vs Manual vs manual process: what actually changes in operations",
+          "Chargeback Disputes Handled Vs Manual — decision framework for operators (Ecommerce operator / Ecommerce / 1-50)"
+        ],
+        "selected_title": "Chargeback Disputes Handled Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 284,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.408,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-04.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-01",
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_01",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "agencies rebuild client pricing",
+        "intent": "BOFU",
+        "overall_score": 80.89,
+        "confidence": "high",
+        "priority_score": 90.89,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Agencies Rebuild Client Pricing: Practical buyer guide for teams evaluating alternatives",
+          "Agencies Rebuild Client Pricing vs manual process: what actually changes in operations",
+          "Agencies Rebuild Client Pricing — decision framework for operators (Agency operator / Marketing services /…)"
+        ],
+        "selected_title": "Agencies Rebuild Client Pricing: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 281,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.423,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-01.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "chargeback disputes handled hoc causing avoidable checklist",
+        "intent": "MOFU",
+        "overall_score": 83.05,
+        "confidence": "high",
+        "priority_score": 90.05,
+        "recommended_format": "playbook-or-template",
+        "title_options": [
+          "Chargeback Disputes Handled Hoc Causing Avoidable Checklist: step-by-step playbook you can apply this week",
+          "How to fix chargeback disputes are handled ad hoc, causing avoidable revenue los… with a lightweight workflow",
+          "Chargeback Disputes Handled Hoc Causing Avoidable Checklist: templates, checklist, and execution plan"
+        ],
+        "selected_title": "Chargeback Disputes Handled Hoc Causing Avoidable Checklist: step-by-step playbook you can apply this week",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 294,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.361,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-05.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_06",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "chargeback disputes handled hoc causing avoidable template",
+        "intent": "MOFU",
+        "overall_score": 83.05,
+        "confidence": "high",
+        "priority_score": 90.05,
+        "recommended_format": "playbook-or-template",
+        "title_options": [
+          "Chargeback Disputes Handled Hoc Causing Avoidable Template: step-by-step playbook you can apply this week",
+          "How to fix chargeback disputes are handled ad hoc, causing avoidable revenue los… with a lightweight workflow",
+          "Chargeback Disputes Handled Hoc Causing Avoidable Template: templates, checklist, and execution plan"
+        ],
+        "selected_title": "Chargeback Disputes Handled Hoc Causing Avoidable Template: step-by-step playbook you can apply this week",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 294,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.361,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-05",
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_05",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "overdue invoices followed manually late because checklist",
+        "intent": "MOFU",
+        "overall_score": 82.15,
+        "confidence": "high",
+        "priority_score": 89.15,
+        "recommended_format": "playbook-or-template",
+        "title_options": [
+          "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
+          "How to fix overdue invoices are followed up manually and too late because owners… with a lightweight workflow",
+          "Overdue Invoices Followed Manually Late Because Checklist: templates, checklist, and execution plan"
+        ],
+        "selected_title": "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+          "../op1_product/research/build_deploy_v1/project_spec.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 307,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.303,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-05.md"
+      },
+      {
+        "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-06",
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_06",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "overdue invoices followed manually late because template",
+        "intent": "MOFU",
+        "overall_score": 82.15,
+        "confidence": "high",
+        "priority_score": 89.15,
+        "recommended_format": "playbook-or-template",
+        "title_options": [
+          "Overdue Invoices Followed Manually Late Because Template: step-by-step playbook you can apply this week",
+          "How to fix overdue invoices are followed up manually and too late because owners… with a lightweight workflow",
+          "Overdue Invoices Followed Manually Late Because Template: templates, checklist, and execution plan"
+        ],
+        "selected_title": "Overdue Invoices Followed Manually Late Because Template: step-by-step playbook you can apply this week",
+        "cta": "Join pilot",
+        "source_pointers": [
+          "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+          "../op1_product/research/build_deploy_v1/project_spec.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 307,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.303,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-06.md"
+      },
+      {
+        "content_id": "cnt_exp-opportunity-opp-001-06",
+        "experiment_id": "exp_opportunity-opp-001_06",
+        "context_id": "opportunity::opp_001",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "manual reminders via personal email inconsistent template",
+        "intent": "MOFU",
+        "overall_score": 81.05,
+        "confidence": "medium",
+        "priority_score": 86.05,
+        "recommended_format": "playbook-or-template",
+        "title_options": [
+          "Manual Reminders Via Personal Email Inconsistent Template: step-by-step playbook you can apply this week",
+          "How to fix overdue invoices are followed up manually and too late because owners… with a lightweight workflow",
+          "Manual Reminders Via Personal Email Inconsistent Template: templates, checklist, and execution plan"
+        ],
+        "selected_title": "Manual Reminders Via Personal Email Inconsistent Template: step-by-step playbook you can apply this week",
+        "cta": "Reach out to posters discussing overdue invoices and AR frustration",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 348,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.149,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-06.md"
+      }
+    ],
+    "needs_revision": [],
+    "blocked": []
+  },
+  "counts": {
+    "approved": 3,
+    "review_ready": 9,
+    "needs_revision": 0,
+    "blocked": 0
+  },
+  "last_manual_review": {
+    "at": "2026-03-07T19:11:18Z",
+    "approved": [
+      "cnt_exp-opportunity-opp-001-04",
+      "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
+    ],
+    "needs_revision": [],
+    "reason": "manual_review_requested_changes",
+    "note": "approved_from_studio"
+  }
+}

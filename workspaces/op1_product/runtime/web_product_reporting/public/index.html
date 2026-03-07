@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ship client-ready monthly reporting with one repeatable workflow</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="hero">
+        <p class="badge">Build & Deploy v1.1</p>
+        <h1>Ship client-ready monthly reporting with one repeatable workflow</h1>
+        <p class="muted"><strong>For:</strong> Agency operator · Marketing services · 2-30</p>
+        <p>Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.</p>
+        <p class="muted"><strong>Adapter:</strong> Client Reporting Assistant</p>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Core Workflow</h2>
+          <form id="workflow-form">
+            <label for="input">Describe your reporting bottleneck</label>
+            <textarea id="input" name="input" placeholder="e.g. We spend too long rebuilding monthly reports for non-technical clients." required></textarea>
+            <button type="submit">Generate reporting workflow</button>
+          </form>
+          <pre id="workflow-result" aria-live="polite"></pre>
+        </article>
+
+        <article class="card">
+          <h2>Intent Capture</h2>
+          <p>Use this CTA to collect early customer intent.</p>
+          <form id="signup-form">
+            <label for="email">Work email</label>
+            <input id="email" name="email" type="email" placeholder="you@company.com" required />
+            <button type="submit">Join pilot</button>
+          </form>
+          <p id="signup-result" aria-live="polite"></p>
+        </article>
+      </section>
+
+      <section class="grid">
+        <article class="card">
+          <h2>Success Metric</h2>
+          <p><strong>Qualified intent captures</strong></p>
+          <p>At least 5 qualified leads from first 20 targeted users in 14 days</p>
+          <p class="muted">Pricing hypothesis: $49/month agency starter / $149/month multi-client</p>
+        </article>
+
+        <article class="card">
+          <h2>Kill Criteria</h2>
+          <ul>
+            <li>Fewer than 2 qualified intent captures after 20 targeted visitors</li>
+<li>Core workflow completion rate below 20% in first-session usage</li>
+          </ul>
+        </article>
+      </section>
+    </main>
+
+    <script src="/app.js" type="module"></script>
+  </body>
+</html>

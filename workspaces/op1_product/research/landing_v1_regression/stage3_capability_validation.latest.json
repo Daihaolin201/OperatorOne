@@ -1,0 +1,60 @@
+{
+  "generated_at": "2026-03-04T01:33:11Z",
+  "capability": "create_landing_pages_v1",
+  "contract_version": "1.1",
+  "status": "passed",
+  "cases": [
+    {
+      "opportunity_id": "opp_001",
+      "landing_status": "provisional_ready",
+      "page_mode": "landing",
+      "public_url": "https://webproductlandingstage3validation.vercel.app",
+      "tests": {
+        "smoke": "passed",
+        "page_strategy": "passed",
+        "business": "passed"
+      },
+      "key_gates": {
+        "landing_mode_enabled": "pass",
+        "landing_module_whitelist_and_structure": "pass",
+        "no_demo_first_positioning": "pass",
+        "claim_evidence_traceability_100pct": "pass"
+      }
+    },
+    {
+      "opportunity_id": "opp_002",
+      "landing_status": "provisional_ready",
+      "page_mode": "landing",
+      "public_url": "https://webproductlandingstage3opp002.vercel.app",
+      "tests": {
+        "smoke": "passed",
+        "page_strategy": "passed",
+        "business": "passed"
+      },
+      "key_gates": {
+        "landing_mode_enabled": "pass",
+        "landing_module_whitelist_and_structure": "pass",
+        "no_demo_first_positioning": "pass",
+        "claim_evidence_traceability_100pct": "pass"
+      }
+    },
+    {
+      "opportunity_id": "opp_003",
+      "landing_status": "provisional_ready",
+      "page_mode": "landing",
+      "public_url": "https://webproductlandingstage3opp003.vercel.app",
+      "tests": {
+        "smoke": "passed",
+        "page_strategy": "passed",
+        "business": "passed"
+      },
+      "key_gates": {
+        "landing_mode_enabled": "pass",
+        "landing_module_whitelist_and_structure": "pass",
+        "no_demo_first_positioning": "pass",
+        "claim_evidence_traceability_100pct": "pass"
+      }
+    }
+  ],
+  "regression_matrix": "research/landing_v1_regression/regression_matrix.latest.json"
+}

@@ -1,0 +1,42 @@
+{
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "generated_by": "workspaces/op1_operations/scripts/prioritize_stage2_feedback.py",
+  "from": "op1_operations.stage2_feedback",
+  "objective": "message_and_content_adjustments",
+  "top_signal_topics": [
+    {
+      "topic": "onboarding",
+      "weighted_score": 7.717
+    },
+    {
+      "topic": "pricing",
+      "weighted_score": 3.415
+    },
+    {
+      "topic": "trust",
+      "weighted_score": 2.7303
+    },
+    {
+      "topic": "general",
+      "weighted_score": 2.216
+    },
+    {
+      "topic": "retention",
+      "weighted_score": 1.5048
+    },
+    {
+      "topic": "integration",
+      "weighted_score": 0.983
+    },
+    {
+      "topic": "billing",
+      "weighted_score": 0.528
+    }
+  ],
+  "recommendations": [
+    "Increase trust proof in top-of-funnel messaging for high negative trust themes.",
+    "Add pricing clarity + ROI examples where budget objections concentrate.",
+    "Publish onboarding walkthroughs for manual-work and setup-friction themes."
+  ]
+}

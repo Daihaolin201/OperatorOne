@@ -1,0 +1,362 @@
+{
+  "capability": "create_landing_pages_v1",
+  "contract_version": "1.1",
+  "generated_at": "2026-03-04T01:32:59Z",
+  "mode": "mode_c_only",
+  "page_mode": "landing",
+  "status": "ready_for_build",
+  "selected_opportunity": {
+    "opportunity_id": "opp_001",
+    "selection_reason": "explicit_opportunity",
+    "confidence": "high",
+    "weighted_score": 4.084,
+    "risk_if_wrong": [
+      "Online signal may overstate real purchasing urgency.",
+      "Tool interest may not convert into paid behavior.",
+      "Integration requirements may expand scope.",
+      "Public communities may not convert to interviews."
+    ]
+  },
+  "preflight": {
+    "opportunity_gate": {
+      "stage2_mode": "existing",
+      "stage2_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_decision_log.json",
+      "selected_opportunity_id": "opp_001",
+      "selection_reason": "explicit_opportunity",
+      "confidence": "high",
+      "weighted_score": 4.084,
+      "risk_if_wrong": [
+        "Online signal may overstate real purchasing urgency.",
+        "Tool interest may not convert into paid behavior.",
+        "Integration requirements may expand scope.",
+        "Public communities may not convert to interviews."
+      ]
+    },
+    "scope_gate": {
+      "source": "stage3",
+      "in_scope": [
+        "Single conversion-focused landing page",
+        "Email waitlist CTA",
+        "Evidence-backed proof section"
+      ],
+      "out_of_scope": [
+        "ERP integrations",
+        "Advanced billing suite",
+        "Enterprise SSO"
+      ],
+      "kill_criteria": [
+        "Qualified submits below 2 per 100 sessions after initial test window"
+      ],
+      "status": "pass"
+    },
+    "evidence_traceability_gate": {
+      "coverage_ratio": 1.0,
+      "unmapped_claims": []
+    }
+  },
+  "landing_package": {
+    "positioning": {
+      "icp": "Freelancer / small service owner / Professional services / 1-20",
+      "problem": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "value_proposition": "Turn overdue invoices into a daily follow-up action queue",
+      "why_now": "Inferred from loss/time-pressure language in evidence.",
+      "differentiators": [
+        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "Prioritize overdue invoices by value and aging bucket.",
+        "Route ghosting vs. late-payment scenarios with explicit rules."
+      ]
+    },
+    "message_hierarchy": {
+      "hero_headline": "Turn overdue invoices into a daily follow-up action queue",
+      "hero_subheadline": "Turn overdue invoices into a daily follow-up action queue",
+      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+      "primary_supporting_claims": [
+        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "Prioritize overdue invoices by value and aging bucket.",
+        "Route ghosting vs. late-payment scenarios with explicit rules."
+      ],
+      "objection_handlers": [
+        {
+          "objection": "Will this replace our accounting tool?",
+          "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+        },
+        {
+          "objection": "Can we customize escalation tone?",
+          "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+        }
+      ]
+    },
+    "section_plan": [
+      {
+        "order": 1,
+        "section_id": "hero_problem",
+        "headline": "Turn overdue invoices into a daily follow-up action queue",
+        "goal": "Explain who this is for, the problem, and why act now.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 2,
+        "section_id": "problem_agitation",
+        "headline": "Late invoices quietly damage weekly cashflow",
+        "goal": "Frame pain severity and cost of inaction.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 3,
+        "section_id": "proof_points",
+        "headline": "What this approach is grounded in",
+        "goal": "Increase credibility with evidence-backed proof points.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 4,
+        "section_id": "benefit_bullets",
+        "headline": "What improves in the first 14 days",
+        "goal": "Translate value proposition into concrete outcomes.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 5,
+        "section_id": "faq_list",
+        "headline": "Before you start",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 6,
+        "section_id": "cta_waitlist",
+        "headline": "Start the overdue-invoice pilot",
+        "goal": "Capture qualified intent with a single primary CTA.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      }
+    ],
+    "copy_variants": {
+      "headline_variants": [
+        "Turn overdue invoices into a daily follow-up action queue",
+        "Overdue invoices are followed up manually and too late because owners avoid awkward collect… — without adding extra headcount",
+        "Recover overdue invoices with one repeatable reminder system"
+      ],
+      "cta_variants": [
+        "Join invoice pilot",
+        "Reserve invoice pilot slot",
+        "Get early access"
+      ]
+    },
+    "cta_plan": {
+      "primary": {
+        "label": "Join invoice pilot",
+        "type": "email_waitlist",
+        "module_id": "cta_waitlist",
+        "support_text": "Join a pilot that helps you recover receivables with less manual chasing."
+      },
+      "secondary": null
+    },
+    "experiment_backlog": [
+      {
+        "experiment_id": "exp_headline_01",
+        "hypothesis": "Problem-led headline outperforms generic value wording for qualified intent.",
+        "change": "A/B test two hero headlines mapped to the same core pain evidence.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep variant with >=15% higher qualified CTA submit rate."
+      },
+      {
+        "experiment_id": "exp_proof_01",
+        "hypothesis": "Adding one concrete loss-evidence proof line increases trust and CTA completion.",
+        "change": "Insert one quantified proof point above the fold.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if CTA completion and form quality both improve."
+      },
+      {
+        "experiment_id": "exp_cta_01",
+        "hypothesis": "Outcome-specific CTA wording improves intent quality versus generic CTA label.",
+        "change": "Test 'Join invoice pilot' vs. outcome-specific CTA variant.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if qualified submissions per 100 sessions improve by >=10%."
+      }
+    ],
+    "traceability_map": [
+      {
+        "claim_id": "claim_problem",
+        "claim": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_value",
+        "claim": "Turn overdue invoices into a daily follow-up action queue",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_headline",
+        "claim": "Turn overdue invoices into a daily follow-up action queue",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_01",
+        "claim": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_02",
+        "claim": "Prioritize overdue invoices by value and aging bucket.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_03",
+        "claim": "Route ghosting vs. late-payment scenarios with explicit rules.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      }
+    ],
+    "risk_register": [
+      {
+        "risk": "Email deliverability",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Accounting data import quality",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Online signal may overstate real purchasing urgency.",
+        "type": "assumption:pain_intensity",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Tool interest may not convert into paid behavior.",
+        "type": "assumption:willingness_to_pay",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Integration requirements may expand scope.",
+        "type": "assumption:mvp_speed",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Public communities may not convert to interviews.",
+        "type": "assumption:acquisition_reachability",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Incumbent strength may be underestimated.",
+        "type": "assumption:competitive_whitespace",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Real usage frequency may be lower than inferred.",
+        "type": "assumption:recurring_usage",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Qualified submits below 2 per 100 sessions after initial test window",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      }
+    ]
+  },
+  "build_inputs": {
+    "project_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_02_ready_stage3_fixture/build_inputs/project_spec.json",
+    "project_spec_mode": "generated_project_spec",
+    "page_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_02_ready_stage3_fixture/build_inputs/page_spec.json",
+    "page_spec_mode": "landing"
+  },
+  "quality_gates": [
+    {
+      "name": "landing_mode_enabled",
+      "status": "pass",
+      "detail": "page_mode=landing"
+    },
+    {
+      "name": "single_primary_cta",
+      "status": "pass",
+      "detail": "Primary CTA constraints from page_spec.testing"
+    },
+    {
+      "name": "landing_module_whitelist_and_structure",
+      "status": "pass",
+      "detail": "missing_required=[]; forbidden=[]"
+    },
+    {
+      "name": "message_match_with_entry_intent",
+      "status": "pass",
+      "detail": "token_overlap=2; explicit_match=True"
+    },
+    {
+      "name": "scope_consistency_with_mvp_boundary",
+      "status": "pass",
+      "detail": "no_out_of_scope_copy"
+    },
+    {
+      "name": "claim_evidence_traceability_100pct",
+      "status": "pass",
+      "detail": "coverage=1.0; unmapped=[]"
+    },
+    {
+      "name": "scannable_copy_and_clear_hierarchy",
+      "status": "pass",
+      "detail": "headline_words=9; section_count=6"
+    },
+    {
+      "name": "no_demo_first_positioning",
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "name": "multi_device_compatibility_baseline",
+      "status": "pass",
+      "detail": "viewport+profiles+responsive_markers"
+    },
+    {
+      "name": "performance_baseline_hooks_present",
+      "status": "pass",
+      "detail": "page_spec.testing.performance_budget"
+    },
+    {
+      "name": "security_headers_baseline_hooks_present",
+      "status": "pass",
+      "detail": "declared=['content-security-policy', 'referrer-policy', 'x-content-type-options', 'x-frame-options']"
+    },
+    {
+      "name": "smoke_page_strategy_business_test_hooks_present",
+      "status": "pass",
+      "detail": "page_spec module/testing hooks available"
+    }
+  ],
+  "marketing_handoff_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_02_ready_stage3_fixture/handoff.json"
+}

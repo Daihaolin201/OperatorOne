@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-03-07T19:10:42Z",
+  "previous_snapshot_id": "stage2snap_20260307184050_54a8f555975355ea",
+  "snapshot_id": "stage2snap_20260307191042_425a1371411e0edc",
+  "added": [],
+  "changed": [
+    {
+      "id": "product_to_marketing_handoff",
+      "path": "../../handoffs/product_to_marketing.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
+      "exists": true,
+      "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09",
+      "size": 1861,
+      "mtime": 1772910493
+    }
+  ],
+  "removed": []
+}

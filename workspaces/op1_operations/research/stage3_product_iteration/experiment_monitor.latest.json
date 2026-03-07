@@ -1,0 +1,293 @@
+{
+  "generated_at": "2026-03-07T18:46:55+00:00",
+  "item_count": 15,
+  "breach_count": 0,
+  "healthy_count": 15,
+  "rows": [
+    {
+      "experiment_id": "exp3_c3a320476dbf99",
+      "rank": 1,
+      "running": true,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0072,
+        "error_rate_delta_pp": 0.0078,
+        "srm_ratio_deviation": 0.0212,
+        "data_lag_hours": 3.45
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_59cab733ebc263",
+      "rank": 2,
+      "running": true,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0022,
+        "error_rate_delta_pp": 0.0132,
+        "srm_ratio_deviation": 0.0519,
+        "data_lag_hours": 8.62
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_cc6418573e5369",
+      "rank": 3,
+      "running": true,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0054,
+        "error_rate_delta_pp": 0.0123,
+        "srm_ratio_deviation": 0.0454,
+        "data_lag_hours": 7.46
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_05035039912c10",
+      "rank": 4,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0028,
+        "error_rate_delta_pp": 0.0118,
+        "srm_ratio_deviation": 0.0343,
+        "data_lag_hours": 10.62
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "rank": 5,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0041,
+        "error_rate_delta_pp": 0.0148,
+        "srm_ratio_deviation": 0.0409,
+        "data_lag_hours": 9.97
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_aff51f279f27df",
+      "rank": 6,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0045,
+        "error_rate_delta_pp": 0.0064,
+        "srm_ratio_deviation": 0.0135,
+        "data_lag_hours": 4.98
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "rank": 7,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.005,
+        "error_rate_delta_pp": 0.0039,
+        "srm_ratio_deviation": 0.017,
+        "data_lag_hours": 5.94
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_6560f49deb814a",
+      "rank": 8,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0033,
+        "error_rate_delta_pp": 0.008,
+        "srm_ratio_deviation": 0.0146,
+        "data_lag_hours": 6.72
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_299c70c714d04e",
+      "rank": 9,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0051,
+        "error_rate_delta_pp": 0.0128,
+        "srm_ratio_deviation": 0.0336,
+        "data_lag_hours": 8.42
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_bd55e0ff614989",
+      "rank": 10,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0019,
+        "error_rate_delta_pp": 0.0045,
+        "srm_ratio_deviation": 0.0468,
+        "data_lag_hours": 4.5
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "rank": 11,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0015,
+        "error_rate_delta_pp": 0.0086,
+        "srm_ratio_deviation": 0.0598,
+        "data_lag_hours": 8.22
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_4d927033157cf9",
+      "rank": 12,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0059,
+        "error_rate_delta_pp": 0.0127,
+        "srm_ratio_deviation": 0.0111,
+        "data_lag_hours": 4.01
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "rank": 13,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.004,
+        "error_rate_delta_pp": 0.0043,
+        "srm_ratio_deviation": 0.0219,
+        "data_lag_hours": 4.77
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_25b8181f08a498",
+      "rank": 14,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0021,
+        "error_rate_delta_pp": 0.0109,
+        "srm_ratio_deviation": 0.0104,
+        "data_lag_hours": 9.01
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    },
+    {
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "rank": 15,
+      "running": false,
+      "guardrail_breach": false,
+      "checks": {
+        "unsubscribe_rate_delta_pp": 0.0064,
+        "error_rate_delta_pp": 0.0112,
+        "srm_ratio_deviation": 0.0201,
+        "data_lag_hours": 9.29
+      },
+      "thresholds": {
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03,
+        "srm_ratio_deviation": 0.1,
+        "data_lag_hours": 24.0
+      },
+      "status": "healthy"
+    }
+  ]
+}

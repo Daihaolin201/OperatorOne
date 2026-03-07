@@ -1,0 +1,37 @@
+name: handoff-contract-validation
+
+on:
+  pull_request:
+  push:
+    branches: [main, Bennett]
+
+jobs:
+  validate-handoffs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Validate handoff contracts
+        run: |
+          python3 scripts/validate_handoffs.py --repo-root .
+
+      - name: Compile contract-producing scripts
+        run: |
+          python3 -m py_compile \
+            scripts/handoff_contracts.py \
+            scripts/validate_handoffs.py \
+            scripts/upgrade_handoffs.py \
+            workspaces/op1_product/scripts/create_landing_package.py \
+            workspaces/op1_marketing/scripts/run_marketing_content_stage2.py \
+            workspaces/op1_marketing/scripts/review_marketing_content_stage2.py \
+            workspaces/op1_marketing/scripts/run_marketing_campaign_stage3.py \
+            workspaces/op1_operations/scripts/prioritize_stage2_feedback.py \
+            workspaces/op1_operations/scripts/evaluate_stage3_experiments.py \
+            workspaces/op1_sales/scripts/process_outreach_replies_stage2.py \
+            workspaces/op1_sales/scripts/render_conversion_scoreboard_stage3.py

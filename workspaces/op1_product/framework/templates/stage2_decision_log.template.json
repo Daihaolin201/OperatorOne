@@ -1,0 +1,52 @@
+{
+  "generated_at": "",
+  "weights": {
+    "pain_intensity": 0.25,
+    "willingness_to_pay": 0.25,
+    "mvp_speed": 0.2,
+    "acquisition_reachability": 0.15,
+    "competitive_whitespace": 0.1,
+    "recurring_usage": 0.05
+  },
+  "decisions": [
+    {
+      "opportunity_id": "opp_001",
+      "hard_gate_pass": true,
+      "scores": {
+        "pain_intensity": {
+          "score": 0,
+          "reason": "",
+          "risk_if_wrong": ""
+        },
+        "willingness_to_pay": {
+          "score": 0,
+          "reason": "",
+          "risk_if_wrong": ""
+        },
+        "mvp_speed": {
+          "score": 0,
+          "reason": "",
+          "risk_if_wrong": ""
+        },
+        "acquisition_reachability": {
+          "score": 0,
+          "reason": "",
+          "risk_if_wrong": ""
+        },
+        "competitive_whitespace": {
+          "score": 0,
+          "reason": "",
+          "risk_if_wrong": ""
+        },
+        "recurring_usage": {
+          "score": 0,
+          "reason": "",
+          "risk_if_wrong": ""
+        }
+      },
+      "weighted_score": 0,
+      "decision": "advance|hold|reject",
+      "decision_reason": ""
+    }
+  ]
+}

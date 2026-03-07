@@ -1,0 +1,187 @@
+{
+  "generated_at": "2026-03-04T01:32:28Z",
+  "page_spec_version": "1.1",
+  "project_id": "proj-opp-003-client-reporting-v1",
+  "adapter_name": "client-reporting",
+  "version": "1.1",
+  "meta": {
+    "title": "Ship client-ready monthly reporting with one repeatable workflow",
+    "description": "Ship client-ready monthly reporting with one repeatable workflow",
+    "page_mode": "landing",
+    "adapter_name": "client-reporting",
+    "profile": "landing-client-reporting",
+    "profile_display_name": "Reporting Conversion Landing"
+  },
+  "layout_profile": "landing-client-reporting",
+  "theme": {
+    "accent": "#0ea5e9",
+    "surface": "#082f49",
+    "highlight": "#67e8f9"
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "landing",
+      "props": {
+        "headline": "Ship client-ready monthly reporting with one repeatable workflow",
+        "subheadline": "Ship consistent weekly reports without the last-minute scramble.",
+        "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+        "segment_label": "Agency operator · Marketing services · 2-30"
+      }
+    },
+    {
+      "module_id": "benefit_bullets",
+      "kind": "landing",
+      "props": {
+        "title": "What your team gets quickly",
+        "items": [
+          "Ship consistent weekly reports without the last-minute scramble.",
+          "Single reporting template reused across clients with controlled customization.",
+          "Weekly QA loop to improve clarity and trust with each reporting cycle."
+        ]
+      }
+    },
+    {
+      "module_id": "problem_agitation",
+      "kind": "landing",
+      "props": {
+        "title": "Reporting delays weaken client trust and renewals",
+        "core_pain": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+        "pain_points": [
+          "Single reporting template reused across clients with controlled customization.",
+          "Weekly QA loop to improve clarity and trust with each reporting cycle."
+        ],
+        "cost_of_inaction": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "landing",
+      "props": {
+        "title": "Why this flow is credible",
+        "items": [
+          "Single reporting template reused across clients with controlled customization.",
+          "Weekly QA loop to improve clarity and trust with each reporting cycle."
+        ]
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "landing",
+      "props": {
+        "title": "Common rollout questions",
+        "items": [
+          {
+            "question": "Will this remove analyst judgment?",
+            "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+          },
+          {
+            "question": "Can we keep client-specific KPI sets?",
+            "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+          }
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "landing",
+      "props": {
+        "title": "Start the reporting pilot",
+        "description": "Join pilot to standardize KPI narratives and cut report prep time.",
+        "cta_label": "Join reporting pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "benefit_bullets",
+      "problem_agitation",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ],
+    "page_mode": "landing",
+    "required_modules": [
+      "hero_problem",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "forbidden_modules": [
+      "workflow_interactive",
+      "metric_snapshot",
+      "evidence_checklist",
+      "social_proof_strip"
+    ],
+    "lp_section_whitelist": [
+      "benefit_bullets",
+      "cta_waitlist",
+      "faq_list",
+      "hero_problem",
+      "problem_agitation",
+      "proof_points"
+    ],
+    "forbidden_terms": [
+      "reusable web-product builder",
+      "try the workflow assistant",
+      "focused landing validation",
+      "pilot trust signals"
+    ]
+  },
+  "project_spec_snapshot": {
+    "project_id": "proj-opp-003-client-reporting-v1",
+    "from_opportunity_id": "opp_003",
+    "adapter_name": "client-reporting"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-03-06T00:17:29+00:00",
+  "builder": "workspaces/op1_sales/scripts/process_outreach_replies_stage2.py",
+  "mode": "simulate",
+  "classifier_version": "stage2-reply-v2",
+  "summary": {
+    "input_replies": 6,
+    "processed_replies": 0,
+    "skipped_duplicates": 6,
+    "unknown_leads": 0,
+    "unsubscribes": 0,
+    "booked_calls": 0,
+    "conversions": 0
+  },
+  "processed": []
+}

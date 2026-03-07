@@ -1,0 +1,1994 @@
+{
+  "generated_at": "2026-03-04T14:40:07Z",
+  "status": "ok",
+  "snapshot_id": "snap_20260304144007_e796c1ab2d1a5613",
+  "experiment_count": 66,
+  "experiments": [
+    {
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_01",
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Join the 14-day overdue-invoice pilot",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 74.25,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_02",
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Join the 14-day overdue-invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 78.19,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_03",
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Join the 14-day overdue-invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 68.34,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_04",
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Join the 14-day overdue-invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 84.75,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_05",
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "manual csv overdue invoice checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'manual csv overdue invoice checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Manual Csv Overdue Invoice Checklist",
+        "headline_variant_b": "Manual Csv Overdue Invoice Checklist without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Join the 14-day overdue-invoice pilot",
+        "cta_variant_b": "Start with manual pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 72.75,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_06",
+      "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Checklist",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Checklist without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Join the 14-day overdue-invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.75,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_01",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 72.75,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_02",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 76.69,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_03",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 66.84,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_04",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 76.69,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_05",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "construction business started last checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'construction business started last checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Construction Business Started Last Checklist",
+        "headline_variant_b": "Construction Business Started Last Checklist without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with construction pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 65.75,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_06",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Checklist",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Checklist without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 78.25,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_01",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 75.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_02",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.49,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_03",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 71.21,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_04",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_05",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "construction business started last checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'construction business started last checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Construction Business Started Last Checklist",
+        "headline_variant_b": "Construction Business Started Last Checklist without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
+        "cta_variant_b": "Start with construction pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 68.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_06",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "manual reminders via personal email inconsistent template",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'manual reminders via personal email inconsistent template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Manual Reminders Via Personal Email Inconsistent Template",
+        "headline_variant_b": "Manual Reminders Via Personal Email Inconsistent Template without extra manual overhead",
+        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
+        "cta_variant_b": "Start with manual pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 81.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_01",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "best chargeback handling manual software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best chargeback handling manual software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Chargeback Handling Manual Software",
+        "headline_variant_b": "Best Chargeback Handling Manual Software without extra manual overhead",
+        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 75.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_02",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "chargeback handling manual pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'chargeback handling manual pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Handling Manual Pricing",
+        "headline_variant_b": "Chargeback Handling Manual Pricing without extra manual overhead",
+        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.49,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_03",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "chargeback handling manual tool for ecommerce owner operations manager",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'chargeback handling manual tool for ecommerce owner operations manager' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Handling Manual Tool For Ecommerce Owner Operations Manager",
+        "headline_variant_b": "Chargeback Handling Manual Tool For Ecommerce Owner Operations Manager without extra manual overhead",
+        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 69.64,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_04",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "chargeback handling manual vs automated workflow",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'chargeback handling manual vs automated workflow' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Handling Manual Vs Automated Workflow",
+        "headline_variant_b": "Chargeback Handling Manual Vs Automated Workflow without extra manual overhead",
+        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 75.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_05",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "chargeback handling manual playbook",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'chargeback handling manual playbook' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Handling Manual Playbook",
+        "headline_variant_b": "Chargeback Handling Manual Playbook without extra manual overhead",
+        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 78.24,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_06",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "chargeback handling manual process",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'chargeback handling manual process' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Handling Manual Process",
+        "headline_variant_b": "Chargeback Handling Manual Process without extra manual overhead",
+        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 78.24,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_01",
+      "context_id": "opportunity::opp_003",
+      "source_opportunity_id": "opp_003",
+      "keyword": "best monthly reporting labor software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best monthly reporting labor software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Monthly Reporting Labor Software",
+        "headline_variant_b": "Best Monthly Reporting Labor Software without extra manual overhead",
+        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 75.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_02",
+      "context_id": "opportunity::opp_003",
+      "source_opportunity_id": "opp_003",
+      "keyword": "monthly reporting labor pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'monthly reporting labor pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Monthly Reporting Labor Pricing",
+        "headline_variant_b": "Monthly Reporting Labor Pricing without extra manual overhead",
+        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
+        "cta_variant_b": "Start with monthly pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.49,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_03",
+      "context_id": "opportunity::opp_003",
+      "source_opportunity_id": "opp_003",
+      "keyword": "monthly reporting labor tool for agency owner account manager",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'monthly reporting labor tool for agency owner account manager' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Monthly Reporting Labor Tool For Agency Owner Account Manager",
+        "headline_variant_b": "Monthly Reporting Labor Tool For Agency Owner Account Manager without extra manual overhead",
+        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
+        "cta_variant_b": "Start with monthly pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 71.21,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_04",
+      "context_id": "opportunity::opp_003",
+      "source_opportunity_id": "opp_003",
+      "keyword": "monthly reporting labor vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'monthly reporting labor vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Monthly Reporting Labor Vs Manual",
+        "headline_variant_b": "Monthly Reporting Labor Vs Manual without extra manual overhead",
+        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
+        "cta_variant_b": "Start with monthly pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_05",
+      "context_id": "opportunity::opp_003",
+      "source_opportunity_id": "opp_003",
+      "keyword": "manage google ads home checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'manage google ads home checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Manage Google Ads Home Checklist",
+        "headline_variant_b": "Manage Google Ads Home Checklist without extra manual overhead",
+        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
+        "cta_variant_b": "Start with manage pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 68.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-003_06",
+      "context_id": "opportunity::opp_003",
+      "source_opportunity_id": "opp_003",
+      "keyword": "manual exports custom spreadsheet report rewriting template",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'manual exports custom spreadsheet report rewriting template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Manual Exports Custom Spreadsheet Report Rewriting Template",
+        "headline_variant_b": "Manual Exports Custom Spreadsheet Report Rewriting Template without extra manual overhead",
+        "proof_variant": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
+        "cta_variant_b": "Start with manual pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 81.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_01",
+      "context_id": "opportunity::opp_004",
+      "source_opportunity_id": "opp_004",
+      "keyword": "best owner tenant workflows software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best owner tenant workflows software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Owner Tenant Workflows Software",
+        "headline_variant_b": "Best Owner Tenant Workflows Software without extra manual overhead",
+        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 80.8,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_02",
+      "context_id": "opportunity::opp_004",
+      "source_opportunity_id": "opp_004",
+      "keyword": "default software output plus custom excel template",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'default software output plus custom excel template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Default Software Output Plus Custom Excel Template",
+        "headline_variant_b": "Default Software Output Plus Custom Excel Template without extra manual overhead",
+        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
+        "cta_variant_b": "Start with default pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 82.3,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_03",
+      "context_id": "opportunity::opp_004",
+      "source_opportunity_id": "opp_004",
+      "keyword": "how to default software output plus custom excel",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'how to default software output plus custom excel' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "How To Default Software Output Plus Custom Excel",
+        "headline_variant_b": "How To Default Software Output Plus Custom Excel without extra manual overhead",
+        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
+        "cta_variant_b": "Start with how pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_04",
+      "context_id": "opportunity::opp_004",
+      "source_opportunity_id": "opp_004",
+      "keyword": "owner tenant workflows pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'owner tenant workflows pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Owner Tenant Workflows Pricing",
+        "headline_variant_b": "Owner Tenant Workflows Pricing without extra manual overhead",
+        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
+        "cta_variant_b": "Start with owner pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.49,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_05",
+      "context_id": "opportunity::opp_004",
+      "source_opportunity_id": "opp_004",
+      "keyword": "owner tenant workflows tool for property manager property management",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'owner tenant workflows tool for property manager property management' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Owner Tenant Workflows Tool For Property Manager Property Management",
+        "headline_variant_b": "Owner Tenant Workflows Tool For Property Manager Property Management without extra manual overhead",
+        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
+        "cta_variant_b": "Start with owner pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 71.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_06",
+      "context_id": "opportunity::opp_004",
+      "source_opportunity_id": "opp_004",
+      "keyword": "owner tenant workflows vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'owner tenant workflows vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Owner Tenant Workflows Vs Manual",
+        "headline_variant_b": "Owner Tenant Workflows Vs Manual without extra manual overhead",
+        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
+        "cta_variant_b": "Start with owner pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_01",
+      "context_id": "opportunity::opp_005",
+      "source_opportunity_id": "opp_005",
+      "keyword": "best expense reimbursement remains software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best expense reimbursement remains software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Expense Reimbursement Remains Software",
+        "headline_variant_b": "Best Expense Reimbursement Remains Software without extra manual overhead",
+        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 75.55,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_02",
+      "context_id": "opportunity::opp_005",
+      "source_opportunity_id": "opp_005",
+      "keyword": "expense reimbursement remains pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'expense reimbursement remains pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Expense Reimbursement Remains Pricing",
+        "headline_variant_b": "Expense Reimbursement Remains Pricing without extra manual overhead",
+        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
+        "cta_variant_b": "Start with expense pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.49,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_03",
+      "context_id": "opportunity::opp_005",
+      "source_opportunity_id": "opp_005",
+      "keyword": "expense reimbursement remains tool for smb owner finance admin",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'expense reimbursement remains tool for smb owner finance admin' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Expense Reimbursement Remains Tool For Smb Owner Finance Admin",
+        "headline_variant_b": "Expense Reimbursement Remains Tool For Smb Owner Finance Admin without extra manual overhead",
+        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
+        "cta_variant_b": "Start with expense pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 69.64,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_04",
+      "context_id": "opportunity::opp_005",
+      "source_opportunity_id": "opp_005",
+      "keyword": "expense reimbursement remains vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'expense reimbursement remains vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Expense Reimbursement Remains Vs Manual",
+        "headline_variant_b": "Expense Reimbursement Remains Vs Manual without extra manual overhead",
+        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
+        "cta_variant_b": "Start with expense pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_05",
+      "context_id": "opportunity::opp_005",
+      "source_opportunity_id": "opp_005",
+      "keyword": "expense reimbursement remains chaotic fraud prone checklist",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'expense reimbursement remains chaotic fraud prone checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Expense Reimbursement Remains Chaotic Fraud Prone Checklist",
+        "headline_variant_b": "Expense Reimbursement Remains Chaotic Fraud Prone Checklist without extra manual overhead",
+        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
+        "cta_variant_b": "Start with expense pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 81.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-005_06",
+      "context_id": "opportunity::opp_005",
+      "source_opportunity_id": "opp_005",
+      "keyword": "expense reimbursement remains chaotic fraud prone template",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'expense reimbursement remains chaotic fraud prone template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Expense Reimbursement Remains Chaotic Fraud Prone Template",
+        "headline_variant_b": "Expense Reimbursement Remains Chaotic Fraud Prone Template without extra manual overhead",
+        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
+        "cta_variant_b": "Start with expense pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 81.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-006_01",
+      "context_id": "opportunity::opp_006",
+      "source_opportunity_id": "opp_006",
+      "keyword": "best core workflows depend software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best core workflows depend software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Core Workflows Depend Software",
+        "headline_variant_b": "Best Core Workflows Depend Software without extra manual overhead",
+        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 78.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-006_02",
+      "context_id": "opportunity::opp_006",
+      "source_opportunity_id": "opp_006",
+      "keyword": "core workflows depend pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'core workflows depend pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Core Workflows Depend Pricing",
+        "headline_variant_b": "Core Workflows Depend Pricing without extra manual overhead",
+        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "cta_variant_b": "Start with core pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.49,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-006_03",
+      "context_id": "opportunity::opp_006",
+      "source_opportunity_id": "opp_006",
+      "keyword": "core workflows depend tool for operations admin smb operations",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'core workflows depend tool for operations admin smb operations' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Core Workflows Depend Tool For Operations Admin Smb Operations",
+        "headline_variant_b": "Core Workflows Depend Tool For Operations Admin Smb Operations without extra manual overhead",
+        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "cta_variant_b": "Start with core pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "hold",
+      "overall_score": 72.84,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-006_04",
+      "context_id": "opportunity::opp_006",
+      "source_opportunity_id": "opp_006",
+      "keyword": "core workflows depend vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'core workflows depend vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Core Workflows Depend Vs Manual",
+        "headline_variant_b": "Core Workflows Depend Vs Manual without extra manual overhead",
+        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "cta_variant_b": "Start with core pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 86.05,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-006_05",
+      "context_id": "opportunity::opp_006",
+      "source_opportunity_id": "opp_006",
+      "keyword": "core workflows depend automation",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'core workflows depend automation' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Core Workflows Depend Automation",
+        "headline_variant_b": "Core Workflows Depend Automation without extra manual overhead",
+        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "cta_variant_b": "Start with core pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 78.24,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-006_06",
+      "context_id": "opportunity::opp_006",
+      "source_opportunity_id": "opp_006",
+      "keyword": "core workflows depend examples",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'core workflows depend examples' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Core Workflows Depend Examples",
+        "headline_variant_b": "Core Workflows Depend Examples without extra manual overhead",
+        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "cta_variant_b": "Start with core pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 78.24,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_01",
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best chargeback disputes handled software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best chargeback disputes handled software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Chargeback Disputes Handled Software",
+        "headline_variant_b": "Best Chargeback Disputes Handled Software without extra manual overhead",
+        "proof_variant": "Standardize dispute packets so each case is complete on first submission.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 77.55,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_02",
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "chargeback disputes handled pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'chargeback disputes handled pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Disputes Handled Pricing",
+        "headline_variant_b": "Chargeback Disputes Handled Pricing without extra manual overhead",
+        "proof_variant": "Standardize dispute packets so each case is complete on first submission.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 81.49,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_03",
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'chargeback disputes handled tool for ecommerce operator ecommerce' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce",
+        "headline_variant_b": "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce without extra manual overhead",
+        "proof_variant": "Standardize dispute packets so each case is complete on first submission.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 83.68,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_04",
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "chargeback disputes handled vs manual",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'chargeback disputes handled vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Disputes Handled Vs Manual",
+        "headline_variant_b": "Chargeback Disputes Handled Vs Manual without extra manual overhead",
+        "proof_variant": "Standardize dispute packets so each case is complete on first submission.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 81.49,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "chargeback disputes handled hoc causing avoidable checklist",
+      "intent": "MOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'chargeback disputes handled hoc causing avoidable checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Disputes Handled Hoc Causing Avoidable Checklist",
+        "headline_variant_b": "Chargeback Disputes Handled Hoc Causing Avoidable Checklist without extra manual overhead",
+        "proof_variant": "Standardize dispute packets so each case is complete on first submission.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 83.05,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_06",
+      "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "chargeback disputes handled hoc causing avoidable template",
+      "intent": "MOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'chargeback disputes handled hoc causing avoidable template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Chargeback Disputes Handled Hoc Causing Avoidable Template",
+        "headline_variant_b": "Chargeback Disputes Handled Hoc Causing Avoidable Template without extra manual overhead",
+        "proof_variant": "Standardize dispute packets so each case is complete on first submission.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with chargeback pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 83.05,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_01",
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "agencies rebuild client pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'agencies rebuild client pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Agencies Rebuild Client Pricing",
+        "headline_variant_b": "Agencies Rebuild Client Pricing without extra manual overhead",
+        "proof_variant": "Single reporting template reused across clients with controlled customization.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with agencies pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 80.89,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_02",
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "agencies rebuild client tool for agency operator marketing services",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'agencies rebuild client tool for agency operator marketing services' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Agencies Rebuild Client Tool For Agency Operator Marketing Services",
+        "headline_variant_b": "Agencies Rebuild Client Tool For Agency Operator Marketing Services without extra manual overhead",
+        "proof_variant": "Single reporting template reused across clients with controlled customization.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with agencies pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 84.17,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_03",
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "agencies rebuild client vs manual",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'agencies rebuild client vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Agencies Rebuild Client Vs Manual",
+        "headline_variant_b": "Agencies Rebuild Client Vs Manual without extra manual overhead",
+        "proof_variant": "Single reporting template reused across clients with controlled customization.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with agencies pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 80.89,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_04",
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best agencies rebuild client software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best agencies rebuild client software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Agencies Rebuild Client Software",
+        "headline_variant_b": "Best Agencies Rebuild Client Software without extra manual overhead",
+        "proof_variant": "Single reporting template reused across clients with controlled customization.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 76.95,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_05",
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "agencies rebuild client playbook",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'agencies rebuild client playbook' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Agencies Rebuild Client Playbook",
+        "headline_variant_b": "Agencies Rebuild Client Playbook without extra manual overhead",
+        "proof_variant": "Single reporting template reused across clients with controlled customization.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with agencies pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.64,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_06",
+      "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "agencies rebuild client process",
+      "intent": "MOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'agencies rebuild client process' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Agencies Rebuild Client Process",
+        "headline_variant_b": "Agencies Rebuild Client Process without extra manual overhead",
+        "proof_variant": "Single reporting template reused across clients with controlled customization.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with agencies pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 79.64,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_01",
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 76.65,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_02",
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 80.59,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 83.87,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_04",
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 80.59,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_05",
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Checklist",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Checklist without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 82.15,
+      "confidence": "high"
+    },
+    {
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_06",
+      "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed manually late because template",
+      "intent": "MOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Template",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Template without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
+        "../op1_product/research/build_deploy_v1/project_spec.json"
+      ],
+      "generated_at": "2026-03-04T14:40:07Z",
+      "decision": "ready",
+      "overall_score": 82.15,
+      "confidence": "high"
+    }
+  ]
+}

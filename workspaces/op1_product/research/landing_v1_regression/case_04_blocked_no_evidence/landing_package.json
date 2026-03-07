@@ -1,0 +1,281 @@
+{
+  "capability": "create_landing_pages_v1",
+  "contract_version": "1.1",
+  "generated_at": "2026-03-04T01:32:59Z",
+  "mode": "mode_c_only",
+  "page_mode": "landing",
+  "status": "blocked",
+  "selected_opportunity": {
+    "opportunity_id": "opp_no_evidence",
+    "selection_reason": "explicit_opportunity",
+    "confidence": "medium",
+    "weighted_score": 6.5,
+    "risk_if_wrong": [
+      "Pain may be less urgent than assumed"
+    ]
+  },
+  "preflight": {
+    "opportunity_gate": {
+      "stage2_mode": "existing",
+      "stage2_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/_fixtures/case_04_blocked_no_evidence/stage2_no_evidence.json",
+      "selected_opportunity_id": "opp_no_evidence",
+      "selection_reason": "explicit_opportunity",
+      "confidence": "medium",
+      "weighted_score": 6.5,
+      "risk_if_wrong": [
+        "Pain may be less urgent than assumed"
+      ]
+    },
+    "scope_gate": {
+      "source": "stage3",
+      "in_scope": [
+        "Single conversion-focused landing page",
+        "Email waitlist CTA",
+        "Evidence-backed proof section"
+      ],
+      "out_of_scope": [
+        "ERP integrations",
+        "Advanced billing suite",
+        "Enterprise SSO"
+      ],
+      "kill_criteria": [
+        "Qualified submits below 2 per 100 sessions after initial test window"
+      ],
+      "status": "pass"
+    },
+    "evidence_traceability_gate": {
+      "coverage_ratio": 0.0,
+      "unmapped_claims": [
+        "claim_problem",
+        "claim_value",
+        "claim_headline",
+        "claim_proof_01"
+      ]
+    }
+  },
+  "landing_package": {
+    "positioning": {
+      "icp": "Operator / Business operations / 1-20",
+      "problem": "Manual chasing creates delays and inconsistency.",
+      "value_proposition": "Turn repetitive operator work into a focused daily action system",
+      "why_now": "Users ask for quick operational relief",
+      "differentiators": [
+        "Ships one measurable workflow instead of bloated feature sets."
+      ]
+    },
+    "message_hierarchy": {
+      "hero_headline": "Turn repetitive operator work into a focused daily action system",
+      "hero_subheadline": "Turn repetitive operator work into a focused daily action system",
+      "problem_statement": "Manual chasing creates delays and inconsistency.",
+      "primary_supporting_claims": [
+        "Ships one measurable workflow instead of bloated feature sets."
+      ],
+      "objection_handlers": [
+        {
+          "objection": "Is this only for one industry?",
+          "answer": "No. The adapter model is designed to support multiple business opportunity types."
+        },
+        {
+          "objection": "Can we iterate quickly after launch?",
+          "answer": "Yes. Rules, modules, and tests can be updated independently without full rebuilds."
+        }
+      ]
+    },
+    "section_plan": [
+      {
+        "order": 1,
+        "section_id": "hero_problem",
+        "headline": "Turn repetitive operator work into a focused daily action system",
+        "goal": "Explain who this is for, the problem, and why act now.",
+        "evidence_refs": []
+      },
+      {
+        "order": 2,
+        "section_id": "problem_agitation",
+        "headline": "Why this bottleneck deserves immediate action",
+        "goal": "Frame pain severity and cost of inaction.",
+        "evidence_refs": []
+      },
+      {
+        "order": 3,
+        "section_id": "benefit_bullets",
+        "headline": "What improves after focused adoption",
+        "goal": "Translate value proposition into concrete outcomes.",
+        "evidence_refs": []
+      },
+      {
+        "order": 4,
+        "section_id": "proof_points",
+        "headline": "Evidence behind this recommendation",
+        "goal": "Increase credibility with evidence-backed proof points.",
+        "evidence_refs": []
+      },
+      {
+        "order": 5,
+        "section_id": "faq_list",
+        "headline": "FAQ",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": []
+      },
+      {
+        "order": 6,
+        "section_id": "cta_waitlist",
+        "headline": "Start the focused pilot",
+        "goal": "Capture qualified intent with a single primary CTA.",
+        "evidence_refs": []
+      }
+    ],
+    "copy_variants": {
+      "headline_variants": [
+        "Turn repetitive operator work into a focused daily action system",
+        "Manual chasing creates delays and inconsistency. — without adding extra headcount",
+        "Operator teams: fix one recurring business operations bottleneck fast"
+      ],
+      "cta_variants": [
+        "Join pilot",
+        "Reserve pilot slot",
+        "Get early access"
+      ]
+    },
+    "cta_plan": {
+      "primary": {
+        "label": "Join pilot",
+        "type": "email_waitlist",
+        "module_id": "cta_waitlist",
+        "support_text": "Join early access to validate one focused workflow before scaling scope."
+      },
+      "secondary": null
+    },
+    "experiment_backlog": [
+      {
+        "experiment_id": "exp_headline_01",
+        "hypothesis": "Problem-led headline outperforms generic value wording for qualified intent.",
+        "change": "A/B test two hero headlines mapped to the same core pain evidence.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep variant with >=15% higher qualified CTA submit rate."
+      },
+      {
+        "experiment_id": "exp_proof_01",
+        "hypothesis": "Adding one concrete loss-evidence proof line increases trust and CTA completion.",
+        "change": "Insert one quantified proof point above the fold.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if CTA completion and form quality both improve."
+      },
+      {
+        "experiment_id": "exp_cta_01",
+        "hypothesis": "Outcome-specific CTA wording improves intent quality versus generic CTA label.",
+        "change": "Test 'Join pilot' vs. outcome-specific CTA variant.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if qualified submissions per 100 sessions improve by >=10%."
+      }
+    ],
+    "traceability_map": [
+      {
+        "claim_id": "claim_problem",
+        "claim": "Manual chasing creates delays and inconsistency.",
+        "evidence_refs": []
+      },
+      {
+        "claim_id": "claim_value",
+        "claim": "Turn repetitive operator work into a focused daily action system",
+        "evidence_refs": []
+      },
+      {
+        "claim_id": "claim_headline",
+        "claim": "Turn repetitive operator work into a focused daily action system",
+        "evidence_refs": []
+      },
+      {
+        "claim_id": "claim_proof_01",
+        "claim": "Ships one measurable workflow instead of bloated feature sets.",
+        "evidence_refs": []
+      }
+    ],
+    "risk_register": [
+      {
+        "risk": "No complex integrations in first release",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Pain may be less urgent than assumed",
+        "type": "assumption:pain_severity",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Qualified submits below 2 per 100 sessions after initial test window",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      }
+    ]
+  },
+  "build_inputs": {
+    "project_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_04_blocked_no_evidence/build_inputs/project_spec.json",
+    "project_spec_mode": "generated_project_spec",
+    "page_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_04_blocked_no_evidence/build_inputs/page_spec.json",
+    "page_spec_mode": "landing"
+  },
+  "quality_gates": [
+    {
+      "name": "landing_mode_enabled",
+      "status": "pass",
+      "detail": "page_mode=landing"
+    },
+    {
+      "name": "single_primary_cta",
+      "status": "pass",
+      "detail": "Primary CTA constraints from page_spec.testing"
+    },
+    {
+      "name": "landing_module_whitelist_and_structure",
+      "status": "pass",
+      "detail": "missing_required=[]; forbidden=[]"
+    },
+    {
+      "name": "message_match_with_entry_intent",
+      "status": "pass",
+      "detail": "token_overlap=0; explicit_match=True"
+    },
+    {
+      "name": "scope_consistency_with_mvp_boundary",
+      "status": "pass",
+      "detail": "no_out_of_scope_copy"
+    },
+    {
+      "name": "claim_evidence_traceability_100pct",
+      "status": "fail",
+      "detail": "coverage=0.0; unmapped=['claim_problem', 'claim_value', 'claim_headline', 'claim_proof_01']"
+    },
+    {
+      "name": "scannable_copy_and_clear_hierarchy",
+      "status": "pass",
+      "detail": "headline_words=10; section_count=6"
+    },
+    {
+      "name": "no_demo_first_positioning",
+      "status": "pass",
+      "detail": "ok"
+    },
+    {
+      "name": "multi_device_compatibility_baseline",
+      "status": "pass",
+      "detail": "viewport+profiles+responsive_markers"
+    },
+    {
+      "name": "performance_baseline_hooks_present",
+      "status": "pass",
+      "detail": "page_spec.testing.performance_budget"
+    },
+    {
+      "name": "security_headers_baseline_hooks_present",
+      "status": "pass",
+      "detail": "declared=['content-security-policy', 'referrer-policy', 'x-content-type-options', 'x-frame-options']"
+    },
+    {
+      "name": "smoke_page_strategy_business_test_hooks_present",
+      "status": "pass",
+      "detail": "page_spec module/testing hooks available"
+    }
+  ],
+  "marketing_handoff_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_regression/case_04_blocked_no_evidence/handoff.json"
+}

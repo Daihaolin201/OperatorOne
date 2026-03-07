@@ -1,0 +1,104 @@
+{
+  "adapter_id": "chargeback-response",
+  "display_name": "Chargeback Response Assistant",
+  "description": "For ecommerce operators responding to payment disputes and fraud losses.",
+  "match_keywords": [
+    "chargeback",
+    "dispute",
+    "fraud",
+    "stripe",
+    "shopify",
+    "payment processor"
+  ],
+  "offer_headline": "Respond to chargebacks faster with an evidence-first workflow",
+  "page_profile": "chargeback-response",
+  "cta_support_text": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+  "proof_points": [
+    "Standardize dispute packets so each case is complete on first submission.",
+    "Prioritize by value and deadline to protect near-term cashflow.",
+    "Track win/loss reasons to continuously improve fraud controls."
+  ],
+  "faq": [
+    {
+      "question": "Does this connect directly to Stripe/Shopify?",
+      "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+    },
+    {
+      "question": "Can this support multiple dispute reasons?",
+      "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+    }
+  ],
+  "operational_checklist": [
+    "Sort disputes by amount and response deadline.",
+    "Attach delivery, communication, and policy evidence in one bundle.",
+    "Review dispute outcomes weekly and update fraud prevention rules."
+  ],
+  "problem_statement": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+  "segment_override": {
+    "role": "Ecommerce operator",
+    "industry": "Ecommerce",
+    "company_size": "1-50"
+  },
+  "workflow": {
+    "prompt_label": "Describe your dispute situation",
+    "prompt_placeholder": "e.g. We received 7 chargebacks this morning for delivered orders.",
+    "primary_action_label": "Generate dispute response",
+    "rules": [
+      {
+        "id": "chargeback-burst",
+        "priority": 10,
+        "keywords": [
+          "chargeback",
+          "dispute",
+          "seven",
+          "many",
+          "burst"
+        ],
+        "first_step": "Prioritize disputes by amount and deadline, then submit one complete proof bundle for the highest-value case today.",
+        "next_steps": [
+          "Attach delivery confirmation, customer communication, and order metadata.",
+          "Use a consistent evidence template across all cases.",
+          "Track won/lost outcomes to refine fraud prevention rules."
+        ]
+      },
+      {
+        "id": "friendly-fraud",
+        "priority": 8,
+        "keywords": [
+          "delivered",
+          "friendly fraud",
+          "not received",
+          "unauthorized"
+        ],
+        "first_step": "Generate a customer-communication timeline and pair it with proof-of-delivery before submitting the dispute.",
+        "next_steps": [
+          "Highlight transaction authorization evidence.",
+          "Bundle policy acceptance and tracking milestones.",
+          "Flag repeat offenders for future order review."
+        ]
+      }
+    ],
+    "default_response": {
+      "first_step": "Create one evidence checklist and apply it to every open dispute this week.",
+      "next_steps": [
+        "Sort cases by financial impact.",
+        "Automate evidence collection where possible.",
+        "Review dispute reason trends weekly."
+      ]
+    }
+  },
+  "pricing_defaults": {
+    "plan_a": "$39/month starter",
+    "plan_b": "$129/month growth"
+  },
+  "business_tests": [
+    {
+      "name": "chargeback_burst_response",
+      "input": "We just got multiple chargebacks today and need a response process.",
+      "expect_first_step_contains": [
+        "highest-value",
+        "proof bundle"
+      ]
+    }
+  ]
+}

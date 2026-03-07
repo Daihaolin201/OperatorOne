@@ -8,3 +8,6 @@ Recommended naming:
 Examples:
 - `op1-sales-prospecting`
 - `op1-sales-outreach-sequence`
+- `identify-prospects-stage1`
+- `send-outreach-stage2`
+- `convert-early-customers-stage3`

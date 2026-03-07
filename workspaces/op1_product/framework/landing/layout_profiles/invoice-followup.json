@@ -1,0 +1,15 @@
+{
+  "profile_id": "landing-invoice-followup",
+  "display_name": "Invoice Conversion Landing",
+  "match_adapters": [
+    "invoice-followup"
+  ],
+  "module_order": [
+    "hero_problem",
+    "problem_agitation",
+    "proof_points",
+    "benefit_bullets",
+    "faq_list",
+    "cta_waitlist"
+  ]
+}

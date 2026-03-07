@@ -1,0 +1,89 @@
+{
+  "generated_at": "2026-03-07T19:32:51Z",
+  "run_id": "20260307T193251Z",
+  "capability": "marketing_launch_campaigns_stage3_shadow_v1",
+  "mode": "review",
+  "auto_launch": false,
+  "launch_mode": "disabled",
+  "opportunity_id": "opp_001",
+  "input_sync": {
+    "snapshot_id": "stage3snap_20260307193251_ead5f0506cce44fe",
+    "completeness": {
+      "required": 5,
+      "available": 5,
+      "missing": [],
+      "ratio": 1.0
+    },
+    "delta_counts": {
+      "added": 0,
+      "changed": 0,
+      "removed": 0
+    },
+    "requirements": [
+      {
+        "id": "stage2_run",
+        "path": "research/stage2_content_publish/run.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
+        "exists": true,
+        "sha256": "8367ca3bf9be2f2d55d6e02d39f72f68b567e064f63159e95e8bdb3a85a42b22",
+        "size": 4444,
+        "mtime": 1772910678
+      },
+      {
+        "id": "stage2_backlog",
+        "path": "research/stage2_content_publish/content.backlog.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
+        "exists": true,
+        "sha256": "8150cda70a33ed11c3320eaef8093cc8fb601d50e56112e705d9d7b1e8f25650",
+        "size": 23574,
+        "mtime": 1772910678
+      },
+      {
+        "id": "stage2_queue",
+        "path": "research/stage2_content_publish/publish.queue.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
+        "exists": true,
+        "sha256": "d78878dfa331b1a15624f268a4d654231660a8dc534045db4ddfadb6d842d17f",
+        "size": 24520,
+        "mtime": 1772910678
+      },
+      {
+        "id": "stage2_qa",
+        "path": "research/stage2_content_publish/qa.latest.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
+        "exists": true,
+        "sha256": "84298a4c6454c3b361ee71025d8f6496f827c606863c5a170766b46569b44cd5",
+        "size": 5798,
+        "mtime": 1772910642
+      },
+      {
+        "id": "product_to_marketing_handoff",
+        "path": "../../handoffs/product_to_marketing.json",
+        "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
+        "exists": true,
+        "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09",
+        "size": 1861,
+        "mtime": 1772910493
+      }
+    ]
+  },
+  "status": "passed",
+  "outputs": {
+    "campaigns_backlog": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/campaigns.backlog.latest.json",
+    "campaigns_queue": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/campaigns.queue.latest.json",
+    "experiments": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/experiments.latest.json",
+    "attribution_map": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/attribution.map.latest.csv",
+    "decision_log": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/decision_log.latest.md",
+    "packets_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/packets",
+    "marketing_to_sales_handoff": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/marketing_to_sales.json"
+  },
+  "stats": {
+    "campaigns_total": 8,
+    "launch_ready": 3,
+    "watchlist": 5,
+    "hold": 0,
+    "forecast_clicks": 969.58,
+    "forecast_mql": 71.97,
+    "forecast_sql": 24.73
+  }
+}

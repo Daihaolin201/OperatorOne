@@ -1,0 +1,385 @@
+{
+  "capability": "create_landing_pages_v1",
+  "generated_at": "2026-03-03T23:57:15Z",
+  "mode": "mode_c_only",
+  "status": "provisional_ready",
+  "selected_opportunity": {
+    "opportunity_id": "opp_002",
+    "selection_reason": "explicit_opportunity",
+    "confidence": "high",
+    "weighted_score": 4.084,
+    "risk_if_wrong": [
+      "Online signal may overstate real purchasing urgency.",
+      "Tool interest may not convert into paid behavior.",
+      "Integration requirements may expand scope.",
+      "Public communities may not convert to interviews."
+    ]
+  },
+  "preflight": {
+    "opportunity_gate": {
+      "stage2_mode": "existing",
+      "stage2_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_decision_log.json",
+      "selected_opportunity_id": "opp_002",
+      "selection_reason": "explicit_opportunity",
+      "confidence": "high",
+      "weighted_score": 4.084,
+      "risk_if_wrong": [
+        "Online signal may overstate real purchasing urgency.",
+        "Tool interest may not convert into paid behavior.",
+        "Integration requirements may expand scope.",
+        "Public communities may not convert to interviews."
+      ]
+    },
+    "scope_gate": {
+      "source": "synthesized",
+      "in_scope": [
+        "Single conversion-focused landing page with one primary CTA",
+        "One focused workflow preview tied to the selected opportunity problem",
+        "Evidence-backed hero/proof/FAQ messaging",
+        "Pilot lead capture for early access validation"
+      ],
+      "out_of_scope": [
+        "Store API access",
+        "Dispute data normalization",
+        "Custom enterprise integrations",
+        "Advanced billing/auth stack",
+        "Multi-product expansion"
+      ],
+      "kill_criteria": [
+        "Fewer than 2 qualified intent captures after first 20 targeted visitors",
+        "Core workflow completion below 20% for pilot traffic",
+        "No repeat qualified inbound intent within 14-day validation window",
+        "Signal quality warning: Online signal may overstate real purchasing urgency."
+      ],
+      "status": "pass"
+    },
+    "evidence_traceability_gate": {
+      "coverage_ratio": 1.0,
+      "unmapped_claims": []
+    }
+  },
+  "landing_package": {
+    "positioning": {
+      "icp": "Ecommerce operator / Ecommerce / 1-50",
+      "problem": "Chargeback handling is manual, time-consuming, and causes immediate cash-flow shocks.",
+      "value_proposition": "Respond to chargebacks faster with an evidence-first workflow. Designed for Ecommerce operator teams in Ecommerce to validate demand quickly.",
+      "why_now": "Inferred from loss/time-pressure language in evidence.",
+      "differentiators": [
+        "Standardize dispute packets so each case is complete on first submission.",
+        "Prioritize by value and deadline to protect near-term cashflow.",
+        "Track win/loss reasons to continuously improve fraud controls."
+      ]
+    },
+    "message_hierarchy": {
+      "hero_headline": "Respond to chargebacks faster with an evidence-first workflow",
+      "hero_subheadline": "Respond to chargebacks faster with an evidence-first workflow. Designed for Ecommerce operator teams in Ecommerce to validate demand quickly.",
+      "problem_statement": "Chargeback handling is manual, time-consuming, and causes immediate cash-flow shocks.",
+      "primary_supporting_claims": [
+        "Standardize dispute packets so each case is complete on first submission.",
+        "Prioritize by value and deadline to protect near-term cashflow.",
+        "Track win/loss reasons to continuously improve fraud controls."
+      ],
+      "objection_handlers": [
+        {
+          "objection": "Does this connect directly to Stripe/Shopify?",
+          "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+        },
+        {
+          "objection": "Can this support multiple dispute reasons?",
+          "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+        }
+      ]
+    },
+    "section_plan": [
+      {
+        "order": 1,
+        "section_id": "hero_problem",
+        "headline": "Respond to chargebacks faster with an evidence-first workflow",
+        "goal": "Explain who this is for, the problem, and why act now.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 2,
+        "section_id": "evidence_checklist",
+        "headline": "Execution checklist",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 3,
+        "section_id": "workflow_interactive",
+        "headline": "Try the workflow assistant",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 4,
+        "section_id": "risk_guardrails",
+        "headline": "Guardrails",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 5,
+        "section_id": "proof_points",
+        "headline": "Why this approach",
+        "goal": "Increase credibility with evidence-backed proof points.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "order": 6,
+        "section_id": "pricing_cards",
+        "headline": "Pricing hypothesis",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 7,
+        "section_id": "cta_waitlist",
+        "headline": "Start with one pilot workflow",
+        "goal": "Capture qualified intent with a single primary CTA.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "order": 8,
+        "section_id": "faq_list",
+        "headline": "FAQ",
+        "goal": "Support the core conversion narrative.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      }
+    ],
+    "copy_variants": {
+      "headline_variants": [
+        "Respond to chargebacks faster with an evidence-first workflow",
+        "Ecommerce operator: Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response",
+        "Ship one focused workflow for Ecommerce in 14 days"
+      ],
+      "cta_variants": [
+        "Join pilot",
+        "Start pilot validation",
+        "Get early access"
+      ]
+    },
+    "cta_plan": {
+      "primary": {
+        "label": "Join pilot",
+        "type": "email_waitlist",
+        "module_id": "cta_waitlist",
+        "support_text": "Join pilot to standardize dispute evidence and reduce preventable losses."
+      },
+      "secondary": null
+    },
+    "experiment_backlog": [
+      {
+        "experiment_id": "exp_headline_01",
+        "hypothesis": "Problem-led headline outperforms generic value wording for qualified intent.",
+        "change": "A/B test two hero headlines mapped to the same core pain evidence.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep variant with >=15% higher qualified CTA submit rate."
+      },
+      {
+        "experiment_id": "exp_proof_01",
+        "hypothesis": "Adding one concrete loss-evidence proof line increases trust and CTA completion.",
+        "change": "Insert one quantified proof point above the fold.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if CTA completion and form quality both improve."
+      },
+      {
+        "experiment_id": "exp_cta_01",
+        "hypothesis": "Outcome-specific CTA wording improves intent quality versus generic CTA label.",
+        "change": "Test 'Join pilot' vs. outcome-specific CTA variant.",
+        "primary_metric": "Qualified intent captures",
+        "decision_rule": "Keep if qualified submissions per 100 sessions improve by >=10%."
+      }
+    ],
+    "traceability_map": [
+      {
+        "claim_id": "claim_problem",
+        "claim": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_value",
+        "claim": "Respond to chargebacks faster with an evidence-first workflow. Designed for Ecommerce operator teams in Ecommerce to validate demand quickly.",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "claim_id": "claim_headline",
+        "claim": "Respond to chargebacks faster with an evidence-first workflow",
+        "evidence_refs": [
+          "ev_01",
+          "ev_02"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_01",
+        "claim": "Standardize dispute packets so each case is complete on first submission.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_02",
+        "claim": "Prioritize by value and deadline to protect near-term cashflow.",
+        "evidence_refs": [
+          "ev_02",
+          "ev_01"
+        ]
+      },
+      {
+        "claim_id": "claim_proof_03",
+        "claim": "Track win/loss reasons to continuously improve fraud controls.",
+        "evidence_refs": [
+          "ev_03",
+          "ev_02"
+        ]
+      }
+    ],
+    "risk_register": [
+      {
+        "risk": "Store API access",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Dispute data normalization",
+        "type": "implementation",
+        "mitigation": "Constrain v1 scope and validate manually before integration expansion."
+      },
+      {
+        "risk": "Online signal may overstate real purchasing urgency.",
+        "type": "assumption:pain_intensity",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Tool interest may not convert into paid behavior.",
+        "type": "assumption:willingness_to_pay",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Integration requirements may expand scope.",
+        "type": "assumption:mvp_speed",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Public communities may not convert to interviews.",
+        "type": "assumption:acquisition_reachability",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Incumbent strength may be underestimated.",
+        "type": "assumption:competitive_whitespace",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Real usage frequency may be lower than inferred.",
+        "type": "assumption:recurring_usage",
+        "mitigation": "Track this assumption in the 14-day validation run and decide go/kill by metric."
+      },
+      {
+        "risk": "Fewer than 2 qualified intent captures after first 20 targeted visitors",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      },
+      {
+        "risk": "Core workflow completion below 20% for pilot traffic",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      },
+      {
+        "risk": "No repeat qualified inbound intent within 14-day validation window",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      },
+      {
+        "risk": "Signal quality warning: Online signal may overstate real purchasing urgency.",
+        "type": "kill_criterion",
+        "mitigation": "Treat as stop condition if triggered."
+      }
+    ]
+  },
+  "build_inputs": {
+    "project_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_variants/opp_002_chargeback/build_inputs/project_spec.json",
+    "project_spec_mode": "generated_project_spec",
+    "page_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_variants/opp_002_chargeback/build_inputs/page_spec.json"
+  },
+  "quality_gates": [
+    {
+      "name": "single_primary_cta",
+      "status": "pass",
+      "detail": "Primary CTA constraints from page_spec.testing"
+    },
+    {
+      "name": "message_match_with_entry_intent",
+      "status": "pass",
+      "detail": "token_overlap=0; explicit_match=True"
+    },
+    {
+      "name": "scope_consistency_with_mvp_boundary",
+      "status": "pass",
+      "detail": "no_out_of_scope_copy"
+    },
+    {
+      "name": "claim_evidence_traceability_100pct",
+      "status": "pass",
+      "detail": "coverage=1.0; unmapped=[]"
+    },
+    {
+      "name": "scannable_copy_and_clear_hierarchy",
+      "status": "pass",
+      "detail": "headline_words=8; section_count=8"
+    },
+    {
+      "name": "multi_device_compatibility_baseline",
+      "status": "pass",
+      "detail": "viewport+profiles+responsive_markers"
+    },
+    {
+      "name": "performance_baseline_hooks_present",
+      "status": "pass",
+      "detail": "page_spec.testing.performance_budget"
+    },
+    {
+      "name": "security_headers_baseline_hooks_present",
+      "status": "pass",
+      "detail": "declared=['content-security-policy', 'referrer-policy', 'x-content-type-options', 'x-frame-options']"
+    },
+    {
+      "name": "smoke_page_strategy_business_test_hooks_present",
+      "status": "pass",
+      "detail": "page_spec module/testing hooks available"
+    }
+  ],
+  "marketing_handoff_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_variants/opp_002_chargeback/handoff.json"
+}

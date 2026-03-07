@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "rows": [
+    {
+      "opportunity_id": "opp_005",
+      "campaign_id": null,
+      "first_user_source": "manual_export",
+      "first_user_medium": "manual",
+      "traffic_sessions": 0.0,
+      "qualified_signups": 14,
+      "paid_customers": 2,
+      "new_mrr": 98.0
+    },
+    {
+      "opportunity_id": "opp_006",
+      "campaign_id": "stage3-cnt-exp-handoff-opp-006-04",
+      "first_user_source": "linkedin",
+      "first_user_medium": "paid_social",
+      "traffic_sessions": 905.66,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "new_mrr": 0.0
+    }
+  ]
+}

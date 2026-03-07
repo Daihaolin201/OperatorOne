@@ -1,0 +1,53 @@
+{
+  "capability": "build_deploy_simple_web_products_v1.1",
+  "owner_agent": "op1_product",
+  "purpose": "Generalizable framework to build and deploy simple web products across multiple opportunity types, not a single fixed demo.",
+  "input": {
+    "preferred": "research/build_deploy_v1/project_spec.json",
+    "optional_page_spec": "research/landing_v1/build_inputs/page_spec.json",
+    "autogen_supported": true,
+    "autogen_sources": [
+      "research/stage1_idea_discovery/opportunity_records.json",
+      "research/stage2_idea_screening/decision_log.json"
+    ],
+    "legacy_supported": "research/stage3_mvp_scope/project_blueprint.json"
+  },
+  "output": {
+    "primary_artifact": "research/stage2_web_product/run.latest.json",
+    "checkpoint_artifact": "research/stage2_web_product/state.latest.json",
+    "page_spec_artifact": "research/build_deploy_v1/page_spec_<run>.json",
+    "smoke_test_artifact": "research/build_deploy_v1/smoke_test.latest.json",
+    "page_strategy_test_artifact": "research/build_deploy_v1/page_strategy.latest.json",
+    "business_test_artifact": "research/build_deploy_v1/business_test.latest.json",
+    "deployed_url_field": "deployed_url"
+  },
+  "workflow": [
+    "resolve_project_spec",
+    "compile_modular_page_spec",
+    "scaffold_adapter_driven_web_product",
+    "deploy_to_vercel_subdomain",
+    "run_smoke_tests",
+    "run_page_strategy_tests",
+    "run_business_rule_tests",
+    "publish_structured_run_report"
+  ],
+  "constraints": {
+    "max_scope_days": 14,
+    "single_core_workflow": true,
+    "deployment_target": "vercel_subdomain",
+    "custom_domain_required": false,
+    "workspace_boundary": "workspaces/op1_product",
+    "no_push_default": true
+  },
+  "definition_of_done": [
+    "one_command_pipeline_runs_end_to_end",
+    "supports_provided_page_spec_input",
+    "public_url_is_reachable",
+    "smoke_tests_pass",
+    "page_strategy_tests_pass",
+    "page_strategy_includes_multi_device_baseline",
+    "page_strategy_includes_security_headers_baseline",
+    "business_rule_tests_pass",
+    "run_report_is_structured_and_reproducible"
+  ]
+}

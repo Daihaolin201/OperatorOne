@@ -1,0 +1,677 @@
+{
+  "generated_at": "2026-03-04T14:40:07Z",
+  "status": "ok",
+  "snapshot_id": "snap_20260304144007_e796c1ab2d1a5613",
+  "queue": {
+    "ready": [
+      {
+        "experiment_id": "exp_opportunity-opp-001_04",
+        "context_id": "opportunity::opp_001",
+        "keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-003_04",
+        "context_id": "opportunity::opp_003",
+        "keyword": "monthly reporting labor vs manual",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_03",
+        "context_id": "opportunity::opp_004",
+        "keyword": "how to default software output plus custom excel",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_06",
+        "context_id": "opportunity::opp_004",
+        "keyword": "owner tenant workflows vs manual",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-005_04",
+        "context_id": "opportunity::opp_005",
+        "keyword": "expense reimbursement remains vs manual",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-006_04",
+        "context_id": "opportunity::opp_006",
+        "keyword": "core workflows depend vs manual",
+        "intent": "BOFU",
+        "overall_score": 86.05,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_04",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 84.75,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_02",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "keyword": "agencies rebuild client tool for agency operator marketing services",
+        "intent": "BOFU",
+        "overall_score": 84.17,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "overall_score": 83.87,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_03",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
+        "intent": "BOFU",
+        "overall_score": 83.68,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "keyword": "chargeback disputes handled hoc causing avoidable checklist",
+        "intent": "MOFU",
+        "overall_score": 83.05,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_06",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "keyword": "chargeback disputes handled hoc causing avoidable template",
+        "intent": "MOFU",
+        "overall_score": 83.05,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_02",
+        "context_id": "opportunity::opp_004",
+        "keyword": "default software output plus custom excel template",
+        "intent": "BOFU",
+        "overall_score": 82.3,
+        "confidence": "medium",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_05",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "keyword": "overdue invoices followed manually late because checklist",
+        "intent": "MOFU",
+        "overall_score": 82.15,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_06",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "keyword": "overdue invoices followed manually late because template",
+        "intent": "MOFU",
+        "overall_score": 82.15,
+        "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_02",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "keyword": "chargeback disputes handled pricing",
+        "intent": "BOFU",
+        "overall_score": 81.49,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_04",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "keyword": "chargeback disputes handled vs manual",
+        "intent": "BOFU",
+        "overall_score": 81.49,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-001_06",
+        "context_id": "opportunity::opp_001",
+        "keyword": "manual reminders via personal email inconsistent template",
+        "intent": "MOFU",
+        "overall_score": 81.05,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-003_06",
+        "context_id": "opportunity::opp_003",
+        "keyword": "manual exports custom spreadsheet report rewriting template",
+        "intent": "MOFU",
+        "overall_score": 81.05,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-005_05",
+        "context_id": "opportunity::opp_005",
+        "keyword": "expense reimbursement remains chaotic fraud prone checklist",
+        "intent": "MOFU",
+        "overall_score": 81.05,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-005_06",
+        "context_id": "opportunity::opp_005",
+        "keyword": "expense reimbursement remains chaotic fraud prone template",
+        "intent": "MOFU",
+        "overall_score": 81.05,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_01",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "keyword": "agencies rebuild client pricing",
+        "intent": "BOFU",
+        "overall_score": 80.89,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_03",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "keyword": "agencies rebuild client vs manual",
+        "intent": "BOFU",
+        "overall_score": 80.89,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_01",
+        "context_id": "opportunity::opp_004",
+        "keyword": "best owner tenant workflows software",
+        "intent": "BOFU",
+        "overall_score": 80.8,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_02",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "keyword": "overdue invoices followed pricing",
+        "intent": "BOFU",
+        "overall_score": 80.59,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_04",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 80.59,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_06",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "keyword": "overdue invoices followed manually late because checklist",
+        "intent": "MOFU",
+        "overall_score": 79.75,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_05",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "keyword": "agencies rebuild client playbook",
+        "intent": "MOFU",
+        "overall_score": 79.64,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_06",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "keyword": "agencies rebuild client process",
+        "intent": "MOFU",
+        "overall_score": 79.64,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-001_02",
+        "context_id": "opportunity::opp_001",
+        "keyword": "overdue invoices followed pricing",
+        "intent": "BOFU",
+        "overall_score": 79.49,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-002_02",
+        "context_id": "opportunity::opp_002",
+        "keyword": "chargeback handling manual pricing",
+        "intent": "BOFU",
+        "overall_score": 79.49,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-003_02",
+        "context_id": "opportunity::opp_003",
+        "keyword": "monthly reporting labor pricing",
+        "intent": "BOFU",
+        "overall_score": 79.49,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_04",
+        "context_id": "opportunity::opp_004",
+        "keyword": "owner tenant workflows pricing",
+        "intent": "BOFU",
+        "overall_score": 79.49,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-005_02",
+        "context_id": "opportunity::opp_005",
+        "keyword": "expense reimbursement remains pricing",
+        "intent": "BOFU",
+        "overall_score": 79.49,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-006_02",
+        "context_id": "opportunity::opp_006",
+        "keyword": "core workflows depend pricing",
+        "intent": "BOFU",
+        "overall_score": 79.49,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-002_05",
+        "context_id": "opportunity::opp_002",
+        "keyword": "chargeback handling manual playbook",
+        "intent": "MOFU",
+        "overall_score": 78.24,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-002_06",
+        "context_id": "opportunity::opp_002",
+        "keyword": "chargeback handling manual process",
+        "intent": "MOFU",
+        "overall_score": 78.24,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-006_05",
+        "context_id": "opportunity::opp_006",
+        "keyword": "core workflows depend automation",
+        "intent": "MOFU",
+        "overall_score": 78.24,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-006_06",
+        "context_id": "opportunity::opp_006",
+        "keyword": "core workflows depend examples",
+        "intent": "MOFU",
+        "overall_score": 78.24,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_02",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "keyword": "overdue invoices followed pricing",
+        "intent": "BOFU",
+        "overall_score": 78.19,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-006_01",
+        "context_id": "opportunity::opp_006",
+        "keyword": "best core workflows depend software",
+        "intent": "BOFU",
+        "overall_score": 78.05,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_01",
+        "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
+        "keyword": "best chargeback disputes handled software",
+        "intent": "BOFU",
+        "overall_score": 77.55,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_04",
+        "context_id": "project_spec::proj-opp-001-client-reporting-v1",
+        "keyword": "best agencies rebuild client software",
+        "intent": "BOFU",
+        "overall_score": 76.95,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_01",
+        "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
+        "keyword": "best overdue invoices followed software",
+        "intent": "BOFU",
+        "overall_score": 76.65,
+        "confidence": "high",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-001_01",
+        "context_id": "opportunity::opp_001",
+        "keyword": "best overdue invoices followed software",
+        "intent": "BOFU",
+        "overall_score": 75.55,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-002_01",
+        "context_id": "opportunity::opp_002",
+        "keyword": "best chargeback handling manual software",
+        "intent": "BOFU",
+        "overall_score": 75.55,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-002_04",
+        "context_id": "opportunity::opp_002",
+        "keyword": "chargeback handling manual vs automated workflow",
+        "intent": "BOFU",
+        "overall_score": 75.55,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-003_01",
+        "context_id": "opportunity::opp_003",
+        "keyword": "best monthly reporting labor software",
+        "intent": "BOFU",
+        "overall_score": 75.55,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-005_01",
+        "context_id": "opportunity::opp_005",
+        "keyword": "best expense reimbursement remains software",
+        "intent": "BOFU",
+        "overall_score": 75.55,
+        "confidence": "medium",
+        "lifecycle_status": "ready",
+        "decision_reason": "score_and_risk_pass"
+      }
+    ],
+    "hold": [
+      {
+        "experiment_id": "exp_landing-opp-001_06",
+        "context_id": "landing::opp_001",
+        "keyword": "overdue invoices followed manually late because checklist",
+        "intent": "MOFU",
+        "overall_score": 78.25,
+        "confidence": "high",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_landing-opp-001_02",
+        "context_id": "landing::opp_001",
+        "keyword": "overdue invoices followed pricing",
+        "intent": "BOFU",
+        "overall_score": 76.69,
+        "confidence": "high",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_landing-opp-001_04",
+        "context_id": "landing::opp_001",
+        "keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 76.69,
+        "confidence": "high",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_01",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "keyword": "best overdue invoices followed software",
+        "intent": "BOFU",
+        "overall_score": 74.25,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-006_03",
+        "context_id": "opportunity::opp_006",
+        "keyword": "core workflows depend tool for operations admin smb operations",
+        "intent": "BOFU",
+        "overall_score": 72.84,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_05",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "keyword": "manual csv overdue invoice checklist",
+        "intent": "MOFU",
+        "overall_score": 72.75,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_landing-opp-001_01",
+        "context_id": "landing::opp_001",
+        "keyword": "best overdue invoices followed software",
+        "intent": "BOFU",
+        "overall_score": 72.75,
+        "confidence": "high",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-001_03",
+        "context_id": "opportunity::opp_001",
+        "keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "overall_score": 71.21,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-003_03",
+        "context_id": "opportunity::opp_003",
+        "keyword": "monthly reporting labor tool for agency owner account manager",
+        "intent": "BOFU",
+        "overall_score": 71.21,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_05",
+        "context_id": "opportunity::opp_004",
+        "keyword": "owner tenant workflows tool for property manager property management",
+        "intent": "BOFU",
+        "overall_score": 71.05,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-002_03",
+        "context_id": "opportunity::opp_002",
+        "keyword": "chargeback handling manual tool for ecommerce owner operations manager",
+        "intent": "BOFU",
+        "overall_score": 69.64,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-005_03",
+        "context_id": "opportunity::opp_005",
+        "keyword": "expense reimbursement remains tool for smb owner finance admin",
+        "intent": "BOFU",
+        "overall_score": 69.64,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-001_05",
+        "context_id": "opportunity::opp_001",
+        "keyword": "construction business started last checklist",
+        "intent": "MOFU",
+        "overall_score": 68.55,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-003_05",
+        "context_id": "opportunity::opp_003",
+        "keyword": "manage google ads home checklist",
+        "intent": "MOFU",
+        "overall_score": 68.55,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_03",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "overall_score": 68.34,
+        "confidence": "medium",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_landing-opp-001_03",
+        "context_id": "landing::opp_001",
+        "keyword": "overdue invoices followed tool for freelancer small service owner",
+        "intent": "BOFU",
+        "overall_score": 66.84,
+        "confidence": "high",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      },
+      {
+        "experiment_id": "exp_landing-opp-001_05",
+        "context_id": "landing::opp_001",
+        "keyword": "construction business started last checklist",
+        "intent": "MOFU",
+        "overall_score": 65.75,
+        "confidence": "high",
+        "lifecycle_status": "scored",
+        "decision_reason": "needs_iteration"
+      }
+    ],
+    "drop": []
+  },
+  "counts": {
+    "ready": 49,
+    "hold": 17,
+    "drop": 0
+  }
+}

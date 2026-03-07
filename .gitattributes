@@ -1,2 +1,17 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+
+# Generated / runtime-heavy artifacts (collapse in GitHub PR views)
+dashboard/.runtime/** linguist-generated=true
+handoffs/_meta/** linguist-generated=true
+workspaces/*/research/**/*.latest.json linguist-generated=true
+workspaces/*/research/**/*.latest.md linguist-generated=true
+workspaces/*/research/**/*.latest.csv linguist-generated=true
+workspaces/*/research/**/*.latest.jsonl linguist-generated=true
+workspaces/*/research/**/run_*.json linguist-generated=true
+workspaces/*/research/**/rounds/** linguist-generated=true
+workspaces/*/research/**/_audit_runs/** linguist-generated=true
+workspaces/*/research/**/input/mirror.latest/** linguist-generated=true
+workspaces/*/research/**/briefs/** linguist-generated=true
+workspaces/*/research/**/drafts/** linguist-generated=true
+workspaces/*/research/**/packets/** linguist-generated=true

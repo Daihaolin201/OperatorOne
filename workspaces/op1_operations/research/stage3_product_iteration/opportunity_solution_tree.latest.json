@@ -1,0 +1,557 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "north_star": {
+    "name": "Reach first $100 MRR with repeatable product iteration loop",
+    "current_net_new_mrr": 49.0,
+    "target_net_new_mrr": 100.0,
+    "current_visit_to_signup_rate": 0.0144,
+    "current_signup_to_paid_rate": 0.0769
+  },
+  "opportunity_count": 7,
+  "opportunities": [
+    {
+      "opportunity_id": "ost_opp_a4963c4996",
+      "rank": 1,
+      "topic": "onboarding",
+      "weighted_priority": 7.717,
+      "target_metric": "visit_to_signup_rate",
+      "problem_statement": "Users show repeated friction in 'onboarding' themes impacting visit_to_signup_rate.",
+      "evidence_feedback_item_ids": [
+        "fi_c0c51a7ced1c2fe7",
+        "fi_d56174f308ac5028",
+        "fi_df1923c65baa3f9a",
+        "fi_20cd1163dd14c475",
+        "fi_d845182f6a359199",
+        "fi_1038de67ceb262c3"
+      ],
+      "evidence_samples": [
+        "I’m tired of bookkeeping for my husband’s business",
+        "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping",
+        "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni..."
+      ],
+      "solutions": [
+        {
+          "solution_id": "sol_c2fe594d9a",
+          "title": "Guided first-run workflow",
+          "description": "Reduce setup friction with checklist + smart defaults + one clear first success path.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_c2fe594d9a46",
+              "name": "Guided first-run workflow — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_999c9ce79887",
+              "name": "Guided first-run workflow — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_1d30fdb86b",
+          "title": "Template-first entry",
+          "description": "Offer prefilled templates for the most common workflow to reduce time-to-value.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_6502330a8e21",
+              "name": "Template-first entry — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_1d30fdb86beb",
+              "name": "Template-first entry — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_7eb51f2953",
+          "title": "Interactive diagnostics",
+          "description": "Ask 3-5 setup questions and route users to the best configuration path.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_a2c8f7bcbe2d",
+              "name": "Interactive diagnostics — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_ecee54be55d2",
+              "name": "Interactive diagnostics — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "ost_opp_1e2ea6d9b7",
+      "rank": 2,
+      "topic": "pricing",
+      "weighted_priority": 3.415,
+      "target_metric": "signup_to_paid_rate",
+      "problem_statement": "Users show repeated friction in 'pricing' themes impacting signup_to_paid_rate.",
+      "evidence_feedback_item_ids": [
+        "fi_cbdeef528f65f492",
+        "fi_c2f297b35bf000f8",
+        "fi_cde6408aad3cb28d",
+        "fi_dff6fd2b9cd41b4e"
+      ],
+      "evidence_samples": [
+        "budget",
+        "This looks expensive and beyond our current budget.",
+        "The real ROI of expense management isn't the software cost - it's the hours your team gets back"
+      ],
+      "solutions": [
+        {
+          "solution_id": "sol_161a60e9f0",
+          "title": "Value-based pricing page revision",
+          "description": "Reframe pricing around outcomes and ROI checkpoints rather than feature count.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_161a60e9f0c0",
+              "name": "Value-based pricing page revision — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_d0e9f9112961",
+              "name": "Value-based pricing page revision — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_34ebd6a940",
+          "title": "Pilot offer + risk reversal",
+          "description": "Introduce limited pilot tier with explicit milestone checkpoints.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_b17ea24520d4",
+              "name": "Pilot offer + risk reversal — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_34ebd6a940b8",
+              "name": "Pilot offer + risk reversal — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_348fab42ef",
+          "title": "Plan fit recommender",
+          "description": "Add decision wizard to recommend the most suitable plan by use case.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_9f61cd27431f",
+              "name": "Plan fit recommender — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_df0357c13d58",
+              "name": "Plan fit recommender — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "ost_opp_f796e2f28a",
+      "rank": 3,
+      "topic": "trust",
+      "weighted_priority": 2.7303,
+      "target_metric": "signup_to_paid_rate",
+      "problem_statement": "Users show repeated friction in 'trust' themes impacting signup_to_paid_rate.",
+      "evidence_feedback_item_ids": [
+        "fi_4516a28f68345620",
+        "fi_145b80d81931e921"
+      ],
+      "evidence_samples": [
+        "unsubscribe",
+        "Please unsubscribe me from future emails."
+      ],
+      "solutions": [
+        {
+          "solution_id": "sol_0311544eab",
+          "title": "Trust proof block",
+          "description": "Expose controls, security posture, and quality guarantees near conversion points.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_0311544eab0f",
+              "name": "Trust proof block — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_8e663f679342",
+              "name": "Trust proof block — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_15434d0dd5",
+          "title": "Permissioned communication controls",
+          "description": "Improve opt-in clarity and reduce irrelevant outreach triggers.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_9eb0ad3627d5",
+              "name": "Permissioned communication controls — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_15434d0dd540",
+              "name": "Permissioned communication controls — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_fb84d1b3ba",
+          "title": "Risk-aware onboarding",
+          "description": "Detect high-risk uncertainty and deliver contextual reassurance content.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_6624c0d54ae6",
+              "name": "Risk-aware onboarding — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_04b086beac1f",
+              "name": "Risk-aware onboarding — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "ost_opp_0feae16d55",
+      "rank": 4,
+      "topic": "general",
+      "weighted_priority": 2.216,
+      "target_metric": "signup_to_paid_rate",
+      "problem_statement": "Users show repeated friction in 'general' themes impacting signup_to_paid_rate.",
+      "evidence_feedback_item_ids": [
+        "fi_402714b492058f2d"
+      ],
+      "evidence_samples": [
+        "booked_call"
+      ],
+      "solutions": [
+        {
+          "solution_id": "sol_3577d14860",
+          "title": "Message and workflow alignment",
+          "description": "Align product messaging and primary workflow to top user pain signals.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_3577d148605c",
+              "name": "Message and workflow alignment — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_f9164f9eb8c9",
+              "name": "Message and workflow alignment — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_87b056c62a",
+          "title": "Focused UX simplification",
+          "description": "Remove unnecessary complexity in high-friction journey steps.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_71ca93c01847",
+              "name": "Focused UX simplification — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_87b056c62adf",
+              "name": "Focused UX simplification — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_49dc5fb8a0",
+          "title": "Evidence-led conversion support",
+          "description": "Add proof and clear next actions where users stall most.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_a175185d511a",
+              "name": "Evidence-led conversion support — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_03dac136b02c",
+              "name": "Evidence-led conversion support — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "ost_opp_8e22012440",
+      "rank": 5,
+      "topic": "retention",
+      "weighted_priority": 1.5048,
+      "target_metric": "signup_to_paid_rate",
+      "problem_statement": "Users show repeated friction in 'retention' themes impacting signup_to_paid_rate.",
+      "evidence_feedback_item_ids": [
+        "fi_63872398f74f64a7",
+        "fi_0ef866c13de81729"
+      ],
+      "evidence_samples": [
+        "No thanks, we already use another system and are not interested.",
+        "Not now. Please circle back next quarter."
+      ],
+      "solutions": [
+        {
+          "solution_id": "sol_99e20fa221",
+          "title": "Reactivation cadence",
+          "description": "Structured follow-up path for 'not-now' objections with timing-based nudges.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_99e20fa2210a",
+              "name": "Reactivation cadence — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_522a377fbe23",
+              "name": "Reactivation cadence — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_217032ad55",
+          "title": "Competitor migration-lite flow",
+          "description": "Enable no-rip-and-replace setup path for users locked into incumbents.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_fb8e956f879f",
+              "name": "Competitor migration-lite flow — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_217032ad55a0",
+              "name": "Competitor migration-lite flow — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_cb2408b3e1",
+          "title": "Lifecycle-specific offers",
+          "description": "Adjust onboarding and pricing offers by lifecycle stage and intent confidence.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_b49a6a242da2",
+              "name": "Lifecycle-specific offers — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_db3f33e8518c",
+              "name": "Lifecycle-specific offers — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "ost_opp_eb92cc52a7",
+      "rank": 6,
+      "topic": "integration",
+      "weighted_priority": 0.983,
+      "target_metric": "visit_to_signup_rate",
+      "problem_statement": "Users show repeated friction in 'integration' themes impacting visit_to_signup_rate.",
+      "evidence_feedback_item_ids": [],
+      "evidence_samples": [],
+      "solutions": [
+        {
+          "solution_id": "sol_7f6dccef43",
+          "title": "Connector quick-start",
+          "description": "Add fast-path setup for most requested integrations.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_7f6dccef4325",
+              "name": "Connector quick-start — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_0123e15e202f",
+              "name": "Connector quick-start — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_2a2f831282",
+          "title": "Import compatibility checker",
+          "description": "Validate input compatibility before import and show fix guidance.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_17c08a7bab36",
+              "name": "Import compatibility checker — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_2a2f83128247",
+              "name": "Import compatibility checker — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_8ecb50c63d",
+          "title": "Sync visibility panel",
+          "description": "Expose sync status and actionable errors in one place.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_7210ecc7d8cb",
+              "name": "Sync visibility panel — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_d86be2fd97c1",
+              "name": "Sync visibility panel — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "opportunity_id": "ost_opp_0c95c7ece1",
+      "rank": 7,
+      "topic": "billing",
+      "weighted_priority": 0.528,
+      "target_metric": "net_new_mrr",
+      "problem_statement": "Users show repeated friction in 'billing' themes impacting net_new_mrr.",
+      "evidence_feedback_item_ids": [],
+      "evidence_samples": [],
+      "solutions": [
+        {
+          "solution_id": "sol_7f2a9ea6d3",
+          "title": "Billing workflow simplification",
+          "description": "Simplify invoice and payment status tracking in primary workflow.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_7f2a9ea6d303",
+              "name": "Billing workflow simplification — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_7855c5fdab80",
+              "name": "Billing workflow simplification — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_3d562764f1",
+          "title": "Collections reminder playbook",
+          "description": "Systematic escalation templates with deadline and response tracking.",
+          "effort_band": "low",
+          "experiments": [
+            {
+              "experiment_id": "exp_0e885bf749d4",
+              "name": "Collections reminder playbook — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_3d562764f110",
+              "name": "Collections reminder playbook — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        },
+        {
+          "solution_id": "sol_5d17a6decf",
+          "title": "Payment failure diagnostics",
+          "description": "Surface root-cause hints for failure states and recommend next action.",
+          "effort_band": "medium",
+          "experiments": [
+            {
+              "experiment_id": "exp_530dc39bf8ba",
+              "name": "Payment failure diagnostics — Variant 1",
+              "variant_plan": "ab",
+              "status": "planned"
+            },
+            {
+              "experiment_id": "exp_3573493ec00f",
+              "name": "Payment failure diagnostics — Variant 2",
+              "variant_plan": "ab",
+              "status": "planned"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Tree is generated from Stage2 weighted topic priorities and Stage1 baseline metrics.",
+    "Each opportunity includes candidate solutions and planned experiment stubs."
+  ]
+}

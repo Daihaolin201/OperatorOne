@@ -1,0 +1,23 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "feedback_events_total": 31,
+  "feedback_items_total": 31,
+  "duplicate_rate": 0.0,
+  "unknown_topic_rate": 0.129,
+  "data_lag_hours": 42.4905,
+  "missing_required_fields": {},
+  "ingest_warnings": [],
+  "events_by_adapter": {
+    "conversion_pipeline_pains": 20,
+    "sales_conversion_events": 5,
+    "sales_outreach_replies": 6
+  },
+  "feedback_type_mix": {
+    "churn_risk": 2,
+    "confusion": 17,
+    "objection": 1,
+    "other": 1,
+    "praise": 5,
+    "pricing": 5
+  }
+}

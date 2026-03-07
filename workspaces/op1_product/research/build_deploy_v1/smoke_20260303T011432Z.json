@@ -1,0 +1,47 @@
+{
+  "generated_at": "2026-03-03T01:14:52Z",
+  "base_url": "https://webproductv1app.vercel.app",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "homepage",
+      "status": "pass",
+      "http_status": 200,
+      "evidence": "Homepage reachable with expected content signature",
+      "attempts": 1
+    },
+    {
+      "name": "api_health",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "status": "ok",
+        "service": "op1-product-web-build-deploy-v1",
+        "project_id": "proj-opp_001-v1",
+        "from_opportunity_id": "opp_001",
+        "timestamp": "2026-03-03T01:14:51.347Z"
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_first_step",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "first_step": "Send a single structured follow-up message with a 48-hour clear action deadline.",
+        "next_steps_count": 3
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_signup",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "accepted": true,
+        "project_id": "proj-opp_001-v1"
+      },
+      "attempts": 1
+    }
+  ]
+}

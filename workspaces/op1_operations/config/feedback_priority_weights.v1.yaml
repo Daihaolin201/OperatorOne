@@ -1,0 +1,63 @@
+{
+  "version": "1.0",
+  "generated_by": "op1_operations_stage2_feedback",
+  "weights": {
+    "reach": 0.22,
+    "impact": 0.24,
+    "confidence": 0.16,
+    "evidence": 0.14,
+    "severity": 0.14,
+    "urgency": 0.1
+  },
+  "topic_impact": {
+    "pricing": 1.25,
+    "trust": 1.3,
+    "integration": 1.15,
+    "onboarding": 1.2,
+    "performance": 1.3,
+    "support": 1.1,
+    "billing": 1.25,
+    "retention": 1.2,
+    "general": 1.0
+  },
+  "effort_points": {
+    "pricing": 2.5,
+    "trust": 3.0,
+    "integration": 3.0,
+    "onboarding": 2.0,
+    "performance": 3.0,
+    "support": 1.5,
+    "billing": 2.5,
+    "retention": 2.0,
+    "general": 2.0
+  },
+  "stage_impact": {
+    "problem_discovery": 1.05,
+    "signup_to_paid": 1.25,
+    "post_purchase": 1.15,
+    "unknown": 1.0
+  },
+  "feedback_type_revenue_weight": {
+    "objection": 1.25,
+    "churn_risk": 1.3,
+    "bug": 1.3,
+    "confusion": 1.15,
+    "pricing": 1.2,
+    "feature_request": 1.0,
+    "praise": 0.9,
+    "other": 1.0
+  },
+  "lead_fit_multiplier": {
+    "A1": 1.0,
+    "A2": 0.9,
+    "B1": 0.8,
+    "B2": 0.7,
+    "C": 0.6,
+    "unknown": 0.65
+  },
+  "priority_tiers": {
+    "P0": 1.65,
+    "P1": 1.1,
+    "P2": 0.65
+  }
+}

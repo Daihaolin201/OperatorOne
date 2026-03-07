@@ -1,0 +1,118 @@
+{
+  "spec_version": "1.0",
+  "generated_at": "2026-03-04T01:32:59Z",
+  "project_id": "proj-opp-no-evidence-generic-operator-v1",
+  "source": {
+    "opportunity_id": "opp_no_evidence",
+    "stage": "stage2",
+    "selection_reason": "explicit_opportunity",
+    "decision_confidence": "medium",
+    "decision_weighted_score": 6.5
+  },
+  "segment": {
+    "role": "Operator",
+    "industry": "Business operations",
+    "company_size": "1-20"
+  },
+  "problem_statement": "Manual chasing creates delays and inconsistency.",
+  "value_proposition": "Turn repetitive operator work into a focused daily action system",
+  "offer": {
+    "headline": "Turn repetitive operator work into a focused daily action system",
+    "cta_label": "Join pilot",
+    "cta_type": "email_waitlist",
+    "channel_hint": "target communities"
+  },
+  "workflow": {
+    "prompt_label": "Describe your operational bottleneck",
+    "prompt_placeholder": "e.g. We keep repeating manual tasks and missing follow-ups.",
+    "primary_action_label": "Generate action workflow",
+    "rules": [
+      {
+        "id": "generic-prioritize",
+        "priority": 5,
+        "keywords": [
+          "manual",
+          "repeat",
+          "slow",
+          "bottleneck"
+        ],
+        "first_step": "List the workflow in three steps and automate the highest-friction step first.",
+        "next_steps": [
+          "Instrument one conversion metric.",
+          "Run a 14-day validation cycle.",
+          "Apply kill criteria if traction stays below threshold."
+        ]
+      }
+    ],
+    "default_response": {
+      "first_step": "Start with one user path, one measurable outcome, and one weekly review cadence.",
+      "next_steps": [
+        "Avoid adding extra features before signal appears.",
+        "Capture user feedback in structured notes.",
+        "Ship one focused iteration per cycle."
+      ]
+    }
+  },
+  "metrics": {
+    "success_metric": "Qualified intent captures",
+    "target": "At least 5 qualified leads from first 20 targeted users in 14 days",
+    "kill_criteria": [
+      "Fewer than 2 qualified intent captures after 20 targeted visitors",
+      "Core workflow completion rate below 20% in first-session usage"
+    ]
+  },
+  "pricing": {
+    "plan_a": "$19/month",
+    "plan_b": "$79/month"
+  },
+  "adapter": {
+    "name": "generic-operator",
+    "display_name": "Generic Operator Workflow",
+    "description": "Fallback adapter for opportunities without strong domain keyword match.",
+    "match_score": 0.0,
+    "match_reason": "fallback_generic"
+  },
+  "business_tests": [
+    {
+      "name": "generic_bottleneck_response",
+      "input": "We have too many manual repetitive tasks in operations.",
+      "expect_first_step_contains": [
+        "automate",
+        "highest-friction"
+      ]
+    }
+  ],
+  "proof_points": [
+    "Ships one measurable workflow instead of bloated feature sets."
+  ],
+  "faq": [
+    {
+      "question": "Is this only for one industry?",
+      "answer": "No. The adapter model is designed to support multiple business opportunity types."
+    },
+    {
+      "question": "Can we iterate quickly after launch?",
+      "answer": "Yes. Rules, modules, and tests can be updated independently without full rebuilds."
+    }
+  ],
+  "operational_checklist": [
+    "Define one measurable bottleneck.",
+    "Ship one focused workflow for that bottleneck.",
+    "Review conversion signal weekly and decide go/kill."
+  ],
+  "page_profile": "default",
+  "cta_support_text": "Join early access to validate one focused workflow before scaling scope.",
+  "mvp_boundary": {
+    "in_scope": [
+      "Single conversion-focused landing page",
+      "Email waitlist CTA",
+      "Evidence-backed proof section"
+    ],
+    "out_of_scope": [
+      "ERP integrations",
+      "Advanced billing suite",
+      "Enterprise SSO"
+    ],
+    "source": "stage3"
+  }
+}

@@ -1,0 +1,7 @@
+opportunity_id,hard_gate_pass,pain_intensity,willingness_to_pay,mvp_speed,acquisition_reachability,competitive_whitespace,recurring_usage,base_weighted_score,confidence_level,confidence_multiplier,weighted_score,decision
+opp_001,False,3.8,4.0,3.9,3.8,2.7,3.9,3.788,low,0.5,1.894,reject
+opp_002,False,3.8,4.0,3.9,3.8,2.7,3.9,3.788,low,0.5,1.894,reject
+opp_003,False,3.8,4.0,3.9,3.8,2.7,3.9,3.788,low,0.5,1.894,reject
+opp_005,False,3.8,4.0,3.9,3.8,2.7,3.3,3.728,low,0.5,1.864,reject
+opp_006,False,3.8,4.0,3.9,3.8,2.7,3.3,3.728,low,0.5,1.864,reject
+opp_004,False,3.8,2.8,3.9,3.8,2.7,3.9,3.5,low,0.5,1.75,reject

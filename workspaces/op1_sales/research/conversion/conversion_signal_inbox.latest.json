@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-03-04T21:01:08+00:00",
+  "signals": [
+    {
+      "signal_id": "",
+      "lead_id": "",
+      "signal_type": "commitment_received",
+      "detail": "",
+      "text": "",
+      "occurred_at": "",
+      "source": "manual_note"
+    }
+  ],
+  "allowed_signal_types": [
+    "closed_lost",
+    "commitment_received",
+    "conversion_stage_changed",
+    "discovery_completed",
+    "discovery_scheduled",
+    "objection_logged",
+    "objection_resolved",
+    "paid_started",
+    "pilot_offered",
+    "pilot_started",
+    "pilot_value_confirmed",
+    "terms_sent"
+  ],
+  "notes": [
+    "Fill only real conversion signals.",
+    "signal_id should be unique to avoid duplicate ingestion.",
+    "Use signal_type from allowed_signal_types list."
+  ]
+}

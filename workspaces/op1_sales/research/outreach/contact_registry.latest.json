@@ -1,0 +1,150 @@
+{
+  "generated_at": "2026-03-04T20:02:44+00:00",
+  "contacts": [
+    {
+      "lead_id": "opp_005-lead-001",
+      "channel": "email_nurture",
+      "target": "lead001@example.invalid",
+      "display_name": "Prospect 001",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-002",
+      "channel": "email_nurture",
+      "target": "lead002@example.invalid",
+      "display_name": "Prospect 002",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-003",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-004",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-005",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-006",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-007",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-008",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-009",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-010",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-011",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-012",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-013",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-014",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-015",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-016",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-017",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-018",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-019",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    },
+    {
+      "lead_id": "opp_005-lead-020",
+      "channel": "email_nurture",
+      "target": "",
+      "display_name": "",
+      "notes": "Fill real recipient target before live send."
+    }
+  ],
+  "notes": [
+    "One row per lead + channel route.",
+    "Use email address for email_nurture; profile handle/url for linkedin.",
+    "Leave target blank to keep lead in manual route."
+  ]
+}

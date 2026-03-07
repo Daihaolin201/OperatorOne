@@ -1,0 +1,16 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "signups_total": 13,
+  "qualified_signups": 13,
+  "paid_customers": 1,
+  "qualification_rate": 1.0,
+  "duplicate_signup_leads": [
+    "opp_005-lead-002"
+  ],
+  "duplicate_signup_leads_count": 1,
+  "opt_out_count": 1,
+  "qualified_signup_by_source": {
+    "email_nurture": 1,
+    "manual_export": 13
+  }
+}

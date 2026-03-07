@@ -1,0 +1,8 @@
+{
+  "deployed_at": "2026-03-03T12:24:05Z",
+  "target": "production",
+  "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_v1_app",
+  "deployment_url": "https://webproductv1-l9bfmp1ia-superme1.vercel.app",
+  "public_url": "https://webproductv1app.vercel.app",
+  "log_file": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/deploy_20260303T122349Z.log"
+}

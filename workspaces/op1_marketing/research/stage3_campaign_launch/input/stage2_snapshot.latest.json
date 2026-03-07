@@ -1,0 +1,58 @@
+{
+  "generated_at": "2026-03-07T19:32:51Z",
+  "snapshot_id": "stage3snap_20260307193251_ead5f0506cce44fe",
+  "workspace_root": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing",
+  "requirements": [
+    {
+      "id": "stage2_run",
+      "path": "research/stage2_content_publish/run.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
+      "exists": true,
+      "sha256": "8367ca3bf9be2f2d55d6e02d39f72f68b567e064f63159e95e8bdb3a85a42b22",
+      "size": 4444,
+      "mtime": 1772910678
+    },
+    {
+      "id": "stage2_backlog",
+      "path": "research/stage2_content_publish/content.backlog.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
+      "exists": true,
+      "sha256": "8150cda70a33ed11c3320eaef8093cc8fb601d50e56112e705d9d7b1e8f25650",
+      "size": 23574,
+      "mtime": 1772910678
+    },
+    {
+      "id": "stage2_queue",
+      "path": "research/stage2_content_publish/publish.queue.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
+      "exists": true,
+      "sha256": "d78878dfa331b1a15624f268a4d654231660a8dc534045db4ddfadb6d842d17f",
+      "size": 24520,
+      "mtime": 1772910678
+    },
+    {
+      "id": "stage2_qa",
+      "path": "research/stage2_content_publish/qa.latest.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
+      "exists": true,
+      "sha256": "84298a4c6454c3b361ee71025d8f6496f827c606863c5a170766b46569b44cd5",
+      "size": 5798,
+      "mtime": 1772910642
+    },
+    {
+      "id": "product_to_marketing_handoff",
+      "path": "../../handoffs/product_to_marketing.json",
+      "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
+      "exists": true,
+      "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09",
+      "size": 1861,
+      "mtime": 1772910493
+    }
+  ],
+  "completeness": {
+    "required": 5,
+    "available": 5,
+    "missing": [],
+    "ratio": 1.0
+  }
+}

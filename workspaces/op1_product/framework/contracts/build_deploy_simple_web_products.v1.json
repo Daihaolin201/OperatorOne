@@ -1,0 +1,6 @@
+{
+  "capability": "build_deploy_simple_web_products_v1",
+  "status": "superseded_by_v1.1",
+  "superseded_contract": "framework/contracts/build_deploy_simple_web_products.v1.1.json",
+  "notes": "v1 kept for backward compatibility; v1.1 adds project-spec input model, adapter-driven generation, and business-rule tests."
+}

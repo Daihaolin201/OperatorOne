@@ -1,0 +1,25 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "rows": [
+    {
+      "date": "2026-03-04",
+      "sessions": 0.0,
+      "qualified_signups": 13,
+      "paid_customers": 1,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0769,
+      "visit_to_paid_rate": 0.0,
+      "net_new_mrr": 49.0
+    },
+    {
+      "date": "2026-03-07",
+      "sessions": 905.66,
+      "qualified_signups": 0,
+      "paid_customers": 0,
+      "visit_to_signup_rate": 0.0,
+      "signup_to_paid_rate": 0.0,
+      "visit_to_paid_rate": 0.0,
+      "net_new_mrr": 0.0
+    }
+  ]
+}

@@ -1,0 +1,1093 @@
+{
+  "generated_at": "2026-03-04T19:55:27+00:00",
+  "builder": "workspaces/op1_sales/scripts/build_outreach_stage2.py",
+  "mode": "approval_required",
+  "inputs": {
+    "prospect_queue": "workspaces/op1_sales/research/prospecting/prospect_queue.latest.json",
+    "marketing_to_sales": "handoffs/marketing_to_sales.json"
+  },
+  "segment": {
+    "rank_index": 4,
+    "opportunity_id": "opp_006",
+    "segment_name": "Spreadsheet/PDF workflow fragility",
+    "priority_score": 89.32
+  },
+  "summary": {
+    "leads_total": 20,
+    "qualified_leads": 12,
+    "low_fit_leads": 8,
+    "send_ready_leads": 12,
+    "review_required_leads": 8,
+    "band_counts": {
+      "A1": 7,
+      "A2": 7,
+      "B1": 6
+    },
+    "preferred_channels": [
+      "email_nurture",
+      "linkedin",
+      "organic_search"
+    ],
+    "dispatch_ready": false,
+    "dispatch_blockers": [
+      "manual_approval_required",
+      "channel_config_not_verified"
+    ]
+  },
+  "leads": [
+    {
+      "lead_id": "opp_006-lead-001",
+      "rank": 1,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Why does salesforce ERP integration feel so painful?",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1n4xwcx/why_does_salesforce_erp_integration_feel_so/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 2.3381,
+        "queries_matched": [
+          "spreadsheet errors"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Why does salesforce ERP integration feel so painful?",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1n4xwcx/why_does_salesforce_erp_integration_feel_so/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-002",
+      "rank": 2,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "电商老板/运营负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Unpopular opinion: Beautiful catalogs are overrated. Accurate ones are what sell.",
+      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1r4g2qd/unpopular_opinion_beautiful_catalogs_are/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "ecommerce",
+        "signal_score": 2.9258,
+        "queries_matched": [
+          "manual order fraud checks"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Unpopular opinion: Beautiful catalogs are overrated...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1r4g2qd/unpopular_opinion_beautiful_catalogs_are/）。\n我们最近在帮电商老板/运营负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-003",
+      "rank": 3,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "电商老板/运营负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "How do you plan on handling returns during BF/CM at scale?",
+      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1ookg2e/how_do_you_plan_on_handling_returns_during_bfcm/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "ecommerce",
+        "signal_score": 2.4124,
+        "queries_matched": [
+          "returns process painful"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：How do you plan on handling returns during BF/CM at...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1ookg2e/how_do_you_plan_on_handling_returns_during_bfcm/）。\n我们最近在帮电商老板/运营负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-004",
+      "rank": 4,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Salesforce launches Free Suite - A forever free CRM for small businesses (competing with HubS...",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1ozanf1/salesforce_launches_free_suite_a_forever_free_crm/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 2.1654,
+        "queries_matched": [
+          "inventory spreadsheet"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Salesforce launches Free Suite - A forever free CRM...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1ozanf1/salesforce_launches_free_suite_a_forever_free_crm/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-005",
+      "rank": 5,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "What's the most terrifyingly outdated piece of tech/process holding a serious business togeth...",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1k6282k/whats_the_most_terrifyingly_outdated_piece_of/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 2.1444,
+        "queries_matched": [
+          "inventory spreadsheet"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：What's the most terrifyingly outdated piece of tech...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1k6282k/whats_the_most_terrifyingly_outdated_piece_of/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-006",
+      "rank": 6,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "How do you guys handle data entry from PDFs/Invoices without going crazy?",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1p2of5v/how_do_you_guys_handle_data_entry_from/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.6415,
+        "queries_matched": [
+          "automation too expensive"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：How do you guys handle data entry from PDFs/Invoice...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1p2of5v/how_do_you_guys_handle_data_entry_from/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-007",
+      "rank": 7,
+      "priority_band": "A1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "电商老板/运营负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "E-commerce Industry News Recap 🔥 Week of Aug 25th, 2025",
+      "evidence_url": "https://www.reddit.com/r/ecommerce/comments/1n01foq/ecommerce_industry_news_recap_week_of_aug_25th/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "ecommerce",
+        "signal_score": 1.6375,
+        "queries_matched": [
+          "refund abuse"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 2,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        },
+        {
+          "step": 3,
+          "day_offset": 4,
+          "channel": "email_nurture",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：E-commerce Industry News Recap 🔥 Week of Aug 25th, ...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility能否一周内先降手工负担？",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/ecommerce/comments/1n01foq/ecommerce_industry_news_recap_week_of_aug_25th/）。\n我们最近在帮电商老板/运营负责人处理类似问题。你这个场景紧迫度很高，通常先做不改系统的轻量试点。\n建议第一步：先解决PDF到表格的高频录入场景，降低错误率。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先解决PDF到表格的高频录入场景，降低错误率。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-008",
+      "rank": 8,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "wife's opening her second location next month and realized she have zero systems that work ac...",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1rfak4c/wifes_opening_her_second_location_next_month_and/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.6351,
+        "queries_matched": [
+          "inventory spreadsheet"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：wife's opening her second location next month and r...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1rfak4c/wifes_opening_her_second_location_next_month_and/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-009",
+      "rank": 9,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "How do you choose between different business process automation platforms .",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r8rjcv/how_do_you_choose_between_different_business/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.6048,
+        "queries_matched": [
+          "automation too expensive"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：How do you choose between different business proces...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1r8rjcv/how_do_you_choose_between_different_business/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-010",
+      "rank": 10,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "物业管理负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Help With Resume Please",
+      "evidence_url": "https://www.reddit.com/r/PropertyManagement/comments/1poxm9p/help_with_resume_please/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "PropertyManagement",
+        "signal_score": 1.5265,
+        "queries_matched": [
+          "google sheets operations"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Help With Resume Please",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/PropertyManagement/comments/1poxm9p/help_with_resume_please/）。\n我们最近在帮物业管理负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-011",
+      "rank": 11,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "What’s the best way to handle scheduling when you’re not always by the phone?",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1jyoodg/whats_the_best_way_to_handle_scheduling_when/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.4196,
+        "queries_matched": [
+          "double booking"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：What’s the best way to handle scheduling when you’r...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1jyoodg/whats_the_best_way_to_handle_scheduling_when/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-012",
+      "rank": 12,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Inventory Management Software for Very Small Business",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qhn7ea/inventory_management_software_for_very_small/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.3594,
+        "queries_matched": [
+          "inventory spreadsheet"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Inventory Management Software for Very Small Business",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1qhn7ea/inventory_management_software_for_very_small/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-013",
+      "rank": 13,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "I automated part of my current full time job, now I'm thinking i want to do this as a business",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1lr5rab/i_automated_part_of_my_current_full_time_job_now/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.3466,
+        "queries_matched": [
+          "automation too expensive"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：I automated part of my current full time job, now I...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1lr5rab/i_automated_part_of_my_current_full_time_job_now/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-014",
+      "rank": 14,
+      "priority_band": "A2",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Reporting/bookkeeping",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1r09vdc/reportingbookkeeping/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.3182,
+        "queries_matched": [
+          "inventory spreadsheet"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        },
+        {
+          "step": 2,
+          "day_offset": 3,
+          "channel": "linkedin",
+          "touch_type": "follow_up"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Reporting/bookkeeping",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility：先做小改造，少走弯路",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1r09vdc/reportingbookkeeping/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先上关键字段抽取+人工复核，稳步替换手工。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先上关键字段抽取+人工复核，稳步替换手工。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-015",
+      "rank": 15,
+      "priority_band": "B1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Best salon commission tracking software to end payroll disputes",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1ovygtx/best_salon_commission_tracking_software_to_end/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.2868,
+        "queries_matched": [
+          "spreadsheet errors"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Best salon commission tracking software to end payr...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility的低成本试点建议",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1ovygtx/best_salon_commission_tracking_software_to_end/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从一个流程改造，低风险验证。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从一个流程改造，低风险验证。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-016",
+      "rank": 16,
+      "priority_band": "B1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "I've just gotten sucker-punched by 2 Excel quotation mishaps in a row",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qga1v1/ive_just_gotten_suckerpunched_by_2_excel/",
+      "fit_hits": 2,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.2659,
+        "queries_matched": [
+          "spreadsheet errors"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：I've just gotten sucker-punched by 2 Excel quotatio...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility的低成本试点建议",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1qga1v1/ive_just_gotten_suckerpunched_by_2_excel/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从一个流程改造，低风险验证。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从一个流程改造，低风险验证。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-017",
+      "rank": 17,
+      "priority_band": "B1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "CRM Systems: When You Actually Need One vs When You Think You Do",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1nhfusa/crm_systems_when_you_actually_need_one_vs_when/",
+      "fit_hits": 0,
+      "fit_status": "low_fit",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.2591,
+        "queries_matched": [
+          "automation too expensive"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：CRM Systems: When You Actually Need One vs When You...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility的低成本试点建议",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1nhfusa/crm_systems_when_you_actually_need_one_vs_when/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从一个流程改造，低风险验证。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从一个流程改造，低风险验证。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。",
+        "低匹配线索：发送前必须人工复核后再入正式触达批次。"
+      ],
+      "status": "needs_review"
+    },
+    {
+      "lead_id": "opp_006-lead-018",
+      "rank": 18,
+      "priority_band": "B1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Numbers making sense? Looking for opinions ...",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1nho95n/numbers_making_sense_looking_for_opinions/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.2552,
+        "queries_matched": [
+          "spreadsheet errors"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Numbers making sense? Looking for opinions ...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility的低成本试点建议",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1nho95n/numbers_making_sense_looking_for_opinions/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从一个流程改造，低风险验证。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从一个流程改造，低风险验证。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-019",
+      "rank": 19,
+      "priority_band": "B1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "How do you verify changes when clients send revised Excel/CSV files?",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qgulif/how_do_you_verify_changes_when_clients_send/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.2399,
+        "queries_matched": [
+          "manual reporting"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：How do you verify changes when clients send revised...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility的低成本试点建议",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1qgulif/how_do_you_verify_changes_when_clients_send/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从一个流程改造，低风险验证。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从一个流程改造，低风险验证。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    },
+    {
+      "lead_id": "opp_006-lead-020",
+      "rank": 20,
+      "priority_band": "B1",
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "inferred_role": "SMB老板/财务负责人",
+      "target_company_size": "5-80",
+      "target_industry": "SMB operations/logistics",
+      "pain_signal": "Small Built to order manufacturing company looking for new accounting software",
+      "evidence_url": "https://www.reddit.com/r/smallbusiness/comments/1qqf6nk/small_built_to_order_manufacturing_company/",
+      "fit_hits": 1,
+      "fit_status": "qualified",
+      "source": {
+        "subreddit": "smallbusiness",
+        "signal_score": 1.1574,
+        "queries_matched": [
+          "inventory spreadsheet"
+        ]
+      },
+      "channel_plan": [
+        {
+          "step": 1,
+          "day_offset": 0,
+          "channel": "email_nurture",
+          "touch_type": "initial"
+        }
+      ],
+      "message_pack": {
+        "email_nurture": {
+          "subject_control": "关于Spreadsheet/PDF workflow fragility：Small Built to order manufacturing company looking ...",
+          "subject_challenger": "Spreadsheet/PDF workflow fragility的低成本试点建议",
+          "body": "你好，看到你在Spreadsheet/PDF workflow fragility相关讨论中的信号（https://www.reddit.com/r/smallbusiness/comments/1qqf6nk/small_built_to_order_manufacturing_company/）。\n我们最近在帮SMB老板/财务负责人处理类似问题。这个场景我们建议先从最耗时环节切入。\n建议第一步：先从一个流程改造，低风险验证。\n如果你愿意，我可以给你一份一页版执行清单（本周可落地）。"
+        },
+        "linkedin": {
+          "initial": "看到你在Spreadsheet/PDF workflow fragility上的讨论，我们最近用一个轻量流程把这类手工环节压下来了。如果你有兴趣，我发你一个可直接照搬的做法：先从一个流程改造，低风险验证。",
+          "follow_up": "补一条：如果你愿意，我可以把‘先试点再扩展’的步骤发你，全程不要求替换你现有系统。"
+        }
+      },
+      "assumptions": [
+        "角色画像由 subreddit + ICP 规则推断，需人工二次确认。",
+        "该线索来自公开讨论信号，不等于已确认购买权限。",
+        "默认优先使用 email_nurture / linkedin，如通道不可用则走 manual_export。"
+      ],
+      "status": "queued"
+    }
+  ]
+}

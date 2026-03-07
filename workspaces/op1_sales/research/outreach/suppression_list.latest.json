@@ -1,0 +1,8 @@
+{
+  "generated_at": "2026-03-04T20:03:26+00:00",
+  "opted_out_leads": [
+    "opp_005-lead-003"
+  ],
+  "do_not_contact": [],
+  "notes": "Append opted-out leads before any real dispatch."
+}

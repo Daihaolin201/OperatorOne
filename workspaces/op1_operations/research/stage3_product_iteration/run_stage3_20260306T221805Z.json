@@ -1,0 +1,18 @@
+{
+  "generated_at": "2026-03-06T22:18:06Z",
+  "status": "passed",
+  "pipeline": "stage3_iteration",
+  "outputs": {
+    "scoreboard_json": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/stage3_iteration_scoreboard.latest.json",
+    "scoreboard_md": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/stage3_iteration_scoreboard.latest.md",
+    "weekly_snapshot_md": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/weekly_iteration_snapshot.latest.md",
+    "reproducibility_json": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage3_product_iteration/reproducibility_report.latest.json"
+  },
+  "headline": {
+    "experiments_planned": 15,
+    "ship_count": 2,
+    "rollback_count": 0,
+    "observed_mrr_delta_30d": 15.6691,
+    "alerts_count": 0
+  }
+}

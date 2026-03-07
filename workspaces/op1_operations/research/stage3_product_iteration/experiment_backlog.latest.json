@@ -1,0 +1,1063 @@
+{
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "item_count": 15,
+  "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+  "tier_counts": {
+    "P0": 0,
+    "P1": 0,
+    "P2": 6,
+    "P3": 9
+  },
+  "experiments": [
+    {
+      "experiment_id": "exp3_c3a320476dbf99",
+      "hypothesis_id": "hyp3_64caf2060f2346",
+      "title": "pricing:budget iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P2",
+      "priority_score": 0.815099,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 54,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.010516,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_cbdeef528f65f492",
+      "linked_theme_id": "theme_6807b009f8",
+      "linked_opportunity_id": "ost_opp_1e2ea6d9b7",
+      "recommended_action": "Design low-risk pilot offer with ROI proof and objection-handling script.",
+      "expected_signup_delta_30d": 1.4982,
+      "expected_paid_delta_30d": 0.1152,
+      "expected_mrr_delta_30d": 6.7742,
+      "effort_band": "low",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.844499,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "budget"
+      ],
+      "rank": 1
+    },
+    {
+      "experiment_id": "exp3_59cab733ebc263",
+      "hypothesis_id": "hyp3_1e8126e2cc6469",
+      "title": "pricing:budget iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P2",
+      "priority_score": 0.791245,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 58,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.010342,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_c2f297b35bf000f8",
+      "linked_theme_id": "theme_6807b009f8",
+      "linked_opportunity_id": "ost_opp_1e2ea6d9b7",
+      "recommended_action": "Design low-risk pilot offer with ROI proof and objection-handling script.",
+      "expected_signup_delta_30d": 1.4733,
+      "expected_paid_delta_30d": 0.1133,
+      "expected_mrr_delta_30d": 6.662,
+      "effort_band": "low",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.833615,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "This looks expensive and beyond our current budget."
+      ],
+      "rank": 2
+    },
+    {
+      "experiment_id": "exp3_cc6418573e5369",
+      "hypothesis_id": "hyp3_051065acd972fb",
+      "title": "retention:timing_hold iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P2",
+      "priority_score": 0.735945,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 62,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.009938,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_0ef866c13de81729",
+      "linked_theme_id": "theme_160088b470",
+      "linked_opportunity_id": "ost_opp_8e22012440",
+      "recommended_action": "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+      "expected_signup_delta_30d": 1.4158,
+      "expected_paid_delta_30d": 0.1089,
+      "expected_mrr_delta_30d": 5.3349,
+      "effort_band": "low",
+      "risk_band": "low",
+      "stage3_weighted_score": 0.786308,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "Not now. Please circle back next quarter."
+      ],
+      "rank": 3
+    },
+    {
+      "experiment_id": "exp3_05035039912c10",
+      "hypothesis_id": "hyp3_df5001a0774293",
+      "title": "trust:unsubscribe iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P2",
+      "priority_score": 0.819397,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 52,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.010548,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_4516a28f68345620",
+      "linked_theme_id": "theme_e2fef3d9d6",
+      "linked_opportunity_id": "ost_opp_f796e2f28a",
+      "recommended_action": "Audit outreach relevance and tighten targeting + permission controls.",
+      "expected_signup_delta_30d": 1.5026,
+      "expected_paid_delta_30d": 0.1156,
+      "expected_mrr_delta_30d": 6.7944,
+      "effort_band": "medium",
+      "risk_band": "high",
+      "stage3_weighted_score": 0.763121,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "unsubscribe"
+      ],
+      "rank": 4
+    },
+    {
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "hypothesis_id": "hyp3_db97e86a69578f",
+      "title": "trust:unsubscribe iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P2",
+      "priority_score": 0.796848,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 56,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.010383,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_145b80d81931e921",
+      "linked_theme_id": "theme_e2fef3d9d6",
+      "linked_opportunity_id": "ost_opp_f796e2f28a",
+      "recommended_action": "Audit outreach relevance and tighten targeting + permission controls.",
+      "expected_signup_delta_30d": 1.4792,
+      "expected_paid_delta_30d": 0.1137,
+      "expected_mrr_delta_30d": 6.6884,
+      "effort_band": "medium",
+      "risk_band": "high",
+      "stage3_weighted_score": 0.752841,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "Please unsubscribe me from future emails."
+      ],
+      "rank": 5
+    },
+    {
+      "experiment_id": "exp3_aff51f279f27df",
+      "hypothesis_id": "hyp3_dfdb3f2f6bc8ab",
+      "title": "retention:competitor_lockin iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P2",
+      "priority_score": 0.768844,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 60,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.008143,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_63872398f74f64a7",
+      "linked_theme_id": "theme_49b6d4e231",
+      "linked_opportunity_id": "ost_opp_8e22012440",
+      "recommended_action": "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+      "expected_signup_delta_30d": 1.16,
+      "expected_paid_delta_30d": 0.0892,
+      "expected_mrr_delta_30d": 5.2453,
+      "effort_band": "low",
+      "risk_band": "low",
+      "stage3_weighted_score": 0.742257,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "No thanks, we already use another system and are not interested."
+      ],
+      "rank": 6
+    },
+    {
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "hypothesis_id": "hyp3_0b980335b45c3d",
+      "title": "pricing:roi_unclear iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P3",
+      "priority_score": 0.617049,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 72,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.007256,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_cde6408aad3cb28d",
+      "linked_theme_id": "theme_57197f0ce3",
+      "linked_opportunity_id": "ost_opp_1e2ea6d9b7",
+      "recommended_action": "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+      "expected_signup_delta_30d": 1.0337,
+      "expected_paid_delta_30d": 0.0795,
+      "expected_mrr_delta_30d": 4.6741,
+      "effort_band": "low",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.65964,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "The real ROI of expense management isn't the software cost - it's the hours your team gets back"
+      ],
+      "rank": 7
+    },
+    {
+      "experiment_id": "exp3_6560f49deb814a",
+      "hypothesis_id": "hyp3_79c187d4fc6acc",
+      "title": "general:uncategorized iteration experiment",
+      "status": "planned",
+      "owner": "operations",
+      "priority_tier": "P3",
+      "priority_score": 0.597577,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 76,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.008928,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_402714b492058f2d",
+      "linked_theme_id": "theme_9f1487a724",
+      "linked_opportunity_id": "ost_opp_0feae16d55",
+      "recommended_action": "Capture winning pattern and amplify in messaging + sales collateral.",
+      "expected_signup_delta_30d": 1.2719,
+      "expected_paid_delta_30d": 0.0978,
+      "expected_mrr_delta_30d": 4.7925,
+      "effort_band": "high",
+      "risk_band": "low",
+      "stage3_weighted_score": 0.628035,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "booked_call"
+      ],
+      "rank": 8
+    },
+    {
+      "experiment_id": "exp3_299c70c714d04e",
+      "hypothesis_id": "hyp3_58631d2f1f6410",
+      "title": "pricing:price_sensitivity iteration experiment",
+      "status": "planned",
+      "owner": "product_sales",
+      "priority_tier": "P3",
+      "priority_score": 0.612612,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "signup_to_paid_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 74,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_dff6fd2b9cd41b4e",
+      "linked_theme_id": "theme_dee49c67ef",
+      "linked_opportunity_id": "ost_opp_1e2ea6d9b7",
+      "recommended_action": "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.9043,
+      "effort_band": "low",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.354152,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "small business bookkeeping feels like another job"
+      ],
+      "rank": 9
+    },
+    {
+      "experiment_id": "exp3_bd55e0ff614989",
+      "hypothesis_id": "hyp3_fc01d96b6542eb",
+      "title": "onboarding:manual_work iteration experiment",
+      "status": "planned",
+      "owner": "product",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "visit_to_signup_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 64,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_c0c51a7ced1c2fe7",
+      "linked_theme_id": "theme_befae57db1",
+      "linked_opportunity_id": "ost_opp_a4963c4996",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.7536,
+      "effort_band": "medium",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.27389,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "I’m tired of bookkeeping for my husband’s business"
+      ],
+      "rank": 10
+    },
+    {
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "hypothesis_id": "hyp3_013a3f86cfdd51",
+      "title": "onboarding:manual_work iteration experiment",
+      "status": "planned",
+      "owner": "product",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "progressive_rollout",
+      "primary_metric": "visit_to_signup_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 66,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_d56174f308ac5028",
+      "linked_theme_id": "theme_befae57db1",
+      "linked_opportunity_id": "ost_opp_a4963c4996",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.7536,
+      "effort_band": "medium",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.27389,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping"
+      ],
+      "rank": 11
+    },
+    {
+      "experiment_id": "exp3_4d927033157cf9",
+      "hypothesis_id": "hyp3_392693a2b57785",
+      "title": "onboarding:manual_work iteration experiment",
+      "status": "planned",
+      "owner": "product",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 68,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_df1923c65baa3f9a",
+      "linked_theme_id": "theme_befae57db1",
+      "linked_opportunity_id": "ost_opp_a4963c4996",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.7536,
+      "effort_band": "medium",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.27389,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni..."
+      ],
+      "rank": 12
+    },
+    {
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "hypothesis_id": "hyp3_63064ef0647ab5",
+      "title": "onboarding:manual_work iteration experiment",
+      "status": "planned",
+      "owner": "product",
+      "priority_tier": "P3",
+      "priority_score": 0.631173,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 70,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_20cd1163dd14c475",
+      "linked_theme_id": "theme_befae57db1",
+      "linked_opportunity_id": "ost_opp_a4963c4996",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.7536,
+      "effort_band": "medium",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.27389,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "How do you all handle employee expenses without losing your mind?"
+      ],
+      "rank": 13
+    },
+    {
+      "experiment_id": "exp3_25b8181f08a498",
+      "hypothesis_id": "hyp3_f0ebc0404ce976",
+      "title": "onboarding:manual_work iteration experiment",
+      "status": "planned",
+      "owner": "product",
+      "priority_tier": "P3",
+      "priority_score": 0.593615,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 78,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_d845182f6a359199",
+      "linked_theme_id": "theme_befae57db1",
+      "linked_opportunity_id": "ost_opp_a4963c4996",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.7536,
+      "effort_band": "medium",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.271073,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "Need advice: Wholesale account owes me $25K and keeps ghosting me"
+      ],
+      "rank": 14
+    },
+    {
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "hypothesis_id": "hyp3_56c86e84d3c465",
+      "title": "onboarding:manual_work iteration experiment",
+      "status": "planned",
+      "owner": "product",
+      "priority_tier": "P3",
+      "priority_score": 0.593615,
+      "targeting": {
+        "segment": {
+          "role": "Freelancer / small service owner",
+          "company_size": "1-20",
+          "industry": "Professional services"
+        },
+        "country": "ALL",
+        "device": "all",
+        "traffic_scope": "eligible_new_and_returning"
+      },
+      "variant_plan": "ab",
+      "primary_metric": "visit_to_signup_rate",
+      "guardrail_metrics": {
+        "unsubscribe_rate": {
+          "max_delta_pp": 0.01
+        },
+        "error_rate": {
+          "max_delta_pp": 0.03
+        },
+        "p95_latency_ms": {
+          "max_value": 1200
+        },
+        "data_lag_hours": {
+          "max_value": 24
+        },
+        "srm_ratio_deviation": {
+          "max_value": 0.1
+        }
+      },
+      "sample_target": 80,
+      "minimum_runtime_days": 7,
+      "stop_rules": [
+        "Stop if guardrail breach is detected at any checkpoint.",
+        "Stop if SRM deviation exceeds configured threshold.",
+        "Stop if runtime reaches 2x minimum_runtime_days with no directional movement."
+      ],
+      "success_criteria": {
+        "primary_metric_lift_pp": 0.001404,
+        "confidence_score_min": 0.7,
+        "guardrail_breach": false
+      },
+      "rollback_criteria": {
+        "any_guardrail_breach": true,
+        "unsubscribe_rate_delta_pp": 0.01,
+        "error_rate_delta_pp": 0.03
+      },
+      "linked_feedback_item_id": "fi_1038de67ceb262c3",
+      "linked_theme_id": "theme_befae57db1",
+      "linked_opportunity_id": "ost_opp_a4963c4996",
+      "recommended_action": "Simplify first-time setup and ship guided checklist for primary job-to-be-done.",
+      "expected_signup_delta_30d": 0.2,
+      "expected_paid_delta_30d": 0.0154,
+      "expected_mrr_delta_30d": 0.7536,
+      "effort_band": "medium",
+      "risk_band": "medium",
+      "stage3_weighted_score": 0.271073,
+      "decision_policy_ref": "workspaces/op1_operations/contracts/stage3_decision_policy.v1.json",
+      "evidence_examples": [
+        "Business bank account for contractors that separates job income automatically or am I asking ..."
+      ],
+      "rank": 15
+    }
+  ]
+}

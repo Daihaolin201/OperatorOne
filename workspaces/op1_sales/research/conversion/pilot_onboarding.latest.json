@@ -1,0 +1,59 @@
+{
+  "generated_at": "2026-03-07T18:46:38+00:00",
+  "builder": "workspaces/op1_sales/scripts/track_pilot_onboarding_stage3.py",
+  "inputs": {
+    "conversion_pipeline": "workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json",
+    "conversion_events": "workspaces/op1_sales/research/conversion/conversion_events.latest.jsonl",
+    "blueprint": "workspaces/op1_product/research/stage3_mvp_scope/project_blueprint.json"
+  },
+  "summary": {
+    "pilot_candidates": 1,
+    "pilot_active": 0,
+    "value_confirmed": 1,
+    "at_risk": 0,
+    "median_ttfv_hours": 0.0
+  },
+  "pilots": [
+    {
+      "lead_id": "opp_005-lead-019",
+      "opportunity_id": "opp_005",
+      "current_stage": "paid_started",
+      "pilot_started_at": "2026-03-04T20:03:26+00:00",
+      "first_value_at": "",
+      "ttfv_hours": 0.0,
+      "onboarding_risk": "none",
+      "rescue_actions": [],
+      "tasks": [
+        {
+          "task_id": "task_01",
+          "label": "Collect overdue invoice data via spreadsheet template and normalize fields.",
+          "status": "done"
+        },
+        {
+          "task_id": "task_02",
+          "label": "Tag each account into response-state buckets (responsive/ghosting/disputed).",
+          "status": "done"
+        },
+        {
+          "task_id": "task_03",
+          "label": "Generate daily follow-up queue and review with operator.",
+          "status": "done"
+        },
+        {
+          "task_id": "task_04",
+          "label": "Approve/send template-based reminders manually and log outcomes.",
+          "status": "done"
+        },
+        {
+          "task_id": "task_05",
+          "label": "Capture willingness-to-pay, objections, and recovery outcomes weekly.",
+          "status": "done"
+        }
+      ],
+      "assumptions": [
+        "TTFV以可验证价值事件记录为准。",
+        "若缺少真实事件，状态按阶段推断并标注风险。"
+      ]
+    }
+  ]
+}

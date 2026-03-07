@@ -1,0 +1,34 @@
+{
+  "batch_id": "batch-2026-03-04T195527+0000",
+  "generated_at": "2026-03-04T19:55:27+00:00",
+  "approval_required": true,
+  "approved": false,
+  "mode": "approval_required",
+  "segment": {
+    "opportunity_id": "opp_006",
+    "segment_name": "Spreadsheet/PDF workflow fragility"
+  },
+  "lead_ids": [
+    "opp_006-lead-001",
+    "opp_006-lead-004",
+    "opp_006-lead-005",
+    "opp_006-lead-006",
+    "opp_006-lead-008",
+    "opp_006-lead-012",
+    "opp_006-lead-014",
+    "opp_006-lead-015",
+    "opp_006-lead-016",
+    "opp_006-lead-018",
+    "opp_006-lead-019",
+    "opp_006-lead-020"
+  ],
+  "eligible_count": 12,
+  "dispatch_policy": {
+    "max_send_per_day": 20,
+    "frequency_cap_hours": 48,
+    "channel_fallback": "manual_export"
+  },
+  "approved_at": "",
+  "approved_by": "",
+  "approval_note": "Set approved=true and fill approved_at/by before any dispatch script can run."
+}

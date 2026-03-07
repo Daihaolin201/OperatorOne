@@ -1,0 +1,39 @@
+{
+  "generated_at": "2026-03-04T01:25:29Z",
+  "base_url": "https://webproductlandingstage3opp002.vercel.app",
+  "page_mode": "landing",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "homepage",
+      "status": "pass",
+      "http_status": 200,
+      "evidence": "Homepage reachable with modular signatures",
+      "attempts": 1
+    },
+    {
+      "name": "api_health",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "status": "ok",
+        "service": "op1-product-web-build-deploy-v1.1",
+        "project_id": "proj-opp-002-chargeback-response-v1",
+        "from_opportunity_id": "opp_002",
+        "adapter": "chargeback-response",
+        "timestamp": "2026-03-04T01:25:28.939Z"
+      },
+      "attempts": 1
+    },
+    {
+      "name": "api_signup",
+      "status": "pass",
+      "http_status": 200,
+      "payload": {
+        "accepted": true,
+        "project_id": "proj-opp-002-chargeback-response-v1"
+      },
+      "attempts": 1
+    }
+  ]
+}

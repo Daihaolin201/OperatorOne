@@ -1,0 +1,52 @@
+{
+  "generated_at": "2026-03-04T01:29:06Z",
+  "landing_package": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1_stage3_opp002/landing_package.json",
+  "status": "passed",
+  "checks": [
+    {
+      "name": "contract_identity",
+      "status": "pass",
+      "detail": "capability/mode/version/page_mode must match contract"
+    },
+    {
+      "name": "required_keys",
+      "status": "pass",
+      "detail": "missing=[]"
+    },
+    {
+      "name": "traceability_gate",
+      "status": "pass",
+      "detail": "coverage=1.0; unmapped=[]; status=provisional_ready"
+    },
+    {
+      "name": "section_baseline",
+      "status": "pass",
+      "detail": "section_ids=['hero_problem', 'problem_agitation', 'benefit_bullets', 'proof_points', 'faq_list', 'cta_waitlist']"
+    },
+    {
+      "name": "no_demo_modules_in_section_plan",
+      "status": "pass",
+      "detail": "forbidden_present=[]"
+    },
+    {
+      "name": "cta_baseline",
+      "status": "pass",
+      "detail": "primary={'label': 'Join dispute pilot', 'type': 'email_waitlist', 'module_id': 'cta_waitlist', 'support_text': 'Join pilot to standardize dispute evidence and reduce preventable losses.'}"
+    },
+    {
+      "name": "traceability_map_shape",
+      "status": "pass",
+      "detail": "claim_count=5; status=provisional_ready"
+    },
+    {
+      "name": "quality_gate_presence",
+      "status": "pass",
+      "detail": "missing=[]"
+    },
+    {
+      "name": "status_gate_consistency",
+      "status": "pass",
+      "detail": "status=provisional_ready; failures=0"
+    }
+  ]
+}

@@ -1,0 +1,139 @@
+{
+  "generated_at": "2026-03-03T16:31:15Z",
+  "run_id": "20260303T163053Z",
+  "status": "passed",
+  "capability": "build_deploy_simple_web_products_v1.1",
+  "input": {
+    "mode": "project_spec",
+    "legacy_blueprint_path": null,
+    "project_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.reporting.json",
+    "project_id": "proj-opp-001-client-reporting-v1",
+    "from_opportunity_id": "opp_001",
+    "adapter_name": "client-reporting",
+    "page_strategy_test_enabled": "yes"
+  },
+  "output": {
+    "app_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/runtime/web_product_modular_reporting",
+    "deployed_url": "https://webproductmodularreporting.vercel.app",
+    "artifact_dir": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting",
+    "scaffold_summary": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/scaffold_20260303T163053Z.json",
+    "page_spec_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/page_spec_20260303T163053Z.json",
+    "smoke_test_report": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/smoke_20260303T163053Z.json",
+    "page_strategy_test_report": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/page_strategy_20260303T163053Z.json",
+    "business_test_report": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/business_20260303T163053Z.json",
+    "deploy_log_hint": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/modular_matrix/reporting/deploy_latest.json"
+  },
+  "checks": {
+    "deployment_health_gate": "passed",
+    "smoke_status": "passed",
+    "page_strategy_status": "passed",
+    "business_status": "passed",
+    "smoke_checks": [
+      {
+        "name": "homepage",
+        "status": "pass",
+        "http_status": 200,
+        "evidence": "Homepage reachable with modular signatures",
+        "attempts": 1
+      },
+      {
+        "name": "api_health",
+        "status": "pass",
+        "http_status": 200,
+        "payload": {
+          "status": "ok",
+          "service": "op1-product-web-build-deploy-v1.1",
+          "project_id": "proj-opp-001-client-reporting-v1",
+          "from_opportunity_id": "opp_001",
+          "adapter": "client-reporting",
+          "timestamp": "2026-03-03T16:31:13.484Z"
+        },
+        "attempts": 1
+      },
+      {
+        "name": "api_first_step",
+        "status": "pass",
+        "http_status": 200,
+        "payload": {
+          "first_step": "Define a one-page KPI summary template before adding channel-specific detail.",
+          "next_steps_count": 3
+        },
+        "attempts": 1
+      },
+      {
+        "name": "api_signup",
+        "status": "pass",
+        "http_status": 200,
+        "payload": {
+          "accepted": true,
+          "project_id": "proj-opp-001-client-reporting-v1"
+        },
+        "attempts": 1
+      }
+    ],
+    "page_strategy_checks": [
+      {
+        "name": "module_presence",
+        "status": "pass",
+        "expected_count": 7,
+        "detected_count": 7,
+        "attempts": 1
+      },
+      {
+        "name": "module_order",
+        "status": "pass",
+        "expected": [
+          "hero_problem",
+          "proof_points",
+          "workflow_interactive",
+          "metric_snapshot",
+          "pricing_cards",
+          "cta_waitlist",
+          "faq_list"
+        ],
+        "detected": [
+          "hero_problem",
+          "proof_points",
+          "workflow_interactive",
+          "metric_snapshot",
+          "pricing_cards",
+          "cta_waitlist",
+          "faq_list"
+        ]
+      },
+      {
+        "name": "primary_cta_uniqueness",
+        "status": "pass",
+        "primary_cta_count": 1,
+        "max_primary_cta": 1
+      },
+      {
+        "name": "legacy_badge_removed",
+        "status": "pass"
+      }
+    ],
+    "business_checks": [
+      {
+        "name": "monthly_reporting_response",
+        "status": "pass",
+        "http_status": 200,
+        "rule_id": "monthly-reporting",
+        "first_step": "Define a one-page KPI summary template before adding channel-specific detail.",
+        "attempts": 1
+      },
+      {
+        "name": "signup_invalid_email",
+        "status": "pass",
+        "http_status": 400,
+        "payload": {
+          "error": "Valid email is required"
+        },
+        "attempts": 1
+      }
+    ]
+  },
+  "safety": {
+    "rollback_on_fail": "yes",
+    "rollback_mode": "best_effort_vercel_cli"
+  }
+}

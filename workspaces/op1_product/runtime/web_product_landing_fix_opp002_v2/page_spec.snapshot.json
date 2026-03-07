@@ -1,0 +1,190 @@
+{
+  "generated_at": "2026-03-04T01:24:28Z",
+  "page_spec_version": "1.1",
+  "project_id": "proj-opp-002-chargeback-response-v1",
+  "adapter_name": "chargeback-response",
+  "version": "1.1",
+  "meta": {
+    "title": "Respond to chargebacks faster with an evidence-first workflow",
+    "description": "Respond to chargebacks faster with an evidence-first workflow",
+    "page_mode": "landing",
+    "adapter_name": "chargeback-response",
+    "profile": "landing-chargeback-response",
+    "profile_display_name": "Chargeback Conversion Landing"
+  },
+  "layout_profile": "landing-chargeback-response",
+  "theme": {
+    "accent": "#7c3aed",
+    "surface": "#1f1147",
+    "highlight": "#c4b5fd"
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "landing",
+      "props": {
+        "headline": "Respond to chargebacks faster with an evidence-first workflow",
+        "subheadline": "For ecommerce operator teams dealing with chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+        "problem_statement": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+        "segment_label": "Ecommerce operator · Ecommerce · 1-50"
+      }
+    },
+    {
+      "module_id": "problem_agitation",
+      "kind": "landing",
+      "props": {
+        "title": "Dispute delays create preventable revenue leakage",
+        "core_pain": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+        "pain_points": [
+          "Standardize dispute packets so each case is complete on first submission.",
+          "Prioritize by value and deadline to protect near-term cashflow.",
+          "Track win/loss reasons to continuously improve fraud controls."
+        ],
+        "cost_of_inaction": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "benefit_bullets",
+      "kind": "landing",
+      "props": {
+        "title": "What changes after one sprint",
+        "items": [
+          "Run one deadline-safe dispute response loop with clearer evidence prep.",
+          "Standardize dispute packets so each case is complete on first submission.",
+          "Prioritize by value and deadline to protect near-term cashflow."
+        ]
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "landing",
+      "props": {
+        "title": "Operational proof behind this page",
+        "items": [
+          "Standardize dispute packets so each case is complete on first submission.",
+          "Prioritize by value and deadline to protect near-term cashflow.",
+          "Track win/loss reasons to continuously improve fraud controls.",
+          "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven cha…"
+        ]
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "landing",
+      "props": {
+        "title": "What teams ask before rollout",
+        "items": [
+          {
+            "question": "Does this connect directly to Stripe/Shopify?",
+            "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+          },
+          {
+            "question": "Can this support multiple dispute reasons?",
+            "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+          }
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "landing",
+      "props": {
+        "title": "Start the chargeback response pilot",
+        "description": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+        "cta_label": "Join pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "problem_agitation",
+      "benefit_bullets",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ],
+    "page_mode": "landing",
+    "required_modules": [
+      "hero_problem",
+      "proof_points",
+      "faq_list",
+      "cta_waitlist"
+    ],
+    "forbidden_modules": [
+      "workflow_interactive",
+      "metric_snapshot",
+      "evidence_checklist",
+      "social_proof_strip"
+    ],
+    "lp_section_whitelist": [
+      "benefit_bullets",
+      "cta_waitlist",
+      "faq_list",
+      "hero_problem",
+      "problem_agitation",
+      "proof_points"
+    ],
+    "forbidden_terms": [
+      "reusable web-product builder",
+      "try the workflow assistant",
+      "focused landing validation",
+      "pilot trust signals"
+    ]
+  },
+  "project_spec_snapshot": {
+    "project_id": "proj-opp-002-chargeback-response-v1",
+    "from_opportunity_id": "opp_002",
+    "adapter_name": "chargeback-response"
+  }
+}
