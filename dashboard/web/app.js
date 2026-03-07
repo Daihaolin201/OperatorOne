@@ -65,6 +65,7 @@ const els = {
   productPageProfile: document.getElementById("productPageProfile"),
   productUseVercelPreview: document.getElementById("productUseVercelPreview"),
   runProductBtn: document.getElementById("runProductBtn"),
+  runCeoAutopilotBtn: document.getElementById("runCeoAutopilotBtn"),
   productSummary: document.getElementById("productSummary"),
 
   runMarketingSeoBtn: document.getElementById("runMarketingSeoBtn"),
@@ -1874,6 +1875,7 @@ function bindActionStatusBadges() {
     [els.runRehearsalBtn, "rehearsal_e2e"],
     [els.refreshIdeasBtn, "refresh_ideas"],
     [els.runProductBtn, "run_product"],
+    [els.runCeoAutopilotBtn, "run_ceo_autopilot"],
     [els.runMarketingSeoBtn, "run_marketing_seo"],
     [els.runMarketingContentBtn, "run_marketing_content"],
     [els.runMarketingCampaignBtn, "run_marketing_campaign"],
@@ -2085,6 +2087,24 @@ function bindEvents() {
         await runStudioAction(payload, `执行 Product (${mode})`);
       } catch (err) {
         updateFeedback(`执行 Product 失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.runCeoAutopilotBtn) {
+    els.runCeoAutopilotBtn.addEventListener("click", async () => {
+      const ventureId = activeVentureId();
+      const ok = confirm("将执行 CEO Autopilot：Stage1->Stage2->Stage3，可能耗时较长。继续吗？");
+      if (!ok) return;
+      try {
+        await runStudioAction({
+          action: "run_ceo_autopilot",
+          ventureId,
+          requireApproval: true,
+          async: true,
+        }, "执行 CEO Autopilot");
+      } catch (err) {
+        updateFeedback(`执行 CEO Autopilot 失败: ${err.message}`, "error");
       }
     });
   }

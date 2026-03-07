@@ -65,6 +65,7 @@ ASYNC_ACTIONS = {
     "writeback_operations",
     "stage_preflight",
     "rehearsal_e2e",
+    "run_ceo_autopilot",
 }
 
 DUPLICATE_GUARD_ACTIONS = {
@@ -81,6 +82,7 @@ DUPLICATE_GUARD_ACTIONS = {
     "writeback_operations",
     "stage_preflight",
     "rehearsal_e2e",
+    "run_ceo_autopilot",
 }
 
 COPILOT_TIMEOUT_SECONDS = 45
@@ -3980,6 +3982,74 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         self._sync_venture_context(venture_id)
         return {"run": run, "completed": completed, "replayPath": str(replay_path.relative_to(self.repo_root))}
 
+    def _action_run_ceo_autopilot(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        goal = str(payload.get("goal") or "Reach first $100 MRR with disciplined experimentation").strip()
+        target_mrr = int(payload.get("targetMrr", 100) or 100)
+        max_days = int(payload.get("maxDays", 14) or 14)
+        max_spend = int(payload.get("maxSpend", 200) or 200)
+        max_stage2_retries = int(payload.get("maxStage2Retries", 3) or 3)
+        require_approval = bool(payload.get("requireApproval", True))
+
+        cmd = [
+            "python3",
+            "scripts/run_ceo_autopilot_v1.py",
+            "--goal",
+            goal,
+            "--target-mrr",
+            str(target_mrr),
+            "--max-days",
+            str(max_days),
+            "--max-spend",
+            str(max_spend),
+            "--max-stage2-retries",
+            str(max_stage2_retries),
+        ]
+        if not require_approval:
+            cmd.append("--no-require-approval")
+
+        step = self._command_step(
+            "run_ceo_autopilot_v1",
+            cmd,
+            cwd=self.product_dir,
+            timeout=5400,
+        )
+
+        status = "passed" if step["status"] == "passed" else "failed"
+        paths = [
+            self.product_dir / "research" / "ceo_orchestration" / "run.latest.json",
+            self.product_dir / "research" / "ceo_orchestration" / "venture_state.latest.json",
+        ]
+        artifacts = self._copy_artifacts(
+            venture_id=payload.get("ventureId") or "global",
+            stage="CEO",
+            run_id=f"ceo_{now_dt().strftime('%Y%m%d%H%M%S')}",
+            paths=paths,
+        )
+
+        run = self._record_run(
+            venture_id=payload.get("ventureId"),
+            stage="CEO",
+            action="run_ceo_autopilot",
+            mode="simulation",
+            status=status,
+            steps=[step],
+            artifacts=artifacts,
+            summary={
+                "goal": goal,
+                "targetMrr": target_mrr,
+                "maxDays": max_days,
+                "maxSpend": max_spend,
+                "requireApproval": require_approval,
+                "maxStage2Retries": max_stage2_retries,
+            },
+            error=step["stderrTail"][-500:] if status == "failed" else None,
+        )
+
+        if status != "passed":
+            raise StudioError(f"run_ceo_autopilot failed: {step['stderrTail'][:300]}")
+
+        return {"run": run, "artifacts": artifacts}
+
     def _run_vercel_audit_script(self, *, apply: bool = False, max_delete: int = 5, strategy: str = "archive") -> Dict[str, Any]:
         script = self.scripts_dir / "vercel_audit_cleanup.py"
         if not script.exists():
@@ -4895,6 +4965,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "confirm_stage_transition": self._action_confirm_stage_transition,
             "stage_preflight": self._action_stage_preflight,
             "rehearsal_e2e": self._action_rehearsal_e2e,
+            "run_ceo_autopilot": self._action_run_ceo_autopilot,
             "vercel_audit": self._action_vercel_audit,
             "vercel_cleanup_apply": self._action_vercel_cleanup_apply,
         }
