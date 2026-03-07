@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:53:17Z",
+  "generated_at": "2026-03-07T19:11:18Z",
   "status": "ok",
   "entries": [
     {
@@ -84,6 +84,69 @@
       "reason": "manual_review_requested_changes",
       "note": "approved_from_studio",
       "snapshot_id": "stage2snap_20260307015239_25c470f434e4295d"
+    },
+    {
+      "at": "2026-03-07T17:32:47Z",
+      "approved": [
+        "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "approved_from_studio",
+      "snapshot_id": "stage2snap_20260307173221_a948268416a01b8d"
+    },
+    {
+      "at": "2026-03-07T18:11:48Z",
+      "approved": [
+        "cnt_exp-opportunity-opp-003-04"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "quick_approve_single",
+      "snapshot_id": "stage2snap_20260307173221_a948268416a01b8d"
+    },
+    {
+      "at": "2026-03-07T18:12:18Z",
+      "approved": [
+        "cnt_exp-opportunity-opp-003-04"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "quick_approve_single",
+      "snapshot_id": "stage2snap_20260307181157_31c92373eb318af2"
+    },
+    {
+      "at": "2026-03-07T18:12:22Z",
+      "approved": [
+        "cnt_exp-handoff-opp-003-05"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "quick_approve_single",
+      "snapshot_id": "stage2snap_20260307181157_31c92373eb318af2"
+    },
+    {
+      "at": "2026-03-07T18:41:46Z",
+      "approved": [
+        "cnt_exp-handoff-opp-006-02",
+        "cnt_exp-handoff-opp-006-04"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "approved_from_studio",
+      "snapshot_id": "stage2snap_20260307184050_54a8f555975355ea"
+    },
+    {
+      "at": "2026-03-07T19:11:18Z",
+      "approved": [
+        "cnt_exp-opportunity-opp-001-04",
+        "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+        "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "approved_from_studio",
+      "snapshot_id": "stage2snap_20260307191042_425a1371411e0edc"
     }
   ]
 }

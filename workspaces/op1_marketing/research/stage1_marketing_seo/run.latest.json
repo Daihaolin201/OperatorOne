@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-07T01:51:57Z",
-  "run_id": "20260307T015157Z",
+  "generated_at": "2026-03-07T19:11:29Z",
+  "run_id": "20260307T191129Z",
   "capability": "marketing_seo_stage1_continuous_shadow_v1",
   "status": "passed",
   "mode": "shadow",
@@ -9,7 +9,7 @@
   "index": false,
   "run_scope": "incremental",
   "input_sync": {
-    "snapshot_id": "snap_20260307015157_bae53650007293e9",
+    "snapshot_id": "snap_20260307191129_7662b2908a554254",
     "completeness": {
       "required": 13,
       "present": 13,
@@ -18,7 +18,7 @@
     },
     "delta_counts": {
       "added": 0,
-      "changed": 6,
+      "changed": 9,
       "removed": 0
     },
     "requirements": [

@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-03-07T01:51:57Z",
+  "generated_at": "2026-03-07T19:11:29Z",
   "status": "ok",
   "scoring_version": "shadow_v1",
-  "snapshot_id": "snap_20260307015157_bae53650007293e9",
+  "snapshot_id": "snap_20260307191129_7662b2908a554254",
   "summary": {
     "experiment_count": 72,
-    "avg_overall_score": 76.81,
+    "avg_overall_score": 76.8,
     "ready_count": 45,
     "hold_count": 27,
     "drop_count": 0
@@ -19,11 +19,11 @@
       "scores": {
         "intent_match": 100.0,
         "problem_message_fit": 95.0,
-        "differentiation": 80,
+        "differentiation": 79.5,
         "conversion_readiness": 75,
         "execution_risk_penalty": 29
       },
-      "overall_score": 86.85,
+      "overall_score": 86.75,
       "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
@@ -37,11 +37,11 @@
       "scores": {
         "intent_match": 100.0,
         "problem_message_fit": 95.0,
-        "differentiation": 80,
+        "differentiation": 79.5,
         "conversion_readiness": 75,
         "execution_risk_penalty": 29
       },
-      "overall_score": 86.85,
+      "overall_score": 86.75,
       "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
@@ -192,24 +192,6 @@
       "lifecycle_status": "shadow_validated"
     },
     {
-      "experiment_id": "exp_opportunity-opp-004_02",
-      "context_id": "opportunity::opp_004",
-      "keyword": "default software output plus custom excel template",
-      "intent": "BOFU",
-      "scores": {
-        "intent_match": 92.86,
-        "problem_message_fit": 87.14,
-        "differentiation": 80,
-        "conversion_readiness": 75,
-        "execution_risk_penalty": 29
-      },
-      "overall_score": 83.1,
-      "confidence": "medium",
-      "decision": "ready",
-      "decision_reason": "score_and_risk_pass",
-      "lifecycle_status": "shadow_validated"
-    },
-    {
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
       "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
       "keyword": "chargeback disputes handled hoc causing avoidable checklist",
@@ -241,6 +223,24 @@
       },
       "overall_score": 83.05,
       "confidence": "high",
+      "decision": "ready",
+      "decision_reason": "score_and_risk_pass",
+      "lifecycle_status": "shadow_validated"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-004_02",
+      "context_id": "opportunity::opp_004",
+      "keyword": "default software output plus custom excel template",
+      "intent": "BOFU",
+      "scores": {
+        "intent_match": 92.86,
+        "problem_message_fit": 87.14,
+        "differentiation": 79.5,
+        "conversion_readiness": 75,
+        "execution_risk_penalty": 29
+      },
+      "overall_score": 83.0,
+      "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
       "lifecycle_status": "shadow_validated"
@@ -307,11 +307,11 @@
       "scores": {
         "intent_match": 90.0,
         "problem_message_fit": 84.0,
-        "differentiation": 80,
+        "differentiation": 79.5,
         "conversion_readiness": 75,
         "execution_risk_penalty": 29
       },
-      "overall_score": 81.6,
+      "overall_score": 81.5,
       "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
@@ -469,11 +469,11 @@
       "scores": {
         "intent_match": 87.5,
         "problem_message_fit": 81.25,
-        "differentiation": 80,
+        "differentiation": 79.5,
         "conversion_readiness": 75,
         "execution_risk_penalty": 29
       },
-      "overall_score": 80.29,
+      "overall_score": 80.19,
       "confidence": "medium",
       "decision": "ready",
       "decision_reason": "score_and_risk_pass",
@@ -1045,11 +1045,11 @@
       "scores": {
         "intent_match": 71.43,
         "problem_message_fit": 63.57,
-        "differentiation": 80,
+        "differentiation": 79.5,
         "conversion_readiness": 75,
         "execution_risk_penalty": 29
       },
-      "overall_score": 71.85,
+      "overall_score": 71.75,
       "confidence": "medium",
       "decision": "hold",
       "decision_reason": "needs_iteration",

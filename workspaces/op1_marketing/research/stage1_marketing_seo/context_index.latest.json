@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:51:57Z",
+  "generated_at": "2026-03-07T19:11:29Z",
   "context_count": 12,
   "contexts": [
     {
@@ -162,8 +162,8 @@
       "problem_statement": "Chargeback handling is manual, time-consuming, and causes immediate cash-flow shocks.",
       "value_proposition": "Manual evidence gathering from order systems and customer support logs.",
       "proof_points": [
-        "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
-        "Automate everything and get back to business (8243 reviews)"
+        "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
+        "Automate everything and get back to business (8283 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -196,8 +196,8 @@
       "problem_statement": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
       "value_proposition": "Manual exports and custom spreadsheet/report rewriting.",
       "proof_points": [
-        "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
-        "Build proven CRO-focused pages with pro flexible customization (5780 reviews)"
+        "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
+        "Build proven CRO-focused pages with pro flexible customization (5779 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -231,7 +231,7 @@
       "value_proposition": "Default PM software output plus custom Excel edits.",
       "proof_points": [
         "Impossible food sues to cancel earlier trademark owners",
-        "Launch HN: Finley (YC W21) – Debt capital monitoring and reporting software Hey HN! We’re Kevin, Jeremy, and Josiah, and we’re in the current YC batch. We’re building Finley (<a href=\"https:&#x2F;&#x2F;www.finleycms.com\"..."
+        "Launch HN: Recall.ai (YC W20) – API for meeting recordings and transcripts Hey HN, we&#x27;re David and Amanda from Recall.ai (<a href=\"https:&#x2F;&#x2F;www.recall.ai\">https:&#x2F;&#x2F;www.recall.ai</a>). Today we’re l..."
       ],
       "faq": [],
       "cta": {
@@ -247,8 +247,8 @@
         "hard_gate_failed"
       ],
       "priority_signals": {
-        "rank": 4,
-        "weighted_score": 1.894,
+        "rank": 6,
+        "weighted_score": 1.75,
         "decision": "reject",
         "confidence_level": "low"
       }
@@ -264,8 +264,8 @@
       "problem_statement": "Expense reimbursement remains chaotic and fraud-prone with manual checks.",
       "value_proposition": "Shared sheet + end-of-month manual reconciliation.",
       "proof_points": [
-        "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
-        "An invoice generator to easily custom and print order document (1084 reviews)"
+        "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
+        "An invoice generator to easily custom and print order document (1087 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -281,7 +281,7 @@
         "hard_gate_failed"
       ],
       "priority_signals": {
-        "rank": 5,
+        "rank": 4,
         "weighted_score": 1.864,
         "decision": "reject",
         "confidence_level": "low"
@@ -299,7 +299,7 @@
       "value_proposition": "Manual copy-paste from PDFs into spreadsheets and brittle formulas/macros.",
       "proof_points": [
         "Sync your sales channel with QuickBooks Online (2994 reviews)",
-        "Build reports with custom fields and data from other apps (1780 reviews)"
+        "Build reports with custom fields and data from other apps (1782 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -315,7 +315,7 @@
         "hard_gate_failed"
       ],
       "priority_signals": {
-        "rank": 6,
+        "rank": 5,
         "weighted_score": 1.864,
         "decision": "reject",
         "confidence_level": "low"
@@ -461,10 +461,10 @@
       }
     }
   ],
-  "snapshot_id": "snap_20260307015157_bae53650007293e9",
+  "snapshot_id": "snap_20260307191129_7662b2908a554254",
   "delta_counts": {
     "added": 0,
-    "changed": 6,
+    "changed": 9,
     "removed": 0
   }
 }

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:54:26+00:00",
+  "generated_at": "2026-03-07T18:46:54+00:00",
   "status": "passed",
   "strict_mode": false,
   "as_of": null,
@@ -24,19 +24,19 @@
   ],
   "baseline_present": true,
   "hashes": {
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/raw_events.latest.jsonl": "8f724b4f186c44ca738cd33cfd6ece7e8b84f35dc8e4caecc996be0e36e8c46b",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/identity_map.latest.json": "f78d16f75f6cbdb7c74d49d42efef21f300ab3d62cbe67b0d43929fcb5063af5",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/attribution_facts.latest.json": "865e9e92a6d113d8f294e86271d68a107a32dc4b25b1e079a362408109d88e2b",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/ingest_report.latest.json": "ac3ed79873086b540f6f2c7dc6c263b256edd49155d789cdc7d091a9f1468496",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/funnel_daily.latest.json": "6adab8ff5c125c3a336612c1dc46b11d7a3a136ccc49d167d0f6e5cf33934af6",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/revenue_mrr_daily.latest.json": "7aad0bb1c3e25b3378ca6e440f6dc85f393b765742035bf5f3b38d2f501726c3",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/channel_scoreboard.latest.json": "6393670cee75378d38d7d396e07c5bc08f2bbbfb40d35f6ff230119f74353cfb",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/traffic_quality_report.latest.json": "6c42b5984dab90ce467eb577e0c3f5da84a5064877b78fbaec902b641fbd4ea8",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/signup_quality_daily.latest.json": "d17bfa339fb840ea0a7ef3cd43ee1bda03bcd53c34c62cad1ac913b9fde52b60",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/data_quality_report.latest.json": "4854d98cb87399b279a6f14fd71660e4ee597c398a2cfad4a4a7c8b12c2465bb",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/alerts.latest.json": "0c17f480551e7c10365d5d74fdf331ba7074e7d8a7fed297dd919e69fbf25eef",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.json": "7d500f36804379352cbdccaa14a6d07bb82c6620753b05149b4f97a295f25e4c",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.md": "6f0d76db8ebbd9d3545962306d26b0fb9b02b3c8733636c028dd3a008d21f474",
-    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/weekly_kpi_snapshot.latest.md": "ad219f7bad8257a1cd239b0f7bd3e99517b43ca3a3d24b7fe960aed76b5d7c5d"
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/raw_events.latest.jsonl": "ad1e6459103c043c4c485fbfac6fef9634912f1e058ebf5967b15ac5f421354e",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/identity_map.latest.json": "ec069330eb50b1cb4aa50f30d2954990998b13cf119ae746c6e7507801a196e4",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/attribution_facts.latest.json": "bf1963e3e4ab48fbc88b1b750a4f45ef8542be3c09a5881100ddd0d0cf4cbe36",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/ingest_report.latest.json": "d3f06116af3c8fc7b4abcf71a3bd956311dbb9da0f4812142756da349a49aa9a",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/funnel_daily.latest.json": "a4a1847f31256d4be08e7d374f7f7f973efcd7e919a27a84b2379ef51b7d7db5",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/revenue_mrr_daily.latest.json": "e01be1cbf5121da6da601498aeea97932cab3b14187b04c3480e0636d619d8bb",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/channel_scoreboard.latest.json": "47acf84e2d9b4650f4294e8d427ea04db20e8b6ef1ecc88462fd72cc8e840d4c",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/traffic_quality_report.latest.json": "06da9c8a3334db4bce188338131241d07560379b39fa4bd53cbf55994560da8c",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/signup_quality_daily.latest.json": "d35e20f7df5220a1301591224ba1f0c20613aa6de86911e8bbeaaf9856b8e53a",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/data_quality_report.latest.json": "e6fd570bc4e65fdd80518fce58a6cb22041b851cebb57d57af493ffc967641af",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/alerts.latest.json": "9b9b45c5d5d9a1e8287eaa3c5898ba3af7f580ff698189e2ab7341384659ad98",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.json": "1180dfdb76679fa2319fdf3267ef37b246547735a8a100992508e1895f28cfcf",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/stage1_scoreboard.latest.md": "7287426d14a7fe567e3603e0c00be6375a91c537cebe4c068d8d3a0a914c8239",
+    "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/research/stage1_tracking/weekly_kpi_snapshot.latest.md": "f87f7b4673473acf9bb8910a67a89cae8219008d6dc9160dfe50db0c189e0417"
   }
 }

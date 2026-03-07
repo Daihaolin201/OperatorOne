@@ -1,12 +1,13 @@
 {
-  "generated_at": "2026-03-07T01:52:39Z",
-  "run_id": "20260307T015239Z",
+  "generated_at": "2026-03-07T19:10:42Z",
+  "run_id": "20260307T191042Z",
   "capability": "marketing_publish_content_stage2_shadow_v1",
   "mode": "review",
   "auto_publish": false,
   "publish_mode": "disabled",
+  "opportunity_id": "opp_001",
   "input_sync": {
-    "snapshot_id": "stage2snap_20260307015239_25c470f434e4295d",
+    "snapshot_id": "stage2snap_20260307191042_425a1371411e0edc",
     "completeness": {
       "required": 6,
       "available": 6,
@@ -15,7 +16,7 @@
     },
     "delta_counts": {
       "added": 0,
-      "changed": 6,
+      "changed": 1,
       "removed": 0
     },
     "requirements": [
@@ -24,54 +25,54 @@
         "path": "research/stage1_marketing_seo/run.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/run.latest.json",
         "exists": true,
-        "sha256": "ead4241d70784115f447c0675a70e3fd2835635bd57c38986203abdae93152d4",
+        "sha256": "7f884c4a492c994ae9b202f83cb771e216ebc204997b0de5b70f6f77e8b1c344",
         "size": 6584,
-        "mtime": 1772848317
+        "mtime": 1772908769
       },
       {
         "id": "stage1_context_index",
         "path": "research/stage1_marketing_seo/context_index.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/context_index.latest.json",
         "exists": true,
-        "sha256": "d0fc163fc6ce4d14088962a1b09e465b57e2b76899855f2b36631f9bd4a7b42a",
-        "size": 20105,
-        "mtime": 1772848317
+        "sha256": "1a49374b795ae358295d4cfd8e914b4e47dfd986bd209c45b99d18b1a7358ac6",
+        "size": 22462,
+        "mtime": 1772908769
       },
       {
         "id": "stage1_backlog",
         "path": "research/stage1_marketing_seo/experiments.backlog.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.backlog.latest.json",
         "exists": true,
-        "sha256": "abb8894e39ef413226248b3def75885ce34966e8153eebc80b0be0884826ed63",
-        "size": 102729,
-        "mtime": 1772848317
+        "sha256": "a7cd22a7f66cf0d8f03f8c62e32ab054ffe26075857b740bd026319026559dac",
+        "size": 107665,
+        "mtime": 1772908769
       },
       {
         "id": "stage1_queue",
         "path": "research/stage1_marketing_seo/experiments.queue.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.queue.latest.json",
         "exists": true,
-        "sha256": "1fd0bd918871baa7a180d4bc1f870823ad2a9854aba7bc0535b445e8ddb7bbc2",
-        "size": 27396,
-        "mtime": 1772848317
+        "sha256": "eedf439333d960116274919ee44ad5e415b43a566eb2543baca0f5e346ee988e",
+        "size": 27319,
+        "mtime": 1772908769
       },
       {
         "id": "stage1_scoreboard",
         "path": "research/stage1_marketing_seo/scoreboard.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/scoreboard.latest.json",
         "exists": true,
-        "sha256": "b842f8c15c81dc984ce7091163692a6eacfa42b84e426bd7cc9490de13f5fc24",
-        "size": 42379,
-        "mtime": 1772848317
+        "sha256": "85be03e4b413b3e60f573820862f025097b58106dfde957b9fbd7a5aa0593c89",
+        "size": 42247,
+        "mtime": 1772908769
       },
       {
         "id": "product_to_marketing_handoff",
         "path": "../../handoffs/product_to_marketing.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
         "exists": true,
-        "sha256": "f160f3ec11fd049f1679ef4d7e7c6214038559302687fe737c1313e3e2f943ba",
-        "size": 1710,
-        "mtime": 1772848237
+        "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09",
+        "size": 1861,
+        "mtime": 1772910493
       }
     ]
   },
@@ -92,14 +93,16 @@
     "avg_quality_score": 100.0
   },
   "manual_review": {
-    "at": "2026-03-07T01:53:17Z",
+    "at": "2026-03-07T19:11:18Z",
     "approved": [
-      "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
+      "cnt_exp-opportunity-opp-001-04",
+      "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
+      "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
     ],
     "needs_revision": [],
     "counts": {
-      "approved": 1,
-      "review_ready": 11,
+      "approved": 3,
+      "review_ready": 9,
       "needs_revision": 0
     }
   }

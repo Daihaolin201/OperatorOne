@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-07T01:51:57Z",
+  "generated_at": "2026-03-07T19:11:29Z",
   "status": "ok",
-  "snapshot_id": "snap_20260307015157_bae53650007293e9",
+  "snapshot_id": "snap_20260307191129_7662b2908a554254",
   "queue": {
     "ready": [
       {
@@ -9,7 +9,7 @@
         "context_id": "opportunity::opp_004",
         "keyword": "how to default software output plus custom excel",
         "intent": "BOFU",
-        "overall_score": 86.85,
+        "overall_score": 86.75,
         "confidence": "medium",
         "lifecycle_status": "shadow_validated",
         "decision_reason": "score_and_risk_pass"
@@ -19,7 +19,7 @@
         "context_id": "opportunity::opp_004",
         "keyword": "owner tenant workflows vs manual",
         "intent": "BOFU",
-        "overall_score": 86.85,
+        "overall_score": 86.75,
         "confidence": "medium",
         "lifecycle_status": "shadow_validated",
         "decision_reason": "score_and_risk_pass"
@@ -105,16 +105,6 @@
         "decision_reason": "score_and_risk_pass"
       },
       {
-        "experiment_id": "exp_opportunity-opp-004_02",
-        "context_id": "opportunity::opp_004",
-        "keyword": "default software output plus custom excel template",
-        "intent": "BOFU",
-        "overall_score": 83.1,
-        "confidence": "medium",
-        "lifecycle_status": "shadow_validated",
-        "decision_reason": "score_and_risk_pass"
-      },
-      {
         "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
         "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
         "keyword": "chargeback disputes handled hoc causing avoidable checklist",
@@ -131,6 +121,16 @@
         "intent": "MOFU",
         "overall_score": 83.05,
         "confidence": "high",
+        "lifecycle_status": "shadow_validated",
+        "decision_reason": "score_and_risk_pass"
+      },
+      {
+        "experiment_id": "exp_opportunity-opp-004_02",
+        "context_id": "opportunity::opp_004",
+        "keyword": "default software output plus custom excel template",
+        "intent": "BOFU",
+        "overall_score": 83.0,
+        "confidence": "medium",
         "lifecycle_status": "shadow_validated",
         "decision_reason": "score_and_risk_pass"
       },
@@ -169,7 +169,7 @@
         "context_id": "opportunity::opp_004",
         "keyword": "best owner tenant workflows software",
         "intent": "BOFU",
-        "overall_score": 81.6,
+        "overall_score": 81.5,
         "confidence": "medium",
         "lifecycle_status": "ready",
         "decision_reason": "score_and_risk_pass"
@@ -259,7 +259,7 @@
         "context_id": "opportunity::opp_004",
         "keyword": "owner tenant workflows pricing",
         "intent": "BOFU",
-        "overall_score": 80.29,
+        "overall_score": 80.19,
         "confidence": "medium",
         "lifecycle_status": "ready",
         "decision_reason": "score_and_risk_pass"
@@ -581,7 +581,7 @@
         "context_id": "opportunity::opp_004",
         "keyword": "owner tenant workflows tool for property manager property management",
         "intent": "BOFU",
-        "overall_score": 71.85,
+        "overall_score": 71.75,
         "confidence": "medium",
         "lifecycle_status": "scored",
         "decision_reason": "needs_iteration"

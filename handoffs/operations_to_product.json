@@ -1,5 +1,7 @@
 {
-  "generated_at": "2026-03-06T00:18:09+00:00",
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "generated_by": "workspaces/op1_operations/scripts/prioritize_stage2_feedback.py",
   "from": "op1_operations.stage2_feedback",
   "objective": "prioritized_feedback_backlog",
   "items": [
@@ -144,7 +146,5 @@
       ]
     }
   ],
-  "notes": "Items are sorted by Stage2 priority score and expected 30d MRR leverage.",
-  "contract_version": "1.0.0",
-  "generated_by": "scripts/upgrade_handoffs.py"
+  "notes": "Items are sorted by Stage2 priority score and expected 30d MRR leverage."
 }

@@ -1,6 +1,6 @@
 # Stage1 Scoreboard (Track traffic, signups, revenue)
 
-Generated at: 2026-03-07T01:54:26+00:00
+Generated at: 2026-03-07T18:46:54+00:00
 Mode: simulated_signals
 
 ## Traffic
@@ -37,9 +37,14 @@ Mode: simulated_signals
 |---|---|---|---:|---:|---:|---:|
 | email_nurture | email | unknown | 0.0 | 1 | 1 | 49.0 |
 | manual_export | manual | unknown | 0.0 | 13 | 0 | 0.0 |
-| email_nurture | email | stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02 | 662.4 | 0 | 0 | 0.0 |
-| organic_search | organic | stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02 | 176.64 | 0 | 0 | 0.0 |
-| linkedin | paid_social | stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02 | 66.62 | 0 | 0 | 0.0 |
+| email_nurture | email | stage3-cnt-exp-handoff-opp-006-04 | 235.1 | 0 | 0 | 0.0 |
+| email_nurture | email | stage3-cnt-exp-handoff-opp-006-02 | 227.06 | 0 | 0 | 0.0 |
+| email_nurture | email | stage3-cnt-exp-opportunity-opp-006-01 | 200.24 | 0 | 0 | 0.0 |
+| organic_search | organic | stage3-cnt-exp-handoff-opp-006-04 | 62.69 | 0 | 0 | 0.0 |
+| organic_search | organic | stage3-cnt-exp-handoff-opp-006-02 | 60.54 | 0 | 0 | 0.0 |
+| organic_search | organic | stage3-cnt-exp-opportunity-opp-006-01 | 53.4 | 0 | 0 | 0.0 |
+| linkedin | paid_social | stage3-cnt-exp-handoff-opp-006-04 | 23.65 | 0 | 0 | 0.0 |
+| linkedin | paid_social | stage3-cnt-exp-handoff-opp-006-02 | 22.84 | 0 | 0 | 0.0 |
 
 ## Alerts
 - none

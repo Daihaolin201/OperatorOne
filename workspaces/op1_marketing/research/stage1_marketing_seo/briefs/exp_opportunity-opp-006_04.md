@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-006_04
 
-- Generated at: 2026-03-07T01:51:57Z
+- Generated at: 2026-03-07T19:11:29Z
 - Context: `opportunity::opp_006`
 - Keyword: **core workflows depend vs manual** (BOFU)
 - Current shadow score: **84.35**

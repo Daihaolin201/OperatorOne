@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-07T01:51:57Z",
+  "generated_at": "2026-03-07T19:11:29Z",
   "status": "ok",
-  "snapshot_id": "snap_20260307015157_bae53650007293e9",
+  "snapshot_id": "snap_20260307191129_7662b2908a554254",
   "experiment_count": 72,
   "experiments": [
     {
@@ -29,7 +29,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 74.25,
       "confidence": "medium"
@@ -59,7 +59,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 78.19,
       "confidence": "medium"
@@ -89,7 +89,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 68.34,
       "confidence": "medium"
@@ -119,7 +119,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 84.75,
       "confidence": "medium"
@@ -149,7 +149,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "medium"
@@ -179,7 +179,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 79.75,
       "confidence": "medium"
@@ -209,7 +209,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "medium"
@@ -239,7 +239,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "medium"
@@ -269,7 +269,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 71.04,
       "confidence": "medium"
@@ -299,7 +299,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 84.01,
       "confidence": "medium"
@@ -329,7 +329,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 72.7,
       "confidence": "medium"
@@ -359,7 +359,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 82.45,
       "confidence": "medium"
@@ -389,7 +389,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 69.65,
       "confidence": "medium"
@@ -419,7 +419,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.59,
       "confidence": "medium"
@@ -449,7 +449,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 63.74,
       "confidence": "medium"
@@ -479,7 +479,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.59,
       "confidence": "medium"
@@ -509,7 +509,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 75.15,
       "confidence": "medium"
@@ -539,7 +539,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 75.15,
       "confidence": "medium"
@@ -569,7 +569,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 67.75,
       "confidence": "medium"
@@ -599,7 +599,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 71.69,
       "confidence": "medium"
@@ -629,7 +629,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 61.84,
       "confidence": "medium"
@@ -659,7 +659,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 78.25,
       "confidence": "medium"
@@ -689,7 +689,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 60.75,
       "confidence": "medium"
@@ -719,7 +719,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.25,
       "confidence": "medium"
@@ -735,7 +735,7 @@
       "change": {
         "headline_variant_a": "Best Chargeback Handling Manual Software",
         "headline_variant_b": "Best Chargeback Handling Manual Software without extra manual overhead",
-        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with best pilot"
       },
@@ -749,7 +749,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.25,
       "confidence": "medium"
@@ -765,7 +765,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Pricing",
         "headline_variant_b": "Chargeback Handling Manual Pricing without extra manual overhead",
-        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -779,7 +779,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 77.19,
       "confidence": "medium"
@@ -795,7 +795,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Tool For Ecommerce Owner Operations Manager",
         "headline_variant_b": "Chargeback Handling Manual Tool For Ecommerce Owner Operations Manager without extra manual overhead",
-        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -809,7 +809,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 67.34,
       "confidence": "medium"
@@ -825,7 +825,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Vs Automated Workflow",
         "headline_variant_b": "Chargeback Handling Manual Vs Automated Workflow without extra manual overhead",
-        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -839,7 +839,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.25,
       "confidence": "medium"
@@ -855,7 +855,7 @@
       "change": {
         "headline_variant_a": "Blocker Bot Blocker Fraud Checklist",
         "headline_variant_b": "Blocker Bot Blocker Fraud Checklist without extra manual overhead",
-        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with blocker pilot"
       },
@@ -869,7 +869,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 65.62,
       "confidence": "medium"
@@ -885,7 +885,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Playbook",
         "headline_variant_b": "Chargeback Handling Manual Playbook without extra manual overhead",
-        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -899,7 +899,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 75.94,
       "confidence": "medium"
@@ -915,7 +915,7 @@
       "change": {
         "headline_variant_a": "Best Monthly Reporting Labor Software",
         "headline_variant_b": "Best Monthly Reporting Labor Software without extra manual overhead",
-        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with best pilot"
       },
@@ -929,7 +929,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 75.05,
       "confidence": "medium"
@@ -945,7 +945,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Pricing",
         "headline_variant_b": "Monthly Reporting Labor Pricing without extra manual overhead",
-        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -959,7 +959,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 78.99,
       "confidence": "medium"
@@ -975,7 +975,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Tool For Agency Owner Account Manager",
         "headline_variant_b": "Monthly Reporting Labor Tool For Agency Owner Account Manager without extra manual overhead",
-        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -989,7 +989,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 69.14,
       "confidence": "medium"
@@ -1005,7 +1005,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Vs Manual",
         "headline_variant_b": "Monthly Reporting Labor Vs Manual without extra manual overhead",
-        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -1019,7 +1019,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 85.55,
       "confidence": "medium"
@@ -1035,7 +1035,7 @@
       "change": {
         "headline_variant_a": "Add Plug Play Customisable Checklist",
         "headline_variant_b": "Add Plug Play Customisable Checklist without extra manual overhead",
-        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with add pilot"
       },
@@ -1049,7 +1049,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 68.05,
       "confidence": "medium"
@@ -1065,7 +1065,7 @@
       "change": {
         "headline_variant_a": "Manual Exports Custom Spreadsheet Report Rewriting Template",
         "headline_variant_b": "Manual Exports Custom Spreadsheet Report Rewriting Template without extra manual overhead",
-        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with manual pilot"
       },
@@ -1079,7 +1079,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 80.55,
       "confidence": "medium"
@@ -1109,9 +1109,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
-      "overall_score": 81.6,
+      "overall_score": 81.5,
       "confidence": "medium"
     },
     {
@@ -1139,9 +1139,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
-      "overall_score": 83.1,
+      "overall_score": 83.0,
       "confidence": "medium"
     },
     {
@@ -1169,9 +1169,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
-      "overall_score": 86.85,
+      "overall_score": 86.75,
       "confidence": "medium"
     },
     {
@@ -1199,9 +1199,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
-      "overall_score": 80.29,
+      "overall_score": 80.19,
       "confidence": "medium"
     },
     {
@@ -1229,9 +1229,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
-      "overall_score": 71.85,
+      "overall_score": 71.75,
       "confidence": "medium"
     },
     {
@@ -1259,9 +1259,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
-      "overall_score": 86.85,
+      "overall_score": 86.75,
       "confidence": "medium"
     },
     {
@@ -1275,7 +1275,7 @@
       "change": {
         "headline_variant_a": "Best Expense Reimbursement Remains Software",
         "headline_variant_b": "Best Expense Reimbursement Remains Software without extra manual overhead",
-        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with best pilot"
       },
@@ -1289,7 +1289,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.85,
       "confidence": "medium"
@@ -1305,7 +1305,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Pricing",
         "headline_variant_b": "Expense Reimbursement Remains Pricing without extra manual overhead",
-        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1319,7 +1319,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 77.79,
       "confidence": "medium"
@@ -1335,7 +1335,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Tool For Smb Owner Finance Admin",
         "headline_variant_b": "Expense Reimbursement Remains Tool For Smb Owner Finance Admin without extra manual overhead",
-        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1349,7 +1349,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 67.94,
       "confidence": "medium"
@@ -1365,7 +1365,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Vs Manual",
         "headline_variant_b": "Expense Reimbursement Remains Vs Manual without extra manual overhead",
-        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1379,7 +1379,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 84.35,
       "confidence": "medium"
@@ -1395,7 +1395,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Chaotic Fraud Prone Checklist",
         "headline_variant_b": "Expense Reimbursement Remains Chaotic Fraud Prone Checklist without extra manual overhead",
-        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1409,7 +1409,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 79.35,
       "confidence": "medium"
@@ -1425,7 +1425,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Chaotic Fraud Prone Template",
         "headline_variant_b": "Expense Reimbursement Remains Chaotic Fraud Prone Template without extra manual overhead",
-        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1439,7 +1439,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 79.35,
       "confidence": "medium"
@@ -1469,7 +1469,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 73.85,
       "confidence": "medium"
@@ -1499,7 +1499,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 77.79,
       "confidence": "medium"
@@ -1529,7 +1529,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "hold",
       "overall_score": 69.35,
       "confidence": "medium"
@@ -1559,7 +1559,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 84.35,
       "confidence": "medium"
@@ -1589,7 +1589,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 76.54,
       "confidence": "medium"
@@ -1619,7 +1619,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 76.54,
       "confidence": "medium"
@@ -1649,7 +1649,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 77.55,
       "confidence": "high"
@@ -1679,7 +1679,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1709,7 +1709,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 83.68,
       "confidence": "high"
@@ -1739,7 +1739,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1769,7 +1769,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1799,7 +1799,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1829,7 +1829,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1859,7 +1859,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 84.17,
       "confidence": "high"
@@ -1889,7 +1889,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1919,7 +1919,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "high"
@@ -1949,7 +1949,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1979,7 +1979,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -2010,7 +2010,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 76.65,
       "confidence": "high"
@@ -2041,7 +2041,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -2072,7 +2072,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 83.87,
       "confidence": "high"
@@ -2103,7 +2103,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -2134,7 +2134,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"
@@ -2165,7 +2165,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T01:51:57Z",
+      "generated_at": "2026-03-07T19:11:29Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"

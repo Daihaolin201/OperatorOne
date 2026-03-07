@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_project-spec-proj-opp-001-chargeback-res_05
 
-- Generated at: 2026-03-07T01:51:57Z
+- Generated at: 2026-03-07T19:11:29Z
 - Context: `project_spec::proj-opp-001-chargeback-response-v1`
 - Keyword: **chargeback disputes handled hoc causing avoidable checklist** (MOFU)
 - Current shadow score: **83.05**

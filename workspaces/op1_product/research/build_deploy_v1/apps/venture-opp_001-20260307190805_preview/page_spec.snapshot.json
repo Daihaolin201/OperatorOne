@@ -1,0 +1,168 @@
+{
+  "page_spec_version": "1.0",
+  "generated_at": "2026-03-07T19:08:14Z",
+  "project_id": "proj-opp-001-invoice-followup-v1",
+  "adapter_name": "invoice-followup",
+  "layout_profile": "invoice-followup",
+  "theme": {
+    "accent": "#2563eb",
+    "surface": "#111827",
+    "highlight": "#60a5fa"
+  },
+  "meta": {
+    "title": "Turn overdue invoices into a daily follow-up action queue",
+    "description": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages."
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "props": {
+        "headline": "Turn overdue invoices into a daily follow-up action queue",
+        "subheadline": "Turn overdue invoices into a daily follow-up action queue",
+        "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
+        "segment_label": "Freelancer / small service owner · Professional services · 1-20",
+        "adapter_name": "Invoice Follow-up Assistant",
+        "profile_name": "invoice-followup"
+      }
+    },
+    {
+      "module_id": "workflow_interactive",
+      "kind": "workflow",
+      "props": {
+        "title": "Try the workflow assistant",
+        "prompt_label": "Describe your receivables issue",
+        "prompt_placeholder": "e.g. Client invoice #204 is 21 days overdue and keeps delaying payment.",
+        "action_label": "Generate follow-up plan"
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "props": {
+        "title": "Why this approach",
+        "items": [
+          "Prioritize overdue invoices by value and aging bucket.",
+          "Route ghosting vs. late-payment scenarios with explicit rules."
+        ]
+      }
+    },
+    {
+      "module_id": "metric_snapshot",
+      "kind": "metric",
+      "props": {
+        "title": "Validation target",
+        "metric": "Qualified intent captures",
+        "target": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "pricing_cards",
+      "kind": "pricing",
+      "props": {
+        "title": "Pricing hypothesis",
+        "plan_a": "$19/month solo",
+        "plan_b": "$79/month team"
+      }
+    },
+    {
+      "module_id": "risk_guardrails",
+      "kind": "risk",
+      "props": {
+        "title": "Guardrails",
+        "items": [
+          "Fewer than 2 qualified intent captures after 20 targeted visitors",
+          "Core workflow completion rate below 20% in first-session usage"
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "props": {
+        "title": "Start with one pilot workflow",
+        "description": "Join a pilot that helps you recover receivables with less manual chasing.",
+        "cta_label": "Join invoice pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "props": {
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Will this replace our accounting tool?",
+            "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+          },
+          {
+            "question": "Can we customize escalation tone?",
+            "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+          }
+        ]
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "workflow_interactive",
+      "proof_points",
+      "metric_snapshot",
+      "pricing_cards",
+      "risk_guardrails",
+      "cta_waitlist",
+      "faq_list"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ]
+  }
+}

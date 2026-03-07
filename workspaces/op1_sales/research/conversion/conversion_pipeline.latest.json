@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:54:13+00:00",
+  "generated_at": "2026-03-07T18:46:38+00:00",
   "builder": "workspaces/op1_sales/scripts/build_conversion_pipeline_stage3.py",
   "inputs": {
     "stage2_queue": "workspaces/op1_sales/research/outreach/outreach_queue.resolved.latest.json",
@@ -132,7 +132,7 @@
       "champion_confidence": 0.02,
       "conversion_readiness_score": 0.0,
       "next_best_action": "记录丢单复盘并更新异议打法",
-      "next_action_due_at": "2026-03-10T01:54:13+00:00",
+      "next_action_due_at": "2026-03-10T18:46:38+00:00",
       "next_action_priority": "low"
     },
     {
@@ -233,7 +233,7 @@
       "champion_confidence": 0.99,
       "conversion_readiness_score": 100.0,
       "next_best_action": "转运营交接并确认首月扩展目标",
-      "next_action_due_at": "2026-03-10T01:54:13+00:00",
+      "next_action_due_at": "2026-03-10T18:46:38+00:00",
       "next_action_priority": "medium"
     },
     {
@@ -344,7 +344,7 @@
       "champion_confidence": 0.72,
       "conversion_readiness_score": 66.0,
       "next_best_action": "完成discovery并确定pilot成功标准",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -445,7 +445,7 @@
       "champion_confidence": 0.52,
       "conversion_readiness_score": 48.0,
       "next_best_action": "完成discovery并确定pilot成功标准",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -547,7 +547,7 @@
       "champion_confidence": 0.5,
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -649,7 +649,7 @@
       "champion_confidence": 0.5,
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -751,7 +751,7 @@
       "champion_confidence": 0.5,
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -856,7 +856,7 @@
       "champion_confidence": 0.48,
       "conversion_readiness_score": 46.0,
       "next_best_action": "按客户时机窗口回访并重提14天pilot（保留低摩擦入口）",
-      "next_action_due_at": "2026-03-14T01:54:13+00:00",
+      "next_action_due_at": "2026-03-14T18:46:38+00:00",
       "next_action_priority": "medium"
     },
     {
@@ -952,7 +952,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1048,7 +1048,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1144,7 +1144,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1240,7 +1240,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1353,7 +1353,7 @@
       "champion_confidence": 0.44,
       "conversion_readiness_score": 43.0,
       "next_best_action": "优先处理异议：budget，处理后发起明确成交请求",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1444,7 +1444,7 @@
       "champion_confidence": 0.4,
       "conversion_readiness_score": 40.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1540,7 +1540,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 18.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1636,7 +1636,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 18.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1732,7 +1732,7 @@
       "champion_confidence": 0.46,
       "conversion_readiness_score": 18.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1822,7 +1822,7 @@
       "champion_confidence": 0.4,
       "conversion_readiness_score": 13.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -1912,7 +1912,7 @@
       "champion_confidence": 0.4,
       "conversion_readiness_score": 13.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     },
     {
@@ -2003,7 +2003,7 @@
       "champion_confidence": 0.4,
       "conversion_readiness_score": 13.0,
       "next_best_action": "先完成人工复核（角色/场景/付费可能性）后再推进转化",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00",
+      "next_action_due_at": "2026-03-08T18:46:38+00:00",
       "next_action_priority": "high"
     }
   ]

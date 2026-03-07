@@ -1,4 +1,7 @@
 {
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T19:08:13Z",
+  "generated_by": "workspaces/op1_product/scripts/create_landing_package.py",
   "status": "ready_for_marketing_review",
   "idea_name": "opp_001",
   "icp": "Freelancer / small service owner / Professional services / 1-20",

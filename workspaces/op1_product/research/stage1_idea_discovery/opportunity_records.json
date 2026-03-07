@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T00:20:48.356184Z",
+  "generated_at": "2026-03-07T19:08:12.408606Z",
   "builder": "scripts/build_stage1_opportunities.py",
   "inputs": {
     "primary": "research/reddit_signals.json",
@@ -74,13 +74,13 @@
       "current_workaround": "Manual evidence gathering from order systems and customer support logs.",
       "pain_evidence": [
         {
-          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
+          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
           "source_url": "https://apps.shopify.com/blockify",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "Automate everything and get back to business (8243 reviews)",
+          "claim": "Automate everything and get back to business (8283 reviews)",
           "source_url": "https://apps.shopify.com/flow",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -130,13 +130,13 @@
       "current_workaround": "Manual exports and custom spreadsheet/report rewriting.",
       "pain_evidence": [
         {
-          "claim": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
+          "claim": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
           "source_url": "https://apps.shopify.com/section-factory",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "Build proven CRO-focused pages with pro flexible customization (5780 reviews)",
+          "claim": "Build proven CRO-focused pages with pro flexible customization (5779 reviews)",
           "source_url": "https://apps.shopify.com/pagefly",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -192,8 +192,8 @@
           "source": "hackernews"
         },
         {
-          "claim": "Launch HN: Finley (YC W21) – Debt capital monitoring and reporting software Hey HN! We’re Kevin, Jeremy, and Josiah, and we’re in the current YC batch. We’re building Finley (<a href=\"https:&#x2F;&#x2F;www.finleycms.com\"...",
-          "source_url": "https://news.ycombinator.com/item?id=26492329",
+          "claim": "Launch HN: Recall.ai (YC W20) – API for meeting recordings and transcripts Hey HN, we&#x27;re David and Amanda from Recall.ai (<a href=\"https:&#x2F;&#x2F;www.recall.ai\">https:&#x2F;&#x2F;www.recall.ai</a>). Today we’re l...",
+          "source_url": "https://news.ycombinator.com/item?id=45199648",
           "signal_type": "pain",
           "source": "hackernews"
         }
@@ -207,8 +207,8 @@
         "min_sources_met": false
       },
       "budget_signal": {
-        "exists": true,
-        "evidence": "Inferred from discussion around tooling cost/automation demand."
+        "exists": false,
+        "evidence": "No explicit payment signal in selected evidence."
       },
       "urgency_signal": {
         "exists": false,
@@ -242,13 +242,13 @@
       "current_workaround": "Shared sheet + end-of-month manual reconciliation.",
       "pain_evidence": [
         {
-          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
+          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
           "source_url": "https://apps.shopify.com/order-printer-pro",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "An invoice generator to easily custom and print order document (1084 reviews)",
+          "claim": "An invoice generator to easily custom and print order document (1087 reviews)",
           "source_url": "https://apps.shopify.com/vify-order-printer",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -304,7 +304,7 @@
           "source": "shopify_app_store"
         },
         {
-          "claim": "Build reports with custom fields and data from other apps (1780 reviews)",
+          "claim": "Build reports with custom fields and data from other apps (1782 reviews)",
           "source_url": "https://apps.shopify.com/report-pundit",
           "signal_type": "intent",
           "source": "shopify_app_store"

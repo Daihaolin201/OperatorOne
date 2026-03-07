@@ -459,6 +459,220 @@ class StudioService:
             stderr_tail=(proc.stderr or "")[-4000:],
         )
 
+    def _agent_relay_enabled(self, payload: Optional[Dict[str, Any]] = None) -> bool:
+        if isinstance(payload, dict) and "agentRelayEnabled" in payload:
+            return bool(payload.get("agentRelayEnabled"))
+
+        flags = self._read_json(self.flags_path, {})
+        if isinstance(flags, dict) and "agentRelayEnabled" in flags:
+            return bool(flags.get("agentRelayEnabled"))
+
+        # 默认开启，便于在 Studio 中形成真实的子 Agent 协作链路。
+        return True
+
+    def _append_agent_relay_event(self, event: Dict[str, Any]) -> None:
+        path = self.studio_dir / "agent_relay.events.jsonl"
+        path.parent.mkdir(parents=True, exist_ok=True)
+        line = json.dumps(event, ensure_ascii=False)
+        with self.store_lock:
+            with path.open("a", encoding="utf-8") as f:
+                f.write(line + "\n")
+
+    def _extract_agent_text_payload(self, payload: Optional[Dict[str, Any]], fallback: str = "") -> str:
+        if isinstance(payload, dict):
+            result = payload.get("result") or {}
+            text_payloads = result.get("payloads") or []
+            if isinstance(text_payloads, list):
+                for item in text_payloads:
+                    if not isinstance(item, dict):
+                        continue
+                    text = item.get("text")
+                    if isinstance(text, str) and text.strip():
+                        return text.strip()
+
+        raw = str(fallback or "").strip()
+        if not raw:
+            return ""
+        return raw[-2000:]
+
+    def _run_agent_turn(self, *, agent_id: str, message: str, timeout: int = 75) -> Dict[str, Any]:
+        started = now_dt()
+        cmd = [
+            "openclaw",
+            "--profile",
+            self.profile,
+            "agent",
+            "--agent",
+            str(agent_id),
+            "--message",
+            str(message),
+            "--timeout",
+            str(max(20, int(timeout))),
+            "--json",
+        ]
+
+        try:
+            proc = subprocess.run(
+                cmd,
+                cwd=str(self.repo_root),
+                capture_output=True,
+                text=True,
+                timeout=max(30, int(timeout)) + 20,
+                check=False,
+            )
+            ended = now_dt()
+            payload = self._extract_json_object(proc.stdout)
+            reply_text = self._extract_agent_text_payload(payload, proc.stdout)
+            return {
+                "ok": proc.returncode == 0,
+                "code": proc.returncode,
+                "agentId": agent_id,
+                "reply": reply_text[:1600],
+                "durationMs": int((ended - started).total_seconds() * 1000),
+                "stdoutTail": (proc.stdout or "")[-1200:],
+                "stderrTail": (proc.stderr or "")[-1200:],
+                "startedAt": started.isoformat(),
+                "endedAt": ended.isoformat(),
+            }
+        except Exception as exc:  # noqa: BLE001
+            ended = now_dt()
+            return {
+                "ok": False,
+                "code": -1,
+                "agentId": agent_id,
+                "reply": "",
+                "durationMs": int((ended - started).total_seconds() * 1000),
+                "stdoutTail": "",
+                "stderrTail": str(exc),
+                "startedAt": started.isoformat(),
+                "endedAt": ended.isoformat(),
+            }
+
+    def _relay_stage_agents(
+        self,
+        *,
+        payload: Dict[str, Any],
+        venture: Dict[str, Any],
+        stage: str,
+        action: str,
+        owner_agent: str,
+        notify_agents: List[str],
+        handoff_paths: Optional[List[Path]] = None,
+        stage_summary: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        if not self._agent_relay_enabled(payload):
+            return {
+                "enabled": False,
+                "reason": "agentRelayDisabled",
+            }
+
+        handoffs: List[Dict[str, Any]] = []
+        for raw in (handoff_paths or []):
+            path = Path(raw)
+            rel_path = None
+            try:
+                rel_path = str(path.resolve().relative_to(self.repo_root))
+            except Exception:
+                rel_path = str(path)
+
+            item = {
+                "path": rel_path,
+                "exists": bool(path.exists() and path.is_file()),
+            }
+            if path.exists() and path.is_file():
+                try:
+                    text = path.read_text(encoding="utf-8", errors="ignore")
+                    item["sha16"] = hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
+                except Exception:
+                    pass
+            handoffs.append(item)
+
+        base_context = {
+            "kind": "studio_stage_event.v1",
+            "stage": stage,
+            "action": action,
+            "ventureId": venture.get("id"),
+            "opportunityId": canonical_opp_id(venture.get("opportunityId")) or venture.get("opportunityId"),
+            "cycle": venture.get("cycle"),
+            "timestamp": now_iso(),
+            "handoffs": handoffs,
+            "summary": stage_summary or {},
+        }
+
+        owner_request = {
+            **base_context,
+            "relayRole": "owner",
+            "request": "请读取你工作区内相关最新产物，输出紧凑 JSON：{ack,summary,next_actions,risks}。",
+        }
+        owner_res = self._run_agent_turn(agent_id=owner_agent, message=json.dumps(owner_request, ensure_ascii=False), timeout=75)
+        owner_reply = str(owner_res.get("reply") or "")
+
+        self._append_agent_relay_event(
+            {
+                "id": f"relay_{uuid.uuid4().hex[:10]}",
+                "createdAt": now_iso(),
+                "ventureId": venture.get("id"),
+                "stage": stage,
+                "action": action,
+                "agentId": owner_agent,
+                "relayRole": "owner",
+                "ok": bool(owner_res.get("ok")),
+                "durationMs": owner_res.get("durationMs"),
+                "reply": owner_reply[:800],
+                "error": owner_res.get("stderrTail") if not owner_res.get("ok") else None,
+            }
+        )
+
+        notify_results: List[Dict[str, Any]] = []
+        for target in notify_agents:
+            req = {
+                **base_context,
+                "relayRole": "downstream",
+                "fromAgent": owner_agent,
+                "toAgent": target,
+                "ownerReply": owner_reply[:1200],
+                "request": "请确认是否可接棒下一阶段，并输出 JSON：{ack,ready,next_inputs_needed,risks}。",
+            }
+            res = self._run_agent_turn(agent_id=target, message=json.dumps(req, ensure_ascii=False), timeout=60)
+            reply = str(res.get("reply") or "")
+            notify_results.append(
+                {
+                    "agentId": target,
+                    "ok": bool(res.get("ok")),
+                    "reply": reply[:500],
+                    "durationMs": res.get("durationMs"),
+                }
+            )
+            self._append_agent_relay_event(
+                {
+                    "id": f"relay_{uuid.uuid4().hex[:10]}",
+                    "createdAt": now_iso(),
+                    "ventureId": venture.get("id"),
+                    "stage": stage,
+                    "action": action,
+                    "agentId": target,
+                    "relayRole": "downstream",
+                    "ok": bool(res.get("ok")),
+                    "durationMs": res.get("durationMs"),
+                    "reply": reply[:800],
+                    "error": res.get("stderrTail") if not res.get("ok") else None,
+                }
+            )
+
+        return {
+            "enabled": True,
+            "stage": stage,
+            "action": action,
+            "owner": {
+                "agentId": owner_agent,
+                "ok": bool(owner_res.get("ok")),
+                "reply": owner_reply[:500],
+                "durationMs": owner_res.get("durationMs"),
+            },
+            "notifications": notify_results,
+            "handoffs": handoffs,
+        }
+
     def _copy_artifacts(
         self,
         venture_id: str,
@@ -2170,6 +2384,21 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "pageProfile": page_profile,
             "previewSync": sync_result,
         }
+        summary["agentRelay"] = self._relay_stage_agents(
+            payload=payload,
+            venture=venture,
+            stage="PRODUCT",
+            action="run_product",
+            owner_agent="op1_product",
+            notify_agents=["op1_marketing"],
+            handoff_paths=[self.repo_root / "handoffs/product_to_marketing.json"],
+            stage_summary={
+                "mode": mode,
+                "deployTarget": deploy_target,
+                "hasDeploymentUrl": bool(deployment_url),
+                "hasPreview": bool(preview_path),
+            },
+        )
 
         run = self._record_run(
             venture_id=venture_id,
@@ -2398,6 +2627,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         reject_ids = [str(x).strip() for x in (payload.get("rejectIds") or []) if str(x).strip()]
         note = str(payload.get("note") or "studio_review")
         reason = str(payload.get("reason") or "manual_review_requested_changes")
+        auto_generate_campaign = bool(payload.get("autoGenerateCampaign", True))
 
         if not approve_ids and not reject_ids:
             raise StudioError("provide approveIds or rejectIds")
@@ -2409,6 +2639,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             cmd.extend(["--reject", cid])
 
         step = self._command_step("marketing_stage2_review", cmd, cwd=self.marketing_dir, timeout=1200)
+        steps = [step]
         if step["status"] != "passed":
             self._record_run(
                 venture_id=venture_id,
@@ -2416,22 +2647,70 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 action="review_marketing_content",
                 mode="review",
                 status="failed",
-                steps=[step],
+                steps=steps,
                 artifacts=[],
                 summary={},
                 error=step["stderrTail"][-500:],
             )
             raise StudioError(f"Marketing content review failed: {step['stderrTail'][:300]}")
 
+        campaign_autogen: Dict[str, Any] = {
+            "enabled": bool(auto_generate_campaign and approve_ids),
+            "status": "skipped",
+            "mode": "review",
+        }
+        if auto_generate_campaign and approve_ids:
+            opportunity_id = canonical_opp_id(venture.get("opportunityId"))
+            campaign_cmd = [
+                "python3",
+                "scripts/run_marketing_campaign_stage3.py",
+                "--mode",
+                "review",
+                "--force",
+                "--include-review-ready",
+                "--print-summary",
+            ]
+            if opportunity_id:
+                campaign_cmd.extend(["--opportunity-id", opportunity_id])
+
+            campaign_step = self._command_step(
+                "marketing_stage3_campaign_after_review",
+                campaign_cmd,
+                cwd=self.marketing_dir,
+                timeout=1800,
+            )
+            steps.append(campaign_step)
+            campaign_autogen["status"] = campaign_step.get("status")
+            if campaign_step.get("status") == "passed":
+                queue = self._parse_json(self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json", {})
+                counts = queue.get("counts") or {}
+                campaign_autogen["stage3Status"] = queue.get("status")
+                campaign_autogen["counts"] = {
+                    "launch_ready": int(counts.get("launch_ready", 0) or 0),
+                    "watchlist": int(counts.get("watchlist", 0) or 0),
+                    "hold": int(counts.get("hold", 0) or 0),
+                }
+            else:
+                campaign_autogen["error"] = str(campaign_step.get("stderrTail") or "")[-400:]
+
+        artifact_paths = [
+            self.marketing_dir / "research/stage2_content_publish/review_log.latest.json",
+            self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json",
+            self.repo_root / "handoffs/marketing_to_sales.json",
+        ]
+        if campaign_autogen.get("enabled"):
+            artifact_paths.extend(
+                [
+                    self.marketing_dir / "research/stage3_campaign_launch/run.latest.json",
+                    self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json",
+                ]
+            )
+
         artifacts = self._copy_artifacts(
             venture_id=venture_id,
             stage="MARKETING",
             run_id=f"marketing_review_{now_dt().strftime('%Y%m%d%H%M%S')}",
-            paths=[
-                self.marketing_dir / "research/stage2_content_publish/review_log.latest.json",
-                self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json",
-                self.repo_root / "handoffs/marketing_to_sales.json",
-            ],
+            paths=artifact_paths,
         )
 
         run = self._record_run(
@@ -2440,9 +2719,13 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             action="review_marketing_content",
             mode="review",
             status="passed",
-            steps=[step],
+            steps=steps,
             artifacts=artifacts,
-            summary={"approved": approve_ids, "rejected": reject_ids},
+            summary={
+                "approved": approve_ids,
+                "rejected": reject_ids,
+                "campaignAutogen": campaign_autogen,
+            },
         )
 
         updated = self._update_venture(
@@ -2457,13 +2740,30 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 "lastActions": {
                     **(v.get("lastActions") or {}),
                     "marketingReview": {"runId": run["id"], "at": now_iso()},
+                    **(
+                        {
+                            "marketingCampaignAutogen": {
+                                "runId": run["id"],
+                                "at": now_iso(),
+                                "status": campaign_autogen.get("status"),
+                                "counts": campaign_autogen.get("counts"),
+                            }
+                        }
+                        if campaign_autogen.get("enabled")
+                        else {}
+                    ),
                 },
             },
         )
 
         preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated, "previewSync": preview_sync}
+        return {
+            "run": run,
+            "venture": updated,
+            "previewSync": preview_sync,
+            "campaignAutogen": campaign_autogen,
+        }
 
     def _action_run_marketing_campaign(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2530,6 +2830,20 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "fallbackToSales": fallback_to_sales,
             "needsUserDecision": True,
         }
+        summary["agentRelay"] = self._relay_stage_agents(
+            payload=payload,
+            venture=venture,
+            stage="MARKETING",
+            action="run_marketing_campaign",
+            owner_agent="op1_marketing",
+            notify_agents=["op1_sales"],
+            handoff_paths=[self.repo_root / "handoffs/marketing_to_sales.json"],
+            stage_summary={
+                "mode": mode,
+                "campaignCounts": summary.get("campaignCounts"),
+                "fallbackToSales": fallback_to_sales,
+            },
+        )
 
         run = self._record_run(
             venture_id=venture_id,
@@ -3034,6 +3348,24 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             ],
         )
 
+        conversion_board = self._parse_json(self.sales_dir / "research/conversion/conversion_scoreboard.latest.json", {})
+        conversion_summary = {
+            "mode": mode,
+            "scoreboardStatus": conversion_board.get("status"),
+            "targetMrr": conversion_board.get("target_mrr") or conversion_board.get("targetMrr"),
+            "currentMrr": conversion_board.get("current_mrr") or conversion_board.get("currentMrr"),
+        }
+        conversion_summary["agentRelay"] = self._relay_stage_agents(
+            payload=payload,
+            venture=venture,
+            stage="SALES",
+            action="run_sales_conversion",
+            owner_agent="op1_sales",
+            notify_agents=["op1_operations"],
+            handoff_paths=[self.repo_root / "handoffs/sales_to_operations.json"],
+            stage_summary=conversion_summary,
+        )
+
         run = self._record_run(
             venture_id=venture_id,
             stage="SALES",
@@ -3042,7 +3374,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             status="passed",
             steps=[step],
             artifacts=artifacts,
-            summary={"mode": mode},
+            summary=conversion_summary,
         )
 
         updated = self._update_venture(
@@ -3112,17 +3444,6 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             ],
         )
 
-        run = self._record_run(
-            venture_id=venture_id,
-            stage="OPERATIONS",
-            action="run_operations_full",
-            mode="simulation",
-            status="passed",
-            steps=steps,
-            artifacts=artifacts,
-            summary={},
-        )
-
         # KPI snapshot for venture
         stage1 = self._parse_json(self.operations_dir / "research/stage1_tracking/stage1_scoreboard.latest.json", {})
         stage2 = self._parse_json(self.operations_dir / "research/stage2_feedback/stage2_feedback_scoreboard.latest.json", {})
@@ -3145,6 +3466,41 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 "observedMrrDelta30d": (((stage3.get("summary") or {}).get("outcomes") or {}).get("observed_mrr_delta_30d")),
             },
         }
+
+        ops_summary = {
+            "stage1Status": stage1.get("status"),
+            "stage2Status": stage2.get("status"),
+            "stage3Status": stage3.get("status"),
+            "kpi": kpi.get("metrics") or {},
+        }
+        ops_summary["agentRelay"] = self._relay_stage_agents(
+            payload=payload,
+            venture=venture,
+            stage="OPERATIONS",
+            action="run_operations_full",
+            owner_agent="op1_operations",
+            notify_agents=["op1_product", "op1_marketing", "op1_sales"],
+            handoff_paths=[
+                self.repo_root / "handoffs/operations_to_product.json",
+                self.repo_root / "handoffs/operations_to_marketing.json",
+                self.repo_root / "handoffs/operations_to_sales.json",
+                self.repo_root / "handoffs/operations_to_product_iterate.json",
+                self.repo_root / "handoffs/operations_to_marketing_iterate.json",
+                self.repo_root / "handoffs/operations_to_sales_iterate.json",
+            ],
+            stage_summary=ops_summary,
+        )
+
+        run = self._record_run(
+            venture_id=venture_id,
+            stage="OPERATIONS",
+            action="run_operations_full",
+            mode="simulation",
+            status="passed",
+            steps=steps,
+            artifacts=artifacts,
+            summary=ops_summary,
+        )
 
         updated = self._update_venture(
             venture_id,

@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-003_04
 
-- Generated at: 2026-03-07T01:51:57Z
+- Generated at: 2026-03-07T19:11:29Z
 - Context: `opportunity::opp_003`
 - Keyword: **monthly reporting labor vs manual** (BOFU)
 - Current shadow score: **85.55**
@@ -11,7 +11,7 @@ If we position around 'monthly reporting labor vs manual' with explicit proof an
 ## Suggested page shape
 - H1 A: Monthly Reporting Labor Vs Manual
 - H1 B: Monthly Reporting Labor Vs Manual without extra manual overhead
-- Proof block: Add plug-n-play customisable sections to any theme & page (2288 reviews)
+- Proof block: Add plug-n-play customisable sections to any theme & page (2294 reviews)
 - CTA A: Target agencies publicly discussing reporting bottlenecks
 - CTA B: Start with monthly pilot
 

@@ -1,54 +1,8 @@
 {
-  "generated_at": "2026-03-07T01:53:28Z",
-  "previous_snapshot_id": "stage3snap_20260307014702_82cfc35fd149d4c0",
-  "snapshot_id": "stage3snap_20260307015328_bb145dbfeb6313d9",
+  "generated_at": "2026-03-07T19:32:51Z",
+  "previous_snapshot_id": "stage3snap_20260307191334_ead5f0506cce44fe",
+  "snapshot_id": "stage3snap_20260307193251_ead5f0506cce44fe",
   "added": [],
-  "changed": [
-    {
-      "id": "stage2_run",
-      "path": "research/stage2_content_publish/run.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
-      "exists": true,
-      "sha256": "e83a0be7a8d9a20b1bc92495388eac251af885c7c4e26be691d637484fb59903",
-      "size": 4313,
-      "mtime": 1772848397
-    },
-    {
-      "id": "stage2_backlog",
-      "path": "research/stage2_content_publish/content.backlog.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
-      "exists": true,
-      "sha256": "48cee20773015a49b3c37cb7e60e0d40aa4a112c17a1a429be7fabe62dedec0c",
-      "size": 22785,
-      "mtime": 1772848397
-    },
-    {
-      "id": "stage2_queue",
-      "path": "research/stage2_content_publish/publish.queue.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
-      "exists": true,
-      "sha256": "35b87af5ccabfcd50505266c114e398a9006c22c1cf0b817684a4433dbda5f8a",
-      "size": 23703,
-      "mtime": 1772848397
-    },
-    {
-      "id": "stage2_qa",
-      "path": "research/stage2_content_publish/qa.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
-      "exists": true,
-      "sha256": "201bff317265cb2747944c96daba94d6b836e20d01ffe48801db57e2424e279a",
-      "size": 5629,
-      "mtime": 1772848359
-    },
-    {
-      "id": "product_to_marketing_handoff",
-      "path": "../../handoffs/product_to_marketing.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
-      "exists": true,
-      "sha256": "f160f3ec11fd049f1679ef4d7e7c6214038559302687fe737c1313e3e2f943ba",
-      "size": 1710,
-      "mtime": 1772848237
-    }
-  ],
+  "changed": [],
   "removed": []
 }

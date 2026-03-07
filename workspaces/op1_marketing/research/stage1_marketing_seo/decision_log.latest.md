@@ -1,14 +1,14 @@
-# Stage1 Marketing SEO Decision Log — 20260307T015157Z
+# Stage1 Marketing SEO Decision Log — 20260307T191129Z
 
-- Generated at: 2026-03-07T01:51:57Z
-- Input snapshot: `snap_20260307015157_bae53650007293e9`
+- Generated at: 2026-03-07T19:11:29Z
+- Input snapshot: `snap_20260307191129_7662b2908a554254`
 - Contexts: **12**
 - Keywords: **180**
 - Queue split: Ready **45** / Hold **27** / Drop **0**
 
 ## Top Ready
-- `exp_opportunity-opp-004_03` | how to default software output plus custom excel | score=86.85 | confidence=medium
-- `exp_opportunity-opp-004_06` | owner tenant workflows vs manual | score=86.85 | confidence=medium
+- `exp_opportunity-opp-004_03` | how to default software output plus custom excel | score=86.75 | confidence=medium
+- `exp_opportunity-opp-004_06` | owner tenant workflows vs manual | score=86.75 | confidence=medium
 - `exp_opportunity-opp-003_04` | monthly reporting labor vs manual | score=85.55 | confidence=medium
 - `exp_blueprint-proj-opp-001-invoice-followup-_04` | overdue invoices followed vs manual | score=84.75 | confidence=medium
 - `exp_opportunity-opp-005_04` | expense reimbursement remains vs manual | score=84.35 | confidence=medium

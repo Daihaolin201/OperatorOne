@@ -1,5 +1,7 @@
 {
-  "generated_at": "2026-03-06T00:18:09+00:00",
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T18:46:54+00:00",
+  "generated_by": "workspaces/op1_operations/scripts/prioritize_stage2_feedback.py",
   "from": "op1_operations.stage2_feedback",
   "objective": "message_and_content_adjustments",
   "top_signal_topics": [
@@ -36,7 +38,5 @@
     "Increase trust proof in top-of-funnel messaging for high negative trust themes.",
     "Add pricing clarity + ROI examples where budget objections concentrate.",
     "Publish onboarding walkthroughs for manual-work and setup-friction themes."
-  ],
-  "contract_version": "1.0.0",
-  "generated_by": "scripts/upgrade_handoffs.py"
+  ]
 }

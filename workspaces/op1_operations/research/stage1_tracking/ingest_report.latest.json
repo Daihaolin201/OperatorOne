@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-07T01:54:26+00:00",
+  "generated_at": "2026-03-07T18:46:54+00:00",
   "config_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_operations/config/source_adapters.v1.json",
-  "event_count": 46,
+  "event_count": 58,
   "duplicates_skipped": 0,
   "events_by_type": {
     "closed_lost": 1,
@@ -10,15 +10,15 @@
     "mrr_snapshot": 1,
     "objection_logged": 2,
     "paid_started": 2,
-    "session_observed": 3,
+    "session_observed": 9,
     "signup_captured": 4,
     "signup_deferred": 1,
-    "signup_forecast": 3,
+    "signup_forecast": 9,
     "signup_qualified": 14,
     "signup_started": 13
   },
   "events_by_adapter": {
-    "marketing_campaign_shadow": 6,
+    "marketing_campaign_shadow": 18,
     "sales_conversion_scoreboard": 1,
     "sales_conversion_sim": 20,
     "sales_outreach_sim": 19
@@ -31,7 +31,7 @@
       "enabled": true,
       "path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage3_campaign_launch/campaigns.queue.latest.json",
       "exists": true,
-      "events_added": 6
+      "events_added": 18
     },
     {
       "adapter_id": "sales_outreach_sim",

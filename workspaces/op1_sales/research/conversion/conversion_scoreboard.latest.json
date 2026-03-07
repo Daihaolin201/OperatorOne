@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:54:13+00:00",
+  "generated_at": "2026-03-07T18:46:38+00:00",
   "builder": "workspaces/op1_sales/scripts/render_conversion_scoreboard_stage3.py",
   "inputs": {
     "conversion_pipeline": "workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json",
@@ -60,70 +60,70 @@
       "current_stage": "discovery_scheduled",
       "conversion_readiness_score": 66.0,
       "next_best_action": "完成discovery并确定pilot成功标准",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-005",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-006",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-007",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 51.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-015",
       "current_stage": "discovery_scheduled",
       "conversion_readiness_score": 48.0,
       "next_best_action": "完成discovery并确定pilot成功标准",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-002",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 46.0,
       "next_best_action": "按客户时机窗口回访并重提14天pilot（保留低摩擦入口）",
-      "next_action_due_at": "2026-03-14T01:54:13+00:00"
+      "next_action_due_at": "2026-03-14T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-008",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-009",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-010",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     },
     {
       "lead_id": "opp_005-lead-014",
       "current_stage": "qualified_interest",
       "conversion_readiness_score": 45.0,
       "next_best_action": "预约15分钟discovery并确认是否进入14天pilot",
-      "next_action_due_at": "2026-03-08T01:54:13+00:00"
+      "next_action_due_at": "2026-03-08T18:46:38+00:00"
     }
   ]
 }

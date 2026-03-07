@@ -6,7 +6,7 @@ intent: MOFU
 primary_keyword: chargeback disputes handled hoc causing avoidable template
 mode: review
 status: draft
-generated_at: 2026-03-07T02:11:08Z
+generated_at: 2026-03-07T19:10:42Z
 ---
 
 # Chargeback Disputes Handled Hoc Causing Avoidable Template: step-by-step playbook you can apply this week

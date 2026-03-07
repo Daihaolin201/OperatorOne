@@ -1,0 +1,168 @@
+{
+  "page_spec_version": "1.0",
+  "generated_at": "2026-03-07T18:21:02Z",
+  "project_id": "proj-opp-002-chargeback-response-v1",
+  "adapter_name": "chargeback-response",
+  "layout_profile": "chargeback-response",
+  "theme": {
+    "accent": "#2563eb",
+    "surface": "#111827",
+    "highlight": "#60a5fa"
+  },
+  "meta": {
+    "title": "Respond to chargebacks faster with an evidence-first workflow",
+    "description": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines."
+  },
+  "modules": [
+    {
+      "module_id": "hero_problem",
+      "kind": "hero",
+      "props": {
+        "headline": "Respond to chargebacks faster with an evidence-first workflow",
+        "subheadline": "Respond to chargebacks faster with an evidence-first workflow",
+        "problem_statement": "Chargeback disputes are handled ad hoc, causing avoidable revenue loss and missed response deadlines.",
+        "segment_label": "Ecommerce operator · Ecommerce · 1-50",
+        "adapter_name": "Chargeback Response Assistant",
+        "profile_name": "chargeback-response"
+      }
+    },
+    {
+      "module_id": "workflow_interactive",
+      "kind": "workflow",
+      "props": {
+        "title": "Try the workflow assistant",
+        "prompt_label": "Describe your dispute situation",
+        "prompt_placeholder": "e.g. We received 7 chargebacks this morning for delivered orders.",
+        "action_label": "Generate dispute response"
+      }
+    },
+    {
+      "module_id": "proof_points",
+      "kind": "proof",
+      "props": {
+        "title": "Why this approach",
+        "items": [
+          "Standardize dispute packets so each case is complete on first submission.",
+          "Prioritize by value and deadline to protect near-term cashflow."
+        ]
+      }
+    },
+    {
+      "module_id": "metric_snapshot",
+      "kind": "metric",
+      "props": {
+        "title": "Validation target",
+        "metric": "Qualified intent captures",
+        "target": "At least 5 qualified leads from first 20 targeted users in 14 days"
+      }
+    },
+    {
+      "module_id": "pricing_cards",
+      "kind": "pricing",
+      "props": {
+        "title": "Pricing hypothesis",
+        "plan_a": "$39/month starter",
+        "plan_b": "$129/month growth"
+      }
+    },
+    {
+      "module_id": "risk_guardrails",
+      "kind": "risk",
+      "props": {
+        "title": "Guardrails",
+        "items": [
+          "Fewer than 2 qualified intent captures after 20 targeted visitors",
+          "Core workflow completion rate below 20% in first-session usage"
+        ]
+      }
+    },
+    {
+      "module_id": "cta_waitlist",
+      "kind": "cta",
+      "props": {
+        "title": "Start with one pilot workflow",
+        "description": "Join pilot to standardize dispute evidence and reduce preventable losses.",
+        "cta_label": "Join dispute pilot",
+        "email_label": "Work email",
+        "email_placeholder": "you@company.com"
+      }
+    },
+    {
+      "module_id": "faq_list",
+      "kind": "faq",
+      "props": {
+        "title": "FAQ",
+        "items": [
+          {
+            "question": "Does this connect directly to Stripe/Shopify?",
+            "answer": "The v1 workflow focuses on process orchestration first; integrations can be added after validation."
+          },
+          {
+            "question": "Can this support multiple dispute reasons?",
+            "answer": "Yes. The rule engine can branch by reason code and required evidence set."
+          }
+        ]
+      }
+    }
+  ],
+  "testing": {
+    "expected_modules": [
+      "hero_problem",
+      "workflow_interactive",
+      "proof_points",
+      "metric_snapshot",
+      "pricing_cards",
+      "risk_guardrails",
+      "cta_waitlist",
+      "faq_list"
+    ],
+    "primary_cta_module": "cta_waitlist",
+    "max_primary_cta_buttons": 1,
+    "require_viewport_meta": true,
+    "responsive_markers": [
+      "@media",
+      "max-width",
+      "min-width"
+    ],
+    "device_profiles": [
+      {
+        "id": "mobile",
+        "width": 390,
+        "height": 844
+      },
+      {
+        "id": "tablet",
+        "width": 768,
+        "height": 1024
+      },
+      {
+        "id": "desktop",
+        "width": 1440,
+        "height": 900
+      }
+    ],
+    "performance_budget": {
+      "lcp_ms": 2500,
+      "inp_ms": 200,
+      "cls_max": 0.1
+    },
+    "security_headers": [
+      {
+        "name": "x-content-type-options",
+        "must_include": "nosniff"
+      },
+      {
+        "name": "x-frame-options",
+        "must_include": "DENY"
+      },
+      {
+        "name": "referrer-policy",
+        "must_include": "strict-origin-when-cross-origin"
+      },
+      {
+        "name": "content-security-policy",
+        "must_include": "default-src 'self'"
+      }
+    ]
+  }
+}

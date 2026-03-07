@@ -1,30 +1,29 @@
 ---
-content_id: cnt_exp-blueprint-proj-opp-001-invoice-followup-04
-experiment_id: exp_blueprint-proj-opp-001-invoice-followup-_04
-context_id: blueprint::proj-opp-001-invoice-followup-pilot-v1
+content_id: cnt_exp-opportunity-opp-001-04
+experiment_id: exp_opportunity-opp-001_04
+context_id: opportunity::opp_001
 intent: BOFU
 primary_keyword: overdue invoices followed vs manual
 mode: review
 status: draft
-generated_at: 2026-03-07T02:11:08Z
+generated_at: 2026-03-07T19:10:42Z
 ---
 
 # Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives
 
 ## Who this is for
-Freelancer / small service owner in professional services (1-20 employees)
+Freelancer / small service owner / Professional services / 1-20
 
 ## Problem to solve
 Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.
 
 ## What a better workflow looks like
-Turn overdue invoices into a daily action queue with clear follow-up playbooks so owners recover cash faster without awkward manual chasing.
+Manual reminders via personal email and inconsistent escalation.
 
 ## Evidence and operational signals
-- Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)
-- Daily prioritized follow-up queue by aging bucket and invoice value
-- Rule-based playbooks for two paths: late-but-responsive vs. ghosting
-- Copy-ready reminder templates with manual send workflow
+- My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...
+- put late fee terms on all our invoices starting in AUG. 1.5% per month after net 30. figured it would either motivate faster payment or at least cover some of our costs when people pay slow. six months later we've bill...
+- 283 apps listed for this feature category on Shopify App Store
 
 ## Recommended approach
 1. Identify where the manual process breaks most often.
@@ -35,7 +34,7 @@ Turn overdue invoices into a daily action queue with clear follow-up playbooks s
 If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.
 
 ## CTA
-Join the 14-day overdue-invoice pilot
+Reach out to posters discussing overdue invoices and AR frustration
 
 ## Channel snippets
 - **LinkedIn hook**: We mapped "overdue invoices followed vs manual" to a repeatable workflow and found the same bottleneck across operators.
@@ -43,4 +42,4 @@ Join the 14-day overdue-invoice pilot
 - **Sales enablement note**: Use this asset to answer early-stage objections and route high-intent conversations.
 
 ## Source pointers
-- `../op1_product/research/stage3_mvp_scope/project_blueprint.json`
+- `../op1_product/research/stage1_idea_discovery/opportunity_records.json`

@@ -1,7 +1,7 @@
 {
   "capability": "create_landing_pages_v1",
   "contract_version": "1.1",
-  "generated_at": "2026-03-07T02:11:00Z",
+  "generated_at": "2026-03-07T19:08:13Z",
   "mode": "mode_c_only",
   "page_mode": "landing",
   "status": "ready_for_build",

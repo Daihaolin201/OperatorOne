@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-005_04
 
-- Generated at: 2026-03-07T01:51:57Z
+- Generated at: 2026-03-07T19:11:29Z
 - Context: `opportunity::opp_005`
 - Keyword: **expense reimbursement remains vs manual** (BOFU)
 - Current shadow score: **84.35**
@@ -11,7 +11,7 @@ If we position around 'expense reimbursement remains vs manual' with explicit pr
 ## Suggested page shape
 - H1 A: Expense Reimbursement Remains Vs Manual
 - H1 B: Expense Reimbursement Remains Vs Manual without extra manual overhead
-- Proof block: Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)
+- Proof block: Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)
 - CTA A: Interview SMBs with recurring reimbursement delays
 - CTA B: Start with expense pilot
 

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:54:26+00:00",
+  "generated_at": "2026-03-07T18:46:54+00:00",
   "item_count": 31,
   "tier_counts": {
     "P2": 6,
@@ -30,7 +30,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 168,
-      "due_at": "2026-03-14T01:54:26+00:00",
+      "due_at": "2026-03-14T18:46:54+00:00",
       "evidence_examples": [
         "unsubscribe"
       ],
@@ -64,7 +64,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 168,
-      "due_at": "2026-03-14T01:54:26+00:00",
+      "due_at": "2026-03-14T18:46:54+00:00",
       "evidence_examples": [
         "budget"
       ],
@@ -98,7 +98,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 168,
-      "due_at": "2026-03-14T01:54:26+00:00",
+      "due_at": "2026-03-14T18:46:54+00:00",
       "evidence_examples": [
         "Please unsubscribe me from future emails."
       ],
@@ -132,7 +132,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 168,
-      "due_at": "2026-03-14T01:54:26+00:00",
+      "due_at": "2026-03-14T18:46:54+00:00",
       "evidence_examples": [
         "This looks expensive and beyond our current budget."
       ],
@@ -166,7 +166,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 168,
-      "due_at": "2026-03-14T01:54:26+00:00",
+      "due_at": "2026-03-14T18:46:54+00:00",
       "evidence_examples": [
         "No thanks, we already use another system and are not interested."
       ],
@@ -200,7 +200,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 168,
-      "due_at": "2026-03-14T01:54:26+00:00",
+      "due_at": "2026-03-14T18:46:54+00:00",
       "evidence_examples": [
         "Not now. Please circle back next quarter."
       ],
@@ -234,7 +234,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "I’m tired of bookkeeping for my husband’s business"
       ],
@@ -268,7 +268,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping"
       ],
@@ -302,7 +302,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowni..."
       ],
@@ -336,7 +336,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "How do you all handle employee expenses without losing your mind?"
       ],
@@ -370,7 +370,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "The real ROI of expense management isn't the software cost - it's the hours your team gets back"
       ],
@@ -404,7 +404,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "small business bookkeeping feels like another job"
       ],
@@ -438,7 +438,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "booked_call"
       ],
@@ -472,7 +472,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Need advice: Wholesale account owes me $25K and keeps ghosting me"
       ],
@@ -506,7 +506,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Business bank account for contractors that separates job income automatically or am I asking ..."
       ],
@@ -540,7 +540,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "How do you grow a remote bookkeeping business when you're starting from zero?"
       ],
@@ -574,7 +574,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "I was hired to save a company from collapse. They gave me zero authority and now blame me for..."
       ],
@@ -608,7 +608,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Software Guidance Request for Simple Income/Expense Reporting"
       ],
@@ -642,7 +642,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "I caught an employee submitting fake expense reports"
       ],
@@ -676,7 +676,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Interested. Can we book a demo call tomorrow?"
       ],
@@ -710,7 +710,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "CPA raised fees 35% on me this for next year"
       ],
@@ -744,7 +744,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Need help choosing POS, Inventory and book keeping software"
       ],
@@ -778,7 +778,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "I got my first client 7 months ago and I'm stuck"
       ],
@@ -812,7 +812,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025"
       ],
@@ -846,7 +846,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "A letter to myself: Everything I wish I'd known before starting my business"
       ],
@@ -880,7 +880,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Partner not taking Accounting Seriously"
       ],
@@ -914,7 +914,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "Looks good. Let's start this week, payment sent."
       ],
@@ -948,7 +948,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "conversion"
       ],
@@ -982,7 +982,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "interested"
       ],
@@ -1016,7 +1016,7 @@
       "first_seen": "2026-03-06T00:17:29+00:00",
       "last_seen": "2026-03-06T00:17:29+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "The tools actually running my 3-person landscaping business"
       ],
@@ -1050,7 +1050,7 @@
       "first_seen": "2026-03-04T20:03:26+00:00",
       "last_seen": "2026-03-04T20:03:26+00:00",
       "sla_hours": 336,
-      "due_at": "2026-03-21T01:54:26+00:00",
+      "due_at": "2026-03-21T18:46:54+00:00",
       "evidence_examples": [
         "I need a simple way to share a folder with my accountant once a year"
       ],

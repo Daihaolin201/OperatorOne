@@ -1,0 +1,139 @@
+{
+  "spec_version": "1.0",
+  "generated_at": "2026-03-07T18:49:14Z",
+  "project_id": "proj-opp-006-client-reporting-v1",
+  "source": {
+    "opportunity_id": "opp_006",
+    "stage": "stage2",
+    "selection_reason": "explicit_opportunity",
+    "decision_confidence": "high",
+    "decision_weighted_score": 3.904
+  },
+  "segment": {
+    "role": "Agency operator",
+    "industry": "Marketing services",
+    "company_size": "2-30"
+  },
+  "problem_statement": "Agencies rebuild client reports manually each cycle, creating delays, inconsistency, and low client confidence.",
+  "value_proposition": "Ship client-ready monthly reporting with one repeatable workflow",
+  "offer": {
+    "headline": "Ship client-ready monthly reporting with one repeatable workflow",
+    "cta_label": "Join reporting pilot",
+    "cta_type": "email_waitlist",
+    "channel_hint": "SMB ops communities"
+  },
+  "workflow": {
+    "prompt_label": "Describe your reporting bottleneck",
+    "prompt_placeholder": "e.g. We spend too long rebuilding monthly reports for non-technical clients.",
+    "primary_action_label": "Generate reporting workflow",
+    "rules": [
+      {
+        "id": "monthly-reporting",
+        "priority": 10,
+        "keywords": [
+          "monthly",
+          "report",
+          "client",
+          "manual"
+        ],
+        "first_step": "Define a one-page KPI summary template before adding channel-specific detail.",
+        "next_steps": [
+          "Standardize metric definitions across clients.",
+          "Auto-fill narrative sections from KPI deltas.",
+          "Collect client questions to improve the next template iteration."
+        ]
+      },
+      {
+        "id": "unclear-performance",
+        "priority": 8,
+        "keywords": [
+          "confusing",
+          "unclear",
+          "explaining",
+          "results"
+        ],
+        "first_step": "Rewrite report output into business outcomes first, then append technical metrics.",
+        "next_steps": [
+          "Map each KPI to an explicit business decision.",
+          "Highlight one win and one risk every cycle.",
+          "Use consistent visuals for comparability."
+        ]
+      }
+    ],
+    "default_response": {
+      "first_step": "Start with one reusable reporting structure and avoid custom format changes per client.",
+      "next_steps": [
+        "Lock metric glossary.",
+        "Automate export collection.",
+        "Review report quality with a short QA checklist."
+      ]
+    }
+  },
+  "metrics": {
+    "success_metric": "Qualified intent captures",
+    "target": "At least 5 qualified leads from first 20 targeted users in 14 days",
+    "kill_criteria": [
+      "Fewer than 2 qualified intent captures after 20 targeted visitors",
+      "Core workflow completion rate below 20% in first-session usage"
+    ]
+  },
+  "pricing": {
+    "plan_a": "$49/month agency starter",
+    "plan_b": "$149/month multi-client"
+  },
+  "adapter": {
+    "name": "client-reporting",
+    "display_name": "Client Reporting Assistant",
+    "description": "For agencies producing recurring client reports and KPI summaries.",
+    "match_score": 0.167,
+    "match_reason": "keyword_match"
+  },
+  "business_tests": [
+    {
+      "name": "monthly_reporting_response",
+      "input": "Our agency monthly reports are too manual and hard for clients to read.",
+      "expect_first_step_contains": [
+        "KPI",
+        "template"
+      ]
+    }
+  ],
+  "proof_points": [
+    "Build reports with custom fields and data from other apps (1782 reviews)",
+    "Single reporting template reused across clients with controlled customization.",
+    "Weekly QA loop to improve clarity and trust with each reporting cycle."
+  ],
+  "faq": [
+    {
+      "question": "Will this remove analyst judgment?",
+      "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
+    },
+    {
+      "question": "Can we keep client-specific KPI sets?",
+      "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
+    }
+  ],
+  "operational_checklist": [
+    "Lock one KPI glossary used across all reports.",
+    "Create an executive summary before channel detail.",
+    "Run a QA checklist before every client send."
+  ],
+  "page_profile": "client-reporting",
+  "cta_support_text": "Join pilot to standardize KPI narratives and cut report prep time.",
+  "mvp_boundary": {
+    "in_scope": [
+      "Single conversion-focused landing page with one primary CTA",
+      "Problem/benefit/proof/FAQ sections aligned to selected opportunity",
+      "Evidence-backed messaging with explicit claim traceability",
+      "Pilot lead capture for early access validation"
+    ],
+    "out_of_scope": [
+      "Supplier template variance",
+      "Extraction confidence thresholds",
+      "Custom enterprise integrations",
+      "Advanced billing/auth stack",
+      "Multi-product expansion"
+    ],
+    "source": "synthesized"
+  }
+}

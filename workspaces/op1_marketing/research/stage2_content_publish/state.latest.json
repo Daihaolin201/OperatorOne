@@ -9,16 +9,17 @@
     "missing": [],
     "ratio": 1.0
   },
-  "snapshot_id": "stage2snap_20260307021108_209d3a8a6db127ef",
+  "snapshot_id": "stage2snap_20260307191042_425a1371411e0edc",
   "delta_counts": {
     "added": 0,
     "changed": 1,
     "removed": 0
   },
-  "last_incremental_run_at": "2026-03-07T02:11:08Z",
+  "last_incremental_run_at": "2026-03-07T19:11:18Z",
   "active_items": 12,
-  "approved": 0,
-  "review_ready": 12,
+  "approved": 3,
+  "review_ready": 9,
   "needs_revision": 0,
-  "last_stage1_snapshot_id": "snap_20260307015157_bae53650007293e9"
+  "last_stage1_snapshot_id": "snap_20260307183929_b24188e536a053dc",
+  "last_manual_review_at": "2026-03-07T19:11:18Z"
 }

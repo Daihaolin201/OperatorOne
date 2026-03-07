@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T00:20:48.400485Z",
+  "generated_at": "2026-03-07T19:08:12.491404Z",
   "weights": {
     "pain_intensity": 0.24,
     "willingness_to_pay": 0.24,
@@ -38,22 +38,22 @@
     },
     {
       "rank": 4,
-      "opportunity_id": "opp_004",
-      "weighted_score": 1.894,
-      "decision": "reject",
-      "hard_gate_pass": false
-    },
-    {
-      "rank": 5,
       "opportunity_id": "opp_005",
       "weighted_score": 1.864,
       "decision": "reject",
       "hard_gate_pass": false
     },
     {
-      "rank": 6,
+      "rank": 5,
       "opportunity_id": "opp_006",
       "weighted_score": 1.864,
+      "decision": "reject",
+      "hard_gate_pass": false
+    },
+    {
+      "rank": 6,
+      "opportunity_id": "opp_004",
+      "weighted_score": 1.75,
       "decision": "reject",
       "hard_gate_pass": false
     }
@@ -225,7 +225,7 @@
       "evidence_gate": {
         "stage1_pass": false,
         "loss_signal_ok": false,
-        "budget_or_intent_ok": true
+        "budget_or_intent_ok": false
       },
       "confidence": {
         "level": "low",
@@ -239,7 +239,7 @@
           "risk_if_wrong": "Online signal may overstate real purchasing urgency."
         },
         "willingness_to_pay": {
-          "score": 4.0,
+          "score": 2.8,
           "reason": "Budget signal + intent signal heuristic.",
           "risk_if_wrong": "Tool interest may not convert into paid behavior."
         },
@@ -264,8 +264,8 @@
           "risk_if_wrong": "Real usage frequency may be lower than inferred."
         }
       },
-      "base_weighted_score": 3.788,
-      "weighted_score": 1.894,
+      "base_weighted_score": 3.5,
+      "weighted_score": 1.75,
       "decision": "reject",
       "decision_reason": "Failed Stage-1 hard gates."
     },

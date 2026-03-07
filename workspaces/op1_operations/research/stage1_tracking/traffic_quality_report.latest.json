@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:54:26+00:00",
+  "generated_at": "2026-03-07T18:46:54+00:00",
   "sessions_total": 905.66,
   "unattributed_sessions": 0.0,
   "unattributed_traffic_rate": 0.0,
@@ -12,11 +12,11 @@
     },
     {
       "source": "organic_search",
-      "sessions": 176.64
+      "sessions": 176.63
     },
     {
       "source": "linkedin",
-      "sessions": 66.62
+      "sessions": 66.63
     }
   ]
 }

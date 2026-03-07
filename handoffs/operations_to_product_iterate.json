@@ -1,5 +1,7 @@
 {
-  "generated_at": "2026-03-06T00:18:09+00:00",
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T18:46:55+00:00",
+  "generated_by": "workspaces/op1_operations/scripts/evaluate_stage3_experiments.py",
   "from": "op1_operations.stage3_iteration",
   "objective": "product_iteration_decisions",
   "items": [
@@ -123,7 +125,5 @@
       "observed_mrr_delta_30d": 0.0,
       "next_action": "Refine variant and rerun"
     }
-  ],
-  "contract_version": "1.0.0",
-  "generated_by": "scripts/upgrade_handoffs.py"
+  ]
 }

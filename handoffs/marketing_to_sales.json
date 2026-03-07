@@ -1,15 +1,17 @@
 {
-  "generated_at": "2026-03-06T00:16:56Z",
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T19:32:51Z",
+  "generated_by": "workspaces/op1_marketing/scripts/run_marketing_campaign_stage3.py",
   "campaigns": [
     {
-      "campaign_id": "stage2-review-20260306001650",
+      "campaign_id": "stage2-review-20260307191118",
       "name": "Stage2 content publish manual review",
       "status": "review_approved",
       "auto_publish": false,
       "assets_total": 12,
-      "assets_approved": 12,
-      "assets_review_ready": 0,
-      "generated_at": "2026-03-06T00:16:50Z"
+      "assets_approved": 3,
+      "assets_review_ready": 9,
+      "generated_at": "2026-03-07T19:11:18Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-02",
@@ -18,9 +20,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 152.2,
-      "forecast_sql": 3.38,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 162.24,
+      "forecast_sql": 3.6,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-invoice-follow-03",
@@ -29,9 +31,9 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 151.97,
-      "forecast_sql": 3.38,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 162.0,
+      "forecast_sql": 3.59,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
       "campaign_id": "stage3-cnt-exp-opportunity-opp-001-04",
@@ -40,64 +42,64 @@
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 149.3,
-      "forecast_sql": 3.31,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 159.16,
+      "forecast_sql": 3.54,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
-      "name": "Stage3 launch for cnt_exp-opportunity-opp-003-04",
-      "status": "launch_ready",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
+      "status": "watchlist",
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 149.3,
-      "forecast_sql": 3.31,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 145.93,
+      "forecast_sql": 3.25,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
-      "name": "Stage3 launch for cnt_exp-opportunity-opp-004-03",
-      "status": "launch_ready",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-02",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-02",
+      "status": "watchlist",
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 149.3,
-      "forecast_sql": 3.31,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 144.1,
+      "forecast_sql": 3.2,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
-      "name": "Stage3 launch for cnt_exp-opportunity-opp-004-06",
-      "status": "launch_ready",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-04",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-04",
+      "status": "watchlist",
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 149.3,
-      "forecast_sql": 3.31,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 144.1,
+      "forecast_sql": 3.2,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
-      "name": "Stage3 launch for cnt_exp-opportunity-opp-005-04",
-      "status": "launch_ready",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-01",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-client-reporti-01",
+      "status": "watchlist",
       "auto_launch": false,
       "objective": "qualified_pipeline_capture",
       "primary_channel": "email_nurture",
-      "budget": 149.3,
-      "forecast_sql": 3.31,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "budget": 143.58,
+      "forecast_sql": 3.19,
+      "generated_at": "2026-03-07T19:32:51Z"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
-      "name": "Stage3 launch for cnt_exp-opportunity-opp-006-04",
-      "status": "launch_ready",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-05",
+      "name": "Stage3 launch for cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
+      "status": "watchlist",
       "auto_launch": false,
-      "objective": "qualified_pipeline_capture",
-      "primary_channel": "email_nurture",
-      "budget": 149.3,
-      "forecast_sql": 3.31,
-      "generated_at": "2026-03-06T00:16:56Z"
+      "objective": "problem_aware_demand_generation",
+      "primary_channel": "organic_search",
+      "budget": 138.9,
+      "forecast_sql": 1.16,
+      "generated_at": "2026-03-07T19:32:51Z"
     }
   ],
   "campaign_assets": [
@@ -106,7 +108,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 68.49,
+      "budget": 73.01,
       "utm_medium": "email"
     },
     {
@@ -114,7 +116,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 53.27,
+      "budget": 56.78,
       "utm_medium": "paid_social"
     },
     {
@@ -122,7 +124,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 30.44,
+      "budget": 32.45,
       "utm_medium": "organic"
     },
     {
@@ -130,7 +132,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 68.39,
+      "budget": 72.9,
       "utm_medium": "email"
     },
     {
@@ -138,7 +140,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 53.19,
+      "budget": 56.7,
       "utm_medium": "paid_social"
     },
     {
@@ -146,7 +148,7 @@
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 30.39,
+      "budget": 32.4,
       "utm_medium": "organic"
     },
     {
@@ -154,7 +156,7 @@
       "content_id": "cnt_exp-opportunity-opp-001-04",
       "channel": "email_nurture",
       "status": "launch_ready",
-      "budget": 67.19,
+      "budget": 71.62,
       "utm_medium": "email"
     },
     {
@@ -162,7 +164,7 @@
       "content_id": "cnt_exp-opportunity-opp-001-04",
       "channel": "linkedin",
       "status": "launch_ready",
-      "budget": 52.26,
+      "budget": 55.71,
       "utm_medium": "paid_social"
     },
     {
@@ -170,128 +172,128 @@
       "content_id": "cnt_exp-opportunity-opp-001-04",
       "channel": "organic_search",
       "status": "launch_ready",
-      "budget": 29.85,
+      "budget": 31.83,
       "utm_medium": "organic"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
-      "content_id": "cnt_exp-opportunity-opp-003-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
       "channel": "email_nurture",
-      "status": "launch_ready",
-      "budget": 67.19,
+      "status": "watchlist",
+      "budget": 65.67,
       "utm_medium": "email"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
-      "content_id": "cnt_exp-opportunity-opp-003-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
       "channel": "linkedin",
-      "status": "launch_ready",
-      "budget": 52.26,
+      "status": "watchlist",
+      "budget": 51.08,
       "utm_medium": "paid_social"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-003-04",
-      "content_id": "cnt_exp-opportunity-opp-003-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-03",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
       "channel": "organic_search",
-      "status": "launch_ready",
-      "budget": 29.85,
+      "status": "watchlist",
+      "budget": 29.18,
       "utm_medium": "organic"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
-      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-02",
       "channel": "email_nurture",
-      "status": "launch_ready",
-      "budget": 67.19,
+      "status": "watchlist",
+      "budget": 64.84,
       "utm_medium": "email"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
-      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-02",
       "channel": "linkedin",
-      "status": "launch_ready",
-      "budget": 52.26,
+      "status": "watchlist",
+      "budget": 50.43,
       "utm_medium": "paid_social"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-03",
-      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-02",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-02",
       "channel": "organic_search",
-      "status": "launch_ready",
-      "budget": 29.85,
+      "status": "watchlist",
+      "budget": 28.83,
       "utm_medium": "organic"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
-      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-04",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-04",
       "channel": "email_nurture",
-      "status": "launch_ready",
-      "budget": 67.19,
+      "status": "watchlist",
+      "budget": 64.84,
       "utm_medium": "email"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
-      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-04",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-04",
       "channel": "linkedin",
-      "status": "launch_ready",
-      "budget": 52.26,
+      "status": "watchlist",
+      "budget": 50.43,
       "utm_medium": "paid_social"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-004-06",
-      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-04",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-04",
       "channel": "organic_search",
-      "status": "launch_ready",
-      "budget": 29.85,
+      "status": "watchlist",
+      "budget": 28.83,
       "utm_medium": "organic"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
-      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-01",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-01",
       "channel": "email_nurture",
-      "status": "launch_ready",
-      "budget": 67.19,
+      "status": "watchlist",
+      "budget": 64.61,
       "utm_medium": "email"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
-      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-01",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-01",
       "channel": "linkedin",
-      "status": "launch_ready",
-      "budget": 52.26,
+      "status": "watchlist",
+      "budget": 50.25,
       "utm_medium": "paid_social"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-005-04",
-      "content_id": "cnt_exp-opportunity-opp-005-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-client-reporti-01",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-01",
       "channel": "organic_search",
-      "status": "launch_ready",
-      "budget": 29.85,
+      "status": "watchlist",
+      "budget": 28.72,
       "utm_medium": "organic"
     },
     {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
-      "content_id": "cnt_exp-opportunity-opp-006-04",
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-05",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
+      "channel": "organic_search",
+      "status": "watchlist",
+      "budget": 55.56,
+      "utm_medium": "organic"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-05",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
+      "channel": "linkedin",
+      "status": "watchlist",
+      "budget": 48.62,
+      "utm_medium": "paid_social"
+    },
+    {
+      "campaign_id": "stage3-cnt-exp-project-spec-proj-opp-001-chargeback-res-05",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
       "channel": "email_nurture",
-      "status": "launch_ready",
-      "budget": 67.19,
+      "status": "watchlist",
+      "budget": 34.72,
       "utm_medium": "email"
-    },
-    {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
-      "content_id": "cnt_exp-opportunity-opp-006-04",
-      "channel": "linkedin",
-      "status": "launch_ready",
-      "budget": 52.26,
-      "utm_medium": "paid_social"
-    },
-    {
-      "campaign_id": "stage3-cnt-exp-opportunity-opp-006-04",
-      "content_id": "cnt_exp-opportunity-opp-006-04",
-      "channel": "organic_search",
-      "status": "launch_ready",
-      "budget": 29.85,
-      "utm_medium": "organic"
     }
   ],
   "content_assets": [
@@ -316,56 +318,6 @@
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-04.md"
     },
     {
-      "content_id": "cnt_exp-opportunity-opp-003-04",
-      "experiment_id": "exp_opportunity-opp-003_04",
-      "keyword": "monthly reporting labor vs manual",
-      "intent": "BOFU",
-      "status": "approved",
-      "format": "comparison-or-usecase",
-      "title": "Monthly Reporting Labor Vs Manual: Practical buyer guide for teams evaluating alternatives",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-003-04.md"
-    },
-    {
-      "content_id": "cnt_exp-opportunity-opp-004-03",
-      "experiment_id": "exp_opportunity-opp-004_03",
-      "keyword": "how to default software output plus custom excel",
-      "intent": "BOFU",
-      "status": "approved",
-      "format": "comparison-or-usecase",
-      "title": "How To Default Software Output Plus Custom Excel: Practical buyer guide for teams evaluating alternatives",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-03.md"
-    },
-    {
-      "content_id": "cnt_exp-opportunity-opp-004-06",
-      "experiment_id": "exp_opportunity-opp-004_06",
-      "keyword": "owner tenant workflows vs manual",
-      "intent": "BOFU",
-      "status": "approved",
-      "format": "comparison-or-usecase",
-      "title": "Owner Tenant Workflows Vs Manual: Practical buyer guide for teams evaluating alternatives",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-06.md"
-    },
-    {
-      "content_id": "cnt_exp-opportunity-opp-005-04",
-      "experiment_id": "exp_opportunity-opp-005_04",
-      "keyword": "expense reimbursement remains vs manual",
-      "intent": "BOFU",
-      "status": "approved",
-      "format": "comparison-or-usecase",
-      "title": "Expense Reimbursement Remains Vs Manual: Practical buyer guide for teams evaluating alternatives",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-005-04.md"
-    },
-    {
-      "content_id": "cnt_exp-opportunity-opp-006-04",
-      "experiment_id": "exp_opportunity-opp-006_04",
-      "keyword": "core workflows depend vs manual",
-      "intent": "BOFU",
-      "status": "approved",
-      "format": "comparison-or-usecase",
-      "title": "Core Workflows Depend Vs Manual: Practical buyer guide for teams evaluating alternatives",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-006-04.md"
-    },
-    {
       "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
       "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
       "keyword": "overdue invoices followed tool for freelancer small service owner",
@@ -380,17 +332,47 @@
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_03",
       "keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
       "intent": "BOFU",
-      "status": "approved",
+      "status": "review_ready",
       "format": "comparison-or-usecase",
       "title": "Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce: Practical buyer guide for teams evaluating alternatives",
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md"
+    },
+    {
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-02",
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_02",
+      "keyword": "chargeback disputes handled pricing",
+      "intent": "BOFU",
+      "status": "review_ready",
+      "format": "comparison-or-usecase",
+      "title": "Chargeback Disputes Handled Pricing: Practical buyer guide for teams evaluating alternatives",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-02.md"
+    },
+    {
+      "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-04",
+      "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_04",
+      "keyword": "chargeback disputes handled vs manual",
+      "intent": "BOFU",
+      "status": "review_ready",
+      "format": "comparison-or-usecase",
+      "title": "Chargeback Disputes Handled Vs Manual: Practical buyer guide for teams evaluating alternatives",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-04.md"
+    },
+    {
+      "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-01",
+      "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_01",
+      "keyword": "agencies rebuild client pricing",
+      "intent": "BOFU",
+      "status": "review_ready",
+      "format": "comparison-or-usecase",
+      "title": "Agencies Rebuild Client Pricing: Practical buyer guide for teams evaluating alternatives",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-01.md"
     },
     {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
       "keyword": "chargeback disputes handled hoc causing avoidable checklist",
       "intent": "MOFU",
-      "status": "approved",
+      "status": "review_ready",
       "format": "playbook-or-template",
       "title": "Chargeback Disputes Handled Hoc Causing Avoidable Checklist: step-by-step playbook you can apply this week",
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-05.md"
@@ -400,20 +382,40 @@
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_06",
       "keyword": "chargeback disputes handled hoc causing avoidable template",
       "intent": "MOFU",
-      "status": "approved",
+      "status": "review_ready",
       "format": "playbook-or-template",
       "title": "Chargeback Disputes Handled Hoc Causing Avoidable Template: step-by-step playbook you can apply this week",
       "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md"
     },
     {
-      "content_id": "cnt_exp-handoff-opp-001-06",
-      "experiment_id": "exp_handoff-opp-001_06",
+      "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-05",
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_05",
       "keyword": "overdue invoices followed manually late because checklist",
       "intent": "MOFU",
-      "status": "approved",
+      "status": "review_ready",
       "format": "playbook-or-template",
       "title": "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
-      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-handoff-opp-001-06.md"
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-05.md"
+    },
+    {
+      "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-06",
+      "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_06",
+      "keyword": "overdue invoices followed manually late because template",
+      "intent": "MOFU",
+      "status": "review_ready",
+      "format": "playbook-or-template",
+      "title": "Overdue Invoices Followed Manually Late Because Template: step-by-step playbook you can apply this week",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-06.md"
+    },
+    {
+      "content_id": "cnt_exp-opportunity-opp-001-06",
+      "experiment_id": "exp_opportunity-opp-001_06",
+      "keyword": "manual reminders via personal email inconsistent template",
+      "intent": "MOFU",
+      "status": "review_ready",
+      "format": "playbook-or-template",
+      "title": "Manual Reminders Via Personal Email Inconsistent Template: step-by-step playbook you can apply this week",
+      "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-06.md"
     }
   ],
   "seo_targets": [
@@ -430,36 +432,6 @@
       "status": "approved"
     },
     {
-      "keyword": "monthly reporting labor vs manual",
-      "intent": "BOFU",
-      "priority_score": 94.05,
-      "status": "approved"
-    },
-    {
-      "keyword": "how to default software output plus custom excel",
-      "intent": "BOFU",
-      "priority_score": 94.05,
-      "status": "approved"
-    },
-    {
-      "keyword": "owner tenant workflows vs manual",
-      "intent": "BOFU",
-      "priority_score": 94.05,
-      "status": "approved"
-    },
-    {
-      "keyword": "expense reimbursement remains vs manual",
-      "intent": "BOFU",
-      "priority_score": 94.05,
-      "status": "approved"
-    },
-    {
-      "keyword": "core workflows depend vs manual",
-      "intent": "BOFU",
-      "priority_score": 94.05,
-      "status": "approved"
-    },
-    {
       "keyword": "overdue invoices followed tool for freelancer small service owner",
       "intent": "BOFU",
       "priority_score": 93.87,
@@ -469,25 +441,55 @@
       "keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
       "intent": "BOFU",
       "priority_score": 93.68,
-      "status": "approved"
+      "status": "review_ready"
+    },
+    {
+      "keyword": "chargeback disputes handled pricing",
+      "intent": "BOFU",
+      "priority_score": 91.49,
+      "status": "review_ready"
+    },
+    {
+      "keyword": "chargeback disputes handled vs manual",
+      "intent": "BOFU",
+      "priority_score": 91.49,
+      "status": "review_ready"
+    },
+    {
+      "keyword": "agencies rebuild client pricing",
+      "intent": "BOFU",
+      "priority_score": 90.89,
+      "status": "review_ready"
     },
     {
       "keyword": "chargeback disputes handled hoc causing avoidable checklist",
       "intent": "MOFU",
       "priority_score": 90.05,
-      "status": "approved"
+      "status": "review_ready"
     },
     {
       "keyword": "chargeback disputes handled hoc causing avoidable template",
       "intent": "MOFU",
       "priority_score": 90.05,
-      "status": "approved"
+      "status": "review_ready"
     },
     {
       "keyword": "overdue invoices followed manually late because checklist",
       "intent": "MOFU",
-      "priority_score": 87.45,
-      "status": "approved"
+      "priority_score": 89.15,
+      "status": "review_ready"
+    },
+    {
+      "keyword": "overdue invoices followed manually late because template",
+      "intent": "MOFU",
+      "priority_score": 89.15,
+      "status": "review_ready"
+    },
+    {
+      "keyword": "manual reminders via personal email inconsistent template",
+      "intent": "MOFU",
+      "priority_score": 86.05,
+      "status": "review_ready"
     }
   ],
   "lead_signals": {
@@ -496,16 +498,16 @@
       "email_nurture",
       "organic_search"
     ],
-    "estimated_weekly_leads": 27,
-    "estimated_weekly_mql": 76,
+    "estimated_weekly_leads": 25,
+    "estimated_weekly_mql": 72,
     "note": "Stage3 shadow launch forecast from approved Stage2 assets; auto-launch disabled."
   },
   "campaign_launch": {
     "stage": "stage3_campaign_launch_shadow",
     "auto_launch": false,
     "queue_counts": {
-      "launch_ready": 8,
-      "watchlist": 0,
+      "launch_ready": 3,
+      "watchlist": 5,
       "hold": 0
     },
     "next_actions": [
@@ -517,7 +519,5 @@
   "offer_context": {
     "pricing": "",
     "trial_policy": ""
-  },
-  "contract_version": "1.0.0",
-  "generated_by": "scripts/upgrade_handoffs.py"
+  }
 }

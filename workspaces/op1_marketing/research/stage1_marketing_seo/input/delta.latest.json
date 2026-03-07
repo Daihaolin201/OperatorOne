@@ -1,45 +1,63 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-07T01:51:57Z",
-  "base_snapshot_id": "snap_20260307005820_12ee897a4e82744b",
-  "current_snapshot_id": "snap_20260307015157_bae53650007293e9",
+  "generated_at": "2026-03-07T19:11:29Z",
+  "base_snapshot_id": "snap_20260307183929_b24188e536a053dc",
+  "current_snapshot_id": "snap_20260307191129_7662b2908a554254",
   "added": [],
   "changed": [
     {
       "source_path": "../../handoffs/product_to_marketing.json",
       "requirement_id": "product_to_marketing_handoff",
-      "prev_sha256": "d08095004148c15001c50fa19f2bdaa5a69cf15bf962446364f61a625ed69201",
-      "sha256": "f160f3ec11fd049f1679ef4d7e7c6214038559302687fe737c1313e3e2f943ba"
+      "prev_sha256": "43d5f67fa60dd887b6b11cc4e8318609828dc3cd56eda81582acbf4e3c538f89",
+      "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09"
     },
     {
       "source_path": "../op1_product/research/landing_v1/landing_contract_test.latest.json",
       "requirement_id": "landing_contract_test",
-      "prev_sha256": "dd490f651684ddca44bcfcc5e6f022201d6bf50e0b5c0a99a3a40907e3262729",
-      "sha256": "19859c6b394616d12dbd3514baa886dc85d2579920e17b155bb2986d649e16ea"
+      "prev_sha256": "1f7eed25577cbc98befe1a734a1f5a91507b4d3b03ff122b831f75ce5dcedeff",
+      "sha256": "646ae087dece21c3fa5435b02ac43238a58630df63be9fbb3a9f0b42bc2c22fd"
     },
     {
       "source_path": "../op1_product/research/landing_v1/landing_package.json",
       "requirement_id": "landing_package",
-      "prev_sha256": "ab5f2b88c5f28d61355247c0be3c9243078238575603339586a6a2843a50f2af",
-      "sha256": "c36b011990e67a272ff7c5603726b3c94f13579183a045e3a61db755b2156594"
+      "prev_sha256": "7e61ccdc5280ffc7feb374200f6a7ad5cd463b1aac0f5f19c9d03fa8916dabeb",
+      "sha256": "c310df28c5a079e07748fa56631366b79d20175176e28df39884eb0b9becfd91"
     },
     {
       "source_path": "../op1_product/research/landing_v1/landing_semantic_test.latest.json",
       "requirement_id": "landing_semantic_test",
-      "prev_sha256": "a4ed5dbbac90e6ef8053b19077a0cdf130bcf4240ed56ad12d0b4488adfe6b0b",
-      "sha256": "fa8f0bfa2170c7fd566390b11e889b5ed8d9b20ee25b8d5fd1b0b23f112b0d58"
+      "prev_sha256": "f233f8793f5efdab37d8bcff6ade493142dd843ca4aa20fb36deb0ffb59bf70f",
+      "sha256": "06604bb376f5ca884a4f2d04cebdaa02431e3b0958abf2f986ee775ca6c46914"
     },
     {
       "source_path": "../op1_product/research/live_examples.latest.json",
       "requirement_id": "live_examples",
-      "prev_sha256": "fce449f74771157b7a478e8bb831d87fe7fbb43200e54479f3be5db92a555d2a",
-      "sha256": "536f061fba3b2de9ef6480e52b7719fd6d8c43c8d7734a1775ad4b97466e4065"
+      "prev_sha256": "260d802efe73c7d27ea271be2b63ce9affd1bb0e977ce0b1621e221e9bc7638d",
+      "sha256": "0b886c5e864d0a3e80b99616f18b22bf997cbb514d8c22c90cbc2397c53047d1"
+    },
+    {
+      "source_path": "../op1_product/research/stage1_idea_discovery/opportunity_records.json",
+      "requirement_id": "stage1_opportunity_records",
+      "prev_sha256": "3bac14d72eb893a217de59316bfac92b34be54ff961366b99796fe9109622231",
+      "sha256": "6e2820698495a44949c122c166201f637fe13bb74a25914504726902240b51d9"
+    },
+    {
+      "source_path": "../op1_product/research/stage2_idea_screening/decision_log.json",
+      "requirement_id": "stage2_decision_log",
+      "prev_sha256": "efd881ebb03f28ae539743bedc38c94f101509064a944bb0b0c4f076e99074b7",
+      "sha256": "7a010fc275014b7b509bd13a1158b587bb29d705c7a19d555c729df6e6a1b33a"
+    },
+    {
+      "source_path": "../op1_product/research/stage2_idea_screening/scoring.csv",
+      "requirement_id": "stage2_scoring",
+      "prev_sha256": "9502d5fe16e8dc43dcb67ee14417f326f283ffaea75416075cb25e93437bcd59",
+      "sha256": "8c17e594001cfa2c56740d3a01f7e61c86bbda2c46f9a2041df291778b45bcf2"
     },
     {
       "source_path": "../op1_product/research/stage3_landing_launch/run.latest.json",
       "requirement_id": "stage3_landing_run",
-      "prev_sha256": "85e3cd232b4aaac4bafe70633332fb8f3ce7ffc6db046e7ac8001ea6b4b7e4d1",
-      "sha256": "abfee6e6a75f3edb89458d16a9f4f818a09e919f66f2119f8094c868f0d7343b"
+      "prev_sha256": "a02683dd3622b2c7a6a44082b20c1fa605455ea48f936f7a2e7234357c503c59",
+      "sha256": "93620b641bc49cada86fc0d6c8af327585159bbd91fda7dc9fa3a80ce899b409"
     }
   ],
   "removed": []

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T01:51:57Z",
+  "generated_at": "2026-03-07T18:39:29Z",
   "context_count": 12,
   "contexts": [
     {
@@ -42,22 +42,20 @@
       "priority_signals": {}
     },
     {
-      "context_id": "handoff::opp-001",
+      "context_id": "handoff::opp-006",
       "source_type": "marketing_handoff",
       "source_files": [
         "../../handoffs/product_to_marketing.json"
       ],
       "source_opportunity_id": null,
-      "icp": "Freelancer / small service owner / Professional services / 1-20",
-      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
-      "value_proposition": "Turn overdue invoices into a daily follow-up action queue",
+      "icp": "Agency operator / Marketing services / 2-30",
+      "problem_statement": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
+      "value_proposition": "Ship client-ready monthly reporting with one repeatable workflow",
       "proof_points": [
-        "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
-        "Daily prioritized follow-up queue by aging bucket and invoice value",
-        "Rule-based playbooks for two paths: late-but-responsive vs. ghosting",
-        "Copy-ready reminder templates with manual send workflow",
-        "Pilot landing/waitlist flow for intent capture",
-        "Lightweight outcomes log (replies, promised payment date, recovered amount)"
+        "Single conversion-focused landing page with one primary CTA",
+        "Problem/benefit/proof/FAQ sections aligned to selected opportunity",
+        "Evidence-backed messaging with explicit claim traceability",
+        "Pilot lead capture for early access validation"
       ],
       "faq": [],
       "cta": {
@@ -70,51 +68,52 @@
       "priority_signals": {}
     },
     {
-      "context_id": "landing::opp_001",
+      "context_id": "landing::opp_006",
       "source_type": "landing_package",
       "source_files": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "source_opportunity_id": "opp_001",
-      "icp": "Freelancer / small service owner / Professional services / 1-20",
-      "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
-      "value_proposition": "Turn overdue invoices into a daily follow-up action queue",
+      "source_opportunity_id": "opp_006",
+      "icp": "Agency operator / Marketing services / 2-30",
+      "problem_statement": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
+      "value_proposition": "Ship client-ready monthly reporting with one repeatable workflow",
       "proof_points": [
-        "Prioritize overdue invoices by value and aging bucket.",
-        "Route ghosting vs. late-payment scenarios with explicit rules."
+        "Build reports with custom fields and data from other apps (1782 reviews)",
+        "Single reporting template reused across clients with controlled customization.",
+        "Weekly QA loop to improve clarity and trust with each reporting cycle."
       ],
       "faq": [
         {
-          "question": "Will this replace our accounting tool?",
-          "answer": "No. It focuses on follow-up execution workflow and can run alongside your accounting stack."
+          "question": "Will this remove analyst judgment?",
+          "answer": "No. It standardizes baseline structure so analyst time goes to interpretation, not formatting."
         },
         {
-          "question": "Can we customize escalation tone?",
-          "answer": "Yes. Rules can be tuned by account tier, delay age, and customer relationship sensitivity."
+          "question": "Can we keep client-specific KPI sets?",
+          "answer": "Yes. The template has shared core blocks plus client-specific metric sections."
         }
       ],
       "cta": {
-        "label": "Join invoice pilot",
+        "label": "Join reporting pilot",
         "type": "email_waitlist",
-        "support_text": "Join a pilot that helps you recover receivables with less manual chasing."
+        "support_text": "Join pilot to standardize KPI narratives and cut report prep time."
       },
       "risk_if_wrong": [
-        "Email deliverability",
-        "Accounting data import quality",
+        "Supplier template variance",
+        "Extraction confidence thresholds",
         "Online signal may overstate real purchasing urgency.",
         "Tool interest may not convert into paid behavior.",
         "Integration requirements may expand scope.",
         "Public communities may not convert to interviews.",
         "Incumbent strength may be underestimated.",
         "Real usage frequency may be lower than inferred.",
-        "By day 7, fewer than 4 qualified conversations from first 20 outreach attempts.",
-        "By day 14, fewer than 3 pilot signups or <10% visitor-to-qualified-intent rate."
+        "Fewer than 2 qualified intent captures after first 20 targeted visitors",
+        "Core workflow completion below 20% for pilot traffic"
       ],
       "kill_criteria": [
-        "By day 7, fewer than 4 qualified conversations from first 20 outreach attempts.",
-        "By day 14, fewer than 3 pilot signups or <10% visitor-to-qualified-intent rate.",
-        "Zero paid starts (or paid-start commitments) after pilot walkthroughs.",
-        "Median manual onboarding effort >45 minutes/account across first 5 pilot users."
+        "Fewer than 2 qualified intent captures after first 20 targeted visitors",
+        "Core workflow completion below 20% for pilot traffic",
+        "No repeat qualified inbound intent within 14-day validation window",
+        "Signal quality warning: Online signal may overstate real purchasing urgency."
       ],
       "priority_signals": {}
     },
@@ -129,6 +128,8 @@
       "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
       "value_proposition": "Manual reminders via personal email and inconsistent escalation.",
       "proof_points": [
+        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "put late fee terms on all our invoices starting in AUG. 1.5% per month after net 30. figured it would either motivate faster payment or at least cover some of our costs when people pay slow. six months later we've bill...",
         "283 apps listed for this feature category on Shopify App Store"
       ],
       "faq": [],
@@ -141,14 +142,12 @@
         "Email deliverability",
         "Accounting data import quality"
       ],
-      "kill_criteria": [
-        "hard_gate_failed"
-      ],
+      "kill_criteria": [],
       "priority_signals": {
         "rank": 1,
-        "weighted_score": 1.894,
-        "decision": "reject",
-        "confidence_level": "low"
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -162,8 +161,10 @@
       "problem_statement": "Chargeback handling is manual, time-consuming, and causes immediate cash-flow shocks.",
       "value_proposition": "Manual evidence gathering from order systems and customer support logs.",
       "proof_points": [
-        "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
-        "Automate everything and get back to business (8243 reviews)"
+        "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "When I launched my shopify store I was doing maybe 10 orders a week and it was totally manageable, just pack everything up after dinner and drop it at the post office the next morning. Now I'm at like 150 orders a week a...",
+        "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
+        "Automate everything and get back to business (8283 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -175,14 +176,12 @@
         "Store API access",
         "Dispute data normalization"
       ],
-      "kill_criteria": [
-        "hard_gate_failed"
-      ],
+      "kill_criteria": [],
       "priority_signals": {
         "rank": 2,
-        "weighted_score": 1.894,
-        "decision": "reject",
-        "confidence_level": "low"
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -196,8 +195,10 @@
       "problem_statement": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
       "value_proposition": "Manual exports and custom spreadsheet/report rewriting.",
       "proof_points": [
-        "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
-        "Build proven CRO-focused pages with pro flexible customization (5780 reviews)"
+        "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month. Over the last 6-8 months, I keep seeing the same p...",
+        "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
+        "Build proven CRO-focused pages with pro flexible customization (5779 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -209,14 +210,12 @@
         "Cross-channel metric mapping",
         "Integration breadth expectations"
       ],
-      "kill_criteria": [
-        "hard_gate_failed"
-      ],
+      "kill_criteria": [],
       "priority_signals": {
-        "rank": 3,
-        "weighted_score": 1.894,
-        "decision": "reject",
-        "confidence_level": "low"
+        "rank": 4,
+        "weighted_score": 3.964,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -230,6 +229,8 @@
       "problem_statement": "Owner and tenant workflows are fragmented, driving monthly manual spreadsheet work.",
       "value_proposition": "Default PM software output plus custom Excel edits.",
       "proof_points": [
+        "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "It does not help. If anything, it makes people automatically annoyed. Call and talk. We are human beings and we will work with you if you communicate. Asking AI to quote a bunch of nonsense (which usually doesn’t apply) ...",
         "Impossible food sues to cancel earlier trademark owners",
         "Launch HN: Finley (YC W21) – Debt capital monitoring and reporting software Hey HN! We’re Kevin, Jeremy, and Josiah, and we’re in the current YC batch. We’re building Finley (<a href=\"https:&#x2F;&#x2F;www.finleycms.com\"..."
       ],
@@ -243,14 +244,12 @@
         "PM tool integrations",
         "Data privacy in owner/tenant records"
       ],
-      "kill_criteria": [
-        "hard_gate_failed"
-      ],
+      "kill_criteria": [],
       "priority_signals": {
-        "rank": 4,
-        "weighted_score": 1.894,
+        "rank": 6,
+        "weighted_score": 3.133,
         "decision": "reject",
-        "confidence_level": "low"
+        "confidence_level": "medium"
       }
     },
     {
@@ -264,8 +263,10 @@
       "problem_statement": "Expense reimbursement remains chaotic and fraud-prone with manual checks.",
       "value_proposition": "Shared sheet + end-of-month manual reconciliation.",
       "proof_points": [
-        "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
-        "An invoice generator to easily custom and print order document (1084 reviews)"
+        "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "Every end of the month turns into this massive chore chasing down missing receipts, checking if that Starbucks charge was a client meeting or just coffee, sorting random Venmo reimbursements, etc. I thought I could handl...",
+        "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
+        "An invoice generator to easily custom and print order document (1087 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -277,14 +278,12 @@
         "OCR quality",
         "Policy customization across teams"
       ],
-      "kill_criteria": [
-        "hard_gate_failed"
-      ],
+      "kill_criteria": [],
       "priority_signals": {
-        "rank": 5,
-        "weighted_score": 1.864,
-        "decision": "reject",
-        "confidence_level": "low"
+        "rank": 3,
+        "weighted_score": 4.024,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -298,8 +297,10 @@
       "problem_statement": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
       "value_proposition": "Manual copy-paste from PDFs into spreadsheets and brittle formulas/macros.",
       "proof_points": [
+        "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "Hi everyone as the title states…long story short my kindness got the best of me and I’m getting emotionally curb stomped. About 2 months ago I had a lead reach out to me saying they needed immediate help with their mark...",
         "Sync your sales channel with QuickBooks Online (2994 reviews)",
-        "Build reports with custom fields and data from other apps (1780 reviews)"
+        "Build reports with custom fields and data from other apps (1782 reviews)"
       ],
       "faq": [],
       "cta": {
@@ -311,14 +312,12 @@
         "Supplier template variance",
         "Extraction confidence thresholds"
       ],
-      "kill_criteria": [
-        "hard_gate_failed"
-      ],
+      "kill_criteria": [],
       "priority_signals": {
-        "rank": 6,
-        "weighted_score": 1.864,
-        "decision": "reject",
-        "confidence_level": "low"
+        "rank": 5,
+        "weighted_score": 3.904,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -362,9 +361,9 @@
       ],
       "priority_signals": {
         "rank": 1,
-        "weighted_score": 1.894,
-        "decision": "reject",
-        "confidence_level": "low"
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -408,9 +407,9 @@
       ],
       "priority_signals": {
         "rank": 1,
-        "weighted_score": 1.894,
-        "decision": "reject",
-        "confidence_level": "low"
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     },
     {
@@ -455,13 +454,13 @@
       ],
       "priority_signals": {
         "rank": 1,
-        "weighted_score": 1.894,
-        "decision": "reject",
-        "confidence_level": "low"
+        "weighted_score": 4.084,
+        "decision": "advance",
+        "confidence_level": "high"
       }
     }
   ],
-  "snapshot_id": "snap_20260307015157_bae53650007293e9",
+  "snapshot_id": "snap_20260307183929_b24188e536a053dc",
   "delta_counts": {
     "added": 0,
     "changed": 6,
