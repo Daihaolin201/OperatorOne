@@ -45,9 +45,11 @@ This is not a demo. These numbers reflect actual pipeline execution.
 | Content assets | **12** (3 approved, 9 review_ready) |
 | Agent handoffs | **9 JSON contracts** |
 
-MRR Progress:
+MRR Progress (49 / 100):
 ```text
-[$49 ████████████░░░░░░░░░░░ $100]
+$0   [$49                    $100]
+     [██████████░░░░░░░░░░]
+      49%        -->        100%
 ```
 
 ---
@@ -328,9 +330,11 @@ Detailed walkthrough can be found at `docs/demo_video_script.md`.
 | 内容资产 | **12** (3 个批准, 9 个待审核) |
 | 智能体交付物 | **9 个 JSON 合约** |
 
-MRR 进度：
+MRR 进度（49 / 100）：
 ```text
-[$49 ████████████░░░░░░░░░░░ $100]
+$0   [$49                    $100]
+     [██████████░░░░░░░░░░]
+      49%        -->        100%
 ```
 
 ---
