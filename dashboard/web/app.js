@@ -2,6 +2,8 @@ const els = {
   refreshBtn: document.getElementById("refreshBtn"),
   lastUpdated: document.getElementById("lastUpdated"),
   uiModeSelect: document.getElementById("uiModeSelect"),
+  workspaceModeSelect: document.getElementById("workspaceModeSelect"),
+  languageSelect: document.getElementById("languageSelect"),
 
   demoGateStatus: document.getElementById("demoGateStatus"),
   liveGateStatus: document.getElementById("liveGateStatus"),
@@ -67,6 +69,11 @@ const els = {
   runProductBtn: document.getElementById("runProductBtn"),
   runCeoAutopilotBtn: document.getElementById("runCeoAutopilotBtn"),
   runCeoMultiAgentBtn: document.getElementById("runCeoMultiAgentBtn"),
+  productQuickRefreshIdeasBtn: document.getElementById("productQuickRefreshIdeasBtn"),
+  productQuickRunBuildBtn: document.getElementById("productQuickRunBuildBtn"),
+  productQuickRunAutopilotBtn: document.getElementById("productQuickRunAutopilotBtn"),
+  productQuickRunOrchestratorBtn: document.getElementById("productQuickRunOrchestratorBtn"),
+  productQuickSummary: document.getElementById("productQuickSummary"),
   productSummary: document.getElementById("productSummary"),
 
   runMarketingSeoBtn: document.getElementById("runMarketingSeoBtn"),
@@ -119,6 +126,8 @@ const state = {
   selectedTab: "idea",
   lastJobsSignature: "",
   uiMode: localStorage.getItem("op1.uiMode") || "judge",
+  workspaceMode: localStorage.getItem("op1.workspaceMode") || "platform",
+  language: localStorage.getItem("op1.language") || "zh",
   actionStates: {},
   actionStatusEls: {},
 };
@@ -127,6 +136,41 @@ const FAST_REFRESH_MS = 12000;
 const JOB_POLL_MS = 2000;
 const MONITOR_REFRESH_MS = 60000;
 let fastTimer = null;
+
+const I18N = {
+  zh: {
+    title: "OperatorOne Venture Studio",
+    subtitle: "从 startup idea 到 Product / Marketing / Sales / Operations 闭环执行",
+    view_mode: "视图模式",
+    workspace_mode: "工作台模式",
+    language: "语言",
+    refresh: "刷新",
+    global_status: "全局运行状态",
+    reset_demo: "重置演示历史",
+    product_console_title: "Product Console（面向产品的一站式界面）",
+    product_console_sub: "按顺序执行：发现机会 → 构建部署 → 生成落地页 → CEO 多 Agent 编排。",
+    refresh_ideas: "刷新 startup ideas",
+    run_product: "执行 Product（landing + build/deploy）",
+    run_ceo_autopilot: "执行 CEO Autopilot（Stage1→2→3）",
+    run_ceo_orchestrator: "执行 CEO Orchestrator（多 Agent）",
+  },
+  en: {
+    title: "OperatorOne Venture Studio",
+    subtitle: "From startup ideas to Product / Marketing / Sales / Operations in one closed loop",
+    view_mode: "View Mode",
+    workspace_mode: "Workspace Mode",
+    language: "Language",
+    refresh: "Refresh",
+    global_status: "Global Runtime Status",
+    reset_demo: "Reset Demo History",
+    product_console_title: "Product Console (One-stop product experience)",
+    product_console_sub: "Run in sequence: discover ideas → build/deploy → landing page → CEO multi-agent orchestration.",
+    refresh_ideas: "Refresh startup ideas",
+    run_product: "Run Product (landing + build/deploy)",
+    run_ceo_autopilot: "Run CEO Autopilot (Stage1→2→3)",
+    run_ceo_orchestrator: "Run CEO Orchestrator (multi-agent)",
+  },
+};
 let jobTimer = null;
 let monitorTimer = null;
 let refreshInFlight = false;
@@ -349,6 +393,26 @@ function applyUiMode() {
   if (els.uiModeSelect && els.uiModeSelect.value !== state.uiMode) {
     els.uiModeSelect.value = state.uiMode;
   }
+}
+
+function applyWorkspaceMode() {
+  document.body.dataset.workspace = state.workspaceMode;
+  if (els.workspaceModeSelect && els.workspaceModeSelect.value !== state.workspaceMode) {
+    els.workspaceModeSelect.value = state.workspaceMode;
+  }
+}
+
+function applyLanguage() {
+  const lang = I18N[state.language] ? state.language : "zh";
+  if (els.languageSelect && els.languageSelect.value !== lang) {
+    els.languageSelect.value = lang;
+  }
+  const dict = I18N[lang] || {};
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    if (!key) return;
+    if (dict[key]) el.textContent = dict[key];
+  });
 }
 
 function renderTop() {
@@ -1997,6 +2061,24 @@ function bindEvents() {
     });
   }
 
+  if (els.workspaceModeSelect) {
+    els.workspaceModeSelect.value = state.workspaceMode;
+    els.workspaceModeSelect.addEventListener("change", () => {
+      state.workspaceMode = els.workspaceModeSelect.value;
+      localStorage.setItem("op1.workspaceMode", state.workspaceMode);
+      applyWorkspaceMode();
+    });
+  }
+
+  if (els.languageSelect) {
+    els.languageSelect.value = state.language;
+    els.languageSelect.addEventListener("change", () => {
+      state.language = els.languageSelect.value;
+      localStorage.setItem("op1.language", state.language);
+      applyLanguage();
+    });
+  }
+
   if (els.refreshBtn) {
     els.refreshBtn.addEventListener("click", () => {
       refreshStudio({ forceMonitor: true }).catch((err) => updateFeedback(`刷新失败: ${err.message}`, "error"));
@@ -2153,6 +2235,52 @@ function bindEvents() {
         updateFeedback("CEO 流程视图已刷新。", "ok");
       } catch (err) {
         updateFeedback(`刷新 CEO 流程视图失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.productQuickRefreshIdeasBtn) {
+    els.productQuickRefreshIdeasBtn.addEventListener("click", async () => {
+      try {
+        const res = await runStudioAction({ action: "refresh_ideas", mode: "deterministic", async: true }, "刷新 startup ideas");
+        if (els.productQuickSummary) els.productQuickSummary.textContent = JSON.stringify(res || {}, null, 2);
+      } catch (err) {
+        updateFeedback(`刷新 ideas 失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.productQuickRunBuildBtn) {
+    els.productQuickRunBuildBtn.addEventListener("click", async () => {
+      const ventureId = ensureActiveVentureOrAlert();
+      if (!ventureId) return;
+      try {
+        const res = await runStudioAction({ action: "run_product", ventureId, mode: "simulation", async: true }, "执行 Product");
+        if (els.productQuickSummary) els.productQuickSummary.textContent = JSON.stringify(res || {}, null, 2);
+      } catch (err) {
+        updateFeedback(`执行 Product 失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.productQuickRunAutopilotBtn) {
+    els.productQuickRunAutopilotBtn.addEventListener("click", async () => {
+      try {
+        const res = await runStudioAction({ action: "run_ceo_autopilot", requireApproval: true, async: true }, "执行 CEO Autopilot");
+        if (els.productQuickSummary) els.productQuickSummary.textContent = JSON.stringify(res || {}, null, 2);
+      } catch (err) {
+        updateFeedback(`执行 CEO Autopilot 失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.productQuickRunOrchestratorBtn) {
+    els.productQuickRunOrchestratorBtn.addEventListener("click", async () => {
+      try {
+        const res = await runStudioAction({ action: "run_ceo_autopilot", orchestrationMode: "multi_agent", requireApproval: true, async: true }, "执行 CEO 多 Agent 编排");
+        if (els.productQuickSummary) els.productQuickSummary.textContent = JSON.stringify(res || {}, null, 2);
+      } catch (err) {
+        updateFeedback(`执行 CEO 多 Agent 编排失败: ${err.message}`, "error");
       }
     });
   }
@@ -2505,6 +2633,8 @@ function startTimers() {
 
 async function main() {
   applyUiMode();
+  applyWorkspaceMode();
+  applyLanguage();
   bindEvents();
   updateFeedback("正在加载 Studio 快照…", "info");
   await refreshFastSnapshot();

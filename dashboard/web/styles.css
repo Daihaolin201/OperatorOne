@@ -368,6 +368,18 @@ body[data-mode="builder"] .judge-focus {
   opacity: 0.9;
 }
 
+.product-only {
+  display: none;
+}
+
+body[data-workspace="product"] .platform-only {
+  display: none !important;
+}
+
+body[data-workspace="product"] .product-only {
+  display: block;
+}
+
 .action-status {
   display: inline-block;
   margin-left: 8px;

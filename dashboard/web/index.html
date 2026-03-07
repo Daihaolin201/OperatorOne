@@ -9,18 +9,32 @@
   <body>
     <header class="topbar">
       <div>
-        <h1>OperatorOne Venture Studio</h1>
-        <p class="sub">从 startup idea 到 Product / Marketing / Sales / Operations 闭环执行</p>
+        <h1 data-i18n="title">OperatorOne Venture Studio</h1>
+        <p class="sub" data-i18n="subtitle">从 startup idea 到 Product / Marketing / Sales / Operations 闭环执行</p>
       </div>
       <div class="topbar-actions">
         <label class="mode-label">
-          视图模式
+          <span data-i18n="view_mode">视图模式</span>
           <select id="uiModeSelect">
             <option value="judge">Judge（简化）</option>
             <option value="builder">Builder（完整）</option>
           </select>
         </label>
-        <button id="refreshBtn">刷新</button>
+        <label class="mode-label">
+          <span data-i18n="workspace_mode">工作台模式</span>
+          <select id="workspaceModeSelect">
+            <option value="platform">Platform（开发运营）</option>
+            <option value="product">Product（产品体验）</option>
+          </select>
+        </label>
+        <label class="mode-label">
+          <span data-i18n="language">语言</span>
+          <select id="languageSelect">
+            <option value="zh">中文</option>
+            <option value="en">English</option>
+          </select>
+        </label>
+        <button id="refreshBtn" data-i18n="refresh">刷新</button>
         <span id="lastUpdated" class="muted">--</span>
       </div>
     </header>
@@ -55,15 +69,27 @@
       </section>
 
       <section class="card">
-        <h2>全局运行状态</h2>
+        <h2 data-i18n="global_status">全局运行状态</h2>
         <p id="globalRunStatus" class="small">--</p>
         <p id="globalRunError" class="small">--</p>
         <div class="row mt">
-          <button id="resetDemoStateBtn" class="secondary">重置演示历史</button>
+          <button id="resetDemoStateBtn" class="secondary" data-i18n="reset_demo">重置演示历史</button>
         </div>
       </section>
 
-      <section class="card prompt-command-center">
+      <section class="card product-only">
+        <h2 data-i18n="product_console_title">Product Console（面向产品的一站式界面）</h2>
+        <p class="muted" data-i18n="product_console_sub">按顺序执行：发现机会 → 构建部署 → 生成落地页 → CEO 多 Agent 编排。</p>
+        <div class="row wrap">
+          <button id="productQuickRefreshIdeasBtn" data-i18n="refresh_ideas">刷新 startup ideas</button>
+          <button id="productQuickRunBuildBtn" data-i18n="run_product">执行 Product（landing + build/deploy）</button>
+          <button id="productQuickRunAutopilotBtn" data-i18n="run_ceo_autopilot">执行 CEO Autopilot（Stage1→2→3）</button>
+          <button id="productQuickRunOrchestratorBtn" data-i18n="run_ceo_orchestrator">执行 CEO Orchestrator（多 Agent）</button>
+        </div>
+        <pre id="productQuickSummary" class="result-box">--</pre>
+      </section>
+
+      <section class="card prompt-command-center platform-only">
         <h2>问我（全局指挥台）</h2>
         <p class="muted">像“全局运行状态”一样直接提问：现在到哪一步、卡点在哪、下一步做什么、能不能开 live。</p>
         <div class="row">
@@ -98,7 +124,7 @@
         </div>
       </section>
 
-      <section class="grid grid-4 judge-focus">
+      <section class="grid grid-4 judge-focus platform-only">
         <article class="card">
           <h2>当前项目</h2>
           <pre id="judgeVentureCard" class="result-box">--</pre>
