@@ -1,0 +1,62 @@
+{
+  "contract": "ceo_orchestration.v1",
+  "generated_at": "2026-03-07T20:44:38.435433+00:00",
+  "input": {
+    "goal": "Reach first $100 MRR with disciplined experimentation",
+    "constraints": {
+      "target_mrr_usd": 100,
+      "max_days": 14,
+      "max_cash_spend_usd": 200
+    },
+    "dry_run": true
+  },
+  "summary": {
+    "status": "completed",
+    "selected_opportunity_id": "opp_001",
+    "deploy_url": null
+  },
+  "steps": [
+    {
+      "name": "stage1_idea_discovery",
+      "command": [
+        "bash",
+        "scripts/run_generate_startup_ideas.sh"
+      ],
+      "ok": true,
+      "code": 0,
+      "started_at": "2026-03-07T20:44:38.434427+00:00",
+      "finished_at": "2026-03-07T20:44:38.434651+00:00",
+      "duration_sec": 0.0,
+      "stdout_tail": "[dry-run] not executed",
+      "stderr_tail": ""
+    },
+    {
+      "name": "stage2_web_build_deploy",
+      "command": [
+        "bash",
+        "scripts/run_build_deploy_v1.sh"
+      ],
+      "ok": true,
+      "code": 0,
+      "started_at": "2026-03-07T20:44:38.434659+00:00",
+      "finished_at": "2026-03-07T20:44:38.434660+00:00",
+      "duration_sec": 0.0,
+      "stdout_tail": "[dry-run] not executed",
+      "stderr_tail": ""
+    },
+    {
+      "name": "stage3_landing",
+      "command": [
+        "bash",
+        "scripts/run_create_landing_pages_v1.sh"
+      ],
+      "ok": true,
+      "code": 0,
+      "started_at": "2026-03-07T20:44:38.434663+00:00",
+      "finished_at": "2026-03-07T20:44:38.434665+00:00",
+      "duration_sec": 0.0,
+      "stdout_tail": "[dry-run] not executed",
+      "stderr_tail": ""
+    }
+  ]
+}

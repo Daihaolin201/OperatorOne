@@ -1,0 +1,29 @@
+{
+  "venture_id": "venture_YYYYMMDD_xxx",
+  "goal": "Reach first $100 MRR with disciplined experimentation",
+  "constraints": {
+    "target_mrr_usd": 100,
+    "max_days": 14,
+    "max_cash_spend_usd": 200
+  },
+  "stage": "stage1_idea_discovery",
+  "status": "running",
+  "selected_opportunity_id": null,
+  "kpis": {
+    "north_star": "weekly qualified conversations",
+    "primary": "mrr_usd",
+    "current_mrr_usd": 0
+  },
+  "gates": {
+    "go_to_build": {
+      "pass": false,
+      "reason": "pending stage1/stage2 screening"
+    },
+    "go_to_landing": {
+      "pass": false,
+      "reason": "pending build result"
+    }
+  },
+  "risk_register": [],
+  "next_actions": []
+}

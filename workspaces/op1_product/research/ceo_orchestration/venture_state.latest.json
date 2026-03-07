@@ -1,0 +1,28 @@
+{
+  "venture_id": "venture_20260307_204438",
+  "goal": "Reach first $100 MRR with disciplined experimentation",
+  "constraints": {
+    "target_mrr_usd": 100,
+    "max_days": 14,
+    "max_cash_spend_usd": 200
+  },
+  "stage": "stage3_landing",
+  "status": "completed",
+  "selected_opportunity_id": "opp_001",
+  "deploy_url": null,
+  "gates": {
+    "go_to_build": {
+      "pass": true,
+      "reason": "top opportunity detected in scoring.csv"
+    },
+    "go_to_landing": {
+      "pass": false,
+      "reason": "missing deploy url in stage2 artifact"
+    }
+  },
+  "next_actions": [
+    "Review landing copy and CTA quality",
+    "Run first distribution experiment",
+    "Record first 10 user conversations"
+  ]
+}

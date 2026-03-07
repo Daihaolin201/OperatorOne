@@ -1,0 +1,55 @@
+{
+  "contract": "ceo_orchestration",
+  "version": "v1",
+  "purpose": "Translate a simple operator goal into an auditable multi-stage execution plan and run sequence.",
+  "inputs": {
+    "goal": "string",
+    "constraints": {
+      "target_mrr_usd": "number",
+      "max_days": "number",
+      "max_cash_spend_usd": "number"
+    },
+    "execution": {
+      "auto_deploy": "boolean",
+      "require_human_approval_for_external_actions": "boolean"
+    }
+  },
+  "stages": [
+    {
+      "id": "stage1_idea_discovery",
+      "required_outputs": [
+        "research/stage1_idea_discovery/opportunity_records.json",
+        "research/stage2_idea_screening/scoring.csv",
+        "research/stage2_idea_screening/decision_log.json"
+      ]
+    },
+    {
+      "id": "stage2_web_build_deploy",
+      "required_outputs": [
+        "research/stage2_web_product/run.latest.json",
+        "research/stage2_web_product/state.latest.json"
+      ]
+    },
+    {
+      "id": "stage3_landing",
+      "required_outputs": [
+        "research/landing_v1/landing_package.json",
+        "research/stage3_landing_launch/run.latest.json"
+      ]
+    }
+  ],
+  "decision_gates": [
+    {
+      "id": "go_to_build",
+      "rule": "stage2_idea_screening decision contains at least one advance decision"
+    },
+    {
+      "id": "go_to_landing",
+      "rule": "stage2 build run status is pass and deploy url exists"
+    }
+  ],
+  "outputs": {
+    "run_log": "research/ceo_orchestration/run.latest.json",
+    "venture_state": "research/ceo_orchestration/venture_state.latest.json"
+  }
+}

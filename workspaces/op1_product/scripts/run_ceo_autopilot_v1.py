@@ -1,0 +1,252 @@
+#!/usr/bin/env python3
+"""Run a minimal CEO autopilot sequence on top of existing op1_product stage scripts.
+
+This is intentionally conservative:
+- runs stage scripts in sequence
+- records command-level audit trail
+- evaluates lightweight go/no-go gates
+- writes canonical run + venture_state artifacts
+"""
+
+from __future__ import annotations
+
+import argparse
+import csv
+import json
+import subprocess
+from dataclasses import dataclass
+from datetime import datetime, timezone
+from pathlib import Path
+from typing import Any, Dict, List, Optional
+
+ROOT = Path(__file__).resolve().parents[1]
+OUT_DIR = ROOT / "research" / "ceo_orchestration"
+RUN_PATH = OUT_DIR / "run.latest.json"
+STATE_PATH = OUT_DIR / "venture_state.latest.json"
+
+
+@dataclass
+class StepResult:
+    name: str
+    command: List[str]
+    ok: bool
+    code: int
+    started_at: str
+    finished_at: str
+    duration_sec: float
+    stdout_tail: str
+    stderr_tail: str
+
+
+def utc_now() -> str:
+    return datetime.now(timezone.utc).isoformat()
+
+
+def read_json(path: Path, default: Any) -> Any:
+    if not path.exists():
+        return default
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return default
+
+
+def run_step(name: str, cmd: List[str], dry_run: bool = False) -> StepResult:
+    started = datetime.now(timezone.utc)
+    if dry_run:
+        return StepResult(
+            name=name,
+            command=cmd,
+            ok=True,
+            code=0,
+            started_at=started.isoformat(),
+            finished_at=utc_now(),
+            duration_sec=0.0,
+            stdout_tail="[dry-run] not executed",
+            stderr_tail="",
+        )
+
+    proc = subprocess.run(
+        cmd,
+        cwd=str(ROOT),
+        text=True,
+        capture_output=True,
+    )
+    finished = datetime.now(timezone.utc)
+    duration = (finished - started).total_seconds()
+    return StepResult(
+        name=name,
+        command=cmd,
+        ok=(proc.returncode == 0),
+        code=proc.returncode,
+        started_at=started.isoformat(),
+        finished_at=finished.isoformat(),
+        duration_sec=duration,
+        stdout_tail=(proc.stdout or "")[-1500:],
+        stderr_tail=(proc.stderr or "")[-1500:],
+    )
+
+
+def detect_advance_opportunity() -> Optional[str]:
+    scoring_path = ROOT / "research" / "stage2_idea_screening" / "scoring.csv"
+    if not scoring_path.exists():
+        return None
+
+    try:
+        with scoring_path.open("r", encoding="utf-8") as f:
+            rows = list(csv.DictReader(f))
+    except Exception:
+        return None
+
+    if not rows:
+        return None
+
+    rows.sort(key=lambda r: float(r.get("final_score") or 0), reverse=True)
+    top = rows[0]
+    for key in ["opportunity_id", "id", "opp_id"]:
+        val = (top.get(key) or "").strip()
+        if val:
+            return val
+    return None
+
+
+def detect_deploy_url() -> Optional[str]:
+    run_payload = read_json(ROOT / "research" / "stage2_web_product" / "run.latest.json", {})
+    if not isinstance(run_payload, dict):
+        return None
+
+    candidates = [
+        run_payload.get("deploy_url"),
+        run_payload.get("deployment_url"),
+    ]
+    artifacts = run_payload.get("artifacts") if isinstance(run_payload.get("artifacts"), dict) else {}
+    candidates.extend([
+        artifacts.get("deploy_url"),
+        artifacts.get("deployment_url"),
+    ])
+
+    for c in candidates:
+        if isinstance(c, str) and c.strip().startswith("http"):
+            return c.strip()
+    return None
+
+
+def build_venture_state(goal: str, target_mrr: int, max_days: int, max_spend: int, steps: List[StepResult]) -> Dict[str, Any]:
+    selected = detect_advance_opportunity()
+    deploy_url = detect_deploy_url()
+
+    stage = "stage3_landing"
+    status = "completed"
+    if any(not s.ok for s in steps):
+        status = "failed"
+        for s in steps:
+            if not s.ok:
+                stage = s.name
+                break
+
+    go_to_build = bool(selected)
+    go_to_landing = bool(deploy_url)
+
+    return {
+        "venture_id": f"venture_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}",
+        "goal": goal,
+        "constraints": {
+            "target_mrr_usd": target_mrr,
+            "max_days": max_days,
+            "max_cash_spend_usd": max_spend,
+        },
+        "stage": stage,
+        "status": status,
+        "selected_opportunity_id": selected,
+        "deploy_url": deploy_url,
+        "gates": {
+            "go_to_build": {
+                "pass": go_to_build,
+                "reason": "top opportunity detected in scoring.csv" if go_to_build else "no scored opportunity detected",
+            },
+            "go_to_landing": {
+                "pass": go_to_landing,
+                "reason": "deploy url detected in stage2 run artifact" if go_to_landing else "missing deploy url in stage2 artifact",
+            },
+        },
+        "next_actions": [
+            "Review landing copy and CTA quality",
+            "Run first distribution experiment",
+            "Record first 10 user conversations",
+        ],
+    }
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run CEO autopilot v1")
+    parser.add_argument("--goal", default="Reach first $100 MRR with disciplined experimentation")
+    parser.add_argument("--target-mrr", type=int, default=100)
+    parser.add_argument("--max-days", type=int, default=14)
+    parser.add_argument("--max-spend", type=int, default=200)
+    parser.add_argument("--dry-run", action="store_true")
+    args = parser.parse_args()
+
+    OUT_DIR.mkdir(parents=True, exist_ok=True)
+
+    sequence = [
+        ("stage1_idea_discovery", ["bash", "scripts/run_generate_startup_ideas.sh"]),
+        ("stage2_web_build_deploy", ["bash", "scripts/run_build_deploy_v1.sh"]),
+        ("stage3_landing", ["bash", "scripts/run_create_landing_pages_v1.sh"]),
+    ]
+
+    steps: List[StepResult] = []
+    for name, cmd in sequence:
+        result = run_step(name=name, cmd=cmd, dry_run=args.dry_run)
+        steps.append(result)
+        if not result.ok:
+            break
+
+    venture_state = build_venture_state(
+        goal=args.goal,
+        target_mrr=args.target_mrr,
+        max_days=args.max_days,
+        max_spend=args.max_spend,
+        steps=steps,
+    )
+
+    run_payload = {
+        "contract": "ceo_orchestration.v1",
+        "generated_at": utc_now(),
+        "input": {
+            "goal": args.goal,
+            "constraints": {
+                "target_mrr_usd": args.target_mrr,
+                "max_days": args.max_days,
+                "max_cash_spend_usd": args.max_spend,
+            },
+            "dry_run": args.dry_run,
+        },
+        "summary": {
+            "status": venture_state["status"],
+            "selected_opportunity_id": venture_state.get("selected_opportunity_id"),
+            "deploy_url": venture_state.get("deploy_url"),
+        },
+        "steps": [
+            {
+                "name": s.name,
+                "command": s.command,
+                "ok": s.ok,
+                "code": s.code,
+                "started_at": s.started_at,
+                "finished_at": s.finished_at,
+                "duration_sec": s.duration_sec,
+                "stdout_tail": s.stdout_tail,
+                "stderr_tail": s.stderr_tail,
+            }
+            for s in steps
+        ],
+    }
+
+    RUN_PATH.write_text(json.dumps(run_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+    STATE_PATH.write_text(json.dumps(venture_state, ensure_ascii=False, indent=2), encoding="utf-8")
+
+    print(json.dumps({"ok": True, "run": str(RUN_PATH.relative_to(ROOT)), "state": str(STATE_PATH.relative_to(ROOT))}, ensure_ascii=False))
+
+
+if __name__ == "__main__":
+    main()
