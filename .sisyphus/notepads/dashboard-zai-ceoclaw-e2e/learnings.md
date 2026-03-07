@@ -207,3 +207,31 @@
 - simulation/live 切换逻辑：`call_glm(prompt, step, mode)` 在 simulation 模式固定 `latency_ms=120`、`token_usage=130`，并显式 `sleep(0.05)`；live 模式严格先过 preflight，再发起 urllib 请求。
 - 审计字段：每次调用（含 mock）统一输出 `{provider, model, step, latency_ms, token_usage, request_id, timestamp, mode}`，provider/model 固定为 `z.ai/glm-5`。
 - 测试覆盖：新增 3 个用例覆盖 simulation 成功路径、live 无凭据抛 `ZAIPreflightError`、以及 run 级 `get_run_model_usage` 聚合正确性。
+
+## [2026-03-07] T8: run_ceoclaw_pipeline wrapper
+- 采用 run-level 包装器直接更新 API runs store（`_load_runs`/`_save_runs` + `store_lock`），每个阶段都先写入 `current_step` 与 running step，再回填 succeeded/failed 结果，确保轮询端可观察。
+- step 数据结构固定为 `{name, status, started_at, finished_at, output_summary, error?}`，与 T7 的 API run `steps[]` 兼容，并统一使用 snake_case 字段便于 `/api/runs/<id>` 直接消费。
+- 每步开始前重新读取 run 并检查 `status == cancelled`，命中后立即 early-exit；任一步抛错则写回 failed + error 并终止，全部成功才在末尾写 `status=succeeded`。
+
+## [2026-03-07] T11: simulation guardrails + cancel/timeout 安全控制
+
+### 实现要点
+- `POST /api/runs` 不传 mode → `mode=simulation`（双重保底：`get("mode","simulation")` + `or "simulation"`，server.py line 455已有，T11 confirmed）
+- `POST /api/runs/<id>/cancel`：T7已完整实现（非骨架）。cancel → status=cancelled，409 on terminal state。
+- `STEP_TIMEOUT_SECONDS = 30`：新增于 studio.py，跟在 `COPILOT_TIMEOUT_SECONDS` 之后。
+- `SIMULATION_SAFE_ACTIONS`：新增 frozenset，包含 15 个 simulation 安全动作，导出供 server.py import。
+- `_run_ceoclaw_pipeline_steps`：新方法（studio.py），执行带超时检查的多步骤流水线；elapsed > 30s 且 step passed → status 改为 `timed_out`，run status = `failed`。
+- `_action_run_ceoclaw_pipeline`：action wrapper，注册为 `run_ceoclaw_pipeline` dispatch key。
+- T8 已有 `run_ceoclaw_pipeline(run_id, mode)` 方法（API-run-tracked, cancel-aware），T11 新增的是 step-config 风格的内部实现 `_run_ceoclaw_pipeline_steps`，两者不冲突（方法名不同）。
+- `GET /api/studio/safe-actions`：新端点，返回 `{ok, safeActions[], stepTimeoutSeconds:30}`。
+- server.py import：`from studio import SIMULATION_SAFE_ACTIONS, StudioError, StudioService`。
+
+### 已验证端点（live curl）
+- `GET /api/studio/safe-actions` → 200, safeActions 15项, stepTimeoutSeconds:30
+- `POST /api/runs` (no mode) → mode=simulation
+- `POST /api/runs/<id>/cancel` → {ok:true, status:cancelled}
+- 重复 cancel → 409 {ok:false, error:"run is not cancellable"}
+
+### 证据文件
+- `.sisyphus/evidence/task-11-default-simulation.json`
+- `.sisyphus/evidence/task-11-timeout-cancel.json`

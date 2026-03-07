@@ -27,7 +27,7 @@ from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from collector import PROFILE, REPO_ROOT, collect_snapshot, first_json_from_text
-from studio import StudioError, StudioService
+from studio import SIMULATION_SAFE_ACTIONS, StudioError, StudioService
 
 
 DASHBOARD_DIR = Path(__file__).resolve().parent
@@ -1142,6 +1142,16 @@ a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0
         except Exception as exc:  # noqa: BLE001
             self._json_response(500, {"ok": False, "error": f"studio action failed: {exc}"})
 
+    def _handle_get_studio_safe_actions(self) -> None:
+        self._json_response(
+            200,
+            {
+                "ok": True,
+                "safeActions": sorted(SIMULATION_SAFE_ACTIONS),
+                "stepTimeoutSeconds": 30,
+            },
+        )
+
     def do_GET(self) -> None:  # noqa: N802
         parsed = urlparse(self.path)
         path = unquote(parsed.path)
@@ -1179,6 +1189,9 @@ a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0
             return
         if path == "/api/studio/fast-snapshot":
             self._handle_get_studio_snapshot(include_monitor=False, include_run_details=False)
+            return
+        if path == "/api/studio/safe-actions":
+            self._handle_get_studio_safe_actions()
             return
         if path == "/api/studio/jobs" or path.startswith("/api/studio/jobs/"):
             self._handle_get_studio_jobs(path)

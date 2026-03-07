@@ -17,11 +17,13 @@ from __future__ import annotations
 import copy
 import hashlib
 import html
+import importlib
 import json
 import re
 import shutil
 import subprocess
 import threading
+import time
 import traceback
 import uuid
 from concurrent.futures import ThreadPoolExecutor
@@ -32,9 +34,9 @@ from typing import Any, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
 try:
-    from collector import collect_snapshot
-except ModuleNotFoundError:  # pragma: no cover
     from dashboard.collector import collect_snapshot
+except ModuleNotFoundError:  # pragma: no cover
+    collect_snapshot = importlib.import_module("collector").collect_snapshot
 
 
 STAGE_ORDER = [
@@ -87,6 +89,30 @@ DUPLICATE_GUARD_ACTIONS = {
 
 COPILOT_TIMEOUT_SECONDS = 45
 COPILOT_TO = "+10000000000"
+
+# T11: simulation guardrails — per-step timeout (seconds)
+STEP_TIMEOUT_SECONDS = 30
+
+# T11: allowlist of actions permitted in simulation mode (no real outreach / live deployment)
+SIMULATION_SAFE_ACTIONS: frozenset[str] = frozenset(
+    {
+        "refresh_ideas",
+        "create_venture",
+        "set_active_venture",
+        "reset_demo_state",
+        "stage_preflight",
+        "rehearsal_e2e",
+        "run_ceo_autopilot",
+        "copilot_query",
+        "confirm_stage_transition",
+        "confirm_iterate",
+        "submit_user_prompt",
+        "get_studio_snapshot",
+        "get_run",
+        "get_run_events",
+        "run_ceoclaw_pipeline",
+    }
+)
 
 
 def now_dt() -> datetime:
@@ -2981,7 +3007,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "clearedPendingTransition": clear_pending_to_operations,
         }
 
-    def _find_segment_index_for_venture(self, opp_id: str) -> Optional[int]:
+    def _find_segment_index_for_venture(self, opp_id: Optional[str]) -> Optional[int]:
         queue = self._parse_json(self.sales_dir / "research/prospecting/prospect_queue.latest.json", {})
         segments = queue.get("segments") or []
         for idx, seg in enumerate(segments):
@@ -3822,7 +3848,11 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             steps=steps,
             artifacts=[],
             summary=summary,
-            error=failed_steps[0].get("stderrTail")[-500:] if failed_steps else (failed_extra[0].get("name") if failed_extra else None),
+            error=(
+                str(failed_steps[0].get("stderrTail") or "")[-500:]
+                if failed_steps
+                else (str(failed_extra[0].get("name") or "") if failed_extra else None)
+            ),
         )
         if status == "failed":
             first_name = failed_steps[0].get("name") if failed_steps else failed_extra[0].get("name")
@@ -4081,6 +4111,121 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             raise StudioError(f"run_ceo_autopilot failed: {step['stderrTail'][:300]}")
 
         return {"run": run, "artifacts": artifacts}
+
+    def run_ceoclaw_pipeline(self, run_id: str, mode: str = "simulation") -> None:
+        run_id = str(run_id or "").strip()
+        if not run_id:
+            raise StudioError("run_id is required")
+
+        normalized_mode = str(mode or "simulation").strip().lower()
+        if normalized_mode != "simulation":
+            raise StudioError("run_ceoclaw_pipeline currently supports simulation mode only")
+
+        stage_order = ["product", "marketing", "sales", "operations"]
+
+        def _load_target_run() -> Dict[str, Any]:
+            runs_payload = self._load_runs()
+            for item in runs_payload.get("items", []):
+                if isinstance(item, dict) and item.get("run_type") == "api" and item.get("run_id") == run_id:
+                    return item
+            raise StudioError(f"run not found: {run_id}")
+
+        def _save_target_run(updated_run: Dict[str, Any]) -> None:
+            runs_payload = self._load_runs()
+            items = runs_payload.get("items", [])
+            replaced = False
+            for idx, item in enumerate(items):
+                if isinstance(item, dict) and item.get("run_type") == "api" and item.get("run_id") == run_id:
+                    items[idx] = updated_run
+                    replaced = True
+                    break
+            if not replaced:
+                raise StudioError(f"run not found while saving: {run_id}")
+            runs_payload["items"] = items
+            self._save_runs(runs_payload)
+
+        def _simulation_stage_action(stage_name: str, fail_stage: Optional[str]) -> str:
+            time.sleep(0.1)
+            if fail_stage and stage_name == fail_stage:
+                raise StudioError(f"simulated stage failure: {stage_name}")
+            return f"{stage_name} simulation completed"
+
+        with self.store_lock:
+            run = copy.deepcopy(_load_target_run())
+            if run.get("status") in {"succeeded", "failed"}:
+                return
+            run["status"] = "running"
+            run["mode"] = normalized_mode
+            run["current_step"] = None
+            run.setdefault("steps", [])
+            _save_target_run(run)
+
+        for stage_name in stage_order:
+            with self.store_lock:
+                run = copy.deepcopy(_load_target_run())
+                if run.get("status") == "cancelled":
+                    run["current_step"] = None
+                    if not run.get("finished_at"):
+                        run["finished_at"] = now_iso()
+                    _save_target_run(run)
+                    return
+
+                started_at = now_iso()
+                step_record = {
+                    "name": stage_name,
+                    "status": "running",
+                    "started_at": started_at,
+                    "finished_at": None,
+                    "output_summary": "",
+                }
+                steps = [x for x in (run.get("steps") or []) if isinstance(x, dict)]
+                steps.append(step_record)
+                run["steps"] = steps
+                run["current_step"] = stage_name
+                run["status"] = "running"
+                fail_stage = str(run.get("mock_fail_step") or "").strip().lower() or None
+                _save_target_run(run)
+
+            try:
+                output_summary = _simulation_stage_action(stage_name, fail_stage)
+            except Exception as exc:  # noqa: BLE001
+                with self.store_lock:
+                    run = copy.deepcopy(_load_target_run())
+                    steps = [x for x in (run.get("steps") or []) if isinstance(x, dict)]
+                    if steps and steps[-1].get("name") == stage_name:
+                        steps[-1]["status"] = "failed"
+                        steps[-1]["finished_at"] = now_iso()
+                        steps[-1]["output_summary"] = ""
+                        steps[-1]["error"] = str(exc)
+                    run["steps"] = steps
+                    run["status"] = "failed"
+                    run["finished_at"] = now_iso()
+                    run["current_step"] = stage_name
+                    _save_target_run(run)
+                return
+
+            with self.store_lock:
+                run = copy.deepcopy(_load_target_run())
+                steps = [x for x in (run.get("steps") or []) if isinstance(x, dict)]
+                if steps and steps[-1].get("name") == stage_name:
+                    steps[-1]["status"] = "succeeded"
+                    steps[-1]["finished_at"] = now_iso()
+                    steps[-1]["output_summary"] = output_summary
+                    steps[-1].pop("error", None)
+                run["steps"] = steps
+                run["current_step"] = stage_name
+                _save_target_run(run)
+
+        with self.store_lock:
+            run = copy.deepcopy(_load_target_run())
+            all_succeeded = len(run.get("steps") or []) >= len(stage_order) and all(
+                isinstance(step, dict) and step.get("status") == "succeeded"
+                for step in (run.get("steps") or [])[-len(stage_order):]
+            )
+            run["status"] = "succeeded" if all_succeeded else "failed"
+            run["finished_at"] = now_iso()
+            run["current_step"] = None
+            _save_target_run(run)
 
     def _run_vercel_audit_script(self, *, apply: bool = False, max_delete: int = 5, strategy: str = "archive") -> Dict[str, Any]:
         script = self.scripts_dir / "vercel_audit_cleanup.py"
@@ -4973,6 +5118,70 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "contextHash": copilot_ctx.get("contextHash"),
         }
 
+    def _run_ceoclaw_pipeline_steps(
+        self,
+        *,
+        run_id: str,
+        mode: str = "simulation",
+        venture_id: Optional[str] = None,
+        steps_config: Optional[List[Dict[str, Any]]] = None,
+    ) -> Dict[str, Any]:
+        import time
+
+        steps_out: List[Dict[str, Any]] = []
+        run_status = "passed"
+        timed_out_step: Optional[str] = None
+
+        for step_cfg in steps_config or []:
+            step_name = str(step_cfg.get("name") or "step")
+            cmd = step_cfg.get("cmd") or []
+            cwd = step_cfg.get("cwd") or self.repo_root
+            timeout = int(step_cfg.get("timeout") or 300)
+
+            step_start = time.time()
+            step = self._command_step(step_name, cmd, cwd=cwd, timeout=timeout)
+            elapsed = time.time() - step_start
+
+            if elapsed > STEP_TIMEOUT_SECONDS and step.get("status") == "passed":
+                step = {**step, "status": "timed_out", "elapsedSeconds": round(elapsed, 2)}
+
+            steps_out.append({**step, "elapsedSeconds": round(elapsed, 2)})
+
+            if step.get("status") in ("failed", "timed_out"):
+                if step.get("status") == "timed_out":
+                    timed_out_step = step_name
+                run_status = "failed"
+                break
+
+        summary: Dict[str, Any] = {"stepsRan": len(steps_out)}
+        if timed_out_step:
+            summary["timedOutStep"] = timed_out_step
+
+        run = self._record_run(
+            venture_id=venture_id or "",
+            stage="CEO",
+            action="run_ceoclaw_pipeline",
+            mode=mode,
+            status=run_status,
+            steps=steps_out,
+            artifacts=[],
+            summary=summary,
+            error=steps_out[-1].get("stderrTail", "")[-400:] if run_status == "failed" and steps_out else None,
+        )
+        return {"run": run, "timedOutStep": timed_out_step}
+
+    def _action_run_ceoclaw_pipeline(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        mode = str(payload.get("mode") or "simulation").strip().lower() or "simulation"
+        venture_id = str(payload.get("ventureId") or "").strip() or None
+        steps_config = payload.get("stepsConfig") or []
+        run_id = str(payload.get("runId") or now_iso())
+        return self._run_ceoclaw_pipeline_steps(
+            run_id=run_id,
+            mode=mode,
+            venture_id=venture_id,
+            steps_config=steps_config,
+        )
+
     def _run_action_sync(self, action: str, payload: Dict[str, Any]) -> Dict[str, Any]:
         dispatch = {
             "refresh_ideas": self._action_refresh_ideas,
@@ -4998,6 +5207,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "stage_preflight": self._action_stage_preflight,
             "rehearsal_e2e": self._action_rehearsal_e2e,
             "run_ceo_autopilot": self._action_run_ceo_autopilot,
+            "run_ceoclaw_pipeline": self._action_run_ceoclaw_pipeline,
             "vercel_audit": self._action_vercel_audit,
             "vercel_cleanup_apply": self._action_vercel_cleanup_apply,
         }
