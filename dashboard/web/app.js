@@ -2,6 +2,7 @@ const els = {
   runDemoBtn: document.getElementById("runDemoBtn"),
   runIdBadge: document.getElementById("runIdBadge"),
   runErrorBanner: document.getElementById("runErrorBanner"),
+  runTimeline: document.getElementById("runTimeline"),
 
   refreshBtn: document.getElementById("refreshBtn"),
   lastUpdated: document.getElementById("lastUpdated"),
@@ -132,14 +133,17 @@ const state = {
   uiMode: localStorage.getItem("op1.uiMode") || "judge",
   workspaceMode: localStorage.getItem("op1.workspaceMode") || "platform",
   language: localStorage.getItem("op1.language") || "zh",
+  activeRunId: localStorage.getItem("op1_active_run_id") || null,
   actionStates: {},
   actionStatusEls: {},
 };
 
 const FAST_REFRESH_MS = 12000;
 const JOB_POLL_MS = 2000;
+const RUN_POLL_MS = 2000;
 const MONITOR_REFRESH_MS = 60000;
 let fastTimer = null;
+let runPollingTimer = null;
 
 const I18N = {
   zh: {
@@ -2000,6 +2004,86 @@ async function refreshCeoFlowView() {
   renderCeoFlow({ autopilotRun, orchestratorRun, orchestratorSummary });
 }
 
+function renderTimeline(runData) {
+  if (!els.runTimeline) return;
+  els.runTimeline.innerHTML = "";
+  els.runTimeline.style.display = "grid";
+
+  if (!runData || !runData.steps) return;
+
+  const steps = runData.steps || [];
+  if (steps.length === 0) {
+    els.runTimeline.innerHTML = `<div class="muted">No steps recorded for run ${runData.run_id}</div>`;
+    return;
+  }
+
+  const order = ["product", "marketing", "sales", "operations"];
+  const sortedSteps = [...steps].sort((a, b) => {
+    return order.indexOf(a.name) - order.indexOf(b.name);
+  });
+
+  for (const step of sortedSteps) {
+    const el = document.createElement("div");
+    el.className = `timeline-step status-${(step.status || "unknown").toLowerCase()}`;
+    
+    let errorHtml = "";
+    if (step.status === "failed" && step.error) {
+      errorHtml = `<div class="step-error">${safeText(step.error)}</div>`;
+    }
+
+    el.innerHTML = `
+      <div class="step-header">
+        <span class="step-name">${safeText(step.name)}</span>
+        <div class="step-icon"></div>
+      </div>
+      <div class="step-status-text">${safeText(step.status)}</div>
+      ${errorHtml}
+    `;
+    els.runTimeline.appendChild(el);
+  }
+}
+
+async function startRunPolling(runId) {
+  if (!runId) return;
+  
+  state.activeRunId = runId;
+  localStorage.setItem("op1_active_run_id", runId);
+
+  if (runPollingTimer) clearInterval(runPollingTimer);
+
+  const poll = async () => {
+    try {
+      const runData = await getJSON(`/api/runs/${runId}`);
+      renderTimeline(runData);
+
+      if (["succeeded", "failed", "cancelled"].includes(runData.status)) {
+        if (runPollingTimer) {
+          clearInterval(runPollingTimer);
+          runPollingTimer = null;
+        }
+        localStorage.removeItem("op1_active_run_id");
+        state.activeRunId = null;
+        
+        if (runData.status === "failed") {
+          showToast(`Run ${runId} failed`, "error");
+        } else {
+          showToast(`Run ${runId} completed`, "ok");
+        }
+      }
+    } catch (err) {
+      console.warn(`Polling failed for run ${runId}`, err);
+      if (String(err).includes("404")) {
+         clearInterval(runPollingTimer);
+         runPollingTimer = null;
+         localStorage.removeItem("op1_active_run_id");
+      }
+    }
+  };
+
+  await poll();
+  runPollingTimer = setInterval(poll, RUN_POLL_MS);
+}
+
 function bindTabs() {
   const tabButtons = document.querySelectorAll(".tab");
   const panels = document.querySelectorAll(".tab-panel");
@@ -2096,6 +2180,7 @@ function bindEvents() {
         els.runIdBadge.textContent = `Run ID: ${runId}`;
         els.runIdBadge.style.display = "inline-flex";
         showToast(`已启动 Demo: ${runId}`, "ok");
+        startRunPolling(runId);
       } catch (err) {
         console.error(err);
         els.runErrorBanner.textContent = `启动失败: ${err.message}`;
@@ -2698,6 +2783,12 @@ async function main() {
   await refreshFastSnapshot();
   await refreshCeoFlowView();
   await pollJobs();
+
+  if (state.activeRunId) {
+    updateFeedback(`正在恢复 Run ${state.activeRunId} 的监控…`, "info");
+    startRunPolling(state.activeRunId).catch(err => console.warn("Restore run polling failed", err));
+  }
+
   startTimers();
   updateFeedback("Studio 已就绪。建议按“下一步推荐动作”执行。", "ok");
 }
