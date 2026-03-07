@@ -1,0 +1,20 @@
+{
+  "_meta": {
+    "scenario": "preflight_fail",
+    "description": "ZAI_API_KEY is absent — preflight raises ZAIPreflightError with diagnostic message",
+    "env": {
+      "ZAI_API_KEY": "<not set>"
+    },
+    "invoked_by": "check_zai_preflight()",
+    "module": "dashboard/zai_preflight.py"
+  },
+  "result": "fail",
+  "audit_record": null,
+  "exception": {
+    "type": "ZAIPreflightError",
+    "field": "ZAI_API_KEY",
+    "reason": "environment variable 'ZAI_API_KEY' is not set or is empty",
+    "message": "ZAI preflight FAILED — field='ZAI_API_KEY': environment variable 'ZAI_API_KEY' is not set or is empty. MUST NOT silently fall back to another provider.",
+    "fallback_suppressed": true
+  }
+}
