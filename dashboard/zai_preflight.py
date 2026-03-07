@@ -24,7 +24,7 @@ from typing import Any, Dict
 # ---------------------------------------------------------------------------
 
 ZAI_PROVIDER = "z.ai"
-ZAI_MODEL = "glm-4.5"
+ZAI_MODEL = "glm-5"
 ZAI_API_KEY_ENV = "ZAI_API_KEY"
 
 
@@ -62,7 +62,7 @@ class ZAIPreflightError(RuntimeError):
 #
 # {
 #   "provider":     str   — always "z.ai"
-#   "model":        str   — always "glm-4.5"
+#   "model":        str   — always "glm-5"
 #   "step":         str   — preflight step name (e.g. "env_check")
 #   "latency_ms":   int   — wall-clock duration of this check in milliseconds
 #   "token_usage":  None  — None at preflight (no real API call)
