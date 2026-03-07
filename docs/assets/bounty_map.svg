@@ -12,19 +12,19 @@
 <text x="400" y="295" font-family="monospace" font-size="16" fill="#e3b341" text-anchor="middle" font-weight="bold">OperatorOne</text>
 <text x="400" y="315" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Venture Engine</text>
 <rect x="280.0" y="65.0" width="240" height="70" rx="12" fill="#58a6ff" opacity="0.15" stroke="#58a6ff" stroke-width="2"/>
-<text x="400" y="95" font-family="monospace" font-size="16" fill="#58a6ff" text-anchor="middle" font-weight="bold">🏆 CEOClaw Challenge</text>
-<text x="400" y="115" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">CEO orchestrator · $49 MRR</text>
+<text x="400" y="95" font-family="monospace" font-size="16" fill="#58a6ff" text-anchor="middle" font-weight="bold">CEOClaw Challenge</text>
+<text x="400" y="115" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">CEO orchestrator · $49 MRR · 6 deploys</text>
 <line x1="400" y1="260" x2="400" y2="135" stroke="#30363d" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="530.0" y="265.0" width="240" height="70" rx="12" fill="#3fb950" opacity="0.15" stroke="#3fb950" stroke-width="2"/>
-<text x="650" y="295" font-family="monospace" font-size="16" fill="#3fb950" text-anchor="middle" font-weight="bold">⚡ Z.AI Gold Bounty</text>
-<text x="650" y="315" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">GLM-5 · preflight gate</text>
+<text x="650" y="295" font-family="monospace" font-size="16" fill="#3fb950" text-anchor="middle" font-weight="bold">Z.AI Gold Bounty</text>
+<text x="650" y="315" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">GLM-5 · preflight gate · no fallback</text>
 <line x1="400" y1="300" x2="650" y2="300" stroke="#30363d" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="280.0" y="465.0" width="240" height="70" rx="12" fill="#bc8cff" opacity="0.15" stroke="#bc8cff" stroke-width="2"/>
-<text x="400" y="495" font-family="monospace" font-size="16" fill="#bc8cff" text-anchor="middle" font-weight="bold">🎮 Animoca Brands</text>
+<text x="400" y="495" font-family="monospace" font-size="16" fill="#bc8cff" text-anchor="middle" font-weight="bold">Animoca Brands</text>
 <text x="400" y="515" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Identity · Memory · Cognition</text>
 <line x1="400" y1="340" x2="400" y2="465" stroke="#30363d" stroke-width="2" marker-end="url(#arrow)"/>
 <rect x="30.0" y="265.0" width="240" height="70" rx="12" fill="#f78166" opacity="0.15" stroke="#f78166" stroke-width="2"/>
-<text x="150" y="295" font-family="monospace" font-size="16" fill="#f78166" text-anchor="middle" font-weight="bold">🤝 Human for Claw</text>
-<text x="150" y="315" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Dashboard · approval gate</text>
+<text x="150" y="295" font-family="monospace" font-size="16" fill="#f78166" text-anchor="middle" font-weight="bold">Human for Claw</text>
+<text x="150" y="315" font-family="monospace" font-size="10" fill="#8b949e" text-anchor="middle">Dashboard · approval gate · audit trail</text>
 <line x1="400" y1="300" x2="150" y2="300" stroke="#30363d" stroke-width="2" marker-end="url(#arrow)"/>
 </svg>

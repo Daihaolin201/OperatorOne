@@ -1,11 +1,13 @@
 <div align="center">
 
 [![English](https://img.shields.io/badge/lang-English-blue?style=flat-square)](#operatorone--ceoclaw) &nbsp;
-[![中文](https://img.shields.io/badge/lang-中文-red?style=flat-square)](#operatorone--ceoclaw中文版)
+[![中文](https://img.shields.io/badge/lang-Chinese-red?style=flat-square)](#operatorone--ceoclaw-chinese)
 
 </div>
 
 ---
+
+<a name="operatorone--ceoclaw"></a>
 
 # OperatorOne × CEOClaw
 
@@ -15,11 +17,12 @@
 
 <div align="center">
 
-![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-![GLM-5](https://img.shields.io/badge/model-GLM--5-purple?style=flat-square)
-![MRR](https://img.shields.io/badge/MRR-%2449-brightgreen?style=flat-square)
-![Agents](https://img.shields.io/badge/agents-4-blue?style=flat-square)
-![Bounties](https://img.shields.io/badge/bounties-4-yellow?style=flat-square)
+[![Branch](https://img.shields.io/badge/branch-dennis%2Fautomation--framework-blue?style=flat-square)](https://github.com/Daihaolin201/OperatorOne)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+[![Model](https://img.shields.io/badge/model-GLM--5-purple?style=flat-square)](https://z.ai)
+[![MRR](https://img.shields.io/badge/MRR-%2449-brightgreen?style=flat-square)](#real-results)
+[![Agents](https://img.shields.io/badge/agents-4%2B1-blue?style=flat-square)](#agent-topology)
+[![Handoffs](https://img.shields.io/badge/handoffs-9-yellow?style=flat-square)](#handoff-contracts)
 
 </div>
 
@@ -41,6 +44,11 @@ This is not a demo. These numbers reflect actual pipeline execution.
 | Campaigns prepared | **9** (3 launch_ready, 5 watchlist, 1 approved) |
 | Content assets | **12** (3 approved, 9 review_ready) |
 | Agent handoffs | **9 JSON contracts** |
+
+MRR Progress:
+```text
+[$49 ████████████░░░░░░░░░░░ $100]
+```
 
 ---
 
@@ -64,21 +72,34 @@ python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-
 cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
 ```
 
-Output artifacts:
-- `run.latest.json`: full 4-agent execution log with realistic simulation replies.
-- `venture_state.latest.json`: venture KPI snapshot (MRR, prospects, campaigns, deployed URLs).
-- `orchestrator_summary.latest.json`: operator-facing summary.
+| Artifact | Description |
+|---|---|
+| `run.latest.json` | Full 4-agent execution log with realistic simulation replies |
+| `venture_state.latest.json` | Venture KPI snapshot (MRR, prospects, campaigns, deployed URLs) |
+| `orchestrator_summary.latest.json` | Operator-facing summary |
 
 ---
 
 ## How It Works
 
-- **Stage-gated multi-agent loop**: Each specialist (Product, Marketing, Sales, Operations) hands off a JSON contract to the next stage rather than making isolated agent calls.
-- **Approval-gated external actions**: `approval.json` controls whether external actions like emails or deployments are permitted. This ensures the system is fully auditable.
-- **Real business execution**: The pipeline has been run end-to-end, resulting in 6 products deployed to Vercel, 13 prospects contacted, and $49 MRR earned.
-- **Handoff contract schema**: 9 typed JSON contracts include `contract_version`, `generated_at`, and `generated_by` metadata for full traceability.
-- **Iteration loop**: Operations feedback (10 items, P2/P3 prioritized) feeds back to Product, Marketing, and Sales for the next cycle.
-- **CEO orchestrator script**: `run_ceo_multi_agent_orchestrator_v1.py` runs the full 4-agent sequence, writes `venture_state.latest.json`, and enforces approval policy.
+*   **Stage-gated multi-agent loop**: Each specialist (Product, Marketing, Sales, Operations) hands off a JSON contract to the next stage rather than making isolated agent calls.
+*   **Approval-gated external actions**: `approval.json` controls whether external actions like emails or deployments are permitted. This ensures the system is fully auditable.
+*   **Real business execution**: The pipeline has been run end-to-end, resulting in 6 products deployed to Vercel, 13 prospects contacted, and $49 MRR earned.
+*   **Handoff contract schema**: 9 typed JSON contracts include `contract_version`, `generated_at`, and `generated_by` metadata for full traceability.
+*   **Iteration loop**: Operations feedback (10 items, P2/P3 prioritized) feeds back to Product, Marketing, and Sales for the next cycle.
+
+### Agent Pipeline Flow
+
+```mermaid
+flowchart LR
+    CEO[CEO Orchestrator] -->|dispatch| P[op1_product]
+    P -->|product_to_marketing.json| M[op1_marketing]
+    M -->|marketing_to_sales.json| S[op1_sales]
+    S -->|sales_to_operations.json| O[op1_operations]
+    O -->|feedback contracts x3| P
+    O -->|feedback contracts x3| M
+    O -->|feedback contracts x3| S
+```
 
 ---
 
@@ -95,31 +116,60 @@ Output artifacts:
 
 ---
 
-## Z.AI & GLM-5 Integration
+## Handoff Contracts
 
-OperatorOne targets **GLM-5** as its primary intelligence engine. Released in February 2026, GLM-5 (formerly "Pony Alpha") is the new flagship model from Z.AI (Zhipu AI).
+The repository maintains state through 9 distinct handoff contracts, all at `contract_version: 1.0.0`. Each includes `contract_version`, `generated_at`, and `generated_by` metadata for full traceability.
+
+```
+handoffs/
+├── product_to_marketing.json              Product -> Marketing
+├── marketing_to_sales.json                Marketing -> Sales
+├── sales_to_operations.json               Sales -> Operations
+├── operations_to_product.json             Operations -> Product (feedback)
+├── operations_to_marketing.json           Operations -> Marketing (feedback)
+├── operations_to_sales.json               Operations -> Sales (feedback)
+├── operations_to_product_iterate.json     Operations -> Product (iterate)
+├── operations_to_marketing_iterate.json   Operations -> Marketing (iterate)
+└── operations_to_sales_iterate.json       Operations -> Sales (iterate)
+```
+
+### Handoff Contract Map
+
+```mermaid
+flowchart TD
+    P[op1_product] -- product_to_marketing.json --> M[op1_marketing]
+    M -- marketing_to_sales.json --> S[op1_sales]
+    S -- sales_to_operations.json --> O[op1_operations]
+    O -- operations_to_product.json --> P
+    O -- operations_to_marketing.json --> M
+    O -- operations_to_sales.json --> S
+    O -- operations_to_product_iterate.json --> P
+    O -- operations_to_marketing_iterate.json --> M
+    O -- operations_to_sales_iterate.json --> S
+```
+
+---
+
+## Z.AI and GLM-5 Integration
+
+OperatorOne targets **GLM-5** as its primary intelligence engine. Released in February 2026, GLM-5 is the flagship model from Z.AI (Zhipu AI).
 
 ### Why GLM-5 for OperatorOne
-GLM-5 provides the long-horizon planning and reliable tool use required for autonomous business operations.
 
-- **744B MoE Architecture**: Massive capacity with 40B active parameters for efficient inference.
-- **202K Context Window**: Enables analysis of extensive business logs and market research.
-- **"Slime" Async RL**: A novel framework that significantly improves long-horizon agent behavior.
-- **Superior Coding**: SWE-bench Verified score of **77.8%**, making it the top open-weights model for engineering.
-- **High Cognition**: Terminal-Bench-2.0 score of **61.1%**, a 28.3% improvement over previous generations.
+*   **744B MoE Architecture**: Massive capacity with 40B active parameters for efficient inference.
+*   **202K Context Window**: Enables analysis of extensive business logs and market research.
+*   **"Slime" Async RL**: A novel framework that significantly improves long-horizon agent behavior.
+*   **Superior Coding**: Top open-weights model for engineering tasks.
+*   **High Cognition**: Substantial improvement in complex reasoning over previous generations.
 
-### API Configuration
-The preflight gate (`dashboard/zai_preflight.py`) enforces Z.AI API compliance. Update your environment to point at the latest flagship.
+### GLM-5 Benchmarks
 
-```bash
-# Configuration
-export ZAI_API_BASE="https://api.z.ai/api/paas/v4"
-export ZAI_MODEL="glm-5"
-export ZAI_API_KEY="your-key-here"
-
-# Verify preflight
-python3 -m pytest dashboard/tests/ -q
-```
+| Benchmark | Score |
+|---|---|
+| SWE-bench Verified | 77.8% |
+| Terminal-Bench-2.0 | 61.1% |
+| BrowseComp | 75.9% |
+| HLE w/ Tools | 50.4% |
 
 ### Per-Agent Model Routing
 
@@ -131,29 +181,43 @@ python3 -m pytest dashboard/tests/ -q
 | op1_operations | KPI analysis, JSON | glm-5 | Structured output, BrowseComp 75.9% |
 | CEO Orchestrator | Planning, routing | glm-5 | Terminal-Bench +28.3% improvement |
 
-### Preflight Gate
+### API Configuration
+
+The preflight gate (`dashboard/zai_preflight.py`) enforces Z.AI API compliance.
+
+```bash
+# Configuration
+export ZAI_API_BASE="https://api.z.ai/api/paas/v4"
+export ZAI_MODEL="glm-5"
+export ZAI_API_KEY="your-key-here"
+
+# Verify preflight
+python3 -m pytest dashboard/tests/ -q
+```
+
+### Preflight Explanation
 The system enforces a hard gate via `dashboard/zai_preflight.py`. If the Z.AI environment is misconfigured, the system raises a `ZAIPreflightError` and halts. There is no silent fallback, ensuring strict compliance with the Z.AI Gold Bounty requirements.
 
 ---
 
 ## Hackathon Bounties
 
-### 🏆 CEOClaw Challenge (£1,000)
-- **Evidence**: The CEO orchestrator successfully runs a 4-agent loop end-to-end. Real results include $49 MRR, 13 prospects contacted, and 6 Vercel products deployed.
-- **Verification**: `python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run`
+### CEOClaw Challenge (£1,000)
+*   **Evidence**: The CEO orchestrator successfully runs a 4-agent loop end-to-end. Real results include $49 MRR, 13 prospects contacted, and 6 Vercel products deployed.
+*   **Verification**: `python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run`
 
-### ⚡ Z.AI Gold Bounty
-- **Evidence**: GLM-5 is the featured model for all 5 roles. The preflight gate enforces correct `base_url` and model configuration without silent fallback.
-- **Verification**: `python3 -m pytest dashboard/tests/ -q`
+### Z.AI Gold Bounty
+*   **Evidence**: GLM-5 is the featured model for all 5 roles. The preflight gate enforces correct `base_url` and model configuration without silent fallback.
+*   **Verification**: `python3 -m pytest dashboard/tests/ -q`
 
-### 🎮 Animoca Brands
-- **Identity**: The CEO has a persistent persona and execution logic defined in `workspaces/op1_ceo/AGENTS.md`.
-- **Memory**: 9 inter-agent JSON contracts persist state and learnings across agent boundaries.
-- **Cognition**: The Operations iteration loop feeds learned feedback back into the system for continuous improvement.
+### Animoca Brands
+*   **Identity**: The CEO has a persistent persona and execution logic defined in `workspaces/op1_ceo/AGENTS.md`.
+*   **Memory**: 9 inter-agent JSON contracts persist state and learnings across agent boundaries.
+*   **Cognition**: The Operations iteration loop feeds learned feedback back into the system for continuous improvement.
 
-### 🤝 Human for Claw
-- **Dashboard**: A dedicated stage view at `http://127.0.0.1:8765` provides human-readable status and artifact tracking.
-- **Approval Gate**: `approval.json` gates every external action, keeping the human operator in control of deployments and communications.
+### Human for Claw
+*   **Dashboard**: A dedicated stage view at `http://127.0.0.1:8765` provides human-readable status and artifact tracking.
+*   **Approval Gate**: `approval.json` gates every external action, keeping the human operator in control of deployments and communications.
 
 ---
 
@@ -165,40 +229,29 @@ The system enforces a hard gate via `dashboard/zai_preflight.py`. If the Z.AI en
 
 ---
 
-## Repository Layout
-
-- `openclaw/`: profile sync and safety scripts.
-- `workspaces/`: isolated agent workspaces and stage artifacts.
-- `handoffs/`: inter-agent JSON contracts (9 contracts).
-- `dashboard/`: local monitor and venture studio web app.
-- `official-site/`: OperatorOne official intro page.
-- `shared/`: shared prompts, skills, and templates.
-- `docs/`: architecture, collaboration protocol, and runbook.
-- `apps/`: Next.js portal and product apps (monorepo).
-- `packages/`: shared @op1/* packages.
-
----
-
 ## Agent Topology
 
 | Workspace | Role | In manifest | Primary responsibility |
 |---|---|---|---|
-| `workspaces/op1_product` | Product | ✅ | Idea discovery, web product build/deploy |
-| `workspaces/op1_marketing` | Marketing | ✅ | SEO, content, and campaign pipeline |
-| `workspaces/op1_sales` | Sales | ✅ | Prospecting, outreach, and conversion |
-| `workspaces/op1_operations` | Operations | ✅ | KPI tracking and feedback loop |
-| `workspaces/op1_manager` | Manager | ❌ | Cross-agent orchestration and audits |
+| `workspaces/op1_product` | Product | yes | Idea discovery, web product build/deploy |
+| `workspaces/op1_marketing` | Marketing | yes | SEO, content, and campaign pipeline |
+| `workspaces/op1_sales` | Sales | yes | Prospecting, outreach, and conversion |
+| `workspaces/op1_operations` | Operations | yes | KPI tracking and feedback loop |
+| `workspaces/op1_manager` | Manager | no | Cross-agent orchestration and audits |
 
 ---
 
-## End-to-End Flow
+## Repository Layout
 
-The primary handoff chain proceeds as follows:
-
-1. `op1_product` → `handoffs/product_to_marketing.json`
-2. `op1_marketing` → `handoffs/marketing_to_sales.json`
-3. `op1_sales` → `handoffs/sales_to_operations.json`
-4. `op1_operations` → Feedback to Product, Marketing, and Sales.
+*   `openclaw/`: profile sync and safety scripts.
+*   `workspaces/`: isolated agent workspaces and stage artifacts.
+*   `handoffs/`: inter-agent JSON contracts (9 contracts).
+*   `dashboard/`: local monitor and venture studio web app.
+*   `official-site/`: OperatorOne official intro page.
+*   `shared/`: shared prompts, skills, and templates.
+*   `docs/`: architecture, collaboration protocol, and runbook.
+*   `apps/`: Next.js portal and product apps (monorepo).
+*   `packages/`: shared @op1/* packages.
 
 ---
 
@@ -207,57 +260,25 @@ The primary handoff chain proceeds as follows:
 Run the local dashboard to monitor the venture studio.
 
 ```bash
-./dev up
+python3 dashboard/server.py --host 127.0.0.1 --port 8765
 ```
-Open: http://127.0.0.1:8765
-
----
-
-## Official Site
-
-Preview the official introduction page locally.
-
-```bash
-cd official-site
-python3 -m http.server 4173
-```
-Open: http://127.0.0.1:4173
-Live URL: https://official-site-theta.vercel.app
 
 ---
 
 ## Developer Reference
 
-The project uses a `pnpm` workspace for the frontend applications (`apps/`) and a Python-based launcher for the backend services.
-
-### Local Development Environment
-
-We provide a single launcher to manage all three local services (Dashboard, Platform Portal, and Product UI).
-
-```bash
-# Install dependencies (required once)
-pnpm install
-
-# Start all services
-./dev up
-
-# Check service health and PIDs
-./dev status
-
-# Stop all services gracefully
-./dev down
-```
-
 ### Service Map
-- **Dashboard**: `http://localhost:8765` (Health: `/api/health`)
-- **Platform Portal**: `http://localhost:3000` (Health: `/healthz`)
-- **Product UI**: `http://localhost:3001` (Health: `/healthz`)
+| Service | URL | Health Check |
+|---|---|---|
+| Dashboard | `http://localhost:8765` | `/api/health` |
+| Platform Portal | `http://localhost:3000` | `/healthz` |
+| Product UI | `http://localhost:3001` | `/healthz` |
 
-### Workspace Scripts
-- `python3 scripts/validate_handoffs.py --repo-root .`
-- `python3 scripts/upgrade_handoffs.py --repo-root .`
-- `python3 scripts/change_hygiene_guard.py --staged`
-- `python3 scripts/reset_generated_artifacts.py --apply`
+### Scripts List
+*   `python3 scripts/validate_handoffs.py --repo-root .`
+*   `python3 scripts/upgrade_handoffs.py --repo-root .`
+*   `python3 scripts/change_hygiene_guard.py --staged`
+*   `python3 scripts/reset_generated_artifacts.py --apply`
 
 ---
 
@@ -267,24 +288,9 @@ Detailed walkthrough can be found at `docs/demo_video_script.md`.
 
 ---
 
-## Note on Generated Artifacts
+<a name="operatorone--ceoclaw-chinese"></a>
 
-`workspaces/*/research/**` contains machine-updated run snapshots. When reviewing diffs, please separate code and contract changes from pipeline output refreshes.
-
----
-
-<a name="operatorone--ceoclaw中文版"></a>
-
-<div align="center">
-
-[![English](https://img.shields.io/badge/lang-English-blue?style=flat-square)](#operatorone--ceoclaw) &nbsp;
-[![中文](https://img.shields.io/badge/lang-中文-red?style=flat-square)](#operatorone--ceoclaw中文版)
-
-</div>
-
----
-
-# OperatorOne × CEOClaw（中文版）
+# OperatorOne × CEOClaw (中文版)
 
 > **UK AI Agent Hackathon EP4 × OpenClaw — CEOClaw Challenge 提交项目**
 > 团队：Dennis & Bennett · 分支：`dennis/automation-framework`
@@ -292,17 +298,20 @@ Detailed walkthrough can be found at `docs/demo_video_script.md`.
 
 <div align="center">
 
-![MIT License](https://img.shields.io/badge/license-MIT-green?style=flat-square)
-![GLM-5](https://img.shields.io/badge/model-GLM--5-purple?style=flat-square)
-![MRR](https://img.shields.io/badge/MRR-%2449-brightgreen?style=flat-square)
-![Agents](https://img.shields.io/badge/agents-4-blue?style=flat-square)
-![Bounties](https://img.shields.io/badge/bounties-4-yellow?style=flat-square)
+[![Branch](https://img.shields.io/badge/branch-dennis%2Fautomation--framework-blue?style=flat-square)](https://github.com/Daihaolin201/OperatorOne)
+[![License](https://img.shields.io/badge/license-MIT-green?style=flat-square)](LICENSE)
+[![Model](https://img.shields.io/badge/model-GLM--5-purple?style=flat-square)](https://z.ai)
+[![MRR](https://img.shields.io/badge/MRR-%2449-brightgreen?style=flat-square)](#real-results-chinese)
+[![Agents](https://img.shields.io/badge/agents-4%2B1-blue?style=flat-square)](#agent-topology-chinese)
+[![Handoffs](https://img.shields.io/badge/handoffs-9-yellow?style=flat-square)](#handoff-contracts-chinese)
 
 </div>
 
 **CEOClaw** 是 OperatorOne 的多智能体 CEO 编排器。它能够自动协调四个专业智能体（Product, Marketing, Sales, Operations），实现从最初创意到获取首批客户的全流程业务运营。
 
 ---
+
+<a name="real-results-chinese"></a>
 
 ## 实际成果
 
@@ -318,6 +327,11 @@ Detailed walkthrough can be found at `docs/demo_video_script.md`.
 | 已准备活动 | **9** (3 个就绪, 5 个观察名单, 1 个批准) |
 | 内容资产 | **12** (3 个批准, 9 个待审核) |
 | 智能体交付物 | **9 个 JSON 合约** |
+
+MRR 进度：
+```text
+[$49 ████████████░░░░░░░░░░░ $100]
+```
 
 ---
 
@@ -341,21 +355,34 @@ python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-
 cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
 ```
 
-输出产物：
-- `run.latest.json`：包含真实模拟回复的 4 智能体执行完整日志。
-- `venture_state.latest.json`：项目 KPI 快照（包含 MRR、潜在客户、活动、部署链接）。
-- `orchestrator_summary.latest.json`：面向操作员的执行摘要。
+| 产物 | 描述 |
+|---|---|
+| `run.latest.json` | 包含真实模拟回复的 4 智能体执行完整日志 |
+| `venture_state.latest.json` | 项目 KPI 快照（包含 MRR、潜在客户、活动、部署链接） |
+| `orchestrator_summary.latest.json` | 面向操作员的执行摘要 |
 
 ---
 
 ## 工作原理
 
-- **阶段门控多智能体循环**：各专业智能体（Product, Marketing, Sales, Operations）通过 JSON 合约向下一阶段交付成果，而非孤立调用。
-- **审批门控外部操作**：通过 `approval.json` 控制邮件发送或部署等外部操作权限，确保系统完全可审计。
-- **真实的业务执行**：流水线已完成端到端运行，成功部署 6 个 Vercel 产品，联系 13 位潜在客户，并获得 $49 MRR。
-- **交付合约架构**：9 个类型化的 JSON 合约包含版本、生成时间和生成者等元数据，确保全流程可追溯。
-- **迭代循环**：Operations 的反馈（10 个事项，已按优先级排序）会反馈给其他智能体，开启下一轮迭代。
-- **CEO 编排脚本**：`run_ceo_multi_agent_orchestrator_v1.py` 执行完整的智能体序列，并强制执行审批策略。
+*   **阶段门控多智能体循环**：各专业智能体（Product, Marketing, Sales, Operations）通过 JSON 合约向下一阶段交付成果，而非孤立调用。
+*   **审批门控外部操作**：通过 `approval.json` 控制邮件发送或部署等外部操作权限，确保系统完全可审计。
+*   **真实的业务执行**：流水线已完成端到端运行，成功部署 6 个 Vercel 产品，联系 13 位潜在客户，并获得 $49 MRR。
+*   **交付合约架构**：9 个类型化的 JSON 合约包含版本、生成时间和生成者等元数据，确保全流程可追溯。
+*   **迭代循环**：Operations 的反馈（10 个事项，已按优先级排序）会反馈给其他智能体，开启下一轮迭代。
+
+### 智能体工作流
+
+```mermaid
+flowchart LR
+    CEO[CEO Orchestrator] -->|dispatch| P[op1_product]
+    P -->|product_to_marketing.json| M[op1_marketing]
+    M -->|marketing_to_sales.json| S[op1_sales]
+    S -->|sales_to_operations.json| O[op1_operations]
+    O -->|feedback contracts x3| P
+    O -->|feedback contracts x3| M
+    O -->|feedback contracts x3| S
+```
 
 ---
 
@@ -372,31 +399,49 @@ cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
 
 ---
 
+<a name="handoff-contracts-chinese"></a>
+
+## 交付合约
+
+仓库通过 9 个独立的交付合约维护状态。
+
+### 交付合约映射图
+
+```mermaid
+flowchart TD
+    P[op1_product] -- product_to_marketing.json --> M[op1_marketing]
+    M -- marketing_to_sales.json --> S[op1_sales]
+    S -- sales_to_operations.json --> O[op1_operations]
+    O -- operations_to_product.json --> P
+    O -- operations_to_marketing.json --> M
+    O -- operations_to_sales.json --> S
+    O -- operations_to_product_iterate.json --> P
+    O -- operations_to_marketing_iterate.json --> M
+    O -- operations_to_sales_iterate.json --> S
+```
+
+---
+
 ## Z.AI 与 GLM-5 集成
 
-OperatorOne 采用 **GLM-5** 作为核心智能引擎。GLM-5（研发代号 "Pony Alpha"）由 Z.AI（智谱 AI）于 2026 年 2 月发布，是其最新的旗舰级模型。
+OperatorOne 采用 **GLM-5** 作为核心智能引擎。GLM-5 由 Z.AI（智谱 AI）于 2026 年 2 月发布，是其最新的旗舰级模型。
 
 ### 为什么选择 GLM-5
-GLM-5 为自主业务运营提供了长周期规划和可靠的工具调用能力。
 
-- **744B MoE 架构**：超大规模参数量，40B 激活参数确保高效推理。
-- **202K 上下文窗口**：支持分析超长业务日志和市场调研数据。
-- **"Slime" 异步强化学习**：全新的 RL 框架显著提升了智能体的长周期行为表现。
-- **卓越的代码能力**：SWE-bench Verified 评分 **77.8%**，是目前工程领域表现最好的开源模型。
-- **高水平认知**：Terminal-Bench-2.0 评分 **61.1%**，较上一代提升 28.3%。
+*   **744B MoE 架构**：超大规模参数量，40B 激活参数确保高效推理。
+*   **202K 上下文窗口**：支持分析超长业务日志和市场调研数据。
+*   **"Slime" 异步强化学习**：全新的 RL 框架显著提升了智能体的长周期行为表现。
+*   **卓越的代码能力**：在工程任务中表现优异的开源模型。
+*   **高水平认知**：较上一代在复杂推理方面有显著提升。
 
-### API 配置
-系统通过 `dashboard/zai_preflight.py` 强制执行 Z.AI API 预检查。请更新环境变量以指向最新的旗舰模型。
+### GLM-5 跑分数据
 
-```bash
-# 配置
-export ZAI_API_BASE="https://api.z.ai/api/paas/v4"
-export ZAI_MODEL="glm-5"
-export ZAI_API_KEY="your-key-here"
-
-# 运行测试验证
-python3 -m pytest dashboard/tests/ -q
-```
+| 测试集 | 分数 |
+|---|---|
+| SWE-bench Verified | 77.8% |
+| Terminal-Bench-2.0 | 61.1% |
+| BrowseComp | 75.9% |
+| HLE w/ Tools | 50.4% |
 
 ### 智能体模型路由
 
@@ -408,29 +453,43 @@ python3 -m pytest dashboard/tests/ -q
 | op1_operations | KPI 分析、JSON | glm-5 | 结构化输出，BrowseComp 75.9% |
 | CEO Orchestrator | 规划、路由 | glm-5 | Terminal-Bench 提升 28.3% |
 
-### 预检查门控
+### API 配置
+
+系统通过 `dashboard/zai_preflight.py` 强制执行 Z.AI API 预检查。
+
+```bash
+# 配置
+export ZAI_API_BASE="https://api.z.ai/api/paas/v4"
+export ZAI_MODEL="glm-5"
+export ZAI_API_KEY="your-key-here"
+
+# 运行测试验证
+python3 -m pytest dashboard/tests/ -q
+```
+
+### 预检查说明
 系统通过 `dashboard/zai_preflight.py` 强制执行硬门控。如果环境配置不正确，系统将抛出 `ZAIPreflightError` 并停止运行。系统不会静默回退，确保严格符合 Z.AI 奖项要求。
 
 ---
 
 ## 黑客马拉松奖项
 
-### 🏆 CEOClaw Challenge (£1,000)
-- **证据**：CEO 编排器端到端运行 4 智能体循环；实现 $49 MRR 真实收入；部署 6 个 Vercel 产品。
-- **验证方式**：`python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run`
+### CEOClaw Challenge (£1,000)
+*   **证据**：CEO 编排器端到端运行 4 智能体循环；实现 $49 MRR 真实收入；部署 6 个 Vercel 产品。
+*   **验证方式**：`python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run`
 
-### ⚡ Z.AI Gold Bounty
-- **证据**：GLM-5 充当全部 5 个角色的核心模型。预检查门控强制执行正确的配置，且无静默回退。
-- **验证方式**：`python3 -m pytest dashboard/tests/ -q`
+### Z.AI Gold Bounty
+*   **证据**：GLM-5 充当全部 5 个角色的核心模型。预检查门控强制执行正确的配置，且无静默回退。
+*   **验证方式**：`python3 -m pytest dashboard/tests/ -q`
 
-### 🎮 Animoca Brands
-- **身份**：CEO 拥有在 `workspaces/op1_ceo/AGENTS.md` 中定义的持久人格与逻辑。
-- **记忆**：9 个 JSON 合约在智能体边界间持久化状态与学习成果。
-- **认知**：Operations 迭代循环将反馈重新输入系统，实现持续改进。
+### Animoca Brands
+*   **证据**：CEO 拥有在 `workspaces/op1_ceo/AGENTS.md` 中定义的持久人格与逻辑。
+*   **记忆**：9 个 JSON 合约在智能体边界间持久化状态与学习成果。
+*   **认知**：Operations 迭代循环将反馈重新输入系统，实现持续改进。
 
-### 🤝 Human for Claw
-- **控制面板**：位于 `http://127.0.0.1:8765` 的专用视图提供直观的状态与产物追踪。
-- **审批门控**：`approval.json` 门控所有外部操作，确保人类操作员保持最终控制权。
+### Human for Claw
+*   **证据**：位于 `http://127.0.0.1:8765` 的专用视图提供直观的状态与产物追踪。
+*   **审批门控**：`approval.json` 门控所有外部操作，确保人类操作员保持最终控制权。
 
 ---
 
@@ -442,40 +501,31 @@ python3 -m pytest dashboard/tests/ -q
 
 ---
 
-## 仓库布局
-
-- `openclaw/`：配置文件同步与安全脚本。
-- `workspaces/`：隔离的智能体工作区及产物。
-- `handoffs/`：智能体间的 JSON 交付合约（共 9 个）。
-- `dashboard/`：本地监控器及创业工作室 Web 应用。
-- `official-site/`：OperatorOne 官方介绍页。
-- `shared/`：共享的提示词、技能及模板。
-- `docs/`：架构设计、协议及指南。
-- `apps/`：Next.js 门户及产品应用。
-- `packages/`：共享的 @op1/* 软件包。
-
----
+<a name="agent-topology-chinese"></a>
 
 ## 智能体拓扑
 
 | 工作区 | 角色 | 是否在 manifest 中 | 主要职责 |
 |---|---|---|---|
-| `workspaces/op1_product` | Product | ✅ | 创意发现、Web 产品构建与部署 |
-| `workspaces/op1_marketing` | Marketing | ✅ | SEO、内容创作与营销流水线 |
-| `workspaces/op1_sales` | Sales | ✅ | 客户开发、外联与转化 |
-| `workspaces/op1_operations` | Operations | ✅ | KPI 追踪与反馈循环 |
-| `workspaces/op1_manager` | Manager | ❌ | 跨智能体编排与审计 |
+| `workspaces/op1_product` | Product | 是 | 创意发现、Web 产品构建与部署 |
+| `workspaces/op1_marketing` | Marketing | 是 | SEO、内容创作与营销流水线 |
+| `workspaces/op1_sales` | Sales | 是 | 客户开发、外联与转化 |
+| `workspaces/op1_operations` | Operations | 是 | KPI 追踪与反馈循环 |
+| `workspaces/op1_manager` | Manager | 否 | 跨智能体编排与审计 |
 
 ---
 
-## 端到端流程
+## 仓库布局
 
-主要的交付链条如下：
-
-1. `op1_product` → `handoffs/product_to_marketing.json`
-2. `op1_marketing` → `handoffs/marketing_to_sales.json`
-3. `op1_sales` → `handoffs/sales_to_operations.json`
-4. `op1_operations` → 反馈至 Product, Marketing 和 Sales。
+*   `openclaw/`：配置文件同步与安全脚本。
+*   `workspaces/`：隔离的智能体工作区及产物。
+*   `handoffs/`：智能体间的 JSON 交付合约（共 9 个）。
+*   `dashboard/`：本地监控器及创业工作室 Web 应用。
+*   `official-site/`：OperatorOne 官方介绍页。
+*   `shared/`：共享的提示词、技能及模板。
+*   `docs/`：架构设计、协议及指南。
+*   `apps/`：Next.js 门户及产品应用。
+*   `packages/`：共享的 @op1/* 软件包。
 
 ---
 
@@ -484,66 +534,28 @@ python3 -m pytest dashboard/tests/ -q
 运行本地控制面板以监控项目状态。
 
 ```bash
-./dev up
+python3 dashboard/server.py --host 127.0.0.1 --port 8765
 ```
-访问地址：http://127.0.0.1:8765
-
----
-
-## 官方网站
-
-在本地预览官方介绍页面。
-
-```bash
-cd official-site
-python3 -m http.server 4173
-```
-访问地址：http://127.0.0.1:4173
-实时链接：https://official-site-theta.vercel.app
 
 ---
 
 ## 开发者参考
 
-项目使用 `pnpm` workspace 管理前端应用 (`apps/`)，并提供 Python 启动器管理后端服务。
-
-### 本地开发环境
-
-我们提供统一的启动器来管理 Dashboard、Platform Portal 和 Product UI。
-
-```bash
-# 安装依赖 (仅需执行一次)
-pnpm install
-
-# 启动所有服务
-./dev up
-
-# 检查服务健康状态与 PID
-./dev status
-
-# 优雅停止所有服务
-./dev down
-```
-
-### 服务映射
-- **Dashboard**: `http://localhost:8765` (健康检查: `/api/health`)
-- **Platform Portal**: `http://localhost:3000` (健康检查: `/healthz`)
-- **Product UI**: `http://localhost:3001` (健康检查: `/healthz`)
+### 服务映射表
+| 服务 | 链接 | 健康检查 |
+|---|---|---|
+| Dashboard | `http://localhost:8765` | `/api/health` |
+| Platform Portal | `http://localhost:3000` | `/healthz` |
+| Product UI | `http://localhost:3001` | `/healthz` |
 
 ### 脚本辅助工具
-- `python3 scripts/validate_handoffs.py --repo-root .`
-- `python3 scripts/upgrade_handoffs.py --repo-root .`
-- `python3 scripts/change_hygiene_guard.py --staged`
-- `python3 scripts/reset_generated_artifacts.py --apply`
+*   `python3 scripts/validate_handoffs.py --repo-root .`
+*   `python3 scripts/upgrade_handoffs.py --repo-root .`
+*   `python3 scripts/change_hygiene_guard.py --staged`
+*   `python3 scripts/reset_generated_artifacts.py --apply`
 
 ---
 
 ## 演示视频
 
 详细的项目演示可见 `docs/demo_video_script.md`。
-
----
-
-## 关于生成产物的说明
-
-`workspaces/*/research/**` 目录下包含许多由机器自动更新的运行快照。在审查变更时，请将代码和合约变更与流水线输出更新区分开来。

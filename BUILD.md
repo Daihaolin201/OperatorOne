@@ -1,11 +1,12 @@
 # Build Details — OperatorOne
 
-**Branch** `dennis/automation-framework` &nbsp;·&nbsp; **Latest commit** `1cf9560` &nbsp;·&nbsp; **Date** 2026-03-07
+**Branch** `dennis/automation-framework` &nbsp;·&nbsp; **Latest commit** `067a157` &nbsp;·&nbsp; **Date** 2026-03-07
 
 ---
 
 ## Table of Contents
 
+0. [Judge Verification Checklist](#judge-verification-checklist)
 1. [Repository Structure](#repository-structure)
 2. [Monorepo & Toolchain](#monorepo--toolchain)
 3. [Applications](#applications)
@@ -17,8 +18,32 @@
 9. [Tests & Quality Gates](#tests--quality-gates)
 10. [CI Pipeline](#ci-pipeline)
 11. [Deployed Products](#deployed-products)
+11a. [What Makes This Different](#what-makes-this-different)
 12. [Hackathon Bounties](#hackathon-bounties)
 13. [Commit History](#commit-history)
+
+---
+
+## Judge Verification Checklist
+
+Use this checklist to verify all claims in under five minutes.
+
+| Step | Command | Expected result |
+|---|---|---|
+| 1. Clone and checkout | `git clone https://github.com/Daihaolin201/OperatorOne && cd OperatorOne && git checkout dennis/automation-framework` | Branch checked out cleanly |
+| 2. Run CEO orchestrator | `python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run` | 4-agent loop completes, artifacts written |
+| 3. Read venture state | `cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json` | MRR $49, stage OPERATIONS, 6 deployed URLs |
+| 4. Run preflight tests | `python3 -m pytest dashboard/tests/ -q` | 5 passed, GLM-5 confirmed |
+| 5. Validate contracts | `python3 scripts/validate_handoffs.py --repo-root .` | 9 contracts valid |
+| 6. Start dashboard | `python3 dashboard/server.py --host 127.0.0.1 --port 8765` | Dashboard at http://127.0.0.1:8765 |
+| 7. View live products | Open any URL from the Deployed Products table | Landing page loads |
+
+**Key artifacts to inspect:**
+- `workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json` — KPI proof
+- `workspaces/op1_ceo/research/ceo_orchestration/approval.json` — approval gate state
+- `handoffs/*.json` — 9 typed inter-agent contracts
+- `dashboard/zai_preflight.py` — Z.AI compliance gate
+- `workspaces/op1_ceo/AGENTS.md` — CEO persona definition
 
 ---
 
@@ -409,6 +434,21 @@ bash scripts/ci-local.sh                               # local equivalent of CI 
 
 All Node.js jobs use Node 22, pnpm 10, frozen lockfile install.
 
+### Pipeline Flow
+
+```mermaid
+flowchart LR
+    push[git push / PR] --> lint[lint]
+    push --> typecheck[typecheck]
+    push --> test[test]
+    push --> contracts[contracts]
+    lint --> done[all clear]
+    typecheck --> done
+    test --> done
+    contracts --> done
+    done -->|PR only| hygiene[hygiene guard]
+```
+
 ---
 
 ## Deployed Products
@@ -422,6 +462,24 @@ All Node.js jobs use Node 22, pnpm 10, frozen lockfile install.
 | https://webproductlandingstage3opp002.vercel.app | opp_002 landing page | opp_002 |
 | https://webproductlandingstage3opp003.vercel.app | opp_003 landing page | opp_003 |
 | https://official-site-theta.vercel.app | Official intro site | — |
+
+---
+
+## What Makes This Different
+
+Most hackathon submissions demonstrate agent capability. OperatorOne demonstrates agent output.
+
+| Dimension | Typical submission | OperatorOne |
+|---|---|---|
+| Scope | Single agent or demo | 4-agent CEO orchestrator with feedback loop |
+| Evidence | Screenshot or mock data | $49 live MRR, 1 paying customer, 6 deployed URLs |
+| State management | In-memory or none | 9 typed JSON contracts with version metadata |
+| Human oversight | None or ad hoc | Approval gate controls all external actions |
+| Model compliance | OpenAI fallback | GLM-5 exclusive, hard preflight gate, audit fields |
+| Iteration | One shot | Operations feedback re-enters Product + Marketing |
+| Reproducibility | Run once | `--dry-run` mode, validated contracts, reset scripts |
+
+The system was built under a $200 cash budget over 14 days. Every number in this document is sourced directly from `venture_state.latest.json`.
 
 ---
 
