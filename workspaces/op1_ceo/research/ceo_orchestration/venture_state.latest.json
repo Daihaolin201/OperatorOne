@@ -1,6 +1,7 @@
 {
-  "venture_id": "venture_20260307_231817",
-  "generated_at": "2026-03-07T23:18:17.859751+00:00",
+  "venture_id": "venture_20260307_232629",
+  "cycle": 3,
+  "generated_at": "2026-03-07T23:26:29.399390+00:00",
   "goal": "Reach first $100 MRR with disciplined experimentation",
   "constraints": {
     "target_mrr_usd": 100,
@@ -32,22 +33,22 @@
     {
       "agent_id": "op1_product",
       "ok": true,
-      "duration_ms": 3719
+      "duration_ms": 7125
     },
     {
       "agent_id": "op1_marketing",
       "ok": true,
-      "duration_ms": 7173
+      "duration_ms": 6075
     },
     {
       "agent_id": "op1_sales",
       "ok": true,
-      "duration_ms": 5272
+      "duration_ms": 5803
     },
     {
       "agent_id": "op1_operations",
       "ok": true,
-      "duration_ms": 7866
+      "duration_ms": 5719
     }
   ],
   "next_actions": [

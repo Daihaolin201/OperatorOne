@@ -230,6 +230,7 @@ def main() -> None:
     parser.add_argument("--target-mrr", type=int, default=100)
     parser.add_argument("--max-days", type=int, default=14)
     parser.add_argument("--max-spend", type=int, default=200)
+    parser.add_argument("--max-cycles", type=int, default=3)
     parser.add_argument("--require-approval", dest="require_approval", action="store_true", default=True)
     parser.add_argument("--no-require-approval", dest="require_approval", action="store_false")
     parser.add_argument("--approval-file", default=str(APPROVAL_PATH))
@@ -240,9 +241,6 @@ def main() -> None:
 
     approval_file = Path(args.approval_file)
     approved = args.dry_run or (not args.require_approval) or approval_granted(approval_file)
-
-    turns: List[AgentTurn] = []
-    status = "completed"
 
     mission_brief = {
         "goal": args.goal,
@@ -257,136 +255,151 @@ def main() -> None:
         },
     }
 
-    if not approved:
-        status = "waiting_approval"
-    else:
-        prompts = [
-            (
-                "op1_product",
-                f"You are the Product specialist. Mission goal: {args.goal}. Constraints: "
-                f"target_mrr_usd={args.target_mrr}, max_days={args.max_days}, max_cash_spend_usd={args.max_spend}. "
-                f"Return: 1) selected opportunity id, 2) why this is best now, 3) next executable product step.",
+    cycle = 0
+    current_mrr = 49
+    venture_state = {}
+
+    while current_mrr < args.target_mrr and cycle < args.max_cycles:
+        cycle += 1
+        print(f"[cycle {cycle}] mrr={current_mrr} target={args.target_mrr}")
+
+        turns: List[AgentTurn] = []
+        status = "completed"
+
+        if not approved:
+            status = "waiting_approval"
+        else:
+            prompts = [
+                (
+                    "op1_product",
+                    f"You are the Product specialist. Mission goal: {args.goal}. Constraints: "
+                    f"target_mrr_usd={args.target_mrr}, max_days={args.max_days}, max_cash_spend_usd={args.max_spend}. "
+                    f"Return: 1) selected opportunity id, 2) why this is best now, 3) next executable product step.",
+                ),
+                (
+                    "op1_marketing",
+                    "Based on Product direction, provide 3 channel-light GTM experiments for first 14 days. Return: experiment, expected signal, fail threshold.",
+                ),
+                (
+                    "op1_sales",
+                    "Provide minimal early sales motion for first $100 MRR. Return: target segment, outreach opener, qualification rule, close trigger.",
+                ),
+                (
+                    "op1_operations",
+                    "Provide weekly operating cadence and KPI board for this venture. Return: KPI list, daily check, weekly review, rollback conditions.",
+                ),
+            ]
+
+            for agent_id, objective in prompts:
+                turn = run_agent_turn(agent_id=agent_id, objective=objective, timeout_sec=150, dry_run=args.dry_run)
+                turns.append(turn)
+                if not turn.ok:
+                    status = "failed"
+                    break
+
+        sales_data = read_json(ROOT / "handoffs" / "sales_to_operations.json", {})
+        ops_data = read_json(ROOT / "handoffs" / "operations_to_product.json", {})
+        current_mrr = sales_data.get("mrr", 49)
+        venture_id = f"venture_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
+        venture_state = {
+            "venture_id": venture_id,
+            "cycle": cycle,
+            "generated_at": now_iso(),
+            "goal": args.goal,
+            "constraints": {
+                "target_mrr_usd": args.target_mrr,
+                "max_days": args.max_days,
+                "max_cash_spend_usd": args.max_spend,
+            },
+            "stage": (
+                "OPERATIONS"
+                if len(turns) == 4
+                else ("SALES" if len(turns) == 3 else ("MARKETING" if len(turns) == 2 else "PRODUCT"))
             ),
-            (
-                "op1_marketing",
-                "Based on Product direction, provide 3 channel-light GTM experiments for first 14 days. Return: experiment, expected signal, fail threshold.",
-            ),
-            (
-                "op1_sales",
-                "Provide minimal early sales motion for first $100 MRR. Return: target segment, outreach opener, qualification rule, close trigger.",
-            ),
-            (
-                "op1_operations",
-                "Provide weekly operating cadence and KPI board for this venture. Return: KPI list, daily check, weekly review, rollback conditions.",
-            ),
-        ]
+            "status": status,
+            "kpi": {
+                "mrr_usd": current_mrr,
+                "prospects_contacted": sales_data.get("prospects_contacted", 13),
+                "replies_received": sales_data.get("replies", 6),
+                "customers_converted": sales_data.get("customers_converted", 1),
+            },
+            "deployed_urls": [
+                "https://webproductmodularinvoice.vercel.app",
+                "https://webproductmodularchargeback.vercel.app",
+                "https://webproductmodularreporting.vercel.app",
+                "https://webproductlandingstage3validation.vercel.app",
+                "https://webproductlandingstage3opp002.vercel.app",
+                "https://webproductlandingstage3opp003.vercel.app",
+            ],
+            "gates": {
+                "go_to_marketing": len(turns) >= 1 and turns[0].ok,
+                "go_to_sales": len(turns) >= 2 and turns[1].ok,
+                "go_to_operations": len(turns) >= 3 and turns[2].ok,
+            },
+            "agent_outcomes": [
+                {"agent_id": t.agent_id, "ok": t.ok, "duration_ms": t.duration_ms}
+                for t in turns
+            ],
+            "next_actions": list(dict.fromkeys(
+                item.get("recommended_action", "")
+                for item in ops_data.get("items", [])
+                if item.get("recommended_action")
+            ))[:4],
+        }
 
-        for agent_id, objective in prompts:
-            turn = run_agent_turn(agent_id=agent_id, objective=objective, timeout_sec=150, dry_run=args.dry_run)
-            turns.append(turn)
-            if not turn.ok:
-                status = "failed"
-                break
+        summary = {
+            "generated_at": now_iso(),
+            "goal": args.goal,
+            "status": status,
+            "approval": {
+                "required": args.require_approval,
+                "granted": approved,
+                "approval_file": str(Path(args.approval_file)),
+            },
+            "agent_outcomes": [
+                {
+                    "agent_id": t.agent_id,
+                    "ok": t.ok,
+                    "reply": t.reply,
+                }
+                for t in turns
+            ],
+        }
 
-    sales_data = read_json(ROOT / "handoffs" / "sales_to_operations.json", {})
-    ops_data = read_json(ROOT / "handoffs" / "operations_to_product.json", {})
-    venture_id = f"venture_{datetime.now(timezone.utc).strftime('%Y%m%d_%H%M%S')}"
-    venture_state = {
-        "venture_id": venture_id,
-        "generated_at": now_iso(),
-        "goal": args.goal,
-        "constraints": {
-            "target_mrr_usd": args.target_mrr,
-            "max_days": args.max_days,
-            "max_cash_spend_usd": args.max_spend,
-        },
-        "stage": (
-            "OPERATIONS"
-            if len(turns) == 4
-            else ("SALES" if len(turns) == 3 else ("MARKETING" if len(turns) == 2 else "PRODUCT"))
-        ),
-        "status": status,
-        "kpi": {
-            "mrr_usd": sales_data.get("mrr", 49),
-            "prospects_contacted": sales_data.get("prospects_contacted", 13),
-            "replies_received": sales_data.get("replies", 6),
-            "customers_converted": sales_data.get("customers_converted", 1),
-        },
-        "deployed_urls": [
-            "https://webproductmodularinvoice.vercel.app",
-            "https://webproductmodularchargeback.vercel.app",
-            "https://webproductmodularreporting.vercel.app",
-            "https://webproductlandingstage3validation.vercel.app",
-            "https://webproductlandingstage3opp002.vercel.app",
-            "https://webproductlandingstage3opp003.vercel.app",
-        ],
-        "gates": {
-            "go_to_marketing": len(turns) >= 1 and turns[0].ok,
-            "go_to_sales": len(turns) >= 2 and turns[1].ok,
-            "go_to_operations": len(turns) >= 3 and turns[2].ok,
-        },
-        "agent_outcomes": [
-            {"agent_id": t.agent_id, "ok": t.ok, "duration_ms": t.duration_ms}
-            for t in turns
-        ],
-        "next_actions": list(dict.fromkeys(
-            item.get("recommended_action", "")
-            for item in ops_data.get("items", [])
-            if item.get("recommended_action")
-        ))[:4],
-    }
+        run_payload = {
+            "contract": "ceo_multi_agent_orchestrator.v1",
+            "generated_at": now_iso(),
+            "mission": mission_brief,
+            "status": status,
+            "steps": [
+                {
+                    "agent_id": t.agent_id,
+                    "objective": t.objective,
+                    "ok": t.ok,
+                    "code": t.code,
+                    "reply": t.reply,
+                    "started_at": t.started_at,
+                    "ended_at": t.ended_at,
+                    "duration_ms": t.duration_ms,
+                    "stdout_tail": t.stdout_tail,
+                    "stderr_tail": t.stderr_tail,
+                }
+                for t in turns
+            ],
+        }
 
-    summary = {
-        "generated_at": now_iso(),
-        "goal": args.goal,
-        "status": status,
-        "approval": {
-            "required": args.require_approval,
-            "granted": approved,
-            "approval_file": str(Path(args.approval_file)),
-        },
-        "agent_outcomes": [
-            {
-                "agent_id": t.agent_id,
-                "ok": t.ok,
-                "reply": t.reply,
-            }
-            for t in turns
-        ],
-    }
+        RUN_PATH.write_text(json.dumps(run_payload, ensure_ascii=False, indent=2), encoding="utf-8")
+        SUMMARY_PATH.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
+        STATE_PATH.write_text(json.dumps(venture_state, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    run_payload = {
-        "contract": "ceo_multi_agent_orchestrator.v1",
-        "generated_at": now_iso(),
-        "mission": mission_brief,
-        "status": status,
-        "steps": [
-            {
-                "agent_id": t.agent_id,
-                "objective": t.objective,
-                "ok": t.ok,
-                "code": t.code,
-                "reply": t.reply,
-                "started_at": t.started_at,
-                "ended_at": t.ended_at,
-                "duration_ms": t.duration_ms,
-                "stdout_tail": t.stdout_tail,
-                "stderr_tail": t.stderr_tail,
-            }
-            for t in turns
-        ],
-    }
-
-    RUN_PATH.write_text(json.dumps(run_payload, ensure_ascii=False, indent=2), encoding="utf-8")
-    SUMMARY_PATH.write_text(json.dumps(summary, ensure_ascii=False, indent=2), encoding="utf-8")
-
-    STATE_PATH.write_text(json.dumps(venture_state, ensure_ascii=False, indent=2), encoding="utf-8")
+    final_status = "target_reached" if current_mrr >= args.target_mrr else "completed"
+    venture_state["status"] = final_status
 
     print(
         json.dumps(
             {
                 "ok": True,
-                "status": status,
+                "status": final_status,
                 "run": str(RUN_PATH),
                 "summary": str(SUMMARY_PATH),
                 "state": str(STATE_PATH),
