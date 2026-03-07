@@ -69,6 +69,10 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 ### v1.2 演示升级（P0-P4 落地增强）
 
 - Judge Focus 四块信息：当前项目 / 当前阶段 / 产物入口 / 下一步唯一动作
+- 新增 **Studio 提示词窗口（用户问答）**：
+  - 用户可输入问题（如“现在到哪一步了？”“下一步做什么？”“能不能开 live？”）
+  - 面板展示当前阶段进度、待用户决策问题、最近问答记录
+  - 支持直接从问题卡片触发建议动作
 - 阶段产物卡片化：Product/Marketing/Sales/Ops 均提供可点击入口
 - 操作状态机：idle → queued → running → succeeded/failed（按钮旁状态 + 全局运行条 + toast）
 - `messagePack` 联动：Landing 价值主张 + 广告文案 + Sales 开场并排预览，自动生成 UTM 链接

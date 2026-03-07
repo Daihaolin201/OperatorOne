@@ -33,6 +33,15 @@ const els = {
   runRehearsalBtn: document.getElementById("runRehearsalBtn"),
   resetDemoStateBtn: document.getElementById("resetDemoStateBtn"),
 
+  promptStagePill: document.getElementById("promptStagePill"),
+  promptStageProgress: document.getElementById("promptStageProgress"),
+  promptPendingQuestions: document.getElementById("promptPendingQuestions"),
+  promptInput: document.getElementById("promptInput"),
+  submitPromptBtn: document.getElementById("submitPromptBtn"),
+  promptClearBtn: document.getElementById("promptClearBtn"),
+  promptResponse: document.getElementById("promptResponse"),
+  promptHistory: document.getElementById("promptHistory"),
+
   stageFlowTableBody: document.querySelector("#stageFlowTable tbody"),
   stageResultsTableBody: document.querySelector("#stageResultsTable tbody"),
   deploymentsTableBody: document.querySelector("#deploymentsTable tbody"),
@@ -464,6 +473,116 @@ function renderGuide(snapshot) {
     els.judgePrimaryAction.innerHTML = "";
     const primary = guide.primaryRecommendedAction || actions[0];
     if (primary) renderActionCard(primary, els.judgePrimaryAction);
+  }
+}
+
+function renderPromptPanel(snapshot) {
+  const panel = snapshot?.userPromptPanel || {};
+  const progress = panel.progress || {};
+
+  if (els.promptStagePill) {
+    const stageLabel = safeText(progress.stage || "UNKNOWN").toUpperCase();
+    setPill(els.promptStagePill, "current", stageLabel);
+  }
+  if (els.promptStageProgress) {
+    const idx = Number(progress.index) || 0;
+    const total = Number(progress.total) || 0;
+    els.promptStageProgress.textContent = idx && total ? `当前进度：${idx}/${total}` : "当前进度：--";
+  }
+  if (els.promptInput && panel.placeholder) {
+    els.promptInput.placeholder = safeText(panel.placeholder);
+  }
+
+  if (els.promptPendingQuestions) {
+    els.promptPendingQuestions.innerHTML = "";
+    const questions = asList(panel.pendingQuestions);
+    if (!questions.length) {
+      const empty = document.createElement("div");
+      empty.className = "muted";
+      empty.textContent = "当前没有阻塞型用户提问。";
+      els.promptPendingQuestions.appendChild(empty);
+    } else {
+      for (const q of questions) {
+        const card = document.createElement("div");
+        card.className = "action-card";
+
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = `[${safeText(q.priority || "info")}] ${safeText(q.question)}`;
+
+        const reason = document.createElement("div");
+        reason.className = "desc";
+        reason.textContent = safeText(q.reason || "");
+
+        card.appendChild(title);
+        card.appendChild(reason);
+
+        const action = q.suggestedAction;
+        if (action && action.payload) {
+          const row = document.createElement("div");
+          row.className = "row";
+          const btn = document.createElement("button");
+          btn.className = "secondary";
+          btn.textContent = `执行建议：${safeText(action.label || action.action)}`;
+          btn.addEventListener("click", async () => {
+            const payload = { ...(action.payload || {}) };
+            if (!payload.ventureId && activeVentureId()) payload.ventureId = activeVentureId();
+            try {
+              await runStudioAction(payload, `执行建议动作 ${safeText(action.label || action.action)}`);
+            } catch (err) {
+              updateFeedback(`执行建议动作失败: ${err.message}`, "error");
+            }
+          });
+          row.appendChild(btn);
+          card.appendChild(row);
+        }
+
+        els.promptPendingQuestions.appendChild(card);
+      }
+    }
+  }
+
+  const history = asList(panel.history);
+  if (els.promptHistory) {
+    els.promptHistory.innerHTML = "";
+    if (!history.length) {
+      const empty = document.createElement("div");
+      empty.className = "muted";
+      empty.textContent = "暂无提问记录。";
+      els.promptHistory.appendChild(empty);
+    } else {
+      for (const item of history) {
+        const card = document.createElement("div");
+        card.className = "action-card";
+
+        const title = document.createElement("div");
+        title.className = "title";
+        title.textContent = `${safeText(formatTime(item.createdAt))} · ${safeText(item.stage || "-")}`;
+
+        const q = document.createElement("div");
+        q.className = "desc";
+        q.textContent = `Q: ${safeText(item.prompt || "")}`;
+
+        const a = document.createElement("div");
+        a.className = "small";
+        a.textContent = `A: ${safeText(item.reply || "")}`;
+
+        card.appendChild(title);
+        card.appendChild(q);
+        card.appendChild(a);
+        els.promptHistory.appendChild(card);
+      }
+    }
+  }
+
+  if (els.promptResponse) {
+    const current = String(els.promptResponse.textContent || "").trim();
+    if (!current || current === "--") {
+      const latest = history[0];
+      if (latest?.reply) {
+        els.promptResponse.textContent = safeText(latest.reply);
+      }
+    }
   }
 }
 
@@ -1208,6 +1327,7 @@ function renderSnapshot(snapshot) {
   state.snapshot = snapshot;
   renderTop();
   renderGuide(snapshot);
+  renderPromptPanel(snapshot);
   renderWorkflowGuide(snapshot);
   renderCapabilityWall(snapshot);
   renderJudgeFocus(snapshot);
@@ -1311,6 +1431,38 @@ async function runStudioAction(payload, label = "动作") {
     if (payload?.action) setActionState(payload.action, "failed", err?.message || String(err));
     showToast(`${label} 失败：${err?.message || err}`, "error");
     throw err;
+  }
+}
+
+async function submitUserPrompt() {
+  const text = String(els.promptInput?.value || "").trim();
+  if (!text) {
+    updateFeedback("请输入问题后再提交。", "error");
+    return;
+  }
+
+  const payload = {
+    action: "submit_user_prompt",
+    prompt: text,
+    async: false,
+  };
+  const ventureId = activeVentureId();
+  if (ventureId) payload.ventureId = ventureId;
+
+  updateFeedback("正在分析你的问题…", "info");
+  try {
+    const res = await postJSON("/api/studio/action", payload);
+    logActionResult(res);
+    const result = res?.result || {};
+    if (els.promptResponse) {
+      els.promptResponse.textContent = safeText(result.reply || "未返回回答。");
+    }
+    updateFeedback("已生成阶段建议。", "ok");
+    showToast("已回答你的问题", "ok");
+    await refreshFastSnapshot();
+  } catch (err) {
+    updateFeedback(`提问失败: ${err.message}`, "error");
+    showToast(`提问失败: ${err.message}`, "error");
   }
 }
 
@@ -1441,6 +1593,28 @@ function bindEvents() {
         showToast("演示历史已重置", "ok");
       } catch (err) {
         updateFeedback(`重置失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.submitPromptBtn) {
+    els.submitPromptBtn.addEventListener("click", () => {
+      submitUserPrompt().catch((err) => updateFeedback(`提问失败: ${err.message}`, "error"));
+    });
+  }
+
+  if (els.promptClearBtn) {
+    els.promptClearBtn.addEventListener("click", () => {
+      if (els.promptInput) els.promptInput.value = "";
+      if (els.promptResponse) els.promptResponse.textContent = "--";
+    });
+  }
+
+  if (els.promptInput) {
+    els.promptInput.addEventListener("keydown", (event) => {
+      if ((event.metaKey || event.ctrlKey) && event.key === "Enter") {
+        event.preventDefault();
+        submitUserPrompt().catch((err) => updateFeedback(`提问失败: ${err.message}`, "error"));
       }
     });
   }

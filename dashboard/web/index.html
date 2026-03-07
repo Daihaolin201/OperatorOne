@@ -106,6 +106,35 @@
         </article>
       </section>
 
+      <section class="grid grid-2">
+        <article class="card">
+          <h2>Studio 提示词窗口（用户问答）</h2>
+          <p class="muted">你可以直接提问：现在到哪一步、下一步该做什么、是否可以开 live。</p>
+          <div class="row">
+            <p id="promptStagePill" class="status-pill status-unknown">--</p>
+            <p id="promptStageProgress" class="small">当前进度：--</p>
+          </div>
+
+          <h3>当前需要你决策的问题</h3>
+          <div id="promptPendingQuestions" class="actions-list"></div>
+
+          <label class="mt">
+            输入你的问题（支持 Ctrl/Cmd + Enter 快速提交）
+            <textarea id="promptInput" rows="4" placeholder="例如：我现在该先做哪一步？"></textarea>
+          </label>
+          <div class="row">
+            <button id="submitPromptBtn">提交问题</button>
+            <button id="promptClearBtn" class="secondary">清空输入</button>
+          </div>
+          <pre id="promptResponse" class="result-box">--</pre>
+        </article>
+
+        <article class="card">
+          <h2>最近问答记录</h2>
+          <div id="promptHistory" class="actions-list"></div>
+        </article>
+      </section>
+
       <section class="card">
         <h2>CEOClaw 流程图 + 能力说明（你在做什么）</h2>
         <div id="workflowMap" class="workflow-map"></div>

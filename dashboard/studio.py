@@ -217,6 +217,7 @@ class StudioService:
         self.loop_todos_path = self.studio_dir / "loop_todos.json"
         self.deployments_path = self.studio_dir / "deployments.json"
         self.contexts_dir = self.studio_dir / "contexts"
+        self.user_prompts_path = self.studio_dir / "user_prompts.json"
 
         self.flags_path = self.runtime_dir / "state.json"  # shared with monitor gate
 
@@ -262,6 +263,8 @@ class StudioService:
             self._write_json(self.loop_todos_path, {"items": []})
         if not self.deployments_path.exists():
             self._write_json(self.deployments_path, {"items": []})
+        if not self.user_prompts_path.exists():
+            self._write_json(self.user_prompts_path, {"items": []})
 
     def _read_json(self, path: Path, default: Any) -> Any:
         if not path.exists():
@@ -337,6 +340,17 @@ class StudioService:
         payload = dict(payload)
         payload["updatedAt"] = now_iso()
         self._write_json(self.deployments_path, payload)
+
+    def _load_user_prompts(self) -> Dict[str, Any]:
+        payload = self._read_json(self.user_prompts_path, {"items": []})
+        if "items" not in payload or not isinstance(payload["items"], list):
+            payload["items"] = []
+        return payload
+
+    def _save_user_prompts(self, payload: Dict[str, Any]) -> None:
+        payload = dict(payload)
+        payload["updatedAt"] = now_iso()
+        self._write_json(self.user_prompts_path, payload)
 
     def _context_path(self, venture_id: str) -> Path:
         safe = slugify(venture_id, 120)
@@ -3546,11 +3560,275 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
 
         return out[:10]
 
+    def _stage_progress(self, stage: str) -> Dict[str, Any]:
+        normalized = stage if stage in STAGE_ORDER else "IDEA_POOL"
+        idx = STAGE_ORDER.index(normalized) + 1
+        return {
+            "stage": normalized,
+            "index": idx,
+            "total": len(STAGE_ORDER),
+            "label": f"{normalized} ({idx}/{len(STAGE_ORDER)})",
+        }
+
+    def _recent_user_prompt_history(self, venture_id: Optional[str], limit: int = 8) -> List[Dict[str, Any]]:
+        payload = self._load_user_prompts()
+        items = payload.get("items") or []
+        if venture_id:
+            items = [x for x in items if x.get("ventureId") in {None, venture_id}]
+        else:
+            items = [x for x in items if x.get("ventureId") is None]
+        return list(reversed(items[-limit:]))
+
+    def _append_user_prompt_history(self, entry: Dict[str, Any]) -> None:
+        payload = self._load_user_prompts()
+        items = payload.get("items") or []
+        items.append(entry)
+        payload["items"] = items[-400:]
+        self._save_user_prompts(payload)
+
+    def _build_user_questions(
+        self,
+        *,
+        active_venture: Optional[Dict[str, Any]],
+        active_context: Dict[str, Any],
+        recommended_actions: List[Dict[str, Any]],
+        manual_arm_enabled: bool,
+    ) -> List[Dict[str, Any]]:
+        stage = str((active_venture or {}).get("stage") or "IDEA_POOL")
+        selections = (active_venture or {}).get("selections") or {}
+        by_action = {
+            str(item.get("action")): item
+            for item in recommended_actions
+            if isinstance(item, dict) and item.get("action")
+        }
+
+        out: List[Dict[str, Any]] = []
+
+        def add_question(
+            *,
+            question_id: str,
+            priority: str,
+            question: str,
+            reason: str,
+            suggested_action: Optional[str] = None,
+        ) -> None:
+            item: Dict[str, Any] = {
+                "id": question_id,
+                "priority": priority,
+                "question": question,
+                "reason": reason,
+            }
+            if suggested_action and suggested_action in by_action:
+                action = by_action[suggested_action]
+                item["suggestedAction"] = {
+                    "action": action.get("action"),
+                    "label": action.get("label"),
+                    "stage": action.get("stage"),
+                    "payload": action.get("payload"),
+                }
+            out.append(item)
+
+        if not active_venture:
+            add_question(
+                question_id="q_idea_refresh",
+                priority="high",
+                question="要先刷新 startup ideas 吗？",
+                reason="当前没有 active venture，无法推进 Product/Marketing/Sales/Ops 阶段。",
+                suggested_action="refresh_ideas",
+            )
+            return out
+
+        if stage in {"SELECTED", "PRODUCT"}:
+            add_question(
+                question_id="q_product_sim",
+                priority="high",
+                question="是否现在先执行 Product simulation（先不做 live 部署）？",
+                reason="先拿到 landing + preview 产物，再推进到 Marketing，风险最低。",
+                suggested_action="run_product",
+            )
+
+        if stage == "MARKETING":
+            add_question(
+                question_id="q_marketing_content",
+                priority="high",
+                question="是否先生成并审批内容候选（Publish content）？",
+                reason="Sales 依赖可用内容资产和 campaign 输入。",
+                suggested_action="run_marketing_content",
+            )
+            if not selections.get("campaignId"):
+                add_question(
+                    question_id="q_marketing_campaign_select",
+                    priority="high",
+                    question="需要你从候选里明确选定一个 campaign，是否现在完成？",
+                    reason="未选 campaign 会阻塞后续 Sales 路径。",
+                    suggested_action="select_marketing_campaign",
+                )
+
+        if stage == "SALES":
+            add_question(
+                question_id="q_sales_safe_mode",
+                priority="high",
+                question="这轮是否坚持先 simulate，再决定 commit？",
+                reason="先验证外联与转化路径可避免误触 live 行为。",
+                suggested_action="dispatch_sales_outreach",
+            )
+            add_question(
+                question_id="q_sales_conversion",
+                priority="medium",
+                question="是否现在跑一轮 conversion simulate 看 scorecard？",
+                reason="可提前发现漏斗瓶颈，减少盲目 commit。",
+                suggested_action="run_sales_conversion",
+            )
+
+        if stage == "OPERATIONS":
+            add_question(
+                question_id="q_ops_full",
+                priority="high",
+                question="是否现在执行 Operations 全流程（stage1+2+3）？",
+                reason="只有完成运营回路，才能形成下一轮可执行改进。",
+                suggested_action="run_operations_full",
+            )
+
+        if stage == "ITERATE":
+            add_question(
+                question_id="q_iterate_confirm",
+                priority="high",
+                question="是否确认进入下一轮（会把阶段推进回 Product）？",
+                reason="进入下一轮前建议先确认 writeback 内容已满足预期。",
+                suggested_action="confirm_iterate",
+            )
+
+        if not manual_arm_enabled:
+            add_question(
+                question_id="q_live_gate",
+                priority="medium",
+                question="如需 live 动作，是否先手动打开 Manual Arm？",
+                reason="Manual Arm=OFF 时，live 路径会被安全门禁阻断。",
+            )
+
+        return out[:8]
+
+    def _build_user_prompt_reply(
+        self,
+        *,
+        prompt: str,
+        progress: Dict[str, Any],
+        pending_questions: List[Dict[str, Any]],
+        recommended_actions: List[Dict[str, Any]],
+        manual_arm_enabled: bool,
+    ) -> str:
+        text = prompt.strip()
+        low = text.lower()
+
+        lines: List[str] = []
+        lines.append(f"你当前在 {progress.get('label')}。")
+
+        if any(k in text for k in ["现在", "哪一步", "进度", "阶段", "到哪", "current"]):
+            lines.append("当前建议优先完成该阶段的高优先问题，再进入下一阶段。")
+
+        if any(k in low for k in ["live", "上线", "commit", "外联", "deploy", "发布"]):
+            if manual_arm_enabled:
+                lines.append("你已开启 Manual Arm；live 动作仍需显式 confirmLive/confirmProduction。")
+            else:
+                lines.append("当前 Manual Arm=OFF，live 动作会被门禁阻断。建议先 simulation。")
+
+        if any(k in text for k in ["下一步", "next", "先做什么", "建议"]):
+            top = recommended_actions[:3]
+            if top:
+                lines.append("建议动作（按优先级）：")
+                for idx, item in enumerate(top, start=1):
+                    lines.append(f"{idx}. {item.get('label')} [{item.get('stage')}]")
+            else:
+                lines.append("当前没有推荐动作，建议先刷新快照或检查 active venture。")
+
+        if pending_questions:
+            lines.append("当前需要你决策的问题：")
+            for idx, q in enumerate(pending_questions[:3], start=1):
+                lines.append(f"- Q{idx}: {q.get('question')}")
+        else:
+            lines.append("当前没有阻塞型用户问题。")
+
+        if len(lines) <= 2:
+            lines.append("你可以继续追问：是否应该先 simulation、当前阻塞点、或下一步唯一动作。")
+
+        return "\n".join(lines)
+
+    def _action_submit_user_prompt(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        prompt_text = str(payload.get("prompt") or payload.get("message") or "").strip()
+        if not prompt_text:
+            raise StudioError("prompt is required")
+        if len(prompt_text) > 4000:
+            raise StudioError("prompt is too long (max 4000 chars)")
+
+        with self.store_lock:
+            state = self._load_state()
+            ventures_payload = self._load_ventures()
+
+        ventures = ventures_payload.get("items") or []
+        requested_venture_id = str(payload.get("ventureId") or "").strip() or None
+        active_id = requested_venture_id or state.get("activeVentureId")
+
+        active_venture = None
+        for venture in ventures:
+            if venture.get("id") == active_id:
+                active_venture = venture
+                break
+
+        if not active_venture and ventures:
+            active_venture = ventures[-1]
+            active_id = active_venture.get("id")
+
+        opp_id = (active_venture or {}).get("opportunityId")
+        active_context = self._read_active_context(opp_id)
+        recommended_actions = self._next_recommended_actions(active_venture, active_context)
+        manual_arm_enabled = bool(self._manual_arm_enabled())
+        pending_questions = self._build_user_questions(
+            active_venture=active_venture,
+            active_context=active_context,
+            recommended_actions=recommended_actions,
+            manual_arm_enabled=manual_arm_enabled,
+        )
+
+        stage = str((active_venture or {}).get("stage") or "IDEA_POOL")
+        progress = self._stage_progress(stage)
+        reply = self._build_user_prompt_reply(
+            prompt=prompt_text,
+            progress=progress,
+            pending_questions=pending_questions,
+            recommended_actions=recommended_actions,
+            manual_arm_enabled=manual_arm_enabled,
+        )
+
+        entry = {
+            "id": f"prompt_{uuid.uuid4().hex[:10]}",
+            "createdAt": now_iso(),
+            "ventureId": active_id,
+            "stage": progress.get("stage"),
+            "prompt": prompt_text,
+            "reply": reply,
+        }
+
+        with self.store_lock:
+            self._append_user_prompt_history(entry)
+            history = self._recent_user_prompt_history(active_id, limit=8)
+
+        return {
+            "submitted": True,
+            "entry": entry,
+            "reply": reply,
+            "progress": progress,
+            "pendingQuestions": pending_questions,
+            "suggestedActions": recommended_actions[:3],
+            "history": history,
+            "manualArmEnabled": manual_arm_enabled,
+        }
+
     def _run_action_sync(self, action: str, payload: Dict[str, Any]) -> Dict[str, Any]:
         dispatch = {
             "refresh_ideas": self._action_refresh_ideas,
             "create_venture": self._action_create_venture,
             "set_active_venture": self._action_set_active_venture,
+            "submit_user_prompt": self._action_submit_user_prompt,
             "reset_demo_state": self._action_reset_demo_state,
             "run_product": self._action_run_product,
             "run_marketing_seo": self._action_run_marketing_seo,
@@ -3617,6 +3895,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             gates_payload = self._load_gates()
             todos_payload = self._load_loop_todos()
             deployments_payload = self._load_deployments()
+            user_prompts_payload = self._load_user_prompts()
 
         ventures = ventures_payload.get("items", [])
         active_id = state.get("activeVentureId")
@@ -3735,6 +4014,19 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         action_states = self._action_state_map(venture_id=active_id, recommended_actions=recommended_actions, recent_runs=recent_runs)
         global_run_state = self._global_run_state(venture_id=active_id, recent_runs=recent_runs_raw)
         stage_artifact_cards = self._build_stage_artifact_cards(stage_results, deployments)
+        user_prompt_progress = self._stage_progress(active_stage)
+        user_prompt_questions = self._build_user_questions(
+            active_venture=active_venture,
+            active_context=active_context,
+            recommended_actions=recommended_actions,
+            manual_arm_enabled=bool(self._manual_arm_enabled()),
+        )
+        user_prompt_items = user_prompts_payload.get("items") or []
+        if active_id:
+            user_prompt_items = [x for x in user_prompt_items if x.get("ventureId") in {None, active_id}]
+        else:
+            user_prompt_items = [x for x in user_prompt_items if x.get("ventureId") is None]
+        user_prompt_history = list(reversed(user_prompt_items[-8:]))
 
         vercel_audit_summary = {
             "generatedAt": vercel_audit.get("generatedAt"),
@@ -3777,5 +4069,11 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 "nextRecommendedActions": recommended_actions,
                 "primaryRecommendedAction": recommended_actions[0] if recommended_actions else None,
                 "actionStates": action_states,
+            },
+            "userPromptPanel": {
+                "progress": user_prompt_progress,
+                "pendingQuestions": user_prompt_questions,
+                "history": user_prompt_history,
+                "placeholder": "输入你的问题，例如：现在到哪一步？下一步做什么？是否可以开 live？",
             },
         }
