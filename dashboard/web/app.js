@@ -26,6 +26,7 @@ const els = {
   quickstartList: document.getElementById("quickstartList"),
   workflowMap: document.getElementById("workflowMap"),
   workflowExplainer: document.getElementById("workflowExplainer"),
+  capabilityWall: document.getElementById("capabilityWall"),
   recommendedActions: document.getElementById("recommendedActions"),
   feedbackBar: document.getElementById("feedbackBar"),
   runPreflightBtn: document.getElementById("runPreflightBtn"),
@@ -217,6 +218,21 @@ const WORKFLOW_STAGES = [
   },
 ];
 
+const CAPABILITY_HINTS = {
+  product_generate_startup_ideas: "证明系统会发现并筛选可行商业机会。",
+  product_build_deploy_simple_web: "证明系统能把想法快速变成可运行网页。",
+  product_create_landing_pages: "证明系统能产出可转化落地页与文案结构。",
+  marketing_run_seo_experiments: "证明系统能做增长实验设计与关键词验证。",
+  marketing_publish_content: "证明系统能批量产出可发布内容资产。",
+  marketing_launch_campaigns: "证明系统能从内容生成可执行 campaign。",
+  sales_identify_prospects: "证明系统能定位可成交人群和线索池。",
+  sales_send_outreach: "证明系统能生成并执行外联动作。",
+  sales_convert_early_customers: "证明系统能推动从线索到付费转化。",
+  operations_track_traffic_signups_revenue: "证明系统能跟踪业务核心指标（流量/注册/MRR）。",
+  operations_process_feedback: "证明系统能处理用户反馈并做优先级。",
+  operations_iterate_on_product: "证明系统能把反馈回写到下一轮产品迭代。",
+};
+
 function showToast(message, kind = "info") {
   if (!els.toastContainer) return;
   const item = document.createElement("div");
@@ -365,7 +381,9 @@ function renderTop() {
       const hint = run.lastFailedAction
         ? `建议：retry ${safeText(run.lastFailedAction)}，或先执行 stage_preflight 再重试。`
         : "建议：先看 Jobs/Stage Timeline 定位错误后重试。";
-      els.globalRunError.textContent = `最近错误：${safeText(run.lastError)} | ${hint}`;
+      const errText = String(run.lastError || "").replace(/\s+/g, " ").trim();
+      const shortErr = errText.length > 180 ? `${errText.slice(0, 180)}...` : errText;
+      els.globalRunError.textContent = `最近错误：${safeText(shortErr)} | ${hint}`;
     } else {
       els.globalRunError.textContent = "最近错误：无";
     }
@@ -523,6 +541,68 @@ function renderWorkflowGuide(snapshot) {
       },
     };
     els.workflowExplainer.textContent = JSON.stringify(guide, null, 2);
+  }
+}
+
+function renderCapabilityWall(snapshot) {
+  if (!els.capabilityWall) return;
+  const caps = asList(snapshot?.monitor?.capabilities);
+  els.capabilityWall.innerHTML = "";
+
+  if (!caps.length) {
+    const empty = document.createElement("div");
+    empty.className = "muted";
+    empty.textContent = "能力快照暂不可用。";
+    els.capabilityWall.appendChild(empty);
+    return;
+  }
+
+  const toMetricLine = (metrics) => {
+    if (!metrics || typeof metrics !== "object") return "-";
+    const entries = Object.entries(metrics).filter(([, v]) => ["string", "number", "boolean"].includes(typeof v));
+    return entries
+      .slice(0, 3)
+      .map(([k, v]) => `${k}=${v}`)
+      .join(" | ");
+  };
+
+  for (const cap of caps) {
+    const card = document.createElement("div");
+    card.className = "cap-card";
+
+    const title = document.createElement("div");
+    title.className = "title";
+    title.textContent = safeText(cap.label || cap.id);
+
+    const status = document.createElement("span");
+    status.className = `status-pill ${statusClass(cap.status)}`;
+    status.textContent = String(cap.status || "unknown").toUpperCase();
+
+    const hint = document.createElement("div");
+    hint.className = "small";
+    hint.textContent = CAPABILITY_HINTS[cap.id] || "该能力对应 CEOClaw 端到端链路中的一个执行环节。";
+
+    const metrics = document.createElement("div");
+    metrics.className = "small";
+    metrics.textContent = toMetricLine(cap.metrics);
+
+    const row = document.createElement("div");
+    row.className = "row wrap";
+    for (const ev of asList(cap.evidence).slice(0, 2)) {
+      if (!ev?.path) continue;
+      const btn = document.createElement("button");
+      btn.className = "secondary";
+      btn.textContent = `证据: ${safeText((ev.path || "").split("/").slice(-1)[0])}`;
+      btn.addEventListener("click", () => openArtifact(ev.path));
+      row.appendChild(btn);
+    }
+
+    card.appendChild(title);
+    card.appendChild(status);
+    card.appendChild(hint);
+    card.appendChild(metrics);
+    card.appendChild(row);
+    els.capabilityWall.appendChild(card);
   }
 }
 
@@ -1129,6 +1209,7 @@ function renderSnapshot(snapshot) {
   renderTop();
   renderGuide(snapshot);
   renderWorkflowGuide(snapshot);
+  renderCapabilityWall(snapshot);
   renderJudgeFocus(snapshot);
   renderStageFlow(snapshot);
   renderStageResults(snapshot);

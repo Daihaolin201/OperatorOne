@@ -30,6 +30,10 @@ from pathlib import Path
 from typing import Any, Dict, Iterable, List, Optional, Tuple
 from urllib.parse import parse_qsl, urlencode, urlparse, urlunparse
 
+try:
+    from collector import collect_snapshot
+except ModuleNotFoundError:  # pragma: no cover
+    from dashboard.collector import collect_snapshot
 
 
 STAGE_ORDER = [
@@ -1235,20 +1239,167 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         ad_copy = str(campaign.get("adCopy") or "").strip()
         sales_opening = str(sales.get("opening") or "").strip()
 
+        content_queue = self._parse_json(self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json", {})
+        campaign_queue = self._parse_json(self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json", {})
+
+        content_items: List[Dict[str, Any]] = []
+        for bucket in ["approved", "review_ready", "needs_revision", "blocked"]:
+            for item in ((content_queue.get("queue") or {}).get(bucket) or []):
+                if not item_matches_opp(item, opp_id):
+                    continue
+                content_items.append(
+                    {
+                        "bucket": bucket,
+                        "title": item.get("selected_title") or item.get("title") or item.get("topic"),
+                        "keyword": item.get("primary_keyword") or item.get("keyword"),
+                        "cta": item.get("cta") or item.get("call_to_action"),
+                    }
+                )
+                if len(content_items) >= 3:
+                    break
+            if len(content_items) >= 3:
+                break
+
+        campaign_items: List[Dict[str, Any]] = []
+        for bucket in ["launch_ready", "watchlist", "hold"]:
+            for item in ((campaign_queue.get("queue") or {}).get(bucket) or []):
+                if not item_matches_opp(item, opp_id):
+                    continue
+                campaign_items.append(
+                    {
+                        "bucket": bucket,
+                        "name": item.get("name") or item.get("title") or item.get("campaign_id"),
+                        "channel": item.get("primary_channel") or item.get("channel"),
+                        "budget": item.get("budget_total") or item.get("budget"),
+                        "readiness": item.get("readiness_score") or item.get("score"),
+                        "copy": item.get("ad_copy") or item.get("copy") or item.get("title"),
+                    }
+                )
+                if len(campaign_items) >= 3:
+                    break
+            if len(campaign_items) >= 3:
+                break
+
+        prospect = self._parse_json(self.sales_dir / "research/prospecting/prospect_queue.latest.json", {})
+        dispatch = self._parse_json(self.sales_dir / "research/outreach/outreach_dispatch_report.latest.json", {})
+        conversion = self._parse_json(self.sales_dir / "research/conversion/conversion_scoreboard.latest.json", {})
+
+        segment_name = None
+        weekly_leads = None
+        weekly_mql = None
+        for seg in prospect.get("segments") or []:
+            if item_matches_opp(seg, opp_id):
+                segment_name = seg.get("segment_name") or seg.get("target_segment")
+                scores = seg.get("scores") or {}
+                weekly_leads = scores.get("estimated_weekly_leads")
+                weekly_mql = scores.get("estimated_weekly_mql")
+                break
+
+        dispatch_summary = dispatch.get("summary") or {}
+        conversion_summary = conversion.get("summary") or {}
+
+        ops1 = self._parse_json(self.operations_dir / "research/stage1_tracking/stage1_scoreboard.latest.json", {})
+        ops2 = self._parse_json(self.operations_dir / "research/stage2_feedback/stage2_feedback_scoreboard.latest.json", {})
+        ops3 = self._parse_json(self.operations_dir / "research/stage3_product_iteration/stage3_iteration_scoreboard.latest.json", {})
+
+        ops1_sum = ops1.get("summary") or {}
+        ops2_sum = ops2.get("summary") or {}
+        ops3_sum = ops3.get("summary") or {}
+
+        caps: List[Dict[str, Any]] = []
+        try:
+            monitor_snapshot = collect_snapshot(runtime_flags={"manualArmEnabled": self._manual_arm_enabled()})
+            for c in monitor_snapshot.get("capabilities") or []:
+                caps.append({"label": c.get("label") or c.get("id"), "status": c.get("status")})
+        except Exception:
+            caps = []
+
+        def _cap_color(status: str) -> str:
+            s = str(status or "unknown").lower()
+            if s == "passed":
+                return "#0f9d58"
+            if s in {"warning", "review_required"}:
+                return "#c68a00"
+            return "#d93025"
+
+        content_html = "".join(
+            f"<li><strong>{html.escape(str(x.get('title') or '-'))}</strong> "
+            f"<span style='color:#60708a'>([{html.escape(str(x.get('bucket') or '-'))}] kw: {html.escape(str(x.get('keyword') or '-'))})</span>"
+            f"<div style='font-size:12px;color:#44546b'>CTA: {html.escape(str(x.get('cta') or '-'))}</div></li>"
+            for x in content_items
+        )
+        if not content_html:
+            content_html = "<li>暂无可展示 content 项（先执行/审批 Publish content）</li>"
+
+        campaign_html = "".join(
+            f"<li><strong>{html.escape(str(x.get('name') or '-'))}</strong> "
+            f"<span style='color:#60708a'>([{html.escape(str(x.get('bucket') or '-'))}] {html.escape(str(x.get('channel') or '-'))}, readiness={html.escape(str(x.get('readiness') or '-'))})</span>"
+            f"<div style='font-size:12px;color:#44546b'>copy: {html.escape(str(x.get('copy') or '-'))}</div></li>"
+            for x in campaign_items
+        )
+        if not campaign_html:
+            campaign_html = "<li>暂无 launchable campaign（可继续 SEO/content 或走 Sales fallback）</li>"
+
+        capability_html = "".join(
+            f"<span style='display:inline-block;border:1px solid #d1d8e2;border-radius:999px;padding:4px 10px;margin:4px;'>"
+            f"{html.escape(str(c.get('label') or '-'))}: <b style='color:{_cap_color(str(c.get('status')))}'>{html.escape(str(c.get('status') or '-'))}</b></span>"
+            for c in caps
+        )
+        if not capability_html:
+            capability_html = "<span style='color:#60708a'>能力快照暂不可用</span>"
+
         snippet = f"""
 <!-- STUDIO_GTM_SYNC_START -->
-<section id=\"studio-gtm-sync\" style=\"margin:20px auto;max-width:920px;border:1px solid #d0d7e2;border-radius:12px;padding:16px;background:#f7f9fc;color:#1f2a37;\">
-  <h2 style=\"margin:0 0 10px;font-size:20px;\">Go-to-Market Sync Panel</h2>
+<section id=\"studio-gtm-sync\" style=\"margin:20px auto;max-width:980px;border:1px solid #d0d7e2;border-radius:12px;padding:16px;background:#f7f9fc;color:#1f2a37;\">
+  <h2 style=\"margin:0 0 10px;font-size:20px;\">AI Founder Live Sync Panel</h2>
   <p style=\"margin:0 0 8px;\"><strong>Value proposition:</strong> {html.escape(value or '-')}</p>
   <p style=\"margin:0 0 8px;\"><strong>Ad copy:</strong> {html.escape(ad_copy or '-')}</p>
   <p style=\"margin:0 0 8px;\"><strong>Sales opening:</strong> {html.escape(sales_opening or '-')}</p>
   <p style=\"margin:0 0 8px;\"><strong>Proof:</strong> {html.escape(proof or '-')}</p>
-  <div style=\"display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;\">
+  <p style=\"margin:0 0 8px;\"><strong>CTA:</strong> {html.escape(cta or '-')}</p>
+
+  <div style=\"display:flex;gap:8px;flex-wrap:wrap;margin:10px 0 14px;\">
     {f'<a href="{html.escape(str(links.get("search")))}" target="_blank" rel="noreferrer">Search UTM</a>' if links.get('search') else ''}
     {f'<a href="{html.escape(str(links.get("linkedin")))}" target="_blank" rel="noreferrer">LinkedIn UTM</a>' if links.get('linkedin') else ''}
+    {f'<a href="{html.escape(str(links.get("x")))}" target="_blank" rel="noreferrer">X UTM</a>' if links.get('x') else ''}
     {f'<a href="{html.escape(str(links.get("sales_email")))}" target="_blank" rel="noreferrer">Sales Email UTM</a>' if links.get('sales_email') else ''}
   </div>
-  <p style=\"margin-top:10px;font-size:12px;color:#5b6472;\">Auto-synced by Studio from Marketing + Sales outputs.</p>
+
+  <div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;\">
+    <div style=\"border:1px solid #d7deea;border-radius:10px;padding:10px;background:#fff\">
+      <h3 style=\"margin:0 0 8px;font-size:16px;\">Publish content（实时）</h3>
+      <ul style=\"margin:0;padding-left:18px\">{content_html}</ul>
+    </div>
+    <div style=\"border:1px solid #d7deea;border-radius:10px;padding:10px;background:#fff\">
+      <h3 style=\"margin:0 0 8px;font-size:16px;\">Launch campaigns（实时）</h3>
+      <ul style=\"margin:0;padding-left:18px\">{campaign_html}</ul>
+    </div>
+  </div>
+
+  <div style=\"display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:12px;\">
+    <div style=\"border:1px solid #d7deea;border-radius:10px;padding:10px;background:#fff\">
+      <h3 style=\"margin:0 0 8px;font-size:16px;\">Sales pulse</h3>
+      <p style=\"margin:4px 0\"><strong>Segment:</strong> {html.escape(str(segment_name or '-'))}</p>
+      <p style=\"margin:4px 0\"><strong>Weekly leads/MQL:</strong> {html.escape(str(weekly_leads))} / {html.escape(str(weekly_mql))}</p>
+      <p style=\"margin:4px 0\"><strong>Dispatch processed:</strong> {html.escape(str(dispatch_summary.get('processed')))}</p>
+      <p style=\"margin:4px 0\"><strong>New customers:</strong> {html.escape(str(conversion_summary.get('new_customers_converted')))} | <strong>MRR proxy:</strong> {html.escape(str(conversion_summary.get('new_business_mrr_proxy')))}</p>
+    </div>
+    <div style=\"border:1px solid #d7deea;border-radius:10px;padding:10px;background:#fff\">
+      <h3 style=\"margin:0 0 8px;font-size:16px;\">Operations pulse</h3>
+      <p style=\"margin:4px 0\"><strong>Sessions:</strong> {html.escape(str(((ops1_sum.get('traffic') or {}).get('sessions'))))}</p>
+      <p style=\"margin:4px 0\"><strong>Qualified signups:</strong> {html.escape(str(((ops1_sum.get('signups') or {}).get('qualified_signups'))))}</p>
+      <p style=\"margin:4px 0\"><strong>Net new MRR:</strong> {html.escape(str(((ops1_sum.get('revenue') or {}).get('net_new_mrr'))))}</p>
+      <p style=\"margin:4px 0\"><strong>Feedback items:</strong> {html.escape(str(((ops2_sum.get('feedback') or {}).get('feedback_items_total'))))} | <strong>Themes:</strong> {html.escape(str(((ops2_sum.get('feedback') or {}).get('themes_total'))))}</p>
+      <p style=\"margin:4px 0\"><strong>Experiments planned:</strong> {html.escape(str(((ops3_sum.get('flow') or {}).get('experiments_planned'))))}</p>
+    </div>
+  </div>
+
+  <div style=\"margin-top:12px;border:1px solid #d7deea;border-radius:10px;padding:10px;background:#fff\">
+    <h3 style=\"margin:0 0 8px;font-size:16px;\">12 Capability proof wall</h3>
+    <div>{capability_html}</div>
+  </div>
+
+  <p style=\"margin-top:10px;font-size:12px;color:#5b6472;\">Auto-synced by Studio from Product + Marketing + Sales + Operations artifacts.</p>
 </section>
 <!-- STUDIO_GTM_SYNC_END -->
 """.strip()
@@ -1265,7 +1416,13 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             updated = html_text + "\n" + snippet
 
         index_path.write_text(updated, encoding="utf-8")
-        return {"ok": True, "indexPath": str(index_path)}
+        return {
+            "ok": True,
+            "indexPath": str(index_path),
+            "contentItems": len(content_items),
+            "campaignItems": len(campaign_items),
+            "capabilityCount": len(caps),
+        }
 
     def _build_message_pack(self, opp_id: Optional[str]) -> Dict[str, Any]:
         landing = self._parse_json(self.product_dir / "research/landing_v1/landing_package.json", {})
@@ -1307,7 +1464,13 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
 
         ad_copy = None
         if isinstance(top_campaign, dict):
-            ad_copy = top_campaign.get("ad_copy") or top_campaign.get("copy") or top_campaign.get("hook")
+            ad_copy = (
+                top_campaign.get("ad_copy")
+                or top_campaign.get("copy")
+                or top_campaign.get("hook")
+                or top_campaign.get("title")
+                or top_campaign.get("name")
+            )
         if not ad_copy and isinstance(top_content, dict):
             ad_copy = top_content.get("summary") or top_content.get("angle")
 
@@ -1340,7 +1503,13 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "content": {
                 "contentId": (top_content or {}).get("content_id") if isinstance(top_content, dict) else None,
                 "bucket": top_content_bucket,
-                "snippet": (top_content or {}).get("summary") if isinstance(top_content, dict) else None,
+                "snippet": (
+                    (top_content or {}).get("summary")
+                    or (top_content or {}).get("selected_title")
+                    or (top_content or {}).get("title")
+                )
+                if isinstance(top_content, dict)
+                else None,
             },
             "campaign": {
                 "campaignId": (top_campaign or {}).get("campaign_id") if isinstance(top_campaign, dict) else None,
@@ -1524,10 +1693,15 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if mode == "live":
             if not confirm_live:
                 raise StudioError("live mode requires confirmLive=true")
-            if not self._manual_arm_enabled():
-                raise StudioError("manual arm is OFF; cannot run live product deployment")
-            if deploy_target == "production" and not bool(payload.get("confirmProduction", False)):
-                raise StudioError("production deployment requires confirmProduction=true")
+
+            # Safety policy:
+            # - preview deployments are allowed with explicit confirmLive (judge rehearsal convenience)
+            # - production deployments still require manual arm + explicit production confirmation
+            if deploy_target == "production":
+                if not self._manual_arm_enabled():
+                    raise StudioError("manual arm is OFF; cannot run production deployment")
+                if not bool(payload.get("confirmProduction", False)):
+                    raise StudioError("production deployment requires confirmProduction=true")
 
             vercel = self._vercel_status()
             if not (vercel.get("installed") and vercel.get("authenticated")):
@@ -2145,8 +2319,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_run_sales_outreach_plan(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2227,8 +2402,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_approve_sales_outreach(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2300,8 +2476,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 },
             },
         )
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_dispatch_sales_outreach(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2373,8 +2550,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 },
             },
         )
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_run_sales_conversion(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2541,7 +2719,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
-        return {"run": run, "venture": updated, "kpiSnapshot": kpi}
+        preview_sync = self._sync_preview_with_gtm(updated)
+        return {"run": run, "venture": updated, "kpiSnapshot": kpi, "previewSync": preview_sync}
 
     def _action_writeback_operations(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2626,8 +2805,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated, "todos": todos, "suggestions": suggestions}
+        return {"run": run, "venture": updated, "todos": todos, "suggestions": suggestions, "previewSync": preview_sync}
 
     def _action_confirm_iterate(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2660,8 +2840,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             }
         )
 
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"venture": updated}
+        return {"venture": updated, "previewSync": preview_sync}
 
     def _action_stage_preflight(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip() or None
