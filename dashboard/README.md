@@ -62,17 +62,20 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 ### Phase 4（闭环自动化 + 鲁棒性）
 
 - Operations 执行后可回写 loop todos 到 Product/Marketing/Sales
-- 进入下一轮需人工点击 `confirm_iterate`
+- 进入下一轮先创建迁移申请（`confirm_iterate`），再显式确认迁移
 - 新增 `stage_preflight`（合同/可复现性预检查）
 - 新增 `rehearsal_e2e`（simulation 一键彩排）
+- 新增 `confirm_stage_transition`：阶段迁移统一显式确认，禁止隐式自动跳步
 
-### v1.2 演示升级（P0-P4 落地增强）
+### v1.3 交互升级（Prompt-first + 显式门禁）
 
 - Judge Focus 四块信息：当前项目 / 当前阶段 / 产物入口 / 下一步唯一动作
-- 新增 **Studio 提示词窗口（用户问答）**：
+- 新增 **Prompt-first Copilot（问我）**：
   - 用户可输入问题（如“现在到哪一步了？”“下一步做什么？”“能不能开 live？”）
+  - 提示词窗口优先走 LLM Copilot，失败时自动回退规则引擎
   - 面板展示当前阶段进度、待用户决策问题、最近问答记录
   - 支持直接从问题卡片触发建议动作
+  - 内置“推荐项目 / 分析活动 / 新手计划”快捷问题
 - 阶段产物卡片化：Product/Marketing/Sales/Ops 均提供可点击入口
 - 操作状态机：idle → queued → running → succeeded/failed（按钮旁状态 + 全局运行条 + toast）
 - `messagePack` 联动：Landing 价值主张 + 广告文案 + Sales 开场并排预览，自动生成 UTM 链接

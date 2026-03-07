@@ -62,7 +62,7 @@
 
       <section class="grid grid-4 judge-focus">
         <article class="card">
-          <h2>当前项目（Venture）</h2>
+          <h2>当前项目</h2>
           <pre id="judgeVentureCard" class="result-box">--</pre>
           <div class="row wrap mt">
             <select id="judgeVentureSelect"></select>
@@ -89,18 +89,18 @@
 
       <section class="grid grid-2">
         <article class="card">
-          <h2>怎么使用这个 Studio（3 分钟）</h2>
+          <h2>开始</h2>
           <ul id="quickstartList" class="guide-list"></ul>
           <div class="row">
-            <button id="runPreflightBtn" class="secondary">运行演示前预检查</button>
-            <button id="runRehearsalBtn" class="secondary">一键彩排（simulation）</button>
-            <button id="resetDemoStateBtn" class="secondary">重置演示历史（保留 idea）</button>
+            <button id="runPreflightBtn" class="secondary">预检查</button>
+            <button id="runRehearsalBtn" class="secondary">一键彩排</button>
+            <button id="resetDemoStateBtn" class="secondary">重置演示历史</button>
           </div>
           <p class="muted">建议先 simulation 跑通，再切 live。</p>
         </article>
 
         <article class="card">
-          <h2>下一步推荐动作</h2>
+          <h2>下一步</h2>
           <div id="recommendedActions" class="actions-list"></div>
           <p id="feedbackBar" class="feedback muted">系统准备中...</p>
         </article>
@@ -108,7 +108,7 @@
 
       <section class="grid grid-2">
         <article class="card">
-          <h2>Studio 提示词窗口（用户问答）</h2>
+          <h2>问我</h2>
           <p class="muted">你可以直接提问：现在到哪一步、下一步该做什么、是否可以开 live。</p>
           <div class="row">
             <p id="promptStagePill" class="status-pill status-unknown">--</p>
@@ -119,9 +119,14 @@
           <div id="promptPendingQuestions" class="actions-list"></div>
 
           <label class="mt">
-            输入你的问题（支持 Ctrl/Cmd + Enter 快速提交）
+            输入问题（Ctrl/Cmd + Enter 提交）
             <textarea id="promptInput" rows="4" placeholder="例如：我现在该先做哪一步？"></textarea>
           </label>
+          <div id="promptQuickChips" class="chips">
+            <button class="secondary" data-prompt="请推荐3个适合当前能力边界的商业项目，并说明理由。">推荐项目</button>
+            <button class="secondary" data-prompt="分析当前营销与销售活动，指出最大瓶颈和优先改进动作。">分析活动</button>
+            <button class="secondary" data-prompt="给我一个新手可执行的下一步计划（simulation优先）。">新手计划</button>
+          </div>
           <div class="row">
             <button id="submitPromptBtn">提交问题</button>
             <button id="promptClearBtn" class="secondary">清空输入</button>
@@ -130,26 +135,26 @@
         </article>
 
         <article class="card">
-          <h2>最近问答记录</h2>
+          <h2>对话</h2>
           <div id="promptHistory" class="actions-list"></div>
         </article>
       </section>
 
       <section class="card">
-        <h2>CEOClaw 流程图 + 能力说明（你在做什么）</h2>
+        <h2>流程</h2>
         <div id="workflowMap" class="workflow-map"></div>
         <pre id="workflowExplainer" class="result-box">--</pre>
       </section>
 
       <section class="card">
-        <h2>12 能力证明墙（评委视角）</h2>
+        <h2>能力</h2>
         <p class="muted">每项能力都给出状态、核心指标、证据入口。</p>
         <div id="capabilityWall" class="capability-wall"></div>
       </section>
 
       <section class="grid grid-2 advanced-only">
         <article class="card">
-          <h2>阶段流程（演示视角）</h2>
+          <h2>路径</h2>
           <table id="stageFlowTable">
             <thead>
               <tr>
@@ -171,7 +176,7 @@
         </article>
 
         <article class="card">
-          <h2>阶段产物（结果入口）</h2>
+          <h2>产物</h2>
           <table id="stageResultsTable">
             <thead>
               <tr>
@@ -374,7 +379,7 @@
 
       <section class="grid grid-2 advanced-only">
         <article class="card">
-          <h2>Jobs（异步执行）</h2>
+          <h2>任务</h2>
           <table id="jobsTable">
             <thead>
               <tr>
@@ -390,7 +395,7 @@
         </article>
 
         <article class="card">
-          <h2>Stage Timeline</h2>
+          <h2>时间线</h2>
           <table id="runsTable">
             <thead>
               <tr>

@@ -15,6 +15,7 @@ Key capabilities:
 from __future__ import annotations
 
 import copy
+import hashlib
 import html
 import json
 import re
@@ -81,6 +82,9 @@ DUPLICATE_GUARD_ACTIONS = {
     "stage_preflight",
     "rehearsal_e2e",
 }
+
+COPILOT_TIMEOUT_SECONDS = 45
+COPILOT_TO = "+10000000000"
 
 
 def now_dt() -> datetime:
@@ -662,6 +666,14 @@ class StudioService:
                 raise StudioError(f"venture not found: {venture_id}")
             return copy.deepcopy(venture)
 
+    def _require_stage(self, venture: Dict[str, Any], expected_stage: str, action: str) -> None:
+        current = str(venture.get("stage") or "IDEA_POOL")
+        if current != expected_stage:
+            raise StudioError(
+                f"{action} requires stage={expected_stage}, current={current}. "
+                "Please confirm pending transition first."
+            )
+
     def _update_venture(self, venture_id: str, updater) -> Dict[str, Any]:
         with self.store_lock:
             payload = self._load_ventures()
@@ -680,6 +692,95 @@ class StudioService:
             payload["items"] = ventures
             self._save_ventures(payload)
             return copy.deepcopy(updated)
+
+    def _pending_transition(self, venture: Optional[Dict[str, Any]]) -> Optional[Dict[str, Any]]:
+        if not isinstance(venture, dict):
+            return None
+        trans = venture.get("pendingTransition")
+        if not isinstance(trans, dict):
+            return None
+        if str(trans.get("status") or "pending") != "pending":
+            return None
+        return trans
+
+    def _propose_stage_transition(
+        self,
+        *,
+        venture_id: str,
+        to_stage: str,
+        reason: str,
+        source_action: str,
+        summary: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        if to_stage not in STAGE_ORDER:
+            raise StudioError(f"unsupported stage transition target: {to_stage}")
+
+        transition_id = f"tran_{uuid.uuid4().hex[:10]}"
+
+        def _up(v: Dict[str, Any]) -> Dict[str, Any]:
+            current_stage = str(v.get("stage") or "IDEA_POOL")
+            pending = {
+                "id": transition_id,
+                "status": "pending",
+                "fromStage": current_stage,
+                "toStage": to_stage,
+                "reason": reason,
+                "sourceAction": source_action,
+                "summary": summary or {},
+                "createdAt": now_iso(),
+                "requiresConfirmation": True,
+            }
+            v["pendingTransition"] = pending
+            return v
+
+        return self._update_venture(venture_id, _up)
+
+    def _apply_stage_transition(
+        self,
+        *,
+        venture_id: str,
+        decision: str,
+        note: str,
+        expected_transition_id: Optional[str] = None,
+    ) -> Dict[str, Any]:
+        decision = str(decision or "approved").strip().lower()
+        if decision not in {"approved", "rejected"}:
+            raise StudioError("decision must be approved or rejected")
+
+        def _up(v: Dict[str, Any]) -> Dict[str, Any]:
+            pending = self._pending_transition(v)
+            if not pending:
+                raise StudioError("no pending stage transition")
+            if expected_transition_id and str(pending.get("id")) != expected_transition_id:
+                raise StudioError("transition id mismatch")
+
+            from_stage = str(pending.get("fromStage") or v.get("stage") or "IDEA_POOL")
+            to_stage = str(pending.get("toStage") or from_stage)
+
+            history_item = {
+                "id": pending.get("id") or f"tran_{uuid.uuid4().hex[:8]}",
+                "decidedAt": now_iso(),
+                "decision": decision,
+                "fromStage": from_stage,
+                "toStage": to_stage,
+                "reason": pending.get("reason"),
+                "sourceAction": pending.get("sourceAction"),
+                "note": note,
+            }
+            history = [x for x in (v.get("transitionHistory") or []) if isinstance(x, dict)]
+            history.append(history_item)
+            v["transitionHistory"] = history[-60:]
+
+            if decision == "approved":
+                v["stage"] = to_stage
+                if from_stage == "ITERATE" and to_stage == "PRODUCT":
+                    v["cycle"] = int(v.get("cycle", 1) or 1) + 1
+                v["status"] = "active"
+
+            v.pop("pendingTransition", None)
+            return v
+
+        return self._update_venture(venture_id, _up)
 
     def create_venture(self, opportunity_id: str, name: Optional[str] = None) -> Dict[str, Any]:
         opp_id = canonical_opp_id(opportunity_id)
@@ -889,6 +990,180 @@ class StudioService:
             "stdoutTail": res.stdout_tail,
             "stderrTail": res.stderr_tail,
         }
+
+    def _extract_json_object(self, text: str) -> Optional[Dict[str, Any]]:
+        raw = str(text or "")
+        if not raw.strip():
+            return None
+
+        # Fast path: whole text is JSON object
+        try:
+            payload = json.loads(raw)
+            if isinstance(payload, dict):
+                return payload
+        except Exception:
+            pass
+
+        # Fallback: locate first balanced JSON object in text
+        start = raw.find("{")
+        while start >= 0:
+            depth = 0
+            for idx in range(start, len(raw)):
+                ch = raw[idx]
+                if ch == "{":
+                    depth += 1
+                elif ch == "}":
+                    depth -= 1
+                    if depth == 0:
+                        candidate = raw[start : idx + 1]
+                        try:
+                            payload = json.loads(candidate)
+                            if isinstance(payload, dict):
+                                return payload
+                        except Exception:
+                            pass
+                        break
+            start = raw.find("{", start + 1)
+        return None
+
+    def _copilot_compact_context(
+        self,
+        *,
+        active_venture: Optional[Dict[str, Any]],
+        progress: Dict[str, Any],
+        recommended_actions: List[Dict[str, Any]],
+        pending_questions: List[Dict[str, Any]],
+        manual_arm_enabled: bool,
+        active_context: Optional[Dict[str, Any]] = None,
+    ) -> Dict[str, Any]:
+        venture = active_venture or {}
+        marketing_ctx = (active_context or {}).get("marketing") or {}
+        sales_ctx = (active_context or {}).get("sales") or {}
+        ops_ctx = (active_context or {}).get("operations") or {}
+
+        core = {
+            "ventureId": venture.get("id"),
+            "opportunityId": venture.get("opportunityId"),
+            "stage": progress.get("stage"),
+            "stageIndex": progress.get("index"),
+            "stageTotal": progress.get("total"),
+            "cycle": venture.get("cycle"),
+            "manualArmEnabled": manual_arm_enabled,
+            "pendingTransition": venture.get("pendingTransition"),
+            "selectedCampaignId": ((venture.get("selections") or {}).get("campaignId")),
+            "recommendedActions": [
+                {
+                    "action": x.get("action"),
+                    "label": x.get("label"),
+                    "stage": x.get("stage"),
+                    "requiresUserChoice": bool(x.get("requiresUserChoice")),
+                }
+                for x in recommended_actions[:8]
+            ],
+            "pendingQuestions": [
+                {
+                    "id": q.get("id"),
+                    "priority": q.get("priority"),
+                    "question": q.get("question"),
+                }
+                for q in pending_questions[:8]
+            ],
+            "signals": {
+                "marketing": {
+                    "campaignCandidates": len(marketing_ctx.get("campaignCandidates") or []),
+                    "contentApproved": len(marketing_ctx.get("contentApproved") or []),
+                    "stage3Status": (marketing_ctx.get("stage3Run") or {}).get("status"),
+                },
+                "sales": {
+                    "segmentIndex": sales_ctx.get("segmentIndex"),
+                    "outreachBatchReady": bool(sales_ctx.get("outreachBatchReady")),
+                    "outreachBatchApproved": bool(sales_ctx.get("outreachBatchApproved")),
+                },
+                "operations": {
+                    "writebackItems": len(ops_ctx.get("writebackItems") or []),
+                    "kpiKeys": list((ops_ctx.get("kpiSnapshot") or {}).get("metrics", {}).keys())[:6],
+                },
+            },
+        }
+
+        if not venture.get("id"):
+            ideas = self.list_ideas()[:5]
+            core["ideaCandidates"] = [
+                {
+                    "opportunityId": x.get("opportunityId"),
+                    "title": x.get("title"),
+                    "coreProblem": x.get("coreProblem"),
+                    "feasibilityScore": x.get("feasibilityScore"),
+                    "hardGatePass": x.get("hardGatePass"),
+                }
+                for x in ideas
+            ]
+        digest = hashlib.sha1(json.dumps(core, ensure_ascii=False, sort_keys=True).encode("utf-8")).hexdigest()[:12]
+        core["contextHash"] = digest
+        return core
+
+    def _call_copilot_llm(self, user_prompt: str, context: Dict[str, Any]) -> Optional[Dict[str, Any]]:
+        instruction = {
+            "task": "You are OperatorOne Studio Copilot. Answer user in concise Simplified Chinese.",
+            "requirements": [
+                "Ground answer on provided context only.",
+                "Do not fabricate stage state or tool outputs.",
+                "If transition confirmation is required, explicitly mention it.",
+                "Prefer simulation-first recommendations unless user explicitly asks live.",
+            ],
+            "output_schema": {
+                "answer": "string",
+                "suggestedActionIds": ["string"],
+                "questionsForUser": ["string"],
+                "riskFlags": ["string"],
+                "tone": "brief"
+            },
+            "user_prompt": user_prompt,
+            "context": context,
+            "respond": "Return JSON object only. No markdown.",
+        }
+
+        cmd = [
+            "openclaw",
+            "--profile",
+            "operatorone",
+            "agent",
+            "--to",
+            COPILOT_TO,
+            "--message",
+            json.dumps(instruction, ensure_ascii=False),
+            "--timeout",
+            str(COPILOT_TIMEOUT_SECONDS),
+            "--json",
+        ]
+
+        try:
+            proc = subprocess.run(
+                cmd,
+                cwd=str(self.repo_root),
+                capture_output=True,
+                text=True,
+                timeout=COPILOT_TIMEOUT_SECONDS + 30,
+                check=False,
+            )
+        except Exception:
+            return None
+
+        if proc.returncode != 0:
+            return None
+
+        payload = self._extract_json_object(proc.stdout)
+        if not payload:
+            return None
+        text_payloads = (((payload.get("result") or {}).get("payloads") or []))
+        if not text_payloads:
+            return None
+
+        model_text = str((text_payloads[0] or {}).get("text") or "")
+        model_json = self._extract_json_object(model_text)
+        if not isinstance(model_json, dict):
+            return None
+        return model_json
 
     def _parse_json(self, path: Path, default: Any = None) -> Any:
         if not path.exists():
@@ -1654,6 +1929,11 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
 
+        venture = self._require_venture(venture_id)
+        current_stage = str(venture.get("stage") or "IDEA_POOL")
+        if current_stage not in {"SELECTED", "PRODUCT"}:
+            raise StudioError(f"run_product requires SELECTED/PRODUCT stage, current={current_stage}")
+
         mode = str(payload.get("mode") or "simulation").strip().lower()
         if mode not in {"simulation", "live"}:
             raise StudioError("mode must be simulation or live")
@@ -1746,7 +2026,6 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                     venture_id,
                     lambda v: {
                         **v,
-                        "stage": "PRODUCT",
                         "links": {
                             **(v.get("links") or {}),
                             "vercelProject": vercel_project,
@@ -1763,8 +2042,20 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                         },
                     },
                 )
+                updated = self._propose_stage_transition(
+                    venture_id=venture_id,
+                    to_stage="MARKETING",
+                    reason="product_dryrun_preflight_completed",
+                    source_action="run_product",
+                    summary={
+                        "runId": run["id"],
+                        "mode": mode,
+                        "dryRun": True,
+                        "deployTarget": deploy_target,
+                    },
+                )
                 self._sync_venture_context(venture_id)
-                return {"run": run, "venture": updated}
+                return {"run": run, "venture": updated, "pendingTransition": updated.get("pendingTransition")}
 
             build_cmd = [
                 "bash",
@@ -1898,7 +2189,6 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             venture_id,
             lambda v: {
                 **v,
-                "stage": "MARKETING",
                 "links": {
                     **(v.get("links") or {}),
                     "productDeploymentUrl": deployment_url,
@@ -1921,13 +2211,29 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
+        updated = self._propose_stage_transition(
+            venture_id=venture_id,
+            to_stage="MARKETING",
+            reason="product_run_completed",
+            source_action="run_product",
+            summary={
+                "runId": run["id"],
+                "mode": mode,
+                "deployTarget": deploy_target,
+                "hasDeploymentUrl": bool(deployment_url),
+            },
+        )
+
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "pendingTransition": updated.get("pendingTransition")}
 
     def _action_run_marketing_seo(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
         if not venture_id:
             raise StudioError("ventureId is required")
+
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "MARKETING", "run_marketing_seo")
 
         mode = str(payload.get("mode") or "shadow").strip().lower()
         if mode not in {"shadow", "live"}:
@@ -1994,6 +2300,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         venture_id = str(payload.get("ventureId") or "").strip()
         if not venture_id:
             raise StudioError("ventureId is required")
+
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "MARKETING", "run_marketing_content")
 
         mode = str(payload.get("mode") or "shadow").strip().lower()
         if mode not in {"shadow", "review"}:
@@ -2062,6 +2371,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         venture_id = str(payload.get("ventureId") or "").strip()
         if not venture_id:
             raise StudioError("ventureId is required")
+
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "MARKETING", "review_marketing_content")
 
         approve_ids = [str(x).strip() for x in (payload.get("approveIds") or []) if str(x).strip()]
         reject_ids = [str(x).strip() for x in (payload.get("rejectIds") or []) if str(x).strip()]
@@ -2139,6 +2451,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
 
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "MARKETING", "run_marketing_campaign")
+
         mode = str(payload.get("mode") or "shadow").strip().lower()
         if mode not in {"shadow", "review"}:
             raise StudioError("marketing campaign mode must be shadow or review")
@@ -2187,6 +2502,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "stage3Status": stage3_status,
             "campaignCounts": {"launch_ready": launch_ready, "watchlist": watchlist, "hold": hold},
             "fallbackToSales": fallback_to_sales,
+            "needsUserDecision": True,
         }
 
         run = self._record_run(
@@ -2204,7 +2520,6 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             venture_id,
             lambda v: {
                 **v,
-                "stage": "SALES" if fallback_to_sales else "MARKETING",
                 "lastActions": {
                     **(v.get("lastActions") or {}),
                     "marketingCampaign": {
@@ -2217,15 +2532,30 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 },
                 "notes": [
                     *([x for x in (v.get("notes") or []) if isinstance(x, str)][-5:]),
-                    "marketing_stage3_no_launchable_assets -> moved to SALES fallback"
+                    "marketing_stage3_no_launchable_assets_requires_user_decision"
                     if fallback_to_sales
-                    else "marketing_stage3_candidates_ready",
+                    else "marketing_stage3_candidates_ready_select_campaign",
                 ],
             },
         )
+        if fallback_to_sales:
+            updated = self._propose_stage_transition(
+                venture_id=venture_id,
+                to_stage="SALES",
+                reason="marketing_no_launchable_campaign_assets",
+                source_action="run_marketing_campaign",
+                summary={"stage3Status": stage3_status, "campaignCounts": summary.get("campaignCounts")},
+            )
+
         preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated, "previewSync": preview_sync}
+        return {
+            "run": run,
+            "venture": updated,
+            "previewSync": preview_sync,
+            "blockedReason": "no_campaign_candidates" if fallback_to_sales else None,
+            "pendingTransition": updated.get("pendingTransition"),
+        }
 
     def _action_select_marketing_campaign(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2233,11 +2563,13 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id or not campaign_id:
             raise StudioError("ventureId and campaignId are required")
 
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "MARKETING", "select_marketing_campaign")
+
         updated = self._update_venture(
             venture_id,
             lambda v: {
                 **v,
-                "stage": "SALES",
                 "selections": {
                     **(v.get("selections") or {}),
                     "campaignId": campaign_id,
@@ -2245,19 +2577,17 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
-        self._append_gate(
-            {
-                "gateId": f"gate_{uuid.uuid4().hex[:10]}",
-                "ventureId": venture_id,
-                "stage": "MARKETING",
-                "decision": "approved",
-                "reason": f"campaign_selected:{campaign_id}",
-                "decidedAt": now_iso(),
-            }
+        updated = self._propose_stage_transition(
+            venture_id=venture_id,
+            to_stage="SALES",
+            reason=f"marketing_campaign_selected:{campaign_id}",
+            source_action="select_marketing_campaign",
+            summary={"campaignId": campaign_id},
         )
+
         preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"venture": updated, "previewSync": preview_sync}
+        return {"venture": updated, "previewSync": preview_sync, "pendingTransition": updated.get("pendingTransition")}
 
     def _find_segment_index_for_venture(self, opp_id: str) -> Optional[int]:
         queue = self._parse_json(self.sales_dir / "research/prospecting/prospect_queue.latest.json", {})
@@ -2272,6 +2602,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
         venture = self._require_venture(venture_id)
+        self._require_stage(venture, "SALES", "run_sales_prospecting")
 
         step = self._command_step(
             "sales_stage1_prospecting",
@@ -2342,6 +2673,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
         venture = self._require_venture(venture_id)
+        self._require_stage(venture, "SALES", "run_sales_outreach_plan")
 
         seg_index = payload.get("segmentIndex")
         if seg_index is None:
@@ -2425,6 +2757,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
 
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "SALES", "approve_sales_outreach")
+
         approver = str(payload.get("approver") or "studio_user")
         note = str(payload.get("note") or "approved in studio")
 
@@ -2498,6 +2833,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         venture_id = str(payload.get("ventureId") or "").strip()
         if not venture_id:
             raise StudioError("ventureId is required")
+
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "SALES", "dispatch_sales_outreach")
 
         mode = str(payload.get("mode") or "simulate").strip().lower()
         if mode not in {"simulate", "commit"}:
@@ -2573,6 +2911,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
 
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "SALES", "run_sales_conversion")
+
         mode = str(payload.get("mode") or "simulate").strip().lower()
         if mode not in {"simulate", "commit"}:
             raise StudioError("conversion mode must be simulate or commit")
@@ -2632,21 +2973,30 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             venture_id,
             lambda v: {
                 **v,
-                "stage": "OPERATIONS",
                 "lastActions": {
                     **(v.get("lastActions") or {}),
                     "salesConversion": {"runId": run["id"], "at": now_iso(), "mode": mode},
                 },
             },
         )
+        updated = self._propose_stage_transition(
+            venture_id=venture_id,
+            to_stage="OPERATIONS",
+            reason="sales_conversion_completed",
+            source_action="run_sales_conversion",
+            summary={"runId": run["id"], "mode": mode},
+        )
         preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated, "previewSync": preview_sync}
+        return {"run": run, "venture": updated, "previewSync": preview_sync, "pendingTransition": updated.get("pendingTransition")}
 
     def _action_run_operations_full(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
         if not venture_id:
             raise StudioError("ventureId is required")
+
+        venture = self._require_venture(venture_id)
+        self._require_stage(venture, "OPERATIONS", "run_operations_full")
 
         steps = [
             self._command_step("ops_stage1_tracking", ["bash", "scripts/run_stage1_tracking.sh"], cwd=self.operations_dir, timeout=2400),
@@ -2724,7 +3074,6 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             venture_id,
             lambda v: {
                 **v,
-                "stage": "ITERATE",
                 "kpiSnapshots": [*(v.get("kpiSnapshots") or []), kpi][-30:],
                 "lastActions": {
                     **(v.get("lastActions") or {}),
@@ -2733,13 +3082,35 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
+        updated = self._propose_stage_transition(
+            venture_id=venture_id,
+            to_stage="ITERATE",
+            reason="operations_full_completed",
+            source_action="run_operations_full",
+            summary={"runId": run["id"]},
+        )
+
         preview_sync = self._sync_preview_with_gtm(updated)
-        return {"run": run, "venture": updated, "kpiSnapshot": kpi, "previewSync": preview_sync}
+        return {
+            "run": run,
+            "venture": updated,
+            "kpiSnapshot": kpi,
+            "previewSync": preview_sync,
+            "pendingTransition": updated.get("pendingTransition"),
+        }
 
     def _action_writeback_operations(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
         if not venture_id:
             raise StudioError("ventureId is required")
+
+        venture = self._require_venture(venture_id)
+        current_stage = str(venture.get("stage") or "IDEA_POOL")
+        if current_stage not in {"OPERATIONS", "ITERATE"}:
+            raise StudioError(
+                f"writeback_operations requires OPERATIONS/ITERATE stage, current={current_stage}. "
+                "Please confirm pending transition first."
+            )
 
         handoff_specs = [
             ("product", self.repo_root / "handoffs/operations_to_product.json", "PRODUCT"),
@@ -2806,7 +3177,6 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             venture_id,
             lambda v: {
                 **v,
-                "stage": "ITERATE",
                 "lastActions": {
                     **(v.get("lastActions") or {}),
                     "operationsWriteback": {
@@ -2819,9 +3189,71 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
         )
 
+        updated = self._propose_stage_transition(
+            venture_id=venture_id,
+            to_stage="ITERATE",
+            reason="operations_writeback_ready",
+            source_action="writeback_operations",
+            summary={"runId": run["id"], "todoCount": len(todos)},
+        )
+
         preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated, "todos": todos, "suggestions": suggestions, "previewSync": preview_sync}
+        return {
+            "run": run,
+            "venture": updated,
+            "todos": todos,
+            "suggestions": suggestions,
+            "previewSync": preview_sync,
+            "pendingTransition": updated.get("pendingTransition"),
+        }
+
+    def _action_confirm_stage_transition(self, payload: Dict[str, Any]) -> Dict[str, Any]:
+        venture_id = str(payload.get("ventureId") or "").strip()
+        if not venture_id:
+            raise StudioError("ventureId is required")
+
+        decision = str(payload.get("decision") or "approved").strip().lower()
+        note = str(payload.get("note") or "studio_confirmed")
+        transition_id = str(payload.get("transitionId") or "").strip() or None
+
+        before = self._require_venture(venture_id)
+        pending = self._pending_transition(before)
+        if not pending:
+            raise StudioError("no pending stage transition")
+
+        updated = self._apply_stage_transition(
+            venture_id=venture_id,
+            decision=decision,
+            note=note,
+            expected_transition_id=transition_id,
+        )
+
+        self._append_gate(
+            {
+                "gateId": f"gate_{uuid.uuid4().hex[:10]}",
+                "ventureId": venture_id,
+                "stage": str(pending.get("fromStage") or before.get("stage") or "UNKNOWN"),
+                "decision": decision,
+                "reason": str(pending.get("reason") or pending.get("sourceAction") or "pending_transition"),
+                "decidedAt": now_iso(),
+                "metadata": {
+                    "transitionId": pending.get("id"),
+                    "toStage": pending.get("toStage"),
+                    "sourceAction": pending.get("sourceAction"),
+                    "note": note,
+                },
+            }
+        )
+
+        preview_sync = self._sync_preview_with_gtm(updated)
+        self._sync_venture_context(venture_id)
+        return {
+            "venture": updated,
+            "previewSync": preview_sync,
+            "decision": decision,
+            "appliedTransition": pending,
+        }
 
     def _action_confirm_iterate(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2829,34 +3261,24 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if not venture_id:
             raise StudioError("ventureId is required")
 
-        updated = self._update_venture(
-            venture_id,
-            lambda v: {
-                **v,
-                "stage": "PRODUCT",
-                "cycle": int(v.get("cycle", 1) or 1) + 1,
-                "status": "active",
-                "lastActions": {
-                    **(v.get("lastActions") or {}),
-                    "iterateConfirm": {"at": now_iso(), "note": note},
-                },
+        venture = self._require_venture(venture_id)
+        stage = str(venture.get("stage") or "")
+        if stage != "ITERATE":
+            raise StudioError("confirm_iterate is only available in ITERATE stage")
+
+        updated = self._propose_stage_transition(
+            venture_id=venture_id,
+            to_stage="PRODUCT",
+            reason=f"next_cycle_requested:{note}",
+            source_action="confirm_iterate",
+            summary={
+                "effect": "move_to_product_and_increment_cycle",
+                "currentCycle": int(venture.get("cycle", 1) or 1),
             },
         )
 
-        self._append_gate(
-            {
-                "gateId": f"gate_{uuid.uuid4().hex[:10]}",
-                "ventureId": venture_id,
-                "stage": "ITERATE",
-                "decision": "approved",
-                "reason": note,
-                "decidedAt": now_iso(),
-            }
-        )
-
-        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"venture": updated, "previewSync": preview_sync}
+        return {"venture": updated, "pendingTransition": updated.get("pendingTransition")}
 
     def _action_stage_preflight(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip() or None
@@ -3005,6 +3427,78 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             try:
                 result = self._run_action_sync(action, {"action": action, **p})
                 completed.append({"action": action, "status": "passed", "resultKeys": list(result.keys())})
+
+                # Rehearsal auto-approves pending transitions to keep end-to-end simulation continuous.
+                venture_now = self._require_venture(venture_id)
+                pending = self._pending_transition(venture_now)
+                if pending:
+                    confirm_res = self._run_action_sync(
+                        "confirm_stage_transition",
+                        {
+                            "action": "confirm_stage_transition",
+                            "ventureId": venture_id,
+                            "transitionId": pending.get("id"),
+                            "decision": "approved",
+                            "note": f"rehearsal_auto_approve_after_{action}",
+                            "async": False,
+                        },
+                    )
+                    completed.append(
+                        {
+                            "action": "confirm_stage_transition",
+                            "status": "passed",
+                            "auto": True,
+                            "toStage": (confirm_res.get("appliedTransition") or {}).get("toStage"),
+                        }
+                    )
+
+                # Special case: marketing campaign generated candidates but no fallback pending transition.
+                venture_now = self._require_venture(venture_id)
+                if action == "run_marketing_campaign" and str(venture_now.get("stage") or "") == "MARKETING":
+                    ctx = self._read_active_context(venture_now.get("opportunityId"))
+                    candidates = (ctx.get("marketing") or {}).get("campaignCandidates") or []
+                    if candidates:
+                        cid = str((candidates[0] or {}).get("campaign_id") or (candidates[0] or {}).get("campaignId") or "").strip()
+                        if cid:
+                            self._run_action_sync(
+                                "select_marketing_campaign",
+                                {
+                                    "action": "select_marketing_campaign",
+                                    "ventureId": venture_id,
+                                    "campaignId": cid,
+                                    "async": False,
+                                },
+                            )
+                            completed.append(
+                                {
+                                    "action": "select_marketing_campaign",
+                                    "status": "passed",
+                                    "auto": True,
+                                    "campaignId": cid,
+                                }
+                            )
+                            venture_now = self._require_venture(venture_id)
+                            pending = self._pending_transition(venture_now)
+                            if pending:
+                                self._run_action_sync(
+                                    "confirm_stage_transition",
+                                    {
+                                        "action": "confirm_stage_transition",
+                                        "ventureId": venture_id,
+                                        "transitionId": pending.get("id"),
+                                        "decision": "approved",
+                                        "note": "rehearsal_auto_approve_after_campaign_select",
+                                        "async": False,
+                                    },
+                                )
+                                completed.append(
+                                    {
+                                        "action": "confirm_stage_transition",
+                                        "status": "passed",
+                                        "auto": True,
+                                        "toStage": str(pending.get("toStage") or ""),
+                                    }
+                                )
             except Exception as exc:  # noqa: BLE001
                 completed.append({"action": action, "status": "failed", "error": str(exc)})
                 replay["status"] = "failed"
@@ -3405,6 +3899,45 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         selections = active_venture.get("selections") or {}
         out: List[Dict[str, Any]] = []
 
+        pending = self._pending_transition(active_venture)
+        if pending:
+            to_stage = str(pending.get("toStage") or "UNKNOWN")
+            from_stage = str(pending.get("fromStage") or stage)
+            reason = str(pending.get("reason") or "pending_transition")
+            trans_id = str(pending.get("id") or "")
+            return [
+                {
+                    "action": "confirm_stage_transition",
+                    "label": f"确认进入 {to_stage}",
+                    "description": f"当前阶段 {from_stage}，待确认迁移到 {to_stage}。原因：{reason}",
+                    "stage": from_stage,
+                    "payload": {
+                        "action": "confirm_stage_transition",
+                        "ventureId": vid,
+                        "transitionId": trans_id,
+                        "decision": "approved",
+                        "note": f"approve_{from_stage}_to_{to_stage}",
+                        "async": False,
+                    },
+                    "requiresUserChoice": True,
+                },
+                {
+                    "action": "reject_stage_transition",
+                    "label": f"拒绝进入 {to_stage}",
+                    "description": "拒绝后保持当前阶段，继续人工选择。",
+                    "stage": from_stage,
+                    "payload": {
+                        "action": "confirm_stage_transition",
+                        "ventureId": vid,
+                        "transitionId": trans_id,
+                        "decision": "rejected",
+                        "note": f"reject_{from_stage}_to_{to_stage}",
+                        "async": False,
+                    },
+                    "requiresUserChoice": True,
+                },
+            ]
+
         if stage in {"SELECTED", "PRODUCT"}:
             out.append(
                 {
@@ -3524,10 +4057,15 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                     },
                     {
                         "action": "confirm_iterate",
-                        "label": "确认进入下一轮",
-                        "description": "人工确认后回到 Product 阶段。",
+                        "label": "准备进入下一轮",
+                        "description": "会创建‘ITERATE→PRODUCT’待确认迁移，不会直接跳转。",
                         "stage": "ITERATE",
-                        "payload": {"action": "confirm_iterate", "ventureId": vid, "async": False},
+                        "payload": {
+                            "action": "confirm_iterate",
+                            "ventureId": vid,
+                            "note": "next_cycle_requested",
+                            "async": False,
+                        },
                     },
                 ]
             )
@@ -3638,6 +4176,18 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             )
             return out
 
+        pending = self._pending_transition(active_venture)
+        if pending:
+            to_stage = str(pending.get("toStage") or "UNKNOWN")
+            from_stage = str(pending.get("fromStage") or stage)
+            add_question(
+                question_id="q_pending_transition",
+                priority="high",
+                question=f"是否确认从 {from_stage} 进入 {to_stage}？",
+                reason="阶段迁移已准备好，但需要你显式确认。",
+                suggested_action="confirm_stage_transition",
+            )
+
         if stage in {"SELECTED", "PRODUCT"}:
             add_question(
                 question_id="q_product_sim",
@@ -3693,8 +4243,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             add_question(
                 question_id="q_iterate_confirm",
                 priority="high",
-                question="是否确认进入下一轮（会把阶段推进回 Product）？",
-                reason="进入下一轮前建议先确认 writeback 内容已满足预期。",
+                question="是否现在创建“下一轮迁移申请”（ITERATE -> PRODUCT）？",
+                reason="点击后不会直接跳转，仍需在迁移卡片中二次确认。",
                 suggested_action="confirm_iterate",
             )
 
@@ -3745,6 +4295,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             lines.append("当前需要你决策的问题：")
             for idx, q in enumerate(pending_questions[:3], start=1):
                 lines.append(f"- Q{idx}: {q.get('question')}")
+            if any(str(q.get("id") or "") == "q_pending_transition" for q in pending_questions):
+                lines.append("提示：阶段迁移必须显式确认，不会自动推进。")
         else:
             lines.append("当前没有阻塞型用户问题。")
 
@@ -3791,13 +4343,51 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
 
         stage = str((active_venture or {}).get("stage") or "IDEA_POOL")
         progress = self._stage_progress(stage)
-        reply = self._build_user_prompt_reply(
-            prompt=prompt_text,
+
+        copilot_ctx = self._copilot_compact_context(
+            active_venture=active_venture,
             progress=progress,
-            pending_questions=pending_questions,
             recommended_actions=recommended_actions,
+            pending_questions=pending_questions,
             manual_arm_enabled=manual_arm_enabled,
+            active_context=active_context,
         )
+        llm_json = self._call_copilot_llm(prompt_text, copilot_ctx)
+
+        suggested_action_ids: List[str] = []
+        questions_for_user: List[str] = []
+        risk_flags: List[str] = []
+        answer_mode = "fallback"
+
+        if isinstance(llm_json, dict) and isinstance(llm_json.get("answer"), str) and llm_json.get("answer", "").strip():
+            reply = str(llm_json.get("answer")).strip()
+            answer_mode = "llm"
+            raw_ids = llm_json.get("suggestedActionIds") or []
+            if isinstance(raw_ids, list):
+                suggested_action_ids = [str(x).strip() for x in raw_ids if str(x).strip()]
+            raw_questions = llm_json.get("questionsForUser") or []
+            if isinstance(raw_questions, list):
+                questions_for_user = [str(x).strip() for x in raw_questions if str(x).strip()]
+            raw_risks = llm_json.get("riskFlags") or []
+            if isinstance(raw_risks, list):
+                risk_flags = [str(x).strip() for x in raw_risks if str(x).strip()]
+        else:
+            reply = self._build_user_prompt_reply(
+                prompt=prompt_text,
+                progress=progress,
+                pending_questions=pending_questions,
+                recommended_actions=recommended_actions,
+                manual_arm_enabled=manual_arm_enabled,
+            )
+
+        suggested_actions = []
+        by_action = {str(x.get("action")): x for x in recommended_actions if isinstance(x, dict) and x.get("action")}
+        if suggested_action_ids:
+            for aid in suggested_action_ids:
+                if aid in by_action:
+                    suggested_actions.append(by_action[aid])
+        if not suggested_actions:
+            suggested_actions = recommended_actions[:3]
 
         entry = {
             "id": f"prompt_{uuid.uuid4().hex[:10]}",
@@ -3806,6 +4396,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "stage": progress.get("stage"),
             "prompt": prompt_text,
             "reply": reply,
+            "mode": answer_mode,
+            "riskFlags": risk_flags,
+            "questionsForUser": questions_for_user,
         }
 
         with self.store_lock:
@@ -3816,11 +4409,15 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "submitted": True,
             "entry": entry,
             "reply": reply,
+            "mode": answer_mode,
             "progress": progress,
             "pendingQuestions": pending_questions,
-            "suggestedActions": recommended_actions[:3],
+            "suggestedActions": suggested_actions,
+            "questionsForUser": questions_for_user,
+            "riskFlags": risk_flags,
             "history": history,
             "manualArmEnabled": manual_arm_enabled,
+            "contextHash": copilot_ctx.get("contextHash"),
         }
 
     def _run_action_sync(self, action: str, payload: Dict[str, Any]) -> Dict[str, Any]:
@@ -3844,6 +4441,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "run_operations_full": self._action_run_operations_full,
             "writeback_operations": self._action_writeback_operations,
             "confirm_iterate": self._action_confirm_iterate,
+            "confirm_stage_transition": self._action_confirm_stage_transition,
             "stage_preflight": self._action_stage_preflight,
             "rehearsal_e2e": self._action_rehearsal_e2e,
             "vercel_audit": self._action_vercel_audit,
@@ -3939,6 +4537,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if active_stage not in STAGE_ORDER:
             active_stage = "IDEA_POOL"
         current_idx = STAGE_ORDER.index(active_stage)
+        pending_transition = self._pending_transition(active_venture)
+        pending_to_stage = str((pending_transition or {}).get("toStage") or "")
         for idx, stage in enumerate(STAGE_ORDER):
             if idx < current_idx:
                 state_flag = "completed"
@@ -3946,6 +4546,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 state_flag = "current"
             else:
                 state_flag = "pending"
+            if pending_transition and stage == pending_to_stage and state_flag == "pending":
+                state_flag = "awaiting_confirmation"
             last_run = latest_by_stage.get(stage)
             stage_flow.append(
                 {
@@ -3982,10 +4584,10 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             )
 
         quickstart = [
-            "先看 Judge Mode 顶部：当前项目、阶段、产物入口、下一步动作。",
-            "点击“运行演示前预检查”，确认合同与环境都通过。",
-            "先走 simulation 全流程，再决定是否 live。",
-            "live 仅在 Manual Arm ON + 显式确认后执行。",
+            "先看顶部状态：项目、阶段、下一步。",
+            "优先在“问我”里提问，再执行建议动作。",
+            "每次阶段迁移都要显式确认。",
+            "先 simulation，后 live；live 必须 Manual Arm + 双确认。",
         ]
 
         deployments = [
@@ -4044,6 +4646,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "ventures": ventures,
             "activeVentureId": active_id,
             "activeVenture": active_venture,
+            "pendingTransition": self._pending_transition(active_venture),
             "activeContext": active_context,
             "ventureContext": venture_context,
             "stageFlow": stage_flow,
@@ -4072,8 +4675,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             },
             "userPromptPanel": {
                 "progress": user_prompt_progress,
+                "pendingTransition": pending_transition,
                 "pendingQuestions": user_prompt_questions,
                 "history": user_prompt_history,
-                "placeholder": "输入你的问题，例如：现在到哪一步？下一步做什么？是否可以开 live？",
+                "placeholder": "问我：现在到哪一步？下一步做什么？这轮活动为什么没转化？",
             },
         }

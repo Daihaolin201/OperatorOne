@@ -37,6 +37,7 @@ const els = {
   promptStageProgress: document.getElementById("promptStageProgress"),
   promptPendingQuestions: document.getElementById("promptPendingQuestions"),
   promptInput: document.getElementById("promptInput"),
+  promptQuickChips: document.getElementById("promptQuickChips"),
   submitPromptBtn: document.getElementById("submitPromptBtn"),
   promptClearBtn: document.getElementById("promptClearBtn"),
   promptResponse: document.getElementById("promptResponse"),
@@ -132,7 +133,7 @@ function asList(value) {
 function statusClass(status) {
   const s = String(status || "unknown").toLowerCase();
   if (["passed", "ready", "succeeded", "success", "completed"].includes(s)) return "status-passed";
-  if (["warning", "review_required", "running", "queued", "pending", "current"].includes(s)) return "status-warning";
+  if (["warning", "review_required", "running", "queued", "pending", "current", "awaiting_confirmation"].includes(s)) return "status-warning";
   if (["failed", "blocked", "error"].includes(s)) return "status-failed";
   return "status-unknown";
 }
@@ -479,6 +480,7 @@ function renderGuide(snapshot) {
 function renderPromptPanel(snapshot) {
   const panel = snapshot?.userPromptPanel || {};
   const progress = panel.progress || {};
+  const pendingTransition = panel.pendingTransition || null;
 
   if (els.promptStagePill) {
     const stageLabel = safeText(progress.stage || "UNKNOWN").toUpperCase();
@@ -487,7 +489,13 @@ function renderPromptPanel(snapshot) {
   if (els.promptStageProgress) {
     const idx = Number(progress.index) || 0;
     const total = Number(progress.total) || 0;
-    els.promptStageProgress.textContent = idx && total ? `当前进度：${idx}/${total}` : "当前进度：--";
+    let text = idx && total ? `当前进度：${idx}/${total}` : "当前进度：--";
+    if (pendingTransition) {
+      text += ` · 待确认迁移：${safeText(pendingTransition.fromStage || "?")} → ${safeText(
+        pendingTransition.toStage || "?"
+      )}`;
+    }
+    els.promptStageProgress.textContent = text;
   }
   if (els.promptInput && panel.placeholder) {
     els.promptInput.placeholder = safeText(panel.placeholder);
@@ -557,7 +565,8 @@ function renderPromptPanel(snapshot) {
 
         const title = document.createElement("div");
         title.className = "title";
-        title.textContent = `${safeText(formatTime(item.createdAt))} · ${safeText(item.stage || "-")}`;
+        const modeLabel = safeText(item.mode || "fallback");
+        title.textContent = `${safeText(formatTime(item.createdAt))} · ${safeText(item.stage || "-")} · ${modeLabel}`;
 
         const q = document.createElement("div");
         q.className = "desc";
@@ -1455,7 +1464,24 @@ async function submitUserPrompt() {
     logActionResult(res);
     const result = res?.result || {};
     if (els.promptResponse) {
-      els.promptResponse.textContent = safeText(result.reply || "未返回回答。");
+      const mode = String(result.mode || "fallback");
+      const risks = asList(result.riskFlags).map((x) => safeText(x));
+      const asks = asList(result.questionsForUser).map((x) => safeText(x));
+      let text = safeText(result.reply || "未返回回答。");
+      text += `\n\n[来源] ${mode === "llm" ? "Copilot" : "规则引擎"}`;
+      if (risks.length) {
+        text += "\n[风险]";
+        risks.slice(0, 5).forEach((r) => {
+          text += `\n- ${r}`;
+        });
+      }
+      if (asks.length) {
+        text += "\n[待确认]";
+        asks.slice(0, 5).forEach((q) => {
+          text += `\n- ${q}`;
+        });
+      }
+      els.promptResponse.textContent = text;
     }
     updateFeedback("已生成阶段建议。", "ok");
     showToast("已回答你的问题", "ok");
@@ -1617,6 +1643,18 @@ function bindEvents() {
         submitUserPrompt().catch((err) => updateFeedback(`提问失败: ${err.message}`, "error"));
       }
     });
+  }
+
+  if (els.promptQuickChips) {
+    const chips = Array.from(els.promptQuickChips.querySelectorAll("button[data-prompt]"));
+    for (const chip of chips) {
+      chip.addEventListener("click", () => {
+        const prompt = String(chip.getAttribute("data-prompt") || "").trim();
+        if (!prompt) return;
+        if (els.promptInput) els.promptInput.value = prompt;
+        submitUserPrompt().catch((err) => updateFeedback(`提问失败: ${err.message}`, "error"));
+      });
+    }
   }
 
   if (els.judgeSwitchVentureBtn) {

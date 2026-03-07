@@ -137,6 +137,18 @@ button:hover {
   align-items: center;
 }
 
+.chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 8px 0 10px;
+}
+
+.chips button {
+  font-size: 12px;
+  padding: 6px 10px;
+}
+
 .row.wrap {
   row-gap: 8px;
 }
