@@ -697,6 +697,59 @@ class DashboardHandler(BaseHTTPRequestHandler):
             },
         )
 
+    def _handle_get_studio_artifact_raw(self, query: Dict[str, List[str]]) -> None:
+        path_values = query.get("path") or []
+        if not path_values:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        rel = str(path_values[-1]).strip()
+        if not rel:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        candidate = Path(rel)
+        if not candidate.is_absolute():
+            candidate = (REPO_ROOT / rel).resolve()
+        else:
+            candidate = candidate.resolve()
+
+        if not str(candidate).startswith(str(REPO_ROOT.resolve())):
+            self._json_response(403, {"ok": False, "error": "path escapes repository"})
+            return
+        if not candidate.exists() or not candidate.is_file():
+            self._json_response(404, {"ok": False, "error": "artifact not found"})
+            return
+
+        try:
+            text_content = candidate.read_text(encoding="utf-8")
+            mime = "application/json" if candidate.suffix.lower() == ".json" else "text/plain"
+            body = text_content.encode("utf-8")
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", f"{mime}; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        except Exception:
+            body = json.dumps(
+                {
+                    "ok": True,
+                    "path": rel,
+                    "message": "binary artifact; use Builder artifact viewer for metadata",
+                    "sizeBytes": candidate.stat().st_size,
+                },
+                ensure_ascii=False,
+                indent=2,
+            ).encode("utf-8")
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", "application/json; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+
     def _handle_get_studio_preview(self, query: Dict[str, List[str]]) -> None:
         path_values = query.get("path") or []
         if not path_values:
@@ -809,6 +862,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/studio/artifact":
             self._handle_get_studio_artifact(query)
+            return
+        if path == "/api/studio/artifact/raw":
+            self._handle_get_studio_artifact_raw(query)
             return
         if path == "/api/studio/preview":
             self._handle_get_studio_preview(query)

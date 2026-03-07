@@ -914,6 +914,10 @@ class StudioService:
                             "primary_keyword": item.get("primary_keyword") or item.get("keyword"),
                             "priority_score": item.get("priority_score") or item.get("score"),
                             "opportunity_id": item.get("opportunity_id"),
+                            "summary": item.get("summary") or item.get("angle"),
+                            "channel": item.get("channel") or item.get("platform"),
+                            "cta": item.get("cta") or item.get("call_to_action"),
+                            "raw": item,
                         }
                     )
 
@@ -932,6 +936,10 @@ class StudioService:
                             "primary_keyword": item.get("primary_keyword") or item.get("keyword"),
                             "readiness_score": item.get("readiness_score") or item.get("score"),
                             "opportunity_id": item.get("opportunity_id"),
+                            "ad_copy": item.get("ad_copy") or item.get("copy"),
+                            "channel": item.get("channel") or item.get("platform"),
+                            "budget": item.get("budget"),
+                            "raw": item,
                         }
                     )
 
@@ -986,20 +994,46 @@ class StudioService:
         stage2_summary = ops_stage2.get("summary") or {}
         stage3_summary = ops_stage3.get("summary") or {}
 
+        content_counts = {
+            k: len(((marketing_stage2.get("queue") or {}).get(k) or []))
+            for k in ["approved", "review_ready", "needs_revision", "blocked"]
+        }
+        campaign_counts = {
+            k: len(((marketing_stage3.get("queue") or {}).get(k) or []))
+            for k in ["launch_ready", "watchlist", "hold"]
+        }
+        campaign_total = sum(campaign_counts.values())
+        blockers: List[Dict[str, Any]] = []
+        if str(marketing_stage3.get("status") or "").lower() in {"blocked_no_launchable_assets", "no_launchable_assets"}:
+            blockers.append(
+                {
+                    "id": "marketing_stage3_no_launchable_assets",
+                    "severity": "warning",
+                    "message": "当前没有可发布 campaign 资产（不是能力缺失，而是当前数据结果）。",
+                    "recommended": ["继续跑 SEO/content 产出更多候选", "或直接进入 Sales prospecting 走 fallback"],
+                }
+            )
+        if campaign_total == 0:
+            blockers.append(
+                {
+                    "id": "marketing_campaign_queue_empty",
+                    "severity": "info",
+                    "message": "campaign 队列为空，暂时无法“选为 Sales 输入”。",
+                    "recommended": ["继续生成 campaign 候选", "或直接执行 Sales 阶段动作"],
+                }
+            )
+
         return {
             "marketing": {
                 "stage1Ready": stage1_ready[:30],
                 "contentCandidates": content_candidates[:50],
                 "campaignCandidates": campaign_candidates[:50],
+                "stage2Status": marketing_stage2.get("status"),
+                "stage3Status": marketing_stage3.get("status"),
+                "blockers": blockers,
                 "queueCounts": {
-                    "content": {
-                        k: len(((marketing_stage2.get("queue") or {}).get(k) or []))
-                        for k in ["approved", "review_ready", "needs_revision", "blocked"]
-                    },
-                    "campaign": {
-                        k: len(((marketing_stage3.get("queue") or {}).get(k) or []))
-                        for k in ["launch_ready", "watchlist", "hold"]
-                    },
+                    "content": content_counts,
+                    "campaign": campaign_counts,
                 },
             },
             "sales": {
@@ -1787,6 +1821,21 @@ class StudioService:
             ],
         )
 
+        queue = self._parse_json(self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json", {})
+        counts = queue.get("counts") or {}
+        launch_ready = int(counts.get("launch_ready", 0) or 0)
+        watchlist = int(counts.get("watchlist", 0) or 0)
+        hold = int(counts.get("hold", 0) or 0)
+        total_campaigns = launch_ready + watchlist + hold
+        stage3_status = queue.get("status")
+
+        fallback_to_sales = total_campaigns == 0
+        summary = {
+            "stage3Status": stage3_status,
+            "campaignCounts": {"launch_ready": launch_ready, "watchlist": watchlist, "hold": hold},
+            "fallbackToSales": fallback_to_sales,
+        }
+
         run = self._record_run(
             venture_id=venture_id,
             stage="MARKETING",
@@ -1795,18 +1844,30 @@ class StudioService:
             status="passed",
             steps=[step],
             artifacts=artifacts,
-            summary={},
+            summary=summary,
         )
 
         updated = self._update_venture(
             venture_id,
             lambda v: {
                 **v,
-                "stage": "MARKETING",
+                "stage": "SALES" if fallback_to_sales else "MARKETING",
                 "lastActions": {
                     **(v.get("lastActions") or {}),
-                    "marketingCampaign": {"runId": run["id"], "at": now_iso(), "mode": mode},
+                    "marketingCampaign": {
+                        "runId": run["id"],
+                        "at": now_iso(),
+                        "mode": mode,
+                        "stage3Status": stage3_status,
+                        "fallbackToSales": fallback_to_sales,
+                    },
                 },
+                "notes": [
+                    *([x for x in (v.get("notes") or []) if isinstance(x, str)][-5:]),
+                    "marketing_stage3_no_launchable_assets -> moved to SALES fallback"
+                    if fallback_to_sales
+                    else "marketing_stage3_candidates_ready",
+                ],
             },
         )
         self._sync_venture_context(venture_id)

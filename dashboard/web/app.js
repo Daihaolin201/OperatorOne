@@ -15,11 +15,17 @@ const els = {
   globalRunError: document.getElementById("globalRunError"),
 
   judgeVentureCard: document.getElementById("judgeVentureCard"),
+  judgeVentureSelect: document.getElementById("judgeVentureSelect"),
+  judgeSwitchVentureBtn: document.getElementById("judgeSwitchVentureBtn"),
+  judgeIdeaSelect: document.getElementById("judgeIdeaSelect"),
+  judgeCreateVentureBtn: document.getElementById("judgeCreateVentureBtn"),
   judgeStageCard: document.getElementById("judgeStageCard"),
   judgeArtifactCards: document.getElementById("judgeArtifactCards"),
   judgePrimaryAction: document.getElementById("judgePrimaryAction"),
 
   quickstartList: document.getElementById("quickstartList"),
+  workflowMap: document.getElementById("workflowMap"),
+  workflowExplainer: document.getElementById("workflowExplainer"),
   recommendedActions: document.getElementById("recommendedActions"),
   feedbackBar: document.getElementById("feedbackBar"),
   runPreflightBtn: document.getElementById("runPreflightBtn"),
@@ -46,6 +52,7 @@ const els = {
   runMarketingSeoBtn: document.getElementById("runMarketingSeoBtn"),
   runMarketingContentBtn: document.getElementById("runMarketingContentBtn"),
   runMarketingCampaignBtn: document.getElementById("runMarketingCampaignBtn"),
+  marketingSummary: document.getElementById("marketingSummary"),
   approveSelectedContentBtn: document.getElementById("approveSelectedContentBtn"),
   rejectSelectedContentBtn: document.getElementById("rejectSelectedContentBtn"),
   contentCandidatesTableBody: document.querySelector("#contentCandidatesTable tbody"),
@@ -74,6 +81,10 @@ const els = {
   artifactContent: document.getElementById("artifactContent"),
 
   actionResult: document.getElementById("actionResult"),
+  jsonDialog: document.getElementById("jsonDialog"),
+  jsonDialogTitle: document.getElementById("jsonDialogTitle"),
+  jsonDialogContent: document.getElementById("jsonDialogContent"),
+  jsonDialogCloseBtn: document.getElementById("jsonDialogCloseBtn"),
   toastContainer: document.getElementById("toastContainer"),
 };
 
@@ -177,6 +188,33 @@ function updateFeedback(message, kind = "info") {
   }
 }
 
+const WORKFLOW_STAGES = [
+  {
+    id: "PRODUCT",
+    title: "Product",
+    why: "把机会变成可演示网页（landing + preview/deploy）。",
+    capabilities: ["Generate startup ideas", "Build & deploy simple web products", "Create landing pages"],
+  },
+  {
+    id: "MARKETING",
+    title: "Marketing",
+    why: "验证增长叙事，产出内容与campaign输入。",
+    capabilities: ["Run SEO experiments", "Publish content", "Launch campaigns"],
+  },
+  {
+    id: "SALES",
+    title: "Sales",
+    why: "把流量变成线索、对话和首批付费客户。",
+    capabilities: ["Identify prospects", "Send outreach", "Convert early customers"],
+  },
+  {
+    id: "OPERATIONS",
+    title: "Operations",
+    why: "跟踪指标、处理反馈、形成迭代闭环。",
+    capabilities: ["Track traffic/signups/revenue", "Process feedback", "Iterate on product"],
+  },
+];
+
 function showToast(message, kind = "info") {
   if (!els.toastContainer) return;
   const item = document.createElement("div");
@@ -184,6 +222,26 @@ function showToast(message, kind = "info") {
   item.textContent = message;
   els.toastContainer.appendChild(item);
   setTimeout(() => item.remove(), 4200);
+}
+
+function openJsonDialog(title, payload) {
+  if (!els.jsonDialog || !els.jsonDialogContent) return;
+  if (els.jsonDialogTitle) els.jsonDialogTitle.textContent = title || "详情";
+  els.jsonDialogContent.textContent = typeof payload === "string" ? payload : JSON.stringify(payload || {}, null, 2);
+  try {
+    els.jsonDialog.showModal();
+  } catch {
+    els.jsonDialog.setAttribute("open", "open");
+  }
+}
+
+function closeJsonDialog() {
+  if (!els.jsonDialog) return;
+  try {
+    els.jsonDialog.close();
+  } catch {
+    els.jsonDialog.removeAttribute("open");
+  }
 }
 
 function logActionResult(payload) {
@@ -405,6 +463,45 @@ function renderStageFlow(snapshot) {
   }
 }
 
+function renderWorkflowGuide(snapshot) {
+  const stageFlow = asList(snapshot.stageFlow);
+  const current = stageFlow.find((x) => x.state === "current")?.stage || "IDEA_POOL";
+
+  if (els.workflowMap) {
+    els.workflowMap.innerHTML = "";
+    for (const s of WORKFLOW_STAGES) {
+      const box = document.createElement("div");
+      box.className = `workflow-stage ${s.id === current ? "current" : ""}`;
+      const h = document.createElement("div");
+      h.className = "title";
+      h.textContent = `${s.title}`;
+      const p = document.createElement("div");
+      p.className = "small";
+      p.textContent = s.why;
+      const ul = document.createElement("ul");
+      for (const cap of s.capabilities) {
+        const li = document.createElement("li");
+        li.textContent = cap;
+        ul.appendChild(li);
+      }
+      box.appendChild(h);
+      box.appendChild(p);
+      box.appendChild(ul);
+      els.workflowMap.appendChild(box);
+    }
+  }
+
+  if (els.workflowExplainer) {
+    const guide = {
+      currentStage: current,
+      whyNow: (WORKFLOW_STAGES.find((x) => x.id === current) || {}).why || null,
+      targetMilestone: "$100 MRR",
+      executionLoop: "idea → product → marketing → sales → operations → iterate",
+    };
+    els.workflowExplainer.textContent = JSON.stringify(guide, null, 2);
+  }
+}
+
 function renderJudgeFocus(snapshot) {
   const venture = snapshot.activeVenture || {};
   if (els.judgeVentureCard) {
@@ -419,6 +516,40 @@ function renderJudgeFocus(snapshot) {
       null,
       2
     );
+  }
+
+  if (els.judgeVentureSelect) {
+    els.judgeVentureSelect.innerHTML = "";
+    for (const v of asList(snapshot.ventures)) {
+      const opt = document.createElement("option");
+      opt.value = v.id || "";
+      opt.textContent = `${safeText(v.name || v.id)} (${safeText(v.stage || "-")})`;
+      if (v.id && v.id === snapshot.activeVentureId) opt.selected = true;
+      els.judgeVentureSelect.appendChild(opt);
+    }
+    if (!asList(snapshot.ventures).length) {
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "暂无 Venture";
+      els.judgeVentureSelect.appendChild(opt);
+    }
+  }
+
+  if (els.judgeIdeaSelect) {
+    els.judgeIdeaSelect.innerHTML = "";
+    for (const idea of asList(snapshot.ideas)) {
+      const opp = idea.opportunity_id || idea.id || "";
+      const opt = document.createElement("option");
+      opt.value = opp;
+      opt.textContent = `${safeText(opp)} | ${safeText(idea.title || idea.problem || idea.one_liner || "startup idea")}`;
+      els.judgeIdeaSelect.appendChild(opt);
+    }
+    if (!asList(snapshot.ideas).length) {
+      const opt = document.createElement("option");
+      opt.value = "";
+      opt.textContent = "暂无 idea（先刷新）";
+      els.judgeIdeaSelect.appendChild(opt);
+    }
   }
 
   const current = asList(snapshot.stageFlow).find((x) => x.state === "current") || null;
@@ -503,19 +634,39 @@ function summarizeStageOutput(summary) {
   return picks.join(" | ");
 }
 
+function artifactRawUrl(path) {
+  return `/api/studio/artifact/raw?path=${encodeURIComponent(path)}`;
+}
+
 async function openArtifact(path) {
-  if (!path || !els.artifactContent) return;
+  if (!path) return;
+
+  // In judge mode, always open a visible page instead of writing into hidden builder panel.
+  if (state.uiMode === "judge") {
+    window.open(artifactRawUrl(path), "_blank", "noopener,noreferrer");
+    return;
+  }
+
+  if (!els.artifactContent) {
+    window.open(artifactRawUrl(path), "_blank", "noopener,noreferrer");
+    return;
+  }
+
   if (els.artifactPath) els.artifactPath.textContent = path;
   els.artifactContent.textContent = "加载中...";
   try {
     const data = await getJSON(`/api/studio/artifact?path=${encodeURIComponent(path)}`);
     if (data.binary) {
       els.artifactContent.textContent = `Binary file (size=${data.sizeBytes} bytes).\nPath: ${data.path}`;
+      openJsonDialog("二进制产物", { path: data.path, sizeBytes: data.sizeBytes, binary: true });
     } else {
       els.artifactContent.textContent = data.content || "(empty)";
+      showToast(`已加载产物：${path}`, "ok");
     }
   } catch (err) {
-    els.artifactContent.textContent = `读取失败: ${err.message}`;
+    const msg = `读取失败: ${err.message}`;
+    els.artifactContent.textContent = msg;
+    showToast(msg, "error");
   }
 }
 
@@ -756,6 +907,23 @@ function renderProduct(snapshot) {
 function renderMarketing(snapshot) {
   const ctx = snapshot.activeContext?.marketing || {};
 
+  if (els.marketingSummary) {
+    els.marketingSummary.textContent = JSON.stringify(
+      {
+        stage2Status: ctx.stage2Status || null,
+        stage3Status: ctx.stage3Status || null,
+        queueCounts: ctx.queueCounts || {},
+        blockers: ctx.blockers || [],
+        hint:
+          asList(ctx.campaignCandidates).length === 0
+            ? "当前没有可选 campaign。可继续运行 SEO/content，或直接进入 Sales prospecting（fallback 路线）。"
+            : "请选择一个 campaign 作为 Sales 输入。",
+      },
+      null,
+      2
+    );
+  }
+
   if (els.contentCandidatesTableBody) {
     els.contentCandidatesTableBody.innerHTML = "";
     for (const item of asList(ctx.contentCandidates)) {
@@ -768,7 +936,14 @@ function renderMarketing(snapshot) {
         <td>${safeText(item.topic || "-")}</td>
         <td>${safeText(item.primary_keyword || "-")}</td>
         <td>${safeText(item.priority_score ?? "-")}</td>
+        <td></td>
       `;
+      const tdDetail = tr.children[6];
+      const btn = document.createElement("button");
+      btn.className = "secondary";
+      btn.textContent = "展开";
+      btn.addEventListener("click", () => openJsonDialog(`Publish content: ${cid}`, item));
+      tdDetail.appendChild(btn);
       els.contentCandidatesTableBody.appendChild(tr);
     }
   }
@@ -784,8 +959,17 @@ function renderMarketing(snapshot) {
         <td>${safeText(row.primary_keyword || "-")}</td>
         <td>${safeText(row.readiness_score ?? "-")}</td>
         <td></td>
+        <td></td>
       `;
-      const tdAction = tr.children[4];
+
+      const tdDetail = tr.children[4];
+      const detailBtn = document.createElement("button");
+      detailBtn.className = "secondary";
+      detailBtn.textContent = "展开";
+      detailBtn.addEventListener("click", () => openJsonDialog(`Campaign: ${campaignId}`, row));
+      tdDetail.appendChild(detailBtn);
+
+      const tdAction = tr.children[5];
       const btn = document.createElement("button");
       btn.textContent = "选为 Sales 输入";
       btn.addEventListener("click", async () => {
@@ -902,6 +1086,7 @@ function renderSnapshot(snapshot) {
   state.snapshot = snapshot;
   renderTop();
   renderGuide(snapshot);
+  renderWorkflowGuide(snapshot);
   renderJudgeFocus(snapshot);
   renderStageFlow(snapshot);
   renderStageResults(snapshot);
@@ -1135,6 +1320,40 @@ function bindEvents() {
         updateFeedback(`重置失败: ${err.message}`, "error");
       }
     });
+  }
+
+  if (els.judgeSwitchVentureBtn) {
+    els.judgeSwitchVentureBtn.addEventListener("click", async () => {
+      const ventureId = els.judgeVentureSelect?.value;
+      if (!ventureId) {
+        updateFeedback("没有可切换的 venture。", "error");
+        return;
+      }
+      try {
+        await runStudioAction({ action: "set_active_venture", ventureId, async: false }, "切换项目");
+      } catch (err) {
+        updateFeedback(`切换项目失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.judgeCreateVentureBtn) {
+    els.judgeCreateVentureBtn.addEventListener("click", async () => {
+      const opp = els.judgeIdeaSelect?.value;
+      if (!opp) {
+        updateFeedback("没有可用 idea，请先刷新 ideas。", "error");
+        return;
+      }
+      try {
+        await runStudioAction({ action: "create_venture", opportunityId: opp, async: false }, "创建项目");
+      } catch (err) {
+        updateFeedback(`创建项目失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.jsonDialogCloseBtn) {
+    els.jsonDialogCloseBtn.addEventListener("click", () => closeJsonDialog());
   }
 
   if (els.refreshIdeasBtn) {
