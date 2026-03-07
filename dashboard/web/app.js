@@ -127,10 +127,56 @@ let jobTimer = null;
 let monitorTimer = null;
 let refreshInFlight = false;
 
+const STATIC_TEXT_CACHE = new WeakMap();
+const STATIC_ATTR_CACHE = new WeakMap();
+
+function hasCjk(text) {
+  return /[\u3400-\u9fff]/.test(String(text || ""));
+}
+
+function splitBilingualParts(text) {
+  const raw = String(text || "");
+  if (!raw.includes(" / ")) return null;
+  const parts = raw
+    .split(/\s+\/\s+/)
+    .map((p) => p.trim())
+    .filter(Boolean);
+  if (parts.length !== 2) return null;
+
+  const [a, b] = parts;
+  const aZh = hasCjk(a);
+  const bZh = hasCjk(b);
+
+  if (aZh && !bZh) return { zh: a, en: b };
+  if (!aZh && bZh) return { zh: b, en: a };
+  return { zh: a, en: b };
+}
+
+function localizeBilingualText(text) {
+  const raw = String(text || "");
+  const m = raw.match(/^(\s*)([\s\S]*?)(\s*)$/);
+  const prefix = m ? m[1] : "";
+  const core = m ? m[2] : raw;
+  const suffix = m ? m[3] : "";
+
+  const parts = splitBilingualParts(core);
+  if (!parts) return raw;
+
+  const zh = parts.zh || parts.en || "";
+  const en = parts.en || parts.zh || "";
+
+  let out = core;
+  if (state.lang === "zh") out = zh || en;
+  else if (state.lang === "en") out = en || zh;
+  else out = zh && en && zh !== en ? `${zh} / ${en}` : zh || en;
+
+  return `${prefix}${out}${suffix}`;
+}
+
 function safeText(value) {
   if (value === null || value === undefined) return "";
   if (typeof value === "object") return JSON.stringify(value);
-  return String(value);
+  return localizeBilingualText(String(value));
 }
 
 function asList(value) {
@@ -250,7 +296,7 @@ const MESSAGE_TRANSLATIONS = [
 ];
 
 function localizeMessage(message) {
-  const raw = safeText(message || "");
+  const raw = localizeBilingualText(safeText(message || ""));
   if (!raw) return raw;
   if (state.lang === "zh") return raw;
 
@@ -415,11 +461,50 @@ function applyUiMode() {
   }
 }
 
+function localizeStaticDomText(root = document.body) {
+  if (!root) return;
+
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  while (true) {
+    const node = walker.nextNode();
+    if (!node) break;
+
+    const parent = node.parentElement;
+    if (!parent) continue;
+    if (["SCRIPT", "STYLE", "PRE", "CODE", "TEXTAREA"].includes(parent.tagName)) continue;
+
+    const original = STATIC_TEXT_CACHE.has(node) ? STATIC_TEXT_CACHE.get(node) : node.nodeValue;
+    if (!STATIC_TEXT_CACHE.has(node)) STATIC_TEXT_CACHE.set(node, original);
+
+    if (!String(original || "").includes(" / ")) continue;
+    node.nodeValue = localizeBilingualText(String(original || ""));
+  }
+
+  const attrs = ["placeholder", "title", "aria-label"];
+  const all = root.querySelectorAll("*");
+  all.forEach((el) => {
+    let cache = STATIC_ATTR_CACHE.get(el);
+    if (!cache) {
+      cache = {};
+      STATIC_ATTR_CACHE.set(el, cache);
+    }
+
+    attrs.forEach((attr) => {
+      if (!el.hasAttribute(attr)) return;
+      if (!(attr in cache)) cache[attr] = el.getAttribute(attr) || "";
+      const original = String(cache[attr] || "");
+      if (!original.includes(" / ")) return;
+      el.setAttribute(attr, localizeBilingualText(original));
+    });
+  });
+}
+
 function applyLanguageMode() {
   if (els.langSelect && els.langSelect.value !== state.lang) {
     els.langSelect.value = state.lang;
   }
   document.documentElement.lang = state.lang === "en" ? "en" : "zh-CN";
+  localizeStaticDomText(document.body);
 }
 
 function renderTop() {
@@ -748,10 +833,10 @@ function renderWorkflowGuide(snapshot) {
       box.className = `workflow-stage ${s.id === current ? "current" : ""}`;
       const h = document.createElement("div");
       h.className = "title";
-      h.textContent = `${s.title}`;
+      h.textContent = safeText(`${s.title}`);
       const p = document.createElement("div");
       p.className = "small";
-      p.textContent = s.why;
+      p.textContent = safeText(s.why);
       const ul = document.createElement("ul");
       for (const cap of s.capabilities) {
         const li = document.createElement("li");
@@ -806,7 +891,7 @@ function renderCapabilityWall(snapshot) {
   if (!caps.length) {
     const empty = document.createElement("div");
     empty.className = "muted";
-    empty.textContent = "能力快照暂不可用。";
+    empty.textContent = tr("能力快照暂不可用。", "Capability snapshot is unavailable.");
     els.capabilityWall.appendChild(empty);
     return;
   }
@@ -834,7 +919,7 @@ function renderCapabilityWall(snapshot) {
 
     const hint = document.createElement("div");
     hint.className = "small";
-    hint.textContent = CAPABILITY_HINTS[cap.id] || "该能力对应 CEOClaw 端到端链路中的一个执行环节。";
+    hint.textContent = safeText(CAPABILITY_HINTS[cap.id] || "该能力对应 CEOClaw 端到端链路中的一个执行环节。 / This capability maps to one execution segment in the CEOClaw end-to-end chain.");
 
     const metrics = document.createElement("div");
     metrics.className = "small";
@@ -1801,6 +1886,7 @@ function renderSnapshot(snapshot) {
   renderSalesOpsReality(snapshot);
   renderJobsFromList(snapshot.jobs || []);
   renderRuns(snapshot);
+  localizeStaticDomText(document.body);
 }
 
 async function refreshFastSnapshot() {
