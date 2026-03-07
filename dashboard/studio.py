@@ -2322,9 +2322,14 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if mode not in {"shadow", "review"}:
             raise StudioError("marketing content mode must be shadow or review")
 
+        opportunity_id = canonical_opp_id(venture.get("opportunityId"))
+        cmd = ["python3", "scripts/run_marketing_content_stage2.py", "--mode", mode, "--force", "--print-summary"]
+        if opportunity_id:
+            cmd.extend(["--opportunity-id", opportunity_id])
+
         step = self._command_step(
             "marketing_stage2_content",
-            ["python3", "scripts/run_marketing_content_stage2.py", "--mode", mode, "--force", "--print-summary"],
+            cmd,
             cwd=self.marketing_dir,
             timeout=1800,
         )
@@ -2472,9 +2477,16 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         if mode not in {"shadow", "review"}:
             raise StudioError("marketing campaign mode must be shadow or review")
 
+        opportunity_id = canonical_opp_id(venture.get("opportunityId"))
+        cmd = ["python3", "scripts/run_marketing_campaign_stage3.py", "--mode", mode, "--force", "--print-summary"]
+        if mode == "review":
+            cmd.append("--include-review-ready")
+        if opportunity_id:
+            cmd.extend(["--opportunity-id", opportunity_id])
+
         step = self._command_step(
             "marketing_stage3_campaign",
-            ["python3", "scripts/run_marketing_campaign_stage3.py", "--mode", mode, "--force", "--print-summary"],
+            cmd,
             cwd=self.marketing_dir,
             timeout=1800,
         )

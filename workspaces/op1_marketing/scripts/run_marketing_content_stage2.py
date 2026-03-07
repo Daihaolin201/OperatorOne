@@ -22,7 +22,7 @@ import re
 import shutil
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 
 
 REQUIRED_INPUTS = [
@@ -66,6 +66,60 @@ def safe_slug(value: str, fallback: str = "item") -> str:
     v = re.sub(r"[^a-z0-9]+", "-", v)
     v = re.sub(r"-+", "-", v).strip("-")
     return v or fallback
+
+
+def canonical_opp_id(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    text = str(value)
+    m = re.search(r"opp[_-]?(\d{1,4})", text, re.IGNORECASE)
+    if not m:
+        return None
+    num = int(m.group(1))
+    return f"opp_{num:03d}"
+
+
+def opp_variants(opp_id: str) -> List[str]:
+    base = canonical_opp_id(opp_id)
+    if not base:
+        return []
+    num = base.split("_")[1]
+    return [base, f"opp-{num}", f"opp{num}", f"proj-opp-{num}"]
+
+
+def flatten_strings(obj: Any) -> List[str]:
+    if obj is None:
+        return []
+    if isinstance(obj, str):
+        return [obj]
+    if isinstance(obj, (int, float, bool)):
+        return [str(obj)]
+    if isinstance(obj, dict):
+        out: List[str] = []
+        for v in obj.values():
+            out.extend(flatten_strings(v))
+        return out
+    if isinstance(obj, list):
+        out: List[str] = []
+        for v in obj:
+            out.extend(flatten_strings(v))
+        return out
+    return []
+
+
+def matches_opportunity(obj: Any, opportunity_id: Optional[str]) -> bool:
+    if not opportunity_id:
+        return True
+    base = canonical_opp_id(opportunity_id)
+    if not base:
+        return True
+
+    variants = [x.lower() for x in opp_variants(base)]
+    for text in flatten_strings(obj):
+        low = str(text).lower()
+        if any(v in low for v in variants):
+            return True
+    return False
 
 
 def titleize_keyword(keyword: str) -> str:
@@ -407,6 +461,7 @@ def select_candidates(
     mode: str,
     max_items: int,
     include_hold: bool,
+    opportunity_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     queue = queue_payload.get("queue", {}) or {}
     ready = queue.get("ready", []) or []
@@ -432,6 +487,9 @@ def select_candidates(
         exp = backlog_by_id.get(experiment_id)
         ctx = contexts_by_id.get(context_id)
         if not exp or not ctx:
+            continue
+
+        if not matches_opportunity({"row": row, "experiment": exp, "context": ctx}, opportunity_id):
             continue
 
         kw_key = keyword.lower()
@@ -612,6 +670,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--max-items", type=int, default=12, help="Max content items to generate")
     parser.add_argument("--include-hold", action="store_true", help="Include hold queue in candidate selection")
     parser.add_argument("--min-score", type=float, default=78.0, help="Minimum Stage1 score for pass-grade quality gate")
+    parser.add_argument("--opportunity-id", default=None, help="Only generate candidates for a specific opportunity (e.g. opp_002)")
     parser.add_argument("--print-summary", action="store_true", help="Print compact JSON summary")
     return parser.parse_args()
 
@@ -647,6 +706,7 @@ def main() -> int:
         "generated_at": generated_at,
         "run_id": run_id,
         "stage_dir": str(stage_dir),
+        "opportunity_id": canonical_opp_id(args.opportunity_id) if args.opportunity_id else None,
     }
 
     try:
@@ -674,6 +734,7 @@ def main() -> int:
             "mode": args.mode,
             "auto_publish": False,
             "publish_mode": "disabled",
+            "opportunity_id": canonical_opp_id(args.opportunity_id) if args.opportunity_id else None,
             "input_sync": {
                 "snapshot_id": snapshot.get("snapshot_id"),
                 "completeness": completeness,
@@ -814,6 +875,7 @@ def main() -> int:
             mode=args.mode,
             max_items=max(1, args.max_items),
             include_hold=bool(args.include_hold),
+            opportunity_id=args.opportunity_id,
         )
 
         prior_manual_decisions = build_prior_manual_decisions(

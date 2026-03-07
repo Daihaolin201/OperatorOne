@@ -25,7 +25,7 @@ import re
 import shutil
 import sys
 from pathlib import Path
-from typing import Any, Dict, List, Tuple
+from typing import Any, Dict, List, Optional, Tuple
 from urllib.parse import parse_qsl, urlencode, urlsplit, urlunsplit
 
 
@@ -112,6 +112,60 @@ def safe_slug(value: str, fallback: str = "item") -> str:
     v = re.sub(r"[^a-z0-9]+", "-", v)
     v = re.sub(r"-+", "-", v).strip("-")
     return v or fallback
+
+
+def canonical_opp_id(value: Any) -> Optional[str]:
+    if value is None:
+        return None
+    text = str(value)
+    m = re.search(r"opp[_-]?(\d{1,4})", text, re.IGNORECASE)
+    if not m:
+        return None
+    num = int(m.group(1))
+    return f"opp_{num:03d}"
+
+
+def opp_variants(opp_id: str) -> List[str]:
+    base = canonical_opp_id(opp_id)
+    if not base:
+        return []
+    num = base.split("_")[1]
+    return [base, f"opp-{num}", f"opp{num}", f"proj-opp-{num}"]
+
+
+def flatten_strings(obj: Any) -> List[str]:
+    if obj is None:
+        return []
+    if isinstance(obj, str):
+        return [obj]
+    if isinstance(obj, (int, float, bool)):
+        return [str(obj)]
+    if isinstance(obj, dict):
+        out: List[str] = []
+        for v in obj.values():
+            out.extend(flatten_strings(v))
+        return out
+    if isinstance(obj, list):
+        out: List[str] = []
+        for v in obj:
+            out.extend(flatten_strings(v))
+        return out
+    return []
+
+
+def matches_opportunity(obj: Any, opportunity_id: Optional[str]) -> bool:
+    if not opportunity_id:
+        return True
+    base = canonical_opp_id(opportunity_id)
+    if not base:
+        return True
+
+    variants = [x.lower() for x in opp_variants(base)]
+    for text in flatten_strings(obj):
+        low = str(text).lower()
+        if any(v in low for v in variants):
+            return True
+    return False
 
 
 def relative_path(path: Path, root: Path) -> str:
@@ -404,6 +458,7 @@ def select_assets(
     stage2_backlog: Dict[str, Any],
     max_campaigns: int,
     include_review_ready: bool,
+    opportunity_id: Optional[str] = None,
 ) -> List[Dict[str, Any]]:
     items = (stage2_backlog.get("items", []) or []) if isinstance(stage2_backlog, dict) else []
 
@@ -421,6 +476,9 @@ def select_assets(
         if not content_id or content_id in seen:
             continue
         if str(item.get("queue_state", "") or "").strip() not in allowed:
+            continue
+
+        if not matches_opportunity(item, opportunity_id):
             continue
 
         seen.add(content_id)
@@ -690,6 +748,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--force", action="store_true", help="Force recompute")
     parser.add_argument("--max-campaigns", type=int, default=8, help="Maximum campaign plans to generate")
     parser.add_argument("--include-review-ready", action="store_true", help="Include Stage2 review_ready items as watch candidates")
+    parser.add_argument("--opportunity-id", default=None, help="Only generate campaigns for a specific opportunity (e.g. opp_002)")
     parser.add_argument("--min-readiness", type=float, default=78.0, help="Readiness threshold for launch_ready queue")
     parser.add_argument("--default-budget", type=float, default=1200.0, help="Fallback budget when product handoff budget is not set")
     parser.add_argument("--duration-days", type=int, default=14, help="Default campaign duration in days")
@@ -729,6 +788,7 @@ def main() -> int:
         "generated_at": generated_at,
         "run_id": run_id,
         "stage_dir": str(stage_dir),
+        "opportunity_id": canonical_opp_id(args.opportunity_id) if args.opportunity_id else None,
     }
 
     try:
@@ -756,6 +816,7 @@ def main() -> int:
             "mode": args.mode,
             "auto_launch": False,
             "launch_mode": "disabled",
+            "opportunity_id": canonical_opp_id(args.opportunity_id) if args.opportunity_id else None,
             "input_sync": {
                 "snapshot_id": snapshot.get("snapshot_id"),
                 "completeness": completeness,
@@ -875,6 +936,7 @@ def main() -> int:
             stage2_backlog=stage2_backlog,
             max_campaigns=max(1, int(args.max_campaigns)),
             include_review_ready=bool(args.include_review_ready),
+            opportunity_id=args.opportunity_id,
         )
 
         if not selected_assets:
