@@ -1,0 +1,16 @@
+{
+  "name": "@op1/types",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    }
+  },
+  "devDependencies": {
+    "@op1/typescript-config": "workspace:*",
+    "typescript": "^5.8.2"
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "name": "@op1/portal",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "build": "next build",
+    "dev": "next dev --port 3000",
+    "lint": "next lint",
+    "typecheck": "tsc --noEmit",
+    "clean": "rm -rf .next out"
+  },
+  "dependencies": {
+    "@op1/i18n": "workspace:*",
+    "@op1/types": "workspace:*",
+    "@op1/ui": "workspace:*",
+    "next": "^15.2.2",
+    "next-intl": "^4.1.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@op1/eslint-config": "workspace:*",
+    "@op1/tailwind-config": "workspace:*",
+    "@op1/typescript-config": "workspace:*",
+    "@types/node": "^22.13.9",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.22.0",
+    "tailwindcss": "^4.0.14",
+    "typescript": "^5.8.2"
+  }
+}

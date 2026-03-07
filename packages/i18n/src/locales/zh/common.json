@@ -1,0 +1,21 @@
+{
+  "appName": "OperatorOne",
+  "loading": "加载中...",
+  "error": "出现了一些问题",
+  "retry": "重试",
+  "save": "保存",
+  "cancel": "取消",
+  "confirm": "确认",
+  "delete": "删除",
+  "edit": "编辑",
+  "back": "返回",
+  "next": "下一步",
+  "submit": "提交",
+  "search": "搜索",
+  "filter": "筛选",
+  "clear": "清除",
+  "noResults": "未找到结果",
+  "required": "此字段为必填项",
+  "success": "成功",
+  "welcomeUser": "欢迎，{name}"
+}

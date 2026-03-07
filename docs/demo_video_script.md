@@ -1,163 +1,124 @@
-# CEOClaw Demo Video Script
-**UK AI Agent Hackathon EP4 × OpenClaw — 5-10 min recording guide**
+# OperatorOne × CEOClaw: Demo Video Script
 
-## Before Recording
+This script provides a structured 5–10 minute recording guide for the OperatorOne × CEOClaw hackathon submission.
 
-Pre-open these browser tabs (do not close until recording ends):
-- https://webproductlandingstage3validation.vercel.app
-- https://webproductmodularinvoice.vercel.app
-- https://github.com/Daihaolin201/OperatorOne/tree/dennis/automation-framework
+## Pre-recording Checklist
+- [ ] Terminal font size: 14pt+ (readable on 1080p).
+- [ ] Repo status: Cloned and on branch `dennis/automation-framework`.
+- [ ] Browser tabs pre-loaded:
+  - https://webproductmodularinvoice.vercel.app
+  - https://webproductmodularchargeback.vercel.app
+  - https://webproductlandingstage3validation.vercel.app
+- [ ] JSON files exist in `handoffs/` and `workspaces/op1_ceo/research/ceo_orchestration/`.
+- [ ] Microphone check: Speak clearly and pace yourself.
 
-Pre-run in terminal (so output is ready):
-```bash
-cd OperatorOne
-git checkout dennis/automation-framework
-```
-
----
-
-## Section 1: Hook (0:00 – 0:45)
-
-**Screen**: Browser — https://webproductlandingstage3validation.vercel.app
-
-**Talking points:**
-- "This is a real product deployed to Vercel — not a mockup."
-- "It was built and deployed entirely by an AI agent pipeline, zero manual code."
-- "Today I'll show you the CEO orchestrator that coordinates the 4 agents that made this happen."
+## Recording Tips
+- Use 1080p resolution.
+- Keep the terminal full-screen when running commands.
+- Pause for 1-2 seconds after a command finishes before speaking the next point.
+- Focus on the *system* and *results*, not just the code.
+- Avoid AI-sounding filler; speak like a human operator.
 
 ---
 
-## Section 2: Architecture Overview (0:45 – 2:00)
+## Segment 1: Intro (0:00–1:00)
+**Visual:** Show README.md in a browser or code editor, focused on the "CEOClaw" and "Real Results" sections.
 
-**Screen**: `README.md` (open in terminal with `cat README.md | head -80` or GitHub)
+### Talking Points
+- Welcome the judges to the OperatorOne submission for the CEOClaw Challenge (£1,000 prize).
+- Team: Dennis & Bennett.
+- What is CEOClaw? It's our multi-agent CEO orchestrator that runs an internet business from idea to first customers.
+- Key highlight: This isn't just a prototype. We've achieved real results: **$49 MRR** from a live customer.
 
-**Talking points:**
-- OperatorOne has 4 specialist agents: Product → Marketing → Sales → Operations
-- Each hands off a typed JSON contract to the next — like a real company with departments
-- The CEO orchestrator (`run_ceo_multi_agent_orchestrator_v1.py`) coordinates the full loop
-- Show architecture diagram in README
+---
 
-**Terminal commands:**
+## Segment 2: Architecture Walkthrough (1:00–2:30)
+**Visual:** Terminal.
+
+### Terminal Commands
 ```bash
-# Show the handoff contracts
+ls workspaces/
 ls handoffs/
-cat handoffs/product_to_marketing.json | python3 -m json.tool | head -20
 ```
+
+### Talking Points
+- Show the 5 workspaces: `op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`, and the `op1_ceo` manager.
+- Explain the "Stage-gated handoff" design: Agents don't just talk; they produce structured JSON contracts.
+- Mention the 9 handoff contracts that define the business pipeline.
+- Highlight the iteration loop: Operations feedback feeds back to Product/Marketing/Sales for the next cycle.
 
 ---
 
-## Section 3: Real Business Results (2:00 – 3:30)
+## Segment 3: CEO Orchestrator Live Demo (2:30–5:00)
+**Visual:** Terminal (Main Demo).
 
-**Screen**: Terminal + browser tabs
-
-**Talking points:**
-- "The pipeline has already executed end-to-end — this is real data."
-- Walk through the numbers: 13 prospects contacted, 6 replies, 1 customer, $49 MRR
-- Show the 6 deployed Vercel URLs in README
-
-**Terminal commands:**
+### Terminal Commands
 ```bash
-# Show sales results
-cat handoffs/sales_to_operations.json
-
-# Show all deployed products
-grep -A3 "deployed_urls" workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
-```
-
-**Browser**: Switch to https://webproductmodularinvoice.vercel.app — show it's a live product
-
----
-
-## Section 4: CEO Orchestrator Live Run (3:30 – 6:00)
-
-**Screen**: Terminal (full screen)
-
-**Talking points:**
-- "Now I'll run the CEO orchestrator — this is the command that kicks off the whole agent loop."
-- Walk through each agent turn as it appears
-- Explain the approval gate (`approval.json`)
-
-**Terminal commands:**
-```bash
-# Show approval is granted
-cat workspaces/op1_ceo/research/ceo_orchestration/approval.json
-
-# Run the full orchestrator (simulation mode)
+# Run the orchestrator in dry-run mode
 python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run
 
-# Inspect run log — show all 4 agent replies
-python3 -c "
-import json
-d = json.load(open('workspaces/op1_ceo/research/ceo_orchestration/run.latest.json'))
-print('STATUS:', d['status'])
-for s in d['steps']:
-    print(f\"--- {s['agent_id']} ({s['duration_ms']}ms) ---\")
-    print(s['reply'][:300])
-    print()
-"
+# Inspect the summary and venture state
+cat workspaces/op1_ceo/research/ceo_orchestration/orchestrator_summary.latest.json | python3 -m json.tool
+cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json | python3 -m json.tool
 ```
+
+### Talking Points
+- Run the orchestrator script. Explain that `--dry-run` simulates the 4-agent sequence (Product → Marketing → Sales → Operations).
+- Show the output: Realistic simulation replies generated from real historical handoff data.
+- Open `venture_state.latest.json`: Point out `mrr_usd: 49.0` and the list of `deployed_urls`.
+- This is the "control plane" for the entire venture.
 
 ---
 
-## Section 5: Venture State Snapshot (6:00 – 7:30)
+## Segment 4: Real Evidence (5:00–7:00)
+**Visual:** Browser (Vercel Tabs) + Terminal.
 
-**Screen**: Terminal
+### URLs to Show
+- https://webproductmodularinvoice.vercel.app
+- https://webproductmodularchargeback.vercel.app
+- https://webproductlandingstage3validation.vercel.app
 
-**Talking points:**
-- "The orchestrator writes a `venture_state.latest.json` — a full KPI snapshot."
-- Show MRR, prospects, deployed URLs, stage gates, next_actions
-- "This is what makes the loop auditable and reversible — every run produces a full state artifact."
-
-**Terminal commands:**
+### Terminal Commands
 ```bash
-# Show venture state
-cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
-
-# Show the operations feedback loop feeding next_actions
-cat handoffs/operations_to_product.json | python3 -m json.tool | head -40
+cat handoffs/sales_to_operations.json | python3 -m json.tool | head -30
 ```
+
+### Talking Points
+- Flip through the 3 pre-loaded Vercel tabs. These are 3 of the **6 live products** deployed by our Product agent.
+- Show `sales_to_operations.json` in the terminal.
+- Cite the real numbers: **13 prospects** contacted, **6 replies** received, **1 customer** converted.
+- This is the evidence of the system working in the wild to generate **$49 MRR**.
 
 ---
 
-## Section 6: Handoff Chain & Iteration Loop (7:30 – 9:30)
+## Segment 5: The Iteration Loop (7:00–8:30)
+**Visual:** Terminal.
 
-**Screen**: Terminal + file tree
-
-**Talking points:**
-- "Each agent writes a JSON contract that the next agent reads — not prompt chaining, actual data contracts."
-- Walk through: product → marketing → sales → operations → back to product
-- "Operations processed 10 feedback items and produced prioritised actions with expected MRR deltas."
-- "The next cycle would be: tighten targeting, design low-risk pilot offer, simplify onboarding."
-
-**Terminal commands:**
+### Terminal Commands
 ```bash
-# Show all handoff contracts
-ls -la handoffs/
-
-# Show the iteration feedback
-cat handoffs/operations_to_product.json | python3 -m json.tool
-
-# Show marketing pipeline
-python3 -c "
-import json
-d = json.load(open('handoffs/marketing_to_sales.json'))
-print('Campaigns:', len(d['campaigns']))
-print('Launch ready:', sum(1 for c in d['campaigns'] if c['status']=='launch_ready'))
-print('Top channels:', d['lead_signals']['top_channels'])
-"
+cat handoffs/operations_to_product.json | python3 -m json.tool | head -30
 ```
 
-**Closing talking points:**
-- "OperatorOne shows what happens when you give OpenClaw a real business goal."
-- "Not a toy agent — a coordinated pipeline that reached $49 MRR with real prospects."
-- "The CEO orchestrator is the glue that makes it work as a system, not just individual agents."
+### Talking Points
+- How do we grow? The Iteration Loop.
+- Show `operations_to_product.json`: 10 feedback items with P2/P3 priority.
+- Explain how the Operations agent analyzes sales data/objections and feeds improvements back to Product for the next cycle.
+- This creates a self-improving business flywheel.
 
 ---
 
-## Technical Notes
+## Segment 6: Close + Call to Action (8:30–9:30)
+**Visual:** Terminal with the clone command.
 
-- All commands run from repo root: `cd OperatorOne`
-- `--dry-run` flag uses simulation mode — no OpenClaw API keys needed for judges to reproduce
-- Real run requires `openclaw --profile operatorone` configured
-- Handoff contracts are in `handoffs/` — all committed, versioned, reproducible
-- Branch: `dennis/automation-framework`
+### Talking Points
+- Summary: We're at **$49 MRR**. The path to $100 is clear as the next automated cycle runs.
+- Judges can verify everything themselves. The repo is designed to be cloned and run in under 60 seconds.
+- Thank the judges for their time.
+
+### Clone Command (Show on screen)
+```bash
+git clone https://github.com/Daihaolin201/OperatorOne
+cd OperatorOne
+git checkout dennis/automation-framework
+python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run
+```

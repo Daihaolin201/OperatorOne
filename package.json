@@ -1,0 +1,29 @@
+{
+  "name": "operator-one",
+  "private": true,
+  "version": "0.0.0",
+  "description": "OperatorOne – multi-agent startup execution monorepo",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "dev:portal": "turbo run dev --filter=@op1/portal",
+    "dev:product": "turbo run dev --filter=@op1/product",
+    "lint": "turbo run lint",
+    "typecheck": "turbo run typecheck",
+    "test": "turbo run test",
+    "clean": "turbo run clean && rm -rf node_modules",
+    "format": "prettier --write \"**/*.{ts,tsx,md,json}\" --ignore-path .gitignore"
+  },
+  "devDependencies": {
+    "@op1/eslint-config": "workspace:*",
+    "@op1/typescript-config": "workspace:*",
+    "prettier": "^3.5.3",
+    "turbo": "^2.4.4",
+    "typescript": "^5.8.2"
+  },
+  "engines": {
+    "node": ">=20.0.0",
+    "pnpm": ">=9.0.0"
+  },
+  "packageManager": "pnpm@10.30.3"
+}

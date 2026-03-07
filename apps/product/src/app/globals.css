@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: theme(colors.indigo.50);
+  --color-brand-100: theme(colors.indigo.100);
+  --color-brand-500: theme(colors.indigo.500);
+  --color-brand-600: theme(colors.indigo.600);
+  --color-brand-700: theme(colors.indigo.700);
+  --color-product-50: theme(colors.indigo.50);
+  --color-product-500: theme(colors.indigo.500);
+  --color-product-900: theme(colors.indigo.900);
+}

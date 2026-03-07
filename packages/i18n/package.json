@@ -1,0 +1,20 @@
+{
+  "name": "@op1/i18n",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    "./locales/*.json": {
+      "import": "./src/locales/*.json",
+      "require": "./src/locales/*.json"
+    },
+    "./types": {
+      "import": "./src/types.ts",
+      "require": "./src/types.ts"
+    }
+  },
+  "devDependencies": {
+    "@op1/typescript-config": "workspace:*",
+    "typescript": "^5.8.2"
+  }
+}

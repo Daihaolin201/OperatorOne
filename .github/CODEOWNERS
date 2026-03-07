@@ -1,0 +1,37 @@
+# OperatorOne CODEOWNERS
+# https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/customizing-your-repository/about-code-owners
+
+# Root config — both owners must approve
+/turbo.json @dennisli @bennett
+/pnpm-workspace.yaml @dennisli @bennett
+/package.json @dennisli @bennett
+/docker-compose.yml @dennisli @bennett
+
+# CI/CD — both owners
+/.github/ @dennisli @bennett
+
+# Shared packages — both owners (changes affect all apps)
+/packages/ @dennisli @bennett
+
+# Internal portal — product/ops team
+/apps/portal/ @dennisli
+
+# External product app — product team
+/apps/product/ @dennisli @bennett
+
+# Docs — anyone, but tracked
+/docs/ @dennisli @bennett
+/ARCHITECTURE.md @dennisli @bennett
+
+# Existing agent workspaces — respective owners
+/workspaces/op1_marketing/ @dennisli
+/workspaces/op1_sales/ @dennisli
+/workspaces/op1_operations/ @dennisli
+/workspaces/op1_product/ @dennisli
+/workspaces/op1_manager/ @dennisli
+
+# Handoff contracts — both owners (cross-agent interface)
+/handoffs/ @dennisli @bennett
+
+# Scripts — both owners (CI-critical)
+/scripts/ @dennisli @bennett

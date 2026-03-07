@@ -1,0 +1,6 @@
+{
+  "extends": ["//"],
+  "boundaries": {
+    "tags": ["internal", "app"]
+  }
+}

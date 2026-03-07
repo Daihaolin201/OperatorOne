@@ -1,0 +1,20 @@
+{
+  "name": "@op1/vitest-config",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": "./src/index.ts",
+    "./base": "./src/configs/base-config.ts",
+    "./ui": "./src/configs/ui-config.ts"
+  },
+  "devDependencies": {
+    "@op1/typescript-config": "workspace:*",
+    "@vitejs/plugin-react": "^4.3.4",
+    "@testing-library/react": "^16.2.0",
+    "@testing-library/jest-dom": "^6.6.3",
+    "typescript": "^5.8.2",
+    "vitest": "^3.0.8",
+    "jsdom": "^26.0.0"
+  }
+}

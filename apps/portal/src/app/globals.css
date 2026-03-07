@@ -1,0 +1,12 @@
+@import "tailwindcss";
+
+@theme {
+  --color-brand-50: theme(colors.blue.50);
+  --color-brand-100: theme(colors.blue.100);
+  --color-brand-500: theme(colors.blue.500);
+  --color-brand-600: theme(colors.blue.600);
+  --color-brand-700: theme(colors.blue.700);
+  --color-portal-50: theme(colors.slate.50);
+  --color-portal-500: theme(colors.slate.500);
+  --color-portal-900: theme(colors.slate.900);
+}

@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T19:08:12.408606Z",
+  "generated_at": "2026-03-07T20:38:11.343867Z",
   "builder": "scripts/build_stage1_opportunities.py",
   "inputs": {
     "primary": "research/reddit_signals.json",
@@ -19,13 +19,13 @@
       "pain_evidence": [
         {
           "claim": "283 apps listed for this feature category on Shopify App Store",
-          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en&st_source=autocomplete",
           "signal_type": "market_density",
           "source": "shopify_app_store"
         },
         {
           "claim": "283 apps listed for this feature category on Shopify App Store",
-          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en&st_source=autocomplete",
           "signal_type": "market_density",
           "source": "shopify_app_store"
         }

@@ -1,0 +1,27 @@
+{
+  "name": "@op1/ui",
+  "version": "0.0.0",
+  "private": true,
+  "license": "MIT",
+  "exports": {
+    ".": {
+      "import": "./src/index.ts",
+      "require": "./src/index.ts"
+    },
+    "./*": {
+      "import": "./src/*.tsx",
+      "require": "./src/*.tsx"
+    }
+  },
+  "devDependencies": {
+    "@op1/eslint-config": "workspace:*",
+    "@op1/typescript-config": "workspace:*",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "typescript": "^5.8.2"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  }
+}
