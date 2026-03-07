@@ -1,0 +1,10 @@
+{
+  "ok": false,
+  "error_type": "ZAIPreflightError",
+  "field": "ZAI_API_KEY",
+  "reason": "environment variable 'ZAI_API_KEY' is not set or is empty",
+  "message": "ZAI preflight FAILED — field='ZAI_API_KEY': environment variable 'ZAI_API_KEY' is not set or is empty. MUST NOT silently fall back to another provider.",
+  "mode": "live",
+  "provider": "z.ai",
+  "model": "glm-5"
+}

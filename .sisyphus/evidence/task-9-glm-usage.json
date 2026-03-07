@@ -1,0 +1,64 @@
+{
+  "provider": "z.ai",
+  "model": "glm-5",
+  "total_calls": 4,
+  "total_tokens": 520,
+  "calls": [
+    {
+      "provider": "z.ai",
+      "model": "glm-5",
+      "step": "product",
+      "latency_ms": 120,
+      "token_usage": {
+        "prompt_tokens": 50,
+        "completion_tokens": 80,
+        "total_tokens": 130
+      },
+      "request_id": "bf4ed80ba3c34a2a8f10ac4c152c5c77",
+      "timestamp": "2026-03-07T23:41:18.763307Z",
+      "mode": "simulation"
+    },
+    {
+      "provider": "z.ai",
+      "model": "glm-5",
+      "step": "marketing",
+      "latency_ms": 120,
+      "token_usage": {
+        "prompt_tokens": 50,
+        "completion_tokens": 80,
+        "total_tokens": 130
+      },
+      "request_id": "c6e6bea0dab14729a8c13ae1c9bcb15e",
+      "timestamp": "2026-03-07T23:41:18.818694Z",
+      "mode": "simulation"
+    },
+    {
+      "provider": "z.ai",
+      "model": "glm-5",
+      "step": "sales",
+      "latency_ms": 120,
+      "token_usage": {
+        "prompt_tokens": 50,
+        "completion_tokens": 80,
+        "total_tokens": 130
+      },
+      "request_id": "7917b934200d4796800f7d1b15d9584c",
+      "timestamp": "2026-03-07T23:41:18.870505Z",
+      "mode": "simulation"
+    },
+    {
+      "provider": "z.ai",
+      "model": "glm-5",
+      "step": "operations",
+      "latency_ms": 120,
+      "token_usage": {
+        "prompt_tokens": 50,
+        "completion_tokens": 80,
+        "total_tokens": 130
+      },
+      "request_id": "173558b0b3ca47e1a1a01b2142a43a7b",
+      "timestamp": "2026-03-07T23:41:18.925584Z",
+      "mode": "simulation"
+    }
+  ]
+}

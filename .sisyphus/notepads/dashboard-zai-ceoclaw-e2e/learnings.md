@@ -202,3 +202,8 @@
 - 未删除现有逻辑，仅升级 `_handle_post_runs`
 - 无 API key 出现在证据文件中
 - 现有 `/api/studio/*` 接口未受影响
+
+## [2026-03-07] T9: ZAI GLM provider adapter
+- simulation/live 切换逻辑：`call_glm(prompt, step, mode)` 在 simulation 模式固定 `latency_ms=120`、`token_usage=130`，并显式 `sleep(0.05)`；live 模式严格先过 preflight，再发起 urllib 请求。
+- 审计字段：每次调用（含 mock）统一输出 `{provider, model, step, latency_ms, token_usage, request_id, timestamp, mode}`，provider/model 固定为 `z.ai/glm-5`。
+- 测试覆盖：新增 3 个用例覆盖 simulation 成功路径、live 无凭据抛 `ZAIPreflightError`、以及 run 级 `get_run_model_usage` 聚合正确性。
