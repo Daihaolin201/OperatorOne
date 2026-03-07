@@ -138,6 +138,7 @@
           <button data-tab="marketing" class="tab">Marketing Studio</button>
           <button data-tab="sales" class="tab">Sales Console</button>
           <button data-tab="ops" class="tab">Ops Loop</button>
+          <button data-tab="ceo" class="tab">CEO Flow</button>
         </div>
 
         <div id="tab-idea" class="tab-panel active">
@@ -303,6 +304,16 @@
             <tbody></tbody>
           </table>
           <pre id="opsSummary" class="result-box"></pre>
+        </div>
+
+        <div id="tab-ceo" class="tab-panel">
+          <div class="row wrap">
+            <button id="refreshCeoFlowBtn" class="secondary">刷新 CEO 流程视图</button>
+            <span class="muted">借鉴 Opencode 风格：目标→阶段→Agent 执行→结果追踪</span>
+          </div>
+          <div id="ceoFlowPipeline" class="ceo-pipeline"></div>
+          <div id="ceoFlowAgents" class="ceo-agents"></div>
+          <pre id="ceoFlowSummary" class="result-box">--</pre>
         </div>
       </section>
 

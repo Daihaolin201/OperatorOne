@@ -93,6 +93,10 @@ const els = {
   confirmIterateBtn: document.getElementById("confirmIterateBtn"),
   loopTodosTableBody: document.querySelector("#loopTodosTable tbody"),
   opsSummary: document.getElementById("opsSummary"),
+  refreshCeoFlowBtn: document.getElementById("refreshCeoFlowBtn"),
+  ceoFlowPipeline: document.getElementById("ceoFlowPipeline"),
+  ceoFlowAgents: document.getElementById("ceoFlowAgents"),
+  ceoFlowSummary: document.getElementById("ceoFlowSummary"),
 
   jobsTableBody: document.querySelector("#jobsTable tbody"),
   runsTableBody: document.querySelector("#runsTable tbody"),
@@ -1731,6 +1735,7 @@ async function refreshStudio({ forceMonitor = false } = {}) {
   try {
     await refreshFastSnapshot();
     await refreshMonitorSnapshot(forceMonitor);
+    await refreshCeoFlowView();
   } finally {
     refreshInFlight = false;
   }
@@ -1847,6 +1852,84 @@ async function submitUserPrompt() {
     updateFeedback(`提问失败: ${err.message}`, "error");
     showToast(`提问失败: ${err.message}`, "error");
   }
+}
+
+async function loadArtifactJSON(path) {
+  try {
+    const res = await getJSON(`/api/studio/artifact?path=${encodeURIComponent(path)}`);
+    const content = String(res?.content || "").trim();
+    if (!content) return null;
+    return JSON.parse(content);
+  } catch {
+    return null;
+  }
+}
+
+function renderCeoFlow({ autopilotRun, orchestratorRun, orchestratorSummary }) {
+  if (els.ceoFlowPipeline) {
+    const steps = [
+      { key: "goal", label: "Goal Intake", status: "completed" },
+      { key: "stage1", label: "Stage1 Discovery", status: autopilotRun ? "completed" : "unknown" },
+      { key: "stage2", label: "Stage2 Build/Deploy", status: autopilotRun ? "completed" : "unknown" },
+      { key: "stage3", label: "Stage3 Landing", status: autopilotRun ? "completed" : "unknown" },
+      {
+        key: "orchestrator",
+        label: "CEO Multi-Agent Orchestrator",
+        status: String(orchestratorRun?.status || orchestratorSummary?.status || "unknown"),
+      },
+    ];
+
+    els.ceoFlowPipeline.innerHTML = "";
+    steps.forEach((s) => {
+      const item = document.createElement("div");
+      item.className = `ceo-node ${statusClass(s.status)}`;
+      item.innerHTML = `<strong>${safeText(s.label)}</strong><span>${safeText(String(s.status).toUpperCase())}</span>`;
+      els.ceoFlowPipeline.appendChild(item);
+    });
+  }
+
+  if (els.ceoFlowAgents) {
+    const turns = asList(orchestratorRun?.steps || []);
+    els.ceoFlowAgents.innerHTML = "";
+    if (!turns.length) {
+      const empty = document.createElement("div");
+      empty.className = "small muted";
+      empty.textContent = "暂无多 Agent 执行记录。先点击“执行 CEO Orchestrator（多 Agent）”。";
+      els.ceoFlowAgents.appendChild(empty);
+    } else {
+      turns.forEach((t) => {
+        const card = document.createElement("div");
+        card.className = "ceo-agent-card";
+        const st = t.ok ? "passed" : "failed";
+        card.innerHTML = `
+          <div class="row"><strong>${safeText(t.agent_id || "unknown")}</strong><span class="status-pill ${statusClass(st)}">${safeText(st.toUpperCase())}</span></div>
+          <div class="small">Objective: ${safeText(t.objective || "-")}</div>
+          <pre class="result-box">${safeText(t.reply || t.stdout_tail || "(no reply)")}</pre>
+        `;
+        els.ceoFlowAgents.appendChild(card);
+      });
+    }
+  }
+
+  if (els.ceoFlowSummary) {
+    els.ceoFlowSummary.textContent = JSON.stringify(
+      {
+        autopilot: autopilotRun ? autopilotRun.summary || {} : null,
+        orchestrator: orchestratorSummary || orchestratorRun || null,
+      },
+      null,
+      2
+    );
+  }
+}
+
+async function refreshCeoFlowView() {
+  const [autopilotRun, orchestratorRun, orchestratorSummary] = await Promise.all([
+    loadArtifactJSON("workspaces/op1_product/research/ceo_orchestration/run.latest.json"),
+    loadArtifactJSON("workspaces/op1_ceo/research/ceo_orchestration/run.latest.json"),
+    loadArtifactJSON("workspaces/op1_ceo/research/ceo_orchestration/orchestrator_summary.latest.json"),
+  ]);
+  renderCeoFlow({ autopilotRun, orchestratorRun, orchestratorSummary });
 }
 
 function bindTabs() {
@@ -2059,6 +2142,17 @@ function bindEvents() {
         );
       } catch (err) {
         updateFeedback(`刷新 ideas 失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.refreshCeoFlowBtn) {
+    els.refreshCeoFlowBtn.addEventListener("click", async () => {
+      try {
+        await refreshCeoFlowView();
+        updateFeedback("CEO 流程视图已刷新。", "ok");
+      } catch (err) {
+        updateFeedback(`刷新 CEO 流程视图失败: ${err.message}`, "error");
       }
     });
   }
@@ -2397,6 +2491,7 @@ function startTimers() {
 
   fastTimer = setInterval(() => {
     refreshFastSnapshot().catch(() => {});
+    refreshCeoFlowView().catch(() => {});
   }, FAST_REFRESH_MS);
 
   jobTimer = setInterval(() => {
@@ -2415,6 +2510,7 @@ async function main() {
   await refreshFastSnapshot();
   await refreshMonitorSnapshot(true);
   await refreshFastSnapshot();
+  await refreshCeoFlowView();
   await pollJobs();
   startTimers();
   updateFeedback("Studio 已就绪。建议按“下一步推荐动作”执行。", "ok");
