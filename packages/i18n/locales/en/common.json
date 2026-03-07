@@ -1,0 +1,20 @@
+{
+  "nav": {
+    "home": "Home",
+    "status": "Status",
+    "settings": "Settings"
+  },
+  "action": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "retry": "Retry"
+  },
+  "status": {
+    "ready": "Ready",
+    "error": "Error",
+    "loading": "Loading..."
+  },
+  "app": {
+    "title": "OperatorOne"
+  }
+}

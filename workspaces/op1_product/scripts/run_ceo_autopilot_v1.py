@@ -110,11 +110,29 @@ def detect_advance_opportunity() -> Optional[str]:
 
 
 def detect_deploy_url() -> Optional[str]:
+    """Detect deploy URL with 4-path fallback: output.deployed_url -> output.deploy_url -> deploy_url -> deployed_url.
+    
+    Returns the first non-empty URL found, or None if all paths are empty.
+    """
     run_payload = read_json(ROOT / "research" / "stage2_web_product" / "run.latest.json", {})
     if not isinstance(run_payload, dict):
         return None
 
-    candidates = [run_payload.get("deploy_url"), run_payload.get("deployment_url")]
+    # Priority order for URL detection:
+    # 1. output.deployed_url (preferred, used by stage2_web_product/run.latest.json)
+    # 2. output.deploy_url (alternative output format)
+    # 3. deploy_url (legacy top-level format)
+    # 4. deployed_url (legacy alternative)
+    output = run_payload.get("output") if isinstance(run_payload.get("output"), dict) else {}
+    
+    candidates = [
+        output.get("deployed_url"),
+        output.get("deploy_url"),
+        run_payload.get("deploy_url"),
+        run_payload.get("deployed_url"),
+    ]
+    
+    # For backward compatibility, also check artifacts dict
     artifacts = run_payload.get("artifacts") if isinstance(run_payload.get("artifacts"), dict) else {}
     candidates.extend([artifacts.get("deploy_url"), artifacts.get("deployment_url")])
 

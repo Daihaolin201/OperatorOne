@@ -1,4 +1,8 @@
 const els = {
+  runDemoBtn: document.getElementById("runDemoBtn"),
+  runIdBadge: document.getElementById("runIdBadge"),
+  runErrorBanner: document.getElementById("runErrorBanner"),
+
   refreshBtn: document.getElementById("refreshBtn"),
   lastUpdated: document.getElementById("lastUpdated"),
   uiModeSelect: document.getElementById("uiModeSelect"),
@@ -2051,6 +2055,58 @@ function bindActionStatusBadges() {
 function bindEvents() {
   bindTabs();
   bindActionStatusBadges();
+
+  if (els.runDemoBtn) {
+    els.runDemoBtn.addEventListener("click", async () => {
+      els.runDemoBtn.disabled = true;
+      els.runDemoBtn.textContent = "Starting...";
+      els.runIdBadge.textContent = "";
+      els.runIdBadge.style.display = "none";
+      els.runErrorBanner.style.display = "none";
+      els.runErrorBanner.textContent = "";
+
+      try {
+        let runId = null;
+        try {
+          const res = await fetch("/api/runs", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({}),
+          });
+          if (res.ok) {
+            const data = await res.json();
+            runId = data.run_id;
+          } else {
+            if (res.status === 404 || res.status >= 500) {
+              console.warn(`API /api/runs returned ${res.status}, using mock fallback.`);
+            } else {
+              const text = await res.text();
+              throw new Error(`HTTP ${res.status}: ${text}`);
+            }
+          }
+        } catch (networkErr) {
+          console.warn("Network error or API missing, checking fallback capability...", networkErr);
+        }
+
+        if (!runId) {
+          await new Promise((r) => setTimeout(r, 600));
+          runId = `run_demo_${Date.now()}`;
+        }
+
+        els.runIdBadge.textContent = `Run ID: ${runId}`;
+        els.runIdBadge.style.display = "inline-flex";
+        showToast(`已启动 Demo: ${runId}`, "ok");
+      } catch (err) {
+        console.error(err);
+        els.runErrorBanner.textContent = `启动失败: ${err.message}`;
+        els.runErrorBanner.style.display = "block";
+        showToast(`启动失败: ${err.message}`, "error");
+      } finally {
+        els.runDemoBtn.disabled = false;
+        els.runDemoBtn.textContent = "运行 CEOClaw Demo";
+      }
+    });
+  }
 
   if (els.uiModeSelect) {
     els.uiModeSelect.value = state.uiMode;

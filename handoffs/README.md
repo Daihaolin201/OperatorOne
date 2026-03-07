@@ -79,10 +79,29 @@ Every handoff payload must include:
 
 Current baseline version for all contracts is `1.0.0`.
 
-## 6) Contract discipline
+## 6) Contract versioning policy
+
+Contract versions follow **MAJOR.MINOR.PATCH** semantics:
+
+| Bump | Trigger | Example |
+|---|---|---|
+| **MAJOR** | Breaking change: field removal, key rename, schema restructure | `1.0.0` → `2.0.0` |
+| **MINOR** | Additive change: new optional field added | `1.0.0` → `1.1.0` |
+| **PATCH** | Non-schema change: description update, value tweak, comment | `1.0.0` → `1.0.1` |
+
+**Rules**:
+- Any contract change **MUST** bump `contract_version` in the JSON file AND in `scripts/handoff_contracts.py → CONTRACT_VERSION_MAP`.
+- Any MAJOR or MINOR bump **MUST** update `scripts/handoff_contracts.py` validator schema.
+- PATCH bumps require no validator change — only update the value in the file and the version map entry.
+- All changes **MUST** pass `python3 scripts/validate_handoffs.py --repo-root .` before merging.
+- Breaking changes (MAJOR) require updating all consuming agent scripts and communicating the break to downstream agents.
+- **No absolute filesystem paths** are permitted in any contract field. Use repo-relative paths (e.g. `workspaces/op1_product/...`) or the placeholder `"<repo-relative-path>"`.
+
+## 7) Contract discipline
 
 1. Keep fields stable and additive when possible.
 2. Preserve `generated_at` and source attribution fields for traceability.
 3. Do not overload one handoff with unrelated stage data.
 4. If you add keys, update consuming scripts and this contract doc together.
 5. Run `scripts/validate_handoffs.py` after any handoff producer change.
+6. Never hardcode absolute paths (e.g. `/Users/*/...`) in contract values — use repo-relative paths only.
