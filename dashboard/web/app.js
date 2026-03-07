@@ -43,6 +43,11 @@ const els = {
   promptResponse: document.getElementById("promptResponse"),
   promptHistory: document.getElementById("promptHistory"),
 
+  marketingQuickSummary: document.getElementById("marketingQuickSummary"),
+  marketingQuickContent: document.getElementById("marketingQuickContent"),
+  marketingQuickCampaign: document.getElementById("marketingQuickCampaign"),
+  salesOpsRealityBoard: document.getElementById("salesOpsRealityBoard"),
+
   stageFlowTableBody: document.querySelector("#stageFlowTable tbody"),
   stageResultsTableBody: document.querySelector("#stageResultsTable tbody"),
   deploymentsTableBody: document.querySelector("#deploymentsTable tbody"),
@@ -416,6 +421,30 @@ function renderGuide(snapshot) {
   renderActionStatusBadges();
 
   const actions = asList(guide.nextRecommendedActions);
+  const primary = guide.primaryRecommendedAction || actions[0] || null;
+
+  const sameAction = (a, b) => {
+    if (!a || !b) return false;
+    if (String(a.action || "") !== String(b.action || "")) return false;
+    try {
+      return JSON.stringify(a.payload || {}) === JSON.stringify(b.payload || {});
+    } catch {
+      return false;
+    }
+  };
+
+  const secondaryActions = (() => {
+    if (!primary) return actions;
+    let removed = false;
+    return actions.filter((item) => {
+      if (!removed && sameAction(item, primary)) {
+        removed = true;
+        return false;
+      }
+      return true;
+    });
+  })();
+
   const renderActionCard = (action, target) => {
     const box = document.createElement("div");
     box.className = "action-card";
@@ -438,8 +467,9 @@ function renderGuide(snapshot) {
     const btn = document.createElement("button");
     btn.textContent = "执行此动作";
     btn.addEventListener("click", async () => {
-      if (action.requiresUserChoice) {
-        alert("这个动作需要先在对应表格里选择具体项，再执行。\n例如：先选 campaign 再推进到 Sales。");
+      const isTransitionConfirm = String(action?.payload?.action || "") === "confirm_stage_transition";
+      if (action.requiresUserChoice && !isTransitionConfirm) {
+        alert("这个动作需要你先在对应列表里选定具体项再执行。\n例如：先从 Marketing 快速处理里选 campaign，再推进 Sales。\n如果是阶段迁移，请直接在“下一步唯一动作”里确认。\n");
         return;
       }
       const payload = action.payload || {};
@@ -460,20 +490,26 @@ function renderGuide(snapshot) {
 
   if (els.recommendedActions) {
     els.recommendedActions.innerHTML = "";
-    if (!actions.length) {
+    if (!secondaryActions.length) {
       const empty = document.createElement("div");
       empty.className = "muted";
-      empty.textContent = "暂无推荐动作。";
+      empty.textContent = primary ? "暂无后续动作（先完成“下一步唯一动作”）。" : "暂无推荐动作。";
       els.recommendedActions.appendChild(empty);
     } else {
-      for (const action of actions) renderActionCard(action, els.recommendedActions);
+      for (const action of secondaryActions) renderActionCard(action, els.recommendedActions);
     }
   }
 
   if (els.judgePrimaryAction) {
     els.judgePrimaryAction.innerHTML = "";
-    const primary = guide.primaryRecommendedAction || actions[0];
-    if (primary) renderActionCard(primary, els.judgePrimaryAction);
+    if (primary) {
+      renderActionCard(primary, els.judgePrimaryAction);
+    } else {
+      const empty = document.createElement("div");
+      empty.className = "muted";
+      empty.textContent = "暂无唯一动作。";
+      els.judgePrimaryAction.appendChild(empty);
+    }
   }
 }
 
@@ -533,6 +569,10 @@ function renderPromptPanel(snapshot) {
           btn.className = "secondary";
           btn.textContent = `执行建议：${safeText(action.label || action.action)}`;
           btn.addEventListener("click", async () => {
+            if (action.requiresUserChoice) {
+              alert("这个建议动作需要你先选定具体项。");
+              return;
+            }
             const payload = { ...(action.payload || {}) };
             if (!payload.ventureId && activeVentureId()) payload.ventureId = activeVentureId();
             try {
@@ -822,24 +862,7 @@ function renderJudgeFocus(snapshot) {
         const btn = document.createElement("button");
         btn.className = "secondary";
         btn.textContent = safeText(item.label);
-        btn.addEventListener("click", () => {
-          if (item.kind === "url" && item.url) {
-            openUrlWithFallback(item.url, item.label);
-            return;
-          }
-          if (item.kind === "preview" && item.path) {
-            openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, item.label);
-            return;
-          }
-          if (item.kind === "file" && item.path) {
-            if (item.previewable) {
-              openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, item.label);
-            } else {
-              openArtifact(item.path);
-              showToast(`已加载产物：${item.label}`, "ok");
-            }
-          }
-        });
+        btn.addEventListener("click", () => openArtifactEntry(item));
         row.appendChild(btn);
       }
       box.appendChild(row);
@@ -872,6 +895,26 @@ function artifactRawUrl(path) {
 
 function artifactReadableUrl(path) {
   return `/api/studio/artifact/readable?path=${encodeURIComponent(path)}`;
+}
+
+function openArtifactEntry(item) {
+  if (!item || typeof item !== "object") return;
+  if (item.kind === "url" && item.url) {
+    openUrlWithFallback(item.url, item.label || "链接");
+    return;
+  }
+  if (item.kind === "preview" && item.path) {
+    openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, item.label || "预览");
+    return;
+  }
+  if (item.kind === "file" && item.path) {
+    if (item.previewable) {
+      openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, item.label || "预览");
+    } else {
+      openArtifact(item.path);
+      showToast(`已加载产物：${item.label || item.path}`, "ok");
+    }
+  }
 }
 
 function openUrlWithFallback(url, label = "链接") {
@@ -1243,6 +1286,316 @@ function renderMarketing(snapshot) {
   }
 }
 
+function stageArtifactItems(snapshot, stage) {
+  const cards = asList(snapshot?.stageArtifactCards);
+  const hit = cards.find((x) => String(x?.stage || "").toUpperCase() === String(stage || "").toUpperCase());
+  return asList(hit?.items).slice(0, 4);
+}
+
+function renderMarketingQuick(snapshot) {
+  const venture = snapshot.activeVenture || null;
+  const stage = String(venture?.stage || "");
+  const inMarketing = stage === "MARKETING";
+  const canSelectCampaign = ["MARKETING", "SALES"].includes(stage);
+  const ctx = snapshot.activeContext?.marketing || {};
+  const content = asList(ctx.contentCandidates);
+  const campaigns = asList(ctx.campaignCandidates);
+  const selectedCampaign = venture?.selections?.campaignId || null;
+
+  if (els.marketingQuickSummary) {
+    if (!venture) {
+      els.marketingQuickSummary.textContent = "暂无 active venture。请先创建项目。";
+    } else {
+      const blockers = asList(ctx.blockers)
+        .map((x) => x?.message)
+        .filter(Boolean)
+        .slice(0, 2)
+        .join(" | ");
+      const blockerText = blockers ? ` | blocker: ${blockers}` : "";
+      els.marketingQuickSummary.textContent = `stage=${stage} | content=${content.length} | campaign=${campaigns.length} | selected=${selectedCampaign || "-"}${blockerText}`;
+    }
+  }
+
+  if (els.marketingQuickContent) {
+    els.marketingQuickContent.innerHTML = "";
+
+    const head = document.createElement("div");
+    head.className = "action-card";
+    head.innerHTML = `<div class="title">Publish content（快速查看/处理）</div><div class="desc">Top ${Math.min(content.length, 5)} 项，可直接展开、批准、驳回。</div>`;
+    const headRow = document.createElement("div");
+    headRow.className = "row wrap";
+
+    const refreshBtn = document.createElement("button");
+    refreshBtn.textContent = "刷新 Publish content";
+    refreshBtn.disabled = !inMarketing;
+    if (!inMarketing) refreshBtn.title = `当前 stage=${stage}，仅 MARKETING 可运行`;
+    refreshBtn.addEventListener("click", async () => {
+      try {
+        await runStudioAction(
+          { action: "run_marketing_content", ventureId: activeVentureId(), mode: "review", async: true },
+          "刷新 Publish content"
+        );
+      } catch (err) {
+        updateFeedback(`刷新 Publish content 失败: ${err.message}`, "error");
+      }
+    });
+    headRow.appendChild(refreshBtn);
+    head.appendChild(headRow);
+    els.marketingQuickContent.appendChild(head);
+
+    if (!content.length) {
+      const empty = document.createElement("div");
+      empty.className = "muted";
+      empty.textContent = "暂无 Publish content 候选。";
+      els.marketingQuickContent.appendChild(empty);
+    }
+
+    for (const item of content.slice(0, 5)) {
+      const cid = item.content_id || item.id || "";
+      const box = document.createElement("div");
+      box.className = "action-card";
+
+      const title = document.createElement("div");
+      title.className = "title";
+      title.textContent = `${safeText(cid)} [${safeText(item._bucket || "-")}]`;
+
+      const desc = document.createElement("div");
+      desc.className = "desc";
+      desc.textContent = `${safeText(item.topic || "-")} | kw=${safeText(item.primary_keyword || "-")} | score=${safeText(item.priority_score ?? "-")}`;
+
+      const row = document.createElement("div");
+      row.className = "row wrap";
+
+      const detailBtn = document.createElement("button");
+      detailBtn.className = "secondary";
+      detailBtn.textContent = "展开";
+      detailBtn.addEventListener("click", () => openJsonDialog(`Publish content: ${cid}`, item));
+      row.appendChild(detailBtn);
+
+      const approveBtn = document.createElement("button");
+      approveBtn.textContent = "批准";
+      approveBtn.disabled = !inMarketing || !cid;
+      if (!inMarketing) approveBtn.title = `当前 stage=${stage}，仅 MARKETING 可审批`;
+      approveBtn.addEventListener("click", async () => {
+        try {
+          await runStudioAction(
+            {
+              action: "review_marketing_content",
+              ventureId: activeVentureId(),
+              approveIds: [cid],
+              rejectIds: [],
+              note: "quick_approve_single",
+              reason: "manual_review_requested_changes",
+              async: true,
+            },
+            `批准内容 ${cid}`
+          );
+        } catch (err) {
+          updateFeedback(`批准内容失败: ${err.message}`, "error");
+        }
+      });
+      row.appendChild(approveBtn);
+
+      const rejectBtn = document.createElement("button");
+      rejectBtn.className = "secondary";
+      rejectBtn.textContent = "驳回";
+      rejectBtn.disabled = !inMarketing || !cid;
+      if (!inMarketing) rejectBtn.title = `当前 stage=${stage}，仅 MARKETING 可审批`;
+      rejectBtn.addEventListener("click", async () => {
+        try {
+          await runStudioAction(
+            {
+              action: "review_marketing_content",
+              ventureId: activeVentureId(),
+              approveIds: [],
+              rejectIds: [cid],
+              note: "quick_reject_single",
+              reason: "manual_review_requested_changes",
+              async: true,
+            },
+            `驳回内容 ${cid}`
+          );
+        } catch (err) {
+          updateFeedback(`驳回内容失败: ${err.message}`, "error");
+        }
+      });
+      row.appendChild(rejectBtn);
+
+      box.appendChild(title);
+      box.appendChild(desc);
+      box.appendChild(row);
+      els.marketingQuickContent.appendChild(box);
+    }
+  }
+
+  if (els.marketingQuickCampaign) {
+    els.marketingQuickCampaign.innerHTML = "";
+
+    const head = document.createElement("div");
+    head.className = "action-card";
+    head.innerHTML = `<div class="title">Launch campaigns（快速查看/切换 Sales 输入）</div><div class="desc">Top ${Math.min(campaigns.length, 5)} 项，可直接设为 Sales 输入。</div>`;
+    const headRow = document.createElement("div");
+    headRow.className = "row wrap";
+
+    const refreshBtn = document.createElement("button");
+    refreshBtn.textContent = "刷新 Launch campaigns";
+    refreshBtn.disabled = !inMarketing;
+    if (!inMarketing) refreshBtn.title = `当前 stage=${stage}，仅 MARKETING 可运行`;
+    refreshBtn.addEventListener("click", async () => {
+      try {
+        await runStudioAction(
+          { action: "run_marketing_campaign", ventureId: activeVentureId(), mode: "review", async: true },
+          "刷新 Launch campaigns"
+        );
+      } catch (err) {
+        updateFeedback(`刷新 Launch campaigns 失败: ${err.message}`, "error");
+      }
+    });
+    headRow.appendChild(refreshBtn);
+    head.appendChild(headRow);
+    els.marketingQuickCampaign.appendChild(head);
+
+    if (!campaigns.length) {
+      const empty = document.createElement("div");
+      empty.className = "muted";
+      empty.textContent = "暂无 campaign 候选。可继续跑 SEO/content，或直接走 Sales fallback。";
+      els.marketingQuickCampaign.appendChild(empty);
+    }
+
+    for (const row of campaigns.slice(0, 5)) {
+      const campaignId = row.campaign_id || row.id || "";
+      const box = document.createElement("div");
+      box.className = "action-card";
+
+      const title = document.createElement("div");
+      title.className = "title";
+      title.textContent = `${safeText(campaignId)}${campaignId && campaignId === selectedCampaign ? " · 当前选中" : ""}`;
+
+      const desc = document.createElement("div");
+      desc.className = "desc";
+      desc.textContent = `bucket=${safeText(row._bucket || "-")} | kw=${safeText(row.primary_keyword || "-")} | readiness=${safeText(
+        row.readiness_score ?? "-"
+      )}`;
+
+      const actions = document.createElement("div");
+      actions.className = "row wrap";
+
+      const detailBtn = document.createElement("button");
+      detailBtn.className = "secondary";
+      detailBtn.textContent = "展开";
+      detailBtn.addEventListener("click", () => openJsonDialog(`Campaign: ${campaignId}`, row));
+      actions.appendChild(detailBtn);
+
+      const selectBtn = document.createElement("button");
+      selectBtn.textContent = campaignId === selectedCampaign ? "已选中" : "设为 Sales 输入";
+      selectBtn.disabled = !campaignId || !canSelectCampaign || campaignId === selectedCampaign;
+      if (!canSelectCampaign) {
+        selectBtn.title = `当前 stage=${stage}，仅 MARKETING/SALES 可更换 campaign`;
+      }
+      selectBtn.addEventListener("click", async () => {
+        try {
+          await runStudioAction(
+            {
+              action: "select_marketing_campaign",
+              ventureId: activeVentureId(),
+              campaignId,
+              async: false,
+            },
+            `切换 campaign: ${campaignId}`
+          );
+        } catch (err) {
+          updateFeedback(`选择 campaign 失败: ${err.message}`, "error");
+        }
+      });
+      actions.appendChild(selectBtn);
+
+      box.appendChild(title);
+      box.appendChild(desc);
+      box.appendChild(actions);
+      els.marketingQuickCampaign.appendChild(box);
+    }
+  }
+}
+
+function renderSalesOpsReality(snapshot) {
+  if (!els.salesOpsRealityBoard) return;
+  els.salesOpsRealityBoard.innerHTML = "";
+
+  const venture = snapshot.activeVenture || null;
+  if (!venture) {
+    const empty = document.createElement("div");
+    empty.className = "muted";
+    empty.textContent = "暂无 active venture。";
+    els.salesOpsRealityBoard.appendChild(empty);
+    return;
+  }
+
+  const sales = snapshot.activeContext?.sales || {};
+  const ops = snapshot.activeContext?.operations || {};
+  const segments = asList(sales.segments);
+  const topSeg = segments[0] || {};
+  const topScores = topSeg.scores || {};
+  const dispatchSummary = sales.outreachDispatch?.summary || {};
+
+  const salesCard = document.createElement("div");
+  salesCard.className = "action-card";
+  salesCard.innerHTML = `
+    <div class="title">Sales 真实能力（线索 → 外联 → 转化）</div>
+    <div class="quick-metrics">
+      <div class="quick-metric">线索分层：segments=${safeText(segments.length)}，top_weekly_leads=${safeText(topScores.estimated_weekly_leads ?? "-")}</div>
+      <div class="quick-metric">外联批次：messages=${safeText(sales.outreachBatchReady?.message_count ?? "-")}，status=${safeText(
+        sales.outreachBatchReady?.status || "-"
+      )}</div>
+      <div class="quick-metric">发送执行：mode=${safeText(sales.outreachDispatch?.mode || "-")}，processed=${safeText(
+        dispatchSummary.processed ?? "-"
+      )}</div>
+      <div class="quick-metric">转化闭环：${safeText(sales.closeMotion?.headline || "暂无 close motion")}</div>
+    </div>
+  `;
+  const salesActions = document.createElement("div");
+  salesActions.className = "row wrap";
+  for (const item of stageArtifactItems(snapshot, "SALES")) {
+    const btn = document.createElement("button");
+    btn.className = "secondary";
+    btn.textContent = safeText(item.label || "Sales 证据");
+    btn.addEventListener("click", () => openArtifactEntry(item));
+    salesActions.appendChild(btn);
+  }
+  salesCard.appendChild(salesActions);
+  els.salesOpsRealityBoard.appendChild(salesCard);
+
+  const stage1 = ops.stage1 || {};
+  const stage2 = ops.stage2 || {};
+  const stage3 = ops.stage3 || {};
+  const opsCard = document.createElement("div");
+  opsCard.className = "action-card";
+  opsCard.innerHTML = `
+    <div class="title">Operations 真实能力（跟踪 → 反馈 → 迭代）</div>
+    <div class="quick-metrics">
+      <div class="quick-metric">流量与营收：sessions=${safeText(stage1.sessions ?? "-")}，qualified_signups=${safeText(
+        stage1.qualified_signups ?? "-"
+      )}，net_new_mrr=${safeText(stage1.net_new_mrr ?? "-")}</div>
+      <div class="quick-metric">反馈处理：feedback_items=${safeText(stage2.feedback_items_total ?? "-")}，themes=${safeText(
+        stage2.themes_total ?? "-"
+      )}，expected_mrr_delta_30d=${safeText(stage2.expected_mrr_delta_30d ?? "-")}</div>
+      <div class="quick-metric">迭代输出：experiments=${safeText(stage3.experiments_planned ?? "-")}，ship=${safeText(
+        stage3.ship_count ?? "-"
+      )}，iterate=${safeText(stage3.iterate_count ?? "-")}</div>
+    </div>
+  `;
+  const opsActions = document.createElement("div");
+  opsActions.className = "row wrap";
+  for (const item of stageArtifactItems(snapshot, "OPERATIONS")) {
+    const btn = document.createElement("button");
+    btn.className = "secondary";
+    btn.textContent = safeText(item.label || "Operations 证据");
+    btn.addEventListener("click", () => openArtifactEntry(item));
+    opsActions.appendChild(btn);
+  }
+  opsCard.appendChild(opsActions);
+  els.salesOpsRealityBoard.appendChild(opsCard);
+}
+
 function renderSales(snapshot) {
   if (els.salesSegmentsTableBody) {
     els.salesSegmentsTableBody.innerHTML = "";
@@ -1348,8 +1701,10 @@ function renderSnapshot(snapshot) {
   renderVentures(snapshot);
   renderProduct(snapshot);
   renderMarketing(snapshot);
+  renderMarketingQuick(snapshot);
   renderSales(snapshot);
   renderOps(snapshot);
+  renderSalesOpsReality(snapshot);
   renderJobsFromList(snapshot.jobs || []);
   renderRuns(snapshot);
 }

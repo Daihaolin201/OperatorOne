@@ -60,6 +60,41 @@
         <p id="globalRunError" class="small">--</p>
       </section>
 
+      <section class="card prompt-command-center">
+        <h2>问我（全局指挥台）</h2>
+        <p class="muted">像“全局运行状态”一样直接提问：现在到哪一步、卡点在哪、下一步做什么、能不能开 live。</p>
+        <div class="row">
+          <p id="promptStagePill" class="status-pill status-unknown">--</p>
+          <p id="promptStageProgress" class="small">当前进度：--</p>
+        </div>
+
+        <h3>当前需要你决策的问题</h3>
+        <div id="promptPendingQuestions" class="actions-list"></div>
+
+        <div class="prompt-grid">
+          <div>
+            <label>
+              输入问题（Ctrl/Cmd + Enter 提交）
+              <textarea id="promptInput" rows="5" placeholder="例如：我现在该先做哪一步？"></textarea>
+            </label>
+            <div id="promptQuickChips" class="chips">
+              <button class="secondary" data-prompt="请推荐3个适合当前能力边界的商业项目，并说明理由。">推荐项目</button>
+              <button class="secondary" data-prompt="分析当前营销与销售活动，指出最大瓶颈和优先改进动作。">分析活动</button>
+              <button class="secondary" data-prompt="给我一个新手可执行的下一步计划（simulation优先）。">新手计划</button>
+            </div>
+            <div class="row">
+              <button id="submitPromptBtn">提交问题</button>
+              <button id="promptClearBtn" class="secondary">清空输入</button>
+            </div>
+            <pre id="promptResponse" class="result-box prompt-response">--</pre>
+          </div>
+          <div>
+            <h3>最近对话</h3>
+            <div id="promptHistory" class="actions-list prompt-history-list"></div>
+          </div>
+        </div>
+      </section>
+
       <section class="grid grid-4 judge-focus">
         <article class="card">
           <h2>当前项目</h2>
@@ -89,6 +124,20 @@
 
       <section class="grid grid-2">
         <article class="card">
+          <h2>Marketing 快速处理</h2>
+          <p id="marketingQuickSummary" class="small">--</p>
+          <div id="marketingQuickContent" class="actions-list"></div>
+          <div id="marketingQuickCampaign" class="actions-list mt"></div>
+        </article>
+
+        <article class="card">
+          <h2>Sales / Operations 实况能力</h2>
+          <div id="salesOpsRealityBoard" class="actions-list"></div>
+        </article>
+      </section>
+
+      <section class="grid grid-2 advanced-only">
+        <article class="card">
           <h2>开始</h2>
           <ul id="quickstartList" class="guide-list"></ul>
           <div class="row">
@@ -100,53 +149,19 @@
         </article>
 
         <article class="card">
-          <h2>下一步</h2>
+          <h2>候选后续动作（除唯一动作）</h2>
           <div id="recommendedActions" class="actions-list"></div>
           <p id="feedbackBar" class="feedback muted">系统准备中...</p>
         </article>
       </section>
 
-      <section class="grid grid-2">
-        <article class="card">
-          <h2>问我</h2>
-          <p class="muted">你可以直接提问：现在到哪一步、下一步该做什么、是否可以开 live。</p>
-          <div class="row">
-            <p id="promptStagePill" class="status-pill status-unknown">--</p>
-            <p id="promptStageProgress" class="small">当前进度：--</p>
-          </div>
-
-          <h3>当前需要你决策的问题</h3>
-          <div id="promptPendingQuestions" class="actions-list"></div>
-
-          <label class="mt">
-            输入问题（Ctrl/Cmd + Enter 提交）
-            <textarea id="promptInput" rows="4" placeholder="例如：我现在该先做哪一步？"></textarea>
-          </label>
-          <div id="promptQuickChips" class="chips">
-            <button class="secondary" data-prompt="请推荐3个适合当前能力边界的商业项目，并说明理由。">推荐项目</button>
-            <button class="secondary" data-prompt="分析当前营销与销售活动，指出最大瓶颈和优先改进动作。">分析活动</button>
-            <button class="secondary" data-prompt="给我一个新手可执行的下一步计划（simulation优先）。">新手计划</button>
-          </div>
-          <div class="row">
-            <button id="submitPromptBtn">提交问题</button>
-            <button id="promptClearBtn" class="secondary">清空输入</button>
-          </div>
-          <pre id="promptResponse" class="result-box">--</pre>
-        </article>
-
-        <article class="card">
-          <h2>对话</h2>
-          <div id="promptHistory" class="actions-list"></div>
-        </article>
-      </section>
-
-      <section class="card">
+      <section class="card advanced-only">
         <h2>流程</h2>
         <div id="workflowMap" class="workflow-map"></div>
         <pre id="workflowExplainer" class="result-box">--</pre>
       </section>
 
-      <section class="card">
+      <section class="card advanced-only">
         <h2>能力</h2>
         <p class="muted">每项能力都给出状态、核心指标、证据入口。</p>
         <div id="capabilityWall" class="capability-wall"></div>

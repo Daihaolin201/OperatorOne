@@ -318,6 +318,38 @@ textarea {
   margin-bottom: 8px;
 }
 
+.prompt-command-center {
+  border-color: #3a4a5e;
+}
+
+.prompt-command-center .prompt-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 2fr) minmax(0, 1fr);
+  gap: 14px;
+}
+
+.prompt-response {
+  min-height: 220px;
+  max-height: 520px;
+}
+
+.prompt-history-list {
+  max-height: 520px;
+  overflow: auto;
+  padding-right: 2px;
+}
+
+.quick-metrics {
+  display: grid;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.quick-metric {
+  font-size: 12px;
+  color: var(--muted);
+}
+
 .feedback {
   margin-top: 8px;
 }
@@ -440,6 +472,12 @@ body[data-mode="builder"] .judge-focus {
 @media (max-width: 1400px) {
   .grid-4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1200px) {
+  .prompt-command-center .prompt-grid {
+    grid-template-columns: 1fr;
   }
 }
 

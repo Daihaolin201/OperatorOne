@@ -668,11 +668,25 @@ class StudioService:
 
     def _require_stage(self, venture: Dict[str, Any], expected_stage: str, action: str) -> None:
         current = str(venture.get("stage") or "IDEA_POOL")
-        if current != expected_stage:
+        if current == expected_stage:
+            return
+
+        pending = self._pending_transition(venture)
+        if pending:
+            from_stage = str(pending.get("fromStage") or current)
+            to_stage = str(pending.get("toStage") or "UNKNOWN")
+            source_action = str(pending.get("sourceAction") or "unknown_action")
             raise StudioError(
                 f"{action} requires stage={expected_stage}, current={current}. "
-                "Please confirm pending transition first."
+                f"Current blocker: pending transition {from_stage}->{to_stage} (source={source_action}). "
+                "Please confirm or reject that transition first."
             )
+
+        raise StudioError(
+            f"{action} requires stage={expected_stage}, current={current}. "
+            "Current blocker: stage mismatch (no pending transition). "
+            f"Run actions for {current} stage or move venture to {expected_stage} first."
+        )
 
     def _update_venture(self, venture_id: str, updater) -> Dict[str, Any]:
         with self.store_lock:
@@ -2564,30 +2578,80 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             raise StudioError("ventureId and campaignId are required")
 
         venture = self._require_venture(venture_id)
-        self._require_stage(venture, "MARKETING", "select_marketing_campaign")
+        current_stage = str(venture.get("stage") or "IDEA_POOL")
+        if current_stage not in {"MARKETING", "SALES"}:
+            pending = self._pending_transition(venture)
+            if pending:
+                from_stage = str(pending.get("fromStage") or current_stage)
+                to_stage = str(pending.get("toStage") or "UNKNOWN")
+                raise StudioError(
+                    f"select_marketing_campaign requires stage=MARKETING/SALES, current={current_stage}. "
+                    f"Current blocker: pending transition {from_stage}->{to_stage}. "
+                    "Please confirm or reject that transition first."
+                )
+            raise StudioError(
+                f"select_marketing_campaign requires stage=MARKETING/SALES, current={current_stage}. "
+                "Current blocker: stage mismatch."
+            )
 
-        updated = self._update_venture(
-            venture_id,
-            lambda v: {
+        pending_before = self._pending_transition(venture)
+        clear_pending_to_operations = bool(
+            current_stage == "SALES"
+            and isinstance(pending_before, dict)
+            and str(pending_before.get("toStage") or "") == "OPERATIONS"
+        )
+
+        def _up(v: Dict[str, Any]) -> Dict[str, Any]:
+            selections = {**(v.get("selections") or {})}
+            selections["campaignId"] = campaign_id
+            if current_stage == "SALES":
+                selections["outreachBatchApproved"] = False
+
+            notes = [x for x in (v.get("notes") or []) if isinstance(x, str)][-6:]
+            if current_stage == "SALES":
+                notes.append(f"campaign_updated_in_sales:{campaign_id}")
+                if clear_pending_to_operations:
+                    notes.append("sales_to_operations_transition_cleared_after_campaign_change")
+            else:
+                notes.append(f"campaign_selected_in_marketing:{campaign_id}")
+
+            out = {
                 **v,
-                "selections": {
-                    **(v.get("selections") or {}),
-                    "campaignId": campaign_id,
+                "selections": selections,
+                "notes": notes,
+                "lastActions": {
+                    **(v.get("lastActions") or {}),
+                    "campaignSelection": {
+                        "campaignId": campaign_id,
+                        "at": now_iso(),
+                        "stage": current_stage,
+                    },
                 },
-            },
-        )
+            }
+            if clear_pending_to_operations:
+                out.pop("pendingTransition", None)
+            return out
 
-        updated = self._propose_stage_transition(
-            venture_id=venture_id,
-            to_stage="SALES",
-            reason=f"marketing_campaign_selected:{campaign_id}",
-            source_action="select_marketing_campaign",
-            summary={"campaignId": campaign_id},
-        )
+        updated = self._update_venture(venture_id, _up)
+
+        if current_stage == "MARKETING":
+            updated = self._propose_stage_transition(
+                venture_id=venture_id,
+                to_stage="SALES",
+                reason=f"marketing_campaign_selected:{campaign_id}",
+                source_action="select_marketing_campaign",
+                summary={"campaignId": campaign_id},
+            )
 
         preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"venture": updated, "previewSync": preview_sync, "pendingTransition": updated.get("pendingTransition")}
+        return {
+            "venture": updated,
+            "previewSync": preview_sync,
+            "pendingTransition": updated.get("pendingTransition"),
+            "campaignSelectionStage": current_stage,
+            "clearedPendingTransition": clear_pending_to_operations,
+        }
 
     def _find_segment_index_for_venture(self, opp_id: str) -> Optional[int]:
         queue = self._parse_json(self.sales_dir / "research/prospecting/prospect_queue.latest.json", {})
@@ -3919,7 +3983,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                         "note": f"approve_{from_stage}_to_{to_stage}",
                         "async": False,
                     },
-                    "requiresUserChoice": True,
+                    "requiresUserChoice": False,
                 },
                 {
                     "action": "reject_stage_transition",
@@ -3934,7 +3998,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                         "note": f"reject_{from_stage}_to_{to_stage}",
                         "async": False,
                     },
-                    "requiresUserChoice": True,
+                    "requiresUserChoice": False,
                 },
             ]
 
@@ -3986,6 +4050,16 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                     }
                 )
         if stage == "SALES":
+            out.append(
+                {
+                    "action": "select_marketing_campaign",
+                    "label": "更换/确认 campaign 输入",
+                    "description": "从 Marketing 候选中选择 campaign（支持在 SALES 阶段变更）。",
+                    "stage": "SALES",
+                    "payload": {"action": "select_marketing_campaign", "ventureId": vid},
+                    "requiresUserChoice": True,
+                }
+            )
             out.extend(
                 [
                     {
@@ -4163,6 +4237,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                     "label": action.get("label"),
                     "stage": action.get("stage"),
                     "payload": action.get("payload"),
+                    "requiresUserChoice": bool(action.get("requiresUserChoice")),
                 }
             out.append(item)
 
@@ -4215,6 +4290,14 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 )
 
         if stage == "SALES":
+            if not selections.get("campaignId"):
+                add_question(
+                    question_id="q_sales_campaign_select",
+                    priority="high",
+                    question="当前 SALES 阶段还未绑定 campaign，是否现在补选/更换？",
+                    reason="campaign 输入会直接影响外联文案与转化节奏。",
+                    suggested_action="select_marketing_campaign",
+                )
             add_question(
                 question_id="q_sales_safe_mode",
                 priority="high",
