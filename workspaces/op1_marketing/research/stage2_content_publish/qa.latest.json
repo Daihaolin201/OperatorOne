@@ -1,11 +1,26 @@
 {
-  "generated_at": "2026-03-06T00:16:31Z",
+  "generated_at": "2026-03-07T02:11:08Z",
   "status": "ok",
   "checks_version": "content_quality_v1",
   "items": [
     {
-      "content_id": "cnt_exp-opportunity-opp-001-04",
-      "experiment_id": "exp_opportunity-opp-001_04",
+      "content_id": "cnt_exp-opportunity-opp-004-03",
+      "experiment_id": "exp_opportunity-opp-004_03",
+      "result": "pass",
+      "quality_score": 100.0,
+      "checks": {
+        "word_count_ok": true,
+        "source_traceability_ok": true,
+        "evidence_depth_ok": true,
+        "keyword_density_ok": true,
+        "policy_claims_ok": true,
+        "score_floor_ok": true
+      },
+      "risk_flags": []
+    },
+    {
+      "content_id": "cnt_exp-opportunity-opp-004-06",
+      "experiment_id": "exp_opportunity-opp-004_06",
       "result": "pass",
       "quality_score": 100.0,
       "checks": {
@@ -34,23 +49,8 @@
       "risk_flags": []
     },
     {
-      "content_id": "cnt_exp-opportunity-opp-004-03",
-      "experiment_id": "exp_opportunity-opp-004_03",
-      "result": "pass",
-      "quality_score": 100.0,
-      "checks": {
-        "word_count_ok": true,
-        "source_traceability_ok": true,
-        "evidence_depth_ok": true,
-        "keyword_density_ok": true,
-        "policy_claims_ok": true,
-        "score_floor_ok": true
-      },
-      "risk_flags": []
-    },
-    {
-      "content_id": "cnt_exp-opportunity-opp-004-06",
-      "experiment_id": "exp_opportunity-opp-004_06",
+      "content_id": "cnt_exp-blueprint-proj-opp-001-invoice-followup-04",
+      "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_04",
       "result": "pass",
       "quality_score": 100.0,
       "checks": {
@@ -139,6 +139,21 @@
       "risk_flags": []
     },
     {
+      "content_id": "cnt_exp-opportunity-opp-004-02",
+      "experiment_id": "exp_opportunity-opp-004_02",
+      "result": "pass",
+      "quality_score": 100.0,
+      "checks": {
+        "word_count_ok": true,
+        "source_traceability_ok": true,
+        "evidence_depth_ok": true,
+        "keyword_density_ok": true,
+        "policy_claims_ok": true,
+        "score_floor_ok": true
+      },
+      "risk_flags": []
+    },
+    {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
       "result": "pass",
@@ -156,21 +171,6 @@
     {
       "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
       "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_06",
-      "result": "pass",
-      "quality_score": 100.0,
-      "checks": {
-        "word_count_ok": true,
-        "source_traceability_ok": true,
-        "evidence_depth_ok": true,
-        "keyword_density_ok": true,
-        "policy_claims_ok": true,
-        "score_floor_ok": true
-      },
-      "risk_flags": []
-    },
-    {
-      "content_id": "cnt_exp-handoff-opp-001-06",
-      "experiment_id": "exp_handoff-opp-001_06",
       "result": "pass",
       "quality_score": 100.0,
       "checks": {

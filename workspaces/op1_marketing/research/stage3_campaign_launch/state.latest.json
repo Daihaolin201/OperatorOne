@@ -1,6 +1,6 @@
 {
   "loop_state": "idle_ready",
-  "mode": "shadow",
+  "mode": "review",
   "auto_launch": false,
   "last_run_status": "passed",
   "input_completeness": {
@@ -9,19 +9,19 @@
     "missing": [],
     "ratio": 1.0
   },
-  "snapshot_id": "stage3snap_20260306001656_2fe04ae954c538fa",
+  "snapshot_id": "stage3snap_20260307015328_bb145dbfeb6313d9",
   "delta_counts": {
     "added": 0,
-    "changed": 3,
+    "changed": 5,
     "removed": 0
   },
-  "last_incremental_run_at": "2026-03-06T00:16:56Z",
-  "campaigns_total": 8,
-  "launch_ready": 8,
+  "last_incremental_run_at": "2026-03-07T01:53:28Z",
+  "campaigns_total": 1,
+  "launch_ready": 1,
   "watchlist": 0,
   "hold": 0,
-  "forecast_clicks": 984.4,
-  "forecast_mql": 76.12,
-  "forecast_sql": 26.62,
-  "last_stage2_snapshot_id": "stage2snap_20260306001631_713d3cd64cec788f"
+  "forecast_clicks": 984.41,
+  "forecast_mql": 76.13,
+  "forecast_sql": 26.65,
+  "last_stage2_snapshot_id": "stage2snap_20260307015239_25c470f434e4295d"
 }

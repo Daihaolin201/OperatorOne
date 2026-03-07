@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-06T00:16:50Z",
+  "generated_at": "2026-03-07T01:53:17Z",
   "status": "ok",
   "entries": [
     {
@@ -53,6 +53,37 @@
       "reason": "manual_review_requested_changes",
       "note": "capability check",
       "snapshot_id": "stage2snap_20260306001631_713d3cd64cec788f"
+    },
+    {
+      "at": "2026-03-06T22:19:24Z",
+      "approved": [
+        "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "approved_from_studio",
+      "snapshot_id": "stage2snap_20260306221804_0bcc573401c99ef9"
+    },
+    {
+      "at": "2026-03-07T00:25:04Z",
+      "approved": [
+        "cnt_exp-handoff-opp-004-04",
+        "cnt_exp-opportunity-opp-004-03"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "approved_from_studio",
+      "snapshot_id": "stage2snap_20260307002358_0baf3ea4f865f962"
+    },
+    {
+      "at": "2026-03-07T01:53:17Z",
+      "approved": [
+        "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
+      ],
+      "needs_revision": [],
+      "reason": "manual_review_requested_changes",
+      "note": "approved_from_studio",
+      "snapshot_id": "stage2snap_20260307015239_25c470f434e4295d"
     }
   ]
 }

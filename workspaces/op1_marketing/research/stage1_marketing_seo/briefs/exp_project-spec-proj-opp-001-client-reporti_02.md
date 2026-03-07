@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_project-spec-proj-opp-001-client-reporti_02
 
-- Generated at: 2026-03-06T00:16:27Z
+- Generated at: 2026-03-07T01:51:57Z
 - Context: `project_spec::proj-opp-001-client-reporting-v1`
 - Keyword: **agencies rebuild client tool for agency operator marketing services** (BOFU)
 - Current shadow score: **84.17**

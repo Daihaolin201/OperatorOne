@@ -1,15 +1,15 @@
 {
   "capability": "create_landing_pages_v1",
   "contract_version": "1.1",
-  "generated_at": "2026-03-06T00:16:21Z",
+  "generated_at": "2026-03-07T02:11:00Z",
   "mode": "mode_c_only",
   "page_mode": "landing",
   "status": "ready_for_build",
   "selected_opportunity": {
     "opportunity_id": "opp_001",
-    "selection_reason": "top_advance_by_stage2",
-    "confidence": "high",
-    "weighted_score": 4.084,
+    "selection_reason": "explicit_opportunity",
+    "confidence": "low",
+    "weighted_score": 1.894,
     "risk_if_wrong": [
       "Online signal may overstate real purchasing urgency.",
       "Tool interest may not convert into paid behavior.",
@@ -22,9 +22,9 @@
       "stage2_mode": "existing",
       "stage2_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_idea_screening/decision_log.json",
       "selected_opportunity_id": "opp_001",
-      "selection_reason": "top_advance_by_stage2",
-      "confidence": "high",
-      "weighted_score": 4.084,
+      "selection_reason": "explicit_opportunity",
+      "confidence": "low",
+      "weighted_score": 1.894,
       "risk_if_wrong": [
         "Online signal may overstate real purchasing urgency.",
         "Tool interest may not convert into paid behavior.",
@@ -67,9 +67,8 @@
       "icp": "Freelancer / small service owner / Professional services / 1-20",
       "problem": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
       "value_proposition": "Turn overdue invoices into a daily follow-up action queue",
-      "why_now": "Inferred from loss/time-pressure language in evidence.",
+      "why_now": "No immediate urgency signal in selected evidence.",
       "differentiators": [
-        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
         "Prioritize overdue invoices by value and aging bucket.",
         "Route ghosting vs. late-payment scenarios with explicit rules."
       ]
@@ -79,7 +78,6 @@
       "hero_subheadline": "Turn overdue invoices into a daily follow-up action queue",
       "problem_statement": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
       "primary_supporting_claims": [
-        "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
         "Prioritize overdue invoices by value and aging bucket.",
         "Route ghosting vs. late-payment scenarios with explicit rules."
       ],
@@ -121,8 +119,8 @@
         "headline": "What this approach is grounded in",
         "goal": "Increase credibility with evidence-backed proof points.",
         "evidence_refs": [
-          "ev_01",
-          "ev_02"
+          "ev_02",
+          "ev_01"
         ]
       },
       {
@@ -227,14 +225,6 @@
       },
       {
         "claim_id": "claim_proof_01",
-        "claim": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
-        "evidence_refs": [
-          "ev_01",
-          "ev_02"
-        ]
-      },
-      {
-        "claim_id": "claim_proof_02",
         "claim": "Prioritize overdue invoices by value and aging bucket.",
         "evidence_refs": [
           "ev_02",
@@ -242,7 +232,7 @@
         ]
       },
       {
-        "claim_id": "claim_proof_03",
+        "claim_id": "claim_proof_02",
         "claim": "Route ghosting vs. late-payment scenarios with explicit rules.",
         "evidence_refs": [
           "ev_02",

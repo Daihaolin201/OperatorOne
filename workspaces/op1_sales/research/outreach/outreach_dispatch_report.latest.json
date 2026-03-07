@@ -1,109 +1,17 @@
 {
-  "generated_at": "2026-03-06T00:17:29+00:00",
+  "generated_at": "2026-03-07T01:54:10+00:00",
   "builder": "workspaces/op1_sales/scripts/dispatch_outreach_stage2.py",
   "mode": "simulate",
-  "batch_id": "batch-2026-03-06T001729+0000",
+  "batch_id": "batch-2026-03-07T015404+0000",
   "summary": {
-    "eligible_in_batch": 13,
-    "processed": 13,
+    "eligible_in_batch": 0,
+    "processed": 0,
     "dispatched_direct": 0,
-    "dispatched_manual": 1,
-    "suppressed": 1,
+    "dispatched_manual": 0,
+    "suppressed": 0,
     "skipped_review": 0,
-    "skipped_cap_or_frequency": 11,
+    "skipped_cap_or_frequency": 0,
     "skipped_missing": 0
   },
-  "leads": [
-    {
-      "lead_id": "opp_005-lead-001",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-002",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-003",
-      "result": "suppressed",
-      "channel": "",
-      "target": "",
-      "note": "lead is in suppression list"
-    },
-    {
-      "lead_id": "opp_005-lead-004",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-005",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-006",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-007",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-008",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-009",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-010",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-014",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-015",
-      "result": "skipped_cap_or_frequency",
-      "channel": "",
-      "target": "",
-      "note": "frequency_cap"
-    },
-    {
-      "lead_id": "opp_005-lead-020",
-      "result": "dispatch_manual_bundle",
-      "channel": "manual_export",
-      "target": "",
-      "note": "manual bundle item emitted"
-    }
-  ]
+  "leads": []
 }

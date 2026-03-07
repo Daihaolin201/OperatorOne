@@ -1,6 +1,6 @@
 {
-  "generated_at": "2026-03-06T00:16:27Z",
-  "run_id": "20260306T001627Z",
+  "generated_at": "2026-03-07T01:51:57Z",
+  "run_id": "20260307T015157Z",
   "capability": "marketing_seo_stage1_continuous_shadow_v1",
   "status": "passed",
   "mode": "shadow",
@@ -9,7 +9,7 @@
   "index": false,
   "run_scope": "incremental",
   "input_sync": {
-    "snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
+    "snapshot_id": "snap_20260307015157_bae53650007293e9",
     "completeness": {
       "required": 13,
       "present": 13,
@@ -18,7 +18,7 @@
     },
     "delta_counts": {
       "added": 0,
-      "changed": 8,
+      "changed": 6,
       "removed": 0
     },
     "requirements": [
@@ -185,8 +185,8 @@
     "experiment_count": 72,
     "brief_count": 12,
     "queue_counts": {
-      "ready": 53,
-      "hold": 19,
+      "ready": 45,
+      "hold": 27,
       "drop": 0
     }
   }

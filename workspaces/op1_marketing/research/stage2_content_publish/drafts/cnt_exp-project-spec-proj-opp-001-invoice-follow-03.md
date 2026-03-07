@@ -4,9 +4,9 @@ experiment_id: exp_project-spec-proj-opp-001-invoice-follow_03
 context_id: project_spec::proj-opp-001-invoice-followup-v1
 intent: BOFU
 primary_keyword: overdue invoices followed tool for freelancer small service owner
-mode: shadow
+mode: review
 status: draft
-generated_at: 2026-03-06T00:16:31Z
+generated_at: 2026-03-07T02:11:08Z
 ---
 
 # Overdue Invoices Followed Tool For Freelancer Small Service Owner: Practical buyer guide for teams evaluating alternatives

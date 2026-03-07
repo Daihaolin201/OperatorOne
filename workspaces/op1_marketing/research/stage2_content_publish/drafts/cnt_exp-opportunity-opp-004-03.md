@@ -4,9 +4,9 @@ experiment_id: exp_opportunity-opp-004_03
 context_id: opportunity::opp_004
 intent: BOFU
 primary_keyword: how to default software output plus custom excel
-mode: shadow
+mode: review
 status: draft
-generated_at: 2026-03-06T00:16:31Z
+generated_at: 2026-03-07T02:11:08Z
 ---
 
 # How To Default Software Output Plus Custom Excel: Practical buyer guide for teams evaluating alternatives
@@ -21,8 +21,6 @@ Owner and tenant workflows are fragmented, driving monthly manual spreadsheet wo
 Default PM software output plus custom Excel edits.
 
 ## Evidence and operational signals
-- Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness
-- It does not help. If anything, it makes people automatically annoyed. Call and talk. We are human beings and we will work with you if you communicate. Asking AI to quote a bunch of nonsense (which usually doesn’t apply) ...
 - Impossible food sues to cancel earlier trademark owners
 - Launch HN: Finley (YC W21) – Debt capital monitoring and reporting software Hey HN! We’re Kevin, Jeremy, and Josiah, and we’re in the current YC batch. We’re building Finley (<a href="https:&#x2F;&#x2F;www.finleycms.com"...
 

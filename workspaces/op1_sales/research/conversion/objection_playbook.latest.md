@@ -1,6 +1,6 @@
 # Objection Playbook (Stage3 latest)
 
-Generated at: 2026-03-06T00:00:00+00:00
+Generated at: 2026-03-07T01:54:13+00:00
 
 ## Ranked objections
 

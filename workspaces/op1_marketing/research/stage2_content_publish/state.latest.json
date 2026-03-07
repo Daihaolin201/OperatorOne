@@ -1,6 +1,6 @@
 {
   "loop_state": "idle_ready",
-  "mode": "shadow",
+  "mode": "review",
   "auto_publish": false,
   "last_run_status": "passed",
   "input_completeness": {
@@ -9,17 +9,16 @@
     "missing": [],
     "ratio": 1.0
   },
-  "snapshot_id": "stage2snap_20260306001631_713d3cd64cec788f",
+  "snapshot_id": "stage2snap_20260307021108_209d3a8a6db127ef",
   "delta_counts": {
     "added": 0,
-    "changed": 6,
+    "changed": 1,
     "removed": 0
   },
-  "last_incremental_run_at": "2026-03-06T00:16:50Z",
+  "last_incremental_run_at": "2026-03-07T02:11:08Z",
   "active_items": 12,
-  "approved": 12,
-  "review_ready": 0,
+  "approved": 0,
+  "review_ready": 12,
   "needs_revision": 0,
-  "last_stage1_snapshot_id": "snap_20260306001627_58275bfbbbc66f59",
-  "last_manual_review_at": "2026-03-06T00:16:50Z"
+  "last_stage1_snapshot_id": "snap_20260307015157_bae53650007293e9"
 }

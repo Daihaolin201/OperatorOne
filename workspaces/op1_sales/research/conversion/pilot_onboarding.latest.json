@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-06T00:00:00+00:00",
+  "generated_at": "2026-03-07T01:54:13+00:00",
   "builder": "workspaces/op1_sales/scripts/track_pilot_onboarding_stage3.py",
   "inputs": {
     "conversion_pipeline": "workspaces/op1_sales/research/conversion/conversion_pipeline.latest.json",

@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-06T00:16:31Z",
-  "run_id": "20260306T001631Z",
+  "generated_at": "2026-03-07T02:11:08Z",
+  "run_id": "20260307T021108Z",
   "capability": "marketing_publish_content_stage2_shadow_v1",
-  "mode": "shadow",
+  "mode": "review",
   "auto_publish": false,
   "publish_mode": "disabled",
   "input_sync": {
-    "snapshot_id": "stage2snap_20260306001631_713d3cd64cec788f",
+    "snapshot_id": "stage2snap_20260307021108_209d3a8a6db127ef",
     "completeness": {
       "required": 6,
       "available": 6,
@@ -15,7 +15,7 @@
     },
     "delta_counts": {
       "added": 0,
-      "changed": 6,
+      "changed": 1,
       "removed": 0
     },
     "requirements": [
@@ -24,45 +24,45 @@
         "path": "research/stage1_marketing_seo/run.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/run.latest.json",
         "exists": true,
-        "sha256": "af52d7f0d026476c59f99d73e6825ee70aa8aa45b1d08fcde29b833eecbc923e",
+        "sha256": "ead4241d70784115f447c0675a70e3fd2835635bd57c38986203abdae93152d4",
         "size": 6584,
-        "mtime": 1772756187
+        "mtime": 1772848317
       },
       {
         "id": "stage1_context_index",
         "path": "research/stage1_marketing_seo/context_index.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/context_index.latest.json",
         "exists": true,
-        "sha256": "8317bcc1ab4cd6a96ff7c506268d152b6923b6a8e6c63c55c697b21ace136c0c",
-        "size": 22849,
-        "mtime": 1772756187
+        "sha256": "d0fc163fc6ce4d14088962a1b09e465b57e2b76899855f2b36631f9bd4a7b42a",
+        "size": 20105,
+        "mtime": 1772848317
       },
       {
         "id": "stage1_backlog",
         "path": "research/stage1_marketing_seo/experiments.backlog.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.backlog.latest.json",
         "exists": true,
-        "sha256": "4f5a3f2582db81258ed2f4eba9876453181f4e460f339de83c60c4e93f24e5c2",
-        "size": 108590,
-        "mtime": 1772756187
+        "sha256": "abb8894e39ef413226248b3def75885ce34966e8153eebc80b0be0884826ed63",
+        "size": 102729,
+        "mtime": 1772848317
       },
       {
         "id": "stage1_queue",
         "path": "research/stage1_marketing_seo/experiments.queue.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/experiments.queue.latest.json",
         "exists": true,
-        "sha256": "acd69b890eb9cc2df36f922b0093a9fec46537054f7692c3e656e03784ab8e0e",
-        "size": 27413,
-        "mtime": 1772756187
+        "sha256": "1fd0bd918871baa7a180d4bc1f870823ad2a9854aba7bc0535b445e8ddb7bbc2",
+        "size": 27396,
+        "mtime": 1772848317
       },
       {
         "id": "stage1_scoreboard",
         "path": "research/stage1_marketing_seo/scoreboard.latest.json",
         "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage1_marketing_seo/scoreboard.latest.json",
         "exists": true,
-        "sha256": "7d6abfe86dc9c82fd77b15d159f6736404aacc0d7938cb1330ea82c177818b3d",
-        "size": 42329,
-        "mtime": 1772756187
+        "sha256": "b842f8c15c81dc984ce7091163692a6eacfa42b84e426bd7cc9490de13f5fc24",
+        "size": 42379,
+        "mtime": 1772848317
       },
       {
         "id": "product_to_marketing_handoff",
@@ -71,7 +71,7 @@
         "exists": true,
         "sha256": "f160f3ec11fd049f1679ef4d7e7c6214038559302687fe737c1313e3e2f943ba",
         "size": 1710,
-        "mtime": 1772756181
+        "mtime": 1772849460
       }
     ]
   },
@@ -90,28 +90,5 @@
     "review_ready": 12,
     "needs_revision": 0,
     "avg_quality_score": 100.0
-  },
-  "manual_review": {
-    "at": "2026-03-06T00:16:50Z",
-    "approved": [
-      "cnt_exp-handoff-opp-001-06",
-      "cnt_exp-opportunity-opp-001-04",
-      "cnt_exp-opportunity-opp-003-04",
-      "cnt_exp-opportunity-opp-004-03",
-      "cnt_exp-opportunity-opp-004-06",
-      "cnt_exp-opportunity-opp-005-04",
-      "cnt_exp-opportunity-opp-006-04",
-      "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
-      "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
-      "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
-      "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
-      "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
-    ],
-    "needs_revision": [],
-    "counts": {
-      "approved": 12,
-      "review_ready": 0,
-      "needs_revision": 0
-    }
   }
 }

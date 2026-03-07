@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-06T00:17:08+00:00",
+  "generated_at": "2026-03-07T01:53:41+00:00",
   "builder": "workspaces/op1_sales/skills/identify-prospects-stage1/scripts/build_prospect_queue.py",
   "inputs": {
     "marketing_to_sales": "handoffs/marketing_to_sales.json",
@@ -8,9 +8,9 @@
   },
   "summary": {
     "segments_ranked": 6,
-    "posts_scanned": 549,
-    "posts_classified": 471,
-    "posts_unclassified": 78,
+    "posts_scanned": 0,
+    "posts_classified": 0,
+    "posts_unclassified": 0,
     "content_assets_scanned": 12,
     "top_channels": [
       "linkedin",
@@ -22,309 +22,101 @@
   },
   "segments": [
     {
-      "opportunity_id": "opp_005",
-      "segment_name": "Expense reimbursement control",
+      "opportunity_id": "opp_003",
+      "segment_name": "Agency client reporting",
       "target_segment": {
-        "role": "SMB owner / finance admin",
-        "company_size": "10-100",
-        "industry": "General SMB"
+        "role": "Agency owner / account manager",
+        "company_size": "5-50",
+        "industry": "Marketing agencies"
       },
-      "core_problem": "Expense reimbursement remains chaotic and fraud-prone with manual checks.",
+      "core_problem": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
       "distribution_entry": {
-        "channel": "SMB operations communities",
-        "first_20_targets_how": "Interview SMBs with recurring reimbursement delays"
+        "channel": "Agency founder communities",
+        "first_20_targets_how": "Target agencies publicly discussing reporting bottlenecks"
       },
       "implementation_constraint": [
-        "OCR quality",
-        "Policy customization across teams"
+        "Cross-channel metric mapping",
+        "Integration breadth expectations"
       ],
       "keyword_signals": [
         {
-          "keyword": "expense reimbursement remains vs manual",
+          "keyword": "agencies rebuild client tool for agency operator marketing services",
           "intent": "BOFU",
-          "priority_score": 94.05,
-          "content_id": "cnt_exp-opportunity-opp-005-04"
+          "priority_score": 94.17,
+          "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
         }
       ],
       "social_signals": {
-        "matched_posts": 41,
-        "top_posts": [
-          {
-            "title": "I caught an employee submitting fake expense reports",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1pdax88/i_caught_an_employee_submitting_fake_expense/",
-            "score": 588,
-            "num_comments": 235,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 13.6,
-            "term_hits": 5,
-            "signal_score": 4.3359
-          },
-          {
-            "title": "How do you all handle employee expenses without losing your mind?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1o6dmvd/how_do_you_all_handle_employee_expenses_without/",
-            "score": 290,
-            "num_comments": 92,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 16.1,
-            "term_hits": 6,
-            "signal_score": 3.8057
-          },
-          {
-            "title": "$1M revenue and I just paid tax penalties because I can't keep up with bookkeeping",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1oki786/1m_revenue_and_i_just_paid_tax_penalties_because/",
-            "score": 117,
-            "num_comments": 175,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 13.6,
-            "term_hits": 5,
-            "signal_score": 3.5662
-          },
-          {
-            "title": "I was hired to save a company from collapse. They gave me zero authority and now blame me for no results.",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1mbaofb/i_was_hired_to_save_a_company_from_collapse_they/",
-            "score": 184,
-            "num_comments": 176,
-            "queries_matched": [
-              "appointment booking software"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 3.0442
-          },
-          {
-            "title": "Need advice: Wholesale account owes me $25K and keeps ghosting me",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1p0zi4o/need_advice_wholesale_account_owes_me_25k_and/",
-            "score": 77,
-            "num_comments": 67,
-            "queries_matched": [
-              "late payments"
-            ],
-            "relevance_score": 4.0,
-            "term_hits": 1,
-            "signal_score": 3.0329
-          },
-          {
-            "title": "The tools actually running my 3-person landscaping business",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1rairx5/the_tools_actually_running_my_3person_landscaping/",
-            "score": 72,
-            "num_comments": 37,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 9.1,
-            "term_hits": 4,
-            "signal_score": 2.9894
-          },
-          {
-            "title": "I’m tired of bookkeeping for my husband’s business",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1pl2ptz/im_tired_of_bookkeeping_for_my_husbands_business/",
-            "score": 39,
-            "num_comments": 116,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 7.6,
-            "term_hits": 3,
-            "signal_score": 2.9851
-          },
-          {
-            "title": "small business bookkeeping feels like another job",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1p2q0k4/small_business_bookkeeping_feels_like_another_job/",
-            "score": 41,
-            "num_comments": 42,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 11.6,
-            "term_hits": 4,
-            "signal_score": 2.7786
-          },
-          {
-            "title": "CPA raised fees 35% on me this for next year",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1m6gbb7/cpa_raised_fees_35_on_me_this_for_next_year/",
-            "score": 116,
-            "num_comments": 147,
-            "queries_matched": [
-              "double booking"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.7746
-          },
-          {
-            "title": "Growing team (14 ppl) looking for the best virtual credit card for expense automation. Drowning in receipts here!",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1pdxx9w/growing_team_14_ppl_looking_for_the_best_virtual/",
-            "score": 35,
-            "num_comments": 42,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 14.6,
-            "term_hits": 5,
-            "signal_score": 2.7115
-          },
-          {
-            "title": "How do you grow a remote bookkeeping business when you're starting from zero?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r6orwz/how_do_you_grow_a_remote_bookkeeping_business/",
-            "score": 21,
-            "num_comments": 36,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 7.6,
-            "term_hits": 3,
-            "signal_score": 2.4487
-          },
-          {
-            "title": "Business bank account for contractors that separates job income automatically or am I asking for magic",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qnn43q/business_bank_account_for_contractors_that/",
-            "score": 26,
-            "num_comments": 15,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 7.6,
-            "term_hits": 3,
-            "signal_score": 2.3366
-          },
-          {
-            "title": "Partner not taking Accounting Seriously",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r4zzj5/partner_not_taking_accounting_seriously/",
-            "score": 13,
-            "num_comments": 31,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 8.6,
-            "term_hits": 3,
-            "signal_score": 2.2298
-          },
-          {
-            "title": "Software Guidance Request for Simple Income/Expense Reporting",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qghh7b/software_guidance_request_for_simple/",
-            "score": 15,
-            "num_comments": 17,
-            "queries_matched": [
-              "automation too expensive"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 2.1498
-          },
-          {
-            "title": "I need a simple way to share a folder with my accountant once a year",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qpcp5g/i_need_a_simple_way_to_share_a_folder_with_my/",
-            "score": 11,
-            "num_comments": 21,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 7.6,
-            "term_hits": 3,
-            "signal_score": 2.0603
-          },
-          {
-            "title": "I got my first client 7 months ago and I'm stuck",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1ocn9pq/i_got_my_first_client_7_months_ago_and_im_stuck/",
-            "score": 7,
-            "num_comments": 18,
-            "queries_matched": [
-              "double booking"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 1.83
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Aug 18th, 2025",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1mtzfg7/ecommerce_industry_news_recap_week_of_aug_18th/",
-            "score": 7,
-            "num_comments": 16,
-            "queries_matched": [
-              "manual order fraud checks"
-            ],
-            "relevance_score": 7.8,
-            "term_hits": 3,
-            "signal_score": 1.6528
-          },
-          {
-            "title": "A letter to myself: Everything I wish I'd known before starting my business",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1jvolu4/a_letter_to_myself_everything_i_wish_id_known/",
-            "score": 84,
-            "num_comments": 31,
-            "queries_matched": [
-              "chasing invoices",
-              "automation too expensive"
-            ],
-            "relevance_score": 8.6,
-            "term_hits": 3,
-            "signal_score": 1.6449
-          },
-          {
-            "title": "Need help choosing POS, Inventory and book keeping software",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1q5i48a/need_help_choosing_pos_inventory_and_book_keeping/",
-            "score": 3,
-            "num_comments": 23,
-            "queries_matched": [
-              "inventory spreadsheet"
-            ],
-            "relevance_score": 4.0,
-            "term_hits": 1,
-            "signal_score": 1.4908
-          },
-          {
-            "title": "The real ROI of expense management isn't the software cost - it's the hours your team gets back",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r02p4j/the_real_roi_of_expense_management_isnt_the/",
-            "score": 5,
-            "num_comments": 9,
-            "queries_matched": [
-              "manual reporting",
-              "spreadsheet errors"
-            ],
-            "relevance_score": 4.0,
-            "term_hits": 1,
-            "signal_score": 1.457
-          }
-        ]
+        "matched_posts": 0,
+        "top_posts": []
       },
       "search_queries": [
-        "\"employee expenses\" \"manual\" \"small business\"",
-        "\"receipt chasing\" \"bookkeeper\"",
-        "\"expense reimbursement\" \"finance admin\" \"hiring\"",
-        "\"duplicate expense\" \"small business\"",
-        "\"expense policy\" \"smb\""
+        "\"marketing agency\" \"monthly report\" \"manual\"",
+        "\"ga4\" \"agency\" \"client reporting\"",
+        "\"ppc\" \"reporting\" \"hours\"",
+        "\"agency\" \"reporting analyst\" \"hiring\"",
+        "\"digital marketing\" \"client dashboard\" \"pain\""
       ],
       "scores": {
-        "market_score": 94.05,
-        "evidence_score": 100.0,
-        "urgency_score": 100.0,
-        "priority_score": 97.32
+        "market_score": 94.17,
+        "evidence_score": 0.0,
+        "urgency_score": 60.0,
+        "priority_score": 54.38
+      }
+    },
+    {
+      "opportunity_id": "opp_004",
+      "segment_name": "Property manager owner/tenant workflow",
+      "target_segment": {
+        "role": "Property manager",
+        "company_size": "2-30",
+        "industry": "Property management"
+      },
+      "core_problem": "Owner and tenant workflows are fragmented, driving monthly manual spreadsheet work.",
+      "distribution_entry": {
+        "channel": "Property management forums",
+        "first_20_targets_how": "Reach operators with 20-150 doors and reporting pain"
+      },
+      "implementation_constraint": [
+        "PM tool integrations",
+        "Data privacy in owner/tenant records"
+      ],
+      "keyword_signals": [
+        {
+          "keyword": "how to default software output plus custom excel",
+          "intent": "BOFU",
+          "priority_score": 94.85,
+          "content_id": "cnt_exp-opportunity-opp-004-03"
+        },
+        {
+          "keyword": "owner tenant workflows vs manual",
+          "intent": "BOFU",
+          "priority_score": 94.85,
+          "content_id": "cnt_exp-opportunity-opp-004-06"
+        },
+        {
+          "keyword": "default software output plus custom excel template",
+          "intent": "BOFU",
+          "priority_score": 91.1,
+          "content_id": "cnt_exp-opportunity-opp-004-02"
+        }
+      ],
+      "social_signals": {
+        "matched_posts": 0,
+        "top_posts": []
+      },
+      "search_queries": [
+        "\"property management\" \"owner report\" \"manual\"",
+        "\"tenant communication\" \"spreadsheet\"",
+        "\"property manager\" \"rent collection\" \"workflow\"",
+        "\"appfolio\" \"custom report\"",
+        "\"property management\" \"operations\" \"hiring\""
+      ],
+      "scores": {
+        "market_score": 93.6,
+        "evidence_score": 0.0,
+        "urgency_score": 60.0,
+        "priority_score": 54.12
       }
     },
     {
@@ -346,293 +138,21 @@
       ],
       "keyword_signals": [
         {
-          "keyword": "overdue invoices followed vs manual",
-          "intent": "BOFU",
-          "priority_score": 94.05,
-          "content_id": "cnt_exp-opportunity-opp-001-04"
-        },
-        {
           "keyword": "overdue invoices followed tool for freelancer small service owner",
           "intent": "BOFU",
           "priority_score": 93.87,
           "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
         },
         {
-          "keyword": "overdue invoices followed manually late because checklist",
-          "intent": "MOFU",
-          "priority_score": 87.45,
-          "content_id": "cnt_exp-handoff-opp-001-06"
+          "keyword": "overdue invoices followed vs manual",
+          "intent": "BOFU",
+          "priority_score": 92.75,
+          "content_id": "cnt_exp-blueprint-proj-opp-001-invoice-followup-04"
         }
       ],
       "social_signals": {
-        "matched_posts": 75,
-        "top_posts": [
-          {
-            "title": "Commercial client not paying :(",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qzkjmj/commercial_client_not_paying/",
-            "score": 146,
-            "num_comments": 77,
-            "queries_matched": [
-              "late payments"
-            ],
-            "relevance_score": 9.8,
-            "term_hits": 3,
-            "signal_score": 3.4664
-          },
-          {
-            "title": "Client picked my competitor and I think it's because I look cheap",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1mq8tgc/client_picked_my_competitor_and_i_think_its/",
-            "score": 185,
-            "num_comments": 178,
-            "queries_matched": [
-              "late payments"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 3.221
-          },
-          {
-            "title": "Anyone else lose their mind doing bookkeeping every month?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1noa6lt/anyone_else_lose_their_mind_doing_bookkeeping/",
-            "score": 54,
-            "num_comments": 135,
-            "queries_matched": [
-              "receipt bookkeeping manual"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 3.1347
-          },
-          {
-            "title": "How I’m trying to build and maintain a “rainy day” fund as a freelancer",
-            "subreddit": "freelance",
-            "permalink": "https://www.reddit.com/r/freelance/comments/1qcsxvv/how_im_trying_to_build_and_maintain_a_rainy_day/",
-            "score": 103,
-            "num_comments": 54,
-            "queries_matched": [
-              "client always late payment"
-            ],
-            "relevance_score": 4.2,
-            "term_hits": 1,
-            "signal_score": 3.1133
-          },
-          {
-            "title": "Our invoices have 1.5% per month late fees but nobody pays them how do you fix this",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1rkfmam/our_invoices_have_15_per_month_late_fees_but/",
-            "score": 60,
-            "num_comments": 67,
-            "queries_matched": [
-              "late payments"
-            ],
-            "relevance_score": 9.8,
-            "term_hits": 3,
-            "signal_score": 3.0509
-          },
-          {
-            "title": "I just finished my 2025 \"Post-Mortem.\" I realized I lost over $3k because I’m too socially awkward to chase invoices.",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1q1w9eq/i_just_finished_my_2025_postmortem_i_realized_i/",
-            "score": 42,
-            "num_comments": 64,
-            "queries_matched": [
-              "chasing invoices"
-            ],
-            "relevance_score": 10.3,
-            "term_hits": 4,
-            "signal_score": 2.888
-          },
-          {
-            "title": "How do you all deal with clients who delay payments forever?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1nsghtu/how_do_you_all_deal_with_clients_who_delay/",
-            "score": 30,
-            "num_comments": 65,
-            "queries_matched": [
-              "chasing invoices",
-              "late payments"
-            ],
-            "relevance_score": 11.3,
-            "term_hits": 4,
-            "signal_score": 2.7493
-          },
-          {
-            "title": "Sharing my experience so other designers don’t fall into the same trap of misplaced trust.",
-            "subreddit": "freelance",
-            "permalink": "https://www.reddit.com/r/freelance/comments/1onavjk/sharing_my_experience_so_other_designers_dont/",
-            "score": 35,
-            "num_comments": 39,
-            "queries_matched": [
-              "late invoices",
-              "client always late payment"
-            ],
-            "relevance_score": 10.2,
-            "term_hits": 3,
-            "signal_score": 2.6942
-          },
-          {
-            "title": "I lost money hiring a freelancer and she want to sue me",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1pn2ukt/i_lost_money_hiring_a_freelancer_and_she_want_to/",
-            "score": 28,
-            "num_comments": 32,
-            "queries_matched": [
-              "late payments"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 2.5164
-          },
-          {
-            "title": "I keep missing deadlines — it’s the 5th client now and I feel like I’m ruining everything",
-            "subreddit": "freelance",
-            "permalink": "https://www.reddit.com/r/freelance/comments/1lf5yyo/i_keep_missing_deadlines_its_the_5th_client_now/",
-            "score": 155,
-            "num_comments": 187,
-            "queries_matched": [
-              "client always late payment"
-            ],
-            "relevance_score": 4.2,
-            "term_hits": 1,
-            "signal_score": 2.4851
-          },
-          {
-            "title": "How do you follow up on unpaid invoices without sounding rude?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1pt7769/how_do_you_follow_up_on_unpaid_invoices_without/",
-            "score": 14,
-            "num_comments": 74,
-            "queries_matched": [
-              "chasing invoices"
-            ],
-            "relevance_score": 8.3,
-            "term_hits": 3,
-            "signal_score": 2.4642
-          },
-          {
-            "title": "How do you actually follow up on unpaid invoices?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1mh9sdj/how_do_you_actually_follow_up_on_unpaid_invoices/",
-            "score": 38,
-            "num_comments": 79,
-            "queries_matched": [
-              "late payments"
-            ],
-            "relevance_score": 14.8,
-            "term_hits": 5,
-            "signal_score": 2.4402
-          },
-          {
-            "title": "How do you keep your freelance finances in order? Here's what's been working for me so far.",
-            "subreddit": "freelance",
-            "permalink": "https://www.reddit.com/r/freelance/comments/1osnpex/how_do_you_keep_your_freelance_finances_in_order/",
-            "score": 27,
-            "num_comments": 20,
-            "queries_matched": [
-              "late invoices",
-              "client always late payment"
-            ],
-            "relevance_score": 10.2,
-            "term_hits": 3,
-            "signal_score": 2.4302
-          },
-          {
-            "title": "Tenant refusing to pay rent after claiming repairs weren't done",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1ns4r5o/tenant_refusing_to_pay_rent_after_claiming/",
-            "score": 15,
-            "num_comments": 48,
-            "queries_matched": [
-              "tenant communication tracking"
-            ],
-            "relevance_score": 6.0,
-            "term_hits": 2,
-            "signal_score": 2.3276
-          },
-          {
-            "title": "What are your thoughts on late fees? Do you charge late fees on late payments?",
-            "subreddit": "freelance",
-            "permalink": "https://www.reddit.com/r/freelance/comments/1pbdw31/what_are_your_thoughts_on_late_fees_do_you_charge/",
-            "score": 15,
-            "num_comments": 56,
-            "queries_matched": [
-              "client always late payment"
-            ],
-            "relevance_score": 4.2,
-            "term_hits": 1,
-            "signal_score": 2.3077
-          },
-          {
-            "title": "Anyone else frustrated by what invoicing apps actually cost?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r7t104/anyone_else_frustrated_by_what_invoicing_apps/",
-            "score": 9,
-            "num_comments": 86,
-            "queries_matched": [
-              "double booking"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 2.2859
-          },
-          {
-            "title": "Honestly realizing I'm the reason my clients pay me late...",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qwxo35/honestly_realizing_im_the_reason_my_clients_pay/",
-            "score": 13,
-            "num_comments": 20,
-            "queries_matched": [
-              "chasing invoices"
-            ],
-            "relevance_score": 8.3,
-            "term_hits": 3,
-            "signal_score": 2.1287
-          },
-          {
-            "title": "Need a quick perspective on a client situation",
-            "subreddit": "freelance",
-            "permalink": "https://www.reddit.com/r/freelance/comments/1p2wq19/need_a_quick_perspective_on_a_client_situation/",
-            "score": 13,
-            "num_comments": 15,
-            "queries_matched": [
-              "late invoices",
-              "client always late payment"
-            ],
-            "relevance_score": 10.2,
-            "term_hits": 3,
-            "signal_score": 2.0634
-          },
-          {
-            "title": "How did you reduce admin time as a solo business owner? I'm drowning in repetitive tasks.",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r307db/how_did_you_reduce_admin_time_as_a_solo_business/",
-            "score": 8,
-            "num_comments": 36,
-            "queries_matched": [
-              "automation too expensive"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 2.0349
-          },
-          {
-            "title": "Chase Business Ink Vendor Nightmare",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qls0vf/chase_business_ink_vendor_nightmare/",
-            "score": 9,
-            "num_comments": 25,
-            "queries_matched": [
-              "chasing invoices",
-              "late payments"
-            ],
-            "relevance_score": 11.3,
-            "term_hits": 4,
-            "signal_score": 2.0336
-          }
-        ]
+        "matched_posts": 0,
+        "top_posts": []
       },
       "search_queries": [
         "\"small business\" \"overdue invoices\" \"manual\"",
@@ -642,10 +162,96 @@
         "\"agency\" \"client payment\" \"follow up\""
       ],
       "scores": {
-        "market_score": 91.79,
-        "evidence_score": 100.0,
-        "urgency_score": 100.0,
-        "priority_score": 96.31
+        "market_score": 93.31,
+        "evidence_score": 0.0,
+        "urgency_score": 60.0,
+        "priority_score": 53.99
+      }
+    },
+    {
+      "opportunity_id": "opp_005",
+      "segment_name": "Expense reimbursement control",
+      "target_segment": {
+        "role": "SMB owner / finance admin",
+        "company_size": "10-100",
+        "industry": "General SMB"
+      },
+      "core_problem": "Expense reimbursement remains chaotic and fraud-prone with manual checks.",
+      "distribution_entry": {
+        "channel": "SMB operations communities",
+        "first_20_targets_how": "Interview SMBs with recurring reimbursement delays"
+      },
+      "implementation_constraint": [
+        "OCR quality",
+        "Policy customization across teams"
+      ],
+      "keyword_signals": [
+        {
+          "keyword": "expense reimbursement remains vs manual",
+          "intent": "BOFU",
+          "priority_score": 92.35,
+          "content_id": "cnt_exp-opportunity-opp-005-04"
+        }
+      ],
+      "social_signals": {
+        "matched_posts": 0,
+        "top_posts": []
+      },
+      "search_queries": [
+        "\"employee expenses\" \"manual\" \"small business\"",
+        "\"receipt chasing\" \"bookkeeper\"",
+        "\"expense reimbursement\" \"finance admin\" \"hiring\"",
+        "\"duplicate expense\" \"small business\"",
+        "\"expense policy\" \"smb\""
+      ],
+      "scores": {
+        "market_score": 92.35,
+        "evidence_score": 0.0,
+        "urgency_score": 60.0,
+        "priority_score": 53.56
+      }
+    },
+    {
+      "opportunity_id": "opp_006",
+      "segment_name": "Spreadsheet/PDF workflow fragility",
+      "target_segment": {
+        "role": "Operations admin",
+        "company_size": "5-80",
+        "industry": "SMB operations/logistics"
+      },
+      "core_problem": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
+      "distribution_entry": {
+        "channel": "SMB ops communities",
+        "first_20_targets_how": "Reach teams reporting PDF-to-Excel pain and formula breakage"
+      },
+      "implementation_constraint": [
+        "Supplier template variance",
+        "Extraction confidence thresholds"
+      ],
+      "keyword_signals": [
+        {
+          "keyword": "core workflows depend vs manual",
+          "intent": "BOFU",
+          "priority_score": 92.35,
+          "content_id": "cnt_exp-opportunity-opp-006-04"
+        }
+      ],
+      "social_signals": {
+        "matched_posts": 0,
+        "top_posts": []
+      },
+      "search_queries": [
+        "\"pdf to excel\" \"manual\" \"small business\"",
+        "\"spreadsheet\" \"operations\" \"breaking\"",
+        "\"data entry\" \"bottleneck\" \"smb\"",
+        "\"excel macro\" \"risk\" \"business\"",
+        "\"ops admin\" \"workflow\" \"manual\""
+      ],
+      "scores": {
+        "market_score": 92.35,
+        "evidence_score": 0.0,
+        "urgency_score": 60.0,
+        "priority_score": 53.56
       }
     },
     {
@@ -686,272 +292,8 @@
         }
       ],
       "social_signals": {
-        "matched_posts": 76,
-        "top_posts": [
-          {
-            "title": "Just got charged back $3,400 in one day and I literally want to throw my laptop out the window.",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1qci3a4/just_got_charged_back_3400_in_one_day_and_i/",
-            "score": 365,
-            "num_comments": 241,
-            "queries_matched": [
-              "manual order fraud checks"
-            ],
-            "relevance_score": 14.3,
-            "term_hits": 4,
-            "signal_score": 4.135
-          },
-          {
-            "title": "Getting buried under order fulfillment and I don't know what to do",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1pt6jzb/getting_buried_under_order_fulfillment_and_i_dont/",
-            "score": 182,
-            "num_comments": 232,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 10.8,
-            "term_hits": 3,
-            "signal_score": 3.8244
-          },
-          {
-            "title": "I beg all tenants- please stop using Chat GPT for disputes",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1qq22v1/i_beg_all_tenants_please_stop_using_chat_gpt_for/",
-            "score": 151,
-            "num_comments": 104,
-            "queries_matched": [
-              "tenant communication tracking"
-            ],
-            "relevance_score": 6.0,
-            "term_hits": 2,
-            "signal_score": 3.4898
-          },
-          {
-            "title": "What’s the most frustrating part of running your store on Shopify?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1o1izh3/whats_the_most_frustrating_part_of_running_your/",
-            "score": 99,
-            "num_comments": 156,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 10.8,
-            "term_hits": 3,
-            "signal_score": 3.4667
-          },
-          {
-            "title": "Tracking revenue by sales channel without spending hours in spreadsheets every week is this possible.",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1qpcrfu/tracking_revenue_by_sales_channel_without/",
-            "score": 57,
-            "num_comments": 41,
-            "queries_matched": [
-              "shopify disputes"
-            ],
-            "relevance_score": 8.8,
-            "term_hits": 3,
-            "signal_score": 2.9133
-          },
-          {
-            "title": "Chargebacks are honestly the one part of e-commerce I wasn’t prepared for",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1mtj1lz/chargebacks_are_honestly_the_one_part_of/",
-            "score": 84,
-            "num_comments": 70,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 9.8,
-            "term_hits": 2,
-            "signal_score": 2.8916
-          },
-          {
-            "title": "Lost $800 to a chargeback fraud…how are you fighting back in 2025?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1nv9xnl/lost_800_to_a_chargeback_fraudhow_are_you/",
-            "score": 26,
-            "num_comments": 65,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 12.3,
-            "term_hits": 3,
-            "signal_score": 2.6892
-          },
-          {
-            "title": "Chargeback from a repeat customer who's ordered FIVE times before",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1rj0v52/chargeback_from_a_repeat_customer_whos_ordered/",
-            "score": 25,
-            "num_comments": 50,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 15.8,
-            "term_hits": 4,
-            "signal_score": 2.6109
-          },
-          {
-            "title": "Won a dispute after 2 months of back and forth with customer",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1mpwgta/won_a_dispute_after_2_months_of_back_and_forth/",
-            "score": 90,
-            "num_comments": 20,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 12.8,
-            "term_hits": 3,
-            "signal_score": 2.6019
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Sep 1st, 2025",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1n5yl2u/ecommerce_industry_news_recap_week_of_sep_1st_2025/",
-            "score": 54,
-            "num_comments": 16,
-            "queries_matched": [
-              "returns process painful"
-            ],
-            "relevance_score": 5.3,
-            "term_hits": 2,
-            "signal_score": 2.5162
-          },
-          {
-            "title": "Bought a Shopify store ($9.5K/mo → $0). $10K left — best way to rebuild?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1mu4433/bought_a_shopify_store_95kmo_0_10k_left_best_way/",
-            "score": 26,
-            "num_comments": 83,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 10.8,
-            "term_hits": 3,
-            "signal_score": 2.4851
-          },
-          {
-            "title": "AI in E-Commerce: Solving Problems Customers Don’t Have",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1nspklg/ai_in_ecommerce_solving_problems_customers_dont/",
-            "score": 22,
-            "num_comments": 37,
-            "queries_matched": [
-              "returns process painful"
-            ],
-            "relevance_score": 4.3,
-            "term_hits": 1,
-            "signal_score": 2.3713
-          },
-          {
-            "title": "How are small Shopify stores handling cybersecurity risks without big budgets in 2026?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1qzwh8a/how_are_small_shopify_stores_handling/",
-            "score": 16,
-            "num_comments": 29,
-            "queries_matched": [
-              "manual order fraud checks"
-            ],
-            "relevance_score": 13.3,
-            "term_hits": 4,
-            "signal_score": 2.2987
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Nov 10th, 2025",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1oto6am/ecommerce_industry_news_recap_week_of_nov_10th/",
-            "score": 23,
-            "num_comments": 12,
-            "queries_matched": [
-              "manual order fraud checks",
-              "shopify disputes"
-            ],
-            "relevance_score": 13.3,
-            "term_hits": 5,
-            "signal_score": 2.248
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Dec 1st, 2025",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1pbmwml/ecommerce_industry_news_recap_week_of_dec_1st_2025/",
-            "score": 24,
-            "num_comments": 12,
-            "queries_matched": [
-              "refund abuse"
-            ],
-            "relevance_score": 7.3,
-            "term_hits": 3,
-            "signal_score": 2.2439
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Jan 19th, 2026",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1qhgrhr/ecommerce_industry_news_recap_week_of_jan_19th/",
-            "score": 31,
-            "num_comments": 8,
-            "queries_matched": [
-              "returns process painful",
-              "refund abuse"
-            ],
-            "relevance_score": 6.3,
-            "term_hits": 2,
-            "signal_score": 2.2318
-          },
-          {
-            "title": "How should I handle Friendly Fraud and Constant Chargebacks in My SaaS Subscription Business?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1poq4h0/how_should_i_handle_friendly_fraud_and_constant/",
-            "score": 17,
-            "num_comments": 18,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 18.3,
-            "term_hits": 5,
-            "signal_score": 2.214
-          },
-          {
-            "title": "How do you deal with friendly fraud without going crazy?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1mhd3vk/how_do_you_deal_with_friendly_fraud_without_going/",
-            "score": 28,
-            "num_comments": 41,
-            "queries_matched": [
-              "chargebacks time drain",
-              "returns process painful"
-            ],
-            "relevance_score": 12.3,
-            "term_hits": 3,
-            "signal_score": 2.2024
-          },
-          {
-            "title": "What's your take home %",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1ny5idp/whats_your_take_home/",
-            "score": 10,
-            "num_comments": 38,
-            "queries_matched": [
-              "chargebacks time drain"
-            ],
-            "relevance_score": 9.8,
-            "term_hits": 2,
-            "signal_score": 2.1723
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Sep 29th, 2025",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1ntrwox/ecommerce_industry_news_recap_week_of_sep_29th/",
-            "score": 21,
-            "num_comments": 11,
-            "queries_matched": [
-              "refund abuse"
-            ],
-            "relevance_score": 7.3,
-            "term_hits": 3,
-            "signal_score": 2.1691
-          }
-        ]
+        "matched_posts": 0,
+        "top_posts": []
       },
       "search_queries": [
         "\"shopify\" \"chargeback\" \"manual\"",
@@ -962,934 +304,9 @@
       ],
       "scores": {
         "market_score": 91.26,
-        "evidence_score": 100.0,
-        "urgency_score": 100.0,
-        "priority_score": 96.07
-      }
-    },
-    {
-      "opportunity_id": "opp_003",
-      "segment_name": "Agency client reporting",
-      "target_segment": {
-        "role": "Agency owner / account manager",
-        "company_size": "5-50",
-        "industry": "Marketing agencies"
-      },
-      "core_problem": "Monthly reporting is labor-heavy and often unclear for non-technical clients.",
-      "distribution_entry": {
-        "channel": "Agency founder communities",
-        "first_20_targets_how": "Target agencies publicly discussing reporting bottlenecks"
-      },
-      "implementation_constraint": [
-        "Cross-channel metric mapping",
-        "Integration breadth expectations"
-      ],
-      "keyword_signals": [
-        {
-          "keyword": "agencies rebuild client tool for agency operator marketing services",
-          "intent": "BOFU",
-          "priority_score": 94.17,
-          "content_id": "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
-        }
-      ],
-      "social_signals": {
-        "matched_posts": 150,
-        "top_posts": [
-          {
-            "title": "0-30k a Month - What I learnt running a marketing agency for 5 years",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1ni951d/030k_a_month_what_i_learnt_running_a_marketing/",
-            "score": 275,
-            "num_comments": 130,
-            "queries_matched": [
-              "monthly report takes too long"
-            ],
-            "relevance_score": 5.0,
-            "term_hits": 1,
-            "signal_score": 3.7712
-          },
-          {
-            "title": "If you're spending $10K+/month on Google Ads and your cost per lead went up this year, I think I know why.",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1oe6b1f/if_youre_spending_10kmonth_on_google_ads_and_your/",
-            "score": 141,
-            "num_comments": 116,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 3.5175
-          },
-          {
-            "title": "I've audited 50+ Google Ads accounts spending $10K+/month. 95% make the same 7 mistakes. Here's what I found.",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1o6hva6/ive_audited_50_google_ads_accounts_spending/",
-            "score": 131,
-            "num_comments": 95,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 9.5,
-            "term_hits": 3,
-            "signal_score": 3.4695
-          },
-          {
-            "title": "You can now import Meta data into GA4",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1o2208n/you_can_now_import_meta_data_into_ga4/",
-            "score": 143,
-            "num_comments": 37,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 3.2849
-          },
-          {
-            "title": "Google Ads click fraud is killing any confidence I had in this platform",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1qo1hgg/google_ads_click_fraud_is_killing_any_confidence/",
-            "score": 89,
-            "num_comments": 75,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 3.2155
-          },
-          {
-            "title": "we turn away clients under $30k MRR. I should've started doing it earlier",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1rg1rbt/we_turn_away_clients_under_30k_mrr_i_shouldve/",
-            "score": 79,
-            "num_comments": 62,
-            "queries_matched": [
-              "client reporting manual",
-              "monthly report takes too long"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 3.1505
-          },
-          {
-            "title": "Major Google Ads Updates You Need to Know About (December 2025)",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1pjg0j3/major_google_ads_updates_you_need_to_know_about/",
-            "score": 72,
-            "num_comments": 53,
-            "queries_matched": [
-              "GA4 Google Ads discrepancy",
-              "client reporting"
-            ],
-            "relevance_score": 12.0,
-            "term_hits": 4,
-            "signal_score": 3.0737
-          },
-          {
-            "title": "Do you think AI will replace most agency services?",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1r3jpvm/do_you_think_ai_will_replace_most_agency_services/",
-            "score": 48,
-            "num_comments": 107,
-            "queries_matched": [
-              "client reporting manual"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 3.0667
-          },
-          {
-            "title": "Client Acquisition is the Absolute Easiest Thing",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1pl9mpe/client_acquisition_is_the_absolute_easiest_thing/",
-            "score": 46,
-            "num_comments": 112,
-            "queries_matched": [
-              "client reporting manual"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 3.0594
-          },
-          {
-            "title": "Insights from 31 Google Ads accounts audited: 14 things that stood out the most",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1mdhpxt/insights_from_31_google_ads_accounts_audited_14/",
-            "score": 208,
-            "num_comments": 55,
-            "queries_matched": [
-              "GA4 Google Ads discrepancy",
-              "client reporting"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 2.9209
-          },
-          {
-            "title": "Cut wasted spend by 35%, what else can we do?",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1o1brjc/cut_wasted_spend_by_35_what_else_can_we_do/",
-            "score": 67,
-            "num_comments": 35,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.9143
-          },
-          {
-            "title": "Cold Emailing – Too Much Hype. Manual Outreach Got Much Better Results.",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1mo1z4e/cold_emailing_too_much_hype_manual_outreach_got/",
-            "score": 83,
-            "num_comments": 130,
-            "queries_matched": [
-              "client reporting manual"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.9017
-          },
-          {
-            "title": "Astroturfing Will Not Be Tolerated.",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1qcdm51/astroturfing_will_not_be_tolerated/",
-            "score": 78,
-            "num_comments": 24,
-            "queries_matched": [
-              "client reporting manual"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.892
-          },
-          {
-            "title": "Been bumping into automation/AI lately and wanna know if it’s actually worth it",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1q450xv/been_bumping_into_automationai_lately_and_wanna/",
-            "score": 33,
-            "num_comments": 78,
-            "queries_matched": [
-              "reporting automation"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.8014
-          },
-          {
-            "title": "Do you think Google will ever bring back full search term visibility?",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1njcnc9/do_you_think_google_will_ever_bring_back_full/",
-            "score": 45,
-            "num_comments": 33,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.7305
-          },
-          {
-            "title": "Client reporting feels way more manual than it should… what slows you down the most?",
-            "subreddit": "PPC",
-            "permalink": "https://www.reddit.com/r/PPC/comments/1myo7la/client_reporting_feels_way_more_manual_than_it/",
-            "score": 58,
-            "num_comments": 47,
-            "queries_matched": [
-              "client reporting"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.7143
-          },
-          {
-            "title": "10-15 Leads Per Month Or You Don’t Pay",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1rbz226/1015_leads_per_month_or_you_dont_pay/",
-            "score": 28,
-            "num_comments": 71,
-            "queries_matched": [
-              "client reporting manual",
-              "monthly report takes too long"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.7099
-          },
-          {
-            "title": "Got 50% open rates on cold emails but moving back to manual outreach (Campaign Update)",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1quoezk/got_50_open_rates_on_cold_emails_but_moving_back/",
-            "score": 33,
-            "num_comments": 49,
-            "queries_matched": [
-              "client reporting manual"
-            ],
-            "relevance_score": 7.0,
-            "term_hits": 2,
-            "signal_score": 2.6916
-          },
-          {
-            "title": "Underrated Things Prospects and Clients Actually Love",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1qqbpwo/underrated_things_prospects_and_clients_actually/",
-            "score": 54,
-            "num_comments": 17,
-            "queries_matched": [
-              "client reporting manual"
-            ],
-            "relevance_score": 10.0,
-            "term_hits": 3,
-            "signal_score": 2.6869
-          },
-          {
-            "title": "How we doubled our business in 2.5 years: from $71k to $166k MRR",
-            "subreddit": "agency",
-            "permalink": "https://www.reddit.com/r/agency/comments/1mtjnk0/how_we_doubled_our_business_in_25_years_from_71k/",
-            "score": 62,
-            "num_comments": 34,
-            "queries_matched": [
-              "client reporting manual",
-              "reporting automation"
-            ],
-            "relevance_score": 12.0,
-            "term_hits": 4,
-            "signal_score": 2.6212
-          }
-        ]
-      },
-      "search_queries": [
-        "\"marketing agency\" \"monthly report\" \"manual\"",
-        "\"ga4\" \"agency\" \"client reporting\"",
-        "\"ppc\" \"reporting\" \"hours\"",
-        "\"agency\" \"reporting analyst\" \"hiring\"",
-        "\"digital marketing\" \"client dashboard\" \"pain\""
-      ],
-      "scores": {
-        "market_score": 94.17,
-        "evidence_score": 100.0,
+        "evidence_score": 0.0,
         "urgency_score": 60.0,
-        "priority_score": 89.38
-      }
-    },
-    {
-      "opportunity_id": "opp_004",
-      "segment_name": "Property manager owner/tenant workflow",
-      "target_segment": {
-        "role": "Property manager",
-        "company_size": "2-30",
-        "industry": "Property management"
-      },
-      "core_problem": "Owner and tenant workflows are fragmented, driving monthly manual spreadsheet work.",
-      "distribution_entry": {
-        "channel": "Property management forums",
-        "first_20_targets_how": "Reach operators with 20-150 doors and reporting pain"
-      },
-      "implementation_constraint": [
-        "PM tool integrations",
-        "Data privacy in owner/tenant records"
-      ],
-      "keyword_signals": [
-        {
-          "keyword": "how to default software output plus custom excel",
-          "intent": "BOFU",
-          "priority_score": 94.05,
-          "content_id": "cnt_exp-opportunity-opp-004-03"
-        },
-        {
-          "keyword": "owner tenant workflows vs manual",
-          "intent": "BOFU",
-          "priority_score": 94.05,
-          "content_id": "cnt_exp-opportunity-opp-004-06"
-        }
-      ],
-      "social_signals": {
-        "matched_posts": 66,
-        "top_posts": [
-          {
-            "title": "How do you handle these types of people?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1nvfpy9/how_do_you_handle_these_types_of_people/",
-            "score": 2185,
-            "num_comments": 398,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 5.2,
-            "term_hits": 1,
-            "signal_score": 4.9449
-          },
-          {
-            "title": "The 5 commandments of property management. What's missing",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1p1ui2q/the_5_commandments_of_property_management_whats/",
-            "score": 146,
-            "num_comments": 42,
-            "queries_matched": [
-              "tenant communication tracking"
-            ],
-            "relevance_score": 11.2,
-            "term_hits": 4,
-            "signal_score": 3.3235
-          },
-          {
-            "title": "Sick of people 🤣",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1q028u2/sick_of_people/",
-            "score": 66,
-            "num_comments": 92,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 12.2,
-            "term_hits": 4,
-            "signal_score": 3.1669
-          },
-          {
-            "title": "Things I wish I knew when I first started in PM",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1phfyo6/things_i_wish_i_knew_when_i_first_started_in_pm/",
-            "score": 36,
-            "num_comments": 26,
-            "queries_matched": [
-              "tenant communication tracking"
-            ],
-            "relevance_score": 4.7,
-            "term_hits": 1,
-            "signal_score": 2.5086
-          },
-          {
-            "title": "End of month owner reports eating my life. How are you guys handling this?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1r82cwl/end_of_month_owner_reports_eating_my_life_how_are/",
-            "score": 19,
-            "num_comments": 45,
-            "queries_matched": [
-              "maintenance tracking software"
-            ],
-            "relevance_score": 9.7,
-            "term_hits": 4,
-            "signal_score": 2.472
-          },
-          {
-            "title": "Advice on handling a pushy and dramatic tenant?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1ni4vqc/advice_on_handling_a_pushy_and_dramatic_tenant/",
-            "score": 15,
-            "num_comments": 59,
-            "queries_matched": [
-              "tenant communication tracking"
-            ],
-            "relevance_score": 7.7,
-            "term_hits": 2,
-            "signal_score": 2.4293
-          },
-          {
-            "title": "Would You Rent to an Applicant With a Cancelled $11k Collection on Their Credit Report?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1n43axp/would_you_rent_to_an_applicant_with_a_cancelled/",
-            "score": 15,
-            "num_comments": 32,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 12.2,
-            "term_hits": 3,
-            "signal_score": 2.2046
-          },
-          {
-            "title": "What software do property managers use?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1peesiq/what_software_do_property_managers_use/",
-            "score": 8,
-            "num_comments": 85,
-            "queries_matched": [
-              "google sheets operations"
-            ],
-            "relevance_score": 5.2,
-            "term_hits": 1,
-            "signal_score": 2.1873
-          },
-          {
-            "title": "First time a tenant skipped out",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1qojgsz/first_time_a_tenant_skipped_out/",
-            "score": 10,
-            "num_comments": 21,
-            "queries_matched": [
-              "tenant communication tracking",
-              "rent collection reminders"
-            ],
-            "relevance_score": 14.2,
-            "term_hits": 5,
-            "signal_score": 2.0349
-          },
-          {
-            "title": "Guys... fellas... please stop using WhatsApp and ChatGPT to manage your rentals",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1q4yply/guys_fellas_please_stop_using_whatsapp_and/",
-            "score": 14,
-            "num_comments": 17,
-            "queries_matched": [
-              "tenant communication tracking"
-            ],
-            "relevance_score": 4.7,
-            "term_hits": 1,
-            "signal_score": 2.0186
-          },
-          {
-            "title": "Small property maintenance hacks that actually saved me time (nothing fancy)",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1q1rj0g/small_property_maintenance_hacks_that_actually/",
-            "score": 10,
-            "num_comments": 22,
-            "queries_matched": [
-              "maintenance tracking software",
-              "tenant communication tracking"
-            ],
-            "relevance_score": 6.2,
-            "term_hits": 2,
-            "signal_score": 1.9894
-          },
-          {
-            "title": "Nightmare tenant problem",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1ofnirl/nightmare_tenant_problem/",
-            "score": 7,
-            "num_comments": 24,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 7.7,
-            "term_hits": 2,
-            "signal_score": 1.9177
-          },
-          {
-            "title": "Thinking of getting a property management service – worth it?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1ngn7nc/thinking_of_getting_a_property_management_service/",
-            "score": 7,
-            "num_comments": 22,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 13.2,
-            "term_hits": 4,
-            "signal_score": 1.9071
-          },
-          {
-            "title": "Can you still get approved for an apartment with a large car loan in collections",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1nmiy2o/can_you_still_get_approved_for_an_apartment_with/",
-            "score": 5,
-            "num_comments": 48,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 5.2,
-            "term_hits": 1,
-            "signal_score": 1.876
-          },
-          {
-            "title": "Buildium - Terrible Customer Service",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1r24cwk/buildium_terrible_customer_service/",
-            "score": 6,
-            "num_comments": 25,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 7.7,
-            "term_hits": 2,
-            "signal_score": 1.869
-          },
-          {
-            "title": "How to track late fees and rent better?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1r3iwt5/how_to_track_late_fees_and_rent_better/",
-            "score": 7,
-            "num_comments": 31,
-            "queries_matched": [
-              "maintenance tracking software"
-            ],
-            "relevance_score": 3.7,
-            "term_hits": 1,
-            "signal_score": 1.852
-          },
-          {
-            "title": "Salary Evaluation",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1pia14g/salary_evaluation/",
-            "score": 6,
-            "num_comments": 22,
-            "queries_matched": [
-              "maintenance tracking software"
-            ],
-            "relevance_score": 7.2,
-            "term_hits": 3,
-            "signal_score": 1.824
-          },
-          {
-            "title": "4 years as a maintenance coordinator. I'm running out of gas.",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1rcmlea/4_years_as_a_maintenance_coordinator_im_running/",
-            "score": 6,
-            "num_comments": 25,
-            "queries_matched": [
-              "maintenance tracking software"
-            ],
-            "relevance_score": 6.2,
-            "term_hits": 2,
-            "signal_score": 1.8222
-          },
-          {
-            "title": "Tenant moved in today, signed lease + paid deposits, now stuck in approval limbo — looking for PM perspective",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1ql3dui/tenant_moved_in_today_signed_lease_paid_deposits/",
-            "score": 4,
-            "num_comments": 35,
-            "queries_matched": [
-              "rent collection reminders"
-            ],
-            "relevance_score": 10.7,
-            "term_hits": 3,
-            "signal_score": 1.8102
-          },
-          {
-            "title": "What software did you use to manage your Tenant?",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1o5bdce/what_software_did_you_use_to_manage_your_tenant/",
-            "score": 4,
-            "num_comments": 44,
-            "queries_matched": [
-              "maintenance tracking software"
-            ],
-            "relevance_score": 6.2,
-            "term_hits": 2,
-            "signal_score": 1.8075
-          }
-        ]
-      },
-      "search_queries": [
-        "\"property management\" \"owner report\" \"manual\"",
-        "\"tenant communication\" \"spreadsheet\"",
-        "\"property manager\" \"rent collection\" \"workflow\"",
-        "\"appfolio\" \"custom report\"",
-        "\"property management\" \"operations\" \"hiring\""
-      ],
-      "scores": {
-        "market_score": 94.05,
-        "evidence_score": 100.0,
-        "urgency_score": 60.0,
-        "priority_score": 89.32
-      }
-    },
-    {
-      "opportunity_id": "opp_006",
-      "segment_name": "Spreadsheet/PDF workflow fragility",
-      "target_segment": {
-        "role": "Operations admin",
-        "company_size": "5-80",
-        "industry": "SMB operations/logistics"
-      },
-      "core_problem": "Core workflows depend on fragile spreadsheets and repetitive manual data entry.",
-      "distribution_entry": {
-        "channel": "SMB ops communities",
-        "first_20_targets_how": "Reach teams reporting PDF-to-Excel pain and formula breakage"
-      },
-      "implementation_constraint": [
-        "Supplier template variance",
-        "Extraction confidence thresholds"
-      ],
-      "keyword_signals": [
-        {
-          "keyword": "core workflows depend vs manual",
-          "intent": "BOFU",
-          "priority_score": 94.05,
-          "content_id": "cnt_exp-opportunity-opp-006-04"
-        }
-      ],
-      "social_signals": {
-        "matched_posts": 63,
-        "top_posts": [
-          {
-            "title": "My 'favorite' client just sent me a 1-star review because I started charging for extra work",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qdmgaj/my_favorite_client_just_sent_me_a_1star_review/",
-            "score": 866,
-            "num_comments": 225,
-            "queries_matched": [
-              "client onboarding forms"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 4.3625
-          },
-          {
-            "title": "Unpopular opinion: Beautiful catalogs are overrated. Accurate ones are what sell.",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1r4g2qd/unpopular_opinion_beautiful_catalogs_are/",
-            "score": 73,
-            "num_comments": 45,
-            "queries_matched": [
-              "manual order fraud checks"
-            ],
-            "relevance_score": 4.5,
-            "term_hits": 2,
-            "signal_score": 2.9318
-          },
-          {
-            "title": "How do you plan on handling returns during BF/CM at scale?",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1ookg2e/how_do_you_plan_on_handling_returns_during_bfcm/",
-            "score": 29,
-            "num_comments": 32,
-            "queries_matched": [
-              "returns process painful"
-            ],
-            "relevance_score": 3.0,
-            "term_hits": 1,
-            "signal_score": 2.4124
-          },
-          {
-            "title": "Why does salesforce ERP integration feel so painful?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1n4xwcx/why_does_salesforce_erp_integration_feel_so/",
-            "score": 33,
-            "num_comments": 22,
-            "queries_matched": [
-              "spreadsheet errors"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 2.3231
-          },
-          {
-            "title": "Salesforce launches Free Suite - A forever free CRM for small businesses (competing with HubSpot &amp; Zoho)",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1ozanf1/salesforce_launches_free_suite_a_forever_free_crm/",
-            "score": 19,
-            "num_comments": 19,
-            "queries_matched": [
-              "inventory spreadsheet"
-            ],
-            "relevance_score": 5.3,
-            "term_hits": 2,
-            "signal_score": 2.1877
-          },
-          {
-            "title": "What's the most terrifyingly outdated piece of tech/process holding a serious business together you've ever seen?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1k6282k/whats_the_most_terrifyingly_outdated_piece_of/",
-            "score": 171,
-            "num_comments": 186,
-            "queries_matched": [
-              "inventory spreadsheet"
-            ],
-            "relevance_score": 8.8,
-            "term_hits": 3,
-            "signal_score": 2.1306
-          },
-          {
-            "title": "How do you choose between different business process automation platforms .",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r8rjcv/how_do_you_choose_between_different_business/",
-            "score": 6,
-            "num_comments": 18,
-            "queries_matched": [
-              "automation too expensive"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 1.6719
-          },
-          {
-            "title": "wife's opening her second location next month and realized she have zero systems that work across two places. what do she need so this doesn't collapse?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1rfak4c/wifes_opening_her_second_location_next_month_and/",
-            "score": 4,
-            "num_comments": 29,
-            "queries_matched": [
-              "inventory spreadsheet"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 1.6351
-          },
-          {
-            "title": "E-commerce Industry News Recap 🔥 Week of Aug 25th, 2025",
-            "subreddit": "ecommerce",
-            "permalink": "https://www.reddit.com/r/ecommerce/comments/1n01foq/ecommerce_industry_news_recap_week_of_aug_25th/",
-            "score": 17,
-            "num_comments": 4,
-            "queries_matched": [
-              "refund abuse"
-            ],
-            "relevance_score": 3.0,
-            "term_hits": 1,
-            "signal_score": 1.6273
-          },
-          {
-            "title": "How do you guys handle data entry from PDFs/Invoices without going crazy?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1p2of5v/how_do_you_guys_handle_data_entry_from/",
-            "score": 1,
-            "num_comments": 44,
-            "queries_matched": [
-              "automation too expensive"
-            ],
-            "relevance_score": 11.3,
-            "term_hits": 4,
-            "signal_score": 1.4651
-          },
-          {
-            "title": "Help With Resume Please",
-            "subreddit": "PropertyManagement",
-            "permalink": "https://www.reddit.com/r/PropertyManagement/comments/1poxm9p/help_with_resume_please/",
-            "score": 5,
-            "num_comments": 5,
-            "queries_matched": [
-              "google sheets operations"
-            ],
-            "relevance_score": 9.0,
-            "term_hits": 3,
-            "signal_score": 1.4594
-          },
-          {
-            "title": "What’s the best way to handle scheduling when you’re not always by the phone?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1jyoodg/whats_the_best_way_to_handle_scheduling_when/",
-            "score": 33,
-            "num_comments": 43,
-            "queries_matched": [
-              "double booking"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 1.4144
-          },
-          {
-            "title": "I automated part of my current full time job, now I'm thinking i want to do this as a business",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1lr5rab/i_automated_part_of_my_current_full_time_job_now/",
-            "score": 8,
-            "num_comments": 18,
-            "queries_matched": [
-              "automation too expensive"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 1.3777
-          },
-          {
-            "title": "Inventory Management Software for Very Small Business",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qhn7ea/inventory_management_software_for_very_small/",
-            "score": 2,
-            "num_comments": 23,
-            "queries_matched": [
-              "inventory spreadsheet"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 1.3594
-          },
-          {
-            "title": "Reporting/bookkeeping",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1r09vdc/reportingbookkeeping/",
-            "score": 3,
-            "num_comments": 11,
-            "queries_matched": [
-              "inventory spreadsheet"
-            ],
-            "relevance_score": 3.8,
-            "term_hits": 1,
-            "signal_score": 1.3182
-          },
-          {
-            "title": "Best salon commission tracking software to end payroll disputes",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1ovygtx/best_salon_commission_tracking_software_to_end/",
-            "score": 2,
-            "num_comments": 11,
-            "queries_matched": [
-              "spreadsheet errors"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 1.2868
-          },
-          {
-            "title": "I've just gotten sucker-punched by 2 Excel quotation mishaps in a row",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qga1v1/ive_just_gotten_suckerpunched_by_2_excel/",
-            "score": 2,
-            "num_comments": 10,
-            "queries_matched": [
-              "spreadsheet errors"
-            ],
-            "relevance_score": 6.8,
-            "term_hits": 2,
-            "signal_score": 1.2659
-          },
-          {
-            "title": "CRM Systems: When You Actually Need One vs When You Think You Do",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1nhfusa/crm_systems_when_you_actually_need_one_vs_when/",
-            "score": 2,
-            "num_comments": 12,
-            "queries_matched": [
-              "automation too expensive"
-            ],
-            "relevance_score": 5.3,
-            "term_hits": 2,
-            "signal_score": 1.2591
-          },
-          {
-            "title": "Numbers making sense? Looking for opinions ...",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1nho95n/numbers_making_sense_looking_for_opinions/",
-            "score": 2,
-            "num_comments": 8,
-            "queries_matched": [
-              "spreadsheet errors"
-            ],
-            "relevance_score": 8.8,
-            "term_hits": 3,
-            "signal_score": 1.2552
-          },
-          {
-            "title": "How do you verify changes when clients send revised Excel/CSV files?",
-            "subreddit": "smallbusiness",
-            "permalink": "https://www.reddit.com/r/smallbusiness/comments/1qgulif/how_do_you_verify_changes_when_clients_send/",
-            "score": 2,
-            "num_comments": 11,
-            "queries_matched": [
-              "manual reporting"
-            ],
-            "relevance_score": 5.3,
-            "term_hits": 2,
-            "signal_score": 1.2399
-          }
-        ]
-      },
-      "search_queries": [
-        "\"pdf to excel\" \"manual\" \"small business\"",
-        "\"spreadsheet\" \"operations\" \"breaking\"",
-        "\"data entry\" \"bottleneck\" \"smb\"",
-        "\"excel macro\" \"risk\" \"business\"",
-        "\"ops admin\" \"workflow\" \"manual\""
-      ],
-      "scores": {
-        "market_score": 94.05,
-        "evidence_score": 100.0,
-        "urgency_score": 60.0,
-        "priority_score": 89.32
+        "priority_score": 53.07
       }
     }
   ]

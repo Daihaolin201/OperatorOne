@@ -1,9 +1,9 @@
 # SEO Experiment Brief — exp_opportunity-opp-004_06
 
-- Generated at: 2026-03-06T00:16:27Z
+- Generated at: 2026-03-07T01:51:57Z
 - Context: `opportunity::opp_004`
 - Keyword: **owner tenant workflows vs manual** (BOFU)
-- Current shadow score: **86.05**
+- Current shadow score: **86.85**
 
 ## Hypothesis
 If we position around 'owner tenant workflows vs manual' with explicit proof and a single CTA, qualified intent quality will improve.
@@ -11,7 +11,7 @@ If we position around 'owner tenant workflows vs manual' with explicit proof and
 ## Suggested page shape
 - H1 A: Owner Tenant Workflows Vs Manual
 - H1 B: Owner Tenant Workflows Vs Manual without extra manual overhead
-- Proof block: Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness
+- Proof block: Impossible food sues to cancel earlier trademark owners
 - CTA A: Reach operators with 20-150 doors and reporting pain
 - CTA B: Start with owner pilot
 

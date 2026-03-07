@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-06T00:16:50Z",
+  "generated_at": "2026-03-07T01:53:17Z",
   "status": "ok",
-  "mode": "shadow",
+  "mode": "review",
   "auto_publish": false,
   "queue": {
     "approved": [
@@ -10,7 +10,7 @@
         "experiment_id": "exp_project-spec-proj-opp-001-client-reporti_02",
         "context_id": "project_spec::proj-opp-001-client-reporting-v1",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "agencies rebuild client tool for agency operator marketing services",
         "intent": "BOFU",
         "overall_score": 84.17,
@@ -48,118 +48,24 @@
         "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-client-reporti-02.md",
         "review_decision": {
           "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
+          "reviewed_at": "2026-03-07T01:53:17Z",
           "reason": "manual_approval",
-          "note": "capability check"
+          "note": "approved_from_studio"
         }
-      },
-      {
-        "content_id": "cnt_exp-opportunity-opp-001-04",
-        "experiment_id": "exp_opportunity-opp-001_04",
-        "context_id": "opportunity::opp_001",
-        "source_bucket": "ready",
-        "mode": "shadow",
-        "primary_keyword": "overdue invoices followed vs manual",
-        "intent": "BOFU",
-        "overall_score": 86.05,
-        "confidence": "medium",
-        "priority_score": 94.05,
-        "recommended_format": "comparison-or-usecase",
-        "title_options": [
-          "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
-          "Overdue Invoices Followed Vs Manual vs manual process: what actually changes in operations",
-          "Overdue Invoices Followed Vs Manual — decision framework for operators (Freelancer / small service owner / Prof…)"
-        ],
-        "selected_title": "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
-        "cta": "Reach out to posters discussing overdue invoices and AR frustration",
-        "source_pointers": [
-          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
-        ],
-        "stage_status": "approved",
-        "qa": {
-          "result": "pass",
-          "quality_score": 100.0,
-          "word_count": 336,
-          "keyword_hits": 4,
-          "keyword_density_pct": 1.19,
-          "risk_flags": [],
-          "checks": {
-            "word_count_ok": true,
-            "source_traceability_ok": true,
-            "evidence_depth_ok": true,
-            "keyword_density_ok": true,
-            "policy_claims_ok": true,
-            "score_floor_ok": true
-          }
-        },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-001-04.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
-      },
-      {
-        "content_id": "cnt_exp-opportunity-opp-003-04",
-        "experiment_id": "exp_opportunity-opp-003_04",
-        "context_id": "opportunity::opp_003",
-        "source_bucket": "ready",
-        "mode": "shadow",
-        "primary_keyword": "monthly reporting labor vs manual",
-        "intent": "BOFU",
-        "overall_score": 86.05,
-        "confidence": "medium",
-        "priority_score": 94.05,
-        "recommended_format": "comparison-or-usecase",
-        "title_options": [
-          "Monthly Reporting Labor Vs Manual: Practical buyer guide for teams evaluating alternatives",
-          "Monthly Reporting Labor Vs Manual vs manual process: what actually changes in operations",
-          "Monthly Reporting Labor Vs Manual — decision framework for operators (Agency owner / account manager / Market…)"
-        ],
-        "selected_title": "Monthly Reporting Labor Vs Manual: Practical buyer guide for teams evaluating alternatives",
-        "cta": "Target agencies publicly discussing reporting bottlenecks",
-        "source_pointers": [
-          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
-        ],
-        "stage_status": "approved",
-        "qa": {
-          "result": "pass",
-          "quality_score": 100.0,
-          "word_count": 340,
-          "keyword_hits": 4,
-          "keyword_density_pct": 1.176,
-          "risk_flags": [],
-          "checks": {
-            "word_count_ok": true,
-            "source_traceability_ok": true,
-            "evidence_depth_ok": true,
-            "keyword_density_ok": true,
-            "policy_claims_ok": true,
-            "score_floor_ok": true
-          }
-        },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-003-04.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
-      },
+      }
+    ],
+    "review_ready": [
       {
         "content_id": "cnt_exp-opportunity-opp-004-03",
         "experiment_id": "exp_opportunity-opp-004_03",
         "context_id": "opportunity::opp_004",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "how to default software output plus custom excel",
         "intent": "BOFU",
-        "overall_score": 86.05,
+        "overall_score": 86.85,
         "confidence": "medium",
-        "priority_score": 94.05,
+        "priority_score": 94.85,
         "recommended_format": "comparison-or-usecase",
         "title_options": [
           "How To Default Software Output Plus Custom Excel: Practical buyer guide for teams evaluating alternatives",
@@ -171,13 +77,13 @@
         "source_pointers": [
           "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
         ],
-        "stage_status": "approved",
+        "stage_status": "drafted",
         "qa": {
           "result": "pass",
           "quality_score": 100.0,
-          "word_count": 367,
+          "word_count": 292,
           "keyword_hits": 4,
-          "keyword_density_pct": 1.09,
+          "keyword_density_pct": 1.37,
           "risk_flags": [],
           "checks": {
             "word_count_ok": true,
@@ -188,26 +94,20 @@
             "score_floor_ok": true
           }
         },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-03.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-03.md"
       },
       {
         "content_id": "cnt_exp-opportunity-opp-004-06",
         "experiment_id": "exp_opportunity-opp-004_06",
         "context_id": "opportunity::opp_004",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "owner tenant workflows vs manual",
         "intent": "BOFU",
-        "overall_score": 86.05,
+        "overall_score": 86.85,
         "confidence": "medium",
-        "priority_score": 94.05,
+        "priority_score": 94.85,
         "recommended_format": "comparison-or-usecase",
         "title_options": [
           "Owner Tenant Workflows Vs Manual: Practical buyer guide for teams evaluating alternatives",
@@ -219,13 +119,13 @@
         "source_pointers": [
           "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
         ],
-        "stage_status": "approved",
+        "stage_status": "drafted",
         "qa": {
           "result": "pass",
           "quality_score": 100.0,
-          "word_count": 355,
+          "word_count": 280,
           "keyword_hits": 4,
-          "keyword_density_pct": 1.127,
+          "keyword_density_pct": 1.429,
           "risk_flags": [],
           "checks": {
             "word_count_ok": true,
@@ -236,117 +136,15 @@
             "score_floor_ok": true
           }
         },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-06.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
-      },
-      {
-        "content_id": "cnt_exp-opportunity-opp-005-04",
-        "experiment_id": "exp_opportunity-opp-005_04",
-        "context_id": "opportunity::opp_005",
-        "source_bucket": "ready",
-        "mode": "shadow",
-        "primary_keyword": "expense reimbursement remains vs manual",
-        "intent": "BOFU",
-        "overall_score": 86.05,
-        "confidence": "medium",
-        "priority_score": 94.05,
-        "recommended_format": "comparison-or-usecase",
-        "title_options": [
-          "Expense Reimbursement Remains Vs Manual: Practical buyer guide for teams evaluating alternatives",
-          "Expense Reimbursement Remains Vs Manual vs manual process: what actually changes in operations",
-          "Expense Reimbursement Remains Vs Manual — decision framework for operators (SMB owner / finance admin / General SMB…)"
-        ],
-        "selected_title": "Expense Reimbursement Remains Vs Manual: Practical buyer guide for teams evaluating alternatives",
-        "cta": "Interview SMBs with recurring reimbursement delays",
-        "source_pointers": [
-          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
-        ],
-        "stage_status": "approved",
-        "qa": {
-          "result": "pass",
-          "quality_score": 100.0,
-          "word_count": 329,
-          "keyword_hits": 4,
-          "keyword_density_pct": 1.216,
-          "risk_flags": [],
-          "checks": {
-            "word_count_ok": true,
-            "source_traceability_ok": true,
-            "evidence_depth_ok": true,
-            "keyword_density_ok": true,
-            "policy_claims_ok": true,
-            "score_floor_ok": true
-          }
-        },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-005-04.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
-      },
-      {
-        "content_id": "cnt_exp-opportunity-opp-006-04",
-        "experiment_id": "exp_opportunity-opp-006_04",
-        "context_id": "opportunity::opp_006",
-        "source_bucket": "ready",
-        "mode": "shadow",
-        "primary_keyword": "core workflows depend vs manual",
-        "intent": "BOFU",
-        "overall_score": 86.05,
-        "confidence": "medium",
-        "priority_score": 94.05,
-        "recommended_format": "comparison-or-usecase",
-        "title_options": [
-          "Core Workflows Depend Vs Manual: Practical buyer guide for teams evaluating alternatives",
-          "Core Workflows Depend Vs Manual vs manual process: what actually changes in operations",
-          "Core Workflows Depend Vs Manual — decision framework for operators (Operations admin / SMB operations/logis…)"
-        ],
-        "selected_title": "Core Workflows Depend Vs Manual: Practical buyer guide for teams evaluating alternatives",
-        "cta": "Reach teams reporting PDF-to-Excel pain and formula breakage",
-        "source_pointers": [
-          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
-        ],
-        "stage_status": "approved",
-        "qa": {
-          "result": "pass",
-          "quality_score": 100.0,
-          "word_count": 341,
-          "keyword_hits": 4,
-          "keyword_density_pct": 1.173,
-          "risk_flags": [],
-          "checks": {
-            "word_count_ok": true,
-            "source_traceability_ok": true,
-            "evidence_depth_ok": true,
-            "keyword_density_ok": true,
-            "policy_claims_ok": true,
-            "score_floor_ok": true
-          }
-        },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-006-04.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-06.md"
       },
       {
         "content_id": "cnt_exp-project-spec-proj-opp-001-invoice-follow-03",
         "experiment_id": "exp_project-spec-proj-opp-001-invoice-follow_03",
         "context_id": "project_spec::proj-opp-001-invoice-followup-v1",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "overdue invoices followed tool for freelancer small service owner",
         "intent": "BOFU",
         "overall_score": 83.87,
@@ -364,7 +162,7 @@
           "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
           "../op1_product/research/build_deploy_v1/project_spec.json"
         ],
-        "stage_status": "approved",
+        "stage_status": "drafted",
         "qa": {
           "result": "pass",
           "quality_score": 100.0,
@@ -381,21 +179,15 @@
             "score_floor_ok": true
           }
         },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-03.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-invoice-follow-03.md"
       },
       {
         "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
         "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_03",
         "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "chargeback disputes handled tool for ecommerce operator ecommerce",
         "intent": "BOFU",
         "overall_score": 83.68,
@@ -412,7 +204,7 @@
         "source_pointers": [
           "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
         ],
-        "stage_status": "approved",
+        "stage_status": "drafted",
         "qa": {
           "result": "pass",
           "quality_score": 100.0,
@@ -429,21 +221,225 @@
             "score_floor_ok": true
           }
         },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-03.md"
+      },
+      {
+        "content_id": "cnt_exp-opportunity-opp-003-04",
+        "experiment_id": "exp_opportunity-opp-003_04",
+        "context_id": "opportunity::opp_003",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "monthly reporting labor vs manual",
+        "intent": "BOFU",
+        "overall_score": 85.55,
+        "confidence": "medium",
+        "priority_score": 93.55,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Monthly Reporting Labor Vs Manual: Practical buyer guide for teams evaluating alternatives",
+          "Monthly Reporting Labor Vs Manual vs manual process: what actually changes in operations",
+          "Monthly Reporting Labor Vs Manual — decision framework for operators (Agency owner / account manager / Market…)"
+        ],
+        "selected_title": "Monthly Reporting Labor Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Target agencies publicly discussing reporting bottlenecks",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 255,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.569,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-003-04.md"
+      },
+      {
+        "content_id": "cnt_exp-blueprint-proj-opp-001-invoice-followup-04",
+        "experiment_id": "exp_blueprint-proj-opp-001-invoice-followup-_04",
+        "context_id": "blueprint::proj-opp-001-invoice-followup-pilot-v1",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "overdue invoices followed vs manual",
+        "intent": "BOFU",
+        "overall_score": 84.75,
+        "confidence": "medium",
+        "priority_score": 92.75,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
+          "Overdue Invoices Followed Vs Manual vs manual process: what actually changes in operations",
+          "Overdue Invoices Followed Vs Manual — decision framework for operators (Freelancer / small service owner in pro…)"
+        ],
+        "selected_title": "Overdue Invoices Followed Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Join the 14-day overdue-invoice pilot",
+        "source_pointers": [
+          "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 307,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.303,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-blueprint-proj-opp-001-invoice-followup-04.md"
+      },
+      {
+        "content_id": "cnt_exp-opportunity-opp-005-04",
+        "experiment_id": "exp_opportunity-opp-005_04",
+        "context_id": "opportunity::opp_005",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "expense reimbursement remains vs manual",
+        "intent": "BOFU",
+        "overall_score": 84.35,
+        "confidence": "medium",
+        "priority_score": 92.35,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Expense Reimbursement Remains Vs Manual: Practical buyer guide for teams evaluating alternatives",
+          "Expense Reimbursement Remains Vs Manual vs manual process: what actually changes in operations",
+          "Expense Reimbursement Remains Vs Manual — decision framework for operators (SMB owner / finance admin / General SMB…)"
+        ],
+        "selected_title": "Expense Reimbursement Remains Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Interview SMBs with recurring reimbursement delays",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 252,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.587,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-005-04.md"
+      },
+      {
+        "content_id": "cnt_exp-opportunity-opp-006-04",
+        "experiment_id": "exp_opportunity-opp-006_04",
+        "context_id": "opportunity::opp_006",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "core workflows depend vs manual",
+        "intent": "BOFU",
+        "overall_score": 84.35,
+        "confidence": "medium",
+        "priority_score": 92.35,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Core Workflows Depend Vs Manual: Practical buyer guide for teams evaluating alternatives",
+          "Core Workflows Depend Vs Manual vs manual process: what actually changes in operations",
+          "Core Workflows Depend Vs Manual — decision framework for operators (Operations admin / SMB operations/logis…)"
+        ],
+        "selected_title": "Core Workflows Depend Vs Manual: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach teams reporting PDF-to-Excel pain and formula breakage",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 259,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.544,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-006-04.md"
+      },
+      {
+        "content_id": "cnt_exp-opportunity-opp-004-02",
+        "experiment_id": "exp_opportunity-opp-004_02",
+        "context_id": "opportunity::opp_004",
+        "source_bucket": "ready",
+        "mode": "review",
+        "primary_keyword": "default software output plus custom excel template",
+        "intent": "BOFU",
+        "overall_score": 83.1,
+        "confidence": "medium",
+        "priority_score": 91.1,
+        "recommended_format": "comparison-or-usecase",
+        "title_options": [
+          "Default Software Output Plus Custom Excel Template: Practical buyer guide for teams evaluating alternatives",
+          "Default Software Output Plus Custom Excel Template vs manual process: what actually changes in operations",
+          "Default Software Output Plus Custom Excel Template — decision framework for operators (Property manager / Property management…)"
+        ],
+        "selected_title": "Default Software Output Plus Custom Excel Template: Practical buyer guide for teams evaluating alternatives",
+        "cta": "Reach operators with 20-150 doors and reporting pain",
+        "source_pointers": [
+          "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+        ],
+        "stage_status": "drafted",
+        "qa": {
+          "result": "pass",
+          "quality_score": 100.0,
+          "word_count": 288,
+          "keyword_hits": 4,
+          "keyword_density_pct": 1.389,
+          "risk_flags": [],
+          "checks": {
+            "word_count_ok": true,
+            "source_traceability_ok": true,
+            "evidence_depth_ok": true,
+            "keyword_density_ok": true,
+            "policy_claims_ok": true,
+            "score_floor_ok": true
+          }
+        },
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-opportunity-opp-004-02.md"
       },
       {
         "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
         "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_05",
         "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "chargeback disputes handled hoc causing avoidable checklist",
         "intent": "MOFU",
         "overall_score": 83.05,
@@ -460,7 +456,7 @@
         "source_pointers": [
           "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
         ],
-        "stage_status": "approved",
+        "stage_status": "drafted",
         "qa": {
           "result": "pass",
           "quality_score": 100.0,
@@ -477,21 +473,15 @@
             "score_floor_ok": true
           }
         },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-05.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-05.md"
       },
       {
         "content_id": "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
         "experiment_id": "exp_project-spec-proj-opp-001-chargeback-res_06",
         "context_id": "project_spec::proj-opp-001-chargeback-response-v1",
         "source_bucket": "ready",
-        "mode": "shadow",
+        "mode": "review",
         "primary_keyword": "chargeback disputes handled hoc causing avoidable template",
         "intent": "MOFU",
         "overall_score": 83.05,
@@ -508,7 +498,7 @@
         "source_pointers": [
           "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
         ],
-        "stage_status": "approved",
+        "stage_status": "drafted",
         "qa": {
           "result": "pass",
           "quality_score": 100.0,
@@ -525,92 +515,26 @@
             "score_floor_ok": true
           }
         },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
-      },
-      {
-        "content_id": "cnt_exp-handoff-opp-001-06",
-        "experiment_id": "exp_handoff-opp-001_06",
-        "context_id": "handoff::opp-001",
-        "source_bucket": "ready",
-        "mode": "shadow",
-        "primary_keyword": "overdue invoices followed manually late because checklist",
-        "intent": "MOFU",
-        "overall_score": 82.45,
-        "confidence": "medium",
-        "priority_score": 87.45,
-        "recommended_format": "playbook-or-template",
-        "title_options": [
-          "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
-          "How to fix overdue invoices are followed up manually and too late because owners… with a lightweight workflow",
-          "Overdue Invoices Followed Manually Late Because Checklist: templates, checklist, and execution plan"
-        ],
-        "selected_title": "Overdue Invoices Followed Manually Late Because Checklist: step-by-step playbook you can apply this week",
-        "cta": "Review handoff",
-        "source_pointers": [
-          "../../handoffs/product_to_marketing.json"
-        ],
-        "stage_status": "approved",
-        "qa": {
-          "result": "pass",
-          "quality_score": 100.0,
-          "word_count": 283,
-          "keyword_hits": 4,
-          "keyword_density_pct": 1.413,
-          "risk_flags": [],
-          "checks": {
-            "word_count_ok": true,
-            "source_traceability_ok": true,
-            "evidence_depth_ok": true,
-            "keyword_density_ok": true,
-            "policy_claims_ok": true,
-            "score_floor_ok": true
-          }
-        },
-        "queue_state": "approved",
-        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-handoff-opp-001-06.md",
-        "review_decision": {
-          "decision": "approved",
-          "reviewed_at": "2026-03-06T00:16:50Z",
-          "reason": "manual_approval",
-          "note": "capability check"
-        }
+        "queue_state": "review_ready",
+        "draft_path": "research/stage2_content_publish/drafts/cnt_exp-project-spec-proj-opp-001-chargeback-res-06.md"
       }
     ],
-    "review_ready": [],
     "needs_revision": [],
     "blocked": []
   },
   "counts": {
-    "approved": 12,
-    "review_ready": 0,
+    "approved": 1,
+    "review_ready": 11,
     "needs_revision": 0,
     "blocked": 0
   },
   "last_manual_review": {
-    "at": "2026-03-06T00:16:50Z",
+    "at": "2026-03-07T01:53:17Z",
     "approved": [
-      "cnt_exp-handoff-opp-001-06",
-      "cnt_exp-opportunity-opp-001-04",
-      "cnt_exp-opportunity-opp-003-04",
-      "cnt_exp-opportunity-opp-004-03",
-      "cnt_exp-opportunity-opp-004-06",
-      "cnt_exp-opportunity-opp-005-04",
-      "cnt_exp-opportunity-opp-006-04",
-      "cnt_exp-project-spec-proj-opp-001-chargeback-res-03",
-      "cnt_exp-project-spec-proj-opp-001-chargeback-res-05",
-      "cnt_exp-project-spec-proj-opp-001-chargeback-res-06",
-      "cnt_exp-project-spec-proj-opp-001-client-reporti-02",
-      "cnt_exp-project-spec-proj-opp-001-invoice-follow-03"
+      "cnt_exp-project-spec-proj-opp-001-client-reporti-02"
     ],
     "needs_revision": [],
     "reason": "manual_review_requested_changes",
-    "note": "capability check"
+    "note": "approved_from_studio"
   }
 }

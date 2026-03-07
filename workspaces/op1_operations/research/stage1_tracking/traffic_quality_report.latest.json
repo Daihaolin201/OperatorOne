@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-03-06T00:18:08+00:00",
-  "sessions_total": 905.64,
+  "generated_at": "2026-03-07T01:54:26+00:00",
+  "sessions_total": 905.66,
   "unattributed_sessions": 0.0,
   "unattributed_traffic_rate": 0.0,
-  "forecast_sessions": 905.64,
+  "forecast_sessions": 905.66,
   "forecast_share": 1.0,
   "source_mix": [
     {
       "source": "email_nurture",
-      "sessions": 662.42
+      "sessions": 662.4
     },
     {
       "source": "organic_search",
-      "sessions": 176.59
+      "sessions": 176.64
     },
     {
       "source": "linkedin",
-      "sessions": 66.63
+      "sessions": 66.62
     }
   ]
 }

@@ -1,9 +1,9 @@
 # SEO Experiment Brief — exp_opportunity-opp-005_04
 
-- Generated at: 2026-03-06T00:16:27Z
+- Generated at: 2026-03-07T01:51:57Z
 - Context: `opportunity::opp_005`
 - Keyword: **expense reimbursement remains vs manual** (BOFU)
-- Current shadow score: **86.05**
+- Current shadow score: **84.35**
 
 ## Hypothesis
 If we position around 'expense reimbursement remains vs manual' with explicit proof and a single CTA, qualified intent quality will improve.
@@ -11,7 +11,7 @@ If we position around 'expense reimbursement remains vs manual' with explicit pr
 ## Suggested page shape
 - H1 A: Expense Reimbursement Remains Vs Manual
 - H1 B: Expense Reimbursement Remains Vs Manual without extra manual overhead
-- Proof block: Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...
+- Proof block: Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)
 - CTA A: Interview SMBs with recurring reimbursement delays
 - CTA B: Start with expense pilot
 

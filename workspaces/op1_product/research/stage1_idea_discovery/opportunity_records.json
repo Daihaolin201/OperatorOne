@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-06T00:16:11.015790Z",
+  "generated_at": "2026-03-07T00:20:48.356184Z",
   "builder": "scripts/build_stage1_opportunities.py",
   "inputs": {
     "primary": "research/reddit_signals.json",
@@ -18,46 +18,33 @@
       "current_workaround": "Manual reminders via personal email and inconsistent escalation.",
       "pain_evidence": [
         {
-          "claim": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
-          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1qzkjmj/commercial_client_not_paying/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "I was chatting with a freelancer friend last week who was fuming about a client ghosting on a $2k invoice. It got me curious: how do you all deal with overdue payments? I’m not selling anything, just doing some research ...",
-          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1mh9sdj/how_do_you_actually_follow_up_on_unpaid_invoices/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "282 apps listed for this feature category on Shopify App Store",
-          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en&st_source=autocomplete",
+          "claim": "283 apps listed for this feature category on Shopify App Store",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.document_types.invoices&locale=en",
           "signal_type": "market_density",
           "source": "shopify_app_store"
         },
         {
-          "claim": "282 apps listed for this feature category on Shopify App Store",
-          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en&st_source=autocomplete",
+          "claim": "283 apps listed for this feature category on Shopify App Store",
+          "source_url": "https://apps.shopify.com/categories/orders-and-shipping-orders-invoices-and-receipts/all?feature_handles%5B%5D=cf.invoices_and_receipts.customization.invoice_numbers&locale=en",
           "signal_type": "market_density",
           "source": "shopify_app_store"
         }
       ],
       "source_coverage": {
         "distinct_sources": [
-          "reddit_operator_communities",
           "shopify_app_store"
         ],
-        "distinct_source_count": 2,
+        "distinct_source_count": 1,
         "min_required": 2,
-        "min_sources_met": true
+        "min_sources_met": false
       },
       "budget_signal": {
         "exists": true,
         "evidence": "Inferred from discussion around tooling cost/automation demand."
       },
       "urgency_signal": {
-        "exists": true,
-        "evidence": "Inferred from loss/time-pressure language in evidence."
+        "exists": false,
+        "evidence": "No immediate urgency signal in selected evidence."
       },
       "distribution_entry": {
         "channel": "Freelancer and small-business communities",
@@ -69,11 +56,11 @@
       ],
       "hard_gate_check": {
         "buyer_clear": true,
-        "problem_evidenced": true,
+        "problem_evidenced": false,
         "reachable_users": true,
         "mvp_in_14_days": true,
-        "min_distinct_sources_met": true,
-        "pass": true
+        "min_distinct_sources_met": false,
+        "pass": false
       }
     },
     {
@@ -87,25 +74,13 @@
       "current_workaround": "Manual evidence gathering from order systems and customer support logs.",
       "pain_evidence": [
         {
-          "claim": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear.  Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
-          "source_url": "https://www.reddit.com/r/ecommerce/comments/1qci3a4/just_got_charged_back_3400_in_one_day_and_i/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "When I launched my shopify store I was doing maybe 10 orders a week and it was totally manageable, just pack everything up after dinner and drop it at the post office the next morning. Now I'm at like 150 orders a week a...",
-          "source_url": "https://www.reddit.com/r/ecommerce/comments/1pt6jzb/getting_buried_under_order_fulfillment_and_i_dont/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1221 reviews)",
+          "claim": "IP blocker and bot blocker for fraud prevention & block ip (1225 reviews)",
           "source_url": "https://apps.shopify.com/blockify",
           "signal_type": "intent",
           "source": "shopify_app_store"
         },
         {
-          "claim": "Automate everything and get back to business (8213 reviews)",
+          "claim": "Automate everything and get back to business (8243 reviews)",
           "source_url": "https://apps.shopify.com/flow",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -113,20 +88,19 @@
       ],
       "source_coverage": {
         "distinct_sources": [
-          "reddit_operator_communities",
           "shopify_app_store"
         ],
-        "distinct_source_count": 2,
+        "distinct_source_count": 1,
         "min_required": 2,
-        "min_sources_met": true
+        "min_sources_met": false
       },
       "budget_signal": {
         "exists": true,
         "evidence": "Inferred from discussion around tooling cost/automation demand."
       },
       "urgency_signal": {
-        "exists": true,
-        "evidence": "Inferred from loss/time-pressure language in evidence."
+        "exists": false,
+        "evidence": "No immediate urgency signal in selected evidence."
       },
       "distribution_entry": {
         "channel": "Ecommerce communities",
@@ -138,11 +112,11 @@
       ],
       "hard_gate_check": {
         "buyer_clear": true,
-        "problem_evidenced": true,
+        "problem_evidenced": false,
         "reachable_users": true,
         "mvp_in_14_days": true,
-        "min_distinct_sources_met": true,
-        "pass": true
+        "min_distinct_sources_met": false,
+        "pass": false
       }
     },
     {
@@ -156,19 +130,7 @@
       "current_workaround": "Manual exports and custom spreadsheet/report rewriting.",
       "pain_evidence": [
         {
-          "claim": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
-          "source_url": "https://www.reddit.com/r/agency/comments/1ni951d/030k_a_month_what_i_learnt_running_a_marketing/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "I manage Google Ads for home service and contractor businesses - plumbers, HVAC, roofing, that kind of thing. Most of them are spending anywhere from $8K to $30K/month.  Over the last 6-8 months, I keep seeing the same p...",
-          "source_url": "https://www.reddit.com/r/PPC/comments/1oe6b1f/if_youre_spending_10kmonth_on_google_ads_and_your/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "Add plug-n-play customisable sections to any theme & page (2284 reviews)",
+          "claim": "Add plug-n-play customisable sections to any theme & page (2288 reviews)",
           "source_url": "https://apps.shopify.com/section-factory",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -182,12 +144,11 @@
       ],
       "source_coverage": {
         "distinct_sources": [
-          "reddit_operator_communities",
           "shopify_app_store"
         ],
-        "distinct_source_count": 2,
+        "distinct_source_count": 1,
         "min_required": 2,
-        "min_sources_met": true
+        "min_sources_met": false
       },
       "budget_signal": {
         "exists": true,
@@ -207,11 +168,11 @@
       ],
       "hard_gate_check": {
         "buyer_clear": true,
-        "problem_evidenced": true,
+        "problem_evidenced": false,
         "reachable_users": true,
         "mvp_in_14_days": true,
-        "min_distinct_sources_met": true,
-        "pass": true
+        "min_distinct_sources_met": false,
+        "pass": false
       }
     },
     {
@@ -224,18 +185,6 @@
       "core_problem": "Owner and tenant workflows are fragmented, driving monthly manual spreadsheet work.",
       "current_workaround": "Default PM software output plus custom Excel edits.",
       "pain_evidence": [
-        {
-          "claim": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
-          "source_url": "https://www.reddit.com/r/PropertyManagement/comments/1nvfpy9/how_do_you_handle_these_types_of_people/",
-          "signal_type": "pain",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "It does not help. If anything, it makes people automatically annoyed. Call and talk. We are human beings and we will work with you if you communicate. Asking AI to quote a bunch of nonsense (which usually doesn’t apply) ...",
-          "source_url": "https://www.reddit.com/r/PropertyManagement/comments/1qq22v1/i_beg_all_tenants_please_stop_using_chat_gpt_for/",
-          "signal_type": "pain",
-          "source": "reddit_operator_communities"
-        },
         {
           "claim": "Impossible food sues to cancel earlier trademark owners",
           "source_url": "https://impossiblehq.com/impossible-foods-lawsuit-statement/",
@@ -251,12 +200,11 @@
       ],
       "source_coverage": {
         "distinct_sources": [
-          "hackernews",
-          "reddit_operator_communities"
+          "hackernews"
         ],
-        "distinct_source_count": 2,
+        "distinct_source_count": 1,
         "min_required": 2,
-        "min_sources_met": true
+        "min_sources_met": false
       },
       "budget_signal": {
         "exists": true,
@@ -276,11 +224,11 @@
       ],
       "hard_gate_check": {
         "buyer_clear": true,
-        "problem_evidenced": true,
+        "problem_evidenced": false,
         "reachable_users": true,
         "mvp_in_14_days": true,
-        "min_distinct_sources_met": true,
-        "pass": true
+        "min_distinct_sources_met": false,
+        "pass": false
       }
     },
     {
@@ -294,19 +242,7 @@
       "current_workaround": "Shared sheet + end-of-month manual reconciliation.",
       "pain_evidence": [
         {
-          "claim": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
-          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1pdax88/i_caught_an_employee_submitting_fake_expense/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "Every end of the month turns into this massive chore chasing down missing receipts, checking if that Starbucks charge was a client meeting or just coffee, sorting random Venmo reimbursements, etc. I thought I could handl...",
-          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1o6dmvd/how_do_you_all_handle_employee_expenses_without/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2317 reviews)",
+          "claim": "Invoice generator for PDF invoices, quotes & packing slips. (2318 reviews)",
           "source_url": "https://apps.shopify.com/order-printer-pro",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -320,20 +256,19 @@
       ],
       "source_coverage": {
         "distinct_sources": [
-          "reddit_operator_communities",
           "shopify_app_store"
         ],
-        "distinct_source_count": 2,
+        "distinct_source_count": 1,
         "min_required": 2,
-        "min_sources_met": true
+        "min_sources_met": false
       },
       "budget_signal": {
         "exists": true,
         "evidence": "Inferred from discussion around tooling cost/automation demand."
       },
       "urgency_signal": {
-        "exists": true,
-        "evidence": "Inferred from loss/time-pressure language in evidence."
+        "exists": false,
+        "evidence": "No immediate urgency signal in selected evidence."
       },
       "distribution_entry": {
         "channel": "SMB operations communities",
@@ -345,11 +280,11 @@
       ],
       "hard_gate_check": {
         "buyer_clear": true,
-        "problem_evidenced": true,
+        "problem_evidenced": false,
         "reachable_users": true,
         "mvp_in_14_days": true,
-        "min_distinct_sources_met": true,
-        "pass": true
+        "min_distinct_sources_met": false,
+        "pass": false
       }
     },
     {
@@ -363,19 +298,7 @@
       "current_workaround": "Manual copy-paste from PDFs into spreadsheets and brittle formulas/macros.",
       "pain_evidence": [
         {
-          "claim": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape.  I'm not talking about just \"old\" tech but things like:  1. A shared network drive folder structur...",
-          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1k6282k/whats_the_most_terrifyingly_outdated_piece_of/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "Hi everyone as the title states…long story short my kindness got the best of me and I’m getting emotionally curb stomped.  About 2 months ago I had a lead reach out to me saying they needed immediate help with their mark...",
-          "source_url": "https://www.reddit.com/r/smallbusiness/comments/1ni460m/i_messed_up_hard_and_im_hoping_others_can_learn/",
-          "signal_type": "money_loss",
-          "source": "reddit_operator_communities"
-        },
-        {
-          "claim": "Sync your sales channel with QuickBooks Online (2991 reviews)",
+          "claim": "Sync your sales channel with QuickBooks Online (2994 reviews)",
           "source_url": "https://apps.shopify.com/qbconnector",
           "signal_type": "intent",
           "source": "shopify_app_store"
@@ -389,12 +312,11 @@
       ],
       "source_coverage": {
         "distinct_sources": [
-          "reddit_operator_communities",
           "shopify_app_store"
         ],
-        "distinct_source_count": 2,
+        "distinct_source_count": 1,
         "min_required": 2,
-        "min_sources_met": true
+        "min_sources_met": false
       },
       "budget_signal": {
         "exists": true,
@@ -414,11 +336,11 @@
       ],
       "hard_gate_check": {
         "buyer_clear": true,
-        "problem_evidenced": true,
+        "problem_evidenced": false,
         "reachable_users": true,
         "mvp_in_14_days": true,
-        "min_distinct_sources_met": true,
-        "pass": true
+        "min_distinct_sources_met": false,
+        "pass": false
       }
     }
   ]

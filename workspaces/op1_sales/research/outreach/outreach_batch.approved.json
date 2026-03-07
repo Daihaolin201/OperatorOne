@@ -1,35 +1,21 @@
 {
-  "batch_id": "batch-2026-03-06T001729+0000",
-  "generated_at": "2026-03-06T00:17:29+00:00",
+  "batch_id": "batch-2026-03-07T015404+0000",
+  "generated_at": "2026-03-07T01:54:04+00:00",
   "approval_required": true,
   "approved": true,
   "mode": "approval_required",
   "segment": {
-    "opportunity_id": "opp_005",
-    "segment_name": "Expense reimbursement control"
+    "opportunity_id": "opp_003",
+    "segment_name": "Agency client reporting"
   },
-  "lead_ids": [
-    "opp_005-lead-001",
-    "opp_005-lead-002",
-    "opp_005-lead-003",
-    "opp_005-lead-004",
-    "opp_005-lead-005",
-    "opp_005-lead-006",
-    "opp_005-lead-007",
-    "opp_005-lead-008",
-    "opp_005-lead-009",
-    "opp_005-lead-010",
-    "opp_005-lead-014",
-    "opp_005-lead-015",
-    "opp_005-lead-020"
-  ],
-  "eligible_count": 13,
+  "lead_ids": [],
+  "eligible_count": 0,
   "dispatch_policy": {
     "max_send_per_day": 20,
     "frequency_cap_hours": 48,
     "channel_fallback": "manual_export"
   },
-  "approved_at": "2026-03-06T00:17:29+00:00",
-  "approved_by": "manager-check",
-  "approval_note": "capability check"
+  "approved_at": "2026-03-07T01:54:08+00:00",
+  "approved_by": "studio_user",
+  "approval_note": "approved in studio"
 }

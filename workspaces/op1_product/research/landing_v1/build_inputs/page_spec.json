@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-06T00:16:21Z",
+  "generated_at": "2026-03-07T02:11:00Z",
   "page_spec_version": "1.1",
   "project_id": "proj-opp-001-invoice-followup-v1",
   "adapter_name": "invoice-followup",
@@ -36,7 +36,6 @@
         "title": "Late invoices quietly damage weekly cashflow",
         "core_pain": "Overdue invoices are followed up manually and too late because owners avoid awkward collection messages.",
         "pain_points": [
-          "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
           "Prioritize overdue invoices by value and aging bucket.",
           "Route ghosting vs. late-payment scenarios with explicit rules."
         ],
@@ -49,7 +48,6 @@
       "props": {
         "title": "What this approach is grounded in",
         "items": [
-          "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
           "Prioritize overdue invoices by value and aging bucket.",
           "Route ghosting vs. late-payment scenarios with explicit rules."
         ]
@@ -62,8 +60,8 @@
         "title": "What improves in the first 14 days",
         "items": [
           "Move from ad-hoc chasing to a repeatable receivables queue.",
-          "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him o…",
-          "Prioritize overdue invoices by value and aging bucket."
+          "Prioritize overdue invoices by value and aging bucket.",
+          "Route ghosting vs. late-payment scenarios with explicit rules."
         ]
       }
     },

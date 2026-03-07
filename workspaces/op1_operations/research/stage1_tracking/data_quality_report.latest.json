@@ -1,12 +1,12 @@
 {
-  "generated_at": "2026-03-06T00:18:08+00:00",
-  "event_count": 88,
+  "generated_at": "2026-03-07T01:54:26+00:00",
+  "event_count": 46,
   "duplicate_count": 0,
   "duplicate_rate": 0.0,
   "schema_missing_required": {},
-  "freshness_hours": 0.02,
+  "freshness_hours": 0.0,
   "events_by_adapter": {
-    "marketing_campaign_shadow": 48,
+    "marketing_campaign_shadow": 6,
     "sales_conversion_scoreboard": 1,
     "sales_conversion_sim": 20,
     "sales_outreach_sim": 19
