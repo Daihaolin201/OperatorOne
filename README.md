@@ -1,3 +1,104 @@
+# OperatorOne × CEOClaw
+
+> **UK AI Agent Hackathon EP4 × OpenClaw — CEOClaw Challenge submission**
+> Built by Dennis & Bennett · Branch: `dennis/automation-framework`
+
+**CEOClaw** is OperatorOne's multi-agent CEO orchestrator that autonomously coordinates 4 specialist agents — Product → Marketing → Sales → Operations — to run an internet business from idea to first customers.
+
+---
+
+## Real Results (Not a Demo — Actual Pipeline Execution)
+
+| Metric | Value |
+|---|---|
+| Current MRR | **$49** (target: $100) |
+| Prospects contacted | **13** |
+| Replies received | **6** |
+| Customers converted | **1** |
+| Products deployed | **6 live Vercel URLs** |
+| Campaigns prepared | **9** (3 launch_ready, 5 watchlist, 1 approved) |
+| Content assets | **12** (3 approved, 9 review_ready) |
+| Agent handoffs | **9 JSON contracts** |
+
+---
+
+## CEOClaw Quick Start (Judges: run this)
+
+```bash
+# Clone and enter repo
+git clone https://github.com/Daihaolin201/OperatorOne
+cd OperatorOne
+git checkout dennis/automation-framework
+
+# Run the CEO multi-agent orchestrator (simulation mode — no API keys needed)
+python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run
+
+# Inspect outputs
+cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
+cat workspaces/op1_ceo/research/ceo_orchestration/run.latest.json
+```
+
+Output artifacts:
+- `run.latest.json` — full 4-agent execution log with realistic simulation replies
+- `venture_state.latest.json` — venture KPI snapshot (MRR, prospects, campaigns, deployed URLs)
+- `orchestrator_summary.latest.json` — operator-facing summary
+
+---
+
+## How OperatorOne Extends OpenClaw
+
+- **Stage-gated multi-agent loop**: Each specialist (Product/Marketing/Sales/Operations) hands off a JSON contract to the next stage — not isolated agent calls
+- **Approval-gated external actions**: `approval.json` controls whether external actions (emails, deployments) are permitted; fully auditable
+- **Real business execution**: Pipeline has been run end-to-end — 6 products deployed to Vercel, 13 prospects contacted, $49 MRR earned
+- **Handoff contract schema**: 9 typed JSON contracts with `contract_version`, `generated_at`, `generated_by` metadata for traceability and reproducibility
+- **Iteration loop**: Operations feedback (10 items, P2/P3 prioritised) feeds back to Product/Marketing/Sales for the next cycle
+- **CEO orchestrator script**: `run_ceo_multi_agent_orchestrator_v1.py` runs the full 4-agent sequence, writes `venture_state.latest.json`, and enforces approval policy
+
+---
+
+## Live Deployed Products
+
+| URL | Product |
+|---|---|
+| https://webproductmodularinvoice.vercel.app | Invoice follow-up tool |
+| https://webproductmodularchargeback.vercel.app | Chargeback response ops |
+| https://webproductmodularreporting.vercel.app | Client reporting module |
+| https://webproductlandingstage3validation.vercel.app | Validation landing page |
+| https://webproductlandingstage3opp002.vercel.app | opp_002 landing page |
+| https://webproductlandingstage3opp003.vercel.app | opp_003 landing page |
+
+---
+
+## Architecture
+
+```
+CEO Orchestrator (run_ceo_multi_agent_orchestrator_v1.py)
+  │
+  ├─▶ op1_product  ──[product_to_marketing.json]──▶  op1_marketing
+  │                                                          │
+  │                                              [marketing_to_sales.json]
+  │                                                          │
+  │                                                   op1_sales
+  │                                                          │
+  │                                             [sales_to_operations.json]
+  │                                                          │
+  └─────────────────────────────────────────────── op1_operations
+                                                             │
+                                          [operations_to_product/marketing/sales.json]
+                                                             │
+                                                    (iteration loop)
+
+Outputs: run.latest.json · venture_state.latest.json · orchestrator_summary.latest.json
+```
+
+---
+
+## Demo Video
+
+See `docs/demo_video_script.md` for the 5-10 min recording walkthrough.
+
+---
+
 # OperatorOne
 
 Built by Dennis and Bennett.

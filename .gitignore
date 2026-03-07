@@ -49,3 +49,29 @@ workspaces/*/research/top3_briefs.md
 
 # Stage1 marketing SEO mirrors/brief outputs (regenerable)
 workspaces/*/research/stage1_marketing_seo/input/mirror.latest/
+
+# Turborepo
+.turbo/
+**/.turbo/
+
+# Next.js
+**/.next/
+**/out/
+
+# Build outputs
+**/dist/
+**/build/
+
+# pnpm
+**/node_modules/
+
+# Test coverage
+**/coverage/
+**/coverage.json
+
+# Environment files (app-level)
+apps/**/.env.local
+apps/**/.env.*.local
+
+# Sisyphus agent runtime state
+.sisyphus/

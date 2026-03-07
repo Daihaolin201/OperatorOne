@@ -1,0 +1,59 @@
+{
+  "venture_id": "venture_20260307_214133",
+  "generated_at": "2026-03-07T21:41:33.572427+00:00",
+  "goal": "Reach first $100 MRR with disciplined experimentation",
+  "constraints": {
+    "target_mrr_usd": 100,
+    "max_days": 14,
+    "max_cash_spend_usd": 200
+  },
+  "stage": "OPERATIONS",
+  "status": "completed",
+  "kpi": {
+    "mrr_usd": 49.0,
+    "prospects_contacted": 13,
+    "replies_received": 6,
+    "customers_converted": 1
+  },
+  "deployed_urls": [
+    "https://webproductmodularinvoice.vercel.app",
+    "https://webproductmodularchargeback.vercel.app",
+    "https://webproductmodularreporting.vercel.app",
+    "https://webproductlandingstage3validation.vercel.app",
+    "https://webproductlandingstage3opp002.vercel.app",
+    "https://webproductlandingstage3opp003.vercel.app"
+  ],
+  "gates": {
+    "go_to_marketing": true,
+    "go_to_sales": true,
+    "go_to_operations": true
+  },
+  "agent_outcomes": [
+    {
+      "agent_id": "op1_product",
+      "ok": true,
+      "duration_ms": 7654
+    },
+    {
+      "agent_id": "op1_marketing",
+      "ok": true,
+      "duration_ms": 3992
+    },
+    {
+      "agent_id": "op1_sales",
+      "ok": true,
+      "duration_ms": 7213
+    },
+    {
+      "agent_id": "op1_operations",
+      "ok": true,
+      "duration_ms": 4685
+    }
+  ],
+  "next_actions": [
+    "Audit outreach relevance and tighten targeting + permission controls.",
+    "Design low-risk pilot offer with ROI proof and objection-handling script.",
+    "Triaged review with owner assignment and hypothesis for measurable KPI lift.",
+    "Simplify first-time setup and ship guided checklist for primary job-to-be-done."
+  ]
+}
