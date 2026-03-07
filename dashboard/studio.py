@@ -429,6 +429,71 @@ class StudioService:
         except Exception:
             return None
 
+    def _openclaw_profile_config_path(self) -> Optional[Path]:
+        try:
+            proc = subprocess.run(
+                ["openclaw", "--profile", self.profile, "config", "file"],
+                cwd=str(self.repo_root),
+                capture_output=True,
+                text=True,
+                timeout=20,
+                check=False,
+            )
+            if proc.returncode != 0:
+                return None
+            lines = [line.strip() for line in (proc.stdout or "").splitlines() if line.strip()]
+            if not lines:
+                return None
+            raw_path = lines[-1]
+            return Path(raw_path).expanduser().resolve()
+        except Exception:
+            return None
+
+    def _zai_core_profile_status(self) -> Dict[str, Any]:
+        manifest = self._read_json(self.repo_root / "openclaw/agents.manifest.json", {})
+        expected_primary = str(manifest.get("profileDefaultModel") or "").strip()
+        expected_fallbacks = [str(x).strip() for x in (manifest.get("profileModelFallbacks") or []) if str(x).strip()]
+
+        cfg_path = self._openclaw_profile_config_path()
+        cfg = self._read_json(cfg_path, {}) if cfg_path else {}
+
+        defaults = (((cfg.get("agents") or {}).get("defaults") or {}).get("model") or {}) if isinstance(cfg, dict) else {}
+        actual_primary = str(defaults.get("primary") or "").strip()
+        raw_fallbacks = defaults.get("fallbacks")
+        if isinstance(raw_fallbacks, list):
+            actual_fallbacks = [str(x).strip() for x in raw_fallbacks if str(x).strip()]
+        elif isinstance(raw_fallbacks, str) and raw_fallbacks.strip():
+            actual_fallbacks = [raw_fallbacks.strip()]
+        else:
+            actual_fallbacks = []
+
+        env_cfg = (cfg.get("env") or {}) if isinstance(cfg, dict) else {}
+        zai_key = env_cfg.get("ZAI_API_KEY")
+        has_zai_key = isinstance(zai_key, str) and bool(zai_key.strip())
+
+        provider_ok = actual_primary.startswith("zai/")
+        primary_ok = bool(expected_primary and actual_primary == expected_primary)
+        fallbacks_ok = actual_fallbacks == expected_fallbacks if expected_fallbacks else True
+        all_ok = bool(cfg_path) and has_zai_key and provider_ok and primary_ok and fallbacks_ok
+
+        return {
+            "ok": all_ok,
+            "profile": self.profile,
+            "configPath": str(cfg_path) if cfg_path else None,
+            "expectedPrimary": expected_primary,
+            "actualPrimary": actual_primary,
+            "expectedFallbacks": expected_fallbacks,
+            "actualFallbacks": actual_fallbacks,
+            "hasZaiApiKey": has_zai_key,
+            "checks": {
+                "configPath": bool(cfg_path),
+                "providerZai": provider_ok,
+                "primaryMatch": primary_ok,
+                "fallbacksMatch": fallbacks_ok,
+                "zaiApiKeyPresent": has_zai_key,
+            },
+        }
+
     def _append_deployment_record(self, record: Dict[str, Any]) -> None:
         with self.store_lock:
             payload = self._load_deployments()
@@ -495,6 +560,27 @@ class StudioService:
             return ""
         return raw[-2000:]
 
+    def _extract_agent_runtime_meta(self, payload: Optional[Dict[str, Any]]) -> Dict[str, Any]:
+        if not isinstance(payload, dict):
+            return {}
+        result = payload.get("result") or {}
+        meta = result.get("meta") or {}
+        agent_meta = meta.get("agentMeta") or {}
+
+        provider = str(agent_meta.get("provider") or "").strip() or None
+        model = str(agent_meta.get("model") or "").strip() or None
+        session_id = str(agent_meta.get("sessionId") or "").strip() or None
+
+        usage = agent_meta.get("lastCallUsage") or agent_meta.get("usage") or {}
+        usage_out = usage if isinstance(usage, dict) else {}
+
+        return {
+            "provider": provider,
+            "model": model,
+            "sessionId": session_id,
+            "usage": usage_out,
+        }
+
     def _run_agent_turn(self, *, agent_id: str, message: str, timeout: int = 75) -> Dict[str, Any]:
         started = now_dt()
         cmd = [
@@ -523,6 +609,7 @@ class StudioService:
             ended = now_dt()
             payload = self._extract_json_object(proc.stdout)
             reply_text = self._extract_agent_text_payload(payload, proc.stdout)
+            runtime_meta = self._extract_agent_runtime_meta(payload)
             return {
                 "ok": proc.returncode == 0,
                 "code": proc.returncode,
@@ -533,6 +620,10 @@ class StudioService:
                 "stderrTail": (proc.stderr or "")[-1200:],
                 "startedAt": started.isoformat(),
                 "endedAt": ended.isoformat(),
+                "provider": runtime_meta.get("provider"),
+                "model": runtime_meta.get("model"),
+                "sessionId": runtime_meta.get("sessionId"),
+                "usage": runtime_meta.get("usage") or {},
             }
         except Exception as exc:  # noqa: BLE001
             ended = now_dt()
@@ -546,6 +637,10 @@ class StudioService:
                 "stderrTail": str(exc),
                 "startedAt": started.isoformat(),
                 "endedAt": ended.isoformat(),
+                "provider": None,
+                "model": None,
+                "sessionId": None,
+                "usage": {},
             }
 
     def _relay_stage_agents(
@@ -599,13 +694,30 @@ class StudioService:
             "summary": stage_summary or {},
         }
 
+        required_provider = str(payload.get("relayRequiredProvider") or "zai").strip().lower()
+        required_model_prefix = str(payload.get("relayRequiredModelPrefix") or "glm-").strip().lower()
+        allow_model_fallback = bool(payload.get("allowRelayModelFallback", False))
+
+        def _relay_model_compliant(res: Dict[str, Any]) -> bool:
+            provider = str(res.get("provider") or "").strip().lower()
+            model = str(res.get("model") or "").strip().lower()
+            provider_ok = True if not required_provider else provider == required_provider
+            model_ok = True if not required_model_prefix else model.startswith(required_model_prefix)
+            return bool(res.get("ok")) and provider_ok and model_ok
+
         owner_request = {
             **base_context,
             "relayRole": "owner",
+            "modelPolicy": {
+                "requiredProvider": required_provider,
+                "requiredModelPrefix": required_model_prefix,
+                "allowModelFallback": allow_model_fallback,
+            },
             "request": "请读取你工作区内相关最新产物，输出紧凑 JSON：{ack,summary,next_actions,risks}。",
         }
         owner_res = self._run_agent_turn(agent_id=owner_agent, message=json.dumps(owner_request, ensure_ascii=False), timeout=75)
         owner_reply = str(owner_res.get("reply") or "")
+        owner_compliant = _relay_model_compliant(owner_res)
 
         self._append_agent_relay_event(
             {
@@ -617,6 +729,9 @@ class StudioService:
                 "agentId": owner_agent,
                 "relayRole": "owner",
                 "ok": bool(owner_res.get("ok")),
+                "provider": owner_res.get("provider"),
+                "model": owner_res.get("model"),
+                "modelCompliant": owner_compliant,
                 "durationMs": owner_res.get("durationMs"),
                 "reply": owner_reply[:800],
                 "error": owner_res.get("stderrTail") if not owner_res.get("ok") else None,
@@ -624,6 +739,19 @@ class StudioService:
         )
 
         notify_results: List[Dict[str, Any]] = []
+        compliance_rows: List[Dict[str, Any]] = [
+            {
+                "agentId": owner_agent,
+                "relayRole": "owner",
+                "ok": bool(owner_res.get("ok")),
+                "provider": owner_res.get("provider"),
+                "model": owner_res.get("model"),
+                "modelCompliant": owner_compliant,
+                "durationMs": owner_res.get("durationMs"),
+                "error": owner_res.get("stderrTail") if not owner_res.get("ok") else None,
+            }
+        ]
+
         for target in notify_agents:
             req = {
                 **base_context,
@@ -631,16 +759,37 @@ class StudioService:
                 "fromAgent": owner_agent,
                 "toAgent": target,
                 "ownerReply": owner_reply[:1200],
+                "modelPolicy": {
+                    "requiredProvider": required_provider,
+                    "requiredModelPrefix": required_model_prefix,
+                    "allowModelFallback": allow_model_fallback,
+                },
                 "request": "请确认是否可接棒下一阶段，并输出 JSON：{ack,ready,next_inputs_needed,risks}。",
             }
             res = self._run_agent_turn(agent_id=target, message=json.dumps(req, ensure_ascii=False), timeout=60)
             reply = str(res.get("reply") or "")
+            compliant = _relay_model_compliant(res)
             notify_results.append(
                 {
                     "agentId": target,
                     "ok": bool(res.get("ok")),
+                    "provider": res.get("provider"),
+                    "model": res.get("model"),
+                    "modelCompliant": compliant,
                     "reply": reply[:500],
                     "durationMs": res.get("durationMs"),
+                }
+            )
+            compliance_rows.append(
+                {
+                    "agentId": target,
+                    "relayRole": "downstream",
+                    "ok": bool(res.get("ok")),
+                    "provider": res.get("provider"),
+                    "model": res.get("model"),
+                    "modelCompliant": compliant,
+                    "durationMs": res.get("durationMs"),
+                    "error": res.get("stderrTail") if not res.get("ok") else None,
                 }
             )
             self._append_agent_relay_event(
@@ -653,24 +802,61 @@ class StudioService:
                     "agentId": target,
                     "relayRole": "downstream",
                     "ok": bool(res.get("ok")),
+                    "provider": res.get("provider"),
+                    "model": res.get("model"),
+                    "modelCompliant": compliant,
                     "durationMs": res.get("durationMs"),
                     "reply": reply[:800],
                     "error": res.get("stderrTail") if not res.get("ok") else None,
                 }
             )
 
+        providers_seen = sorted({str(x.get("provider")).strip() for x in compliance_rows if x.get("provider")})
+        models_seen = sorted({str(x.get("model")).strip() for x in compliance_rows if x.get("model")})
+        non_compliant = [
+            {
+                "agentId": x.get("agentId"),
+                "relayRole": x.get("relayRole"),
+                "ok": x.get("ok"),
+                "provider": x.get("provider"),
+                "model": x.get("model"),
+                "error": x.get("error"),
+            }
+            for x in compliance_rows
+            if not x.get("modelCompliant")
+        ]
+
+        compliant_strict = len(non_compliant) == 0
+        compliance_ok = compliant_strict if not allow_model_fallback else all(bool(x.get("ok")) for x in compliance_rows)
+
         return {
             "enabled": True,
             "stage": stage,
             "action": action,
+            "modelPolicy": {
+                "requiredProvider": required_provider,
+                "requiredModelPrefix": required_model_prefix,
+                "allowModelFallback": allow_model_fallback,
+            },
             "owner": {
                 "agentId": owner_agent,
                 "ok": bool(owner_res.get("ok")),
+                "provider": owner_res.get("provider"),
+                "model": owner_res.get("model"),
+                "modelCompliant": owner_compliant,
                 "reply": owner_reply[:500],
                 "durationMs": owner_res.get("durationMs"),
             },
             "notifications": notify_results,
             "handoffs": handoffs,
+            "compliance": {
+                "ok": compliance_ok,
+                "strictCompliant": compliant_strict,
+                "strictMode": not allow_model_fallback,
+                "providersSeen": providers_seen,
+                "modelsSeen": models_seen,
+                "nonCompliant": non_compliant,
+            },
         }
 
     def _copy_artifacts(
@@ -3781,6 +3967,23 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             }
         )
 
+        zai_profile = self._zai_core_profile_status()
+        extra_checks.append(
+            {
+                "name": "zai_core_profile",
+                "status": "passed" if zai_profile.get("ok") else "failed",
+                "summary": {
+                    "profile": zai_profile.get("profile"),
+                    "configPath": zai_profile.get("configPath"),
+                    "expectedPrimary": zai_profile.get("expectedPrimary"),
+                    "actualPrimary": zai_profile.get("actualPrimary"),
+                    "expectedFallbacks": zai_profile.get("expectedFallbacks"),
+                    "actualFallbacks": zai_profile.get("actualFallbacks"),
+                    "checks": zai_profile.get("checks"),
+                },
+            }
+        )
+
         if venture_id:
             venture = self._require_venture(venture_id)
             has_opp = bool(venture.get("opportunityId"))
@@ -3808,6 +4011,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "nextSteps": [
                 "如果要 live 演示：先打开 Manual Arm 并确认 Vercel 登录可用。",
                 "如果 preflight 失败：先修复 failed check，再执行 rehearsal_e2e。",
+                "若 zai_core_profile 失败：先补齐 ZAI_API_KEY，并确保默认模型是 zai/glm-5。",
             ],
         }
 
@@ -5115,6 +5319,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "vercel": self._vercel_status(),
             "vercelAuditSummary": vercel_audit_summary,
             "manualArmEnabled": bool(self._manual_arm_enabled()),
+            "zaiCoreProfile": self._zai_core_profile_status(),
             "monitor": monitor_snapshot,
             "stateMachine": STAGE_ORDER,
             "globalRunState": global_run_state,

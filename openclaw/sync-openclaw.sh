@@ -89,7 +89,8 @@ expand_tilde() {
   echo "${p/#\~/$HOME}"
 }
 
-CONFIG_PATH="$(oc config file | tr -d '\r')"
+CONFIG_PATH_RAW="$(oc config file | tr -d '\r')"
+CONFIG_PATH="$(printf '%s\n' "$CONFIG_PATH_RAW" | awk 'NF{line=$0} END{print line}')"
 CONFIG_PATH="$(expand_tilde "$CONFIG_PATH")"
 STATE_DIR="$(dirname "$CONFIG_PATH")"
 
@@ -141,23 +142,46 @@ clean_env = {k: v for k, v in os.environ.items() if not k.startswith("OPENCLAW_"
 with open(manifest_path, 'r', encoding='utf-8') as f:
     manifest = json.load(f)
 
+def _clean_cli_output(raw: str):
+    lines = [line.strip() for line in (raw or "").splitlines() if line.strip()]
+    if not lines:
+        return []
+
+    cleaned = []
+    for line in lines:
+        lo = line.lower()
+        if lo.startswith("config warnings"):
+            continue
+        if line[:1] in {"│", "◇", "╭", "╮", "╰", "╯", "├", "└"}:
+            continue
+        cleaned.append(line)
+    return cleaned or lines
+
+
 def oc_get(path, default):
     try:
-        out = subprocess.check_output([
+        raw = subprocess.check_output([
             "openclaw", "--profile", profile, "config", "get", path
         ], stderr=subprocess.STDOUT, text=True, env=clean_env)
     except subprocess.CalledProcessError as e:
-        msg = (e.output or "").strip().lower()
+        lines = _clean_cli_output(e.output or "")
+        msg = "\n".join(lines).strip().lower()
         if "config path not found" in msg or "path not found" in msg:
             return default
         raise
-    out = out.strip()
+
+    lines = _clean_cli_output(raw)
+    out = "\n".join(lines).strip()
     if not out:
         return default
-    try:
-        return json.loads(out)
-    except Exception:
-        return out
+
+    for candidate in [out, lines[-1] if lines else out]:
+        try:
+            return json.loads(candidate)
+        except Exception:
+            pass
+
+    return (lines[-1] if lines else out)
 
 agents_list = oc_get("agents.list", [])
 if not isinstance(agents_list, list):
@@ -260,12 +284,26 @@ if isinstance(profile_model, str) and profile_model.strip():
     if current_model != next_model:
         changes.append("set agents.defaults.model.primary for profile")
 
+profile_model_fallbacks = manifest.get("profileModelFallbacks")
+current_model_fallbacks = oc_get("agents.defaults.model.fallbacks", [])
+if current_model_fallbacks is None:
+    current_model_fallbacks = []
+elif not isinstance(current_model_fallbacks, list):
+    current_model_fallbacks = [str(current_model_fallbacks)]
+
+next_model_fallbacks = None
+if isinstance(profile_model_fallbacks, list):
+    next_model_fallbacks = [str(x).strip() for x in profile_model_fallbacks if str(x).strip()]
+    if current_model_fallbacks != next_model_fallbacks:
+        changes.append("set agents.defaults.model.fallbacks for profile")
+
 print(json.dumps({
     "agents_list": agents_list,
     "extra_dirs": next_extra,
     "profile_workspace": next_default_ws,
     "gateway_port": next_port,
     "profile_model": next_model,
+    "profile_model_fallbacks": next_model_fallbacks,
     "seed_auth": bool(manifest.get("seedAuthFromDefaultProfile", False)),
     "agent_ids": [a.get("id") for a in manifest.get("agents", []) if isinstance(a, dict) and a.get("id")],
     "changes": changes,
@@ -330,6 +368,12 @@ if isinstance(merged.get('profile_model'), str) and merged['profile_model']:
     subprocess.check_call([
         "openclaw", "--profile", profile, "config", "set", "agents.defaults.model.primary",
         json.dumps(merged['profile_model'], ensure_ascii=False), "--strict-json"
+    ], env=clean_env)
+
+if isinstance(merged.get('profile_model_fallbacks'), list):
+    subprocess.check_call([
+        "openclaw", "--profile", profile, "config", "set", "agents.defaults.model.fallbacks",
+        json.dumps(merged['profile_model_fallbacks'], ensure_ascii=False), "--strict-json"
     ], env=clean_env)
 PY
 

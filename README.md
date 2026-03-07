@@ -78,6 +78,51 @@ Advanced:
 
 ---
 
+## Z.AI (GLM) core integration
+
+OperatorOne is configured to use **Z.AI GLM as the default core model path**:
+
+- Primary: `zai/glm-5`
+- Fallback: `openai-codex/gpt-5.3-codex` (safety fallback only)
+
+### Secure setup (local only, never commit API keys)
+
+```bash
+export ZAI_API_KEY='YOUR_ZAI_KEY'
+bash scripts/setup_zai_core.sh --profile operatorone --probe-all-agents
+```
+
+What this does:
+
+1. Stores `ZAI_API_KEY` in the local `operatorone` profile config (outside repo runtime)
+2. Sets default model to `zai/glm-5`
+3. Syncs fallback list from `openclaw/agents.manifest.json`
+4. Generates an integration verification report:
+   - `docs/evidence/zai/core_integration_report.latest.json`
+
+Manual verification (without probes):
+
+```bash
+python3 scripts/verify_zai_core_integration.py --repo-root . --profile operatorone
+```
+
+Strict runtime probe (temporarily disables fallbacks, then restores):
+
+```bash
+python3 scripts/verify_zai_core_integration.py \
+  --repo-root . \
+  --profile operatorone \
+  --probe-all-agents \
+  --probe-without-fallback
+```
+
+Troubleshooting:
+
+- If you don’t see successful Z.AI completions in the Z.AI console, check for `API rate limit reached` responses in probe reports.
+- In that case, the system will fall back to the safety model unless fallbacks are temporarily disabled for strict verification.
+
+---
+
 ## Dashboard
 
 Run local dashboard:

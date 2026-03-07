@@ -882,6 +882,14 @@ function summarizeStageOutput(summary) {
   if (summary.mode) picks.push(`mode=${summary.mode}`);
   if (summary.totalChecks !== undefined) picks.push(`checks=${summary.totalChecks}`);
   if (summary.failedChecks !== undefined) picks.push(`failed=${summary.failedChecks}`);
+
+  const relay = summary.agentRelay || {};
+  const relayCompliance = relay.compliance || {};
+  const relayProviders = asList(relayCompliance.providersSeen || []).filter(Boolean);
+  if (relayProviders.length) picks.push(`relay_provider=${relayProviders.join(",")}`);
+  if (relayCompliance.ok === true) picks.push("relay_model=ok");
+  if (relayCompliance.ok === false) picks.push("relay_model=non_compliant");
+
   if (!picks.length) {
     const keys = Object.keys(summary).slice(0, 4);
     return keys.map((k) => `${k}=${safeText(summary[k])}`).join(" | ") || "-";

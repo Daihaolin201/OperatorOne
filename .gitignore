@@ -33,6 +33,9 @@ artifacts/tmp/
 handoffs/_meta/
 handoffs/validation_report.latest.json
 
+# Generated Z.AI integration evidence reports (machine-local paths)
+docs/evidence/zai/*.json
+
 # Agent runtime memory (session carryover; not needed for capability reproducibility)
 workspaces/*/memory/
 

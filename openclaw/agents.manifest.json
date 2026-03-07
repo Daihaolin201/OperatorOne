@@ -4,7 +4,10 @@
   "profile": "operatorone",
   "profileDefaultWorkspace": "~/.openclaw/workspace-operatorone",
   "gatewayPort": 30740,
-  "profileDefaultModel": "openai-codex/gpt-5.3-codex",
+  "profileDefaultModel": "zai/glm-5",
+  "profileModelFallbacks": [
+    "openai-codex/gpt-5.3-codex"
+  ],
   "syncMainAllowAgents": true,
   "seedAuthFromDefaultProfile": true,
   "skillsExtraDirsMode": "replace",

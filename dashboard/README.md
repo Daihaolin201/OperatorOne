@@ -50,6 +50,7 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 - stage timeline 记录
 - artifact 快照（按 venture_id）
 - venture context 同步（`venture_context.v1`）
+- 子 Agent relay 的 provider/model 可观测性（默认要求 `zai + glm-*`）
 
 ### Phase 3（外联与部署）
 
@@ -63,7 +64,7 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 - Operations 执行后可回写 loop todos 到 Product/Marketing/Sales
 - 进入下一轮先创建迁移申请（`confirm_iterate`），再显式确认迁移
-- 新增 `stage_preflight`（合同/可复现性预检查）
+- 新增 `stage_preflight`（合同/可复现性预检查 + `zai_core_profile` 核查）
 - 新增 `rehearsal_e2e`（simulation 一键彩排）
 - 新增 `confirm_stage_transition`：阶段迁移统一显式确认，禁止隐式自动跳步
 

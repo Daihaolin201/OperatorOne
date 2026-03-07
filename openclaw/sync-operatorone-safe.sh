@@ -135,17 +135,75 @@ if not required_agent_ids:
     raise SystemExit("[ERROR] manifest has no agents")
 
 
+def _clean_cli_output(raw: str):
+    lines = [line.strip() for line in (raw or "").splitlines() if line.strip()]
+    if not lines:
+        return []
+
+    cleaned = []
+    for line in lines:
+        lo = line.lower()
+        if lo.startswith("config warnings"):
+            continue
+        if line[:1] in {"│", "◇", "╭", "╮", "╰", "╯", "├", "└"}:
+            continue
+        cleaned.append(line)
+    return cleaned or lines
+
+
+def _extract_json_obj(raw: str):
+    text = raw or ""
+    for i, ch in enumerate(text):
+        if ch != "{":
+            continue
+        depth = 0
+        in_str = False
+        esc = False
+        for j in range(i, len(text)):
+            c = text[j]
+            if in_str:
+                if esc:
+                    esc = False
+                elif c == "\\":
+                    esc = True
+                elif c == '"':
+                    in_str = False
+                continue
+            if c == '"':
+                in_str = True
+            elif c == "{":
+                depth += 1
+            elif c == "}":
+                depth -= 1
+                if depth == 0:
+                    try:
+                        val = json.loads(text[i:j+1])
+                        if isinstance(val, dict):
+                            return val
+                    except Exception:
+                        break
+    return None
+
+
 def run(args, profile_name=None):
     cmd = ["openclaw"]
     if profile_name:
         cmd += ["--profile", profile_name]
     cmd += args
-    return subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT, env=clean_env).strip()
+    raw = subprocess.check_output(cmd, text=True, stderr=subprocess.STDOUT, env=clean_env)
+    lines = _clean_cli_output(raw)
+    return "\n".join(lines).strip()
 
 
 def run_json(args, profile_name=None):
     out = run(args, profile_name=profile_name)
-    return json.loads(out)
+    try:
+        return json.loads(out)
+    except Exception:
+        maybe = _extract_json_obj(out)
+        if isinstance(maybe, dict):
+            return maybe
+        raise
 
 
 def run_value(args, profile_name=None):
@@ -155,7 +213,8 @@ def run_value(args, profile_name=None):
     try:
         return json.loads(out)
     except Exception:
-        return out
+        lines = [line for line in out.splitlines() if line.strip()]
+        return (lines[-1] if lines else out)
 
 
 errors = []
@@ -219,6 +278,22 @@ if isinstance(expected_model, str) and expected_model and actual_model != expect
     errors.append(f"agents.defaults.model.primary mismatch: expected {expected_model}, got {actual_model}")
 else:
     notes.append(f"agents.defaults.model.primary: {actual_model}")
+
+expected_fallbacks = manifest.get("profileModelFallbacks")
+if isinstance(expected_fallbacks, list):
+    normalized_expected = [str(x).strip() for x in expected_fallbacks if str(x).strip()]
+    actual_fallbacks = run_value(["config", "get", "agents.defaults.model.fallbacks"], profile_name=profile)
+    if actual_fallbacks is None:
+        actual_fallbacks = []
+    elif not isinstance(actual_fallbacks, list):
+        actual_fallbacks = [str(actual_fallbacks)]
+    normalized_actual = [str(x).strip() for x in actual_fallbacks if str(x).strip()]
+    if normalized_actual != normalized_expected:
+        errors.append(
+            f"agents.defaults.model.fallbacks mismatch: expected {normalized_expected}, got {normalized_actual}"
+        )
+    else:
+        notes.append(f"agents.defaults.model.fallbacks: {normalized_actual}")
 
 for item in manifest.get("agents", []):
     aid = item.get("id")
