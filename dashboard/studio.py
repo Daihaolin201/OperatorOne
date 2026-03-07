@@ -15,6 +15,7 @@ Key capabilities:
 from __future__ import annotations
 
 import copy
+import html
 import json
 import re
 import shutil
@@ -1123,6 +1124,149 @@ class StudioService:
                 return text
         return None
 
+    def _latest_preview_path_for_venture(self, venture_id: str) -> Optional[Path]:
+        deployments = self._parse_json(self.deployments_path, {"items": []}).get("items") or []
+        for row in reversed(deployments):
+            if str(row.get("ventureId") or "") != str(venture_id):
+                continue
+            preview = row.get("previewPath")
+            if not preview:
+                continue
+            p = Path(str(preview))
+            if not p.is_absolute():
+                p = (self.repo_root / p).resolve()
+            else:
+                p = p.resolve()
+            if p.exists():
+                return p
+        return None
+
+    def _ensure_landing_preview_html(self, venture: Dict[str, Any]) -> Optional[str]:
+        venture_id = str(venture.get("id") or "").strip()
+        if not venture_id:
+            return None
+
+        landing = self._parse_json(self.product_dir / "research/landing_v1/landing_package.json", {})
+        headline = deep_find_first_value(landing, ["headline", "hero_headline", "title", "value_proposition"]) or "Landing Preview"
+        subheadline = deep_find_first_value(landing, ["subheadline", "value_proposition", "description"]) or ""
+        cta = deep_find_first_value(landing, ["cta", "primary_cta", "button_text", "call_to_action"]) or "Join waitlist"
+
+        bullets: List[str] = []
+        for value in flatten_strings(landing):
+            text = str(value).strip()
+            if len(text) < 20:
+                continue
+            if text in {headline, subheadline}:
+                continue
+            bullets.append(text)
+            if len(bullets) >= 6:
+                break
+
+        out_dir = self.runtime_dir / "studio" / "landing_previews"
+        out_dir.mkdir(parents=True, exist_ok=True)
+        out_file = out_dir / f"{venture_id}.html"
+
+        bullet_html = "\n".join(f"<li>{html.escape(x)}</li>" for x in bullets)
+        body = f"""<!doctype html>
+<html lang=\"en\"><head>
+<meta charset=\"utf-8\" />
+<meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />
+<title>{html.escape(str(headline))}</title>
+<style>
+body{{font-family:Inter,ui-sans-serif,system-ui;background:#0b1220;color:#e8efff;margin:0;padding:24px}}
+.shell{{max-width:920px;margin:0 auto;background:#131c2b;border:1px solid #2b3b57;border-radius:14px;padding:24px}}
+h1{{margin:0 0 10px;font-size:32px;line-height:1.2}}
+p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
+.cta{{display:inline-block;margin-top:16px;background:#4d82ff;color:white;padding:10px 16px;border-radius:999px;text-decoration:none;font-weight:700}}
+.badge{{display:inline-block;font-size:12px;background:#22334f;color:#9ec2ff;padding:4px 10px;border-radius:999px;margin-bottom:10px}}
+</style>
+</head><body><main class=\"shell\">
+<div class=\"badge\">Landing Page Preview (Readable)</div>
+<h1>{html.escape(str(headline))}</h1>
+<p>{html.escape(str(subheadline))}</p>
+<ul>{bullet_html}</ul>
+<a class=\"cta\" href=\"#\">{html.escape(str(cta))}</a>
+</main></body></html>
+"""
+        out_file.write_text(body, encoding="utf-8")
+        return str(out_file.relative_to(self.repo_root))
+
+    def _sync_preview_with_gtm(self, venture: Dict[str, Any], *, preview_path: Optional[str] = None) -> Dict[str, Any]:
+        venture_id = str(venture.get("id") or "").strip()
+        opp_id = venture.get("opportunityId")
+        if not venture_id:
+            return {"ok": False, "reason": "missing venture id"}
+
+        preview_dir = None
+        if preview_path:
+            p = Path(str(preview_path))
+            if not p.is_absolute():
+                p = (self.repo_root / p).resolve()
+            else:
+                p = p.resolve()
+            if p.exists():
+                preview_dir = p
+        if not preview_dir:
+            preview_dir = self._latest_preview_path_for_venture(venture_id)
+        if not preview_dir:
+            return {"ok": False, "reason": "preview path not found"}
+
+        index_candidates = [
+            preview_dir / "public" / "index.html",
+            preview_dir / "index.html",
+        ]
+        index_path = None
+        for c in index_candidates:
+            if c.exists() and c.is_file():
+                index_path = c
+                break
+        if not index_path:
+            return {"ok": False, "reason": "preview index missing"}
+
+        payload = self._build_message_pack(opp_id)
+        pack = payload.get("messagePack") or {}
+        campaign = payload.get("campaign") or {}
+        sales = payload.get("sales") or {}
+        links = payload.get("utmLinks") or {}
+
+        value = str(pack.get("valueProposition") or "").strip()
+        cta = str(pack.get("primaryCta") or "").strip()
+        proof = str(pack.get("proofPoint") or "").strip()
+        ad_copy = str(campaign.get("adCopy") or "").strip()
+        sales_opening = str(sales.get("opening") or "").strip()
+
+        snippet = f"""
+<!-- STUDIO_GTM_SYNC_START -->
+<section id=\"studio-gtm-sync\" style=\"margin:20px auto;max-width:920px;border:1px solid #d0d7e2;border-radius:12px;padding:16px;background:#f7f9fc;color:#1f2a37;\">
+  <h2 style=\"margin:0 0 10px;font-size:20px;\">Go-to-Market Sync Panel</h2>
+  <p style=\"margin:0 0 8px;\"><strong>Value proposition:</strong> {html.escape(value or '-')}</p>
+  <p style=\"margin:0 0 8px;\"><strong>Ad copy:</strong> {html.escape(ad_copy or '-')}</p>
+  <p style=\"margin:0 0 8px;\"><strong>Sales opening:</strong> {html.escape(sales_opening or '-')}</p>
+  <p style=\"margin:0 0 8px;\"><strong>Proof:</strong> {html.escape(proof or '-')}</p>
+  <div style=\"display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;\">
+    {f'<a href="{html.escape(str(links.get("search")))}" target="_blank" rel="noreferrer">Search UTM</a>' if links.get('search') else ''}
+    {f'<a href="{html.escape(str(links.get("linkedin")))}" target="_blank" rel="noreferrer">LinkedIn UTM</a>' if links.get('linkedin') else ''}
+    {f'<a href="{html.escape(str(links.get("sales_email")))}" target="_blank" rel="noreferrer">Sales Email UTM</a>' if links.get('sales_email') else ''}
+  </div>
+  <p style=\"margin-top:10px;font-size:12px;color:#5b6472;\">Auto-synced by Studio from Marketing + Sales outputs.</p>
+</section>
+<!-- STUDIO_GTM_SYNC_END -->
+""".strip()
+
+        html_text = index_path.read_text(encoding="utf-8", errors="ignore")
+        pattern = r"<!-- STUDIO_GTM_SYNC_START -->.*?<!-- STUDIO_GTM_SYNC_END -->"
+        if re.search(pattern, html_text, flags=re.S):
+            updated = re.sub(pattern, snippet, html_text, flags=re.S)
+        elif "</main>" in html_text:
+            updated = html_text.replace("</main>", snippet + "\n</main>")
+        elif "</body>" in html_text:
+            updated = html_text.replace("</body>", snippet + "\n</body>")
+        else:
+            updated = html_text + "\n" + snippet
+
+        index_path.write_text(updated, encoding="utf-8")
+        return {"ok": True, "indexPath": str(index_path)}
+
     def _build_message_pack(self, opp_id: Optional[str]) -> Dict[str, Any]:
         landing = self._parse_json(self.product_dir / "research/landing_v1/landing_package.json", {})
         content_queue = self._parse_json(self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json", {})
@@ -1337,6 +1481,8 @@ class StudioService:
         if deploy_target not in {"preview", "production"}:
             raise StudioError("deployTarget must be preview or production")
 
+        page_profile = str(payload.get("pageProfile") or "").strip() or None
+
         venture = self._require_venture(venture_id)
         opp_id = venture.get("opportunityId")
         if not opp_id:
@@ -1347,9 +1493,13 @@ class StudioService:
 
         steps: List[Dict[str, Any]] = []
 
+        landing_cmd = ["bash", "scripts/run_create_landing_pages_v1.sh", "--opp-id", str(opp_id)]
+        if page_profile:
+            landing_cmd.extend(["--page-profile", page_profile])
+
         step_landing = self._command_step(
             "create_landing_pages",
-            ["bash", "scripts/run_create_landing_pages_v1.sh", "--opp-id", str(opp_id)],
+            landing_cmd,
             cwd=self.product_dir,
             timeout=1800,
         )
@@ -1391,6 +1541,7 @@ class StudioService:
                     "vercelProject": vercel_project,
                     "deployTarget": deploy_target,
                     "dryRun": True,
+                    "pageProfile": page_profile,
                     "message": "Live deployment preflight passed; dry-run skipped deploy.",
                 }
                 run = self._record_run(
@@ -1427,19 +1578,23 @@ class StudioService:
                 self._sync_venture_context(venture_id)
                 return {"run": run, "venture": updated}
 
+            build_cmd = [
+                "bash",
+                "scripts/run_build_deploy_v1.sh",
+                "--opp-id",
+                str(opp_id),
+                "--allow-spec-autogen",
+                "--vercel-project",
+                vercel_project,
+                "--deploy-target",
+                deploy_target,
+            ]
+            if page_profile:
+                build_cmd.extend(["--page-profile", page_profile])
+
             step_build = self._command_step(
                 "build_and_deploy",
-                [
-                    "bash",
-                    "scripts/run_build_deploy_v1.sh",
-                    "--opp-id",
-                    str(opp_id),
-                    "--allow-spec-autogen",
-                    "--vercel-project",
-                    vercel_project,
-                    "--deploy-target",
-                    deploy_target,
-                ],
+                build_cmd,
                 cwd=self.product_dir,
                 timeout=3600,
             )
@@ -1507,14 +1662,20 @@ class StudioService:
             paths=artifact_paths,
         )
 
+        landing_preview_path = self._ensure_landing_preview_html(venture)
+        sync_result = self._sync_preview_with_gtm(venture, preview_path=preview_path)
+
         summary = {
             "opportunityId": opp_id,
             "deploymentUrl": deployment_url,
             "previewPath": preview_path,
+            "landingPreviewPath": landing_preview_path,
             "vercelProject": vercel_project,
             "deployTarget": deploy_target,
             "dryRun": dry_run,
             "commit": commit_sha,
+            "pageProfile": page_profile,
+            "previewSync": sync_result,
         }
 
         run = self._record_run(
@@ -1554,6 +1715,7 @@ class StudioService:
                     **(v.get("links") or {}),
                     "productDeploymentUrl": deployment_url,
                     "productPreviewPath": preview_path,
+                    "landingPreviewPath": landing_preview_path,
                     "vercelProject": vercel_project,
                     "vercelEnv": "production" if deploy_target == "production" else "preview",
                 },
@@ -1565,6 +1727,7 @@ class StudioService:
                         "mode": mode,
                         "dryRun": dry_run,
                         "deployTarget": deploy_target,
+                        "pageProfile": page_profile,
                     },
                 },
             },
@@ -1703,8 +1866,9 @@ class StudioService:
                 },
             },
         )
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_review_marketing_content(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -1778,8 +1942,9 @@ class StudioService:
             },
         )
 
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_run_marketing_campaign(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -1870,8 +2035,9 @@ class StudioService:
                 ],
             },
         )
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_select_marketing_campaign(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -1901,8 +2067,9 @@ class StudioService:
                 "decidedAt": now_iso(),
             }
         )
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"venture": updated}
+        return {"venture": updated, "previewSync": preview_sync}
 
     def _find_segment_index_for_venture(self, opp_id: str) -> Optional[int]:
         queue = self._parse_json(self.sales_dir / "research/prospecting/prospect_queue.latest.json", {})
@@ -2280,8 +2447,9 @@ class StudioService:
                 },
             },
         )
+        preview_sync = self._sync_preview_with_gtm(updated)
         self._sync_venture_context(venture_id)
-        return {"run": run, "venture": updated}
+        return {"run": run, "venture": updated, "previewSync": preview_sync}
 
     def _action_run_operations_full(self, payload: Dict[str, Any]) -> Dict[str, Any]:
         venture_id = str(payload.get("ventureId") or "").strip()
@@ -2902,6 +3070,7 @@ class StudioService:
                 build_report = open_path
                 break
         preview_ref = product_summary.get("previewPath")
+        landing_preview_ref = product_summary.get("landingPreviewPath")
 
         if not preview_ref:
             for dep in deployments:
@@ -2913,11 +3082,28 @@ class StudioService:
             if fallback_build.exists():
                 build_report = str(fallback_build.relative_to(self.repo_root))
 
+        if not landing_preview_ref:
+            landing_dir = self.runtime_dir / "studio" / "landing_previews"
+            if landing_dir.exists():
+                html_files = sorted(landing_dir.glob("*.html"), key=lambda p: p.stat().st_mtime)
+                if html_files:
+                    landing_preview_ref = str(html_files[-1].relative_to(self.repo_root))
+        if not landing_preview_ref:
+            generated = self._ensure_landing_preview_html({"id": "latest-landing", "opportunityId": None})
+            if generated:
+                landing_preview_ref = generated
+
+        live_examples = self._parse_json(self.product_dir / "research/live_examples.latest.json", {})
+        online_examples = [x for x in (live_examples.get("all_online_examples") or []) if isinstance(x, str) and x.startswith("http")]
+
         product_items = [
             url_item("Open Deployment", product_summary.get("deploymentUrl")),
-            preview_item("Open Preview", preview_ref),
+            preview_item("Open Web Product Preview", preview_ref),
+            preview_item("Open Landing Preview", landing_preview_ref),
             file_item("Open Build Report", build_report),
             url_item("Open in Vercel", f"https://vercel.com/dashboard/projects/{product_summary.get('vercelProject')}" if product_summary.get("vercelProject") else None),
+            url_item("Open Best-practice Example 1", online_examples[0] if len(online_examples) > 0 else None),
+            url_item("Open Best-practice Example 2", online_examples[1] if len(online_examples) > 1 else None),
         ]
         cards.append({"stage": "PRODUCT", "title": "Product 产物", "items": [x for x in product_items if x]})
 

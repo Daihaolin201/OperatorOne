@@ -216,13 +216,27 @@
         </div>
 
         <div id="tab-product" class="tab-panel">
-          <div class="row">
+          <div class="row wrap">
             <label>
               执行模式
               <select id="productMode">
                 <option value="simulation">simulation（本地预览，不写外部）</option>
                 <option value="live">live-preview（上 Vercel preview，需要 arm+confirm）</option>
               </select>
+            </label>
+            <label>
+              页面风格
+              <select id="productPageProfile">
+                <option value="">auto（按机会自动匹配）</option>
+                <option value="landing-default">landing-default（通用）</option>
+                <option value="landing-invoice-followup">landing-invoice-followup（催款）</option>
+                <option value="landing-chargeback-response">landing-chargeback-response（拒付）</option>
+                <option value="landing-client-reporting">landing-client-reporting（报告）</option>
+              </select>
+            </label>
+            <label>
+              <input type="checkbox" id="productUseVercelPreview" />
+              simulation 时也同步到 Vercel preview（安全预览）
             </label>
             <button id="runProductBtn">执行 Product（landing + build/deploy）</button>
           </div>

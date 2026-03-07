@@ -46,6 +46,8 @@ const els = {
   venturesTableBody: document.querySelector("#venturesTable tbody"),
 
   productMode: document.getElementById("productMode"),
+  productPageProfile: document.getElementById("productPageProfile"),
+  productUseVercelPreview: document.getElementById("productUseVercelPreview"),
   runProductBtn: document.getElementById("runProductBtn"),
   productSummary: document.getElementById("productSummary"),
 
@@ -497,6 +499,28 @@ function renderWorkflowGuide(snapshot) {
       whyNow: (WORKFLOW_STAGES.find((x) => x.id === current) || {}).why || null,
       targetMilestone: "$100 MRR",
       executionLoop: "idea → product → marketing → sales → operations → iterate",
+      capabilityChain: {
+        product: {
+          does: "生成网页与落地页，并形成 Product→Marketing handoff",
+          output: ["workspaces/op1_product/.../landing_package.json", "handoffs/product_to_marketing.json"],
+          consumedBy: "Marketing",
+        },
+        marketing: {
+          does: "做 SEO/content/campaign，并把可销售素材交给 Sales",
+          output: ["publish.queue.latest.json", "campaigns.queue.latest.json", "handoffs/marketing_to_sales.json"],
+          consumedBy: "Sales",
+        },
+        sales: {
+          does: "找线索、外联、转化，形成成交信号与运营输入",
+          output: ["conversion_scoreboard.latest.json", "handoffs/sales_to_operations.json"],
+          consumedBy: "Operations",
+        },
+        operations: {
+          does: "汇总流量/注册/MRR 与反馈，回写下轮改进",
+          output: ["stage1_scoreboard.latest.json", "operations_to_*_iterate.json"],
+          consumedBy: "下一轮 Product/Marketing/Sales",
+        },
+      },
     };
     els.workflowExplainer.textContent = JSON.stringify(guide, null, 2);
   }
@@ -592,16 +616,16 @@ function renderJudgeFocus(snapshot) {
         btn.textContent = safeText(item.label);
         btn.addEventListener("click", () => {
           if (item.kind === "url" && item.url) {
-            window.open(item.url, "_blank", "noopener,noreferrer");
+            openUrlWithFallback(item.url, item.label);
             return;
           }
           if (item.kind === "preview" && item.path) {
-            window.open(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, "_blank", "noopener,noreferrer");
+            openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, item.label);
             return;
           }
           if (item.kind === "file" && item.path) {
             if (item.previewable) {
-              window.open(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, "_blank", "noopener,noreferrer");
+              openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, item.label);
             } else {
               openArtifact(item.path);
               showToast(`已加载产物：${item.label}`, "ok");
@@ -638,17 +662,32 @@ function artifactRawUrl(path) {
   return `/api/studio/artifact/raw?path=${encodeURIComponent(path)}`;
 }
 
+function artifactReadableUrl(path) {
+  return `/api/studio/artifact/readable?path=${encodeURIComponent(path)}`;
+}
+
+function openUrlWithFallback(url, label = "链接") {
+  const win = window.open(url, "_blank", "noopener,noreferrer");
+  if (!win) {
+    openJsonDialog("浏览器阻止了新窗口", {
+      label,
+      url,
+      hint: "请手动复制这个 URL 到新标签页打开，或关闭浏览器弹窗拦截后重试。",
+    });
+  }
+}
+
 async function openArtifact(path) {
   if (!path) return;
 
   // In judge mode, always open a visible page instead of writing into hidden builder panel.
   if (state.uiMode === "judge") {
-    window.open(artifactRawUrl(path), "_blank", "noopener,noreferrer");
+    openUrlWithFallback(artifactReadableUrl(path), path);
     return;
   }
 
   if (!els.artifactContent) {
-    window.open(artifactRawUrl(path), "_blank", "noopener,noreferrer");
+    openUrlWithFallback(artifactReadableUrl(path), path);
     return;
   }
 
@@ -711,7 +750,7 @@ function renderStageResults(snapshot) {
           const p = art.snapshotPath || art.sourcePath;
           if (!p) return;
           if (String(p).endsWith(".html") || String(p).endsWith(".htm")) {
-            window.open(`/api/studio/preview?path=${encodeURIComponent(p)}`, "_blank", "noopener,noreferrer");
+            openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(p)}`, "HTML 预览");
             return;
           }
           openArtifact(p);
@@ -752,7 +791,7 @@ function renderDeployments(snapshot) {
       const btn = document.createElement("button");
       btn.className = "secondary";
       btn.textContent = "Open Preview";
-      btn.addEventListener("click", () => window.open(`/api/studio/preview?path=${encodeURIComponent(previewPath)}`, "_blank", "noopener,noreferrer"));
+      btn.addEventListener("click", () => openUrlWithFallback(`/api/studio/preview?path=${encodeURIComponent(previewPath)}`, "Preview"));
       td.appendChild(btn);
     } else {
       td.textContent = "-";
@@ -895,9 +934,12 @@ function renderProduct(snapshot) {
       stage: venture.stage,
       opportunityId: venture.opportunityId,
       productDeploymentUrl: links.productDeploymentUrl || null,
-      productPreviewPath: links.productPreviewPath || null,
+      webProductPreviewPath: links.productPreviewPath || null,
+      landingPreviewPath: links.landingPreviewPath || null,
       vercelProject: links.vercelProject || null,
+      vercelEnv: links.vercelEnv || null,
       lastProductAction: venture.lastActions?.product || null,
+      note: "如果希望 simulation 也同步 Vercel，请勾选 'simulation 时也同步到 Vercel preview'。",
     },
     null,
     2
@@ -1374,10 +1416,19 @@ function bindEvents() {
       const ventureId = ensureActiveVentureOrAlert();
       if (!ventureId) return;
 
-      const mode = els.productMode.value;
+      const requestedMode = els.productMode.value;
+      const useVercelPreview = Boolean(els.productUseVercelPreview?.checked);
+      const pageProfile = (els.productPageProfile?.value || "").trim();
+
+      const mode = requestedMode === "live" || useVercelPreview ? "live" : "simulation";
       const payload = { action: "run_product", ventureId, mode, deployTarget: "preview", async: true };
+      if (pageProfile) payload.pageProfile = pageProfile;
+
       if (mode === "live") {
-        const ok = confirm("将执行 live 部署（会写入 Vercel）。确认继续？");
+        const msg = useVercelPreview && requestedMode !== "live"
+          ? "你选择了 simulation 同步到 Vercel preview，这会执行安全预览部署（非 production）。确认继续？"
+          : "将执行 live-preview 部署（会写入 Vercel preview）。确认继续？";
+        const ok = confirm(msg);
         if (!ok) return;
         payload.confirmLive = true;
       }
@@ -1673,7 +1724,8 @@ async function main() {
   bindEvents();
   updateFeedback("正在加载 Studio 快照…", "info");
   await refreshFastSnapshot();
-  await refreshMonitorSnapshot(false);
+  await refreshMonitorSnapshot(true);
+  await refreshFastSnapshot();
   await pollJobs();
   startTimers();
   updateFeedback("Studio 已就绪。建议按“下一步推荐动作”执行。", "ok");

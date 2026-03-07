@@ -14,15 +14,17 @@ import argparse
 import json
 import mimetypes
 import os
+import re
 import subprocess
 import threading
 import time
 from datetime import datetime, timezone
+from html import escape
 from http import HTTPStatus
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any, Dict, List, Optional, Tuple
-from urllib.parse import parse_qs, unquote, urlparse
+from urllib.parse import parse_qs, quote, unquote, urlparse
 
 from collector import PROFILE, REPO_ROOT, collect_snapshot, first_json_from_text
 from studio import StudioError, StudioService
@@ -621,8 +623,17 @@ class DashboardHandler(BaseHTTPRequestHandler):
         started = time.perf_counter()
         try:
             monitor_view = get_monitor_cache_view()
+            monitor_snapshot = monitor_view.get("snapshot")
+            if not monitor_snapshot:
+                try:
+                    monitor_snapshot = collect_snapshot(runtime_flags=load_runtime_flags())
+                except Exception:
+                    monitor_snapshot = None
+
+            # Always inject monitor snapshot so studio summary fields (gate/capability)
+            # stay meaningful even on fast-snapshot calls.
             snapshot = STUDIO.snapshot(
-                monitor_snapshot=monitor_view.get("snapshot") if include_monitor else None,
+                monitor_snapshot=monitor_snapshot,
                 include_run_details=include_run_details,
             )
             duration_ms = int((time.perf_counter() - started) * 1000)
@@ -697,6 +708,152 @@ class DashboardHandler(BaseHTTPRequestHandler):
             },
         )
 
+    def _resolve_repo_path(self, raw_path: str) -> Path:
+        candidate = Path(raw_path)
+        if not candidate.is_absolute():
+            candidate = (REPO_ROOT / raw_path).resolve()
+        else:
+            candidate = candidate.resolve()
+        return candidate
+
+    def _resolve_preview_entry(self, raw_path: str) -> Tuple[Path, Path]:
+        """Return (entry_file, asset_dir) for preview serving."""
+        candidate = self._resolve_repo_path(raw_path)
+
+        if candidate.is_dir():
+            direct = (candidate / "index.html").resolve()
+            public = (candidate / "public" / "index.html").resolve()
+            if direct.exists():
+                entry = direct
+                asset_dir = direct.parent
+            elif public.exists():
+                entry = public
+                asset_dir = public.parent
+            else:
+                entry = direct
+                asset_dir = candidate
+        else:
+            entry = candidate
+            if not entry.exists() and entry.name == "index.html":
+                public = (entry.parent / "public" / "index.html").resolve()
+                if public.exists():
+                    entry = public
+            asset_dir = entry.parent
+            if entry.parent.name == "public":
+                asset_dir = entry.parent
+            elif (entry.parent / "public").exists():
+                asset_dir = (entry.parent / "public").resolve()
+
+        return entry, asset_dir
+
+    def _artifact_summary(self, payload: Any) -> Dict[str, Any]:
+        out: Dict[str, Any] = {}
+        if isinstance(payload, dict):
+            for key in ["status", "generated_at", "generatedAt", "mode", "run_id", "runId", "opportunity_id", "opportunityId"]:
+                if key in payload:
+                    out[key] = payload.get(key)
+
+            queue = payload.get("queue")
+            if isinstance(queue, dict):
+                out["queue_counts"] = {
+                    k: len(v) if isinstance(v, list) else (v if isinstance(v, (int, float)) else None)
+                    for k, v in queue.items()
+                }
+
+            counts = payload.get("counts")
+            if isinstance(counts, dict):
+                out["counts"] = counts
+
+            summary = payload.get("summary")
+            if isinstance(summary, dict):
+                slim = {}
+                for k, v in summary.items():
+                    if isinstance(v, (str, int, float, bool)) or v is None:
+                        slim[k] = v
+                out["summary"] = slim
+
+            items = payload.get("items")
+            if isinstance(items, list):
+                out["item_count"] = len(items)
+
+        return out
+
+    def _handle_get_studio_artifact_readable(self, query: Dict[str, List[str]]) -> None:
+        path_values = query.get("path") or []
+        if not path_values:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        rel = str(path_values[-1]).strip()
+        if not rel:
+            self._json_response(400, {"ok": False, "error": "path query parameter is required"})
+            return
+
+        candidate = self._resolve_repo_path(rel)
+        if not str(candidate).startswith(str(REPO_ROOT.resolve())):
+            self._json_response(403, {"ok": False, "error": "path escapes repository"})
+            return
+        if not candidate.exists() or not candidate.is_file():
+            self._json_response(404, {"ok": False, "error": "artifact not found"})
+            return
+
+        title = f"Readable Artifact · {rel}"
+        raw_link = f"/api/studio/artifact/raw?path={quote(rel, safe='')}"
+
+        try:
+            text = candidate.read_text(encoding="utf-8")
+            payload = None
+            summary = {}
+            pretty = text
+            if candidate.suffix.lower() == ".json":
+                payload = json.loads(text)
+                summary = self._artifact_summary(payload)
+                pretty = json.dumps(payload, ensure_ascii=False, indent=2)
+
+            html_doc = f"""<!doctype html>
+<html lang=\"zh-CN\"><head><meta charset=\"utf-8\"/><meta name=\"viewport\" content=\"width=device-width, initial-scale=1\"/>
+<title>{escape(title)}</title>
+<style>
+body{{font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,Roboto; background:#0b1117; color:#e7eef9; margin:0; padding:16px;}}
+.card{{background:#111a24;border:1px solid #2a3442;border-radius:10px;padding:12px;margin-bottom:12px;}}
+a{{color:#88b6ff}} pre{{white-space:pre-wrap;word-break:break-word;background:#0f1722;border:1px solid #273140;border-radius:8px;padding:12px;max-height:none;overflow:auto;}}
+.small{{color:#a8b6ca;font-size:12px}}
+</style></head><body>
+<div class=\"card\"><h2 style=\"margin-top:0\">{escape(title)}</h2>
+<div class=\"small\">文件大小: {candidate.stat().st_size} bytes</div>
+<div><a href=\"{escape(raw_link)}\" target=\"_blank\" rel=\"noreferrer\">打开原始文本</a></div></div>
+<div class=\"card\"><h3 style=\"margin-top:0\">人工可读摘要</h3><pre>{escape(json.dumps(summary, ensure_ascii=False, indent=2) if summary else '暂无结构化摘要')}</pre></div>
+<div class=\"card\"><h3 style=\"margin-top:0\">完整内容</h3><pre>{escape(pretty[:500000])}</pre></div>
+</body></html>"""
+            body = html_doc.encode("utf-8")
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", "text/html; charset=utf-8")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
+        except Exception:
+            pass
+
+        # binary fallback
+        body = json.dumps(
+            {
+                "ok": True,
+                "path": rel,
+                "message": "binary artifact",
+                "sizeBytes": candidate.stat().st_size,
+            },
+            ensure_ascii=False,
+            indent=2,
+        ).encode("utf-8")
+        self.send_response(HTTPStatus.OK)
+        self.send_header("Content-Type", "application/json; charset=utf-8")
+        self.send_header("Content-Length", str(len(body)))
+        self.send_header("Cache-Control", "no-store")
+        self.end_headers()
+        self.wfile.write(body)
+
     def _handle_get_studio_artifact_raw(self, query: Dict[str, List[str]]) -> None:
         path_values = query.get("path") or []
         if not path_values:
@@ -761,39 +918,65 @@ class DashboardHandler(BaseHTTPRequestHandler):
             self._json_response(400, {"ok": False, "error": "path query parameter is required"})
             return
 
-        candidate = Path(raw)
-        if not candidate.is_absolute():
-            candidate = (REPO_ROOT / raw).resolve()
-        else:
-            candidate = candidate.resolve()
+        try:
+            entry, asset_dir = self._resolve_preview_entry(raw)
+        except Exception as exc:  # noqa: BLE001
+            self._json_response(400, {"ok": False, "error": f"invalid preview path: {exc}"})
+            return
 
-        # Resolve preview entrypoint robustly:
-        # - <dir>/index.html
-        # - <dir>/public/index.html (current scaffold layout)
-        # - if caller passed <dir>/index.html but missing, also try <dir>/public/index.html
-        if candidate.is_dir():
-            direct = (candidate / "index.html").resolve()
-            public = (candidate / "public" / "index.html").resolve()
-            if direct.exists():
-                candidate = direct
-            elif public.exists():
-                candidate = public
-            else:
-                candidate = direct
-        elif not candidate.exists() and candidate.name == "index.html":
-            public = (candidate.parent / "public" / "index.html").resolve()
-            if public.exists():
-                candidate = public
-
-        if not str(candidate).startswith(str(REPO_ROOT.resolve())):
+        if not str(entry).startswith(str(REPO_ROOT.resolve())):
             self._json_response(403, {"ok": False, "error": "path escapes repository"})
             return
-        if not candidate.exists() or not candidate.is_file():
+
+        asset_values = query.get("asset") or []
+        if asset_values:
+            rel_asset = str(asset_values[-1]).strip().lstrip("/")
+            if not rel_asset or ".." in rel_asset:
+                self._json_response(400, {"ok": False, "error": "invalid asset path"})
+                return
+            asset_file = (asset_dir / rel_asset).resolve()
+            if not str(asset_file).startswith(str(REPO_ROOT.resolve())):
+                self._json_response(403, {"ok": False, "error": "asset path escapes repository"})
+                return
+            if not asset_file.exists() or not asset_file.is_file():
+                self._json_response(404, {"ok": False, "error": "preview asset not found"})
+                return
+            content = asset_file.read_bytes()
+            mime = mimetypes.guess_type(str(asset_file))[0] or "application/octet-stream"
+            self.send_response(HTTPStatus.OK)
+            self.send_header("Content-Type", f"{mime}; charset=utf-8" if mime.startswith("text/") else mime)
+            self.send_header("Content-Length", str(len(content)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(content)
+            return
+
+        if not entry.exists() or not entry.is_file():
             self._json_response(404, {"ok": False, "error": "preview file not found"})
             return
 
-        content = candidate.read_bytes()
-        mime = mimetypes.guess_type(str(candidate))[0] or "text/plain"
+        content = entry.read_bytes()
+        mime = mimetypes.guess_type(str(entry))[0] or "text/plain"
+
+        if mime.startswith("text/html"):
+            try:
+                html = content.decode("utf-8", errors="ignore")
+                encoded_raw = quote(raw, safe="")
+
+                def _asset_repl(match: re.Match[str]) -> str:
+                    attr = match.group(1)
+                    path = match.group(2)
+                    if path.startswith("http://") or path.startswith("https://"):
+                        return match.group(0)
+                    asset_url = f"/api/studio/preview?path={encoded_raw}&asset={quote(path, safe='') }"
+                    return f'{attr}="{asset_url}"'
+
+                html = re.sub(r'(href|src)="/([^"#?]+)"', _asset_repl, html)
+                content = html.encode("utf-8")
+                mime = "text/html"
+            except Exception:
+                pass
+
         self.send_response(HTTPStatus.OK)
         self.send_header("Content-Type", f"{mime}; charset=utf-8" if mime.startswith("text/") else mime)
         self.send_header("Content-Length", str(len(content)))
@@ -865,6 +1048,9 @@ class DashboardHandler(BaseHTTPRequestHandler):
             return
         if path == "/api/studio/artifact/raw":
             self._handle_get_studio_artifact_raw(query)
+            return
+        if path == "/api/studio/artifact/readable":
+            self._handle_get_studio_artifact_readable(query)
             return
         if path == "/api/studio/preview":
             self._handle_get_studio_preview(query)
