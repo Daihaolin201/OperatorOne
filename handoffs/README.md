@@ -4,6 +4,12 @@
 
 Rule: if you change schema/keys, update this file + related docs/README in the same PR.
 
+Validation command:
+
+```bash
+python3 scripts/validate_handoffs.py --repo-root .
+```
+
 ---
 
 ## 1) Primary chain contracts
@@ -34,6 +40,12 @@ Rule: if you change schema/keys, update this file + related docs/README in the s
 
 ## 4) Current top-level key map (quick reference)
 
+Common keys across all contracts:
+
+- `contract_version`
+- `generated_at`
+- `generated_by`
+
 - `product_to_marketing.json`:
   - `idea_name`, `problem`, `icp`, `positioning`, `mvp_scope`, `constraints`, `notes`, `status`, `landing_page_url_or_path`
 
@@ -57,9 +69,20 @@ Rule: if you change schema/keys, update this file + related docs/README in the s
 
 ---
 
-## 5) Contract discipline
+## 5) Required metadata fields
+
+Every handoff payload must include:
+
+- `contract_version`
+- `generated_at`
+- `generated_by`
+
+Current baseline version for all contracts is `1.0.0`.
+
+## 6) Contract discipline
 
 1. Keep fields stable and additive when possible.
 2. Preserve `generated_at` and source attribution fields for traceability.
 3. Do not overload one handoff with unrelated stage data.
 4. If you add keys, update consuming scripts and this contract doc together.
+5. Run `scripts/validate_handoffs.py` after any handoff producer change.

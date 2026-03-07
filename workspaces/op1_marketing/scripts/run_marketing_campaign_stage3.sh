@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$ROOT_DIR/../.." && pwd)"
 
 MODE="shadow"
 FORCE="no"
@@ -115,6 +116,10 @@ run_once() {
   fi
 
   "${cmd[@]}"
+
+  python3 "$REPO_ROOT/scripts/validate_handoffs.py" \
+    --repo-root "$REPO_ROOT" \
+    --contracts marketing_to_sales
 }
 
 if [[ "$CONTINUOUS" == "yes" ]]; then

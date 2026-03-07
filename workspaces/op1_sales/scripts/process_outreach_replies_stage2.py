@@ -507,6 +507,9 @@ def main() -> int:
         all_events = _read_jsonl(events_file)
         metrics = _rollup_ops_metrics(all_events)
         handoff = _read_json(sales_handoff, default={
+            "contract_version": "1.0.0",
+            "generated_at": _now_iso(),
+            "generated_by": "workspaces/op1_sales/scripts/process_outreach_replies_stage2.py",
             "prospects_contacted": 0,
             "replies": 0,
             "calls_booked": 0,
@@ -516,6 +519,9 @@ def main() -> int:
             "handoff_notes": "",
         })
 
+        handoff["contract_version"] = "1.0.0"
+        handoff["generated_at"] = _now_iso()
+        handoff["generated_by"] = "workspaces/op1_sales/scripts/process_outreach_replies_stage2.py"
         handoff["prospects_contacted"] = metrics["prospects_contacted"]
         handoff["replies"] = metrics["replies"]
         handoff["calls_booked"] = metrics["calls_booked"]

@@ -370,7 +370,9 @@ def main() -> int:
             sales_objections[key] += int(to_float(row.get("duplicate_count"), 1.0))
 
     handoff_product = {
+        "contract_version": "1.0.0",
         "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_operations/skills/process-feedback-stage2/scripts/prioritize_stage2_feedback.py",
         "from": "op1_operations.stage2_feedback",
         "objective": "prioritized_feedback_backlog",
         "items": product_items[:20],
@@ -378,7 +380,9 @@ def main() -> int:
     }
 
     handoff_marketing = {
+        "contract_version": "1.0.0",
         "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_operations/skills/process-feedback-stage2/scripts/prioritize_stage2_feedback.py",
         "from": "op1_operations.stage2_feedback",
         "objective": "message_and_content_adjustments",
         "top_signal_topics": [
@@ -393,7 +397,9 @@ def main() -> int:
     }
 
     handoff_sales = {
+        "contract_version": "1.0.0",
         "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_operations/skills/process-feedback-stage2/scripts/prioritize_stage2_feedback.py",
         "from": "op1_operations.stage2_feedback",
         "objective": "objection_playbook_refresh",
         "objection_counts": [

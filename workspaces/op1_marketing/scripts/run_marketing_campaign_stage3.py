@@ -652,7 +652,9 @@ def update_marketing_to_sales_handoff(
             )
 
     updated = {
+        "contract_version": "1.0.0",
         "generated_at": generated_at,
+        "generated_by": "workspaces/op1_marketing/scripts/run_marketing_campaign_stage3.py",
         "campaigns": existing_campaigns + stage3_campaigns,
         "campaign_assets": campaign_assets,
         "content_assets": existing.get("content_assets", []),

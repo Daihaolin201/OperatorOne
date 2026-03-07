@@ -145,7 +145,27 @@ Reference:
 
 ---
 
-## 5) Troubleshooting
+## 5) Contract validation & upgrade
+
+Validate all handoff contracts:
+
+```bash
+python3 scripts/validate_handoffs.py --repo-root .
+```
+
+Validate only changed contracts:
+
+```bash
+python3 scripts/validate_handoffs.py --repo-root . --contracts product_to_marketing,marketing_to_sales
+```
+
+Upgrade existing handoff files to current contract metadata fields (`contract_version`, `generated_at`, `generated_by`):
+
+```bash
+python3 scripts/upgrade_handoffs.py --repo-root .
+```
+
+## 6) Troubleshooting
 
 ### `op1_*` agents not visible in web
 
@@ -169,7 +189,7 @@ Reference:
 
 ---
 
-## 6) Safety notes
+## 7) Safety notes
 
 - Keep profile isolation (`operatorone`) for all OperatorOne operations.
 - Treat `handoffs/*.json` as contract files; avoid ad-hoc key changes.

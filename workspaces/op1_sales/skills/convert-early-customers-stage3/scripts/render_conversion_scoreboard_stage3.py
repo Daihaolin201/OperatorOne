@@ -497,6 +497,9 @@ def main() -> int:
         handoff = read_json(
             handoff_path,
             default={
+                "contract_version": "1.0.0",
+                "generated_at": now_iso(),
+                "generated_by": "workspaces/op1_sales/skills/convert-early-customers-stage3/scripts/render_conversion_scoreboard_stage3.py",
                 "prospects_contacted": 0,
                 "replies": 0,
                 "calls_booked": 0,
@@ -507,6 +510,9 @@ def main() -> int:
             },
         )
 
+        handoff["contract_version"] = "1.0.0"
+        handoff["generated_at"] = now_iso()
+        handoff["generated_by"] = "workspaces/op1_sales/skills/convert-early-customers-stage3/scripts/render_conversion_scoreboard_stage3.py"
         handoff["prospects_contacted"] = stage2_rollup.get("prospects_contacted", 0)
         handoff["replies"] = stage2_rollup.get("replies", 0)
         handoff["calls_booked"] = stage2_rollup.get("calls_booked", 0)

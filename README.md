@@ -113,6 +113,11 @@ Details:
 - Ops runbook: `docs/runbook.md`
 - Full doc index: `docs/README.md`
 
+Contract validation helpers:
+
+- `python3 scripts/validate_handoffs.py --repo-root .`
+- `python3 scripts/upgrade_handoffs.py --repo-root .`
+
 ---
 
 ## Note on generated artifacts

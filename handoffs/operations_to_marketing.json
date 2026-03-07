@@ -36,5 +36,7 @@
     "Increase trust proof in top-of-funnel messaging for high negative trust themes.",
     "Add pricing clarity + ROI examples where budget objections concentrate.",
     "Publish onboarding walkthroughs for manual-work and setup-friction themes."
-  ]
+  ],
+  "contract_version": "1.0.0",
+  "generated_by": "scripts/upgrade_handoffs.py"
 }

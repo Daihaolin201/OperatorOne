@@ -28,5 +28,7 @@
     "For budget objections: start with scoped pilot + explicit ROI checkpoint in 14 days.",
     "For competitor lock-in: position migration-lite workflow and no-rip-and-replace path.",
     "For trust risk: lead with controls, auditability, and risk mitigation proof points."
-  ]
+  ],
+  "contract_version": "1.0.0",
+  "generated_by": "scripts/upgrade_handoffs.py"
 }

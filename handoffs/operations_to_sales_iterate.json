@@ -2,5 +2,7 @@
   "generated_at": "2026-03-06T00:18:09+00:00",
   "from": "op1_operations.stage3_iteration",
   "objective": "sales_playbook_iteration",
-  "items": []
+  "items": [],
+  "contract_version": "1.0.0",
+  "generated_by": "scripts/upgrade_handoffs.py"
 }

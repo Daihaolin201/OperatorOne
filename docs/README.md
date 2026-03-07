@@ -46,4 +46,8 @@ When you change one of these, update related docs in the same PR:
 4. **Dashboard action/gate changes**  
    - Update: `dashboard/README.md` and `docs/dashboard_v1_architecture.md`.
 
+5. **Handoff producer changes** (`product_to_marketing`, `marketing_to_sales`, etc.)
+   - Run: `python3 scripts/validate_handoffs.py --repo-root .`
+   - If legacy files miss metadata fields, run: `python3 scripts/upgrade_handoffs.py --repo-root .`
+
 If docs and runtime drift, runtime wins temporarily—but docs must be fixed in the same development cycle.

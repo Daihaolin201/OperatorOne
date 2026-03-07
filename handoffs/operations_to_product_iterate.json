@@ -123,5 +123,7 @@
       "observed_mrr_delta_30d": 0.0,
       "next_action": "Refine variant and rerun"
     }
-  ]
+  ],
+  "contract_version": "1.0.0",
+  "generated_by": "scripts/upgrade_handoffs.py"
 }

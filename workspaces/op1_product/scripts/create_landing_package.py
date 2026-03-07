@@ -69,6 +69,10 @@ LP_FORBIDDEN_MODULES = {
 }
 
 
+def now_iso() -> str:
+    return dt.datetime.utcnow().replace(microsecond=0).isoformat() + "Z"
+
+
 def read_json(path: pathlib.Path) -> Dict[str, Any]:
     return json.loads(path.read_text(encoding="utf-8"))
 
@@ -967,6 +971,9 @@ def update_marketing_handoff(
     scope = landing_report.get("preflight", {}).get("scope_gate", {})
 
     payload = {
+        "contract_version": "1.0.0",
+        "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_product/scripts/create_landing_package.py",
         "status": "ready_for_marketing_review" if landing_report.get("status") != "blocked" else "blocked",
         "idea_name": ensure_text(landing_report.get("selected_opportunity", {}).get("opportunity_id")),
         "icp": ensure_text(positioning.get("icp")),

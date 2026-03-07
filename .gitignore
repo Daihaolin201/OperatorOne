@@ -29,6 +29,10 @@ __pycache__/
 # Generated analytics artifacts
 artifacts/tmp/
 
+# Generated handoff validation reports
+handoffs/_meta/
+handoffs/validation_report.latest.json
+
 # Agent runtime memory (session carryover; not needed for capability reproducibility)
 workspaces/*/memory/
 

@@ -144,5 +144,7 @@
       ]
     }
   ],
-  "notes": "Items are sorted by Stage2 priority score and expected 30d MRR leverage."
+  "notes": "Items are sorted by Stage2 priority score and expected 30d MRR leverage.",
+  "contract_version": "1.0.0",
+  "generated_by": "scripts/upgrade_handoffs.py"
 }

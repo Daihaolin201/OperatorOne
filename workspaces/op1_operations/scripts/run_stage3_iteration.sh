@@ -68,6 +68,10 @@ fi
 
 python3 "$OPS_DIR/scripts/verify_stage3_reproducibility.py" "${VERIFY_ARGS[@]}"
 
+python3 "$ROOT_DIR/scripts/validate_handoffs.py" \
+  --repo-root "$ROOT_DIR" \
+  --contracts operations_to_product_iterate,operations_to_marketing_iterate,operations_to_sales_iterate
+
 python3 - "$RUN_REPORT" "$LATEST_RUN_REPORT" <<'PY'
 import datetime as dt
 import json

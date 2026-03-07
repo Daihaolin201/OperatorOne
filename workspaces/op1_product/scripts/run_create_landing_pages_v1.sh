@@ -2,6 +2,7 @@
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+REPO_ROOT="$(cd "$ROOT_DIR/../.." && pwd)"
 STAGE1_PATH="$ROOT_DIR/research/stage1_idea_discovery/opportunity_records.json"
 STAGE2_PATH="$ROOT_DIR/research/stage2_idea_screening/decision_log.json"
 STAGE3_PATH="$ROOT_DIR/research/stage3_mvp_scope/project_blueprint.json"
@@ -138,6 +139,10 @@ if [[ -n "$PAGE_PROFILE" ]]; then
 fi
 
 "${CMD[@]}"
+
+python3 "$REPO_ROOT/scripts/validate_handoffs.py" \
+  --repo-root "$REPO_ROOT" \
+  --contracts product_to_marketing
 
 python3 "$ROOT_DIR/scripts/landing_contract_test.py" \
   --landing-package "$LANDING_PACKAGE_PATH" \

@@ -391,19 +391,25 @@ def main() -> int:
             )
 
     handoff_product = {
+        "contract_version": "1.0.0",
         "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_operations/scripts/evaluate_stage3_experiments.py",
         "from": "op1_operations.stage3_iteration",
         "objective": "product_iteration_decisions",
         "items": product_items[:20],
     }
     handoff_marketing = {
+        "contract_version": "1.0.0",
         "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_operations/scripts/evaluate_stage3_experiments.py",
         "from": "op1_operations.stage3_iteration",
         "objective": "message_iteration",
         "items": marketing_items[:20],
     }
     handoff_sales = {
+        "contract_version": "1.0.0",
         "generated_at": now_iso(),
+        "generated_by": "workspaces/op1_operations/scripts/evaluate_stage3_experiments.py",
         "from": "op1_operations.stage3_iteration",
         "objective": "sales_playbook_iteration",
         "items": sales_items[:20],
