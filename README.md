@@ -2,70 +2,119 @@
 
 Built by Dennis and Bennett.
 
-OperatorOne is a 4-agent OpenClaw startup builder focused on going from idea -> launch -> first customers, targeting the first **$100 MRR** milestone.
+OperatorOne is a multi-agent OpenClaw system for running a full startup execution loop:
 
-## Agent Roles
+**idea discovery → landing + demand generation → outreach + conversion → feedback-driven iteration**
 
-- `op1_product`: startup ideas + MVP definition + landing brief
-- `op1_marketing`: SEO/content/campaign experiments
-- `op1_sales`: prospecting + outreach + early conversion
-- `op1_operations`: KPI tracking + feedback loop + iteration
+Current north-star KPI: first **$100 MRR**.
 
-## Repository Layout
+---
 
-- `openclaw/` - safe sync tooling and machine setup docs
-- `workspaces/` - isolated workspace context per agent
-- `shared/` - shared skills/prompts/templates
-- `handoffs/` - structured inter-agent transfer files
-- `docs/` - architecture/collaboration/runbook
+## Agent topology
 
-## Skills Layout
+OperatorOne has **4 specialist execution agents** plus a **manager control-plane workspace**.
 
-- Agent-specific skills:
-  - `workspaces/op1_product/skills/`
-  - `workspaces/op1_marketing/skills/`
-  - `workspaces/op1_sales/skills/`
-  - `workspaces/op1_operations/skills/`
-- Shared reusable skills:
-  - `shared/skills/`
+| Workspace | Role | In `openclaw/agents.manifest.json` | Primary responsibility |
+|---|---|---:|---|
+| `workspaces/op1_product` | Product | ✅ | Idea discovery, web product build/deploy, landing handoff |
+| `workspaces/op1_marketing` | Marketing | ✅ | SEO/content/campaign pipeline |
+| `workspaces/op1_sales` | Sales | ✅ | Prospecting, outreach, conversion |
+| `workspaces/op1_operations` | Operations | ✅ | KPI tracking, feedback processing, iteration loop |
+| `workspaces/op1_manager` | Manager (control plane) | ❌ | Cross-agent orchestration, audits, documentation hygiene |
 
-## Quick Start (local, Profile-B isolation)
+> Sync scripts register the 4 specialist agents by default. `op1_manager` is intentionally kept as a local control-plane workspace.
+
+---
+
+## End-to-end flow
+
+Primary chain:
+
+1. `op1_product` writes `handoffs/product_to_marketing.json`
+2. `op1_marketing` writes `handoffs/marketing_to_sales.json`
+3. `op1_sales` writes `handoffs/sales_to_operations.json`
+4. `op1_operations` writes:
+   - `handoffs/operations_to_product.json`
+   - `handoffs/operations_to_marketing.json`
+   - `handoffs/operations_to_sales.json`
+
+Iteration loop (Stage3 Ops):
+
+- `handoffs/operations_to_product_iterate.json`
+- `handoffs/operations_to_marketing_iterate.json`
+- `handoffs/operations_to_sales_iterate.json`
+
+See `handoffs/README.md` for contract details.
+
+---
+
+## Repository layout
+
+- `openclaw/` — profile sync + safety scripts (`operatorone` profile)
+- `workspaces/` — isolated agent workspaces and stage artifacts
+- `handoffs/` — inter-agent JSON contracts
+- `dashboard/` — local monitor + venture studio web app
+- `shared/` — shared prompts/skills/templates
+- `docs/` — architecture, collaboration protocol, runbook
+
+---
+
+## Quick start (local, profile isolation)
 
 1. Clone into:
    - `~/.openclaw/workspace/OperatorOne`
-2. Run the safe one-command sync (dedicated profile `operatorone`, default single-active gateway):
+2. Run safe sync:
    - `bash openclaw/sync-operatorone-safe.sh`
-3. Verify isolated profile:
+3. Verify profile and agents:
    - `openclaw --profile operatorone status`
    - `openclaw --profile operatorone agents list`
-4. Start a fresh chat session:
-   - `/new`
+4. Start a fresh chat session (`/new`)
 
 Advanced:
-- Config-only sync (no gateway restart): `bash openclaw/sync-openclaw.sh`
-- Allow dual gateways temporarily: `bash openclaw/sync-operatorone-safe.sh --allow-dual-gateway`
 
-## Web UI / Web Chat Visibility (Important)
+- Config-only sync (no service action): `bash openclaw/sync-openclaw.sh`
+- Temporary dual-gateway mode: `bash openclaw/sync-operatorone-safe.sh --allow-dual-gateway`
 
-- Web side only shows agents from the **currently running gateway profile**.
-- If you are connected to default profile, you will not see `op1_*` agents.
-- Always use `openclaw --profile operatorone ...` when operating OperatorOne.
+---
 
-## Dashboard / Venture Studio
+## Dashboard
 
-OperatorOne now includes a local dashboard with two layers:
-- Monitor: 4-agent capability monitoring (12 capabilities), handoff I/O visibility, readiness gates
-- Studio: human-in-the-loop pipeline from startup idea selection to Product/Marketing/Sales/Operations iteration
+Run local dashboard:
 
-Run:
-- `python3 dashboard/server.py --host 127.0.0.1 --port 8765`
-- Open: `http://127.0.0.1:8765`
+```bash
+python3 dashboard/server.py --host 127.0.0.1 --port 8765
+```
 
-See `dashboard/README.md` for details.
-Quick usage guide: `docs/studio_usage_guide.md`.
+Open:
 
-## Collaboration
+- <http://127.0.0.1:8765>
 
-See:
-- `docs/collaboration.md`
-- `openclaw/FRIEND_SYNC_PROMPT.zh.md`
+Details:
+
+- `dashboard/README.md`
+- `docs/studio_usage_guide.md`
+
+---
+
+## Workspace docs
+
+- Product: `workspaces/op1_product/README.md`
+- Marketing: `workspaces/op1_marketing/README.md`
+- Sales: `workspaces/op1_sales/README.md`
+- Operations: `workspaces/op1_operations/README.md`
+- Manager: `workspaces/op1_manager/README.md`
+
+---
+
+## Project docs map
+
+- Architecture: `docs/architecture.md`
+- Collaboration protocol: `docs/collaboration.md`
+- Ops runbook: `docs/runbook.md`
+- Full doc index: `docs/README.md`
+
+---
+
+## Note on generated artifacts
+
+`workspaces/*/research/**` contains many `*.latest.*` and run snapshots that are intentionally machine-updated. When reviewing diffs, separate **code/docs/contract changes** from **pipeline output refreshes**.

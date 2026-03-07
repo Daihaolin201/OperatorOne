@@ -1,67 +1,176 @@
 # OperatorOne Runbook
 
-## First-Time Setup (per machine, Profile-B)
+## 1) First-time setup (per machine)
 
-1. Clone repo to:
+1. Clone repo:
    - `~/.openclaw/workspace/OperatorOne`
-2. Run safe one-command sync in dedicated profile (`operatorone`):
+2. Sync OperatorOne profile safely:
    - `bash openclaw/sync-operatorone-safe.sh`
-3. Verify operatorone profile:
+3. Verify profile:
    - `openclaw --profile operatorone status`
    - `openclaw --profile operatorone agents list`
-4. Open a fresh chat session (`/new` or `/reset`) before using new agents/skills.
+4. Start fresh chat session:
+   - `/new` or `/reset`
 
 Advanced:
-- Config-only sync (no service actions): `bash openclaw/sync-openclaw.sh`
-- Allow dual gateways (override default single-active policy): `bash openclaw/sync-operatorone-safe.sh --allow-dual-gateway`
 
-## Web Visibility Rule
+- Config-only sync: `bash openclaw/sync-openclaw.sh`
+- Allow dual gateways temporarily: `bash openclaw/sync-operatorone-safe.sh --allow-dual-gateway`
+- Cleanup legacy default-profile sync: `bash openclaw/cleanup-default-profile.sh`
 
-- Web UI / Web Chat displays agents from the active gateway profile only.
-- If `op1_*` agents are not visible, check profile context first:
-  - `openclaw config file`
-  - `openclaw --profile operatorone config file`
-  - `openclaw --profile operatorone agents list`
+---
 
-## If you previously synced OperatorOne into default profile
+## 2) Daily health check
 
-Run cleanup once (optional but recommended):
+From repo root:
 
-- `bash openclaw/cleanup-default-profile.sh`
+```bash
+openclaw --profile operatorone status
+openclaw --profile operatorone agents list
+git status --short
+```
 
-This removes OperatorOne manifest agents (`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`) and OperatorOne shared skill path from the default profile only.
+If `op1_*` agents are missing in UI, check active profile first.
 
-## Daily Work
+---
 
-- Work in your owned agent workspace.
-- Agent-specific skills go in:
-  - `workspaces/op1_product/skills/`
-  - `workspaces/op1_marketing/skills/`
-  - `workspaces/op1_sales/skills/`
-  - `workspaces/op1_operations/skills/`
-- Cross-agent reusable skills go in:
-  - `shared/skills/`
-- Commit locally as needed.
-- Push only when ready (milestone/PR time).
+## 3) Stage execution commands
 
-## Safety
+All commands below assume current directory is repo root.
 
-- `sync-openclaw.sh` is non-destructive by design:
-  - Creates missing agents only
-  - Does not overwrite conflicting workspace pointers
-  - Replaces `skills.load.extraDirs` inside the **operatorone profile only**
-  - Sets operatorone profile defaults (`agents.defaults.workspace`, `gateway.port`, `agents.defaults.model.primary`) from manifest
-  - Best-effort auth seeding: copies default profile main auth into `op1_*` agentDirs only when target auth file is missing
-  - Strips inherited `OPENCLAW_*` env vars before all CLI reads/writes to avoid profile drift
-  - Never edits default-profile `channels.*`, `gateway.*`, `auth.*`
+### 3.1 Product (`workspaces/op1_product`)
 
-- `sync-operatorone-safe.sh` adds operational safety:
-  - Runs sync + gateway install/restart in one entrypoint
-  - Default single-active mode stops default-profile gateway to avoid dual-gateway confusion
-  - Verifies config path alignment (CLI path == daemon path == operatorone config)
+```bash
+# Stage1/2: idea discovery + screening
+bash workspaces/op1_product/scripts/run_generate_startup_ideas.sh
 
-- `cleanup-default-profile.sh` targets default profile only:
-  - Removes OperatorOne manifest agents from default profile (`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`)
-  - Removes OperatorOne shared skill dir from default `skills.load.extraDirs`
-  - Cleans `main.subagents.allowAgents` entries for those OperatorOne agents
-  - Never touches `channels.*`, `gateway.*`, `auth.*`
+# Stage3 landing package + product->marketing handoff
+bash workspaces/op1_product/scripts/run_create_landing_pages_v1.sh
+
+# Build/deploy simple web product
+bash workspaces/op1_product/scripts/run_build_deploy_v1.sh
+```
+
+Key outputs:
+
+- `workspaces/op1_product/research/stage1_idea_discovery/opportunity_records.json`
+- `workspaces/op1_product/research/stage2_idea_screening/decision_log.json`
+- `workspaces/op1_product/research/stage2_web_product/run.latest.json`
+- `workspaces/op1_product/research/stage3_landing_launch/run.latest.json`
+- `handoffs/product_to_marketing.json`
+
+### 3.2 Marketing (`workspaces/op1_marketing`)
+
+```bash
+# Stage1 SEO
+bash workspaces/op1_marketing/scripts/run_marketing_seo_stage1.sh
+
+# Stage2 content
+bash workspaces/op1_marketing/scripts/run_marketing_content_stage2.sh
+
+# Optional: manual review decisions
+bash workspaces/op1_marketing/scripts/review_marketing_content_stage2.sh --approve-all --note "qa pass"
+
+# Stage3 campaign
+bash workspaces/op1_marketing/scripts/run_marketing_campaign_stage3.sh
+
+# Contract check
+python3 workspaces/op1_marketing/scripts/verify_marketing_campaign_stage3.py
+```
+
+Key output handoff:
+
+- `handoffs/marketing_to_sales.json`
+
+### 3.3 Sales (`workspaces/op1_sales`)
+
+```bash
+# Stage1 prospect queue
+python3 workspaces/op1_sales/scripts/build_prospect_queue.py
+
+# Stage2 outreach prep
+python3 workspaces/op1_sales/scripts/build_outreach_stage2.py
+python3 workspaces/op1_sales/scripts/resolve_outreach_contacts_stage2.py
+python3 workspaces/op1_sales/scripts/approve_outreach_batch_stage2.py --approver <name>
+python3 workspaces/op1_sales/scripts/dispatch_outreach_stage2.py --mode simulate
+python3 workspaces/op1_sales/scripts/process_outreach_replies_stage2.py --mode commit
+
+# Stage3 conversion
+python3 workspaces/op1_sales/scripts/run_convert_early_customers_stage3.py --mode commit
+python3 workspaces/op1_sales/scripts/verify_reproducibility_stage3.py
+```
+
+Key output handoff:
+
+- `handoffs/sales_to_operations.json`
+
+### 3.4 Operations (`workspaces/op1_operations`)
+
+```bash
+# Stage1 tracking
+bash workspaces/op1_operations/scripts/run_stage1_tracking.sh
+
+# Stage2 feedback + priorities + ops->* handoffs
+bash workspaces/op1_operations/scripts/run_stage2_feedback.sh
+
+# Stage3 iteration + ops->*_iterate handoffs
+bash workspaces/op1_operations/scripts/run_stage3_iteration.sh
+```
+
+Key outputs:
+
+- `workspaces/op1_operations/research/stage1_tracking/run_stage1.latest.json`
+- `workspaces/op1_operations/research/stage2_feedback/run_stage2.latest.json`
+- `workspaces/op1_operations/research/stage3_product_iteration/run_stage3.latest.json`
+- `handoffs/operations_to_product*.json`
+- `handoffs/operations_to_marketing*.json`
+- `handoffs/operations_to_sales*.json`
+
+---
+
+## 4) Dashboard operations
+
+```bash
+python3 dashboard/server.py --host 127.0.0.1 --port 8765
+```
+
+Open:
+
+- <http://127.0.0.1:8765>
+
+Reference:
+
+- `dashboard/README.md`
+- `docs/studio_usage_guide.md`
+
+---
+
+## 5) Troubleshooting
+
+### `op1_*` agents not visible in web
+
+- Confirm profile: `openclaw --profile operatorone status`
+- Confirm manifest sync: `bash openclaw/sync-operatorone-safe.sh`
+
+### Handoff looks stale
+
+- Re-run upstream stage script and verify `run.latest.json` updated timestamp.
+- Check script mode (`simulate` vs `commit`) for sales/ops scripts.
+
+### Reproducibility failures
+
+- Use fixed timestamp options where supported (`--as-of`).
+- Compare latest run artifacts vs baseline files in stage directories.
+
+### Drift between docs and runtime
+
+- Runtime artifact paths are source of truth in the short term.
+- Fix docs in same PR cycle (`README`, stage index, runbook).
+
+---
+
+## 6) Safety notes
+
+- Keep profile isolation (`operatorone`) for all OperatorOne operations.
+- Treat `handoffs/*.json` as contract files; avoid ad-hoc key changes.
+- Separate generated artifact refreshes from intentional code/doc changes during review.

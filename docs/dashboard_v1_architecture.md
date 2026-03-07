@@ -4,7 +4,7 @@
 
 Create a single operator dashboard that can:
 
-1. Observe the 4-agent system end-to-end (Product/Marketing/Sales/Operations)
+1. Observe the 4 specialist-agent execution chain end-to-end (Product/Marketing/Sales/Operations)
 2. Show input/output chain (handoffs)
 3. Decide if external contact is allowed (policy gate)
 4. Provide controlled onboarding for social channels and API integrations
