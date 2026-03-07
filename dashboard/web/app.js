@@ -66,6 +66,7 @@ const els = {
   productUseVercelPreview: document.getElementById("productUseVercelPreview"),
   runProductBtn: document.getElementById("runProductBtn"),
   runCeoAutopilotBtn: document.getElementById("runCeoAutopilotBtn"),
+  runCeoMultiAgentBtn: document.getElementById("runCeoMultiAgentBtn"),
   productSummary: document.getElementById("productSummary"),
 
   runMarketingSeoBtn: document.getElementById("runMarketingSeoBtn"),
@@ -1876,6 +1877,7 @@ function bindActionStatusBadges() {
     [els.refreshIdeasBtn, "refresh_ideas"],
     [els.runProductBtn, "run_product"],
     [els.runCeoAutopilotBtn, "run_ceo_autopilot"],
+    [els.runCeoMultiAgentBtn, "run_ceo_autopilot"],
     [els.runMarketingSeoBtn, "run_marketing_seo"],
     [els.runMarketingContentBtn, "run_marketing_content"],
     [els.runMarketingCampaignBtn, "run_marketing_campaign"],
@@ -2105,6 +2107,25 @@ function bindEvents() {
         }, "执行 CEO Autopilot");
       } catch (err) {
         updateFeedback(`执行 CEO Autopilot 失败: ${err.message}`, "error");
+      }
+    });
+  }
+
+  if (els.runCeoMultiAgentBtn) {
+    els.runCeoMultiAgentBtn.addEventListener("click", async () => {
+      const ventureId = activeVentureId();
+      const ok = confirm("将执行 CEO 多 Agent 编排（会依次调度 Product/Marketing/Sales/Operations）。继续吗？");
+      if (!ok) return;
+      try {
+        await runStudioAction({
+          action: "run_ceo_autopilot",
+          orchestrationMode: "multi_agent",
+          ventureId,
+          requireApproval: true,
+          async: true,
+        }, "执行 CEO 多 Agent 编排");
+      } catch (err) {
+        updateFeedback(`执行 CEO 多 Agent 编排失败: ${err.message}`, "error");
       }
     });
   }

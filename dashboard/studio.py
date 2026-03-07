@@ -3989,36 +3989,67 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         max_spend = int(payload.get("maxSpend", 200) or 200)
         max_stage2_retries = int(payload.get("maxStage2Retries", 3) or 3)
         require_approval = bool(payload.get("requireApproval", True))
+        orchestration_mode = str(payload.get("orchestrationMode") or "autopilot").strip().lower()
 
-        cmd = [
-            "python3",
-            "scripts/run_ceo_autopilot_v1.py",
-            "--goal",
-            goal,
-            "--target-mrr",
-            str(target_mrr),
-            "--max-days",
-            str(max_days),
-            "--max-spend",
-            str(max_spend),
-            "--max-stage2-retries",
-            str(max_stage2_retries),
-        ]
-        if not require_approval:
-            cmd.append("--no-require-approval")
+        if orchestration_mode == "multi_agent":
+            ceo_ws = self.repo_root / "workspaces" / "op1_ceo"
+            cmd = [
+                "python3",
+                "scripts/run_ceo_multi_agent_orchestrator_v1.py",
+                "--goal",
+                goal,
+                "--target-mrr",
+                str(target_mrr),
+                "--max-days",
+                str(max_days),
+                "--max-spend",
+                str(max_spend),
+            ]
+            if not require_approval:
+                cmd.append("--no-require-approval")
 
-        step = self._command_step(
-            "run_ceo_autopilot_v1",
-            cmd,
-            cwd=self.product_dir,
-            timeout=5400,
-        )
+            step = self._command_step(
+                "run_ceo_multi_agent_orchestrator_v1",
+                cmd,
+                cwd=ceo_ws,
+                timeout=5400,
+            )
 
-        status = "passed" if step["status"] == "passed" else "failed"
-        paths = [
-            self.product_dir / "research" / "ceo_orchestration" / "run.latest.json",
-            self.product_dir / "research" / "ceo_orchestration" / "venture_state.latest.json",
-        ]
+            status = "passed" if step["status"] == "passed" else "failed"
+            paths = [
+                ceo_ws / "research" / "ceo_orchestration" / "run.latest.json",
+                ceo_ws / "research" / "ceo_orchestration" / "orchestrator_summary.latest.json",
+            ]
+        else:
+            cmd = [
+                "python3",
+                "scripts/run_ceo_autopilot_v1.py",
+                "--goal",
+                goal,
+                "--target-mrr",
+                str(target_mrr),
+                "--max-days",
+                str(max_days),
+                "--max-spend",
+                str(max_spend),
+                "--max-stage2-retries",
+                str(max_stage2_retries),
+            ]
+            if not require_approval:
+                cmd.append("--no-require-approval")
+
+            step = self._command_step(
+                "run_ceo_autopilot_v1",
+                cmd,
+                cwd=self.product_dir,
+                timeout=5400,
+            )
+
+            status = "passed" if step["status"] == "passed" else "failed"
+            paths = [
+                self.product_dir / "research" / "ceo_orchestration" / "run.latest.json",
+                self.product_dir / "research" / "ceo_orchestration" / "venture_state.latest.json",
+            ]
         artifacts = self._copy_artifacts(
             venture_id=payload.get("ventureId") or "global",
             stage="CEO",
@@ -4041,6 +4072,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 "maxSpend": max_spend,
                 "requireApproval": require_approval,
                 "maxStage2Retries": max_stage2_retries,
+                "orchestrationMode": orchestration_mode,
             },
             error=step["stderrTail"][-500:] if status == "failed" else None,
         )

@@ -1,0 +1,67 @@
+{
+  "contract": "ceo_multi_agent_orchestrator.v1",
+  "generated_at": "2026-03-07T20:54:31.188838+00:00",
+  "mission": {
+    "goal": "Reach first $100 MRR with disciplined experimentation",
+    "constraints": {
+      "target_mrr_usd": 100,
+      "max_days": 14,
+      "max_cash_spend_usd": 200
+    },
+    "policy": {
+      "require_approval_for_external_actions": true,
+      "approval_granted": true
+    }
+  },
+  "status": "completed",
+  "steps": [
+    {
+      "agent_id": "op1_product",
+      "objective": "You are the Product specialist. Mission goal: Reach first $100 MRR with disciplined experimentation\n\"\n                f\"Constraints: target_mrr_usd=100, max_days=14, max_cash_spend_usd=200.\n\"\n                \"Return concise output with:\n\"\n                \"1) selected opportunity id\n2) why this is best now\n3) next executable product step.\"\n                ",
+      "ok": true,
+      "code": 0,
+      "reply": "[dry-run] objective queued for op1_product",
+      "started_at": "2026-03-07T20:54:31.188606+00:00",
+      "ended_at": "2026-03-07T20:54:31.188796+00:00",
+      "duration_ms": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "agent_id": "op1_marketing",
+      "objective": "Based on Product direction, provide 3 channel-light GTM experiments for first 14 days. Return: experiment, expected signal, fail threshold.",
+      "ok": true,
+      "code": 0,
+      "reply": "[dry-run] objective queued for op1_marketing",
+      "started_at": "2026-03-07T20:54:31.188811+00:00",
+      "ended_at": "2026-03-07T20:54:31.188811+00:00",
+      "duration_ms": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "agent_id": "op1_sales",
+      "objective": "Provide minimal early sales motion for first $100 MRR. Return: target segment, outreach opener, qualification rule, close trigger.",
+      "ok": true,
+      "code": 0,
+      "reply": "[dry-run] objective queued for op1_sales",
+      "started_at": "2026-03-07T20:54:31.188815+00:00",
+      "ended_at": "2026-03-07T20:54:31.188815+00:00",
+      "duration_ms": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    },
+    {
+      "agent_id": "op1_operations",
+      "objective": "Provide weekly operating cadence and KPI board for this venture. Return: KPI list, daily check, weekly review, rollback conditions.",
+      "ok": true,
+      "code": 0,
+      "reply": "[dry-run] objective queued for op1_operations",
+      "started_at": "2026-03-07T20:54:31.188819+00:00",
+      "ended_at": "2026-03-07T20:54:31.188819+00:00",
+      "duration_ms": 0,
+      "stdout_tail": "",
+      "stderr_tail": ""
+    }
+  ]
+}
