@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-07T19:11:29Z",
+  "generated_at": "2026-03-07T22:16:54Z",
   "status": "ok",
-  "snapshot_id": "snap_20260307191129_7662b2908a554254",
+  "snapshot_id": "snap_20260307221654_011b6f89a7a16ce8",
   "experiment_count": 72,
   "experiments": [
     {
@@ -29,7 +29,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 74.25,
       "confidence": "medium"
@@ -59,7 +59,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 78.19,
       "confidence": "medium"
@@ -89,7 +89,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 68.34,
       "confidence": "medium"
@@ -119,7 +119,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.75,
       "confidence": "medium"
@@ -149,7 +149,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "medium"
@@ -179,7 +179,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.75,
       "confidence": "medium"
@@ -209,7 +209,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "medium"
@@ -239,7 +239,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "medium"
@@ -269,7 +269,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 71.04,
       "confidence": "medium"
@@ -299,7 +299,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.01,
       "confidence": "medium"
@@ -329,7 +329,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 72.7,
       "confidence": "medium"
@@ -359,7 +359,7 @@
       "source_pointers": [
         "../../handoffs/product_to_marketing.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 82.45,
       "confidence": "medium"
@@ -389,7 +389,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 69.65,
       "confidence": "medium"
@@ -419,7 +419,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.59,
       "confidence": "medium"
@@ -449,7 +449,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 63.74,
       "confidence": "medium"
@@ -479,7 +479,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.59,
       "confidence": "medium"
@@ -509,7 +509,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 75.15,
       "confidence": "medium"
@@ -539,7 +539,7 @@
       "source_pointers": [
         "../op1_product/research/landing_v1/landing_package.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 75.15,
       "confidence": "medium"
@@ -569,7 +569,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 67.75,
       "confidence": "medium"
@@ -599,7 +599,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 71.69,
       "confidence": "medium"
@@ -629,7 +629,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 61.84,
       "confidence": "medium"
@@ -659,7 +659,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 78.25,
       "confidence": "medium"
@@ -689,7 +689,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 60.75,
       "confidence": "medium"
@@ -719,7 +719,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.25,
       "confidence": "medium"
@@ -749,7 +749,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.25,
       "confidence": "medium"
@@ -779,7 +779,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 77.19,
       "confidence": "medium"
@@ -809,7 +809,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 67.34,
       "confidence": "medium"
@@ -839,7 +839,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.25,
       "confidence": "medium"
@@ -869,7 +869,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 65.62,
       "confidence": "medium"
@@ -899,7 +899,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 75.94,
       "confidence": "medium"
@@ -929,7 +929,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 75.05,
       "confidence": "medium"
@@ -959,7 +959,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 78.99,
       "confidence": "medium"
@@ -989,7 +989,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 69.14,
       "confidence": "medium"
@@ -1019,7 +1019,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 85.55,
       "confidence": "medium"
@@ -1049,7 +1049,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 68.05,
       "confidence": "medium"
@@ -1079,7 +1079,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.55,
       "confidence": "medium"
@@ -1109,7 +1109,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 81.5,
       "confidence": "medium"
@@ -1139,7 +1139,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.0,
       "confidence": "medium"
@@ -1169,7 +1169,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 86.75,
       "confidence": "medium"
@@ -1199,7 +1199,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.19,
       "confidence": "medium"
@@ -1229,7 +1229,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 71.75,
       "confidence": "medium"
@@ -1259,7 +1259,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 86.75,
       "confidence": "medium"
@@ -1289,7 +1289,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.85,
       "confidence": "medium"
@@ -1319,7 +1319,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 77.79,
       "confidence": "medium"
@@ -1349,7 +1349,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 67.94,
       "confidence": "medium"
@@ -1379,7 +1379,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.35,
       "confidence": "medium"
@@ -1409,7 +1409,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.35,
       "confidence": "medium"
@@ -1439,7 +1439,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.35,
       "confidence": "medium"
@@ -1469,7 +1469,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 73.85,
       "confidence": "medium"
@@ -1499,7 +1499,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 77.79,
       "confidence": "medium"
@@ -1529,7 +1529,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 69.35,
       "confidence": "medium"
@@ -1559,7 +1559,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.35,
       "confidence": "medium"
@@ -1589,7 +1589,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.54,
       "confidence": "medium"
@@ -1619,7 +1619,7 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.54,
       "confidence": "medium"
@@ -1649,7 +1649,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 77.55,
       "confidence": "high"
@@ -1679,7 +1679,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1709,7 +1709,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.68,
       "confidence": "high"
@@ -1739,7 +1739,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1769,7 +1769,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1799,7 +1799,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1829,7 +1829,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1859,7 +1859,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.17,
       "confidence": "high"
@@ -1889,7 +1889,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1919,7 +1919,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "high"
@@ -1949,7 +1949,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1979,7 +1979,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -2010,7 +2010,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.65,
       "confidence": "high"
@@ -2041,7 +2041,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -2072,7 +2072,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.87,
       "confidence": "high"
@@ -2103,7 +2103,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -2134,7 +2134,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"
@@ -2165,7 +2165,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T19:11:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"

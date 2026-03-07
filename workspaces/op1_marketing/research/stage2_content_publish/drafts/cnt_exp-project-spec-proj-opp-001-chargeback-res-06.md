@@ -4,9 +4,9 @@ experiment_id: exp_project-spec-proj-opp-001-chargeback-res_06
 context_id: project_spec::proj-opp-001-chargeback-response-v1
 intent: MOFU
 primary_keyword: chargeback disputes handled hoc causing avoidable template
-mode: review
+mode: shadow
 status: draft
-generated_at: 2026-03-07T19:10:42Z
+generated_at: 2026-03-07T22:17:15Z
 ---
 
 # Chargeback Disputes Handled Hoc Causing Avoidable Template: step-by-step playbook you can apply this week

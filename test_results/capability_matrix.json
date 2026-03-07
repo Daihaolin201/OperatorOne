@@ -1,0 +1,339 @@
+{
+  "generated_at": "2026-03-07T22:37:27Z",
+  "summary": {
+    "total_agents": 5,
+    "total_capabilities_tested": 35,
+    "pass_rate": "91.4%",
+    "overall_status": "PARTIAL"
+  },
+  "agents": {
+    "op1_product": {
+      "stage1": {
+        "status": "pass",
+        "scripts_run": [
+          "score_stage2.py --help"
+        ],
+        "outputs_verified": [
+          "workspaces/op1_product/research/stage1_idea_discovery/opportunity_records.json",
+          "workspaces/op1_product/research/stage2_idea_screening/scoring.csv",
+          ".sisyphus/evidence/agent-testing/task-4-product-s1.txt"
+        ],
+        "notes": "opportunity_records.json valid; evidence shows opportunity_count=6 and scoring.csv present."
+      },
+      "stage2": {
+        "status": "skip",
+        "scripts_run": [
+          "smoke_test_web_product.py",
+          "smoke_test_web_product.py --help"
+        ],
+        "outputs_verified": [
+          "workspaces/op1_product/research/stage2_web_product/run.latest.json",
+          "workspaces/op1_product/research/stage2_web_product/state.latest.json",
+          ".sisyphus/evidence/agent-testing/task-4-product-s2.txt"
+        ],
+        "notes": "smoke_test_web_product.py requires --base-url and --out; deploy execution not performed."
+      },
+      "stage3": {
+        "status": "skip",
+        "scripts_run": [
+          "landing_contract_test.py",
+          "landing_semantic_test.py"
+        ],
+        "outputs_verified": [
+          "workspaces/op1_product/research/landing_v1/landing_package.json",
+          "workspaces/op1_product/research/stage3_landing_launch/regression/stage3_capability_validation.latest.json",
+          ".sisyphus/evidence/agent-testing/task-4-product-s3.txt"
+        ],
+        "notes": "Both validators are argument-gated and return usage errors without explicit inputs."
+      },
+      "handoffs_in": [
+        "operations_to_product",
+        "operations_to_product_iterate"
+      ],
+      "handoffs_out": [
+        "product_to_marketing"
+      ],
+      "openclaw_invocation": {
+        "status": "pass",
+        "response_length": 10557,
+        "notes": "json_status=ok; exit_code=-1 from macOS perl alarm wrapper, invocation still successful."
+      }
+    },
+    "op1_marketing": {
+      "stage1": {
+        "status": "pass",
+        "scripts_run": [
+          "bash workspaces/op1_marketing/scripts/run_marketing_seo_stage1.sh"
+        ],
+        "outputs_verified": [
+          "workspaces/op1_marketing/research/stage1_marketing_seo/",
+          ".sisyphus/evidence/agent-testing/task-5-marketing-s1.txt"
+        ],
+        "notes": "Stage 1 run passed with context_count=12 and stage directory populated."
+      },
+      "stage2": {
+        "status": "pass",
+        "scripts_run": [
+          "bash workspaces/op1_marketing/scripts/run_marketing_content_stage2.sh"
+        ],
+        "outputs_verified": [
+          "workspaces/op1_marketing/research/stage2_content_publish/",
+          ".sisyphus/evidence/agent-testing/task-5-marketing-s2.txt"
+        ],
+        "notes": "Stage 2 run passed and produced publish/review artifacts; handoff validation passed."
+      },
+      "stage3": {
+        "status": "fail",
+        "scripts_run": [
+          "python3 workspaces/op1_marketing/scripts/verify_marketing_campaign_stage3.py",
+          "bash workspaces/op1_marketing/scripts/run_marketing_campaign_stage3.sh",
+          "python3 workspaces/op1_marketing/scripts/verify_marketing_campaign_stage3.py"
+        ],
+        "outputs_verified": [
+          "workspaces/op1_marketing/research/stage3_campaign_launch/run.latest.json",
+          ".sisyphus/evidence/agent-testing/task-5-marketing-s3.txt"
+        ],
+        "notes": "Verifier exit code 2: handoff_campaign_launch_present failed due to missing campaign_launch field."
+      },
+      "handoffs_in": [
+        "product_to_marketing",
+        "operations_to_marketing",
+        "operations_to_marketing_iterate"
+      ],
+      "handoffs_out": [
+        "marketing_to_sales"
+      ],
+      "openclaw_invocation": {
+        "status": "pass",
+        "response_length": 10212,
+        "notes": "status=ok and has_valid_json=true in test_results/openclaw_invocation_results.json."
+      }
+    },
+    "op1_sales": {
+      "stage1": {
+        "status": "pass",
+        "scripts_run": [],
+        "outputs_verified": [
+          "test_results/sales_agent_results.json"
+        ],
+        "notes": "prospect_queue.latest.json contains 6 prospects per Task 6 result."
+      },
+      "stage2": {
+        "status": "pass",
+        "scripts_run": [],
+        "outputs_verified": [
+          "test_results/sales_agent_results.json",
+          "test_results/task-9-reproducibility.txt"
+        ],
+        "notes": "simulate-only mode confirmed and NO_COMMIT_FOUND safety check passed."
+      },
+      "stage3": {
+        "status": "pass",
+        "scripts_run": [
+          "workspaces/op1_sales/scripts/verify_reproducibility_stage3.py"
+        ],
+        "outputs_verified": [
+          "test_results/reproducibility_report.json",
+          "test_results/task-9-reproducibility.txt"
+        ],
+        "notes": "verify_reproducibility_stage3.py exit 0 with reproducible=true."
+      },
+      "handoffs_in": [
+        "marketing_to_sales",
+        "operations_to_sales",
+        "operations_to_sales_iterate"
+      ],
+      "handoffs_out": [
+        "sales_to_operations"
+      ],
+      "openclaw_invocation": {
+        "status": "pass",
+        "response_length": 10171,
+        "notes": "status=ok and has_valid_json=true in test_results/openclaw_invocation_results.json."
+      }
+    },
+    "op1_operations": {
+      "stage1": {
+        "status": "pass",
+        "scripts_run": [
+          "run_stage1_tracking.sh",
+          "verify_stage1_reproducibility.py"
+        ],
+        "outputs_verified": [
+          "test_results/operations_agent_results.json",
+          "test_results/reproducibility_report.json"
+        ],
+        "notes": "Tracking and reproducibility verification both passed (exit 0)."
+      },
+      "stage2": {
+        "status": "pass",
+        "scripts_run": [
+          "run_stage2_feedback.sh",
+          "verify_stage2_feedback_reproducibility.py"
+        ],
+        "outputs_verified": [
+          "test_results/operations_agent_results.json",
+          "test_results/reproducibility_report.json"
+        ],
+        "notes": "Feedback stage and reproducibility checks passed (exit 0)."
+      },
+      "stage3": {
+        "status": "pass",
+        "scripts_run": [
+          "run_stage3_iteration.sh",
+          "verify_stage3_reproducibility.py"
+        ],
+        "outputs_verified": [
+          "test_results/operations_agent_results.json",
+          "test_results/reproducibility_report.json"
+        ],
+        "notes": "Iteration stage and reproducibility checks passed (exit 0)."
+      },
+      "handoffs_in": [
+        "sales_to_operations"
+      ],
+      "handoffs_out": [
+        "operations_to_product",
+        "operations_to_marketing",
+        "operations_to_sales",
+        "operations_to_product_iterate",
+        "operations_to_marketing_iterate",
+        "operations_to_sales_iterate"
+      ],
+      "openclaw_invocation": {
+        "status": "pass",
+        "response_length": 10226,
+        "notes": "status=ok and has_valid_json=true in test_results/openclaw_invocation_results.json."
+      }
+    },
+    "op1_ceo": {
+      "orchestrator_dryrun": {
+        "status": "pass",
+        "steps_planned": 4,
+        "outputs_validated": [
+          "workspaces/op1_ceo/research/ceo_orchestration/run.latest.json",
+          "workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json",
+          "workspaces/op1_ceo/research/ceo_orchestration/orchestrator_summary.latest.json"
+        ],
+        "notes": "dry_run_exit_code=0; run.latest.json status=completed; simulation markers found in all 4 steps."
+      },
+      "openclaw_invocation": {
+        "status": "pass",
+        "response_length": 9744,
+        "notes": "status=ok and has_valid_json=true in test_results/openclaw_invocation_results.json."
+      }
+    }
+  },
+  "reproducibility": {
+    "total_scripts": 8,
+    "passed": 8,
+    "failed": 0,
+    "details": [
+      {
+        "script": "workspaces/op1_operations/scripts/verify_stage1_reproducibility.py",
+        "agent": "op1_operations",
+        "level": "workspace",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_operations/scripts/verify_stage2_feedback_reproducibility.py",
+        "agent": "op1_operations",
+        "level": "workspace",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_operations/scripts/verify_stage3_reproducibility.py",
+        "agent": "op1_operations",
+        "level": "workspace",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_operations/skills/track-traffic-signups-revenue-stage1/scripts/verify_stage1_reproducibility.py",
+        "agent": "op1_operations",
+        "level": "skill",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_operations/skills/process-feedback-stage2/scripts/verify_stage2_feedback_reproducibility.py",
+        "agent": "op1_operations",
+        "level": "skill",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_operations/skills/iterate-on-product-stage3/scripts/verify_stage3_reproducibility.py",
+        "agent": "op1_operations",
+        "level": "skill",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_sales/scripts/verify_reproducibility_stage3.py",
+        "agent": "op1_sales",
+        "level": "workspace",
+        "exit_code": 0,
+        "status": "pass"
+      },
+      {
+        "script": "workspaces/op1_sales/skills/convert-early-customers-stage3/scripts/verify_reproducibility_stage3.py",
+        "agent": "op1_sales",
+        "level": "skill",
+        "exit_code": 0,
+        "status": "pass"
+      }
+    ]
+  },
+  "handoff_validation": {
+    "total_contracts": 9,
+    "valid": 9,
+    "invalid": 0,
+    "details": [
+      {
+        "contract": "marketing_to_sales",
+        "status": "pass"
+      },
+      {
+        "contract": "operations_to_marketing",
+        "status": "pass"
+      },
+      {
+        "contract": "operations_to_marketing_iterate",
+        "status": "pass"
+      },
+      {
+        "contract": "operations_to_product",
+        "status": "pass"
+      },
+      {
+        "contract": "operations_to_product_iterate",
+        "status": "pass"
+      },
+      {
+        "contract": "operations_to_sales",
+        "status": "pass"
+      },
+      {
+        "contract": "operations_to_sales_iterate",
+        "status": "pass"
+      },
+      {
+        "contract": "product_to_marketing",
+        "status": "pass"
+      },
+      {
+        "contract": "sales_to_operations",
+        "status": "pass"
+      }
+    ]
+  },
+  "safety_checks": {
+    "no_real_emails": true,
+    "no_real_deploys": true,
+    "backup_created": true,
+    "notes": "Sales Stage 2 ran only in --mode simulate. No Vercel deployment executed."
+  }
+}

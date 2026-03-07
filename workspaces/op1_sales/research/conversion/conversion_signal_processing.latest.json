@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T18:46:37+00:00",
+  "generated_at": "2026-03-05T00:00:00+00:00",
   "builder": "workspaces/op1_sales/scripts/process_conversion_events_stage3.py",
   "mode": "simulate",
   "summary": {

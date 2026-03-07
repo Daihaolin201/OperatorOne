@@ -1,6 +1,6 @@
 # SEO Experiment Brief — exp_opportunity-opp-004_06
 
-- Generated at: 2026-03-07T19:11:29Z
+- Generated at: 2026-03-07T22:16:54Z
 - Context: `opportunity::opp_004`
 - Keyword: **owner tenant workflows vs manual** (BOFU)
 - Current shadow score: **86.75**

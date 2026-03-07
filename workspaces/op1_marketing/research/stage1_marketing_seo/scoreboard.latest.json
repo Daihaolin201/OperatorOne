@@ -1,8 +1,8 @@
 {
-  "generated_at": "2026-03-07T19:11:29Z",
+  "generated_at": "2026-03-07T22:16:54Z",
   "status": "ok",
   "scoring_version": "shadow_v1",
-  "snapshot_id": "snap_20260307191129_7662b2908a554254",
+  "snapshot_id": "snap_20260307221654_011b6f89a7a16ce8",
   "summary": {
     "experiment_count": 72,
     "avg_overall_score": 76.8,

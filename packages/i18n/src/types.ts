@@ -18,8 +18,8 @@ export interface I18nResources {
 
 export type Locale = "en" | "zh";
 
-export const locales: Locale[] = ["en", "zh"];
-export const defaultLocale: Locale = "en";
+export const locales: Locale[] = ["zh", "en"];
+export const defaultLocale: Locale = "zh";
 
 export const localeLabels: Record<Locale, string> = {
   en: "English",

@@ -1,27 +1,17 @@
 {
-  "loop_state": "idle_ready",
-  "mode": "review",
+  "loop_state": "blocked_no_launchable_assets",
+  "mode": "shadow",
   "auto_launch": false,
-  "last_run_status": "passed",
-  "input_completeness": {
-    "required": 5,
-    "available": 5,
-    "missing": [],
-    "ratio": 1.0
-  },
-  "snapshot_id": "stage3snap_20260307193251_ead5f0506cce44fe",
+  "last_run_status": "blocked_no_launchable_assets",
+  "snapshot_id": "stage3snap_20260307221739_b60558cbd0968317",
   "delta_counts": {
     "added": 0,
-    "changed": 0,
+    "changed": 5,
     "removed": 0
   },
-  "last_incremental_run_at": "2026-03-07T19:32:51Z",
-  "campaigns_total": 8,
-  "launch_ready": 3,
-  "watchlist": 5,
-  "hold": 0,
-  "forecast_clicks": 969.58,
-  "forecast_mql": 71.97,
-  "forecast_sql": 24.73,
-  "last_stage2_snapshot_id": "stage2snap_20260307191042_425a1371411e0edc"
+  "last_incremental_run_at": "2026-03-07T22:17:39Z",
+  "campaigns_total": 0,
+  "launch_ready": 0,
+  "watchlist": 0,
+  "hold": 0
 }

@@ -207,7 +207,7 @@ The primary handoff chain proceeds as follows:
 Run the local dashboard to monitor the venture studio.
 
 ```bash
-python3 dashboard/server.py --host 127.0.0.1 --port 8765
+./dev up
 ```
 Open: http://127.0.0.1:8765
 
@@ -228,9 +228,32 @@ Live URL: https://official-site-theta.vercel.app
 
 ## Developer Reference
 
-Detailed information for each workspace can be found in their respective `README.md` files within `workspaces/`.
+The project uses a `pnpm` workspace for the frontend applications (`apps/`) and a Python-based launcher for the backend services.
 
-### Script Helpers
+### Local Development Environment
+
+We provide a single launcher to manage all three local services (Dashboard, Platform Portal, and Product UI).
+
+```bash
+# Install dependencies (required once)
+pnpm install
+
+# Start all services
+./dev up
+
+# Check service health and PIDs
+./dev status
+
+# Stop all services gracefully
+./dev down
+```
+
+### Service Map
+- **Dashboard**: `http://localhost:8765` (Health: `/api/health`)
+- **Platform Portal**: `http://localhost:3000` (Health: `/healthz`)
+- **Product UI**: `http://localhost:3001` (Health: `/healthz`)
+
+### Workspace Scripts
 - `python3 scripts/validate_handoffs.py --repo-root .`
 - `python3 scripts/upgrade_handoffs.py --repo-root .`
 - `python3 scripts/change_hygiene_guard.py --staged`
@@ -461,7 +484,7 @@ python3 -m pytest dashboard/tests/ -q
 运行本地控制面板以监控项目状态。
 
 ```bash
-python3 dashboard/server.py --host 127.0.0.1 --port 8765
+./dev up
 ```
 访问地址：http://127.0.0.1:8765
 
@@ -482,7 +505,30 @@ python3 -m http.server 4173
 
 ## 开发者参考
 
-各工作区的详细文档位于 `workspaces/` 目录下的相应 `README.md` 文件中。
+项目使用 `pnpm` workspace 管理前端应用 (`apps/`)，并提供 Python 启动器管理后端服务。
+
+### 本地开发环境
+
+我们提供统一的启动器来管理 Dashboard、Platform Portal 和 Product UI。
+
+```bash
+# 安装依赖 (仅需执行一次)
+pnpm install
+
+# 启动所有服务
+./dev up
+
+# 检查服务健康状态与 PID
+./dev status
+
+# 优雅停止所有服务
+./dev down
+```
+
+### 服务映射
+- **Dashboard**: `http://localhost:8765` (健康检查: `/api/health`)
+- **Platform Portal**: `http://localhost:3000` (健康检查: `/healthz`)
+- **Product UI**: `http://localhost:3001` (健康检查: `/healthz`)
 
 ### 脚本辅助工具
 - `python3 scripts/validate_handoffs.py --repo-root .`

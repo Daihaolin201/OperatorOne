@@ -119,3 +119,50 @@
 - 未修改 `dashboard/server.py`（后端留给 T7）
 - 保持 `judge` 和 `builder` 模式可见性（放在通用区域）
 - 样式复用现有 CSS 变量 (`--btn`, `--card`, `--ok`, `--fail`)
+
+## Task 10 - OpenClaw Agent Direct Invocation (2026-03-07)
+
+### Gateway State
+- Gateway confirmed running at `ws://127.0.0.1:30740` (pid 12880, state active)
+- OpenClaw version: 2026.3.2
+- Model: gpt-5.3-codex (200k context)
+
+### All 5 Agents Respond Successfully
+- `op1_product`: Stage 1 (idea discovery/screening), Stage 2 (build & deploy web MVPs), Stage 3 (landing page creation/handoff)
+- `op1_marketing`: Stage1 (SEO experiments), Stage2 (content publishing), Stage3 (campaign launch)
+- `op1_sales`: Stage 1 (prospect identification), Stage 2 (outreach/follow-ups), Stage 3 (early customer conversion to paid)
+- `op1_operations`: Stage 1 (traffic/signups/revenue), Stage 2 (feedback processing), Stage 3 (iteration and rollout decisions)
+- `op1_ceo`: Cross-agent orchestrator — translates goals into plans, gates external actions, audits venture state
+
+### CLI Invocation Pattern (macOS)
+- macOS has no native `timeout` command. Use perl wrapper:
+  ```bash
+  perl -e 'alarm(120); exec @ARGV' openclaw --profile operatorone agent --agent <id> --message "..." --json 2>&1
+  ```
+- `gtimeout` (coreutils) not installed by default either
+- `exit_code=-1` from perl wrapper does not indicate failure — check JSON `status` field instead
+
+### Safety Pattern
+- `grep -ri "deliver|telegram|whatsapp|discord|slack" test_results/task-10-openclaw-*.json` → 0 matches ✅
+- Never use `--deliver` flag — sends to external channels
+- Safe test message: "What is your role and what stages do you handle? Reply briefly."
+
+### Response Sizes
+- All agents return ~10k chars of JSON (mostly system prompt metadata)
+- Actual agent response text is in `.result.payloads[0].text`
+
+## Task 11 - Capability Matrix Consolidation (2026-03-07)
+
+### Data Consolidation Pattern
+- Matrix compilation should anchor on canonical JSON summaries first (`test_results/*_results.json`), then use evidence `.txt` files only for command-level notes.
+- When source files are missing (for this run: `test_results/handoff_validation_report.json`, `test_results/file_inventory.json`), fall back to validated canonical artifact paths already referenced by earlier evidence (`handoffs/_meta/validation_report.latest.json`, backup/inventory evidence txt files).
+
+### Matrix Schema Discipline
+- Keep agent stage status values normalized to `pass|fail|skip` even if upstream files use `PASS` or `ok`.
+- Include explicit `scripts_run` and `outputs_verified` arrays for every stage block to avoid implicit claims.
+- Record openclaw success using response-level evidence (`status=ok`, `has_valid_json=true`, `response_length`) rather than wrapper exit code alone.
+
+### Quality Gates That Caught Issues
+- JSON structure validation plus strict key assertions (`5 agents`, required top-level sections) provides fast integrity checks.
+- Markdown table-density checks (`wc -l`, pipe count, agent mention count, pass/fail/skip keyword count) are practical for report quality enforcement.
+- Capability-point counting script is useful for objective coverage tracking; this run totals `35` points.

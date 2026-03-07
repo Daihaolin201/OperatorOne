@@ -1,6 +1,6 @@
 # Conversion Scoreboard (Stage3 latest)
 
-Generated at: 2026-03-07T18:46:38+00:00
+Generated at: 2026-03-05T00:00:00+00:00
 
 ## Core metrics
 - qualified_interest_to_pilot_rate: 0.0526
@@ -36,13 +36,13 @@ Generated at: 2026-03-07T18:46:38+00:00
 
 | Lead ID | Stage | Readiness | Next action | Due |
 |---|---|---:|---|---|
-| opp_005-lead-001 | discovery_scheduled | 66.0 | 完成discovery并确定pilot成功标准 | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-005 | qualified_interest | 51.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-006 | qualified_interest | 51.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-007 | qualified_interest | 51.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-015 | discovery_scheduled | 48.0 | 完成discovery并确定pilot成功标准 | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-002 | qualified_interest | 46.0 | 按客户时机窗口回访并重提14天pilot（保留低摩擦入口） | 2026-03-14T18:46:38+00:00 |
-| opp_005-lead-008 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-009 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-010 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
-| opp_005-lead-014 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-08T18:46:38+00:00 |
+| opp_005-lead-001 | discovery_scheduled | 66.0 | 完成discovery并确定pilot成功标准 | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-005 | qualified_interest | 51.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-006 | qualified_interest | 51.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-007 | qualified_interest | 51.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-015 | discovery_scheduled | 48.0 | 完成discovery并确定pilot成功标准 | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-002 | qualified_interest | 46.0 | 按客户时机窗口回访并重提14天pilot（保留低摩擦入口） | 2026-03-12T00:00:00+00:00 |
+| opp_005-lead-008 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-009 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-010 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |
+| opp_005-lead-014 | qualified_interest | 45.0 | 预约15分钟discovery并确认是否进入14天pilot | 2026-03-06T00:00:00+00:00 |

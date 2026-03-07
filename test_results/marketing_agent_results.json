@@ -1,0 +1,21 @@
+{
+  "agent": "op1_marketing",
+  "tested_at": "2026-03-07T22:20:34.802854+00:00",
+  "stages": {
+    "stage1": {
+      "status": "PASS",
+      "reason": "Stage 1 script ran and research/stage1_marketing_seo/ has files.",
+      "evidence": "task-5-marketing-s1.txt"
+    },
+    "stage2": {
+      "status": "PASS",
+      "reason": "Stage 2 script ran and research/stage2_content_publish/ has files.",
+      "evidence": "task-5-marketing-s2.txt"
+    },
+    "stage3": {
+      "status": "FAIL",
+      "reason": "verify_marketing_campaign_stage3.py exit code 2 — handoff_campaign_launch_present check failed (campaign_launch field missing)",
+      "evidence": "task-5-marketing-s3.txt"
+    }
+  }
+}

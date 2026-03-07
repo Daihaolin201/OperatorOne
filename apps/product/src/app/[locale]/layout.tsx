@@ -5,6 +5,8 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import type { Locale } from "@op1/i18n/types";
 
+import Nav from "@/components/nav";
+
 export const metadata: Metadata = {
   title: "OperatorOne",
   description: "AI-powered startup execution platform",
@@ -28,6 +30,7 @@ export default async function RootLayout({ children, params }: RootLayoutProps) 
     <html lang={locale}>
       <body>
         <NextIntlClientProvider messages={messages}>
+          <Nav />
           {children}
         </NextIntlClientProvider>
       </body>

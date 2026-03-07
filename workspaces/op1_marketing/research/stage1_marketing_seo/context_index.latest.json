@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T19:11:29Z",
+  "generated_at": "2026-03-07T22:16:54Z",
   "context_count": 12,
   "contexts": [
     {
@@ -63,7 +63,7 @@
       "cta": {
         "label": "Review handoff",
         "type": "internal",
-        "support_text": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1/landing_package.json"
+        "support_text": "workspaces/op1_product/research/landing_v1/landing_package.json"
       },
       "risk_if_wrong": [],
       "kill_criteria": [],
@@ -461,10 +461,10 @@
       }
     }
   ],
-  "snapshot_id": "snap_20260307191129_7662b2908a554254",
+  "snapshot_id": "snap_20260307221654_011b6f89a7a16ce8",
   "delta_counts": {
     "added": 0,
-    "changed": 9,
+    "changed": 3,
     "removed": 0
   }
 }

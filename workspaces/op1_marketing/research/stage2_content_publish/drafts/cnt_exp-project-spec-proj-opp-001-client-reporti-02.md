@@ -4,9 +4,9 @@ experiment_id: exp_project-spec-proj-opp-001-client-reporti_02
 context_id: project_spec::proj-opp-001-client-reporting-v1
 intent: BOFU
 primary_keyword: agencies rebuild client tool for agency operator marketing services
-mode: review
+mode: shadow
 status: draft
-generated_at: 2026-03-07T19:10:42Z
+generated_at: 2026-03-07T22:17:15Z
 ---
 
 # Agencies Rebuild Client Tool For Agency Operator Marketing Services: Practical buyer guide for teams evaluating alternatives

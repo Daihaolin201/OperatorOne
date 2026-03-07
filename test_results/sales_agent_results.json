@@ -1,0 +1,21 @@
+{
+  "agent": "op1_sales",
+  "tested_at": "2026-03-07T22:20:38.054230+00:00",
+  "stages": {
+    "stage1": {
+      "status": "PASS",
+      "reason": "prospect_queue.latest.json has 6 prospects",
+      "evidence": "task-6-sales-s1.txt"
+    },
+    "stage2": {
+      "status": "PASS",
+      "reason": "simulate-only mode confirmed, NO_COMMIT_FOUND safety check passed",
+      "evidence": "task-6-sales-s2-safety.txt"
+    },
+    "stage3": {
+      "status": "PASS",
+      "reason": "verify_reproducibility_stage3.py exit 0, reproducible=true",
+      "evidence": "task-6-sales-s3.txt"
+    }
+  }
+}

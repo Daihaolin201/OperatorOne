@@ -1,0 +1,34 @@
+{
+  "nav": {
+    "home": "Home",
+    "about": "About",
+    "pricing": "Pricing"
+  },
+  "home": {
+    "title": "OperatorOne",
+    "subtitle": "Your AI Co-founder for Internet Business",
+    "cta": "Start Building"
+  },
+  "about": {
+    "title": "About OperatorOne",
+    "content": "We orchestrate specialist agents to run your business."
+  },
+  "pricing": {
+    "title": "Plans",
+    "free": {
+      "title": "Starter",
+      "price": "$0",
+      "feature": "1 Agent"
+    },
+    "pro": {
+      "title": "Pro",
+      "price": "$49",
+      "feature": "5 Agents"
+    },
+    "enterprise": {
+      "title": "Enterprise",
+      "price": "Custom",
+      "feature": "Unlimited"
+    }
+  }
+}

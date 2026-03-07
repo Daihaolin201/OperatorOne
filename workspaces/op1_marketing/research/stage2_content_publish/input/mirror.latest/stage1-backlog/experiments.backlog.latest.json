@@ -1,7 +1,7 @@
 {
-  "generated_at": "2026-03-07T18:39:29Z",
+  "generated_at": "2026-03-07T22:16:54Z",
   "status": "ok",
-  "snapshot_id": "snap_20260307183929_b24188e536a053dc",
+  "snapshot_id": "snap_20260307221654_011b6f89a7a16ce8",
   "experiment_count": 72,
   "experiments": [
     {
@@ -29,7 +29,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 74.25,
       "confidence": "medium"
@@ -59,7 +59,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 78.19,
       "confidence": "medium"
@@ -89,7 +89,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 68.34,
       "confidence": "medium"
@@ -119,7 +119,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.75,
       "confidence": "medium"
@@ -149,7 +149,7 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
       "overall_score": 72.75,
       "confidence": "medium"
@@ -179,375 +179,15 @@
       "source_pointers": [
         "../op1_product/research/stage3_mvp_scope/project_blueprint.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.75,
       "confidence": "medium"
     },
     {
-      "experiment_id": "exp_handoff-opp-006_01",
-      "context_id": "handoff::opp-006",
+      "experiment_id": "exp_handoff-opp-001_01",
+      "context_id": "handoff::opp-001",
       "source_opportunity_id": null,
-      "keyword": "best core workflows depend software",
-      "intent": "BOFU",
-      "status": "ready",
-      "hypothesis": "If we position around 'best core workflows depend software' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Best Core Workflows Depend Software",
-        "headline_variant_b": "Best Core Workflows Depend Software without extra manual overhead",
-        "proof_variant": "Single conversion-focused landing page with one primary CTA",
-        "cta_variant_a": "Review handoff",
-        "cta_variant_b": "Start with best pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../../handoffs/product_to_marketing.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 76.95,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_handoff-opp-006_02",
-      "context_id": "handoff::opp-006",
-      "source_opportunity_id": null,
-      "keyword": "core workflows depend pricing",
-      "intent": "BOFU",
-      "status": "ready",
-      "hypothesis": "If we position around 'core workflows depend pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Pricing",
-        "headline_variant_b": "Core Workflows Depend Pricing without extra manual overhead",
-        "proof_variant": "Single conversion-focused landing page with one primary CTA",
-        "cta_variant_a": "Review handoff",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../../handoffs/product_to_marketing.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 80.89,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_handoff-opp-006_03",
-      "context_id": "handoff::opp-006",
-      "source_opportunity_id": null,
-      "keyword": "core workflows depend tool for agency operator marketing services",
-      "intent": "BOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'core workflows depend tool for agency operator marketing services' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Tool For Agency Operator Marketing Services",
-        "headline_variant_b": "Core Workflows Depend Tool For Agency Operator Marketing Services without extra manual overhead",
-        "proof_variant": "Single conversion-focused landing page with one primary CTA",
-        "cta_variant_a": "Review handoff",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../../handoffs/product_to_marketing.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 71.04,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_handoff-opp-006_04",
-      "context_id": "handoff::opp-006",
-      "source_opportunity_id": null,
-      "keyword": "core workflows depend vs manual",
-      "intent": "BOFU",
-      "status": "shadow_validated",
-      "hypothesis": "If we position around 'core workflows depend vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Vs Manual",
-        "headline_variant_b": "Core Workflows Depend Vs Manual without extra manual overhead",
-        "proof_variant": "Single conversion-focused landing page with one primary CTA",
-        "cta_variant_a": "Review handoff",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../../handoffs/product_to_marketing.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 87.45,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_handoff-opp-006_05",
-      "context_id": "handoff::opp-006",
-      "source_opportunity_id": null,
-      "keyword": "core workflows depend automation",
-      "intent": "MOFU",
-      "status": "ready",
-      "hypothesis": "If we position around 'core workflows depend automation' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Automation",
-        "headline_variant_b": "Core Workflows Depend Automation without extra manual overhead",
-        "proof_variant": "Single conversion-focused landing page with one primary CTA",
-        "cta_variant_a": "Review handoff",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../../handoffs/product_to_marketing.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 79.64,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_handoff-opp-006_06",
-      "context_id": "handoff::opp-006",
-      "source_opportunity_id": null,
-      "keyword": "core workflows depend examples",
-      "intent": "MOFU",
-      "status": "ready",
-      "hypothesis": "If we position around 'core workflows depend examples' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Examples",
-        "headline_variant_b": "Core Workflows Depend Examples without extra manual overhead",
-        "proof_variant": "Single conversion-focused landing page with one primary CTA",
-        "cta_variant_a": "Review handoff",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../../handoffs/product_to_marketing.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 79.64,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_landing-opp-006_01",
-      "context_id": "landing::opp_006",
-      "source_opportunity_id": "opp_006",
-      "keyword": "best core workflows depend software",
-      "intent": "BOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'best core workflows depend software' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Best Core Workflows Depend Software",
-        "headline_variant_b": "Best Core Workflows Depend Software without extra manual overhead",
-        "proof_variant": "Build reports with custom fields and data from other apps (1782 reviews)",
-        "cta_variant_a": "Join reporting pilot",
-        "cta_variant_b": "Start with best pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/landing_v1/landing_package.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 72.65,
-      "confidence": "high"
-    },
-    {
-      "experiment_id": "exp_landing-opp-006_02",
-      "context_id": "landing::opp_006",
-      "source_opportunity_id": "opp_006",
-      "keyword": "core workflows depend pricing",
-      "intent": "BOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'core workflows depend pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Pricing",
-        "headline_variant_b": "Core Workflows Depend Pricing without extra manual overhead",
-        "proof_variant": "Build reports with custom fields and data from other apps (1782 reviews)",
-        "cta_variant_a": "Join reporting pilot",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/landing_v1/landing_package.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 76.59,
-      "confidence": "high"
-    },
-    {
-      "experiment_id": "exp_landing-opp-006_03",
-      "context_id": "landing::opp_006",
-      "source_opportunity_id": "opp_006",
-      "keyword": "core workflows depend tool for agency operator marketing services",
-      "intent": "BOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'core workflows depend tool for agency operator marketing services' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Tool For Agency Operator Marketing Services",
-        "headline_variant_b": "Core Workflows Depend Tool For Agency Operator Marketing Services without extra manual overhead",
-        "proof_variant": "Build reports with custom fields and data from other apps (1782 reviews)",
-        "cta_variant_a": "Join reporting pilot",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/landing_v1/landing_package.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 66.74,
-      "confidence": "high"
-    },
-    {
-      "experiment_id": "exp_landing-opp-006_04",
-      "context_id": "landing::opp_006",
-      "source_opportunity_id": "opp_006",
-      "keyword": "core workflows depend vs manual",
-      "intent": "BOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'core workflows depend vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Vs Manual",
-        "headline_variant_b": "Core Workflows Depend Vs Manual without extra manual overhead",
-        "proof_variant": "Build reports with custom fields and data from other apps (1782 reviews)",
-        "cta_variant_a": "Join reporting pilot",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/landing_v1/landing_package.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 83.15,
-      "confidence": "high"
-    },
-    {
-      "experiment_id": "exp_landing-opp-006_05",
-      "context_id": "landing::opp_006",
-      "source_opportunity_id": "opp_006",
-      "keyword": "build reports custom fields checklist",
-      "intent": "MOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'build reports custom fields checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Build Reports Custom Fields Checklist",
-        "headline_variant_b": "Build Reports Custom Fields Checklist without extra manual overhead",
-        "proof_variant": "Build reports with custom fields and data from other apps (1782 reviews)",
-        "cta_variant_a": "Join reporting pilot",
-        "cta_variant_b": "Start with build pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/landing_v1/landing_package.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 65.65,
-      "confidence": "high"
-    },
-    {
-      "experiment_id": "exp_landing-opp-006_06",
-      "context_id": "landing::opp_006",
-      "source_opportunity_id": "opp_006",
-      "keyword": "core workflows depend automation",
-      "intent": "MOFU",
-      "status": "scored",
-      "hypothesis": "If we position around 'core workflows depend automation' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Core Workflows Depend Automation",
-        "headline_variant_b": "Core Workflows Depend Automation without extra manual overhead",
-        "proof_variant": "Build reports with custom fields and data from other apps (1782 reviews)",
-        "cta_variant_a": "Join reporting pilot",
-        "cta_variant_b": "Start with core pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/landing_v1/landing_package.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "hold",
-      "overall_score": 75.34,
-      "confidence": "high"
-    },
-    {
-      "experiment_id": "exp_opportunity-opp-001_01",
-      "context_id": "opportunity::opp_001",
-      "source_opportunity_id": "opp_001",
       "keyword": "best overdue invoices followed software",
       "intent": "BOFU",
       "status": "ready",
@@ -555,7 +195,367 @@
       "change": {
         "headline_variant_a": "Best Overdue Invoices Followed Software",
         "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
-        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "ready",
+      "overall_score": 76.95,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_02",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "ready",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "ready",
+      "overall_score": 80.89,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_03",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 71.04,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_04",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "ready",
+      "overall_score": 84.01,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_05",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "manual csv overdue invoice checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'manual csv overdue invoice checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Manual Csv Overdue Invoice Checklist",
+        "headline_variant_b": "Manual Csv Overdue Invoice Checklist without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with manual pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 72.7,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_handoff-opp-001_06",
+      "context_id": "handoff::opp-001",
+      "source_opportunity_id": null,
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "shadow_validated",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Checklist",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Checklist without extra manual overhead",
+        "proof_variant": "Manual/CSV overdue-invoice intake (invoice id, amount, due date, customer response status)",
+        "cta_variant_a": "Review handoff",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../../handoffs/product_to_marketing.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "ready",
+      "overall_score": 82.45,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_01",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with best pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 69.65,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_02",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed pricing",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Pricing",
+        "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.59,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_03",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed tool for freelancer small service owner",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed tool for freelancer small service owner' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
+        "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 63.74,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_04",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed vs manual",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Vs Manual",
+        "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.59,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_05",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed manually late because checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Checklist",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Checklist without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 75.15,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_landing-opp-001_06",
+      "context_id": "landing::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "overdue invoices followed manually late because template",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'overdue invoices followed manually late because template' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Overdue Invoices Followed Manually Late Because Template",
+        "headline_variant_b": "Overdue Invoices Followed Manually Late Because Template without extra manual overhead",
+        "proof_variant": "Prioritize overdue invoices by value and aging bucket.",
+        "cta_variant_a": "Join invoice pilot",
+        "cta_variant_b": "Start with overdue pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/landing_v1/landing_package.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 75.15,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-001_01",
+      "context_id": "opportunity::opp_001",
+      "source_opportunity_id": "opp_001",
+      "keyword": "best overdue invoices followed software",
+      "intent": "BOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'best overdue invoices followed software' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Best Overdue Invoices Followed Software",
+        "headline_variant_b": "Best Overdue Invoices Followed Software without extra manual overhead",
+        "proof_variant": "283 apps listed for this feature category on Shopify App Store",
         "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
         "cta_variant_b": "Start with best pilot"
       },
@@ -569,9 +569,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 75.55,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 67.75,
       "confidence": "medium"
     },
     {
@@ -580,12 +580,12 @@
       "source_opportunity_id": "opp_001",
       "keyword": "overdue invoices followed pricing",
       "intent": "BOFU",
-      "status": "ready",
+      "status": "scored",
       "hypothesis": "If we position around 'overdue invoices followed pricing' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Overdue Invoices Followed Pricing",
         "headline_variant_b": "Overdue Invoices Followed Pricing without extra manual overhead",
-        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "proof_variant": "283 apps listed for this feature category on Shopify App Store",
         "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
         "cta_variant_b": "Start with overdue pilot"
       },
@@ -599,9 +599,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 79.49,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 71.69,
       "confidence": "medium"
     },
     {
@@ -615,7 +615,7 @@
       "change": {
         "headline_variant_a": "Overdue Invoices Followed Tool For Freelancer Small Service Owner",
         "headline_variant_b": "Overdue Invoices Followed Tool For Freelancer Small Service Owner without extra manual overhead",
-        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "proof_variant": "283 apps listed for this feature category on Shopify App Store",
         "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
         "cta_variant_b": "Start with overdue pilot"
       },
@@ -629,9 +629,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 69.64,
+      "overall_score": 61.84,
       "confidence": "medium"
     },
     {
@@ -640,12 +640,12 @@
       "source_opportunity_id": "opp_001",
       "keyword": "overdue invoices followed vs manual",
       "intent": "BOFU",
-      "status": "shadow_validated",
+      "status": "ready",
       "hypothesis": "If we position around 'overdue invoices followed vs manual' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Overdue Invoices Followed Vs Manual",
         "headline_variant_b": "Overdue Invoices Followed Vs Manual without extra manual overhead",
-        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "proof_variant": "283 apps listed for this feature category on Shopify App Store",
         "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
         "cta_variant_b": "Start with overdue pilot"
       },
@@ -659,25 +659,25 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 86.05,
+      "overall_score": 78.25,
       "confidence": "medium"
     },
     {
       "experiment_id": "exp_opportunity-opp-001_05",
       "context_id": "opportunity::opp_001",
       "source_opportunity_id": "opp_001",
-      "keyword": "construction business started last checklist",
+      "keyword": "283 apps listed feature checklist",
       "intent": "MOFU",
       "status": "scored",
-      "hypothesis": "If we position around 'construction business started last checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "hypothesis": "If we position around '283 apps listed feature checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
-        "headline_variant_a": "Construction Business Started Last Checklist",
-        "headline_variant_b": "Construction Business Started Last Checklist without extra manual overhead",
-        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "headline_variant_a": "283 Apps Listed Feature Checklist",
+        "headline_variant_b": "283 Apps Listed Feature Checklist without extra manual overhead",
+        "proof_variant": "283 apps listed for this feature category on Shopify App Store",
         "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
-        "cta_variant_b": "Start with construction pilot"
+        "cta_variant_b": "Start with 283 pilot"
       },
       "primary_metric": "shadow_overall_score",
       "guardrail_metrics": [
@@ -689,9 +689,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 68.55,
+      "overall_score": 60.75,
       "confidence": "medium"
     },
     {
@@ -700,12 +700,12 @@
       "source_opportunity_id": "opp_001",
       "keyword": "manual reminders via personal email inconsistent template",
       "intent": "MOFU",
-      "status": "ready",
+      "status": "scored",
       "hypothesis": "If we position around 'manual reminders via personal email inconsistent template' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Manual Reminders Via Personal Email Inconsistent Template",
         "headline_variant_b": "Manual Reminders Via Personal Email Inconsistent Template without extra manual overhead",
-        "proof_variant": "My construction business that I started last year is owes $40k by a client who has been promising to pay since June. I call him on a weekly basis and he barely answers, and always has an excuse as to why payment is being...",
+        "proof_variant": "283 apps listed for this feature category on Shopify App Store",
         "cta_variant_a": "Reach out to posters discussing overdue invoices and AR frustration",
         "cta_variant_b": "Start with manual pilot"
       },
@@ -719,9 +719,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 81.05,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.25,
       "confidence": "medium"
     },
     {
@@ -730,12 +730,12 @@
       "source_opportunity_id": "opp_002",
       "keyword": "best chargeback handling manual software",
       "intent": "BOFU",
-      "status": "ready",
+      "status": "scored",
       "hypothesis": "If we position around 'best chargeback handling manual software' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Best Chargeback Handling Manual Software",
         "headline_variant_b": "Best Chargeback Handling Manual Software without extra manual overhead",
-        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with best pilot"
       },
@@ -749,9 +749,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 75.55,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.25,
       "confidence": "medium"
     },
     {
@@ -765,7 +765,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Pricing",
         "headline_variant_b": "Chargeback Handling Manual Pricing without extra manual overhead",
-        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -779,9 +779,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 79.49,
+      "overall_score": 77.19,
       "confidence": "medium"
     },
     {
@@ -795,7 +795,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Tool For Ecommerce Owner Operations Manager",
         "headline_variant_b": "Chargeback Handling Manual Tool For Ecommerce Owner Operations Manager without extra manual overhead",
-        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -809,9 +809,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 69.64,
+      "overall_score": 67.34,
       "confidence": "medium"
     },
     {
@@ -820,12 +820,12 @@
       "source_opportunity_id": "opp_002",
       "keyword": "chargeback handling manual vs automated workflow",
       "intent": "BOFU",
-      "status": "ready",
+      "status": "scored",
       "hypothesis": "If we position around 'chargeback handling manual vs automated workflow' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Vs Automated Workflow",
         "headline_variant_b": "Chargeback Handling Manual Vs Automated Workflow without extra manual overhead",
-        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -839,13 +839,43 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 75.55,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.25,
       "confidence": "medium"
     },
     {
       "experiment_id": "exp_opportunity-opp-002_05",
+      "context_id": "opportunity::opp_002",
+      "source_opportunity_id": "opp_002",
+      "keyword": "blocker bot blocker fraud checklist",
+      "intent": "MOFU",
+      "status": "scored",
+      "hypothesis": "If we position around 'blocker bot blocker fraud checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "change": {
+        "headline_variant_a": "Blocker Bot Blocker Fraud Checklist",
+        "headline_variant_b": "Blocker Bot Blocker Fraud Checklist without extra manual overhead",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
+        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
+        "cta_variant_b": "Start with blocker pilot"
+      },
+      "primary_metric": "shadow_overall_score",
+      "guardrail_metrics": [
+        "problem_message_fit",
+        "execution_risk_penalty"
+      ],
+      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
+      "stop_rule": "overall_score < 55 for two consecutive runs",
+      "source_pointers": [
+        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
+      ],
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 65.62,
+      "confidence": "medium"
+    },
+    {
+      "experiment_id": "exp_opportunity-opp-002_06",
       "context_id": "opportunity::opp_002",
       "source_opportunity_id": "opp_002",
       "keyword": "chargeback handling manual playbook",
@@ -855,7 +885,7 @@
       "change": {
         "headline_variant_a": "Chargeback Handling Manual Playbook",
         "headline_variant_b": "Chargeback Handling Manual Playbook without extra manual overhead",
-        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
+        "proof_variant": "IP blocker and bot blocker for fraud prevention & block ip (1229 reviews)",
         "cta_variant_a": "Shortlist stores actively discussing dispute losses",
         "cta_variant_b": "Start with chargeback pilot"
       },
@@ -869,39 +899,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 78.24,
-      "confidence": "medium"
-    },
-    {
-      "experiment_id": "exp_opportunity-opp-002_06",
-      "context_id": "opportunity::opp_002",
-      "source_opportunity_id": "opp_002",
-      "keyword": "chargeback handling manual process",
-      "intent": "MOFU",
-      "status": "ready",
-      "hypothesis": "If we position around 'chargeback handling manual process' with explicit proof and a single CTA, qualified intent quality will improve.",
-      "change": {
-        "headline_variant_a": "Chargeback Handling Manual Process",
-        "headline_variant_b": "Chargeback Handling Manual Process without extra manual overhead",
-        "proof_variant": "Not even joking rn I'm sitting here staring at my stripe dashboard watching my money disappear. Woke up this morning to seven chargebacks. seven. all from orders I shipped last month. all showing delivered. all customer...",
-        "cta_variant_a": "Shortlist stores actively discussing dispute losses",
-        "cta_variant_b": "Start with chargeback pilot"
-      },
-      "primary_metric": "shadow_overall_score",
-      "guardrail_metrics": [
-        "problem_message_fit",
-        "execution_risk_penalty"
-      ],
-      "success_rule": "overall_score >= 72 and execution_risk_penalty <= 65",
-      "stop_rule": "overall_score < 55 for two consecutive runs",
-      "source_pointers": [
-        "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
-      ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 78.24,
+      "overall_score": 75.94,
       "confidence": "medium"
     },
     {
@@ -915,7 +915,7 @@
       "change": {
         "headline_variant_a": "Best Monthly Reporting Labor Software",
         "headline_variant_b": "Best Monthly Reporting Labor Software without extra manual overhead",
-        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with best pilot"
       },
@@ -929,9 +929,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 75.55,
+      "overall_score": 75.05,
       "confidence": "medium"
     },
     {
@@ -945,7 +945,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Pricing",
         "headline_variant_b": "Monthly Reporting Labor Pricing without extra manual overhead",
-        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -959,9 +959,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 79.49,
+      "overall_score": 78.99,
       "confidence": "medium"
     },
     {
@@ -975,7 +975,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Tool For Agency Owner Account Manager",
         "headline_variant_b": "Monthly Reporting Labor Tool For Agency Owner Account Manager without extra manual overhead",
-        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -989,9 +989,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 71.21,
+      "overall_score": 69.14,
       "confidence": "medium"
     },
     {
@@ -1005,7 +1005,7 @@
       "change": {
         "headline_variant_a": "Monthly Reporting Labor Vs Manual",
         "headline_variant_b": "Monthly Reporting Labor Vs Manual without extra manual overhead",
-        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with monthly pilot"
       },
@@ -1019,25 +1019,25 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 86.05,
+      "overall_score": 85.55,
       "confidence": "medium"
     },
     {
       "experiment_id": "exp_opportunity-opp-003_05",
       "context_id": "opportunity::opp_003",
       "source_opportunity_id": "opp_003",
-      "keyword": "been meaning make post checklist",
+      "keyword": "add plug play customisable checklist",
       "intent": "MOFU",
       "status": "scored",
-      "hypothesis": "If we position around 'been meaning make post checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
+      "hypothesis": "If we position around 'add plug play customisable checklist' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
-        "headline_variant_a": "Been Meaning Make Post Checklist",
-        "headline_variant_b": "Been Meaning Make Post Checklist without extra manual overhead",
-        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "headline_variant_a": "Add Plug Play Customisable Checklist",
+        "headline_variant_b": "Add Plug Play Customisable Checklist without extra manual overhead",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
-        "cta_variant_b": "Start with been pilot"
+        "cta_variant_b": "Start with add pilot"
       },
       "primary_metric": "shadow_overall_score",
       "guardrail_metrics": [
@@ -1049,9 +1049,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 68.55,
+      "overall_score": 68.05,
       "confidence": "medium"
     },
     {
@@ -1065,7 +1065,7 @@
       "change": {
         "headline_variant_a": "Manual Exports Custom Spreadsheet Report Rewriting Template",
         "headline_variant_b": "Manual Exports Custom Spreadsheet Report Rewriting Template without extra manual overhead",
-        "proof_variant": "I’ve been meaning to make this post for a while because a lot of my agency success has actually come from Reddit. I personally started to see the most success in my life when I realized there was no point in trying to ga...",
+        "proof_variant": "Add plug-n-play customisable sections to any theme & page (2294 reviews)",
         "cta_variant_a": "Target agencies publicly discussing reporting bottlenecks",
         "cta_variant_b": "Start with manual pilot"
       },
@@ -1079,9 +1079,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 81.05,
+      "overall_score": 80.55,
       "confidence": "medium"
     },
     {
@@ -1095,7 +1095,7 @@
       "change": {
         "headline_variant_a": "Best Owner Tenant Workflows Software",
         "headline_variant_b": "Best Owner Tenant Workflows Software without extra manual overhead",
-        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "proof_variant": "Impossible food sues to cancel earlier trademark owners",
         "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
         "cta_variant_b": "Start with best pilot"
       },
@@ -1109,9 +1109,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 80.8,
+      "overall_score": 81.5,
       "confidence": "medium"
     },
     {
@@ -1125,7 +1125,7 @@
       "change": {
         "headline_variant_a": "Default Software Output Plus Custom Excel Template",
         "headline_variant_b": "Default Software Output Plus Custom Excel Template without extra manual overhead",
-        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "proof_variant": "Impossible food sues to cancel earlier trademark owners",
         "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
         "cta_variant_b": "Start with default pilot"
       },
@@ -1139,9 +1139,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 82.3,
+      "overall_score": 83.0,
       "confidence": "medium"
     },
     {
@@ -1155,7 +1155,7 @@
       "change": {
         "headline_variant_a": "How To Default Software Output Plus Custom Excel",
         "headline_variant_b": "How To Default Software Output Plus Custom Excel without extra manual overhead",
-        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "proof_variant": "Impossible food sues to cancel earlier trademark owners",
         "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
         "cta_variant_b": "Start with how pilot"
       },
@@ -1169,9 +1169,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 86.05,
+      "overall_score": 86.75,
       "confidence": "medium"
     },
     {
@@ -1185,7 +1185,7 @@
       "change": {
         "headline_variant_a": "Owner Tenant Workflows Pricing",
         "headline_variant_b": "Owner Tenant Workflows Pricing without extra manual overhead",
-        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "proof_variant": "Impossible food sues to cancel earlier trademark owners",
         "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
         "cta_variant_b": "Start with owner pilot"
       },
@@ -1199,9 +1199,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 79.49,
+      "overall_score": 80.19,
       "confidence": "medium"
     },
     {
@@ -1215,7 +1215,7 @@
       "change": {
         "headline_variant_a": "Owner Tenant Workflows Tool For Property Manager Property Management",
         "headline_variant_b": "Owner Tenant Workflows Tool For Property Manager Property Management without extra manual overhead",
-        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "proof_variant": "Impossible food sues to cancel earlier trademark owners",
         "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
         "cta_variant_b": "Start with owner pilot"
       },
@@ -1229,9 +1229,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 71.05,
+      "overall_score": 71.75,
       "confidence": "medium"
     },
     {
@@ -1245,7 +1245,7 @@
       "change": {
         "headline_variant_a": "Owner Tenant Workflows Vs Manual",
         "headline_variant_b": "Owner Tenant Workflows Vs Manual without extra manual overhead",
-        "proof_variant": "Just started this side job today. Part of it is collecting rents. Did I handle it well? How do you handle these people? I’ve never met this person. Trying to kill em with kindness",
+        "proof_variant": "Impossible food sues to cancel earlier trademark owners",
         "cta_variant_a": "Reach operators with 20-150 doors and reporting pain",
         "cta_variant_b": "Start with owner pilot"
       },
@@ -1259,9 +1259,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 86.05,
+      "overall_score": 86.75,
       "confidence": "medium"
     },
     {
@@ -1270,12 +1270,12 @@
       "source_opportunity_id": "opp_005",
       "keyword": "best expense reimbursement remains software",
       "intent": "BOFU",
-      "status": "ready",
+      "status": "scored",
       "hypothesis": "If we position around 'best expense reimbursement remains software' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Best Expense Reimbursement Remains Software",
         "headline_variant_b": "Best Expense Reimbursement Remains Software without extra manual overhead",
-        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with best pilot"
       },
@@ -1289,9 +1289,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 75.55,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.85,
       "confidence": "medium"
     },
     {
@@ -1305,7 +1305,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Pricing",
         "headline_variant_b": "Expense Reimbursement Remains Pricing without extra manual overhead",
-        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1319,9 +1319,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 79.49,
+      "overall_score": 77.79,
       "confidence": "medium"
     },
     {
@@ -1335,7 +1335,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Tool For Smb Owner Finance Admin",
         "headline_variant_b": "Expense Reimbursement Remains Tool For Smb Owner Finance Admin without extra manual overhead",
-        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1349,9 +1349,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 69.64,
+      "overall_score": 67.94,
       "confidence": "medium"
     },
     {
@@ -1365,7 +1365,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Vs Manual",
         "headline_variant_b": "Expense Reimbursement Remains Vs Manual without extra manual overhead",
-        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1379,9 +1379,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 86.05,
+      "overall_score": 84.35,
       "confidence": "medium"
     },
     {
@@ -1395,7 +1395,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Chaotic Fraud Prone Checklist",
         "headline_variant_b": "Expense Reimbursement Remains Chaotic Fraud Prone Checklist without extra manual overhead",
-        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1409,9 +1409,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 81.05,
+      "overall_score": 79.35,
       "confidence": "medium"
     },
     {
@@ -1425,7 +1425,7 @@
       "change": {
         "headline_variant_a": "Expense Reimbursement Remains Chaotic Fraud Prone Template",
         "headline_variant_b": "Expense Reimbursement Remains Chaotic Fraud Prone Template without extra manual overhead",
-        "proof_variant": "Last week I'm covering for our bookkeeper who's out on maternity leave and I'm going through expense reports from the last few months. I notice that one employee submitted the exact same Uber receipt twice (same ride and...",
+        "proof_variant": "Invoice generator for PDF invoices, quotes & packing slips. (2320 reviews)",
         "cta_variant_a": "Interview SMBs with recurring reimbursement delays",
         "cta_variant_b": "Start with expense pilot"
       },
@@ -1439,9 +1439,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 81.05,
+      "overall_score": 79.35,
       "confidence": "medium"
     },
     {
@@ -1450,12 +1450,12 @@
       "source_opportunity_id": "opp_006",
       "keyword": "best core workflows depend software",
       "intent": "BOFU",
-      "status": "ready",
+      "status": "scored",
       "hypothesis": "If we position around 'best core workflows depend software' with explicit proof and a single CTA, qualified intent quality will improve.",
       "change": {
         "headline_variant_a": "Best Core Workflows Depend Software",
         "headline_variant_b": "Best Core Workflows Depend Software without extra manual overhead",
-        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "proof_variant": "Sync your sales channel with QuickBooks Online (2994 reviews)",
         "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
         "cta_variant_b": "Start with best pilot"
       },
@@ -1469,9 +1469,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
-      "decision": "ready",
-      "overall_score": 78.05,
+      "generated_at": "2026-03-07T22:16:54Z",
+      "decision": "hold",
+      "overall_score": 73.85,
       "confidence": "medium"
     },
     {
@@ -1485,7 +1485,7 @@
       "change": {
         "headline_variant_a": "Core Workflows Depend Pricing",
         "headline_variant_b": "Core Workflows Depend Pricing without extra manual overhead",
-        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "proof_variant": "Sync your sales channel with QuickBooks Online (2994 reviews)",
         "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
         "cta_variant_b": "Start with core pilot"
       },
@@ -1499,9 +1499,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 79.49,
+      "overall_score": 77.79,
       "confidence": "medium"
     },
     {
@@ -1515,7 +1515,7 @@
       "change": {
         "headline_variant_a": "Core Workflows Depend Tool For Operations Admin Smb Operations",
         "headline_variant_b": "Core Workflows Depend Tool For Operations Admin Smb Operations without extra manual overhead",
-        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "proof_variant": "Sync your sales channel with QuickBooks Online (2994 reviews)",
         "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
         "cta_variant_b": "Start with core pilot"
       },
@@ -1529,9 +1529,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "hold",
-      "overall_score": 72.84,
+      "overall_score": 69.35,
       "confidence": "medium"
     },
     {
@@ -1545,7 +1545,7 @@
       "change": {
         "headline_variant_a": "Core Workflows Depend Vs Manual",
         "headline_variant_b": "Core Workflows Depend Vs Manual without extra manual overhead",
-        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "proof_variant": "Sync your sales channel with QuickBooks Online (2994 reviews)",
         "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
         "cta_variant_b": "Start with core pilot"
       },
@@ -1559,9 +1559,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 86.05,
+      "overall_score": 84.35,
       "confidence": "medium"
     },
     {
@@ -1575,7 +1575,7 @@
       "change": {
         "headline_variant_a": "Core Workflows Depend Automation",
         "headline_variant_b": "Core Workflows Depend Automation without extra manual overhead",
-        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "proof_variant": "Sync your sales channel with QuickBooks Online (2994 reviews)",
         "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
         "cta_variant_b": "Start with core pilot"
       },
@@ -1589,9 +1589,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 78.24,
+      "overall_score": 76.54,
       "confidence": "medium"
     },
     {
@@ -1605,7 +1605,7 @@
       "change": {
         "headline_variant_a": "Core Workflows Depend Examples",
         "headline_variant_b": "Core Workflows Depend Examples without extra manual overhead",
-        "proof_variant": "The sheer amount of critical business operations still running on tech that feels like it's held together with duct tape. I'm not talking about just \"old\" tech but things like: 1. A shared network drive folder structur...",
+        "proof_variant": "Sync your sales channel with QuickBooks Online (2994 reviews)",
         "cta_variant_a": "Reach teams reporting PDF-to-Excel pain and formula breakage",
         "cta_variant_b": "Start with core pilot"
       },
@@ -1619,9 +1619,9 @@
       "source_pointers": [
         "../op1_product/research/stage1_idea_discovery/opportunity_records.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
-      "overall_score": 78.24,
+      "overall_score": 76.54,
       "confidence": "medium"
     },
     {
@@ -1649,7 +1649,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 77.55,
       "confidence": "high"
@@ -1679,7 +1679,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1709,7 +1709,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.68,
       "confidence": "high"
@@ -1739,7 +1739,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 81.49,
       "confidence": "high"
@@ -1769,7 +1769,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1799,7 +1799,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.chargeback.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.05,
       "confidence": "high"
@@ -1829,7 +1829,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1859,7 +1859,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 84.17,
       "confidence": "high"
@@ -1889,7 +1889,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.89,
       "confidence": "high"
@@ -1919,7 +1919,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.95,
       "confidence": "high"
@@ -1949,7 +1949,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -1979,7 +1979,7 @@
       "source_pointers": [
         "../op1_product/research/build_deploy_v1/project_spec.reporting.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 79.64,
       "confidence": "high"
@@ -2010,7 +2010,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 76.65,
       "confidence": "high"
@@ -2041,7 +2041,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -2072,7 +2072,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 83.87,
       "confidence": "high"
@@ -2103,7 +2103,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 80.59,
       "confidence": "high"
@@ -2134,7 +2134,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"
@@ -2165,7 +2165,7 @@
         "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
         "../op1_product/research/build_deploy_v1/project_spec.json"
       ],
-      "generated_at": "2026-03-07T18:39:29Z",
+      "generated_at": "2026-03-07T22:16:54Z",
       "decision": "ready",
       "overall_score": 82.15,
       "confidence": "high"

@@ -190,3 +190,25 @@ jobs:
         # when a feature adds both code and updated contracts. The strict
         # "no mixed commits" check is enforced at the pre-commit stage.
         # Remove --allow-mixed to enforce strict separation at PR level too.
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Job: i18n-parity
+# Validates that all locale namespaces have matching key sets between en and zh.
+# This is a BLOCKING gate — fails if any namespace has missing or extra keys.
+# ─────────────────────────────────────────────────────────────────────────────
+  i18n-parity:
+    name: i18n Parity
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check i18n key parity (en ↔ zh)
+        run: |
+          python3 scripts/check-i18n-parity.py --repo-root .

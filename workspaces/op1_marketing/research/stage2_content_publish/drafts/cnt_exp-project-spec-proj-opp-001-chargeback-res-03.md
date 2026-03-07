@@ -4,9 +4,9 @@ experiment_id: exp_project-spec-proj-opp-001-chargeback-res_03
 context_id: project_spec::proj-opp-001-chargeback-response-v1
 intent: BOFU
 primary_keyword: chargeback disputes handled tool for ecommerce operator ecommerce
-mode: review
+mode: shadow
 status: draft
-generated_at: 2026-03-07T19:10:42Z
+generated_at: 2026-03-07T22:17:15Z
 ---
 
 # Chargeback Disputes Handled Tool For Ecommerce Operator Ecommerce: Practical buyer guide for teams evaluating alternatives

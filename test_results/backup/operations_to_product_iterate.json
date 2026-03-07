@@ -1,0 +1,129 @@
+{
+  "contract_version": "1.0.0",
+  "generated_at": "2026-03-07T18:46:55+00:00",
+  "generated_by": "workspaces/op1_operations/scripts/evaluate_stage3_experiments.py",
+  "from": "op1_operations.stage3_iteration",
+  "objective": "product_iteration_decisions",
+  "items": [
+    {
+      "experiment_id": "exp3_cc6418573e5369",
+      "decision": "ship",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.015696,
+      "observed_mrr_delta_30d": 8.4262,
+      "next_action": "Ship to 100%"
+    },
+    {
+      "experiment_id": "exp3_c3a320476dbf99",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.006327,
+      "observed_mrr_delta_30d": 4.0759,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_59cab733ebc263",
+      "decision": "ship",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.004916,
+      "observed_mrr_delta_30d": 3.167,
+      "next_action": "Ship to 100%"
+    },
+    {
+      "experiment_id": "exp3_05035039912c10",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_c6b83944f78cc7",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_aff51f279f27df",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_72c353fd9fdd32",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_299c70c714d04e",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "signup_to_paid_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_bd55e0ff614989",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "visit_to_signup_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_368bdcc2cc5f04",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "visit_to_signup_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_0ea2c8672f4892",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "visit_to_signup_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    },
+    {
+      "experiment_id": "exp3_b40d4807f0bce0",
+      "decision": "iterate",
+      "topic": null,
+      "subtopic": null,
+      "primary_metric": "visit_to_signup_rate",
+      "primary_metric_lift_pp": 0.0,
+      "observed_mrr_delta_30d": 0.0,
+      "next_action": "Refine variant and rerun"
+    }
+  ]
+}

@@ -1,8 +1,8 @@
 {
   "status": "ok",
-  "generated_at": "2026-03-07T19:11:29Z",
-  "snapshot_id": "snap_20260307191129_7662b2908a554254",
-  "workspace_root": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing",
+  "generated_at": "2026-03-07T22:16:54Z",
+  "snapshot_id": "snap_20260307221654_011b6f89a7a16ce8",
+  "workspace_root": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_marketing",
   "required_files": [
     "../op1_product/research/stage1_idea_discovery/opportunity_records.json",
     "../op1_product/research/stage2_idea_screening/scoring.csv",
@@ -170,145 +170,145 @@
     {
       "requirement_id": "landing_contract_test",
       "source_path": "../op1_product/research/landing_v1/landing_contract_test.latest.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1/landing_contract_test.latest.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/landing_v1/landing_contract_test.latest.json",
       "mirror_path": "external/__up__/op1_product/research/landing_v1/landing_contract_test.latest.json",
       "size_bytes": 1567,
-      "mtime": "2026-03-07T19:08:14Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "646ae087dece21c3fa5435b02ac43238a58630df63be9fbb3a9f0b42bc2c22fd"
     },
     {
       "requirement_id": "landing_package",
       "source_path": "../op1_product/research/landing_v1/landing_package.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1/landing_package.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/landing_v1/landing_package.json",
       "mirror_path": "external/__up__/op1_product/research/landing_v1/landing_package.json",
       "size_bytes": 13953,
-      "mtime": "2026-03-07T19:08:13Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "c310df28c5a079e07748fa56631366b79d20175176e28df39884eb0b9becfd91"
     },
     {
       "requirement_id": "landing_semantic_test",
       "source_path": "../op1_product/research/landing_v1/landing_semantic_test.latest.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1/landing_semantic_test.latest.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/landing_v1/landing_semantic_test.latest.json",
       "mirror_path": "external/__up__/op1_product/research/landing_v1/landing_semantic_test.latest.json",
       "size_bytes": 1348,
-      "mtime": "2026-03-07T19:08:14Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "06604bb376f5ca884a4f2d04cebdaa02431e3b0958abf2f986ee775ca6c46914"
     },
     {
       "requirement_id": "live_examples",
       "source_path": "../op1_product/research/live_examples.latest.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/live_examples.latest.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/live_examples.latest.json",
       "mirror_path": "external/__up__/op1_product/research/live_examples.latest.json",
       "size_bytes": 3568,
-      "mtime": "2026-03-07T19:08:14Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "0b886c5e864d0a3e80b99616f18b22bf997cbb514d8c22c90cbc2397c53047d1"
     },
     {
       "requirement_id": "product_to_marketing_handoff",
       "source_path": "../../handoffs/product_to_marketing.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/handoffs/product_to_marketing.json",
       "mirror_path": "external/__up__/__up__/handoffs/product_to_marketing.json",
-      "size_bytes": 1861,
-      "mtime": "2026-03-07T19:08:13Z",
-      "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09"
+      "size_bytes": 1818,
+      "mtime": "2026-03-07T21:36:55Z",
+      "sha256": "b1e934551481c19253e65af3eae17fb3d49ee624114adf29d911049ce932df77"
     },
     {
       "requirement_id": "project_specs",
       "source_path": "../op1_product/research/build_deploy_v1/project_spec.chargeback.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.chargeback.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.chargeback.json",
       "mirror_path": "external/__up__/op1_product/research/build_deploy_v1/project_spec.chargeback.json",
       "size_bytes": 4611,
-      "mtime": "2026-03-03T16:29:54Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "0a013d6da9683f230d29002f45a6ad80f1210d96619e5e5ff5dc001e0a225b7f"
     },
     {
       "requirement_id": "project_specs",
       "source_path": "../op1_product/research/build_deploy_v1/project_spec.invoice.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.invoice.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.invoice.json",
       "mirror_path": "external/__up__/op1_product/research/build_deploy_v1/project_spec.invoice.json",
       "size_bytes": 4846,
-      "mtime": "2026-03-03T16:29:54Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "97eb175c00511865c211f2d18aef3b0d87a7359d807ec7e8f2a7fbc5ea83cb06"
     },
     {
       "requirement_id": "project_specs",
       "source_path": "../op1_product/research/build_deploy_v1/project_spec.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.json",
       "mirror_path": "external/__up__/op1_product/research/build_deploy_v1/project_spec.json",
       "size_bytes": 3898,
-      "mtime": "2026-03-03T12:23:35Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "4917db1fdc85a16c38b34a54453211ac53d62119277cab336b0ae40abd8cae36"
     },
     {
       "requirement_id": "project_specs",
       "source_path": "../op1_product/research/build_deploy_v1/project_spec.reporting.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.reporting.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/build_deploy_v1/project_spec.reporting.json",
       "mirror_path": "external/__up__/op1_product/research/build_deploy_v1/project_spec.reporting.json",
       "size_bytes": 4464,
-      "mtime": "2026-03-03T16:29:54Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "3a12388b6d63eefda1f2ee0a36cfbf5827b313beb6c13d667c51b54bdd6f8d5d"
     },
     {
       "requirement_id": "stage1_opportunity_records",
       "source_path": "../op1_product/research/stage1_idea_discovery/opportunity_records.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage1_idea_discovery/opportunity_records.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage1_idea_discovery/opportunity_records.json",
       "mirror_path": "external/__up__/op1_product/research/stage1_idea_discovery/opportunity_records.json",
-      "size_bytes": 12445,
-      "mtime": "2026-03-07T19:08:12Z",
-      "sha256": "6e2820698495a44949c122c166201f637fe13bb74a25914504726902240b51d9"
+      "size_bytes": 12491,
+      "mtime": "2026-03-07T20:38:11Z",
+      "sha256": "65410e29efc39e94d87f5b371240dfb75e373704bb9492079de57f4924951142"
     },
     {
       "requirement_id": "stage2_decision_log",
       "source_path": "../op1_product/research/stage2_idea_screening/decision_log.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_idea_screening/decision_log.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage2_idea_screening/decision_log.json",
       "mirror_path": "external/__up__/op1_product/research/stage2_idea_screening/decision_log.json",
       "size_bytes": 12682,
-      "mtime": "2026-03-07T19:08:12Z",
-      "sha256": "7a010fc275014b7b509bd13a1158b587bb29d705c7a19d555c729df6e6a1b33a"
+      "mtime": "2026-03-07T20:38:11Z",
+      "sha256": "b43a6ae6736dfd8b782d77878115998496308208cb8779eddc0d281fa6c3895c"
     },
     {
       "requirement_id": "stage2_scoring",
       "source_path": "../op1_product/research/stage2_idea_screening/scoring.csv",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_idea_screening/scoring.csv",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage2_idea_screening/scoring.csv",
       "mirror_path": "external/__up__/op1_product/research/stage2_idea_screening/scoring.csv",
       "size_bytes": 615,
-      "mtime": "2026-03-07T19:08:12Z",
+      "mtime": "2026-03-07T20:38:11Z",
       "sha256": "8c17e594001cfa2c56740d3a01f7e61c86bbda2c46f9a2041df291778b45bcf2"
     },
     {
       "requirement_id": "stage2_web_run",
       "source_path": "../op1_product/research/stage2_web_product/run.latest.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_web_product/run.latest.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage2_web_product/run.latest.json",
       "mirror_path": "external/__up__/op1_product/research/stage2_web_product/run.latest.json",
       "size_bytes": 4864,
-      "mtime": "2026-03-04T01:33:35Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "c29140e3c55fdea5ecc27f270ccfd3347d119384e1a624887fc7bf6629355379"
     },
     {
       "requirement_id": "stage2_web_state",
       "source_path": "../op1_product/research/stage2_web_product/state.latest.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage2_web_product/state.latest.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage2_web_product/state.latest.json",
       "mirror_path": "external/__up__/op1_product/research/stage2_web_product/state.latest.json",
       "size_bytes": 32986,
-      "mtime": "2026-03-04T01:33:35Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "683510255b62eb62794d2b78a1c847a660b60941cc74e54c0d1bd7cbc8400928"
     },
     {
       "requirement_id": "stage3_landing_run",
       "source_path": "../op1_product/research/stage3_landing_launch/run.latest.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage3_landing_launch/run.latest.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage3_landing_launch/run.latest.json",
       "mirror_path": "external/__up__/op1_product/research/stage3_landing_launch/run.latest.json",
       "size_bytes": 1343,
-      "mtime": "2026-03-07T19:08:14Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "93620b641bc49cada86fc0d6c8af327585159bbd91fda7dc9fa3a80ce899b409"
     },
     {
       "requirement_id": "stage3_project_blueprint",
       "source_path": "../op1_product/research/stage3_mvp_scope/project_blueprint.json",
-      "source_abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/stage3_mvp_scope/project_blueprint.json",
+      "source_abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/stage3_mvp_scope/project_blueprint.json",
       "mirror_path": "external/__up__/op1_product/research/stage3_mvp_scope/project_blueprint.json",
       "size_bytes": 3774,
-      "mtime": "2026-03-04T01:56:18Z",
+      "mtime": "2026-03-07T19:38:54Z",
       "sha256": "133742456d12815444aab8314a8ee70c8a1e14624133ea8f1c54135e5843eb3b"
     }
   ],

@@ -1,0 +1,38 @@
+{
+  "dashboard": {
+    "systemStatus": "系统状态",
+    "statusLabel": "状态",
+    "uptime": "运行时长",
+    "mrr": "月经常性收入",
+    "prospectsContacted": "已联系潜在客户",
+    "customersConverted": "已转化客户",
+    "services": "服务",
+    "serviceUp": "正常",
+    "serviceDown": "异常",
+    "unavailable": "仪表板 API 不可用",
+    "unavailableHint": "请确认仪表板服务器正在 8765 端口运行。",
+    "retryLabel": "重试",
+    "statusOk": "健康",
+    "statusDegraded": "降级",
+    "statusError": "错误",
+    "uptimeSeconds": "{seconds} 秒",
+    "agentStatus": "智能体状态",
+    "pipelineOverview": "流水线概览",
+    "kpis": "关键指标"
+  },
+  "ventures": {
+    "handoffContracts": "交付合约",
+    "contractName": "合约",
+    "version": "版本",
+    "timestamp": "时间戳",
+    "generatedBy": "生成方",
+    "status": "状态",
+    "noHandoffs": "未找到交付合约。",
+    "unavailable": "交付数据不可用",
+    "unavailableHint": "请确认仪表板服务器正在 8765 端口运行。",
+    "retryLabel": "重试",
+    "statusReady": "就绪",
+    "statusPending": "待处理",
+    "statusComplete": "已完成"
+  }
+}

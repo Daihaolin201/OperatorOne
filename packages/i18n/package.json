@@ -16,9 +16,17 @@
       "require": "./src/config.ts",
       "types": "./src/config.ts"
     },
+    "./locales/*": {
+      "import": "./src/locales/*",
+      "require": "./src/locales/*"
+    },
     "./locales/*.json": {
       "import": "./src/locales/*.json",
       "require": "./src/locales/*.json"
+    },
+    "./locales/*/*.json": {
+      "import": "./src/locales/*/*.json",
+      "require": "./src/locales/*/*.json"
     },
     "./types": {
       "import": "./src/types.ts",

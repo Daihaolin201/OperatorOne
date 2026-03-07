@@ -1,26 +1,50 @@
 # OperatorOne Runbook
 
-## 1) First-time setup (per machine)
+## 1) Quick Start / Onboarding (30 min)
 
-1. Clone repo:
-   - `~/.openclaw/workspace/OperatorOne`
-2. Sync OperatorOne profile safely:
-   - `bash openclaw/sync-operatorone-safe.sh`
-3. Verify profile:
-   - `openclaw --profile operatorone status`
-   - `openclaw --profile operatorone agents list`
-4. Start fresh chat session:
-   - `/new` or `/reset`
+Establish a local development environment and verify the multi-agent pipeline.
 
-Advanced:
+### 1.1 Prerequisites
+- **Python 3.8+**
+- **Node.js 18+**
+- **pnpm 7+**
 
-- Config-only sync: `bash openclaw/sync-openclaw.sh`
-- Allow dual gateways temporarily: `bash openclaw/sync-operatorone-safe.sh --allow-dual-gateway`
-- Cleanup legacy default-profile sync: `bash openclaw/cleanup-default-profile.sh`
+### 1.2 Setup Path
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/Daihaolin201/OperatorOne
+   cd OperatorOne
+   ```
+2. **Install dependencies:**
+   ```bash
+   pnpm install
+   ```
+3. **Sync OpenClaw profile:**
+   ```bash
+   bash openclaw/sync-operatorone-safe.sh
+   ```
+4. **Launch services:**
+   ```bash
+   ./dev up
+   ```
+5. **Verify health:**
+   - **Dashboard:** http://localhost:8765 (Health: `GET /api/health`)
+   - **Platform Portal:** http://localhost:3000 (Health: `GET /healthz`)
+   - **Product UI:** http://localhost:3001 (Health: `GET /healthz`)
 
 ---
 
-## 2) Daily health check
+## 2) Developer CLI (`dev`)
+
+The `dev` launcher is the authoritative tool for managing the local environment.
+
+- `./dev up`: Start all services (dashboard, portal, product) and wait for readiness.
+- `./dev status`: Check the health and PID of all services.
+- `./dev down`: Gracefully shut down all running services.
+
+---
+
+## 3) Daily health check
 
 From repo root:
 
@@ -131,12 +155,19 @@ Key outputs:
 ## 4) Dashboard operations
 
 ```bash
-python3 dashboard/server.py --host 127.0.0.1 --port 8765
+./dev up
 ```
 
 Open:
 
-- <http://127.0.0.1:8765>
+- Dashboard: <http://127.0.0.1:8765>
+- Platform Portal: <http://127.0.0.1:3000>
+- Product UI: <http://127.0.0.1:3001>
+
+Health Check Policy:
+
+- **Dashboard**: `GET /api/health`
+- **React Apps**: `GET /healthz`
 
 Reference:
 
@@ -145,7 +176,15 @@ Reference:
 
 ---
 
-## 5) Contract validation & upgrade
+## 5) Architecture & Development Reference
+
+### Frontend Stack
+
+- [Frontend Stack Baseline](frontend-stack-baseline.md) — authoritative technology decisions for `apps/` and `packages/`, including React 18, Vite, TypeScript, pnpm, Vitest, Playwright, and i18n configuration.
+
+---
+
+## 6) Contract validation & upgrade
 
 Validate all handoff contracts:
 
@@ -178,7 +217,7 @@ python3 scripts/reset_generated_artifacts.py
 python3 scripts/reset_generated_artifacts.py --apply
 ```
 
-## 6) Troubleshooting
+## 7) Troubleshooting
 
 ### `op1_*` agents not visible in web
 
@@ -202,7 +241,7 @@ python3 scripts/reset_generated_artifacts.py --apply
 
 ---
 
-## 7) Safety notes
+## 8) Safety notes
 
 - Keep profile isolation (`operatorone`) for all OperatorOne operations.
 - Treat `handoffs/*.json` as contract files; avoid ad-hoc key changes.

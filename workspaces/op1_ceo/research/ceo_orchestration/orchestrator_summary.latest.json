@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-03-07T21:46:19.055842+00:00",
+  "generated_at": "2026-03-07T22:24:05.008617+00:00",
   "goal": "Reach first $100 MRR with disciplined experimentation",
   "status": "completed",
   "approval": {
@@ -16,7 +16,7 @@
     {
       "agent_id": "op1_marketing",
       "ok": true,
-      "reply": "[simulation] Marketing agent completed GTM simulation for early demand generation. Built 9 campaign records: 3 launch_ready and 5 watchlist. Produced 12 content assets spanning linkedin, email_nurture, organic_search with channel-light tests tied to BOFU intent.\n\nLead model estimates 25 weekly leads from current launch mix. Qualified lead signals and campaign readiness are packaged for Sales handoff in marketing_to_sales.json."
+      "reply": "[simulation] Marketing agent completed GTM simulation for early demand generation. Built 1 campaign records: 0 launch_ready and 0 watchlist. Produced 12 content assets spanning organic_search, linkedin, email_nurture with channel-light tests tied to BOFU intent.\n\nLead model estimates 0 weekly leads from current launch mix. Qualified lead signals and campaign readiness are packaged for Sales handoff in marketing_to_sales.json."
     },
     {
       "agent_id": "op1_sales",

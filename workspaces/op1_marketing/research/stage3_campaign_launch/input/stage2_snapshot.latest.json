@@ -1,52 +1,52 @@
 {
-  "generated_at": "2026-03-07T19:32:51Z",
-  "snapshot_id": "stage3snap_20260307193251_ead5f0506cce44fe",
-  "workspace_root": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing",
+  "generated_at": "2026-03-07T22:17:39Z",
+  "snapshot_id": "stage3snap_20260307221739_b60558cbd0968317",
+  "workspace_root": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_marketing",
   "requirements": [
     {
       "id": "stage2_run",
       "path": "research/stage2_content_publish/run.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
+      "abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/run.latest.json",
       "exists": true,
-      "sha256": "8367ca3bf9be2f2d55d6e02d39f72f68b567e064f63159e95e8bdb3a85a42b22",
-      "size": 4444,
-      "mtime": 1772910678
+      "sha256": "00ed5e0c6ca9b659fa5cf45f98005a20e60bbf609e0a917123927c37299235e2",
+      "size": 5465,
+      "mtime": 1772921835
     },
     {
       "id": "stage2_backlog",
       "path": "research/stage2_content_publish/content.backlog.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
+      "abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/content.backlog.latest.json",
       "exists": true,
-      "sha256": "8150cda70a33ed11c3320eaef8093cc8fb601d50e56112e705d9d7b1e8f25650",
-      "size": 23574,
-      "mtime": 1772910678
+      "sha256": "b5c73297164945c0878c2d0c35ecd9d155c590161f1b5e20f3a34f7b40c69af1",
+      "size": 22338,
+      "mtime": 1772921835
     },
     {
       "id": "stage2_queue",
       "path": "research/stage2_content_publish/publish.queue.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
+      "abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/publish.queue.latest.json",
       "exists": true,
-      "sha256": "d78878dfa331b1a15624f268a4d654231660a8dc534045db4ddfadb6d842d17f",
-      "size": 24520,
-      "mtime": 1772910678
+      "sha256": "a54aceee786a6cd7ffbc7ca225ddd275ff6acfefc154248387365c4e120535b2",
+      "size": 23240,
+      "mtime": 1772921835
     },
     {
       "id": "stage2_qa",
       "path": "research/stage2_content_publish/qa.latest.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
+      "abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_marketing/research/stage2_content_publish/qa.latest.json",
       "exists": true,
-      "sha256": "84298a4c6454c3b361ee71025d8f6496f827c606863c5a170766b46569b44cd5",
-      "size": 5798,
-      "mtime": 1772910642
+      "sha256": "87a4e2fec896fa6d9d58d6ae8ca95d613d729965daafc06223381a6e1828657d",
+      "size": 5629,
+      "mtime": 1772921835
     },
     {
       "id": "product_to_marketing_handoff",
       "path": "../../handoffs/product_to_marketing.json",
-      "abs": "/Users/user/.openclaw/workspace/OperatorOne/handoffs/product_to_marketing.json",
+      "abs": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/handoffs/product_to_marketing.json",
       "exists": true,
-      "sha256": "85b775a4eaedf11136b675fc93b629ca9c256e9e3aa88760db53baf8536f6e09",
-      "size": 1861,
-      "mtime": 1772910493
+      "sha256": "b1e934551481c19253e65af3eae17fb3d49ee624114adf29d911049ce932df77",
+      "size": 1818,
+      "mtime": 1772919415
     }
   ],
   "completeness": {

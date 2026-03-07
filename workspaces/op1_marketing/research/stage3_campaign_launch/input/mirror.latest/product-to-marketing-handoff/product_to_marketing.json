@@ -14,7 +14,7 @@
     "Pilot landing/waitlist flow for intent capture",
     "Lightweight outcomes log (replies, promised payment date, recovered amount)"
   ],
-  "landing_page_url_or_path": "/Users/user/.openclaw/workspace/OperatorOne/workspaces/op1_product/research/landing_v1/landing_package.json",
+   "landing_page_url_or_path": "workspaces/op1_product/research/landing_v1/landing_package.json",
   "positioning": {
     "headline": "Turn overdue invoices into a daily follow-up action queue",
     "value_proposition": "Turn overdue invoices into a daily follow-up action queue"

@@ -1,6 +1,9 @@
 "use client";
-import { Link as NextIntlLink } from "next-intl/routing";
+import { createNavigation } from "next-intl/navigation";
+import { routing } from "@/i18n/routing";
 import type { ComponentProps } from "react";
+
+const { Link: NextIntlLink } = createNavigation(routing);
 
 type LinkProps = ComponentProps<typeof NextIntlLink>;
 

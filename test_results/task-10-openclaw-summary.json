@@ -1,0 +1,53 @@
+{
+  "tested_at": "2026-03-07T22:31:40.259837",
+  "total_agents": 5,
+  "successful": 5,
+  "failed": 0,
+  "results": [
+    {
+      "agent": "op1_product",
+      "status": "ok",
+      "exit_code": -1,
+      "json_status": "ok",
+      "response_length": 10557,
+      "has_valid_json": true,
+      "response_preview": "I\u2019m OperatorOne\u2019s **Product specialist agent**.\nI handle **Stage 1 (idea discovery/screening)**, **Stage 2 (build & deploy web MVPs)**, and **Stage 3 (landing page creation/handoff)**."
+    },
+    {
+      "agent": "op1_marketing",
+      "status": "ok",
+      "exit_code": 0,
+      "json_status": "ok",
+      "response_length": 10212,
+      "has_valid_json": true,
+      "response_preview": "I\u2019m the **OperatorOne Marketing specialist**. I handle **Stage1 (SEO experiments)**, **Stage2 (content publishing)**, and **Stage3 (campaign launch)**."
+    },
+    {
+      "agent": "op1_sales",
+      "status": "ok",
+      "exit_code": 0,
+      "json_status": "ok",
+      "response_length": 10171,
+      "has_valid_json": true,
+      "response_preview": "I\u2019m the **OperatorOne sales specialist**.\nI handle **Stage 1 (prospect identification)**, **Stage 2 (outreach/follow-ups)**, and **Stage 3 (early customer conversion to paid)**."
+    },
+    {
+      "agent": "op1_operations",
+      "status": "ok",
+      "exit_code": 0,
+      "json_status": "ok",
+      "response_length": 10226,
+      "has_valid_json": true,
+      "response_preview": "I\u2019m OperatorOne\u2019s **Operations specialist**.\nI handle **Stage 1** (traffic/signups/revenue), **Stage 2** (feedback processing), and **Stage 3** (iteration and rollout decisions)."
+    },
+    {
+      "agent": "op1_ceo",
+      "status": "ok",
+      "exit_code": 0,
+      "json_status": "ok",
+      "response_length": 9744,
+      "has_valid_json": true,
+      "response_preview": "I\u2019m the **OperatorOne CEO orchestrator**: I translate your goals into coordinated cross-agent plans, gate external actions for approval, and keep venture state auditable.\n\nI handle stage transitions across **Product, Marketing, Sales, and Operations**."
+    }
+  ]
+}

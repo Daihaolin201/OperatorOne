@@ -1,6 +1,23 @@
 import { getRequestConfig } from "next-intl/server";
 import { routing } from "./routing";
 
+const localeLoaders = {
+  en: {
+    common: () => import("@op1/i18n/locales/en/common.json"),
+    navigation: () => import("@op1/i18n/locales/en/navigation.json"),
+    auth: () => import("@op1/i18n/locales/en/auth.json"),
+    errors: () => import("@op1/i18n/locales/en/errors.json"),
+    product: () => import("@op1/i18n/locales/en/product.json"),
+  },
+  zh: {
+    common: () => import("@op1/i18n/locales/zh/common.json"),
+    navigation: () => import("@op1/i18n/locales/zh/navigation.json"),
+    auth: () => import("@op1/i18n/locales/zh/auth.json"),
+    errors: () => import("@op1/i18n/locales/zh/errors.json"),
+    product: () => import("@op1/i18n/locales/zh/product.json"),
+  },
+} as const;
+
 export default getRequestConfig(async ({ requestLocale }) => {
   let locale = await requestLocale;
 
@@ -8,11 +25,14 @@ export default getRequestConfig(async ({ requestLocale }) => {
     locale = routing.defaultLocale;
   }
 
-  const [common, navigation, auth, errors] = await Promise.all([
-    import(`@op1/i18n/locales/${locale}/common.json`),
-    import(`@op1/i18n/locales/${locale}/navigation.json`),
-    import(`@op1/i18n/locales/${locale}/auth.json`),
-    import(`@op1/i18n/locales/${locale}/errors.json`),
+  const loaders = localeLoaders[locale as "en" | "zh"];
+
+  const [common, navigation, auth, errors, product] = await Promise.all([
+    loaders.common(),
+    loaders.navigation(),
+    loaders.auth(),
+    loaders.errors(),
+    loaders.product(),
   ]);
 
   return {
@@ -22,6 +42,7 @@ export default getRequestConfig(async ({ requestLocale }) => {
       navigation: navigation.default,
       auth: auth.default,
       errors: errors.default,
+      product: product.default,
     },
   };
 });
