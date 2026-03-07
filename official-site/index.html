@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>OperatorOne — Multi-Agent Startup Operating System</title>
+    <meta
+      name="description"
+      content="OperatorOne 是一个多智能体创业执行系统：从机会发现、落地页生成、营销与销售到运营反馈迭代，形成可审计、可复现、可增长的闭环。"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="bg-canvas" aria-hidden="true"></canvas>
+    <div class="cursor-glow" aria-hidden="true"></div>
+
+    <header class="topbar">
+      <div class="brand">
+        <span class="brand-dot"></span>
+        <span class="brand-text">OperatorOne</span>
+      </div>
+      <nav>
+        <a href="#pain">痛点</a>
+        <a href="#agents">能力</a>
+        <a href="#loop">执行闭环</a>
+        <a href="#cta">开始</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero section reveal" id="hero">
+        <p class="chip">Official Site · Multi-Agent Startup OS</p>
+        <h1>
+          把创业从“忙乱试错”
+          <br />
+          变成<span class="gradient-text">可执行、可复盘、可增长</span>
+        </h1>
+        <p class="hero-desc">
+          OperatorOne 通过 Product / Marketing / Sales / Operations 四个专家 Agent 和一个管理控制平面，
+          将“想法 → 落地 → 转化 → 迭代”串成自动化执行链路。
+        </p>
+
+        <div class="hero-dynamic">
+          正在加速：<span id="dynamic-phrase">发现高价值机会</span>
+        </div>
+
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#loop">查看执行链路</a>
+          <a class="btn btn-ghost" href="#agents">了解能力边界</a>
+        </div>
+
+        <div class="metrics">
+          <div class="metric-card tilt-card">
+            <h3 data-counter="4">0</h3>
+            <p>Specialist Agents</p>
+          </div>
+          <div class="metric-card tilt-card">
+            <h3 data-counter="1">0</h3>
+            <p>Manager Control Plane</p>
+          </div>
+          <div class="metric-card tilt-card">
+            <h3 data-counter="9">0</h3>
+            <p>Contracted Handoffs</p>
+          </div>
+          <div class="metric-card tilt-card">
+            <h3 data-counter="100">0</h3>
+            <p>North-Star MRR Goal</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section reveal" id="pain">
+        <div class="section-head">
+          <p class="chip">Why OperatorOne</p>
+          <h2>它专门解决创业团队最常见的 4 类执行痛点</h2>
+        </div>
+
+        <div class="pain-grid">
+          <article class="pain-card tilt-card">
+            <h3>痛点 01：机会判断靠感觉</h3>
+            <p>面对海量想法，很难快速验证“是否值得做”。</p>
+            <p class="solution">✅ 通过多源机会发现 + 评分门禁，优先推进高价值方向。</p>
+          </article>
+          <article class="pain-card tilt-card">
+            <h3>痛点 02：从想法到上线太慢</h3>
+            <p>常常卡在页面搭建、部署和基础验证上。</p>
+            <p class="solution">✅ Product Agent 可生成落地页并自动部署，附带基础验证报告。</p>
+          </article>
+          <article class="pain-card tilt-card">
+            <h3>痛点 03：营销销售衔接断裂</h3>
+            <p>内容、外联、转化数据分散，团队协作成本高。</p>
+            <p class="solution">✅ Contract-first handoff 让 Marketing→Sales→Ops 数据交接可追踪。</p>
+          </article>
+          <article class="pain-card tilt-card">
+            <h3>痛点 04：迭代没有闭环</h3>
+            <p>缺少统一指标，难以确定下一轮优先级。</p>
+            <p class="solution">✅ Operations Agent 追踪 KPI、处理反馈并回写迭代计划。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="agents">
+        <div class="section-head">
+          <p class="chip">Capability Architecture</p>
+          <h2>多智能体分工，不再让一个人扮演五个部门</h2>
+        </div>
+
+        <div class="agent-grid">
+          <article class="agent-card tilt-card">
+            <h3>Product Agent</h3>
+            <ul>
+              <li>Generate startup ideas</li>
+              <li>Build & deploy simple web products</li>
+              <li>Create conversion-first landing pages</li>
+            </ul>
+          </article>
+          <article class="agent-card tilt-card">
+            <h3>Marketing Agent</h3>
+            <ul>
+              <li>SEO 机会实验与内容生产</li>
+              <li>Campaign 候选生成与质量门禁</li>
+              <li>更新 Marketing→Sales handoff</li>
+            </ul>
+          </article>
+          <article class="agent-card tilt-card">
+            <h3>Sales Agent</h3>
+            <ul>
+              <li>Prospecting 队列构建</li>
+              <li>审批制 outreach 与回复处理</li>
+              <li>Conversion scoreboards 输出</li>
+            </ul>
+          </article>
+          <article class="agent-card tilt-card">
+            <h3>Operations Agent</h3>
+            <ul>
+              <li>流量/注册/收入追踪</li>
+              <li>反馈优先级评估</li>
+              <li>回写跨团队迭代 handoffs</li>
+            </ul>
+          </article>
+          <article class="agent-card wide tilt-card">
+            <h3>Manager Control Plane</h3>
+            <ul>
+              <li>跨 Agent 协作审计与文档一致性维护</li>
+              <li>运行规则、路径与契约治理</li>
+              <li>保证执行链路长期可维护</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section reveal" id="loop">
+        <div class="section-head">
+          <p class="chip">Execution Loop</p>
+          <h2>从信号到增长：一条可观测、可审计的执行闭环</h2>
+        </div>
+
+        <div class="loop-wrap">
+          <div class="loop-orbit">
+            <div class="center-node">OperatorOne</div>
+            <span class="orbit-node n1">Product</span>
+            <span class="orbit-node n2">Marketing</span>
+            <span class="orbit-node n3">Sales</span>
+            <span class="orbit-node n4">Ops</span>
+          </div>
+          <ol class="loop-steps">
+            <li>
+              <span>01</span>
+              Product 发现机会并生成可部署页面
+            </li>
+            <li>
+              <span>02</span>
+              Marketing 产出 SEO/内容/campaign 候选
+            </li>
+            <li>
+              <span>03</span>
+              Sales 在审批门禁下执行外联与转化
+            </li>
+            <li>
+              <span>04</span>
+              Operations 用指标与反馈驱动下一轮迭代
+            </li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="section reveal" id="assurance">
+        <div class="section-head">
+          <p class="chip">Reliability by Design</p>
+          <h2>不是“会跑一次”的 Demo，而是能持续迭代的系统</h2>
+        </div>
+
+        <div class="assurance-grid">
+          <article class="assurance-card tilt-card">
+            <h3>Contract-First Handoffs</h3>
+            <p>跨 Agent 信息传递全部通过 handoff JSON，减少口头同步损耗。</p>
+          </article>
+          <article class="assurance-card tilt-card">
+            <h3>Reproducibility Artifacts</h3>
+            <p>每个阶段沉淀 latest 快照和运行报告，方便回放与审计。</p>
+          </article>
+          <article class="assurance-card tilt-card">
+            <h3>Human-in-the-Loop</h3>
+            <p>高风险动作采用策略门禁与人工确认，默认 simulation 优先。</p>
+          </article>
+          <article class="assurance-card tilt-card">
+            <h3>Policy + Dashboard Plane</h3>
+            <p>统一快照与 readiness gate，明确“现在能不能推进，以及为什么”。</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="section cta-section reveal" id="cta">
+        <p class="chip">Get Started</p>
+        <h2>让 OperatorOne 成为你的增长执行引擎</h2>
+        <p>
+          你可以从一个机会开始，或者直接进入 landing + deploy 验证。
+        </p>
+        <div class="cta-actions">
+          <a class="btn btn-primary" href="mailto:hello@operatorone.ai">预约演示</a>
+          <a class="btn btn-ghost" href="https://docs.openclaw.ai" target="_blank" rel="noreferrer">查看 OpenClaw 文档</a>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p>© <span id="year"></span> OperatorOne. Built for high-velocity founders.</p>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
