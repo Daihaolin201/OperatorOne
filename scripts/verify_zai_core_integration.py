@@ -273,7 +273,7 @@ def main() -> int:
 
     checks = {
         "manifest_primary_is_zai": expected_primary.startswith("zai/"),
-        "manifest_primary_is_glm5": expected_primary == "zai/glm-5",
+        "manifest_primary_is_glm_family": expected_primary.startswith("zai/glm-"),
         "config_path_found": bool(config_path),
         "config_primary_matches_manifest": bool(expected_primary and actual_primary == expected_primary),
         "config_primary_is_zai": actual_primary.startswith("zai/"),

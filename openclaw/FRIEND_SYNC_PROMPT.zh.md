@@ -14,7 +14,7 @@
    - agents 已包含：`op1_product`, `op1_marketing`, `op1_sales`, `op1_operations`
    - `skills.load.extraDirs` **仅**包含：`~/.openclaw/workspace/OperatorOne/shared/skills` 对应绝对路径
    - `gateway.port` 为 `30740`
-   - `agents.defaults.model.primary` 为 `zai/glm-5`
+   - `agents.defaults.model.primary` 为 `zai/glm-4.6`
    - `agents.defaults.model.fallbacks` 包含：`openai-codex/gpt-5.3-codex`
    - 4 个专属 skills 目录存在：
      - `workspaces/op1_product/skills/`

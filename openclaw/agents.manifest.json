@@ -4,7 +4,7 @@
   "profile": "operatorone",
   "profileDefaultWorkspace": "~/.openclaw/workspace-operatorone",
   "gatewayPort": 30740,
-  "profileDefaultModel": "zai/glm-5",
+  "profileDefaultModel": "zai/glm-4.6",
   "profileModelFallbacks": [
     "openai-codex/gpt-5.3-codex"
   ],

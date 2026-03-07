@@ -4011,7 +4011,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "nextSteps": [
                 "如果要 live 演示：先打开 Manual Arm 并确认 Vercel 登录可用。",
                 "如果 preflight 失败：先修复 failed check，再执行 rehearsal_e2e。",
-                "若 zai_core_profile 失败：先补齐 ZAI_API_KEY，并确保默认模型是 zai/glm-5。",
+                "若 zai_core_profile 失败：先补齐 ZAI_API_KEY，并确保默认模型是 zai/glm-*（当前建议 zai/glm-4.6）。",
             ],
         }
 
