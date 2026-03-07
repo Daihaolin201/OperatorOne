@@ -74,7 +74,7 @@ For any PR with broad execution output churn:
 
 - Run: `python3 scripts/change_hygiene_guard.py --staged`
 - Split source/config/docs changes and generated artifact refreshes into separate commits/PRs.
-- CI workflow `change-hygiene` must pass (unless explicitly overridden by policy).
+- CI workflow `change-hygiene` must pass on PRs (push runs are informational for snapshot branches).
 
 ## 5) Documentation parity rule
 

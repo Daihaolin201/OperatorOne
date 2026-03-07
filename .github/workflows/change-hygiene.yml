@@ -23,11 +23,17 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "pull_request" ]; then
             BASE_SHA="${{ github.event.pull_request.base.sha }}"
+            # PRs are strict: source + generated changes must be split.
+            python3 scripts/change_hygiene_guard.py \
+              --repo-root . \
+              --base "$BASE_SHA" \
+              --head "${{ github.sha }}"
           else
             BASE_SHA="${{ github.event.before }}"
+            # Branch pushes (e.g. Bennett snapshot pushes) are informational only.
+            python3 scripts/change_hygiene_guard.py \
+              --repo-root . \
+              --base "$BASE_SHA" \
+              --head "${{ github.sha }}" \
+              --allow-mixed
           fi
-
-          python3 scripts/change_hygiene_guard.py \
-            --repo-root . \
-            --base "$BASE_SHA" \
-            --head "${{ github.sha }}"
