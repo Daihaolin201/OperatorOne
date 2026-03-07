@@ -2,6 +2,7 @@ const els = {
   refreshBtn: document.getElementById("refreshBtn"),
   lastUpdated: document.getElementById("lastUpdated"),
   uiModeSelect: document.getElementById("uiModeSelect"),
+  langSelect: document.getElementById("langSelect"),
 
   demoGateStatus: document.getElementById("demoGateStatus"),
   liveGateStatus: document.getElementById("liveGateStatus"),
@@ -113,6 +114,7 @@ const state = {
   selectedTab: "idea",
   lastJobsSignature: "",
   uiMode: localStorage.getItem("op1.uiMode") || "judge",
+  lang: localStorage.getItem("op1.lang") || "bi",
   actionStates: {},
   actionStatusEls: {},
 };
@@ -133,6 +135,16 @@ function safeText(value) {
 
 function asList(value) {
   return Array.isArray(value) ? value : [];
+}
+
+function tr(zh, en) {
+  const z = safeText(zh || "");
+  const e = safeText(en || "");
+  if (state.lang === "zh") return z || e;
+  if (state.lang === "en") return e || z;
+  if (!z) return e;
+  if (!e) return z;
+  return `${z} / ${e}`;
 }
 
 function statusClass(status) {
@@ -194,9 +206,67 @@ function formatTime(iso) {
   }
 }
 
+const MESSAGE_TRANSLATIONS = [
+  ["正在加载 Studio 快照", "Loading Studio snapshot"],
+  ["Studio 已就绪", "Studio is ready"],
+  ["初始化失败", "Initialization failed"],
+  ["刷新失败", "Refresh failed"],
+  ["执行失败", "Execution failed"],
+  ["提问失败", "Question failed"],
+  ["已回答你的问题", "Question answered"],
+  ["请先在 Idea Board 创建并激活 venture", "Please create and activate a venture in Idea Board first"],
+  ["请先勾选内容项", "Please select content items first"],
+  ["切换项目失败", "Switch venture failed"],
+  ["创建项目失败", "Create venture failed"],
+  ["刷新 ideas 失败", "Refresh ideas failed"],
+  ["执行 Product 失败", "Run Product failed"],
+  ["营销SEO失败", "Marketing SEO failed"],
+  ["内容生成失败", "Content generation failed"],
+  ["campaign生成失败", "Campaign generation failed"],
+  ["内容审批失败", "Content approval failed"],
+  ["内容驳回失败", "Content rejection failed"],
+  ["prospecting 失败", "Prospecting failed"],
+  ["outreach plan 失败", "Outreach plan failed"],
+  ["approve outreach 失败", "Approve outreach failed"],
+  ["dispatch simulate 失败", "Dispatch simulate failed"],
+  ["dispatch live 失败", "Dispatch live failed"],
+  ["conversion simulate 失败", "Conversion simulate failed"],
+  ["conversion live 失败", "Conversion live failed"],
+  ["operations full 失败", "Operations full failed"],
+  ["ops writeback 失败", "Ops writeback failed"],
+  ["确认下一轮失败", "Confirm next cycle failed"],
+  ["设置 manual arm 失败", "Failed to set manual arm"],
+  ["Manual arm 已设置为 ON", "Manual arm set to ON"],
+  ["Manual arm 已设置为 OFF", "Manual arm set to OFF"],
+  ["预检查失败", "Preflight failed"],
+  ["彩排失败", "Rehearsal failed"],
+  ["重置失败", "Reset failed"],
+  ["演示历史已重置", "Demo history reset"],
+  ["当前没有阻塞型用户提问", "No blocking user questions"],
+  ["当前无运行中的任务", "No running jobs"],
+  ["最近错误", "Latest error"],
+  ["建议", "Suggestion"],
+  ["请先", "Please first"],
+];
+
+function localizeMessage(message) {
+  const raw = safeText(message || "");
+  if (!raw) return raw;
+  if (state.lang === "zh") return raw;
+
+  let translated = raw;
+  for (const [zh, en] of MESSAGE_TRANSLATIONS) {
+    translated = translated.split(zh).join(state.lang === "en" ? en : `${zh} / ${en}`);
+  }
+
+  if (state.lang === "en") return translated;
+  if (translated === raw) return raw;
+  return translated;
+}
+
 function updateFeedback(message, kind = "info") {
   if (!els.feedbackBar) return;
-  els.feedbackBar.textContent = message;
+  els.feedbackBar.textContent = localizeMessage(message);
   if (kind === "error") {
     els.feedbackBar.className = "feedback status-failed";
   } else if (kind === "ok") {
@@ -210,56 +280,56 @@ const WORKFLOW_STAGES = [
   {
     id: "PRODUCT",
     title: "Product",
-    why: "把机会变成可演示网页（landing + preview/deploy）。",
+    why: "把机会变成可演示网页（landing + preview/deploy） / Turn opportunities into demo-ready pages.",
     capabilities: ["Generate startup ideas", "Build & deploy simple web products", "Create landing pages"],
   },
   {
     id: "MARKETING",
     title: "Marketing",
-    why: "验证增长叙事，产出内容与campaign输入。",
+    why: "验证增长叙事，产出内容与campaign输入 / Validate growth narrative and generate campaign inputs.",
     capabilities: ["Run SEO experiments", "Publish content", "Launch campaigns"],
   },
   {
     id: "SALES",
     title: "Sales",
-    why: "把流量变成线索、对话和首批付费客户。",
+    why: "把流量变成线索、对话和首批付费客户 / Convert traffic into leads and early customers.",
     capabilities: ["Identify prospects", "Send outreach", "Convert early customers"],
   },
   {
     id: "OPERATIONS",
     title: "Operations",
-    why: "跟踪指标、处理反馈、形成迭代闭环。",
+    why: "跟踪指标、处理反馈、形成迭代闭环 / Track metrics, process feedback, and close the iteration loop.",
     capabilities: ["Track traffic/signups/revenue", "Process feedback", "Iterate on product"],
   },
 ];
 
 const CAPABILITY_HINTS = {
-  product_generate_startup_ideas: "证明系统会发现并筛选可行商业机会。",
-  product_build_deploy_simple_web: "证明系统能把想法快速变成可运行网页。",
-  product_create_landing_pages: "证明系统能产出可转化落地页与文案结构。",
-  marketing_run_seo_experiments: "证明系统能做增长实验设计与关键词验证。",
-  marketing_publish_content: "证明系统能批量产出可发布内容资产。",
-  marketing_launch_campaigns: "证明系统能从内容生成可执行 campaign。",
-  sales_identify_prospects: "证明系统能定位可成交人群和线索池。",
-  sales_send_outreach: "证明系统能生成并执行外联动作。",
-  sales_convert_early_customers: "证明系统能推动从线索到付费转化。",
-  operations_track_traffic_signups_revenue: "证明系统能跟踪业务核心指标（流量/注册/MRR）。",
-  operations_process_feedback: "证明系统能处理用户反馈并做优先级。",
-  operations_iterate_on_product: "证明系统能把反馈回写到下一轮产品迭代。",
+  product_generate_startup_ideas: "证明系统会发现并筛选可行商业机会 / Discover and prioritize viable opportunities.",
+  product_build_deploy_simple_web: "证明系统能把想法快速变成可运行网页 / Turn ideas into runnable web products quickly.",
+  product_create_landing_pages: "证明系统能产出可转化落地页与文案结构 / Build conversion-oriented landing pages.",
+  marketing_run_seo_experiments: "证明系统能做增长实验设计与关键词验证 / Design growth experiments and keyword validation.",
+  marketing_publish_content: "证明系统能批量产出可发布内容资产 / Generate publish-ready content assets at scale.",
+  marketing_launch_campaigns: "证明系统能从内容生成可执行 campaign / Convert content into executable campaigns.",
+  sales_identify_prospects: "证明系统能定位可成交人群和线索池 / Identify qualified prospect segments.",
+  sales_send_outreach: "证明系统能生成并执行外联动作 / Plan and execute outreach actions.",
+  sales_convert_early_customers: "证明系统能推动从线索到付费转化 / Drive conversion from lead to paid customer.",
+  operations_track_traffic_signups_revenue: "证明系统能跟踪业务核心指标（流量/注册/MRR） / Track core business metrics.",
+  operations_process_feedback: "证明系统能处理用户反馈并做优先级 / Process feedback and prioritize improvements.",
+  operations_iterate_on_product: "证明系统能把反馈回写到下一轮产品迭代 / Feed insights into next product cycle.",
 };
 
 function showToast(message, kind = "info") {
   if (!els.toastContainer) return;
   const item = document.createElement("div");
   item.className = `toast ${kind === "error" ? "error" : kind === "ok" ? "ok" : ""}`;
-  item.textContent = message;
+  item.textContent = localizeMessage(message);
   els.toastContainer.appendChild(item);
   setTimeout(() => item.remove(), 4200);
 }
 
 function openJsonDialog(title, payload) {
   if (!els.jsonDialog || !els.jsonDialogContent) return;
-  if (els.jsonDialogTitle) els.jsonDialogTitle.textContent = title || "详情";
+  if (els.jsonDialogTitle) els.jsonDialogTitle.textContent = title || tr("详情", "Details");
   els.jsonDialogContent.textContent = typeof payload === "string" ? payload : JSON.stringify(payload || {}, null, 2);
   try {
     els.jsonDialog.showModal();
@@ -322,7 +392,7 @@ function activeVentureId() {
 function ensureActiveVentureOrAlert() {
   const id = activeVentureId();
   if (!id) {
-    alert("请先在 Idea Board 创建并激活 venture。");
+    alert(tr("请先在 Idea Board 创建并激活 venture。", "Please create and activate a venture in Idea Board first."));
     return null;
   }
   return id;
@@ -345,13 +415,20 @@ function applyUiMode() {
   }
 }
 
+function applyLanguageMode() {
+  if (els.langSelect && els.langSelect.value !== state.lang) {
+    els.langSelect.value = state.lang;
+  }
+  document.documentElement.lang = state.lang === "en" ? "en" : "zh-CN";
+}
+
 function renderTop() {
   const snapshot = state.snapshot || {};
   const monitor = state.monitorSnapshot || snapshot.monitor || {};
   const readiness = monitor?.readiness || {};
 
   if (snapshot.generatedAt && els.lastUpdated) {
-    els.lastUpdated.textContent = `更新于 ${formatTime(snapshot.generatedAt)}`;
+    els.lastUpdated.textContent = tr(`更新于 ${formatTime(snapshot.generatedAt)}`, `Updated at ${formatTime(snapshot.generatedAt)}`);
   }
 
   setPill(els.demoGateStatus, readiness?.demo?.status || "unknown");
@@ -370,7 +447,10 @@ function renderTop() {
 
   const audit = snapshot.vercelAuditSummary || {};
   if (els.vercelAuditSummary) {
-    els.vercelAuditSummary.textContent = `audit: total=${audit.projectCount ?? "-"}, keep=${audit.keep ?? "-"}, review=${audit.review ?? "-"}, cleanup=${audit.cleanupCandidates ?? "-"}`;
+    els.vercelAuditSummary.textContent = tr(
+      `审计 audit: total=${audit.projectCount ?? "-"}, keep=${audit.keep ?? "-"}, review=${audit.review ?? "-"}, cleanup=${audit.cleanupCandidates ?? "-"}`,
+      `Audit: total=${audit.projectCount ?? "-"}, keep=${audit.keep ?? "-"}, review=${audit.review ?? "-"}, cleanup=${audit.cleanupCandidates ?? "-"}`
+    );
   }
 
   const capFromMonitor = {
@@ -379,28 +459,34 @@ function renderTop() {
   };
   const cap = capFromMonitor.total > 0 ? capFromMonitor : snapshot.capabilitySummary || {};
   if (els.capabilitySummary) {
-    els.capabilitySummary.textContent = `${cap.passed || 0}/${cap.total || 0} passed`;
+    els.capabilitySummary.textContent = tr(`${cap.passed || 0}/${cap.total || 0} 已通过`, `${cap.passed || 0}/${cap.total || 0} passed`);
   }
 
   const run = snapshot.globalRunState || {};
   if (els.globalRunStatus) {
     if (["queued", "running"].includes(run.status)) {
       const seconds = Math.max(0, Math.round((Number(run.elapsedMs) || 0) / 1000));
-      els.globalRunStatus.textContent = `正在执行 ${safeText(run.runningAction)}（${seconds}s，${safeText(run.runningCount)} 个任务）`;
+      els.globalRunStatus.textContent = tr(
+        `正在执行 ${safeText(run.runningAction)}（${seconds}s，${safeText(run.runningCount)} 个任务）`,
+        `Running ${safeText(run.runningAction)} (${seconds}s, ${safeText(run.runningCount)} jobs)`
+      );
     } else {
-      els.globalRunStatus.textContent = "当前无运行中的任务。";
+      els.globalRunStatus.textContent = tr("当前无运行中的任务。", "No running jobs right now.");
     }
   }
   if (els.globalRunError) {
     if (run.lastError) {
       const hint = run.lastFailedAction
-        ? `建议：retry ${safeText(run.lastFailedAction)}，或先执行 stage_preflight 再重试。`
-        : "建议：先看 Jobs/Stage Timeline 定位错误后重试。";
+        ? tr(
+            `建议：retry ${safeText(run.lastFailedAction)}，或先执行 stage_preflight 再重试。`,
+            `Suggestion: retry ${safeText(run.lastFailedAction)} or run stage_preflight first.`
+          )
+        : tr("建议：先看 Jobs/Stage Timeline 定位错误后重试。", "Suggestion: inspect Jobs/Timeline first, then retry.");
       const errText = String(run.lastError || "").replace(/\s+/g, " ").trim();
       const shortErr = errText.length > 180 ? `${errText.slice(0, 180)}...` : errText;
-      els.globalRunError.textContent = `最近错误：${safeText(shortErr)} | ${hint}`;
+      els.globalRunError.textContent = tr(`最近错误：${safeText(shortErr)} | ${hint}`, `Latest error: ${safeText(shortErr)} | ${hint}`);
     } else {
-      els.globalRunError.textContent = "最近错误：无";
+      els.globalRunError.textContent = tr("最近错误：无", "Latest error: none");
     }
   }
 }
@@ -1918,6 +2004,17 @@ function bindEvents() {
     });
   }
 
+  if (els.langSelect) {
+    els.langSelect.value = state.lang;
+    els.langSelect.addEventListener("change", async () => {
+      state.lang = els.langSelect.value || "bi";
+      localStorage.setItem("op1.lang", state.lang);
+      applyLanguageMode();
+      await refreshFastSnapshot();
+      await pollJobs();
+    });
+  }
+
   if (els.refreshBtn) {
     els.refreshBtn.addEventListener("click", () => {
       refreshStudio({ forceMonitor: true }).catch((err) => updateFeedback(`刷新失败: ${err.message}`, "error"));
@@ -2377,17 +2474,18 @@ function startTimers() {
 
 async function main() {
   applyUiMode();
+  applyLanguageMode();
   bindEvents();
-  updateFeedback("正在加载 Studio 快照…", "info");
+  updateFeedback(tr("正在加载 Studio 快照…", "Loading Studio snapshot..."), "info");
   await refreshFastSnapshot();
   await refreshMonitorSnapshot(true);
   await refreshFastSnapshot();
   await pollJobs();
   startTimers();
-  updateFeedback("Studio 已就绪。建议按“下一步推荐动作”执行。", "ok");
+  updateFeedback(tr("Studio 已就绪。建议按“下一步推荐动作”执行。", "Studio is ready. Follow the recommended next action."), "ok");
 }
 
 main().catch((err) => {
   console.error(err);
-  updateFeedback(`初始化失败: ${err.message}`, "error");
+  updateFeedback(tr(`初始化失败: ${err.message}`, `Initialization failed: ${err.message}`), "error");
 });

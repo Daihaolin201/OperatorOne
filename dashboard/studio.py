@@ -4009,9 +4009,9 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             "warningSteps": [s.get("name") for s in warning_steps],
             "extraChecks": extra_checks,
             "nextSteps": [
-                "如果要 live 演示：先打开 Manual Arm 并确认 Vercel 登录可用。",
-                "如果 preflight 失败：先修复 failed check，再执行 rehearsal_e2e。",
-                "若 zai_core_profile 失败：先补齐 ZAI_API_KEY，并确保默认模型是 zai/glm-*（当前建议 zai/glm-4.6）。",
+                "如果要 live 演示：先打开 Manual Arm 并确认 Vercel 登录可用。/ For live demos, enable Manual Arm and verify Vercel login.",
+                "如果 preflight 失败：先修复 failed check，再执行 rehearsal_e2e。/ If preflight fails, fix failed checks before rehearsal_e2e.",
+                "若 zai_core_profile 失败：先补齐 ZAI_API_KEY，并确保默认模型是 zai/glm-*（当前建议 zai/glm-4.6）。/ If zai_core_profile fails, set ZAI_API_KEY and ensure default model is zai/glm-* (recommended: zai/glm-4.6).",
             ],
         }
 
@@ -4430,7 +4430,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             url_item("Open Best-practice Example 1", online_examples[0] if len(online_examples) > 0 else None),
             url_item("Open Best-practice Example 2", online_examples[1] if len(online_examples) > 1 else None),
         ]
-        cards.append({"stage": "PRODUCT", "title": "Product 产物", "items": [x for x in product_items if x]})
+        cards.append({"stage": "PRODUCT", "title": "Product 产物 / Product Artifacts", "items": [x for x in product_items if x]})
 
         marketing = by_stage.get("MARKETING") or {}
         marketing_artifacts = marketing.get("artifacts") or []
@@ -4456,7 +4456,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         cards.append(
             {
                 "stage": "MARKETING",
-                "title": "Marketing 产物",
+                "title": "Marketing 产物 / Marketing Artifacts",
                 "items": [x for x in [file_item("Open Content Queue", content_queue), file_item("Open Campaign Queue", campaign_queue)] if x],
             }
         )
@@ -4485,7 +4485,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         cards.append(
             {
                 "stage": "SALES",
-                "title": "Sales 产物",
+                "title": "Sales 产物 / Sales Artifacts",
                 "items": [x for x in [file_item("Open Outreach Pack", outreach_pack), file_item("Open Conversion Scoreboard", conversion_board)] if x],
             }
         )
@@ -4511,7 +4511,7 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
         cards.append(
             {
                 "stage": "OPERATIONS",
-                "title": "Operations 产物",
+                "title": "Operations 产物 / Operations Artifacts",
                 "items": [x for x in [file_item("Open KPI Snapshot", kpi_snapshot), file_item("Open Loop Todos", loop_todos)] if x],
             }
         )
@@ -4523,8 +4523,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             return [
                 {
                     "action": "refresh_ideas",
-                    "label": "刷新 startup ideas",
-                    "description": "先刷新 Product ideas，再选择一个项目创建 venture。",
+                    "label": "刷新 startup ideas / Refresh startup ideas",
+                    "description": "先刷新 Product ideas，再选择一个项目创建 venture。/ Refresh Product ideas first, then create a venture.",
                     "stage": "IDEA_POOL",
                     "payload": {"action": "refresh_ideas", "async": True},
                 }
@@ -4544,8 +4544,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             return [
                 {
                     "action": "confirm_stage_transition",
-                    "label": f"确认进入 {to_stage}",
-                    "description": f"当前阶段 {from_stage}，待确认迁移到 {to_stage}。原因：{reason}",
+                    "label": f"确认进入 {to_stage} / Confirm transition to {to_stage}",
+                    "description": f"当前阶段 {from_stage}，待确认迁移到 {to_stage}。原因：{reason} / Current stage {from_stage}; pending transition to {to_stage}. Reason: {reason}",
                     "stage": from_stage,
                     "payload": {
                         "action": "confirm_stage_transition",
@@ -4559,8 +4559,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 },
                 {
                     "action": "reject_stage_transition",
-                    "label": f"拒绝进入 {to_stage}",
-                    "description": "拒绝后保持当前阶段，继续人工选择。",
+                    "label": f"拒绝进入 {to_stage} / Reject transition to {to_stage}",
+                    "description": "拒绝后保持当前阶段，继续人工选择。/ Reject to stay in current stage and choose manually.",
                     "stage": from_stage,
                     "payload": {
                         "action": "confirm_stage_transition",
@@ -4578,8 +4578,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
             out.append(
                 {
                     "action": "run_product",
-                    "label": "执行 Product（simulation）",
-                    "description": "生成 landing + 本地预览（不触发 live 部署）。",
+                    "label": "执行 Product（simulation）/ Run Product (simulation)",
+                    "description": "生成 landing + 本地预览（不触发 live 部署）。/ Generate landing + local preview (no live deploy).",
                     "stage": "PRODUCT",
                     "payload": {"action": "run_product", "ventureId": vid, "mode": "simulation", "async": True},
                 }
@@ -4589,22 +4589,22 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 [
                     {
                         "action": "run_marketing_seo",
-                        "label": "运行 SEO experiments",
-                        "description": "刷新关键词与实验队列。",
+                        "label": "运行 SEO experiments / Run SEO experiments",
+                        "description": "刷新关键词与实验队列。/ Refresh keyword and experiment queue.",
                         "stage": "MARKETING",
                         "payload": {"action": "run_marketing_seo", "ventureId": vid, "mode": "shadow", "async": True},
                     },
                     {
                         "action": "run_marketing_content",
-                        "label": "生成 Publish content 候选",
-                        "description": "生成内容候选后进行人工勾选审批。",
+                        "label": "生成 Publish content 候选 / Generate Publish content candidates",
+                        "description": "生成内容候选后进行人工勾选审批。/ Generate candidates then review & approve manually.",
                         "stage": "MARKETING",
                         "payload": {"action": "run_marketing_content", "ventureId": vid, "mode": "review", "async": True},
                     },
                     {
                         "action": "run_marketing_campaign",
-                        "label": "生成 Launch campaigns 候选",
-                        "description": "选择 campaign 后推进到 Sales。",
+                        "label": "生成 Launch campaigns 候选 / Generate Launch campaign candidates",
+                        "description": "选择 campaign 后推进到 Sales。/ Select campaign before moving to Sales.",
                         "stage": "MARKETING",
                         "payload": {"action": "run_marketing_campaign", "ventureId": vid, "mode": "review", "async": True},
                     },
@@ -4614,8 +4614,8 @@ p{{color:#b6c4db}}ul{{margin-top:16px}}li{{margin:8px 0}}
                 out.append(
                     {
                         "action": "select_marketing_campaign",
-                        "label": "从候选中选择 campaign",
-                        "description": "选择一个 campaign 作为 Sales 输入。",
+                        "label": "从候选中选择 campaign / Select campaign from candidates",
+                        "description": "选择一个 campaign 作为 Sales 输入。/ Select one campaign as Sales input.",
                         "stage": "MARKETING",
                         "payload": {"action": "select_marketing_campaign", "ventureId": vid},
                         "requiresUserChoice": True,
