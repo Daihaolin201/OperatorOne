@@ -1,15 +1,21 @@
 {
-  "venture_id": "venture_20260307_204438",
+  "venture_id": "venture_20260307_204750",
   "goal": "Reach first $100 MRR with disciplined experimentation",
   "constraints": {
     "target_mrr_usd": 100,
     "max_days": 14,
     "max_cash_spend_usd": 200
   },
+  "state_machine": "framework/ceo/state_machine.v1.json",
   "stage": "stage3_landing",
   "status": "completed",
   "selected_opportunity_id": "opp_001",
   "deploy_url": null,
+  "approval": {
+    "required": true,
+    "granted": true,
+    "approval_file": "research/ceo_orchestration/approval.json"
+  },
   "gates": {
     "go_to_build": {
       "pass": true,

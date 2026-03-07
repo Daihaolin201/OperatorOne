@@ -1,0 +1,23 @@
+{
+  "name": "op1_ceo_orchestration_rules",
+  "version": "v1",
+  "policy": {
+    "default_require_human_approval_for_external_actions": true,
+    "max_stage2_retries": 3,
+    "retry_strategy": "adapter_fallback"
+  },
+  "stage2_adapter_fallback_order": [
+    "invoice-followup",
+    "chargeback-response",
+    "client-reporting"
+  ],
+  "gates": {
+    "go_to_build": "selected_opportunity_id exists",
+    "go_to_landing": "stage2 deploy_url exists"
+  },
+  "artifacts": {
+    "run": "research/ceo_orchestration/run.latest.json",
+    "state": "research/ceo_orchestration/venture_state.latest.json",
+    "approval": "research/ceo_orchestration/approval.json"
+  }
+}

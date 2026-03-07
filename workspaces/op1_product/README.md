@@ -134,7 +134,11 @@
 # Optional: force a specific opportunity/adapter for demo
 ./scripts/run_build_deploy_v1.sh --opp-id opp_001 --adapter invoice-followup
 
-# CEO autopilot v1 (串联 Stage1 -> Stage2 -> Stage3，并生成统一 run/state)
+# CEO autopilot v1.1 (串联 Stage1 -> Stage2 -> Stage3，并生成统一 run/state)
+# 默认需要人工审批外部动作：先写 approval 文件后再执行
+cat > research/ceo_orchestration/approval.json <<'JSON'
+{"approve_external_actions": true}
+JSON
 python3 scripts/run_ceo_autopilot_v1.py --goal "Reach first $100 MRR" --target-mrr 100 --max-days 14 --max-spend 200
 ```
 

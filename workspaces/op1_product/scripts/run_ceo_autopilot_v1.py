@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 """Run a minimal CEO autopilot sequence on top of existing op1_product stage scripts.
 
-This is intentionally conservative:
-- runs stage scripts in sequence
-- records command-level audit trail
-- evaluates lightweight go/no-go gates
-- writes canonical run + venture_state artifacts
+v1.1 adds:
+- human approval checkpoint before external actions (build/deploy + landing)
+- stage2 adapter fallback retries
+- auditable state transitions in venture_state
 """
 
 from __future__ import annotations
@@ -23,6 +22,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = ROOT / "research" / "ceo_orchestration"
 RUN_PATH = OUT_DIR / "run.latest.json"
 STATE_PATH = OUT_DIR / "venture_state.latest.json"
+APPROVAL_PATH = OUT_DIR / "approval.json"
 
 
 @dataclass
@@ -36,6 +36,7 @@ class StepResult:
     duration_sec: float
     stdout_tail: str
     stderr_tail: str
+    meta: Dict[str, Any]
 
 
 def utc_now() -> str:
@@ -51,8 +52,9 @@ def read_json(path: Path, default: Any) -> Any:
         return default
 
 
-def run_step(name: str, cmd: List[str], dry_run: bool = False) -> StepResult:
+def run_step(name: str, cmd: List[str], dry_run: bool = False, meta: Optional[Dict[str, Any]] = None) -> StepResult:
     started = datetime.now(timezone.utc)
+    meta = meta or {}
     if dry_run:
         return StepResult(
             name=name,
@@ -64,14 +66,10 @@ def run_step(name: str, cmd: List[str], dry_run: bool = False) -> StepResult:
             duration_sec=0.0,
             stdout_tail="[dry-run] not executed",
             stderr_tail="",
+            meta=meta,
         )
 
-    proc = subprocess.run(
-        cmd,
-        cwd=str(ROOT),
-        text=True,
-        capture_output=True,
-    )
+    proc = subprocess.run(cmd, cwd=str(ROOT), text=True, capture_output=True)
     finished = datetime.now(timezone.utc)
     duration = (finished - started).total_seconds()
     return StepResult(
@@ -84,6 +82,7 @@ def run_step(name: str, cmd: List[str], dry_run: bool = False) -> StepResult:
         duration_sec=duration,
         stdout_tail=(proc.stdout or "")[-1500:],
         stderr_tail=(proc.stderr or "")[-1500:],
+        meta=meta,
     )
 
 
@@ -115,15 +114,9 @@ def detect_deploy_url() -> Optional[str]:
     if not isinstance(run_payload, dict):
         return None
 
-    candidates = [
-        run_payload.get("deploy_url"),
-        run_payload.get("deployment_url"),
-    ]
+    candidates = [run_payload.get("deploy_url"), run_payload.get("deployment_url")]
     artifacts = run_payload.get("artifacts") if isinstance(run_payload.get("artifacts"), dict) else {}
-    candidates.extend([
-        artifacts.get("deploy_url"),
-        artifacts.get("deployment_url"),
-    ])
+    candidates.extend([artifacts.get("deploy_url"), artifacts.get("deployment_url")])
 
     for c in candidates:
         if isinstance(c, str) and c.strip().startswith("http"):
@@ -131,7 +124,59 @@ def detect_deploy_url() -> Optional[str]:
     return None
 
 
-def build_venture_state(goal: str, target_mrr: int, max_days: int, max_spend: int, steps: List[StepResult]) -> Dict[str, Any]:
+def load_adapter_fallbacks() -> List[str]:
+    default = ["invoice-followup", "chargeback-response", "client-reporting"]
+    rules = read_json(ROOT / "framework" / "ceo" / "orchestration_rules.v1.json", {})
+    fallbacks = rules.get("stage2_adapter_fallback_order") if isinstance(rules, dict) else None
+    if isinstance(fallbacks, list):
+        normalized = [str(x).strip() for x in fallbacks if str(x).strip()]
+        if normalized:
+            return normalized
+    return default
+
+
+def approval_granted(approval_file: Path) -> bool:
+    payload = read_json(approval_file, {})
+    return bool(isinstance(payload, dict) and payload.get("approve_external_actions") is True)
+
+
+def run_stage2_with_fallbacks(opp_id: Optional[str], dry_run: bool, max_retries: int) -> StepResult:
+    adapters = load_adapter_fallbacks()[: max(1, max_retries)]
+    attempts: List[StepResult] = []
+
+    for adapter in adapters:
+        cmd = ["bash", "scripts/run_build_deploy_v1.sh"]
+        if opp_id:
+            cmd.extend(["--opp-id", opp_id])
+        cmd.extend(["--adapter", adapter])
+
+        step = run_step(
+            name="stage2_web_build_deploy",
+            cmd=cmd,
+            dry_run=dry_run,
+            meta={"adapter": adapter},
+        )
+        attempts.append(step)
+        if step.ok:
+            break
+
+    winner = attempts[-1]
+    winner.meta = dict(winner.meta)
+    winner.meta["attempts"] = [
+        {"adapter": a.meta.get("adapter"), "ok": a.ok, "code": a.code} for a in attempts
+    ]
+    return winner
+
+
+def build_venture_state(
+    goal: str,
+    target_mrr: int,
+    max_days: int,
+    max_spend: int,
+    steps: List[StepResult],
+    approval_required: bool,
+    approval_ok: bool,
+) -> Dict[str, Any]:
     selected = detect_advance_opportunity()
     deploy_url = detect_deploy_url()
 
@@ -144,6 +189,10 @@ def build_venture_state(goal: str, target_mrr: int, max_days: int, max_spend: in
                 stage = s.name
                 break
 
+    if approval_required and not approval_ok:
+        stage = "approval_pending_external"
+        status = "waiting_approval"
+
     go_to_build = bool(selected)
     go_to_landing = bool(deploy_url)
 
@@ -155,10 +204,16 @@ def build_venture_state(goal: str, target_mrr: int, max_days: int, max_spend: in
             "max_days": max_days,
             "max_cash_spend_usd": max_spend,
         },
+        "state_machine": "framework/ceo/state_machine.v1.json",
         "stage": stage,
         "status": status,
         "selected_opportunity_id": selected,
         "deploy_url": deploy_url,
+        "approval": {
+            "required": approval_required,
+            "granted": approval_ok,
+            "approval_file": str(APPROVAL_PATH.relative_to(ROOT)),
+        },
         "gates": {
             "go_to_build": {
                 "pass": go_to_build,
@@ -184,22 +239,63 @@ def main() -> None:
     parser.add_argument("--max-days", type=int, default=14)
     parser.add_argument("--max-spend", type=int, default=200)
     parser.add_argument("--dry-run", action="store_true")
+    parser.add_argument("--require-approval", dest="require_approval", action="store_true", default=True)
+    parser.add_argument("--no-require-approval", dest="require_approval", action="store_false")
+    parser.add_argument("--approval-file", default=str(APPROVAL_PATH))
+    parser.add_argument("--max-stage2-retries", type=int, default=3)
     args = parser.parse_args()
 
     OUT_DIR.mkdir(parents=True, exist_ok=True)
 
-    sequence = [
-        ("stage1_idea_discovery", ["bash", "scripts/run_generate_startup_ideas.sh"]),
-        ("stage2_web_build_deploy", ["bash", "scripts/run_build_deploy_v1.sh"]),
-        ("stage3_landing", ["bash", "scripts/run_create_landing_pages_v1.sh"]),
-    ]
-
     steps: List[StepResult] = []
-    for name, cmd in sequence:
-        result = run_step(name=name, cmd=cmd, dry_run=args.dry_run)
-        steps.append(result)
-        if not result.ok:
-            break
+
+    # Stage1
+    s1 = run_step("stage1_idea_discovery", ["bash", "scripts/run_generate_startup_ideas.sh"], dry_run=args.dry_run)
+    steps.append(s1)
+
+    selected = detect_advance_opportunity()
+    go_to_build = bool(selected)
+
+    approval_file = Path(args.approval_file)
+    approval_ok = args.dry_run or (not args.require_approval) or approval_granted(approval_file)
+
+    if s1.ok and go_to_build and approval_ok:
+        s2 = run_stage2_with_fallbacks(opp_id=selected, dry_run=args.dry_run, max_retries=args.max_stage2_retries)
+        steps.append(s2)
+
+        if s2.ok:
+            s3 = run_step("stage3_landing", ["bash", "scripts/run_create_landing_pages_v1.sh"], dry_run=args.dry_run)
+            steps.append(s3)
+    elif s1.ok and not go_to_build:
+        steps.append(
+            StepResult(
+                name="stage2_web_build_deploy",
+                command=[],
+                ok=False,
+                code=2,
+                started_at=utc_now(),
+                finished_at=utc_now(),
+                duration_sec=0.0,
+                stdout_tail="skipped: go_to_build gate failed",
+                stderr_tail="",
+                meta={"skipped": True},
+            )
+        )
+    elif s1.ok and go_to_build and not approval_ok:
+        steps.append(
+            StepResult(
+                name="approval_pending_external",
+                command=[],
+                ok=True,
+                code=0,
+                started_at=utc_now(),
+                finished_at=utc_now(),
+                duration_sec=0.0,
+                stdout_tail=f"waiting approval: set approve_external_actions=true in {approval_file}",
+                stderr_tail="",
+                meta={"waitingApproval": True},
+            )
+        )
 
     venture_state = build_venture_state(
         goal=args.goal,
@@ -207,6 +303,8 @@ def main() -> None:
         max_days=args.max_days,
         max_spend=args.max_spend,
         steps=steps,
+        approval_required=args.require_approval,
+        approval_ok=approval_ok,
     )
 
     run_payload = {
@@ -220,11 +318,15 @@ def main() -> None:
                 "max_cash_spend_usd": args.max_spend,
             },
             "dry_run": args.dry_run,
+            "require_approval": args.require_approval,
+            "approval_file": str(approval_file),
+            "max_stage2_retries": args.max_stage2_retries,
         },
         "summary": {
             "status": venture_state["status"],
             "selected_opportunity_id": venture_state.get("selected_opportunity_id"),
             "deploy_url": venture_state.get("deploy_url"),
+            "approval": venture_state.get("approval"),
         },
         "steps": [
             {
@@ -237,6 +339,7 @@ def main() -> None:
                 "duration_sec": s.duration_sec,
                 "stdout_tail": s.stdout_tail,
                 "stderr_tail": s.stderr_tail,
+                "meta": s.meta,
             }
             for s in steps
         ],
@@ -245,7 +348,17 @@ def main() -> None:
     RUN_PATH.write_text(json.dumps(run_payload, ensure_ascii=False, indent=2), encoding="utf-8")
     STATE_PATH.write_text(json.dumps(venture_state, ensure_ascii=False, indent=2), encoding="utf-8")
 
-    print(json.dumps({"ok": True, "run": str(RUN_PATH.relative_to(ROOT)), "state": str(STATE_PATH.relative_to(ROOT))}, ensure_ascii=False))
+    print(
+        json.dumps(
+            {
+                "ok": True,
+                "run": str(RUN_PATH.relative_to(ROOT)),
+                "state": str(STATE_PATH.relative_to(ROOT)),
+                "status": venture_state.get("status"),
+            },
+            ensure_ascii=False,
+        )
+    )
 
 
 if __name__ == "__main__":

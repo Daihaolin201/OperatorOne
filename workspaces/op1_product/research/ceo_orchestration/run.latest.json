@@ -1,6 +1,6 @@
 {
   "contract": "ceo_orchestration.v1",
-  "generated_at": "2026-03-07T20:44:38.435433+00:00",
+  "generated_at": "2026-03-07T20:47:50.787165+00:00",
   "input": {
     "goal": "Reach first $100 MRR with disciplined experimentation",
     "constraints": {
@@ -8,12 +8,20 @@
       "max_days": 14,
       "max_cash_spend_usd": 200
     },
-    "dry_run": true
+    "dry_run": true,
+    "require_approval": true,
+    "approval_file": "/Users/dennisli/Library/CloudStorage/OneDrive-个人/文件管理/600_工作台/620_兴趣_比赛/20260301UK AI Agent Hackathon EP4 x OpenClaw/Code/OperatorOne/workspaces/op1_product/research/ceo_orchestration/approval.json",
+    "max_stage2_retries": 3
   },
   "summary": {
     "status": "completed",
     "selected_opportunity_id": "opp_001",
-    "deploy_url": null
+    "deploy_url": null,
+    "approval": {
+      "required": true,
+      "granted": true,
+      "approval_file": "research/ceo_orchestration/approval.json"
+    }
   },
   "steps": [
     {
@@ -24,25 +32,40 @@
       ],
       "ok": true,
       "code": 0,
-      "started_at": "2026-03-07T20:44:38.434427+00:00",
-      "finished_at": "2026-03-07T20:44:38.434651+00:00",
+      "started_at": "2026-03-07T20:47:50.785834+00:00",
+      "finished_at": "2026-03-07T20:47:50.786075+00:00",
       "duration_sec": 0.0,
       "stdout_tail": "[dry-run] not executed",
-      "stderr_tail": ""
+      "stderr_tail": "",
+      "meta": {}
     },
     {
       "name": "stage2_web_build_deploy",
       "command": [
         "bash",
-        "scripts/run_build_deploy_v1.sh"
+        "scripts/run_build_deploy_v1.sh",
+        "--opp-id",
+        "opp_001",
+        "--adapter",
+        "invoice-followup"
       ],
       "ok": true,
       "code": 0,
-      "started_at": "2026-03-07T20:44:38.434659+00:00",
-      "finished_at": "2026-03-07T20:44:38.434660+00:00",
+      "started_at": "2026-03-07T20:47:50.786626+00:00",
+      "finished_at": "2026-03-07T20:47:50.786633+00:00",
       "duration_sec": 0.0,
       "stdout_tail": "[dry-run] not executed",
-      "stderr_tail": ""
+      "stderr_tail": "",
+      "meta": {
+        "adapter": "invoice-followup",
+        "attempts": [
+          {
+            "adapter": "invoice-followup",
+            "ok": true,
+            "code": 0
+          }
+        ]
+      }
     },
     {
       "name": "stage3_landing",
@@ -52,11 +75,12 @@
       ],
       "ok": true,
       "code": 0,
-      "started_at": "2026-03-07T20:44:38.434663+00:00",
-      "finished_at": "2026-03-07T20:44:38.434665+00:00",
+      "started_at": "2026-03-07T20:47:50.786642+00:00",
+      "finished_at": "2026-03-07T20:47:50.786644+00:00",
       "duration_sec": 0.0,
       "stdout_tail": "[dry-run] not executed",
-      "stderr_tail": ""
+      "stderr_tail": "",
+      "meta": {}
     }
   ]
 }

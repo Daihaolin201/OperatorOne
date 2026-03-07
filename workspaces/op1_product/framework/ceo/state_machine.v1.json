@@ -1,0 +1,30 @@
+{
+  "name": "op1_ceo_state_machine",
+  "version": "v1",
+  "states": [
+    "intake",
+    "stage1_discovery",
+    "approval_pending_external",
+    "stage2_build_deploy",
+    "stage3_landing",
+    "completed",
+    "failed"
+  ],
+  "transitions": [
+    {"from": "intake", "to": "stage1_discovery", "when": "goal accepted"},
+    {"from": "stage1_discovery", "to": "approval_pending_external", "when": "go_to_build gate pass and approval required"},
+    {"from": "stage1_discovery", "to": "stage2_build_deploy", "when": "go_to_build gate pass and approval not required"},
+    {"from": "approval_pending_external", "to": "stage2_build_deploy", "when": "approve_external_actions=true"},
+    {"from": "stage2_build_deploy", "to": "stage3_landing", "when": "go_to_landing gate pass"},
+    {"from": "stage3_landing", "to": "completed", "when": "landing run pass"},
+    {"from": "*", "to": "failed", "when": "critical step failed"}
+  ],
+  "human_checkpoints": [
+    {
+      "id": "external_actions",
+      "required_before": ["stage2_build_deploy", "stage3_landing"],
+      "approval_file": "research/ceo_orchestration/approval.json",
+      "field": "approve_external_actions"
+    }
+  ]
+}
