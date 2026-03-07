@@ -714,8 +714,23 @@ class DashboardHandler(BaseHTTPRequestHandler):
         else:
             candidate = candidate.resolve()
 
+        # Resolve preview entrypoint robustly:
+        # - <dir>/index.html
+        # - <dir>/public/index.html (current scaffold layout)
+        # - if caller passed <dir>/index.html but missing, also try <dir>/public/index.html
         if candidate.is_dir():
-            candidate = (candidate / "index.html").resolve()
+            direct = (candidate / "index.html").resolve()
+            public = (candidate / "public" / "index.html").resolve()
+            if direct.exists():
+                candidate = direct
+            elif public.exists():
+                candidate = public
+            else:
+                candidate = direct
+        elif not candidate.exists() and candidate.name == "index.html":
+            public = (candidate.parent / "public" / "index.html").resolve()
+            if public.exists():
+                candidate = public
 
         if not str(candidate).startswith(str(REPO_ROOT.resolve())):
             self._json_response(403, {"ok": False, "error": "path escapes repository"})

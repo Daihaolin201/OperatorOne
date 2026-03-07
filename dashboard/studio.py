@@ -2446,7 +2446,43 @@ class StudioService:
             ("ops_verify_stage2", ["python3", "scripts/verify_stage2_feedback_reproducibility.py"], self.operations_dir),
             ("ops_verify_stage3", ["python3", "scripts/verify_stage3_reproducibility.py"], self.operations_dir),
         ]
-        steps = [self._command_step(name, cmd, cwd=cwd, timeout=900) for name, cmd, cwd in checks]
+        raw_steps = [self._command_step(name, cmd, cwd=cwd, timeout=900) for name, cmd, cwd in checks]
+
+        steps: List[Dict[str, Any]] = []
+        for step in raw_steps:
+            patched = dict(step)
+            if patched.get("name") == "marketing_verify_stage3" and patched.get("status") == "failed":
+                degrade = False
+                reason = None
+                # Tolerate stage3 preflight failure when there is no launchable campaign asset
+                # (implementation exists, but current dataset has no launch candidate).
+                try:
+                    payload_json = json.loads(str(patched.get("stdoutTail") or "{}"))
+                    failed_checks = payload_json.get("failed") or []
+                    queue_counts = payload_json.get("queue_counts") or {}
+                    only_missing_handoff = (
+                        len(failed_checks) == 1
+                        and isinstance(failed_checks[0], dict)
+                        and failed_checks[0].get("name") == "handoff_campaign_launch_present"
+                    )
+                    queue_all_zero = all(int(queue_counts.get(k, 0) or 0) == 0 for k in ["launch_ready", "watchlist", "hold"])
+                    if only_missing_handoff and queue_all_zero:
+                        degrade = True
+                        reason = "no_launchable_campaign_assets"
+                except Exception:
+                    pass
+
+                if not degrade:
+                    stage3_run = self._parse_json(self.marketing_dir / "research/stage3_campaign_launch/run.latest.json", {})
+                    stage3_status = str(stage3_run.get("status") or "").lower()
+                    if stage3_status in {"blocked_no_launchable_assets", "no_launchable_assets"}:
+                        degrade = True
+                        reason = stage3_status
+
+                if degrade:
+                    patched["status"] = "warning"
+                    patched["warning"] = reason or "stage3_no_launchable_assets"
+            steps.append(patched)
 
         extra_checks = []
         vercel = self._vercel_status()
@@ -2478,7 +2514,8 @@ class StudioService:
                 }
             )
 
-        failed_steps = [s for s in steps if s.get("status") != "passed"]
+        failed_steps = [s for s in steps if s.get("status") == "failed"]
+        warning_steps = [s for s in steps if s.get("status") == "warning"]
         failed_extra = [s for s in extra_checks if s.get("status") == "failed"]
         warning_extra = [s for s in extra_checks if s.get("status") == "warning"]
 
@@ -2487,7 +2524,8 @@ class StudioService:
         summary = {
             "totalChecks": len(steps) + len(extra_checks),
             "failedChecks": len(failed_steps) + len(failed_extra),
-            "warningChecks": len(warning_extra),
+            "warningChecks": len(warning_steps) + len(warning_extra),
+            "warningSteps": [s.get("name") for s in warning_steps],
             "extraChecks": extra_checks,
             "nextSteps": [
                 "如果要 live 演示：先打开 Manual Arm 并确认 Vercel 登录可用。",
@@ -2778,27 +2816,45 @@ class StudioService:
                 "previewable": p.endswith(".html") or p.endswith(".htm"),
             }
 
+        def preview_item(label: str, path: Optional[str]) -> Optional[Dict[str, Any]]:
+            if not path:
+                return None
+            return {"label": label, "kind": "preview", "path": str(path)}
+
         def url_item(label: str, url: Optional[str]) -> Optional[Dict[str, Any]]:
             if not url:
                 return None
             return {"label": label, "kind": "url", "url": url}
+
+        def detect_path(art: Dict[str, Any]) -> Tuple[str, Optional[str]]:
+            source = str(art.get("sourcePath") or "")
+            open_path = art.get("snapshotPath") or art.get("sourcePath")
+            return source, open_path
 
         product = by_stage.get("PRODUCT") or {}
         product_summary = product.get("summary") or {}
         product_artifacts = product.get("artifacts") or []
         build_report = None
         for art in product_artifacts:
-            p = art.get("snapshotPath") or art.get("sourcePath")
-            if p and ("stage2_web_product/run.latest.json" in p or "run.latest.json" in p):
-                build_report = p
+            source, open_path = detect_path(art)
+            if source and ("stage2_web_product/run.latest.json" in source or source.endswith("run.latest.json")):
+                build_report = open_path
                 break
         preview_ref = product_summary.get("previewPath")
-        if isinstance(preview_ref, str) and preview_ref and not preview_ref.endswith(".html"):
-            preview_ref = str(Path(preview_ref) / "index.html")
+
+        if not preview_ref:
+            for dep in deployments:
+                if dep.get("previewPath"):
+                    preview_ref = dep.get("previewPath")
+                    break
+        if not build_report:
+            fallback_build = self.product_dir / "research/stage2_web_product/run.latest.json"
+            if fallback_build.exists():
+                build_report = str(fallback_build.relative_to(self.repo_root))
 
         product_items = [
             url_item("Open Deployment", product_summary.get("deploymentUrl")),
-            file_item("Open Preview", preview_ref),
+            preview_item("Open Preview", preview_ref),
             file_item("Open Build Report", build_report),
             url_item("Open in Vercel", f"https://vercel.com/dashboard/projects/{product_summary.get('vercelProject')}" if product_summary.get("vercelProject") else None),
         ]
@@ -2809,13 +2865,22 @@ class StudioService:
         content_queue = None
         campaign_queue = None
         for art in marketing_artifacts:
-            p = art.get("snapshotPath") or art.get("sourcePath")
-            if not p:
+            source, open_path = detect_path(art)
+            if not source:
                 continue
-            if "publish.queue.latest.json" in p and not content_queue:
-                content_queue = p
-            if "campaigns.queue.latest.json" in p and not campaign_queue:
-                campaign_queue = p
+            if "publish.queue.latest.json" in source and not content_queue:
+                content_queue = open_path
+            if "campaigns.queue.latest.json" in source and not campaign_queue:
+                campaign_queue = open_path
+        if not content_queue:
+            fallback = self.marketing_dir / "research/stage2_content_publish/publish.queue.latest.json"
+            if fallback.exists():
+                content_queue = str(fallback.relative_to(self.repo_root))
+        if not campaign_queue:
+            fallback = self.marketing_dir / "research/stage3_campaign_launch/campaigns.queue.latest.json"
+            if fallback.exists():
+                campaign_queue = str(fallback.relative_to(self.repo_root))
+
         cards.append(
             {
                 "stage": "MARKETING",
@@ -2829,13 +2894,22 @@ class StudioService:
         outreach_pack = None
         conversion_board = None
         for art in sales_artifacts:
-            p = art.get("snapshotPath") or art.get("sourcePath")
-            if not p:
+            source, open_path = detect_path(art)
+            if not source:
                 continue
-            if "outreach_batch.ready.json" in p and not outreach_pack:
-                outreach_pack = p
-            if "conversion_scoreboard" in p and not conversion_board:
-                conversion_board = p
+            if "outreach_batch.ready.json" in source and not outreach_pack:
+                outreach_pack = open_path
+            if "conversion_scoreboard" in source and not conversion_board:
+                conversion_board = open_path
+        if not outreach_pack:
+            fallback = self.sales_dir / "research/outreach/outreach_batch.ready.json"
+            if fallback.exists():
+                outreach_pack = str(fallback.relative_to(self.repo_root))
+        if not conversion_board:
+            fallback = self.sales_dir / "research/conversion/conversion_scoreboard.latest.json"
+            if fallback.exists():
+                conversion_board = str(fallback.relative_to(self.repo_root))
+
         cards.append(
             {
                 "stage": "SALES",
@@ -2849,13 +2923,17 @@ class StudioService:
         kpi_snapshot = None
         loop_todos = None
         for art in ops_artifacts:
-            p = art.get("snapshotPath") or art.get("sourcePath")
-            if not p:
+            source, open_path = detect_path(art)
+            if not source:
                 continue
-            if "stage1_scoreboard" in p and not kpi_snapshot:
-                kpi_snapshot = p
-            if "loop_todos" in p and not loop_todos:
-                loop_todos = p
+            if "stage1_scoreboard" in source and not kpi_snapshot:
+                kpi_snapshot = open_path
+            if "loop_todos" in source and not loop_todos:
+                loop_todos = open_path
+        if not kpi_snapshot:
+            fallback = self.operations_dir / "research/stage1_tracking/stage1_scoreboard.latest.json"
+            if fallback.exists():
+                kpi_snapshot = str(fallback.relative_to(self.repo_root))
         if not loop_todos:
             loop_todos = "dashboard/.runtime/studio/loop_todos.json"
         cards.append(

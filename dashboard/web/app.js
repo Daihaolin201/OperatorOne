@@ -447,7 +447,15 @@ function renderJudgeFocus(snapshot) {
 
       const row = document.createElement("div");
       row.className = "row wrap";
-      for (const item of asList(card.items)) {
+      const items = asList(card.items);
+      if (!items.length) {
+        const muted = document.createElement("div");
+        muted.className = "muted";
+        muted.textContent = "暂无可打开产物（先运行该阶段）";
+        row.appendChild(muted);
+      }
+
+      for (const item of items) {
         const btn = document.createElement("button");
         btn.className = "secondary";
         btn.textContent = safeText(item.label);
@@ -456,11 +464,16 @@ function renderJudgeFocus(snapshot) {
             window.open(item.url, "_blank", "noopener,noreferrer");
             return;
           }
+          if (item.kind === "preview" && item.path) {
+            window.open(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, "_blank", "noopener,noreferrer");
+            return;
+          }
           if (item.kind === "file" && item.path) {
             if (item.previewable) {
               window.open(`/api/studio/preview?path=${encodeURIComponent(item.path)}`, "_blank", "noopener,noreferrer");
             } else {
               openArtifact(item.path);
+              showToast(`已加载产物：${item.label}`, "ok");
             }
           }
         });
