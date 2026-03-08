@@ -212,3 +212,40 @@ jobs:
       - name: Check i18n key parity (en ↔ zh)
         run: |
           python3 scripts/check-i18n-parity.py --repo-root .
+
+# ─────────────────────────────────────────────────────────────────────────────
+# Job: ceoclaw-critical-path
+# CEOClaw hackathon critical path: dashboard unit tests, handoff validation,
+# and health smoke test. Minimal, fast (<90 seconds), and catches key failures.
+# ─────────────────────────────────────────────────────────────────────────────
+  ceoclaw-critical-path:
+    name: CEOClaw Critical Path
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install pytest
+        run: pip install pytest
+
+      - name: Dashboard unit tests
+        run: python3 -m pytest dashboard/tests/ -q
+
+      - name: Handoff contract validation
+        run: python3 scripts/validate_handoffs.py --repo-root .
+
+      - name: Dashboard health smoke test
+        run: |
+          python3 dashboard/server.py --host 127.0.0.1 --port 18765 > /tmp/dashboard.log 2>&1 &
+          SERVER_PID=$!
+          sleep 3
+          curl -sf http://127.0.0.1:18765/api/health
+          RESULT=$?
+          kill $SERVER_PID 2>/dev/null || true
+          exit $RESULT
