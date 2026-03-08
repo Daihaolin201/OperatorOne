@@ -1,0 +1,43 @@
+F4 SCOPE FIDELITY AUDIT — FINAL RESULT
+=======================================
+Date: 2026-03-08
+Verdict: PASS
+
+TASK DELIVERY AUDIT
+-------------------
+Tasks T1–T17: 17/17 DELIVERED
+
+T2 capability_matrix.md — ROOT CAUSE RESOLVED
+  • Originally committed in f2434d2 (docs(challenge): add founder capability mapping matrix)
+  • Accidentally deleted in bcb9875 (chore: remove vibe-coding artifacts from repo)
+    — bcb9875 was a T12 cleanup commit that wiped docs/ en masse; capability_matrix.md
+      was collateral damage, not intentional removal.
+  • RESTORED: docs/capability_matrix.md re-added in this commit.
+  • All T2 substance intact: 74-line matrix with 8 capabilities, 3 verification steps,
+    judge-readable evidence paths.
+
+apps/ SCOPE CREEP FLAG — RESOLVED
+  • Two commits touching apps/ since 2026-03-07:
+      ab33423 feat(ceo): add hackathon demo script, dorahacks submission, fix orchestrator simulation
+      067a157 优化
+  • Both predate the dashboard-zai-ceoclaw-e2e plan.
+    Plan started at a47920f (T1 GLM preflight), which is AFTER both apps/ commits.
+  • apps/ portal and product are Next.js UI apps from the OLD ceoclaw-submission.md plan.
+  • Zero apps/ changes in T1–T17 of the current plan.
+  • Verdict: NOT scope creep. Pre-existing work from prior plan.
+
+MUST-HAVE COMPLIANCE: 4/4 PASS
+  [✓] MH-1: One-click dashboard demo at :8765
+  [✓] MH-2: GLM-5 as core auditable model (zai_preflight.py hard gate)
+  [✓] MH-3: 4-agent pipeline with run timeline
+  [✓] MH-4: Handoff contracts (9 JSON files, version 1.0.0 schema)
+
+MUST-NOT COMPLIANCE: 6/6 PASS
+  [✓] MN-1: No /api/studio/* breakage
+  [✓] MN-2: No large UI refactor
+  [✓] MN-3: No new auth/multi-tenant system
+  [✓] MN-4: No real outreach/ad spend (simulation only)
+  [✓] MN-5: No implicit GLM fallback
+  [✓] MN-6: No API keys in logs or evidence
+
+FINAL VERDICT: PASS — 17/17 tasks delivered, all compliance checks green.
