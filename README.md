@@ -37,27 +37,63 @@
 
 ---
 
-## Quick Start
+## Quick Start (Judge Quick Path)
+
+Verification time: 3-5 minutes. This runs the full pipeline in **simulation mode** (no real API costs).
 
 ```bash
-git clone https://github.com/Daihaolin201/OperatorOne
-cd OperatorOne
-git checkout dennis/automation-framework
+# 1. Setup environment
+export ZAI_API_KEY="your-key-here"
+# Preflight check (mandatory for Z.AI bounty)
+python3 dashboard/zai_preflight.py
 
-# Run the full 4-agent pipeline in simulation mode
+# 2. Run the 4-agent pipeline (One-click Example)
+# This coordinates Product -> Marketing -> Sales -> Operations
 python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run
 
-# Inspect the venture state
+# 3. Verify evidence and extension points
+# Inspect the generated handoff JSONs
+ls handoffs/
+# View the final venture state
 cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
 ```
 
-| Artifact | Description |
-|---|---|
-| `run.latest.json` | Full 4-agent execution log with simulation replies |
-| `venture_state.latest.json` | Live KPI snapshot — MRR, prospects, deployed URLs |
-| `orchestrator_summary.latest.json` | Operator-facing summary |
+---
+
+## CEOClaw Extension Points
+
+OperatorOne is designed for deep customizability. Developers can extend the CEOClaw orchestrator at these entry points:
+
+1.  **Agent Logic (`workspaces/op1_<role>/`)**: Modify the prompt templates and tool definitions for each specialist agent.
+2.  **Handoff Contracts (`handoffs/`)**: Update the JSON schemas in `handoffs/` to change how agents communicate.
+3.  **Orchestration Policy (`workspaces/op1_ceo/scripts/`)**: Edit the `run_ceo_multi_agent_orchestrator_v1.py` to change the stage-gating or iteration logic.
+4.  **Dashboard Extensions (`dashboard/`)**: Add new UI tabs or API endpoints to the Venture Studio.
 
 ---
+
+## Z.AI Evidence Entry Points
+
+For the **Z.AI Gold Bounty**, we provide explicit verification of GLM-5 usage:
+
+- **Model Provider**: `dashboard/zai_glm_provider.py` contains the direct interface to the Z.AI API.
+- **Hard Gate**: `dashboard/zai_preflight.py` prevents execution if Z.AI credentials are missing.
+- **Audit Logs**: Every run records per-turn model usage in `dashboard/.runtime/studio/replays/<run_id>.json`.
+
+---
+
+## Example Run Result
+
+A successful run generates the following artifacts:
+
+| Artifact | Location |
+|---|---|
+| Full Execution Log | `run.latest.json` |
+| Live KPI Snapshot | `venture_state.latest.json` |
+| Orchestrator Summary | `orchestrator_summary.latest.json` |
+
+---
+
+## Quick Start (Pre-v1.4)
 
 <a name="real-results"></a>
 
@@ -278,27 +314,63 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 ---
 
-## 快速开始
+## 快速开始 (评审快速路径)
+
+验证时长：3-5 分钟。此过程在**模拟模式**下运行，不产生实际 API 成本。
 
 ```bash
-git clone https://github.com/Daihaolin201/OperatorOne
-cd OperatorOne
-git checkout dennis/automation-framework
+# 1. 环境准备
+export ZAI_API_KEY="your-key-here"
+# 预检查（Z.AI 奖项必选）
+python3 dashboard/zai_preflight.py
 
-# 在模拟模式下运行完整的 4 智能体流水线
+# 2. 运行 4-智能体流水线 (一键运行示例)
+# 自动协调 Product -> Marketing -> Sales -> Operations
 python3 workspaces/op1_ceo/scripts/run_ceo_multi_agent_orchestrator_v1.py --dry-run
 
-# 查看项目状态
+# 3. 验证证据与扩展点
+# 检查生成的交付 JSON
+ls handoffs/
+# 查看最终的项目状态
 cat workspaces/op1_ceo/research/ceo_orchestration/venture_state.latest.json
 ```
 
-| 产物 | 描述 |
-|---|---|
-| `run.latest.json` | 完整的 4 智能体执行日志（含模拟回复） |
-| `venture_state.latest.json` | 实时 KPI 快照——MRR、潜在客户、部署链接 |
-| `orchestrator_summary.latest.json` | 面向操作员的执行摘要 |
+---
+
+## CEOClaw 扩展点
+
+OperatorOne 具有深度可定制性。开发者可以从以下入口扩展 CEOClaw 编排器：
+
+1.  **智能体逻辑 (`workspaces/op1_<role>/`)**: 修改各角色智能体的提示词模板与工具定义。
+2.  **交付合约 (`handoffs/`)**: 更新 `handoffs/` 中的 JSON 模式以改变智能体间通信内容。
+3.  **编排策略 (`workspaces/op1_ceo/scripts/`)**: 编辑 `run_ceo_multi_agent_orchestrator_v1.py` 以更改阶段门控或迭代逻辑。
+4.  **控制面板扩展 (`dashboard/`)**: 向创业工作室（Venture Studio）添加新的 UI 标签页或 API 接口。
 
 ---
+
+## Z.AI 证据入口
+
+针对 **Z.AI Gold Bounty**，我们提供以下 GLM-5 使用的显式验证：
+
+- **模型提供商**: `dashboard/zai_glm_provider.py` 包含直接调用 Z.AI API 的接口。
+- **硬预检查**: `dashboard/zai_preflight.py` 在缺失 Z.AI 凭据时阻止执行。
+- **审计日志**: 每次运行都会在 `dashboard/.runtime/studio/replays/<run_id>.json` 中记录模型调用证据。
+
+---
+
+## 示例运行结果
+
+成功的运行会生成以下产物：
+
+| 产物 | 位置 |
+|---|---|
+| 完整执行日志 | `run.latest.json` |
+| 实时 KPI 快照 | `venture_state.latest.json` |
+| 编排执行摘要 | `orchestrator_summary.latest.json` |
+
+---
+
+## 快速开始 (Pre-v1.4)
 
 <a name="real-results-cn"></a>
 

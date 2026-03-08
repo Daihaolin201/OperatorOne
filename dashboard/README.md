@@ -90,6 +90,23 @@ python3 dashboard/server.py --host 127.0.0.1 --port 8765
 
 ---
 
+## Studio Setup & APIs
+
+### Verifying the Setup
+
+```bash
+# Start the Dashboard
+python3 dashboard/server.py --host 127.0.0.1 --port 8765
+```
+
+The Studio provides several APIs for third-party integrations:
+
+- `POST /api/studio/action`: Trigger a specific agent action.
+- `GET /api/studio/artifact`: Retrieve a specific agent handoff or result file.
+- `GET /api/studio/jobs`: Monitor the status of background orchestration tasks.
+
+---
+
 ## 核心 API
 
 ### Studio
