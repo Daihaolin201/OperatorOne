@@ -2,12 +2,23 @@ name: change-hygiene
 
 on:
   pull_request:
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
   push:
     branches: [main, Bennett]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+
+concurrency:
+  group: change-hygiene-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   guard-mixed-generated-changes:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4

@@ -2,12 +2,23 @@ name: handoff-contract-validation
 
 on:
   pull_request:
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
   push:
     branches: [main, Bennett]
+    paths-ignore:
+      - "**.md"
+      - "docs/**"
+
+concurrency:
+  group: handoff-contract-validation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate-handoffs:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Checkout
         uses: actions/checkout@v4
