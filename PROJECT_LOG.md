@@ -23,6 +23,13 @@ Remaining:
 
 ### 2026-07-03 - Codex App
 
+Goal: Resolve the local/public branch split without publishing unreviewed dashboard debug work.
+Changed: Stashed local debug/runtime changes as `operatorone-unreviewed-local-debug-state-2026-07-03`; rebased the dev-artifact cleanup commit onto the public governance commit.
+Verified: `git status --short --branch` shows a clean worktree with only the reviewed cleanup commit ahead before push.
+Remaining: Apply/review the stash separately before any future public push of dashboard dev endpoints or runtime snapshots.
+
+### 2026-07-03 - Codex App
+
 Goal: Bring OperatorOne under the shared Developer/GitHub/OneDrive governance standard.
 Changed: Added project-level agent rules and project log; reviewed workflow cost controls.
 Verified: Confirmed existing GitHub remote and inspected workflow triggers/timeouts.
